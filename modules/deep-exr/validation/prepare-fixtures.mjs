@@ -1,0 +1,1 @@
+import{execFileSync}from'node:child_process';import{resolve}from'node:path';execFileSync(process.env.FRAMEWEAVE_MEDIA_PYTHON,[resolve('modules/deep-exr/validation/fixtures.py'),resolve('.frameweave/deep-exr/fixtures')],{stdio:'inherit',windowsHide:true});

@@ -1,0 +1,26 @@
+{
+  "extends": "../../../../tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "paths": {
+      "@frameweave/engine": [
+        "../../../../src/index.ts"
+      ],
+      "@frameweave/engine/native": [
+        "../../../native-gpu/authoring.ts"
+      ],
+      "spatial-growth-candidate": [
+        "../../growth-entry.ts"
+      ]
+    }
+  },
+  "include": [
+    "../../growth*.ts",
+    "../../scripts/build-growth.ts",
+    "../../examples/growth.tsx",
+    "../growth.test.ts",
+    "./*.ts",
+    "./*.tsx",
+    "../../examples/lsystem.tsx"
+  ]
+}

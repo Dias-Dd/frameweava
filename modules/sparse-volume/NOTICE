@@ -1,0 +1,1 @@
+NanoVDB traversal and layout based on AcademySoftwareFoundation/openvdb v12.1.1, nanovdb/nanovdb/PNanoVDB.h and NanoVDB.h. Copyright Contributors to the OpenVDB Project. Apache-2.0. See LICENSE-OpenVDB.txt. Frameweave adaptations add explicit Resource admission, sparse Root hash index, WGSL integration and lifecycle. No OpenVDB Core/NVIDIA SDK binary is redistributed.

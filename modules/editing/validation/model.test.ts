@@ -1,0 +1,24 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {video,image,clip,at,sequence,splitClip,frames,timeline,editComposition} from '../authoring.ts';
+import {activeClips,sourcePosition} from '../sampling.ts';
+import {defineNativeStage} from '../../native-gpu/authoring.ts';
+import {editingStage} from '../stage.ts';
+import {expr,evaluate} from '../../../src/core/animation.ts';
+const asset=video('a','./a.mp4',{width:1920,height:1080}),part=clip(asset,{from:12,duration:24}),plan=timeline({fps:24,tracks:[sequence(part,part)]});
+test('cuts are half-open; no history or implicit source frame clock',()=>{assert.equal(activeClips(plan,23)[0].at,0);assert.equal(activeClips(plan,24)[0].at,24);assert.deepEqual(sourcePosition(activeClips(plan,24)[0],24,plan.fps),{num:1,den:2});for(const f of [47,0,24,23,24])assert.equal(activeClips(plan,f).length,1);});
+test('split preserves exact sampling at both halves and does not mutate original',()=>{const [a,b]=splitClip(part,10);assert.equal(a.duration,10);assert.equal(b.sourceIn,22);assert.equal(b.duration,14);assert.deepEqual(sourcePosition(at(10,b),10,{num:24,den:1}),sourcePosition(at(0,part),10,{num:24,den:1}));assert.equal(part.duration,24);});
+test('fractional project frame rates use rational PTS; seconds convenience follows Engine rounding',()=>{assert.deepEqual(sourcePosition(at(0,clip(asset,{from:29970,duration:30})),0,{num:30000,den:1001}),{num:999999,den:1000});assert.equal(frames(.5,24),12);});
+test('gaps, transparent background and bottom-to-top track order are explicit',()=>{const p=timeline({fps:24,duration:40,background:[0,0,0,0],tracks:[[at(4,part)],[at(8,part)]]});assert.equal(activeClips(p,3).length,0);assert.equal(activeClips(p,4).length,1);assert.equal(activeClips(p,8).length,2);assert.equal(activeClips(p,39).length,0);});
+test('invalid and overlapping trims fail with stable structured diagnostics',()=>{for(const fn of [()=>clip(asset,{duration:0}),()=>clip(asset,{duration:2,from:-1}),()=>splitClip(part,24),()=>timeline({fps:24,tracks:[[at(0,part),at(1,part)]]}),()=>activeClips(plan,48),()=>clip(asset,{duration:2,speeed:2}as any)])assert.throws(fn,{code:'E_EDIT_PARAMETER'});});
+test('same Resource identity can be reused but conflicting definitions cannot hide',()=>{assert.equal(plan.tracks[0].length,2);assert.throws(()=>timeline({fps:24,tracks:[sequence(part,clip({...asset,src:'./other.mp4'},{duration:24}))]}),{code:'E_EDIT_PARAMETER'});});
+test('author edits are snapshotted; no arbitrary JS function is a Signal',()=>{const t={x:4},c=clip(asset,{duration:2,transform:t});t.x=99;assert.equal(c.transform.x,4);assert.throws(()=>clip(asset,{duration:2,transform:{x:(()=>2)as any}}));});
+test('composition lowers to the existing native Stage and one declared Resource per asset',()=>{const factory=defineNativeStage(()=>({renderAt:()=>{throw Error('must not execute while authoring');}}));const tvg=editComposition({width:640,height:360,fps:24,tracks:[sequence(part,part)],factory});assert.equal(tvg.stages.length,1);assert.equal(tvg.stages[0].engine,'native-gpu');assert.equal(tvg.resources.length,1);assert.equal(tvg.layers.length,1);assert.equal(tvg.composition.durationInFrames,48);});
+test('twenty-minute timeline stays a clip index; sampling never builds frame arrays',()=>{const parts=Array.from({length:1200},()=>clip(asset,{duration:24})),p=timeline({fps:24,tracks:[sequence(...parts)]});assert.equal(p.duration,28800);assert.equal(activeClips(p,28799)[0].at,28776);assert.equal(p.tracks[0].length,1200);});
+test('unsafe transport arithmetic, missing policies and malformed image sizes fail',()=>{assert.throws(()=>image('x','x.png',{width:0,height:1}),{code:'E_EDIT_PARAMETER'});assert.throws(()=>video('x','x.mp4',{width:1,height:1,metadataPolicy:'override'}),{code:'E_EDIT_PARAMETER'});assert.throws(()=>sourcePosition(at(0,clip(asset,{from:2**50,duration:2})),1,{num:7,den:1000000001}),{code:'E_EDIT_TIME'});});
+test('resident named Stage avoids per-frame plan transport; fallback protects authored Signals from recursive props evaluation',()=>{
+ const tracks=[sequence(clip(asset,{duration:24,transform:{x:expr.frame}}))],factory=editingStage({fps:24,tracks});
+ const resident=editComposition({factory,width:640,height:360});assert.deepEqual(resident.stages[0].props,{});
+ const fallback=editComposition({factory:defineNativeStage(()=>({renderAt:()=>{throw Error('not executed');}})),width:640,height:360,fps:24,tracks});
+ const original=fallback.stages[0].props.edit;assert.equal(typeof original,'string');
+ const evaluated=evaluate(fallback.stages[0].props,{frame:12}as any);assert.equal(evaluated.edit,original);assert.deepEqual(JSON.parse(evaluated.edit).tracks[0][0].clip.transform.x,expr.frame);
+});

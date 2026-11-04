@@ -1,0 +1,14 @@
+{
+  "AbortController": "undefined",
+  "AbortSignal": "undefined",
+  "EventTarget": "undefined",
+  "Intl": "object",
+  "Segmenter": "function",
+  "TextEncoder": "function",
+  "TextDecoder": "function",
+  "WebAssembly": "undefined",
+  "crypto": "object",
+  "subtle": "object",
+  "FinalizationRegistry": "function",
+  "WeakRef": "function"
+}

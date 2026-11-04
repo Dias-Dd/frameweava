@@ -1,0 +1,59 @@
+/** Independent F64 equations; never imported by production. Reuses the
+ * existing independent exhaustive/Gaussian/morphology acceptance primitives. */
+import {fromHalf,toHalf,type AlphaMode} from '../../../src/media/surface.ts';
+import {evaluate as foundationOracle,quantize} from '../../gpu-image-effects/resident/foundations/reference.ts';
+import {gaussianOracle,morphologyOracle} from '../keying/reference.ts';
+type V=readonly number[];
+const F=Math.fround,clamp=(x:number)=>Math.max(0,Math.min(1,x)),weights=[.2126390058715104,.715168678767756,.0721923153607337],lum=(v:V)=>v[0]*weights[0]+v[1]*weights[1]+v[2]*weights[2],colour=(v:V)=>v[3]>0?v.slice(0,3).map(x=>x/v[3]):[0,0,0],rgba=(v:V,a:number)=>[...v.slice(0,3).map(x=>x*a),a],mask=(a:number)=>[0,0,0,clamp(a)];
+const map=(p:V,fn:(v:V,i:number)=>V)=>Array.from({length:p.length/4},(_,n)=>fn(p.slice(n*4,n*4+4),n*4)).flat();
+const finish=(v:V,half=false)=>Float32Array.from(v,(x,j)=>half?fromHalf(toHalf(F(j%4===3?clamp(x):x))):j%4===3?clamp(x):x);
+const pm=(p:Float32Array,alpha:AlphaMode)=>Array.from(p,(x,j)=>alpha==='straight'&&j%4!==3?x*p[j-j%4+3]:x);
+const at=(p:V,w:number,h:number,x:number,y:number)=>x<0||y<0||x>=w||y>=h?[0,0,0,0]:p.slice((y*w+x)*4,(y*w+x)*4+4);
+const mix=(a:V,b:V,t:number)=>a.map((x,j)=>x+(b[j]-x)*t);
+function sample(p:V,w:number,h:number,x:number,y:number){x-=.5;y-=.5;const ix=Math.floor(x),iy=Math.floor(y),fx=x-ix,fy=y-iy;return mix(mix(at(p,w,h,ix,iy),at(p,w,h,ix+1,iy),fx),mix(at(p,w,h,ix,iy+1),at(p,w,h,ix+1,iy+1),fx),fy);}
+function raw(p:V,bias=[1,1,1],gain=1,balance=.5){const screen=[0,1,0].map((v,j)=>v/bias[j]),delta=screen[1]-((1-balance)*Math.min(screen[0],screen[2])+balance*Math.max(screen[0],screen[2]));return finish(map(p,v=>{const c=colour(v).map((v,j)=>v/bias[j]);return mask(1-(c[1]-(1-balance)*Math.min(c[0],c[2])-balance*Math.max(c[0],c[2]))/delta*gain);}));}
+const clip=(p:V,b=.15,w=.85,rollback=.3,gamma=1.1)=>finish(map(p,v=>mask(Math.pow(clamp((v[3]-b)/(w-b)),1/gamma)*(1-rollback)+v[3]*rollback)));
+function tone(p:V,mid=.4,sh=.8,mi=1.2,hi=.95){return finish(map(p,v=>{const a=v[3],t=a>mid?.5+(a-mid)/(1-mid)*.5:a/mid*.5,u=1-t;return mask(a*(u*u*sh+2*t*u*mi+t*t*hi));}));}
+function despot(p:V,w:number,h:number,black=1,white=.5){let v=finish(map(p,n=>mask(n[3])));if(black){v=morphologyOracle(v,w,h,black,true,'clamp');v=morphologyOracle(v,w,h,black,false,'clamp');}if(white){v=morphologyOracle(v,w,h,white,false,'clamp');v=morphologyOracle(v,w,h,white,true,'clamp');}return v;}
+function unmix(p:V,m:V,screen=[.1,.9,-.1],strength=.8,ignore=false){return finish(map(p,(v,i)=>{if(v[3]===0)return v;const base=ignore?rgba(colour(v),1):v,a=base[3],aa=a*m[i+3];if(m[i+3]===0)return [0,0,0,0];return [...base.slice(0,3).map((c,j)=>c-screen[j]*(a-aa)*strength),aa];}));}
+function replace(p:V,base:V,old:V,matte:V,method='soft-color',fill=[1.3,.2,-.1],ignore=false){return finish(map(base,(v,i)=>{const s=p.slice(i,i+4);if(s[3]===0)return v;const a0=old[i+3]*(ignore?1:s[3]),a1=matte[i+3]*(ignore?1:s[3]),delta=a1-a0;let c=v.slice(0,3);if(method==='source')c=c.map((x,j)=>x+colour(s)[j]*delta);else if(method!=='none'){if(delta>0){let rgb=fill;if(method==='soft-color'&&Math.abs(lum(fill))>2**-20)rgb=fill.map(x=>x*lum(colour(s))/lum(fill));c=c.map((x,j)=>x+rgb[j]*delta);}else if(a0>0)c=c.map(x=>x*a1/a0);}return [...c,a1];}));}
+function bias(p:V,b=[1.2,.9,1.1]){return finish(map(p,v=>v[3]===0?v:[...v.slice(0,3).map((x,j)=>x/b[j]*lum(b)),v[3]]));}
+function spill(p:V,b=[1.2,.9,1.1],amount=.7){return finish(map(p,v=>{if(v[3]===0)return v;const c=v.slice(0,3).map((x,j)=>x/b[j]),excess=Math.max(0,c[1]-Math.max(c[0],c[2]))*b[1]*amount,out=v.slice(0,3),tint=[b[0],0,b[2]],energy=lum(tint);out[1]-=excess;for(let j=0;j<3;j++)out[j]+=tint[j]*excess*weights[1]/energy;return [...out,v[3]];}));}
+function grade(p:V,edge?:V,saturation=.8,exposure=.2,custom=true,hue=custom?37:0):Float32Array<ArrayBuffer>{if(hue){const shifted=quantize(foundationOracle('hueSaturation',{width:p.length/4,height:1,pixels:Float32Array.from(p)},{hue})),corrected=grade(Array.from(shifted),undefined,saturation,exposure,custom,0);return edge?finish(map(p,(v,i)=>mix(v,[...corrected.slice(i,i+4)],edge[i+3]))):corrected;}return finish(map(p,(v,i)=>{if(v[3]===0)return v;const lift=custom?[-.03,.02,.01]:[0,0,0],gamma=custom?[.9,1.1,1.05]:[1,1,1],gain=custom?[1.2,.9,1.1]:[1,1,1];let c=colour(v).map((x,j)=>{const a=x+lift[j];return Math.sign(a)*Math.pow(Math.abs(a),1/gamma[j])*gain[j];});const y=lum(c);c=c.map(x=>(.18+(y+(x-y)*saturation-.18)*(custom?1.1:1))*2**exposure);return mix(v,rgba(c,v[3]),edge?edge[i+3]:1);}));}
+/** Bounded exhaustive nearest-site oracle: distances beyond a band's support
+ * cannot contribute. Independent of production's global linear-time EDT. */
+export function bandOracle(p:V,w:number,h:number,inside=2.3,outside=1.1){const flags=Array.from({length:w*h},(_,i)=>p[i*4+3]>=.5&&p[i*4+3]>0),radius=Math.ceil(Math.max(inside,outside)+2),result:number[]=[];for(let y=0;y<h;y++)for(let x=0;x<w;x++){const state=flags[y*w+x];let d2=state?Math.min(x+1,w-x,y+1,h-y)**2:Infinity;for(let dy=-radius;dy<=radius;dy++)for(let dx=-radius;dx<=radius;dx++){const nx=x+dx,ny=y+dy;if(nx>=0&&ny>=0&&nx<w&&ny<h&&flags[ny*w+nx]!==state)d2=Math.min(d2,dx*dx+dy*dy);}if(!Number.isFinite(d2)){result.push(0,0,0,0);continue;}const d=F(Math.max(0,F(Math.sqrt(d2))-.5))*(state?1:-1),a=outside?clamp((d+outside)/outside):Number(d>0),b=inside?1-clamp(d/inside):Number(d<=0);result.push(0,0,0,a*b);}return finish(result);}
+export function trimapOracle(w:number,h:number){return Float32Array.from({length:w*h},(_,i)=>i%w===w-1?1:i%w===0?0:-1);}
+export function walkerOracle(p:V,w:number,h:number,iterations=64){const labels=trimapOracle(w,h),prior=.5,lambda=.1,epsilon=2**-20,beta=2;let current=Float32Array.from(labels,x=>x>=0?x:prior),next=new Float32Array(current.length);const normalized=Array.from({length:w*h},(_,i)=>colour(p.slice(i*4,i*4+4)).map(x=>x/(1+Math.abs(x))));for(let iteration=0;iteration<=iterations;iteration++){for(let y=0;y<h;y++)for(let x=0;x<w;x++){const i=y*w+x;if(labels[i]>=0){next[i]=labels[i];continue;}let total=lambda*prior,norm=lambda;for(const [nx,ny]of [[x-1,y],[x+1,y],[x,y-1],[x,y+1]])if(nx>=0&&ny>=0&&nx<w&&ny<h){const j=ny*w+nx,d=normalized[i].reduce((s,c,k)=>s+(c-normalized[j][k])**2,0),weight=Math.max(epsilon,Math.exp(-beta*d));total+=weight*current[j];norm+=weight;}next[i]=clamp(total/norm);}if(iteration<iterations)[current,next]=[next,current];}const diagnostics=Float32Array.from(Array.from(current,(a,j)=>[Math.abs(next[j]-a),Number(w>1),Number(labels[j]>=0),Number(Math.abs(next[j]-a)<=1e-4)]).flat());return {image:finish(Array.from(current,a=>mask(w>1?a:0)).flat()),diagnostics};}
+function garbage(p:V,source:V,inside:V,outside:V){return finish(map(p,(v,i)=>mask(Math.max(v[3],1-clamp(lum(colour(inside.slice(i,i+4)))))*(1-outside[i+3])*source[i+3])));}
+export function defaultAdvanced(p:V,w:number,h:number,view='final',background?:V){const rawMatte=raw(p),zero=Array(p.length).fill(0) as number[];
+ if(view==='source')return finish(p);if(view==='source-alpha')return finish(map(p,v=>[v[3],v[3],v[3],1]));if(view==='screen-matte'||view==='combined-matte')return finish(map(Array.from(rawMatte),v=>[v[3],v[3],v[3],1]));if(view==='inside'||view==='outside')return finish(map(zero,()=>[0,0,0,1]));if(view==='status')return finish(map(Array.from(rawMatte),v=>v[3]<=1e-4?[0,0,0,1]:v[3]>=1-1e-4?[1,1,1,1]:[1,0,0,1]));if(view==='intermediate')return unmix(p,Array.from(rawMatte),[0,1,0],0);
+ let result=unmix(p,Array.from(rawMatte),[0,1,0],1);result=spill(Array.from(result),[1,1,1],1);if(view==='composite'&&background)result=finish(map(Array.from(result),(v,i)=>[v[0]+background[i]*(1-v[3]),v[1]+background[i+1]*(1-v[3]),v[2]+background[i+2]*(1-v[3]),v[3]+background[i+3]*(1-v[3])]));return result;
+}
+export interface ReferenceInput {image:Float32Array;matte:Float32Array;other:Float32Array;guide:Float32Array;flow:Float32Array;alpha:AlphaMode}
+export function proKeyReference(name:string,input:ReferenceInput,w:number,h:number,frame:number,half=false){const p=pm(input.image,input.alpha),m=Array.from(input.matte),other=Array.from(input.other),guide=Array.from(input.guide),flow=input.flow;let result:V=p;
+ switch(name){
+ case 'screenMatte':result=Array.from(raw(Array.from(gaussianOracle(p,w,h,.4)),[1.2,.9,1.1],.75+.4*frame/239,.6));break;
+ case 'matteClipRollback':result=Array.from(clip(m));break;
+ case 'matteTone':result=Array.from(tone(m));break;
+ case 'matteGarbage':result=Array.from(garbage(m,p,other,guide));break;
+ case 'matteDespot':result=Array.from(despot(m,w,h));break;
+ case 'keyUnmix':result=Array.from(unmix(p,m));break;
+ case 'keyReplace':result=Array.from(replace(p,other,guide,m));break;
+ case 'keyBias':result=Array.from(bias(p));break;
+ case 'spillBias':result=Array.from(spill(p));break;
+ case 'foregroundGrade':result=Array.from(grade(p));break;
+ case 'edgeGrade':result=Array.from(grade(p,m));break;
+ case 'keyStatus':result=map(m,v=>v[3]<=.05?[0,0,0,1]:v[3]>=.95?[1,1,1,1]:[1,0,0,1]);break;
+ case 'keyDifference':result=map(p,(v,i)=>[v[0]-other[i],v[1]-other[i+1],v[2]-other[i+2],Math.max(v[3],other[i+3])]);break;
+ case 'hairMatte':result=map(p,(v,i)=>{const c=colour(v),f=colour(other.slice(i,i+4)),b=colour(guide.slice(i,i+4)),d=f.map((n,j)=>n-b[j]),norm=d.reduce((s,n)=>s+n*n,0);return mask(norm>.001?c.reduce((s,n,j)=>s+(n-b[j])*d[j],0)/(norm+.001):v[3]);});break;
+ case 'refineBand':result=Array.from(bandOracle(m,w,h));break;
+ case 'temporalMatte':result=map(m,(v,i)=>{const n=i/4,x=n%w+.5+flow[n*3],y=Math.floor(n/w)+.5+flow[n*3+1],confidence=flow[n*3+2];if(confidence<.3||confidence<=0||x<.5||y<.5||x>w-.5||y>h-.5)return mask(v[3]);const a=colour(p.slice(i,i+4)),b=colour(at(guide,w,h,Math.floor(x),Math.floor(y))),distance=Math.max(...a.map((n,j)=>Math.abs(n-b[j]))),weight=.7*clamp(confidence)*(1-clamp(distance/1.7));return mask(v[3]+(sample(other,w,h,x,y)[3]-v[3])*weight);});break;
+ case 'matteVectorBlur':result=map(m,(v,i)=>{const n=i/4;if(flow[n*3+2]<=0)return mask(v[3]);let a=0;for(let j=0;j<7;j++){const t=-.2+.6*(j+.5)/7;a+=sample(m,w,h,n%w+.5+flow[n*3]*t,Math.floor(n/w)+.5+flow[n*3+1]*t)[3];}return mask(a/7);});break;
+ case 'randomWalkerMatte':result=Array.from(walkerOracle(p,w,h).image);break;
+ case 'keyCrop':{const left=w>2?1:0,right=w,top=0,bottom=h>2?h-1:h;result=map(p,(v,i)=>{let x=(i/4)%w+.5;const y=Math.floor(i/4/w)+.5;if(y>bottom-.5||y<top+.5)return rgba([1.2,-.1,.3],.3);if(x<left+.5||x>right-.5){const span=right-left,period=span*2;let t=((x-left-.5)%period+period)%period;t=Math.min(t,period-1-t);x=left+.5+t;}return sample(p,w,h,x,y);});break;}
+ case 'keyAdvanced':{const rawMatte=raw(p);let a=clip(Array.from(rawMatte),.1,.9,.2,1.1);a=tone(Array.from(a),.4,.9,1.1,1);a=morphologyOracle(a,w,h,.3,true,'clamp');a=gaussianOracle(a,w,h,.4);a=despot(Array.from(a),w,h,.5,.2);const combined=finish(map(Array.from(a),(v,i)=>mask(Math.max(v[3],other[i+3])*(1-guide[i+3]))));let fg=unmix(p,Array.from(rawMatte),[0,1,0],1);fg=replace(p,Array.from(fg),Array.from(rawMatte),Array.from(a),'soft-color',[1.2,.3,-.1]);fg=replace(p,Array.from(fg),Array.from(a),Array.from(combined),'source');fg=spill(Array.from(fg),[1,.8,.9],.5);fg=grade(Array.from(fg));result=Array.from(grade(Array.from(fg),Array.from(bandOracle(Array.from(combined),w,h,2.3,0)),.5));break;}
+ default:throw Error('No independent reference for '+name);
+ }return finish(result,half);
+}
+export function chainReference(source:Float32Array,background:Float32Array,w:number,h:number){const keyed=defaultAdvanced(Array.from(source),w,h),edge=bandOracle(Array.from(keyed),w,h,2,0),graded=grade(Array.from(keyed),Array.from(edge),.8,.1,false);return finish(map(Array.from(graded),(v,i)=>[v[0]+background[i]*(1-v[3]),v[1]+background[i+1]*(1-v[3]),v[2]+background[i+2]*(1-v[3]),v[3]+background[i+3]*(1-v[3])]));}

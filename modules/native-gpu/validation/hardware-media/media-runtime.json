@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "abi": 1,
+  "trusted_local": true,
+  "features": [],
+  "files": {
+    "frameweave_media.dll": "4ccfcd2f89df65833e62adf527397276cb9d1cb86ecfdd7837b83606bf5cd9cd"
+  },
+  "sourceHashes": {
+    "bridge.cpp": "c2432b8884cea16e3a58e94774d54177afca45df4eae94ece4fe33bf423d2e45",
+    "bridge.h": "96540e669b84723cdbed36e4f25d985c16e7f55580e186b0a34ad3c65800b7a2",
+    "encoder.h": "08ebf8552e5d2c096852703522f1bb7a82870e7d4002135d037969d91b11ff14",
+    "file-stream.h": "25b64b52fb5b64885ad0d3da395269da9b0b58f3d3efd6405e5d15c3eec938f7",
+    "video.hlsl": "05b1b240b1ef197c663665e2b324b330039cb62db4e0fdd2df33e5095c885040",
+    "upstream.json": "454a930dd12d1af85c567dca18d0119aaab6ad63a82979c650b28121c6cf914f",
+    "vendor/nvEncodeAPI.h": "4fe4094541ef0f8a13249d97a8692dc5f835a6e9dd42eeadb3e2f7321d54dc7e",
+    "build.mjs": "1036e4f47f720b6e08ae15cb61816033fc8f18dab37809810e219baec875826c"
+  },
+  "wallMs": 2965.9512999999997
+}

@@ -1,0 +1,1 @@
+{"name":"skeletal-effects","version":"0.6.3","type":"module","license":"Apache-2.0 AND MIT","exports":{".":{"types":"./dist/public.d.ts","import":"./native/index.js"}},"peerDependencies":{"@frameweave/engine":"0.1.0"},"files":["src","native","dist","vendor","licenses","LICENSE","NOTICE","README.md","frameweave.package.json","UPSTREAM.json"]}

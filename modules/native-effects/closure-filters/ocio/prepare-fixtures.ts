@@ -1,0 +1,12 @@
+import {resolve,join} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {execFile} from 'node:child_process';
+import {promisify} from 'node:util';
+import {linear709,acescg} from '../../../../src/media/surface.ts';
+import {prepareOcio,type OcioRequest} from './prepare.ts';
+const exec=promisify(execFile),root=resolve('.'),directory=resolve('modules/native-effects/closure-filters/fixtures'),out=resolve(process.env.FRAMEWEAVE_CLOSURE_RUN!),python=process.env.FRAMEWEAVE_MEDIA_PYTHON!,compiler=resolve('.frameweave/ocio-target/release/frameweave-ocio-wgsl.exe');await mkdir(directory,{recursive:true});await mkdir(out,{recursive:true});
+const fixture=await exec(python,[fileURLToPath(new URL('./fixtures.py',import.meta.url)),directory],{windowsHide:true});await writeFile(join(out,'fixtures.log'),fixture.stdout);
+const display=JSON.parse(await readFile(join(directory,'display.json'),'utf8')) as {config:string;display:string;view:string;linearDisplaySpace:string};
+const requests:OcioRequest[]=[{operation:'color-space',config:display.config,source:'Linear Rec.709 (sRGB)',destination:'ACEScg',inputColor:linear709,outputColor:acescg},{operation:'display',...display,source:'Linear Rec.709 (sRGB)',inputColor:linear709,outputColor:{...linear709,reference:'display'}},{operation:'file',config:display.config,file:join(directory,'look.cube'),inputColor:linear709,outputColor:linear709},{operation:'look',config:join(directory,'look.ocio'),source:'linear-709',destination:'linear-709',look:'warm',inputColor:linear709,outputColor:linear709}];
+const processors=[];for(const [j,request]of requests.entries())processors.push(await prepareOcio(request,{projectRoot:root,outputDirectory:join(out,String(j)),python,compiler}));await writeFile(join(directory,'processors.json'),JSON.stringify(processors));await writeFile(join(directory,'requests.json'),JSON.stringify(requests));console.log(JSON.stringify({ok:true,processors:processors.map(p=>({operation:p.operation,lutFloats:p.lutValues.length,provenance:p.provenance}))}));

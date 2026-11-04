@@ -1,0 +1,101 @@
+# Public API 0.5.1 — professional effects and Legacy compatibility
+
+R1 `bindings` v1 exposes named Web calls through the existing owner-scoped ModuleLoader and Stage lifecycle. Public types are in dist/bindings.d.ts, npm/pure functions in dist/index.d.ts. Engine stays Web for managed execution; Node reference tests do not authorize arbitrary third-party Node modules. Init has no device/pointer/file access. It loads the declared Graphics dependency; Legacy P4 children initialize lazily and dispose through the original Stage owner.
+
+## Shared professional contract
+
+`FloatEffectOptions` accepts `workingColor?: ColorEncoding`, `format?: 'rgba16float'|'rgba32float'`, `alpha?: AlphaMode`, `maxWorkingBytes?: number`. Input is the existing Surface v2, never a new image schema. PME validates dimensions, stride, byte count, metadata, finite RGB and alpha. Input storage is borrowed and unchanged. Results are new value-owned PME Surfaces, no borrowed Canvas or explicit free callback. Existing deferred byte storage avoids eager Base64 between same-Stage function calls; wire serialization remains the core's responsibility. Temporaries are call-local/GC-owned, no global frame cache or GPU handle.
+
+The default work color is the input's explicit **scene-linear** encoding. Nonlinear/display input must specify a scene-linear `workingColor`; PME transformPixels handles conversion with clip=false. Linear input is not implicitly Rec.709: ACEScg, Rec.2020 and other PME spaces are preserved. Output stays in the selected work color; caller uses PME transformSurface/OCIO/encoder for display and delivery. A colorimetric matrix/transfer conversion is not an ACES rendering/view transform.
+
+Internal RGB is linear premultiplied F32; sums/weights use JS f64, with F32 pass storage. Straight inputs are premultiplied once. Alpha-zero hidden RGB is canonicalized to zero, preventing invisible colors contaminating neighbors. Premultiplied outputs are not multiplied twice. Straight outputs unpremultiply once; zero alpha remains zero. Default output alpha follows the input, except opaque defaults to premultiplied because transparent sampling/blur can reduce coverage. Explicit opaque output must genuinely retain alpha one or PME rejects it. Alpha is always [0,1]; signed/HDR RGB is never normalized/clamped. Nonfinite/half-overflow results fail, not saturate.
+
+Output defaults to the input float format. Each explicit 16F output rounds via PME IEEE binary16 ties-to-even; preserve RGBA32F between effects to avoid repeated half rounding. Reference budgets: F32 filtering <=3e-6 times max(1, reference magnitude) on bounded fixtures; half <=6e-4 relative-to-max(1,reference) per output for the convolution fixture, equivalence of separately half-quantized straight/premultiplied inputs <=1e-3. These are fixture thresholds, not a global composed-error guarantee. Subnormal half error is absolute; repeated passes require a separate error budget.
+
+Resource gate: <=4,194,304 pixels, <=16,384 per dimension via PME. Estimated owned workspace is 160 bytes/pixel against 256MiB default, explicitly up to 512MiB; this is an array-work estimate excluding caller storage/wire strings, not a measured process/GPU peak guarantee. Gaussian additionally rejects >250M tap-channel operations. No long-running daemon/tiling/cancellation system is hidden here. CPU large-radius/large-frame jobs may require lower dimensions or a future approved accelerated pass; limits fail explicitly.
+
+## Pixel functions
+
+All numeric fields below accept the existing numeric Signal where declared; non-number Signals need a FrameContext. Pure numeric calls need no fake time context.
+
+| Function | Semantics |
+|---|---|
+| `blur(surface,{radius,boundary?,...common},ctx?)` | Separable Gaussian; radius is sigma in **physical pixels**, finite 0..64. Kernel +/-ceil(3*sigma), exp(-k²/(2sigma²)), normalized before boundary handling. Default transparent zero border loses energy beyond the image, clamp repeats edge texels. Radius0 is canonicalized identity. Filters premultiplied RGB and coverage together; not encoded sRGB blur. |
+| `glow(surface,{radius,intensity,threshold?,boundary?,...common},ctx?)` | Threshold default1 in linear working-white units (1 corresponds to working referenceWhiteNits); intensity0..100 dimensionless. Y is the PME colorimetric mapping to linear Rec.709 at the same reference white followed by [.2126,.7152,.0722]. Extract w=max(0,1-threshold/Y) when Y>threshold, otherwise0. Blur signed premultiplied RGB*w and alpha*w; output RGBp=sourceRGBp+intensity*bloomRGBp. Alpha=sourceA+(1-sourceA)*clamp(intensity*bloomA,0,1). This explicit coverage saturation does not clip RGB energy. Radius0 still adds unblurred extracted light; intensity0 is canonicalized identity. No knee/tone mapper/AE equivalence claim. |
+| `displacement(surface,{amount,frequency?,speed?,seed?,time?,offset?,boundary?,sampling?,...common},ctx?)` | Same PA-0 deterministic sine-field formula, upgraded float sampler. Amount0..100 **physical px**; frequency .1..80 default9, speed -10..10 default.8, integer seed0..2147483647 default3. Absolute time seconds from explicit time or ctx.time, default0 when neither is supplied; finite +/-1e6. x'=x+amount*sin(y/h*f*4.2-t*.7+seed*.31)*sin(x/w*f*6.283+t+seed*.13)+offsetX, y'=y+amount*sin(...)*.6+offsetY; t=time*speed. Offset two finite px coordinates +/-1e6. Texel centers at integer x/y. Bilinear premultiplied sampling by default, optional nearest; transparent default or explicit clamp. No hidden resize, rounding to integer coordinates or normalized HDR values. |
+
+Compose the returned Surfaces directly within one Stage. There is no extra Stage per operation. An unsupported/SDR input reports E_PA_PRECISION; unknown sampling/limits report existing EngineError diagnostics. GPU/WASM backends are **not implemented**; requesting another backend is not part of this CPU API.
+
+## Coverage / text / vector
+
+`surfaceFromCoverage(coverage,{width,height,workingColor,ink:[r,g,b,a],format?})` accepts finite [0,1] coverage and arbitrary finite linear RGB (including negative/>1), a in [0,1]. Output premultiplied RGBA = (inkRGB * inkA * coverage, inkA*coverage). No RGB is roundtripped through Canvas.
+
+Named `rasterizeText(text,{...coverage,font,x,y,supersample?})` uses explicit CSS font and baseline x/y; max16384 UTF-16 units. Named `rasterizePath(PathData,{...coverage,strokeWidth?,supersample?})` validates via Graphics Contracts, matching pixel coordinate dimensions. Omitted strokeWidth fills with the canonical fill rule; provided (0,256] px strokes. Supersample 1/2/4 defaults2; <=16M coverage texels. Browser white geometry produces **A8 per subpixel** then linear area averaging, with coverage step 1/(255*n²). Each temporary Canvas is cleared/freed in finally. This has bounded mask precision and browser font/antialiasing dependency, not HarfBuzz, a full text engine or a professional float coverage guarantee. Coverage data can also come from a future higher precision rasterizer without changing the Surface/color pipeline.
+
+`revealText`, `trimPaths`, `morphPath`, `wiggle` retain PA-0 Signal, units, matching topology/point IDs, bounded SVG polyline trim, u64/BigInt algorithm and exact endpoint behavior. Original EffectCraft source @861c51f8187bf56efc77cc7b60fc4a513d2b7198 and MIT notices remain; actual Rust numerical reference is rerun. No second timeline or professional Path schema.
+
+## Legacy/SDR
+
+Managed `glow(Canvas,options,ctx)` / `displacement(Canvas,options,ctx)` retain their original Promise<Canvas> overloads, and `createImageEffects(init)` remains the explicit Legacy factory. They use locked fw.glow/displacement1.0.0, sRGB/unorm8 Canvas2D only, 4MP, original logical-pixel/DPR rules, nearest/clamp warp and borrowed output until next same operation. A float Surface dispatches to the professional path instead. Float/P3 Canvas, Bitmap and unknown inputs are never implicitly quantized. Do not confuse the Legacy radius/threshold/alpha model with the new float Gaussian/bloom model. Both coexist by typed input, not by a silent fallback.
+
+## Publication gate
+
+Every new pixel effect must pass explicit Surface/color/alpha/finite/stride, numeric reference, applicable Engine and real render checks before being advertised. Unsupported professional paths stay unexported or diagnosed; mathematical/path/metadata functions need no fictitious pixel format. Current release has no professional GPU numeric parity, production4K, full shaping, curve-preserving Trim or automatic Morph correspondence certification. Current Main's one-Surface-per-Web-Stage and multi-factory managed import issues are core integration boundaries; do not route extra Surfaces through JSON to bypass them.
+
+## Authoring another CPU effect
+
+`applyFloatKernel(surface, commonOptions, (image, ctx) => Float32Array, ctx?)` publicly exposes the same prepare/publish path used by builtins. The callback receives call-local F32 premultiplied scratch, actual dimensions, a frozen working ColorEncoding and the explicit context. It may modify its scratch or return another exact-size F32 array. Publication copies to PME-owned storage and validates finite RGB/alpha/format; later scratch mutation cannot change the result. Async kernels and malformed output fail E_PA_KERNEL. This is ordinary trusted authored code, not a plugin loader/registration protocol or execution sandbox; callback extra allocations/time are the author's responsibility, beyond the pipeline's workspace estimate. No new Node/WASM/GPU permissions are granted. New effects must still run the same numeric/visual/precision gates.
+
+```ts
+const doubled = applyFloatKernel(image, {format:'rgba32float'}, ({pixels}) => {
+  for(let i=0;i<pixels.length;i+=4) for(let c=0;c<3;c++) pixels[i+c]*=2;
+  return pixels; // alpha unchanged; no clamp or repeat surface/color decoding
+}, ctx);
+```
+
+## PA-2A curve tools (0.3.0)
+
+Managed named `measurePath`, `createPathSampler`, `matchPaths` use canonical Graphics PathData. Direct TS consumers obtain the same functions from `createPathTools(graphics)`. Inputs must have px coordinates; max64 contours/1024 segments. Absolute arclength tolerance defaults.001px, range1e-6..1. Chord/control-polygon adaptive bounds include all contours; F64 rounding is not a rigorous interval arithmetic certificate. Work limits65536 subdivisions and depth24 fail E_PA_PATH_ACCURACY rather than silently reducing quality.
+
+`createPathSampler(path,opts).sample(fraction,contourIndex?)` returns x/y/tangent angleRadians/contourIndex/distance; fraction[0,1], global arc length concatenates disjoint contours without interpolating the gaps (left contour wins exact boundary). Zero-length sampling rejects; tangent uses local finite differences. Capture sampler once for repeated queries; no global cache or hidden mutable timeline.
+
+`trimPaths(path,{mode:'curves',start?,end,offsetDegrees?,wrap?,contours?,tolerance?},ctx)` preserves L/Q/C subcurves with de Casteljau splitting. start/end are normalized[0,1]; start>end requires wrap:true. Offset is periodic degrees and may cross the seam even when wrap is omitted. contours defaults concatenated, or individual applies the same fractions to each contour. Full selected closed contours keep Z, partial contours stay open; zero span is a non-drawing singleton M. Partial IDs are deterministic generated IDs. Legacy options without mode:'curves' retain the old sampled-SVG behavior, bounds and errors.
+
+`matchPaths(a,b,{samplesPerContour,contourMap?,alignment?,direction?,tolerance?})` explicitly prepares two compatible PathData values for unchanged strict morphPath. samples3..128 per contour. Multiple contours require a one-to-one contourMap, equal contour count, matching open/closed state and winding; direction:'reverse-target' explicitly reverses all target contours. No automatic hole recognition. alignment:'cyclic' minimizes normalized positional cost for closed contours; ties retain first offset. Returned diagnostics record mapping, offset, cost and reversal. This strategy **arc-resamples to polylines**, approximates endpoint curves and does not repair self intersections or guarantee intermediate hole topology. Original same-topology morphPath remains exact at endpoints.
+
+De Casteljau/evaluation and positional matching are MIT adaptations of EffectCraft interp.rs at the pinned commit. The bounded arclength adapter and explicit contour policies are Frameweave code, not a claim of full kurbo/EffectCraft shape-context/Procrustes implementation. Raw upstream sources/SHA and licensing are in vendor/effectcraft/PA2-SOURCES.json.
+
+## PA-2B text primitives (0.4.0)
+
+`segmentText(text,{unit:'grapheme'|'word',locale?})` exposes logical UTF16 ranges, unit index and wordIndex (-1 for separators); not glyph IDs, TextLayoutData or a new document model. Grapheme mode includes whitespace units. Word mode preserves separator advance but does not transform/draw separators. Max16384 UTF16 units/1024 segments.
+
+`rangeSelector(count,{start?,end?,offset?,amount?,shape?,smoothness?,easeHigh?,easeLow?,randomOrderSeed?},ctx)` counts0..4096 logical units. Start/end/offset are fractions of count; endpoints are sorted; shape square/ramp-up/ramp-down/triangle/round/smooth, smoothness0..1 in units, easeHigh/Low and amount-1..1. This is a direct MIT adaptation of audited EffectCraft range/ease maths; ramps retain endpoints outside the interval. selectorOrder(count,seed) is the audited deterministic rank permutation. `randomSelector(count,{seed,probability},ctx)` gives stable0/1 observations with probability0..1 using the existing audited hash; it does not claim cryptographic randomness. `combineSelectors(a,b,mode)` combines equal-size bounded weights with add/subtract/intersect/min/max/difference and explicit[-1,1] saturation. Numeric negative selection is not a negative pixel alpha.
+
+`stagger(index,{delay,duration,start?,easing?},ctx)` computes clamp((Stage time-start-index*delay)/duration), then **existing** Easing. Seconds, nonnegative delay, positive duration; index0..4095. No per-character track, checkpoint, timer or accumulated delta. Numeric fields declared Signals use the existing evaluator.
+
+Managed `rasterizeAnimatedText(text,options,ctx)` (or createAnimatedTextTools(graphics) for direct TS) accepts existing RasterOptions/HDR ink, explicit font/x/y, segmentation, letterSpacing, optional canonical PathData/pathOffset px/overflow error|clip and `transform(unit,ctx)`. Unit includes logical ranges, index/wordIndex/count, actual x/y/advance. Callback returns numeric/Signal dx/dy px, rotation radians, scaleX/Y[-100,100], opacity[0,1]. Per-unit transform permits index/time/position control; no glyph-engine claims. Single path contour at matching physical dimensions; unit centers follow measured arc/tangent. Overflow errors unless explicitly clipped, never silently stacked at the endpoint.
+
+Rendering is a verified **single-line LTR Latin/CJK/Common/Inherited** independently drawable-unit subset. Joining scripts, RTL/Bidi controls and multiline input explicitly fail E_PA_TEXT_SHAPING. Kerning is disabled, units are drawn independently; word-internal ligatures/marks may be handled by the browser, with no general shaping/ligature equivalence guarantee. Fonts can fall back to system fonts; cross-OS reproducibility is unverified. A full shaped glyph adapter requires pinned fonts/Graphics TextLayoutData rather than fabricated IDs.
+
+Coverage uses the shared PA-1 A8 supersampled mask, once per render; all units use one explicit linear HDR ink, not per-unit Canvas RGB. Opacity overlaps use native coverage source-over; final RGB is float ink*coverage. Negative/HDR ink,16F/32F, alpha, resource cleanup and budgets follow PA-1. No RGB8 intermediate, font/model download, new permission, GPU or WASM host.
+
+## PA-2C procedural primitives (0.5.0)
+
+`noiseField([x,y],{frequency,amplitude,speed?,seed?},ctx)` combines two projected versions of the already audited EffectCraft smooth1D value noise. Coordinates/offsets are physical px, frequency per px, speed per second; no claim of isotropic Perlin, curl, divergence-free turbulence or new noise implementation. Finite bounded options use existing Signal evaluation; safe seed and absolute time ensure arbitrary-order access.
+
+`deformPath(path,field,ctx)` (or createDeformationTools(graphics)) offsets every canonical point/control with `field([x,y],ctx,pointId?) -> [dx,dy]`. Preserves command types/IDs/contours, validates before/after through Graphics, max4096 visits. Callers may pin IDs, compose fields or exit/filter with ordinary TS. This is control-point deformation, not ARAP/Puppet or a Mesh pose model; self-intersections/winding changes under a user field are not repaired. MeshData v1 supplies rest geometry, not a new animated pose payload, so no fake posed-rest or Skeleton binding rewrite is introduced.
+
+`createDisplacementMap({width,height,workingColor,format?,field},ctx)` creates an existing ProfessionalSurface whose R/G are **signed physical-pixel offsets**, B0/A1, max262144 pixels. It is explicit utility data, not display RGB; no new vector-map Schema. Color metadata must be scene-linear and does not rescale/convert these utility values.16F overflow fails rather than clips.
+
+`displaceWithMap(source,map,{encoding:'rg-offset-px',scale?,boundary?,...FloatEffectOptions},ctx)` requires matching physical dimensions, linear opaque16F/32F map and explicit interpretation. Source uses the same PA-1 prepare/publish through applyFloatKernel; map numbers are never gamut/transfer converted. Bilinear source sampling is premultiplied, integer coordinates are texel centers, boundary transparent(default) or clamp, scale-1000..1000. Map stride/bytes/finite/opaque alpha validated by PME. No implicit resize,8-bit normalization or image-to-map guessing. Working estimate176bytes/pixel includes decoded map.
+
+`emitParticles({rate,lifetime,startTime?,duration?,seed?,maxParticles?,origin,positionJitter?,velocity,velocityJitter?,acceleration?,radius?},ctx)` returns local ordinary Particle records, not a new professional data Schema or simulation runtime. Units: px,px/s,px/s²,seconds. Birth i at start+i/rate, active age in[0,lifetime); duration is an exclusive emission range. Static config parameters define analytic p=p0+v0*age+.5*a*age² and v=v0+a*age, seeded jitter uses existing core seededRandom(seed,birthIndex,salt). maxParticles1..4096 fails if exceeded, never silently drops. Configuration is evaluated as supplied, not reconstructed from historical Signal changes. Returned data can be mapped/filtered by authored TS for fields, paths, fades and exits. No sequential render dependence, snapshots or cache. Nonlinear feedback forces need the **existing FixedStepRunner** and an explicit future policy, not a new PA Runner.
+
+`rasterizeParticles(particles,RasterOptions)` samples bounded discs on a1/2/4-square grid in F64, accumulates **F32 coverage** with source-over and one common linear HDR ink, then shared surfaceFromCoverage publishes16F/32F. This is finite supersampling (step1/n² before opacity/over), not certified exact disk/pixel area or additive light accumulation. No Canvas/RGB8. Max4096 particles,4MP,64M sub-sample visits; alpha must be[0,1], radius0..256px, zero alpha/radius skipped, outside pixels transparent. Caller arrays unchanged; temporary coverage is call-local. Per-particle colors/additive emitters,3D/fluid/collision/Puppet are not implemented. PA-1Glow/Layer blends can compose with the result.
+
+Errors retain EngineError/Diagnostic transport: E_PA_FIELD/PARTICLE/MAP_ENCODING plus existing PME range/color/stride diagnostics. Numeric CPU fixtures are the future GPU reference;0.5.0 makes no new GPU/WASM pass request or precision claim for unavailable backends.
+
+
+## PA3-SHAPES-001 / formal release 0.6.0
+
+`repeatPath`, `roundCorners`, `puckerBloat` are typed managed named functions. They reuse the locked Graphics module; iterator/geometry work remains CPU and does not request a GPU. Exact units, contour/ID semantics, resource policies and reference precision are recorded in docs/pro-animation/PA3_SHAPES_API.md. Existing synchronous and Legacy APIs are preserved.

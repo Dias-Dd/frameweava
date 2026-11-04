@@ -1,0 +1,42 @@
+{
+  "package": "subtitle",
+  "version": "4.2.2",
+  "license": "MIT",
+  "source": "https://github.com/gsantiago/subtitle.js",
+  "archiveIntegrity": "sha512-vCyKEcCFNXJJ3TE7iP6uqyTG/9xlhhWvJ/LGzmt2YGkEG+PUeIaU0443TMSRbs8yQean2gqGMW8O5CtgJKIlWg==",
+  "files": [
+    {
+      "path": "parseSync.ts",
+      "originalSha256": "fb2e2412ecc8c3a0fd0acfd0d36e5b4178d15ff6747e3b89753201065404e007",
+      "carriedSha256": "0638174c0b18985c8da8ad7e8bc2a95a6984c1fc1dcce3e83dce02617039dc00"
+    },
+    {
+      "path": "Parser.ts",
+      "originalSha256": "6bc1136b4e934ffac399e1e1eced8dfae1e6646f0ff63ab816fd7bd684723839",
+      "carriedSha256": "06fc6afc20ba3c5338df5251340ff7253edf65f0bde5ab11746ee1099ad97e72"
+    },
+    {
+      "path": "parseTimestamp.ts",
+      "originalSha256": "29265f68ab1d0ed6dab87b674444fe492df468d7492e06f228cd7d188c7e278b",
+      "carriedSha256": "29265f68ab1d0ed6dab87b674444fe492df468d7492e06f228cd7d188c7e278b"
+    },
+    {
+      "path": "parseTimestamps.ts",
+      "originalSha256": "fd92cb957fdc6c9d9326bde1d5e08cbd6f6901f4739664fa537764562b768f04",
+      "carriedSha256": "30bc7c1ec4a60b914f133f0e643f99e69dfc83c32cfa610584efb03ab7db24cf"
+    },
+    {
+      "path": "types.ts",
+      "originalSha256": "f30145eb9dc022eb96235ac629272180bfc69addc6088f58b7bf18c2583cd690",
+      "carriedSha256": "f30145eb9dc022eb96235ac629272180bfc69addc6088f58b7bf18c2583cd690"
+    }
+  ],
+  "changes": "Import specifiers only; local typed barrel avoids Node stream modules. Parser/timestamp algorithms unchanged. Wrapper separately rejects unsupported precision/settings. CJS strip-bom retains bytes with .cjs extension.",
+  "stripBom": {
+    "version": "4.0.0",
+    "license": "MIT",
+    "integrity": "sha512-3xurFv5tEgii33Zi8Jtp55wEIILR9eh34FAW00PZf+JnSsTmV/ioewSgQl97JHvgjoRGwPShsWm+IdrxB35d0w==",
+    "sha256": "579b37538f5d25f6caa7f4c9755dabad2015665fda865a977432d319506408b7",
+    "carriedPath": "strip-bom.cjs"
+  }
+}

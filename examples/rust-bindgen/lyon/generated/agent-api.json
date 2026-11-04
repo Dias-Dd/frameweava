@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "profile": "wasm-bindgen-data-v1",
+  "entryClass": "Engine",
+  "functions": [
+    {
+      "name": "calls",
+      "signature": "calls(): number;",
+      "documentation": ""
+    },
+    {
+      "name": "host_calls",
+      "signature": "host_calls(): number;",
+      "documentation": ""
+    },
+    {
+      "name": "tessellate",
+      "signature": "tessellate(coordinates: Float32Array): Float32Array;",
+      "documentation": "Tessellate 3..128 finite XY pairs in [-4096,4096]. Returns flat triangle XY coordinates."
+    }
+  ],
+  "parameters": {
+    "shape": {
+      "type": "object",
+      "default": {},
+      "properties": {
+        "coordinates": {
+          "type": "array",
+          "default": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1,
+            0,
+            1
+          ],
+          "items": {
+            "type": "number",
+            "minimum": -4,
+            "maximum": 4
+          },
+          "minItems": 6,
+          "maxItems": 256
+        },
+        "scale": {
+          "type": "number",
+          "default": 0.8,
+          "minimum": 0.1,
+          "maximum": 0.9
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "parameterSchemaVersion": 2,
+  "errors": [
+    "E_BINDGEN_CALL",
+    "E_BINDGEN_DISPOSED",
+    "E_BINDGEN_IMPORTS",
+    "E_PACKAGE_INTEGRITY"
+  ],
+  "environment": {
+    "webStage": true,
+    "worker": true,
+    "allowWasmRequired": true,
+    "host": "reviewed data-only callbacks"
+  },
+  "p4Reference": "kit.bindgen-lyon@1.0.0"
+}

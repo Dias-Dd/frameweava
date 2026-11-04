@@ -1,0 +1,52 @@
+{
+  "name": "flexily",
+  "version": "0.8.3",
+  "license": "MIT",
+  "upstream": "https://github.com/beorn/flexily",
+  "archiveIntegrity": "sha512-IUu06cgFoax61hKF+LJUvIWz1OmN5QWLu2lm5d6WzOaBRRmnwPEdvMpnzWQHauv7gsI+FvDnb2dZYTU3LyooPA==",
+  "adaptation": "Optional debug/loggily logger detection removed. Integer device-pixel snapping is replaced by the identity coordinate policy, including the two text-position rounding selectors; the line-count Math.floor and flex/constraint algorithms remain unchanged. Native2D layout uses floating logical px; GPU raster owns pixel coverage. Only Node/constants are imported; no synthetic monospace/pretext/test measurement helpers are used.",
+  "files": [
+    {
+      "path": "index.mjs",
+      "upstreamSha256": "2f35cf02965088c66a76f6e9abe563b57f8bf5efd01ce54b8a303c04d1cabfd1",
+      "carriedSha256": "a2ec30f9eaa8bfb1f129749bf44927864c90bed6856dcbf18fb1c4d0e3947204",
+      "modified": true
+    },
+    {
+      "path": "constants-CFQ3iRCM.mjs",
+      "upstreamSha256": "d5474b078bf5dc2ad6ac062c9b617b894c7fcb9eaa61dee54b72a20a29f01f3f",
+      "carriedSha256": "d5474b078bf5dc2ad6ac062c9b617b894c7fcb9eaa61dee54b72a20a29f01f3f",
+      "modified": false
+    },
+    {
+      "path": "types-DqgAjzOw.mjs",
+      "upstreamSha256": "d82909778d78713e964745a8e85d08fcc70f78a2adabced7c17d3738845cb28f",
+      "carriedSha256": "5620d70e0b8698506a9816f3e4890461a0f25d3c321050d879d27ed8e299c778",
+      "modified": true
+    },
+    {
+      "path": "index.d.mts",
+      "upstreamSha256": "07c6a6bfe4b09ed4a14cabe741df05115ec8b5eb95b649f653ea8e541045a311",
+      "carriedSha256": "07c6a6bfe4b09ed4a14cabe741df05115ec8b5eb95b649f653ea8e541045a311",
+      "modified": false
+    },
+    {
+      "path": "constants-Dz_aFRMf.d.mts",
+      "upstreamSha256": "a6a82e30439959fb4e7969c8122dcf94df6d62f66a32a842ebf57682f5091630",
+      "carriedSha256": "a6a82e30439959fb4e7969c8122dcf94df6d62f66a32a842ebf57682f5091630",
+      "modified": false
+    },
+    {
+      "path": "types-CF1ysYmu.d.mts",
+      "upstreamSha256": "95708b26f72de34ce8e90b52378ce28cad24d1fa3b59fb2f0d8a3b6cefaebd2f",
+      "carriedSha256": "95708b26f72de34ce8e90b52378ce28cad24d1fa3b59fb2f0d8a3b6cefaebd2f",
+      "modified": false
+    },
+    {
+      "path": "node-zero-CGRK7iQB.d.mts",
+      "upstreamSha256": "a88c062174935f6cc6d45cbe40be14ec7c6ec7142129bb3df5416e3e159f0e05",
+      "carriedSha256": "a88c062174935f6cc6d45cbe40be14ec7c6ec7142129bb3df5416e3e159f0e05",
+      "modified": false
+    }
+  ]
+}

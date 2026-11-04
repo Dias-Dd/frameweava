@@ -1,0 +1,1 @@
+{"extends":"../../tsconfig.json","compilerOptions":{"noEmit":true},"include":["src/**/*.ts","runtime/**/*.ts","scripts/**/*.ts"],"exclude":["dist","validation","examples"]}

@@ -1,0 +1,13 @@
+Path anchor/handle adapter: Frameweave Apache-2.0.
+The unchanged existing geometry.ts lerpPoint originates from EffectCraft
+crates/path/src/interp.rs@861c51f8187bf56efc77cc7b60fc4a513d2b7198,
+MIT selected from MIT OR Apache-2.0. Copyright (c)2026 ArtCraft Team/contributors.
+Preserve vendor/effectcraft MIT license/notices and PA2-SOURCES.json.
+
+Original Graphics/constraints/Native render code remains Apache-2.0 and unchanged.
+Actual compound fill/tessellation uses existing clipper2-rust1.2.0/BSL-1.0 and
+Mapbox Earcut3.2.4/ISC@9e70986eb94054c621c926888dd05bc26bffb902.
+Retain existing pathops/licenses and vendor/earcut/LICENSE/SOURCE.json, plus the
+original reviewed Kit's complete dependency/std license inventory when distributing.
+No third-party sources/dependencies/shaders are newly copied or added here.
+No Adobe code/assets or private AE compatibility claim. Main owns formal R1/L3.

@@ -1,0 +1,109 @@
+{
+  "upstream": "FastNoiseLite v1.1.1 / 7ccfbc16eb1c932568f177d63a9ba51d89bbe516",
+  "sourceSha256": "71c9af239e4f75617c74f74a9266fd944550edfa4ddc31920703e2cdb836cef2",
+  "normalizedSha256": "501e47e45b4da4864997c903a83e2b908cfa9f298fa7f7a61cdfe27d8ac5d5d7",
+  "wgslSha256": "11bd63df1f7d6df2c41207004715918ca9a7878aae9dc15624d7e05d21cae1d7",
+  "fixes": [
+    {
+      "source": "-PRIME_X << 1",
+      "value": -1002250642
+    },
+    {
+      "source": "PRIME_Y << 1",
+      "value": -2021106534
+    },
+    {
+      "source": "PRIME_X << 1",
+      "value": 1002250642
+    },
+    {
+      "source": "-PRIME_Y << 1",
+      "value": 2021106534
+    },
+    {
+      "source": "PRIME_X * 2",
+      "value": 1002250642
+    },
+    {
+      "source": "PRIME_Y << 1",
+      "value": -2021106534
+    },
+    {
+      "source": "PRIME_Z << 1",
+      "value": -854139810
+    },
+    {
+      "source": "PRIME_Y << 1",
+      "value": -2021106534
+    },
+    {
+      "source": "PRIME_Z << 1",
+      "value": -854139810
+    },
+    {
+      "source": "PRIME_X * 2",
+      "value": 1002250642
+    },
+    {
+      "source": "PRIME_Z << 1",
+      "value": -854139810
+    },
+    {
+      "source": "PRIME_X << 1",
+      "value": 1002250642
+    },
+    {
+      "source": "PRIME_Y << 1",
+      "value": -2021106534
+    },
+    {
+      "source": "PRIME_X * 2",
+      "value": 1002250642
+    },
+    {
+      "source": "PRIME_Y * 2",
+      "value": -2021106534
+    },
+    {
+      "source": "PRIME_X * 2",
+      "value": 1002250642
+    },
+    {
+      "source": "PRIME_Y * 2",
+      "value": -2021106534
+    },
+    {
+      "source": "PRIME_Z * 2",
+      "value": -854139810
+    },
+    {
+      "source": "GRADIENTS_2D[]",
+      "arrayLength": 256
+    },
+    {
+      "source": "RAND_VECS_2D[]",
+      "arrayLength": 512
+    },
+    {
+      "source": "GRADIENTS_3D[]",
+      "arrayLength": 256
+    },
+    {
+      "source": "RAND_VECS_3D[]",
+      "arrayLength": 1024
+    }
+  ],
+  "translator": {
+    "name": "naga",
+    "version": "30.0.1",
+    "license": "MIT OR Apache-2.0",
+    "exeSha256": "b5073ba273badaa25a3c56c0a1f648443a20f8addc9a1d4c7544736bb929fd3d",
+    "lockSha256": "20f4200adf576fa04416e556e72674657279189c701cf7ddc93a854b33dead83"
+  },
+  "entries": [
+    "fnlGetNoise2D",
+    "fnlGetNoise3D",
+    "fnlDomainWarp2D",
+    "fnlDomainWarp3D"
+  ]
+}

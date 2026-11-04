@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "upstreams": [
+    {
+      "reuse": "13-tap downsample and tent upsample topology, radial-decay rays and chromatic offset/max-alpha sampling; normalized weights, compensated Float32, scene-linear HDR and explicit finite canvas are adapted",
+      "license": "Zlib",
+      "repository": "https://github.com/pmndrs/postprocessing",
+      "commit": "a1f103559d15cf56cbcbb15d4373711b09418f3f"
+    },
+    {
+      "reuse": "Pinned comparison of radial light sampling and alpha transfer; no claim of full AE/CC parity",
+      "license": "MIT",
+      "repository": "https://github.com/storytold/effectcraft",
+      "commit": "ec7ced1f0515f0b6f376dbcc297f1c441f452d6e"
+    }
+  ],
+  "local": "Ghost/halo, Beer-Lambert occlusion, spectral quadrature, Airy PSF, film backscatter, cos-fourth and uniform stray-light equations are local implementations. No external rendering framework or device is bundled.",
+  "files": [
+    {
+      "sha256": "0b38003ade440b769855e7e604ce09a3393d720858d2dd9d346d0ebb9d095338",
+      "path": "modules/native-effects/optics/vendor/effectcraft/fx_light.wgsl"
+    },
+    {
+      "sha256": "7b6db9a363688683feacdf9b528f059637f2e5d2edbacd8720fc9b26781c9abe",
+      "path": "modules/native-effects/optics/vendor/effectcraft/LICENSE-MIT"
+    },
+    {
+      "sha256": "27f31ce7274ee139b8959cac7e47d4b8adbbd47fae0fdce4c2c1780249fb46f1",
+      "path": "modules/native-effects/optics/vendor/postprocessing/chromatic-aberration.frag"
+    },
+    {
+      "sha256": "3defaabc8b99885cc6ec8bd647f9c381296066cb2d42990a762d4c00ccc6e424",
+      "path": "modules/native-effects/optics/vendor/postprocessing/chromatic-aberration.vert"
+    },
+    {
+      "sha256": "37c7bb2c45e58a5338344e960a68d1c8aab0c3a66f3a8b1f0040ac219ccff48f",
+      "path": "modules/native-effects/optics/vendor/postprocessing/convolution.downsampling.frag"
+    },
+    {
+      "sha256": "41f9e7c4780d164488d42fb915a0183a319581a20207e3cd11711d41e13648fa",
+      "path": "modules/native-effects/optics/vendor/postprocessing/convolution.god-rays.frag"
+    },
+    {
+      "sha256": "b6fc2e876671a0a7ad67bf16dc37ba2c3eafb9912b942a2a94f47bd0c1490047",
+      "path": "modules/native-effects/optics/vendor/postprocessing/convolution.upsampling.frag"
+    },
+    {
+      "sha256": "b7650918449bd5fb011ce30ce0e5bcda27aa9639db1fb3aef8c67c32945237f2",
+      "path": "modules/native-effects/optics/vendor/postprocessing/LICENSE.md"
+    },
+    {
+      "sha256": "711ebd2fc2a688a8d6afdbb4ecfc587ad7250f80e9122089ab203c276d737381",
+      "path": "modules/native-effects/optics/vendor/postprocessing/luminance.frag"
+    }
+  ]
+}

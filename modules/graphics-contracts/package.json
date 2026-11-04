@@ -1,0 +1,17 @@
+{
+  "name": "@frameweave/graphics-contracts",
+  "version": "1.1.0",
+  "description": "Pure versioned graphics data contracts, validators and deterministic Track Reader",
+  "type": "module",
+  "license": "Apache-2.0",
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {"types": "./dist/index.d.ts", "import": "./dist/index.js"},
+    "./package.json": "./package.json"
+  },
+  "files": ["dist", "src", "frameweave.package.json", "PUBLIC_API_V1.md", "GRAPHICS_SCHEMA_V1.md", "LICENSE"],
+  "engines": {"node": ">=22"},
+  "scripts": {"build": "tsx scripts/build-package.ts"}
+}

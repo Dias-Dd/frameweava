@@ -1,0 +1,33 @@
+{
+  "name": "@cto.af/unicode-trie-runtime",
+  "version": "3.2.6",
+  "description": "Runtime code for unicode-trie files.",
+  "type": "module",
+  "main": "index.js",
+  "types": "./types/index.d.ts",
+  "keywords": [
+    "unicode",
+    "properties",
+    "icu",
+    "trie",
+    "compressed",
+    "brotli"
+  ],
+  "author": "Devon Govett <devongovett@gmail.com>",
+  "contributors": [
+    "Joe Hildebrand <joe-github@cursive.net>",
+    "valadaptive <valadaptive@protonmail.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cto-af/unicode-trie.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "fflate": "^0.8.2"
+  },
+  "packageManager": "pnpm@10.14.0",
+  "engines": {
+    "node": ">=20"
+  }
+}

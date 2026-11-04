@@ -1,0 +1,11 @@
+{
+ "schemaVersion":1,
+ "repository":"https://github.com/storytold/effectcraft",
+ "commit":"ec7ced1f0515f0b6f376dbcc297f1c441f452d6e",
+ "license":"MIT",
+ "sources":[{"path":"crates/gpu/src/shaders/common.wgsl","archive":"../creative/vendor/common.wgsl","bytes":15692,"sha256":"4244140eba68055a0f1edcd6d0b1d7eee5a244e01c19f3ab0491f8e078702fff","scope":"separable, hard_light and blend_pixel: modes 3,10,23,25,16,18,7,26,19,21"}],
+ "licenseArchive":"../creative/vendor/LICENSE-MIT",
+ "adaptation":"Retains ten mode IDs/equations with compensated native-PM algebra and explicit F32 opacity preparation. Linear Burn/Subtract/Linear Light omit upstream display clamps for signed HDR. Zero-coverage emission uses native SourceOver. No external raster framework or device owner imported.",
+ "runtimeDependenciesAdded":[],
+ "formalRelease":"Main-owned next release candidate; existing 0.1.0 manifest/pins untouched"
+}

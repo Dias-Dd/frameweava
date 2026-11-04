@@ -1,0 +1,5 @@
+Frameweave persistent native feedback adapter
+SPDX-License-Identifier: Apache-2.0
+Uses existing FixedStepRunner, native state/ownership and guarded Pair sampler.
+No new external algorithm, runtime, device, dependency or third-party code.
+See SOURCE.json for exact source hashes and integration boundary.

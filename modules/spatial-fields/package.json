@@ -1,0 +1,1 @@
+{"name":"spatial-fields","version":"0.1.7","type":"module","license":"Apache-2.0 AND MIT","exports":{".":{"types":"./types/index.d.ts","import":"./native/index.js"}},"peerDependencies":{"@frameweave/engine":"0.1.0"}}

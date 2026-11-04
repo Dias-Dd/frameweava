@@ -1,0 +1,16 @@
+{
+  "oldOutputs": {
+    "dist/module.wasm": "5ee59753d57af84fe291f17ae13e6300c890f4d469224e5b6ba691156a03150f",
+    "dist/worker.js": "0dc7a641dc9ac4c7fef3de44d4d846a0ee2d8e812ee41fe3998ab8082f74f0de"
+  },
+  "newOutputs": {
+    "dist/module.wasm": "5ee59753d57af84fe291f17ae13e6300c890f4d469224e5b6ba691156a03150f",
+    "dist/worker.js": "0dc7a641dc9ac4c7fef3de44d4d846a0ee2d8e812ee41fe3998ab8082f74f0de"
+  },
+  "coreInputDiff": {
+    "src/core/native-source.ts": {
+      "old": "004066a1ceea21dee5302e42eacf141e8851e562957fb94ce067d26953829c3a",
+      "new": "49fe30331cfbca989cb578507dbd04345d768eb70a0f033bc5a4ba4a1d8aab8e"
+    }
+  }
+}

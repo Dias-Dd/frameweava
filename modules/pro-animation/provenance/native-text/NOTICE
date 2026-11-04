@@ -1,0 +1,21 @@
+Native shaped text creation chain
+
+New selector/affine/draw adapters: Apache-2.0, Frameweave.
+Earcut 3.2.4 is used unchanged under ISC; preserve vendor/earcut/LICENSE.
+Fixed upstream commit: 9e70986eb94054c621c926888dd05bc26bffb902.
+No new Rust algorithm is translated and no external renderer/timeline is imported.
+
+Existing unchanged components retain their original notices:
+- HarfRust 0.15.0, MIT; Skrifa 0.49.0, MIT OR Apache-2.0.
+  See rust/shaping/licenses/SHAPING-NOTICE and original licence files.
+- clipper2-rust 1.2.0 / original Clipper2, BSL-1.0.
+  See rust/pathops/licenses/CLIPPER2-NOTICE and CLIPPER2-LICENSE.
+- EffectCraft selector/noise adaptation, MIT selected, fixed861c51f8 source.
+  See vendor/effectcraft/PA2-SOURCES.json and NOTICE.
+- Noto validation fonts, unmodified OFL1.1 fixtures; source hashes and original
+  notices remain in validation/shaping-scene. Derived sample geometry is carried
+  as actual verified results; no runtime font download is added.
+
+Existing Frameweave guarded Pair arithmetic, PA coverage ink, Native drawMesh,
+Signal/easing, Stage/Layer and finite shutter facilities are called directly.
+No Adobe source or proprietary assets are distributed.

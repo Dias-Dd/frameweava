@@ -1,0 +1,6 @@
+{
+  "CryptomatteCommit": "968d5e4b6171e29ba5f89d554117132a164e747e",
+  "knownHashVectors": "Psyop/Cryptomatte nuke/cryptomatte_utilities_tests.py CryptoHashing; BSD3 notice carried",
+  "independentMurmur": "pymmh3.py unmodified public domain from same fixed repository; SHA256 fd7c1324ec143cc98ce330106f2de47d20da1fc4280b91bd9f70be9a0e5e6380",
+  "specification": "https://github.com/Psyop/Cryptomatte/blob/968d5e4b6171e29ba5f89d554117132a164e747e/specification/cryptomatte_specification.pdf"
+}

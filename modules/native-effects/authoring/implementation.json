@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "objective": "New user-assigned effect-library usability task; existing algorithms unchanged",
+  "baseline": "266d264823affbaed192bbf78c1f249f4c8e0d10",
+  "implementationStartedAt": "2026-11-03T10:29:07.4750898Z",
+  "status": "verified_source_candidate_not_published",
+  "preservedUnrelatedDraft": "spherical files from interrupted paused goal; not counted as qualified or given a new verification budget",
+  "synchronizedBaseline": "50a323bb26d8412ff52fad3b6af9cdbd57072cd6",
+  "evidence": "docs/native-image-authoring-evidence"
+}

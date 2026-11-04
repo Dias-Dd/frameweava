@@ -1,0 +1,33 @@
+TAP version 13
+# Subtest: native tiling requires exact source identity and keeps generic pixel ABI unchanged
+ok 1 - native tiling requires exact source identity and keeps generic pixel ABI unchanged
+  ---
+  duration_ms: 1.0207
+  type: 'test'
+  ...
+# Subtest: tiled Gaussian equals original compensated scalar exactly across edge groups, axes, boundary, HDR/negative RGB/Alpha, F16/F32 and fallback
+not ok 2 - tiled Gaussian equals original compensated scalar exactly across edge groups, axes, boundary, HDR/negative RGB/Alpha, F16/F32 and fallback
+  ---
+  duration_ms: 5.3916
+  type: 'test'
+  location: 'C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\tests\\native-gaussian-tiled.test.ts:1:2006'
+  failureType: 'testCodeFailure'
+  error: 'isNativeResidentGaussian is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    NativeRecordingScope.run (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\native-gpu\scope.ts:131:18)
+    Object.run (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\native-gpu\scope.ts:47:48)
+    TestContext.<anonymous> (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\tests\native-gaussian-tiled.test.ts:19:172)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 1
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 315.662

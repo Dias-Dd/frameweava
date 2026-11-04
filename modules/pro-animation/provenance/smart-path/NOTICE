@@ -1,0 +1,19 @@
+Smart curve Morph and canonical fill chain
+Own Frameweave transport/geometry adapters: Apache-2.0.
+EffectCraft: Copyright (c) 2026 ArtCraft Team and contributors.
+MIT selected from MIT OR Apache-2.0. Exact pinned source/commit/SHA,
+changes and full upstream licences are referenced in SOURCE.json.
+
+The Rust interpolation kernel is retained unchanged except six private function
+visibilities. No Adobe code/assets, external editor/renderer/timeline, code
+fetcher, permission grant or alternate simulation system is imported.
+The native test constructors/ShapePath shim are private data storage only.
+Original upstream tests run against these constructors as recorded.
+
+Original Clipper2 BSL-1.0 / Earcut ISC / existing shared-owner Native execution
+and media dependencies keep their existing licences/NOTICE. The unchanged
+Clipper2 solver normalizes an anomalous returned face a second time at the SAME
+explicit integer grid, with a warning; no exact unquantized topology claim.
+All wasm-bindgen/Cargo transitive and unicode-ident Unicode-3.0 licences in the
+existing official Kit generated dependency inventory must accompany distribution.
+Supplemental notices do not replace them. No new npm root dependency or P4 ABI.

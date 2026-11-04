@@ -1,0 +1,203 @@
+{
+  "baseline": "edeec53657efa5660af7c002d541675d78094042",
+  "timestamp": "2026-11-01T06:22:59.691Z",
+  "wallMs": 14899.7995,
+  "profile": "debug",
+  "rows": [
+    {
+      "name": "persistent binary RPC, Promise, native GC, logs, WASM denial and explicit allow",
+      "ok": true,
+      "wallMs": 1171.0283999999997,
+      "detail": {
+        "engine": "spidermonkey",
+        "pid": 40176,
+        "closed": false,
+        "requests": 6,
+        "bytesIn": 994,
+        "bytesOut": 12852,
+        "binaryReplies": true,
+        "stderr": "frameweave-spidermonkey sandbox=appcontainer network_capabilities=0 child_pid=11424\nJS: echo {\"text\":\"状态 🕷️\",\"value\":0}\nJS: echo {\"text\":\"状态 🕷️\",\"value\":0}\nJS: echo {\"text\":\"状态 🕷️\",\"value\":0}\nJS: echo {}\n"
+      }
+    },
+    {
+      "name": "concurrent calls reject busy; timeout kills worker; close is idempotent",
+      "ok": true,
+      "wallMs": 1043.3492,
+      "detail": {
+        "engine": "spidermonkey",
+        "pid": 9432,
+        "closed": true,
+        "requests": 3,
+        "bytesIn": 141,
+        "bytesOut": 12408,
+        "binaryReplies": true,
+        "stderr": "frameweave-spidermonkey sandbox=appcontainer network_capabilities=0 child_pid=16892\n"
+      }
+    },
+    {
+      "name": "close cancels pending execution and reaps process",
+      "ok": true,
+      "wallMs": 520.2946999999995,
+      "detail": {
+        "engine": "spidermonkey",
+        "pid": 29184,
+        "closed": true,
+        "requests": 1,
+        "bytesIn": 141,
+        "bytesOut": 12408,
+        "binaryReplies": true,
+        "stderr": "frameweave-spidermonkey sandbox=appcontainer network_capabilities=0 child_pid=63188\n"
+      }
+    },
+    {
+      "name": "unhandled Promise rejection stops host rather than publishing success",
+      "ok": true,
+      "wallMs": 541.0913999999993,
+      "detail": {
+        "engine": "spidermonkey",
+        "pid": 30484,
+        "closed": true,
+        "requests": 1,
+        "bytesIn": 141,
+        "bytesOut": 12409,
+        "binaryReplies": true,
+        "stderr": "frameweave-spidermonkey sandbox=appcontainer network_capabilities=0 child_pid=72724\nE_SPIDERMONKEY_HOST: E_SPIDERMONKEY_UNHANDLED_REJECTION: Error: detached-job\n"
+      }
+    },
+    {
+      "name": "missing executable fails, no Chromium fallback",
+      "ok": true,
+      "wallMs": 0.33989999999994325
+    },
+    {
+      "name": "actual AppContainer file denial and network qualification probe",
+      "ok": true,
+      "wallMs": 2475.1106,
+      "detail": {
+        "value": {
+          "fileDenied": true,
+          "fileError": 5,
+          "networkConnected": false,
+          "networkDenied": false,
+          "networkError": null,
+          "networkErrorKind": "TimedOut",
+          "networkErrorMessage": "connection timed out",
+          "osIsolation": "appcontainer"
+        },
+        "stderr": "frameweave-spidermonkey sandbox=appcontainer network_capabilities=0 child_pid=92920\n",
+        "qualification": "file denial verified; loopback connectivity/error recorded; complete network isolation NOT qualified"
+      }
+    },
+    {
+      "name": "manifest static module, async default, factory/engine/inline metadata preservation",
+      "ok": true,
+      "wallMs": 631.7839999999997,
+      "detail": {
+        "engine": "spidermonkey",
+        "transport": {
+          "engine": "spidermonkey",
+          "pid": 94300,
+          "closed": false,
+          "requests": 1,
+          "bytesIn": 753,
+          "bytesOut": 16106,
+          "binaryReplies": true,
+          "stderr": "frameweave-spidermonkey sandbox=appcontainer network_capabilities=0 child_pid=26896\n"
+        }
+      }
+    },
+    {
+      "name": "manifest rejects node imports, dynamic names, import.meta, cycles/toJSON and syntax",
+      "ok": true,
+      "wallMs": 1739.3029000000006,
+      "detail": [
+        {
+          "code": "E_SPIDERMONKEY_NODE_MODULE",
+          "message": "Node host modules are not exposed: node:fs",
+          "details": "Error: Build failed with 1 error:\n.frameweave/spidermonkey-check/final/node.mjs:1:15: ERROR: [plugin: sealed-manifest-modules] Node host modules are unavailable inside SpiderMonkey\n    at failureErrorWithLog (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\esbuild\\lib\\main.js:1752:15)\n    at C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\esbuild\\lib\\main.js:1211:25\n    at runOnEndCallbacks (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\esbuild\\lib\\main.js:1592:45)\n    at buildResponseToResult (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\esbuild\\lib\\main.js:1209:7)\n    at C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\esbuild\\lib\\main.js:1236:16\n    at responseCallbacks.<computed> (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\esbuild\\lib\\main.js:886:9)\n    at handleIncomingPacket (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\esbuild\\lib\\main.js:941:12)\n    at Socket.readFromStdout (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\esbuild\\lib\\main.js:864:7)\n    at Socket.emit (node:events:519:28)\n    at addChunk (node:internal/streams/readable:561:12)"
+        },
+        {
+          "code": "E_SPIDERMONKEY_NODE_GLOBAL",
+          "message": "Host exited 1: frameweave-spidermonkey sandbox=appcontainer network_capabilities=0 child_pid=84000\nE_SPIDERMONKEY_HOST: ReferenceError: process is not defined\n",
+          "stageId": "@manifest",
+          "details": "EngineError: Host exited 1: frameweave-spidermonkey sandbox=appcontainer network_capabilities=0 child_pid=84000\nE_SPIDERMONKEY_HOST: ReferenceError: process is not defined\n\n    at ChildProcess.<anonymous> (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\modules\\spidermonkey-host\\transport.ts:29:124)\n    at ChildProcess.emit (node:events:519:28)\n    at maybeClose (node:internal/child_process:1101:16)\n    at ChildProcess._handle.onexit (node:internal/child_process:304:5)"
+        },
+        {
+          "code": "E_SPIDERMONKEY_NODE_MODULE",
+          "message": "Node host modules are not exposed: fs",
+          "details": "Error: Build failed with 1 error:\n.frameweave/spidermonkey-check/final/require.mjs:1:23: ERROR: [plugin: sealed-manifest-modules] Node host modules are unavailable inside SpiderMonkey\n    at failureErrorWithLog (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\esbuild\\lib\\main.js:1752:15)\n    at C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\esbuild\\lib\\main.js:1211:25\n    at runOnEndCallbacks (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\esbuild\\lib\\main.js:1592:45)\n    at buildResponseToResult (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\esbuild\\lib\\main.js:1209:7)\n    at C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\esbuild\\lib\\main.js:1236:16\n    at responseCallbacks.<computed> (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\esbuild\\lib\\main.js:886:9)\n    at handleIncomingPacket (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\esbuild\\lib\\main.js:941:12)\n    at Socket.readFromStdout (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\esbuild\\lib\\main.js:864:7)\n    at Socket.emit (node:events:519:28)\n    at addChunk (node:internal/streams/readable:561:12)"
+        },
+        {
+          "code": "E_SPIDERMONKEY_DYNAMIC_IMPORT",
+          "message": "Dynamic module names must be resolved/sealed by the compiler",
+          "details": "EngineError: Dynamic module names must be resolved/sealed by the compiler\n    at visit (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\modules\\spidermonkey-host\\manifest.ts:14:156)\n    at visitNode2 (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\typescript\\lib\\typescript.js:32449:18)\n    at forEachChildInExportAssignment (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\typescript\\lib\\typescript.js:32783:59)\n    at Object.forEachChild (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\typescript\\lib\\typescript.js:32970:35)\n    at visit (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\modules\\spidermonkey-host\\manifest.ts:15:6)\n    at visitNodes (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\typescript\\lib\\typescript.js:32457:22)\n    at forEachChildInSourceFile (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\typescript\\lib\\typescript.js:32670:12)\n    at Object.forEachChild (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\typescript\\lib\\typescript.js:32970:35)\n    at visit (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\modules\\spidermonkey-host\\manifest.ts:15:6)\n    at admission (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\modules\\spidermonkey-host\\manifest.ts:16:4)"
+        },
+        {
+          "code": "E_SPIDERMONKEY_IMPORT_META",
+          "message": "import.meta is not admitted by the sealed host bundle",
+          "details": "EngineError: import.meta is not admitted by the sealed host bundle\n    at visit (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\modules\\spidermonkey-host\\manifest.ts:13:36)\n    at visitNode2 (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\typescript\\lib\\typescript.js:32449:18)\n    at forEachChildInPropertyAccessExpression (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\typescript\\lib\\typescript.js:32609:12)\n    at Object.forEachChild (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\typescript\\lib\\typescript.js:32970:35)\n    at visit (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\modules\\spidermonkey-host\\manifest.ts:15:6)\n    at visitNode2 (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\typescript\\lib\\typescript.js:32449:18)\n    at forEachChildInExportAssignment (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\typescript\\lib\\typescript.js:32783:59)\n    at Object.forEachChild (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\typescript\\lib\\typescript.js:32970:35)\n    at visit (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\modules\\spidermonkey-host\\manifest.ts:15:6)\n    at visitNodes (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\typescript\\lib\\typescript.js:32457:22)"
+        },
+        {
+          "code": "E_NATIVE_LOGIC",
+          "message": "Cyclic TVG object at $.x",
+          "stageId": "@manifest",
+          "details": "check@frameweave-host.js:344:41\ncheck@frameweave-host.js:350:16\nnormalizeManifest@frameweave-host.js:354:12\n@frameweave-host.js:361:14\nvalue@frameweave-host.js:285:28\nvalue@frameweave-host.js:300:23\n@frameweave-dispatch.js:1:6\n"
+        },
+        {
+          "code": "E_NATIVE_LOGIC",
+          "message": "TVG toJSON cannot disguise data at $",
+          "stageId": "@manifest",
+          "details": "check@frameweave-host.js:345:69\nnormalizeManifest@frameweave-host.js:354:12\n@frameweave-host.js:361:14\nvalue@frameweave-host.js:285:28\nvalue@frameweave-host.js:300:23\n@frameweave-dispatch.js:1:6\n"
+        },
+        {
+          "code": "E_PROJECT",
+          "message": "Build failed with 1 error:\n.frameweave/spidermonkey-check/final/syntax.mjs:1:16: ERROR: Expected identifier but found end of file",
+          "details": "Error: Build failed with 1 error:\n.frameweave/spidermonkey-check/final/syntax.mjs:1:16: ERROR: Expected identifier but found end of file\n    at failureErrorWithLog (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\esbuild\\lib\\main.js:1752:15)\n    at C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\esbuild\\lib\\main.js:1211:25\n    at runOnEndCallbacks (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\esbuild\\lib\\main.js:1592:45)\n    at buildResponseToResult (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\esbuild\\lib\\main.js:1209:7)\n    at C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\esbuild\\lib\\main.js:1236:16\n    at responseCallbacks.<computed> (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\esbuild\\lib\\main.js:886:9)\n    at handleIncomingPacket (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\esbuild\\lib\\main.js:941:12)\n    at Socket.readFromStdout (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\node_modules\\esbuild\\lib\\main.js:864:7)\n    at Socket.emit (node:events:519:28)\n    at addChunk (node:internal/streams/readable:561:12)"
+        }
+      ]
+    },
+    {
+      "name": "real React Hooks persist, reset and deterministic replay; packet cache and cancel",
+      "ok": true,
+      "wallMs": 6770.528700000001,
+      "detail": [
+        {
+          "frame": 0,
+          "p": [
+            1,
+            0,
+            0.3802705407142639,
+            17
+          ]
+        },
+        {
+          "frame": 1,
+          "p": [
+            2,
+            0.0416666679084301,
+            0.3802705407142639,
+            17
+          ]
+        },
+        {
+          "frame": 2,
+          "p": [
+            3,
+            0.0833333358168602,
+            0.3802705407142639,
+            17
+          ]
+        },
+        {
+          "frame": 2,
+          "p": [
+            3,
+            0.0833333358168602,
+            0.3802705407142639,
+            17
+          ]
+        }
+      ]
+    }
+  ]
+}

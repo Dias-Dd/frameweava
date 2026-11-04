@@ -1,0 +1,5 @@
+Native motion/time functions use EffectCraft algorithms, MIT option.
+Copyright (c) 2026 ArtCraft Team and the EffectCraft contributors.
+Original source and complete licenses are retained in vendor/effectcraft.
+Frameweave native adapters/control and existing guarded arithmetic retain Apache-2.0.
+See SOURCE.json for exact commit, blobs, hashes and modifications.

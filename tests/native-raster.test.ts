@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {NativeRecordingScope} from '../modules/native-gpu/scope.ts';
+import {createNativeRasterEffects,nativeRasterEffectNames} from '../modules/native-effects/raster/filters.ts';
+import {calls} from '../modules/native-effects/raster/cases.ts';
+import {validatePixelKernel} from '../modules/gpu-effects/pixel-shader.ts';
+import * as kernels from '../modules/native-effects/raster/kernels.ts';
+test('23 original Surface operations have actual typed resident calls',()=>{assert.equal(nativeRasterEffectNames.length,23);assert.equal(new Set(nativeRasterEffectNames).size,23);assert.deepEqual(Object.keys(calls).sort(),[...nativeRasterEffectNames].sort());});
+test('an unadmitted scope cannot become a Native raster backend',async()=>{const r=new NativeRecordingScope();assert.throws(()=>createNativeRasterEffects({gpu:r.api}),{code:'E_NATIVE_EFFECTS_DEVICE'});assert.equal(r.api.stats().runs,0);await r.api.dispose();});
+test('all raster kernels obey existing Pixel ABI',()=>{for(const k of Object.values(kernels))assert.equal(validatePixelKernel(k).abiVersion,1);});

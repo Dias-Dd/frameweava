@@ -1,0 +1,1004 @@
+{
+  "schemaVersion": 1,
+  "scope": "All actual module main exports, including other authors. Types/classes/values are not counted as migrated GPU effects.",
+  "packages": [
+    {
+      "id": "frameweave.graphics-contracts",
+      "version": "2.0.0",
+      "manifest": "modules\\graphics-contracts\\frameweave.package.json",
+      "entry": "./dist/index.js",
+      "exports": [
+        {
+          "name": null,
+          "kind": "unavailable-source",
+          "file": "modules\\graphics-contracts\\dist\\index.js"
+        }
+      ],
+      "authoredSources": [
+        {
+          "entry": "index.ts",
+          "exports": [
+            {
+              "name": "LIMITS",
+              "kind": "value",
+              "file": "modules\\graphics-contracts\\check.ts",
+              "via": "modules\\graphics-contracts\\index.ts"
+            },
+            {
+              "name": "validatePathData",
+              "kind": "function",
+              "file": "modules\\graphics-contracts\\validate.ts",
+              "via": "modules\\graphics-contracts\\index.ts"
+            },
+            {
+              "name": "validateMaskData",
+              "kind": "function",
+              "file": "modules\\graphics-contracts\\validate.ts",
+              "via": "modules\\graphics-contracts\\index.ts"
+            },
+            {
+              "name": "validateMeshData",
+              "kind": "function",
+              "file": "modules\\graphics-contracts\\validate.ts",
+              "via": "modules\\graphics-contracts\\index.ts"
+            },
+            {
+              "name": "validateSkeletonData",
+              "kind": "function",
+              "file": "modules\\graphics-contracts\\validate.ts",
+              "via": "modules\\graphics-contracts\\index.ts"
+            },
+            {
+              "name": "validateTextLayoutData",
+              "kind": "function",
+              "file": "modules\\graphics-contracts\\validate.ts",
+              "via": "modules\\graphics-contracts\\index.ts"
+            },
+            {
+              "name": "assertTrackData",
+              "kind": "function",
+              "file": "modules\\graphics-contracts\\track.ts",
+              "via": "modules\\graphics-contracts\\index.ts"
+            },
+            {
+              "name": "validateTrackData",
+              "kind": "function",
+              "file": "modules\\graphics-contracts\\track.ts",
+              "via": "modules\\graphics-contracts\\index.ts"
+            },
+            {
+              "name": "queryTrack",
+              "kind": "function",
+              "file": "modules\\graphics-contracts\\track.ts",
+              "via": "modules\\graphics-contracts\\index.ts"
+            },
+            {
+              "name": "createTrackReader",
+              "kind": "function",
+              "file": "modules\\graphics-contracts\\track.ts",
+              "via": "modules\\graphics-contracts\\index.ts"
+            },
+            {
+              "name": "queryStageTrack",
+              "kind": "function",
+              "file": "modules\\graphics-contracts\\track.ts",
+              "via": "modules\\graphics-contracts\\index.ts"
+            },
+            {
+              "name": "sha256",
+              "kind": "function",
+              "file": "modules\\graphics-contracts\\resources.ts",
+              "via": "modules\\graphics-contracts\\index.ts"
+            },
+            {
+              "name": "verifyResource",
+              "kind": "function",
+              "file": "modules\\graphics-contracts\\resources.ts",
+              "via": "modules\\graphics-contracts\\index.ts"
+            },
+            {
+              "name": "verifyResources",
+              "kind": "function",
+              "file": "modules\\graphics-contracts\\resources.ts",
+              "via": "modules\\graphics-contracts\\index.ts"
+            },
+            {
+              "name": "resourceReferences",
+              "kind": "function",
+              "file": "modules\\graphics-contracts\\resources.ts",
+              "via": "modules\\graphics-contracts\\index.ts"
+            },
+            {
+              "name": "readJsonResource",
+              "kind": "function",
+              "file": "modules\\graphics-contracts\\resources.ts",
+              "via": "modules\\graphics-contracts\\index.ts"
+            },
+            {
+              "name": "pathCommands",
+              "kind": "function",
+              "file": "modules\\graphics-contracts\\path-mask.ts",
+              "via": "modules\\graphics-contracts\\index.ts"
+            },
+            {
+              "name": "pathToMask",
+              "kind": "function",
+              "file": "modules\\graphics-contracts\\path-mask.ts",
+              "via": "modules\\graphics-contracts\\index.ts"
+            },
+            {
+              "name": "convertPathUnits",
+              "kind": "function",
+              "file": "modules\\graphics-contracts\\path-mask.ts",
+              "via": "modules\\graphics-contracts\\index.ts"
+            },
+            {
+              "name": "decodeRasterMask",
+              "kind": "function",
+              "file": "modules\\graphics-contracts\\path-mask.ts",
+              "via": "modules\\graphics-contracts\\index.ts"
+            },
+            {
+              "name": "sampleCoverage",
+              "kind": "function",
+              "file": "modules\\graphics-contracts\\path-mask.ts",
+              "via": "modules\\graphics-contracts\\index.ts"
+            }
+          ]
+        }
+      ],
+      "factoryMethodCandidates": [
+        {
+          "factory": "createTrackReader",
+          "name": "query",
+          "file": "modules\\graphics-contracts\\track.ts",
+          "kind": "returned-object candidate; manual review required, not migrated effect count"
+        }
+      ],
+      "declaredMethods": [],
+      "bindingsEngine": null,
+      "classification": "audited-export-only; missing built main entries are NOT silently treated as installed/available; authored source exports are audited separately",
+      "runtimeVerified": false
+    },
+    {
+      "id": "native-image-effects",
+      "version": "0.5.0",
+      "manifest": "modules\\native-effects\\frameweave.package.json",
+      "entry": "./public.ts",
+      "exports": [
+        {
+          "name": "processImage",
+          "kind": "function",
+          "file": "modules\\native-effects\\public.ts"
+        },
+        {
+          "name": "imageStats",
+          "kind": "function",
+          "file": "modules\\native-effects\\public.ts"
+        },
+        {
+          "name": "processRaster",
+          "kind": "function",
+          "file": "modules\\native-effects\\public.ts"
+        },
+        {
+          "name": "rasterStats",
+          "kind": "function",
+          "file": "modules\\native-effects\\public.ts"
+        },
+        {
+          "name": "processPa",
+          "kind": "function",
+          "file": "modules\\native-effects\\public.ts"
+        },
+        {
+          "name": "generatePa",
+          "kind": "function",
+          "file": "modules\\native-effects\\public.ts"
+        },
+        {
+          "name": "paStats",
+          "kind": "function",
+          "file": "modules\\native-effects\\public.ts"
+        },
+        {
+          "name": "generateImage",
+          "kind": "function",
+          "file": "modules\\native-effects\\public.ts"
+        },
+        {
+          "name": "processBuiltin",
+          "kind": "function",
+          "file": "modules\\native-effects\\public.ts"
+        },
+        {
+          "name": "builtinStats",
+          "kind": "function",
+          "file": "modules\\native-effects\\public.ts"
+        }
+      ],
+      "authoredSources": [
+        {
+          "entry": "index.ts",
+          "exports": [
+            {
+              "name": "createNativeImageEffects",
+              "kind": "function",
+              "file": "modules\\native-effects\\images.ts",
+              "via": "modules\\native-effects\\index.ts"
+            },
+            {
+              "name": "nativeImageEffectNames",
+              "kind": "value",
+              "file": "modules\\native-effects\\images.ts",
+              "via": "modules\\native-effects\\index.ts"
+            },
+            {
+              "name": "createNativeProfessionalEffects",
+              "kind": "function",
+              "file": "modules\\native-effects\\extended.ts",
+              "via": "modules\\native-effects\\index.ts"
+            },
+            {
+              "name": "additionalNativeEffectNames",
+              "kind": "value",
+              "file": "modules\\native-effects\\extended.ts",
+              "via": "modules\\native-effects\\index.ts"
+            },
+            {
+              "name": "unavailableNativeImageMethods",
+              "kind": "value",
+              "file": "modules\\native-effects\\extended.ts",
+              "via": "modules\\native-effects\\index.ts"
+            },
+            {
+              "name": "createNativeRasterEffects",
+              "kind": "function",
+              "file": "modules\\native-effects\\raster\\filters.ts",
+              "via": "modules\\native-effects\\index.ts"
+            },
+            {
+              "name": "nativeRasterEffectNames",
+              "kind": "value",
+              "file": "modules\\native-effects\\raster\\filters.ts",
+              "via": "modules\\native-effects\\index.ts"
+            },
+            {
+              "name": "nativeSpatialFrame",
+              "kind": "function",
+              "file": "modules\\native-effects\\spatial\\frame.ts",
+              "via": "modules\\native-effects\\index.ts"
+            },
+            {
+              "name": "nativeSpatialNames",
+              "kind": "value",
+              "file": "modules\\native-effects\\spatial\\frame.ts",
+              "via": "modules\\native-effects\\index.ts"
+            },
+            {
+              "name": "createNativePaImageEffects",
+              "kind": "function",
+              "file": "modules\\native-effects\\pa\\filters.ts",
+              "via": "modules\\native-effects\\index.ts"
+            },
+            {
+              "name": "nativePaImageNames",
+              "kind": "value",
+              "file": "modules\\native-effects\\pa\\filters.ts",
+              "via": "modules\\native-effects\\index.ts"
+            },
+            {
+              "name": "createNativeBuiltinEffects",
+              "kind": "function",
+              "file": "modules\\native-effects\\builtin\\filters.ts",
+              "via": "modules\\native-effects\\index.ts"
+            },
+            {
+              "name": "nativeBuiltinEffectNames",
+              "kind": "value",
+              "file": "modules\\native-effects\\builtin\\filters.ts",
+              "via": "modules\\native-effects\\index.ts"
+            }
+          ]
+        },
+        {
+          "entry": "api.d.ts",
+          "exports": [
+            {
+              "name": "processImage",
+              "kind": "function",
+              "file": "modules\\native-effects\\api.d.ts"
+            },
+            {
+              "name": "imageStats",
+              "kind": "function",
+              "file": "modules\\native-effects\\api.d.ts"
+            },
+            {
+              "name": "processRaster",
+              "kind": "function",
+              "file": "modules\\native-effects\\api.d.ts"
+            },
+            {
+              "name": "rasterStats",
+              "kind": "function",
+              "file": "modules\\native-effects\\api.d.ts"
+            },
+            {
+              "name": "processPa",
+              "kind": "function",
+              "file": "modules\\native-effects\\api.d.ts"
+            },
+            {
+              "name": "generatePa",
+              "kind": "function",
+              "file": "modules\\native-effects\\api.d.ts"
+            },
+            {
+              "name": "paStats",
+              "kind": "function",
+              "file": "modules\\native-effects\\api.d.ts"
+            },
+            {
+              "name": "generateImage",
+              "kind": "function",
+              "file": "modules\\native-effects\\api.d.ts"
+            },
+            {
+              "name": "processBuiltin",
+              "kind": "function",
+              "file": "modules\\native-effects\\api.d.ts"
+            },
+            {
+              "name": "builtinStats",
+              "kind": "function",
+              "file": "modules\\native-effects\\api.d.ts"
+            }
+          ]
+        }
+      ],
+      "factoryMethodCandidates": [
+        {
+          "factory": "createNativeRecipeProcessor",
+          "name": "processImage",
+          "file": "modules\\native-effects\\images.ts",
+          "kind": "returned-object candidate; manual review required, not migrated effect count"
+        },
+        {
+          "factory": "createNativeRecipeProcessor",
+          "name": "generateImage",
+          "file": "modules\\native-effects\\images.ts",
+          "kind": "returned-object candidate; manual review required, not migrated effect count"
+        },
+        {
+          "factory": "createNativeRecipeProcessor",
+          "name": "stats",
+          "file": "modules\\native-effects\\images.ts",
+          "kind": "returned-object candidate; manual review required, not migrated effect count"
+        },
+        {
+          "factory": "createNativeRecipeProcessor",
+          "name": "dispose",
+          "file": "modules\\native-effects\\images.ts",
+          "kind": "returned-object candidate; manual review required, not migrated effect count"
+        },
+        {
+          "factory": "rasterFilters",
+          "name": "blur",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "returned-object candidate; manual review required, not migrated effect count"
+        },
+        {
+          "factory": "rasterFilters",
+          "name": "glow",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "returned-object candidate; manual review required, not migrated effect count"
+        },
+        {
+          "factory": "rasterFilters",
+          "name": "feather",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "returned-object candidate; manual review required, not migrated effect count"
+        },
+        {
+          "factory": "rasterFilters",
+          "name": "fill",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "returned-object candidate; manual review required, not migrated effect count"
+        },
+        {
+          "factory": "rasterFilters",
+          "name": "applyMatte",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "returned-object candidate; manual review required, not migrated effect count"
+        },
+        {
+          "factory": "rasterFilters",
+          "name": "alphaToRGB",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "returned-object candidate; manual review required, not migrated effect count"
+        },
+        {
+          "factory": "rasterFilters",
+          "name": "dropShadow",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "returned-object candidate; manual review required, not migrated effect count"
+        },
+        {
+          "factory": "rasterFilters",
+          "name": "reframe",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "returned-object candidate; manual review required, not migrated effect count"
+        },
+        {
+          "factory": "rasterFilters",
+          "name": "tile",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "returned-object candidate; manual review required, not migrated effect count"
+        },
+        {
+          "factory": "rasterFilters",
+          "name": "exposure",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "returned-object candidate; manual review required, not migrated effect count"
+        },
+        {
+          "factory": "rasterFilters",
+          "name": "invert",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "returned-object candidate; manual review required, not migrated effect count"
+        },
+        {
+          "factory": "rasterFilters",
+          "name": "offsetRGB",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "returned-object candidate; manual review required, not migrated effect count"
+        },
+        {
+          "factory": "rasterFilters",
+          "name": "flattenBlack",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "returned-object candidate; manual review required, not migrated effect count"
+        },
+        {
+          "factory": "rasterFilters",
+          "name": "invertMatte",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "returned-object candidate; manual review required, not migrated effect count"
+        },
+        {
+          "factory": "rasterFilters",
+          "name": "add",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "returned-object candidate; manual review required, not migrated effect count"
+        },
+        {
+          "factory": "rasterFilters",
+          "name": "modulate",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "returned-object candidate; manual review required, not migrated effect count"
+        },
+        {
+          "factory": "rasterFilters",
+          "name": "crossfade",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "returned-object candidate; manual review required, not migrated effect count"
+        },
+        {
+          "factory": "rasterFilters",
+          "name": "subtractMatte",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "returned-object candidate; manual review required, not migrated effect count"
+        },
+        {
+          "factory": "rasterFilters",
+          "name": "mergeMatte",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "returned-object candidate; manual review required, not migrated effect count"
+        },
+        {
+          "factory": "rasterFilters",
+          "name": "replaceMatte",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "returned-object candidate; manual review required, not migrated effect count"
+        },
+        {
+          "factory": "rasterFilters",
+          "name": "over",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "returned-object candidate; manual review required, not migrated effect count"
+        },
+        {
+          "factory": "rasterFilters",
+          "name": "screen",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "returned-object candidate; manual review required, not migrated effect count"
+        },
+        {
+          "factory": "rasterFilters",
+          "name": "multiply",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "returned-object candidate; manual review required, not migrated effect count"
+        },
+        {
+          "factory": "createPaFilters",
+          "name": "blur",
+          "file": "modules\\native-effects\\pa\\filters.ts",
+          "kind": "returned-object candidate; manual review required, not migrated effect count"
+        },
+        {
+          "factory": "createPaFilters",
+          "name": "glow",
+          "file": "modules\\native-effects\\pa\\filters.ts",
+          "kind": "returned-object candidate; manual review required, not migrated effect count"
+        },
+        {
+          "factory": "createPaFilters",
+          "name": "displacement",
+          "file": "modules\\native-effects\\pa\\filters.ts",
+          "kind": "returned-object candidate; manual review required, not migrated effect count"
+        },
+        {
+          "factory": "createPaFilters",
+          "name": "displaceWithMap",
+          "file": "modules\\native-effects\\pa\\filters.ts",
+          "kind": "returned-object candidate; manual review required, not migrated effect count"
+        },
+        {
+          "factory": "createPaFilters",
+          "name": "surfaceFromCoverage",
+          "file": "modules\\native-effects\\pa\\filters.ts",
+          "kind": "returned-object candidate; manual review required, not migrated effect count"
+        },
+        {
+          "factory": "createPaFilters",
+          "name": "innerShadow",
+          "file": "modules\\native-effects\\pa\\filters.ts",
+          "kind": "returned-object candidate; manual review required, not migrated effect count"
+        }
+      ],
+      "declaredMethods": [
+        {
+          "interface": "NativeBuiltinFilters",
+          "name": "blur",
+          "file": "modules\\native-effects\\builtin\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "c77641189af680e667fc89b4dd17879779a877e50409697c8516e5a399fcce6a"
+        },
+        {
+          "interface": "NativeBuiltinFilters",
+          "name": "brightness",
+          "file": "modules\\native-effects\\builtin\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "c77641189af680e667fc89b4dd17879779a877e50409697c8516e5a399fcce6a"
+        },
+        {
+          "interface": "NativeBuiltinFilters",
+          "name": "transform",
+          "file": "modules\\native-effects\\builtin\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "c77641189af680e667fc89b4dd17879779a877e50409697c8516e5a399fcce6a"
+        },
+        {
+          "interface": "NativeBuiltinFilters",
+          "name": "mix",
+          "file": "modules\\native-effects\\builtin\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "c77641189af680e667fc89b4dd17879779a877e50409697c8516e5a399fcce6a"
+        },
+        {
+          "interface": "NativeBuiltinFilters",
+          "name": "glow",
+          "file": "modules\\native-effects\\builtin\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "c77641189af680e667fc89b4dd17879779a877e50409697c8516e5a399fcce6a"
+        },
+        {
+          "interface": "NativeBuiltinFilters",
+          "name": "displacement",
+          "file": "modules\\native-effects\\builtin\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "c77641189af680e667fc89b4dd17879779a877e50409697c8516e5a399fcce6a"
+        },
+        {
+          "interface": "NativeBuiltinFilters",
+          "name": "cinematicGlow",
+          "file": "modules\\native-effects\\builtin\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "c77641189af680e667fc89b4dd17879779a877e50409697c8516e5a399fcce6a"
+        },
+        {
+          "interface": "NativePaImageFilters",
+          "name": "blur",
+          "file": "modules\\native-effects\\pa\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "d855b8cc1a6798ae7765396c1195455b75b975348e815fbc14d559e81b015204"
+        },
+        {
+          "interface": "NativePaImageFilters",
+          "name": "glow",
+          "file": "modules\\native-effects\\pa\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "d855b8cc1a6798ae7765396c1195455b75b975348e815fbc14d559e81b015204"
+        },
+        {
+          "interface": "NativePaImageFilters",
+          "name": "displacement",
+          "file": "modules\\native-effects\\pa\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "d855b8cc1a6798ae7765396c1195455b75b975348e815fbc14d559e81b015204"
+        },
+        {
+          "interface": "NativePaImageFilters",
+          "name": "displaceWithMap",
+          "file": "modules\\native-effects\\pa\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "d855b8cc1a6798ae7765396c1195455b75b975348e815fbc14d559e81b015204"
+        },
+        {
+          "interface": "NativePaImageFilters",
+          "name": "surfaceFromCoverage",
+          "file": "modules\\native-effects\\pa\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "d855b8cc1a6798ae7765396c1195455b75b975348e815fbc14d559e81b015204"
+        },
+        {
+          "interface": "NativePaImageFilters",
+          "name": "innerShadow",
+          "file": "modules\\native-effects\\pa\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "d855b8cc1a6798ae7765396c1195455b75b975348e815fbc14d559e81b015204"
+        },
+        {
+          "interface": "NativeRasterFilters",
+          "name": "blur",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "739d1e672b612c06c1f1d2c2c307b63da1de22bc8c3bdb0f3b4c2ba1620fb36c"
+        },
+        {
+          "interface": "NativeRasterFilters",
+          "name": "glow",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "739d1e672b612c06c1f1d2c2c307b63da1de22bc8c3bdb0f3b4c2ba1620fb36c"
+        },
+        {
+          "interface": "NativeRasterFilters",
+          "name": "feather",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "739d1e672b612c06c1f1d2c2c307b63da1de22bc8c3bdb0f3b4c2ba1620fb36c"
+        },
+        {
+          "interface": "NativeRasterFilters",
+          "name": "fill",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "739d1e672b612c06c1f1d2c2c307b63da1de22bc8c3bdb0f3b4c2ba1620fb36c"
+        },
+        {
+          "interface": "NativeRasterFilters",
+          "name": "applyMatte",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "739d1e672b612c06c1f1d2c2c307b63da1de22bc8c3bdb0f3b4c2ba1620fb36c"
+        },
+        {
+          "interface": "NativeRasterFilters",
+          "name": "dropShadow",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "739d1e672b612c06c1f1d2c2c307b63da1de22bc8c3bdb0f3b4c2ba1620fb36c"
+        },
+        {
+          "interface": "NativeRasterFilters",
+          "name": "reframe",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "739d1e672b612c06c1f1d2c2c307b63da1de22bc8c3bdb0f3b4c2ba1620fb36c"
+        },
+        {
+          "interface": "NativeRasterFilters",
+          "name": "mergeMatte",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "739d1e672b612c06c1f1d2c2c307b63da1de22bc8c3bdb0f3b4c2ba1620fb36c"
+        },
+        {
+          "interface": "NativeRasterFilters",
+          "name": "alphaToRGB",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "739d1e672b612c06c1f1d2c2c307b63da1de22bc8c3bdb0f3b4c2ba1620fb36c"
+        },
+        {
+          "interface": "NativeRasterFilters",
+          "name": "flattenBlack",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "739d1e672b612c06c1f1d2c2c307b63da1de22bc8c3bdb0f3b4c2ba1620fb36c"
+        },
+        {
+          "interface": "NativeRasterFilters",
+          "name": "tile",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "739d1e672b612c06c1f1d2c2c307b63da1de22bc8c3bdb0f3b4c2ba1620fb36c"
+        },
+        {
+          "interface": "NativeRasterFilters",
+          "name": "exposure",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "739d1e672b612c06c1f1d2c2c307b63da1de22bc8c3bdb0f3b4c2ba1620fb36c"
+        },
+        {
+          "interface": "NativeRasterFilters",
+          "name": "invert",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "739d1e672b612c06c1f1d2c2c307b63da1de22bc8c3bdb0f3b4c2ba1620fb36c"
+        },
+        {
+          "interface": "NativeRasterFilters",
+          "name": "add",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "739d1e672b612c06c1f1d2c2c307b63da1de22bc8c3bdb0f3b4c2ba1620fb36c"
+        },
+        {
+          "interface": "NativeRasterFilters",
+          "name": "invertMatte",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "739d1e672b612c06c1f1d2c2c307b63da1de22bc8c3bdb0f3b4c2ba1620fb36c"
+        },
+        {
+          "interface": "NativeRasterFilters",
+          "name": "replaceMatte",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "739d1e672b612c06c1f1d2c2c307b63da1de22bc8c3bdb0f3b4c2ba1620fb36c"
+        },
+        {
+          "interface": "NativeRasterFilters",
+          "name": "modulate",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "739d1e672b612c06c1f1d2c2c307b63da1de22bc8c3bdb0f3b4c2ba1620fb36c"
+        },
+        {
+          "interface": "NativeRasterFilters",
+          "name": "over",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "739d1e672b612c06c1f1d2c2c307b63da1de22bc8c3bdb0f3b4c2ba1620fb36c"
+        },
+        {
+          "interface": "NativeRasterFilters",
+          "name": "screen",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "739d1e672b612c06c1f1d2c2c307b63da1de22bc8c3bdb0f3b4c2ba1620fb36c"
+        },
+        {
+          "interface": "NativeRasterFilters",
+          "name": "multiply",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "739d1e672b612c06c1f1d2c2c307b63da1de22bc8c3bdb0f3b4c2ba1620fb36c"
+        },
+        {
+          "interface": "NativeRasterFilters",
+          "name": "offsetRGB",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "739d1e672b612c06c1f1d2c2c307b63da1de22bc8c3bdb0f3b4c2ba1620fb36c"
+        },
+        {
+          "interface": "NativeRasterFilters",
+          "name": "subtractMatte",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "739d1e672b612c06c1f1d2c2c307b63da1de22bc8c3bdb0f3b4c2ba1620fb36c"
+        },
+        {
+          "interface": "NativeRasterFilters",
+          "name": "crossfade",
+          "file": "modules\\native-effects\\raster\\filters.ts",
+          "kind": "declared-method; may be utility/lifecycle, not an effect count",
+          "sha256": "739d1e672b612c06c1f1d2c2c307b63da1de22bc8c3bdb0f3b4c2ba1620fb36c"
+        }
+      ],
+      "bindingsEngine": "native-gpu",
+      "classification": "audited-export-only; missing built main entries are NOT silently treated as installed/available; authored source exports are audited separately",
+      "runtimeVerified": false
+    }
+  ],
+  "legacyPlugins": [],
+  "coreLegacyEffects": {
+    "source": "modules/native-effects/builtin/original-defaults.json",
+    "sha256": "65e5963f05dae67dd96a25389d319f17abb31dff34140c631107062e33a2d015",
+    "entries": [
+      {
+        "id": "blur",
+        "counterpart": "builtin.blur",
+        "originalRadiusRange": [
+          0,
+          200
+        ]
+      },
+      {
+        "id": "brightness",
+        "counterpart": "builtin.brightness",
+        "originalAmountRange": [
+          0,
+          10
+        ]
+      }
+    ],
+    "qualification": "Frozen numeric defaults only. Former Web/Canvas registration and execution are removed; Native counterparts retain these option defaults."
+  },
+  "nativeInputHelpers": [
+    {
+      "entry": "modules/native-effects/extended.ts",
+      "name": "importImage",
+      "kind": "explicit CPU input, not a pixel effect",
+      "admission": "Existing Native owner upload contract/budget; larger assets use the declared Resource path",
+      "runtimeVerified": false
+    }
+  ],
+  "nativeSourceAdapters": [
+    {
+      "entry": "modules/native-effects/images.ts",
+      "names": [
+        "brightnessContrast",
+        "tint",
+        "tritone",
+        "colorBalance",
+        "blackAndWhite",
+        "filmGrain",
+        "vignette",
+        "sobelEdges",
+        "reliefLighting",
+        "pixelate",
+        "darken",
+        "lighten",
+        "difference",
+        "exclusion",
+        "overlay",
+        "hardLight",
+        "linearBurn",
+        "subtractBlend",
+        "linearLight",
+        "pinLight"
+      ],
+      "classification": "Source bindings only; numerical/media evidence belongs to its checkpoint. Not an installed/trusted/versioned package."
+    },
+    {
+      "entry": "modules/native-effects/extended.ts",
+      "names": [
+        "channelMix",
+        "levels",
+        "curves",
+        "unsharpMask",
+        "lumaKey",
+        "chromaKey",
+        "despill",
+        "extractMatte",
+        "morphology",
+        "featherMatte",
+        "matteLevels",
+        "applyMatte",
+        "boxBlur",
+        "directionalBlur",
+        "radialBlur",
+        "zoomBlur",
+        "channelBlur",
+        "compoundBlur",
+        "sharpen",
+        "convolve3x3",
+        "emboss",
+        "colorEmboss",
+        "findEdges",
+        "posterize",
+        "threshold",
+        "thresholdRGB",
+        "erodeImage",
+        "dilateImage",
+        "hueSaturation",
+        "colorize",
+        "vibrance",
+        "photoFilter",
+        "gammaPedestalGain",
+        "exposure",
+        "leaveColor",
+        "changeColor",
+        "changeToColor",
+        "channelArithmetic",
+        "setChannels",
+        "shiftChannels",
+        "removeColorMatting",
+        "solidComposite",
+        "noise",
+        "orderedDither",
+        "checkerboard",
+        "linearGradient",
+        "radialGradient",
+        "fourColorGradient",
+        "gradientMap",
+        "shadowHighlight",
+        "selectiveColor",
+        "broadcastColors",
+        "videoLimiter",
+        "median",
+        "dustAndScratches",
+        "bilateralBlur",
+        "smartBlur",
+        "autoLevels",
+        "autoContrast",
+        "autoColor",
+        "equalize"
+      ],
+      "classification": "Source bindings only; numerical/media evidence belongs to its checkpoint. Not an installed/trusted/versioned package."
+    },
+    {
+      "entry": "modules/native-effects/raster/filters.ts",
+      "names": [
+        "blur",
+        "glow",
+        "feather",
+        "fill",
+        "applyMatte",
+        "dropShadow",
+        "reframe",
+        "mergeMatte",
+        "alphaToRGB",
+        "flattenBlack",
+        "tile",
+        "exposure",
+        "invert",
+        "add",
+        "invertMatte",
+        "replaceMatte",
+        "modulate",
+        "over",
+        "screen",
+        "multiply",
+        "offsetRGB",
+        "subtractMatte",
+        "crossfade"
+      ],
+      "classification": "Source bindings only; numerical/media evidence belongs to its checkpoint. Not an installed/trusted/versioned package."
+    },
+    {
+      "entry": "modules/native-effects/pa/filters.ts",
+      "names": [
+        "blur",
+        "glow",
+        "displacement",
+        "displaceWithMap",
+        "surfaceFromCoverage",
+        "innerShadow"
+      ],
+      "classification": "Source bindings only; numerical/media evidence belongs to its checkpoint. Not an installed/trusted/versioned package."
+    },
+    {
+      "entry": "modules/native-effects/builtin/filters.ts",
+      "names": [
+        "blur",
+        "brightness",
+        "transform",
+        "mix",
+        "glow",
+        "displacement",
+        "cinematicGlow"
+      ],
+      "classification": "Source bindings only; numerical/media evidence belongs to its checkpoint. Not an installed/trusted/versioned package."
+    }
+  ],
+  "nativeSourceImageBindings": 117,
+  "nativeDistinctImageNames": 110,
+  "currentPriority": "Image/colour/optical/matte/keying/compositing; new particles/spatial/Puppet work deferred by user"
+}

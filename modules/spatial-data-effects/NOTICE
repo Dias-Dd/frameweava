@@ -1,0 +1,11 @@
+Spatial Data Effects prototype — Frameweave, Apache-2.0.
+
+Uses the workspace's already pinned Three.js 0.186.1 (r186), MIT license.
+Three's geometry constructors, native rasterizer/depth attachments and camera
+mathematics are used without copying an application, creating an extra Host,
+or adding a dependency. Exact reviewed file hashes and npm lock identity are
+recorded in UPSTREAM.json; the upstream MIT text is carried in licenses.
+
+Projection-difference, derivative face-normal and diagnostic shader glue are
+authored here. Raw spatial values are not color images; the optional Surface
+is a deliberately mapped diagnostic visualization. No Blender/GPL source used.

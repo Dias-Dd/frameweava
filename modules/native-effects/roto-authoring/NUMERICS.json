@@ -1,0 +1,8 @@
+{
+ "pixelF32Scaled":0.000003,"pixelF16Scaled":0.0006,
+ "neuralEncoder":{"absolute":0.001,"relative":0.001},
+ "neuralDecoder":{"absolute":0.005,"relative":0.002},
+ "neuralScores":{"absolute":0.001,"relative":0.001},
+ "endToEndCoverageAbsolute":0.002,"binaryMaskIoU":0.99,
+ "note":"Neural gates declared before CPU-model comparison. Deep F32 model accumulation is distinct from unchanged Pixel/Compute oracle gates; GPU pre/post use the original pixel bound."
+}

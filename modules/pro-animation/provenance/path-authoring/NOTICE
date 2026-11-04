@@ -1,0 +1,27 @@
+Path authoring creation chain
+
+Frameweave adapters: Apache-2.0. No Adobe source/assets or external editor,
+renderer, document/timeline model, scheduler or package manager is imported.
+
+d3-shape3.2.0, commit8ec82658454750cfa29efb1e0ea514e3dd9b2297, ISC.
+d3-path3.1.0, commit58bce7a53df2b03f70092a9b00b78055c4ffee04, ISC.
+Preserve vendor/d3-shape/LICENSE and vendor/d3-path/LICENSE, including Mike
+Bostock copyright. SOURCE.json retains original file hashes, npm SHA512 archive
+integrity and fixed source identity. LICENSE bytes were cross-checked against
+raw upstream at the pinned commits. Published source algorithms are unchanged;
+only d3-shape/src/path.js redirects a bare dependency import to the separately
+pinned relative d3-path. index.d.ts is a Frameweave-authored type-only declaration.
+No npm install scripts were run and no root dependency/lock was changed.
+
+Existing unchanged components retain original notices:
+- clipper2-rust1.2.0/original Clipper2, BSL-1.0;
+  rust/pathops/licenses/CLIPPER2-NOTICE and CLIPPER2-LICENSE, Cargo.lock checksum.
+- Earcut3.2.4, commit9e70986eb94054c621c926888dd05bc26bffb902, ISC;
+  vendor/earcut/SOURCE.json and LICENSE.
+- Frameweave Core Signals, Native owner/mesh/guarded Pair, original Glow and Layer.
+
+General Hermite interpolation and elementary parametric primitive formulas are
+small Frameweave canonical-path adapters; no mature Rust algorithm is translated.
+libtess1.2.2/SGI-B-2.0 was investigated as a possible nested-contour tessellator,
+but is NOT imported, vendored, installed or claimed as available. The current
+constant-width chain uses the already reviewed solver instead of adding that cost.

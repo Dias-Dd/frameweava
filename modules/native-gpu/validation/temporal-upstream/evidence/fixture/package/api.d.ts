@@ -1,0 +1,1 @@
+import type{FrameContext}from'@frameweave/engine';import type{GpuPixelImage}from'@frameweave/engine/native';export declare function blurAt(context:FrameContext):Promise<GpuPixelImage>;

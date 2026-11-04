@@ -1,0 +1,13 @@
+import type {MeshData,Vec3} from '../graphics-contracts/types.ts';import type {SpatialCamera,SpatialSample,SpatialTime} from '../spatial-data-effects/src/types.ts';import type {CreationColor,CreationInit,CreationOptions} from './types.ts';import type {ObjectTransform,CreationCamera} from './object-controls.ts';import type {Signal,FrameContext} from '../../src/core/types.ts';import type {GpuDataBuffer} from '../gpu-effects/compute-types.ts';
+export interface AovMaterial {name:string;id?:number;color?:CreationColor;emissive?:CreationColor;opacity?:Signal<number>}
+export interface AovObject extends ObjectTransform {mesh:MeshData;name?:string;id?:number;material:AovMaterial;normals?:readonly Vec3[]}
+export interface CryptoManifest {name:string;entries:Readonly<Record<string,string>>}
+/** Module-local owned buffers, not a new Stage port, image encoding or renderer protocol. */
+export interface SurfaceDeep {readonly width:number;readonly height:number;readonly capacity:number;readonly counts:GpuDataBuffer;readonly samples:GpuDataBuffer;readonly context:SpatialTime;readonly camera:string;readonly dataWindow:readonly[number,number,number,number];readonly displayWindow:readonly[number,number,number,number];readonly objectManifest:CryptoManifest;readonly materialManifest:CryptoManifest;dispose():Promise<void>}
+export interface AovFrame {readonly width:number;readonly height:number;readonly values:GpuDataBuffer;readonly labels:GpuDataBuffer;readonly deep?:SurfaceDeep;readonly context:SpatialTime;readonly reference:SpatialTime;readonly camera:SpatialCamera;readonly cameraKey:string;readonly referenceCameraKey:string;readonly objectManifest:CryptoManifest;readonly materialManifest:CryptoManifest;readonly triangles:number;readonly geometry:GpuDataBuffer;readonly triangleLabels:GpuDataBuffer;readonly projection:Float32Array;dispose():Promise<void>}
+export interface CryptoFrame {readonly width:number;readonly height:number;readonly layers:number;readonly ranks:GpuDataBuffer;readonly manifest:CryptoManifest;readonly samplesPerAxis:number;readonly context:SpatialTime;dispose():Promise<void>}
+export interface AovCaptureOptions {objects:readonly AovObject[];maxBytes?:number;maxRayTests?:number}
+export interface AovExecution {deep?:boolean;signal?:AbortSignal}
+export interface AovSceneOptions extends CreationOptions {objects:readonly AovObject[];camera?:CreationCamera;preview?:'beauty'|'normal'|'depth'|'object'|'material'|'uv'|'motion';depthRange?:readonly[number,number];maxBytes?:number;maxRayTests?:number;reference?:(context:FrameContext)=>FrameContext}
+export type AovSample=Omit<SpatialSample,'context'>&{context:FrameContext};
+export type {CreationInit,SpatialSample,SpatialTime,SpatialCamera,FrameContext};

@@ -1,0 +1,36 @@
+/** Independent F64 acceptance equations. No production Stage imports this file.
+ * Trilinear uses an eight-corner sum; tetrahedral uses barycentric coordinates.
+ * White adaptation uses Gaussian elimination, not production cofactor inverse. */
+import {fromHalf,toHalf,type AlphaMode} from '../../../src/media/surface.ts';
+import type {LutDefinition,Curve} from './types.ts';
+import type {GradeName} from './cases.ts';
+type RGB=readonly [number,number,number];
+const w:RGB=[.2126390058715104,.715168678767756,.0721923153607337],clamp=(x:number)=>Math.max(0,Math.min(1,x)),luma=(c:readonly number[])=>c.reduce((s,v,i)=>s+v*w[i],0),signed=(x:number,p:number)=>Math.sign(x)*Math.abs(x)**p;
+const point=(points:Curve,x:number)=>{let i=1;while(i<points.length-1&&points[i][0]<x)i++;const a=points[i-1],b=points[i];return a[1]+(b[1]-a[1])*(x-a[0])/(b[0]-a[0]);};
+function encoding(x:number,kind:LutDefinition['inputEncoding'],inverse=false){if(kind==='srgb'){const a=Math.abs(x),v=inverse?a<=.04045?a/12.92:((a+.055)/1.055)**2.4:a<=.0031308?a*12.92:1.055*a**(1/2.4)-.055;return Math.sign(x)*v;}if(kind==='acescct')return inverse?x<=.155251141552511?(x-.0729055341958355)/10.5402377416545:2**(x*17.52-9.72):x<=.0078125?10.5402377416545*x+.0729055341958355:(Math.log2(x)+9.72)/17.52;return x;}
+export function lutOracle(c:RGB,lut:LutDefinition,method:'nearest'|'linear'|'tetrahedral',domain:'extend'|'clamp'):RGB{const n=lut.size,p=c.map((v,j)=>{let x=(encoding(v,lut.inputEncoding)-lut.domainMin[j])/(lut.domainMax[j]-lut.domainMin[j]);if(domain==='clamp'||method==='nearest')x=clamp(x);return x*(n-1);}),lo=p.map(x=>Math.max(0,Math.min(n-2,Math.floor(x)))),t=p.map((x,j)=>x-lo[j]),at=(x:number,y:number,z:number,c:number)=>lut.values[((z*n+y)*n+x)*3+c];let out:number[]=[];
+ if(lut.kind==='1d')out=p.map((x,j)=>method==='nearest'?lut.values[Math.min(n-1,Math.floor(x+.5))*3+j]:lut.values[lo[j]*3+j]*(1-t[j])+lut.values[(lo[j]+1)*3+j]*t[j]);
+ else if(method==='nearest')out=[0,1,2].map(c=>at(Math.min(n-1,Math.floor(p[0]+.5)),Math.min(n-1,Math.floor(p[1]+.5)),Math.min(n-1,Math.floor(p[2]+.5)),c));
+ else if(method==='linear')out=[0,1,2].map(c=>{let sum=0;for(let z=0;z<2;z++)for(let y=0;y<2;y++)for(let x=0;x<2;x++)sum+=at(lo[0]+x,lo[1]+y,lo[2]+z,c)*(x?t[0]:1-t[0])*(y?t[1]:1-t[1])*(z?t[2]:1-t[2]);return sum;});
+ else{const axes=[0,1,2].sort((a,b)=>t[b]-t[a]),q=[...lo],v0=[...q];q[axes[0]]++;const v1=[...q];q[axes[1]]++;const v2=[...q],v3=lo.map(x=>x+1),weights=[1-t[axes[0]],t[axes[0]]-t[axes[1]],t[axes[1]]-t[axes[2]],t[axes[2]]];out=[0,1,2].map(c=>[v0,v1,v2,v3].reduce((s,v,j)=>s+at(v[0],v[1],v[2],c)*weights[j],0));}
+ return out.map(x=>encoding(x,lut.outputEncoding,true)) as unknown as RGB;
+}
+function solve(m:number[][],b:number[]){const a=m.map((r,i)=>[...r,b[i]]);for(let j=0;j<3;j++){let pivot=j;for(let i=j+1;i<3;i++)if(Math.abs(a[i][j])>Math.abs(a[pivot][j]))pivot=i;[a[j],a[pivot]]=[a[pivot],a[j]];const d=a[j][j];for(let k=j;k<4;k++)a[j][k]/=d;for(let i=0;i<3;i++)if(i!==j){const f=a[i][j];for(let k=j;k<4;k++)a[i][k]-=f*a[j][k];}}return a.map(r=>r[3]);}
+function white(c:RGB){const m=[[.4123907992659595,.357584339383878,.1804807884018343],[.2126390058715104,.715168678767756,.0721923153607337],[.0193308187155919,.119194779794626,.9505321522496606]],b=[[.8951,.2664,-.1614],[-.7502,1.7135,.0367],[.0389,-.0685,1.0296]],mul=(a:number[][],v:readonly number[])=>a.map(r=>r.reduce((s,x,i)=>s+x*v[i],0)),from=mul(b,[.3127/.329,1,(1-.3127-.329)/.329]),to=mul(b,[.34567/.3585,1,(1-.34567-.3585)/.3585]),cone=mul(b,mul(m,c));return solve(m,solve(b,cone.map((x,j)=>x*to[j]/from[j])));}
+export interface GradeReferenceOptions {points?:Curve;table?:LutDefinition;method?:'nearest'|'linear'|'tetrahedral';domain?:'extend'|'clamp';amount?:number;frame?:number;chain?:boolean}
+export function gradeColor(name:GradeName,c:RGB,o:GradeReferenceOptions={}):number[]{const frame=o.frame??0,y=luma(c);switch(name){
+ case 'lut1D':case 'lut3D':return [...lutOracle(c,o.table!,o.method??'linear',o.domain??'extend')];
+ case 'cdl':{const slope=[1.02,.98,1.01],offset=[.01,-.02,.005],power=[1.05,.95,1.02],clip=frame%3===2,inverse=frame%2!==0,weights=[.2126,.7152,.0722],cy=(x:readonly number[])=>x.reduce((s,n,j)=>s+n*weights[j],0);let v=c.map(x=>inverse&&clip?clamp(x):x);if(inverse){const l=cy(v);v=v.map(x=>l+(x-l)/.9);}v=v.map((x,j)=>{let n=inverse?x:x*slope[j]+offset[j];if(clip)n=clamp(n);if(n>=0)n=n**(inverse?1/power[j]:power[j]);return inverse?(n-offset[j])/slope[j]:n;});if(!inverse){const l=cy(v);v=v.map(x=>l+.9*(x-l));}return clip?v.map(clamp):v;}
+ case 'whiteBalance':return white(c);
+ case 'liftGammaGain':return c.map((x,j)=>signed(x+[.01,-.02,.015][j]*(1-x),1/[1.05,.95,1.1][j])*[1.02,.98,1.01][j]);
+ case 'printerLights':return c.map((x,j)=>x*2**([.5,-.25,.125][j]/12));
+ case 'contrastPivot':return c.map(x=>.18*signed(x/.18,1.1));
+ case 'logContrast':return c.map(x=>{const p=Math.log1p(.18/.03),z=p+(Math.sign(x)*Math.log1p(Math.abs(x)/.03)-p)*1.05;return Math.sign(z)*.03*Math.expm1(Math.abs(z));});
+ case 'colorWheels':{const t=clamp(y/1.5);return c.map((x,j)=>x*2**([.05,-.025,.02][j]*(1-t)**2+[-.02,.04,.01][j]*2*t*(1-t)+[.03,.01,-.02][j]*t*t));}
+ case 'splitTone':{const t=clamp((y-.2)/1.2+.5),tint=[.02,-.01,.03].map((n,j)=>n*(1-t)+[.03,.01,-.02][j]*t),l=luma(tint);return c.map((x,j)=>x+tint[j]-l);}
+ case 'highlightRolloff':case 'shadowRolloff':{const high=name==='highlightRolloff',threshold=high?.8:.1,soft=high?2.1:.3,d=(y-threshold)*(high?1:-1);if(d<=0)return [...c];const z=threshold+(high?1:-1)*soft*(-Math.expm1(-d/soft));return c.map(x=>x+z-y);}
+ case 'gamutCompress':{const ac=Math.max(...c);if(ac<=0)return [...c];return c.map((x,j)=>{const d=(ac-x)/ac,t=[.7,.8,.75][j],limit=[1.3,1.2,1.4][j];if(d<=t)return x;return ac*(1-t-(d-t)/Math.sqrt(1+((d-t)/(limit-t))**2));});}
+ case 'bleachBypass':{const t=clamp(y/.8);return c.map(x=>{const gray=y+.4*(x-y);return gray*y*(1-t)+(1-(1-gray)*(1-y))*t;});}
+ default:{let u=(c[2]-y)/(2*(1-w[2])),v=(c[0]-y)/(2*(1-w[0])),newY=y;const chroma=Math.hypot(u,v),s=chroma/(1+Math.abs(y)),angle=Math.atan2(v,u),hue=(angle*180/Math.PI+360)%360,points=o.points!;switch(name){case 'lumaCurve':newY=point(points,y);break;case 'hueVsHue':{const a=point(points,hue)*Math.PI/180,n=u*Math.cos(a)-v*Math.sin(a);v=u*Math.sin(a)+v*Math.cos(a);u=n;break;}case 'hueVsSaturation':{const gain=point(points,hue);u*=gain;v*=gain;break;}case 'hueVsLuminance':newY*=point(points,hue);break;case 'saturationVsSaturation':if(chroma>0){const gain=point(points,s)/s;u*=gain;v*=gain;}break;case 'luminanceVsSaturation':{const gain=point(points,y);u*=gain;v*=gain;break;}case 'saturationVsLuminance':newY*=point(points,s);break;}const r=newY+2*(1-w[0])*v,b=newY+2*(1-w[2])*u,g=(newY-w[0]*r-w[2]*b)/w[1];return [r,g,b];}
+}}
+export function gradingReference(name:GradeName,input:Float32Array,alpha:AlphaMode,o:GradeReferenceOptions={},half=false){const out=new Float32Array(input.length);for(let i=0;i<input.length;i+=4){const a=input[i+3];if(a===0){if(alpha!=='straight')out.set(input.subarray(i,i+4),i);continue;}const c=[0,1,2].map(j=>alpha==='straight'?input[i+j]:input[i+j]/a) as unknown as RGB,graded=gradeColor(name,c,o),amount=o.amount??(name==='bleachBypass'?.15:1);for(let j=0;j<3;j++){const v=Math.fround((c[j]+(graded[j]-c[j])*amount)*a);out[i+j]=half?fromHalf(toHalf(v)):v;}out[i+3]=a;}return out;}

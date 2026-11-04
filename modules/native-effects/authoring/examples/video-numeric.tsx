@@ -1,0 +1,2 @@
+import {Composition,Stage,Layer,Resource,ref} from '@frameweave/engine';import {videoNumeric} from '../video-stage.ts';export {videoNumeric};
+export default <Composition width={320} height={180} fps={24} durationInFrames={11} background="transparent"><Resource id="clip" src="./.generated-video/clip.mp4" kind="media"/><Stage id="video" factory={videoNumeric}/><Layer source={ref('video')}/></Composition>;

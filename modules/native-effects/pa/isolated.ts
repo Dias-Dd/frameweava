@@ -1,0 +1,10 @@
+import {defineNativeStage} from '../../native-gpu/authoring.ts';
+import type {GpuPixelImage} from '../../gpu-effects/pixel-types.ts';
+import {createNativePaImageEffects} from './filters.ts';
+import {createNativeRasterEffects} from '../raster/filters.ts';
+import {sceneSource,sceneWarp,sceneShadow,sceneGlow} from './scene-options.ts';
+export const isolatedSource=defineNativeStage(init=>({renderAt:c=>sceneSource(init.gpu,init.width,init.height,c)}));
+export const isolatedWarp=defineNativeStage<{image:GpuPixelImage}>(init=>{const pa=createNativePaImageEffects(init);return {renderAt:(c,i)=>pa.processImage(i.image,(image,fx)=>fx.displacement(image,sceneWarp(c)),{context:c}),dispose:()=>pa.dispose()};});
+export const isolatedShadow=defineNativeStage<{image:GpuPixelImage}>(init=>{const pa=createNativePaImageEffects(init);return {renderAt:(c,i)=>pa.processImage(i.image,(image,fx)=>fx.innerShadow(image,sceneShadow),{context:c}),dispose:()=>pa.dispose()};});
+export const isolatedGlow=defineNativeStage<{image:GpuPixelImage}>(init=>{const pa=createNativePaImageEffects(init);return {renderAt:(c,i)=>pa.processImage(i.image,(image,fx)=>fx.glow(image,sceneGlow),{context:c}),dispose:()=>pa.dispose()};});
+export const isolatedOver=defineNativeStage<{original:GpuPixelImage;shadow:GpuPixelImage}>(init=>{const r=createNativeRasterEffects(init);return {renderAt:(c,i)=>r.processImage(i.original,(image,fx)=>fx.over(image,i.shadow),{context:c}),dispose:()=>r.dispose()};});

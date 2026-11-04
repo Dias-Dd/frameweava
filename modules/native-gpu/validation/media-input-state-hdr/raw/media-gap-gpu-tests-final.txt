@@ -1,0 +1,61 @@
+TAP version 13
+# Subtest: frame-local seeds and lengths stay isolated across three independently submitted slots; plain submission restores admitted defaults
+ok 1 - frame-local seeds and lengths stay isolated across three independently submitted slots; plain submission restores admitted defaults
+  ---
+  duration_ms: 1227.6135
+  type: 'test'
+  ...
+# Subtest: frame preflight rejects immutable changes, wrong versions/headers/shape, missing buffers and oversize allocations; bad batches submit no frames
+ok 2 - frame preflight rejects immutable changes, wrong versions/headers/shape, missing buffers and oversize allocations; bad batches submit no frames
+  ---
+  duration_ms: 651.2805
+  type: 'test'
+  ...
+# Subtest: duplicate shader bodies retain each pipeline automatic-layout identity in frame-local updates
+ok 3 - duplicate shader bodies retain each pipeline automatic-layout identity in frame-local updates
+  ---
+  duration_ms: 656.521
+  type: 'test'
+  ...
+# {"case":"declared-resource","stats":{"adapter":"AdapterInfo { name: \\"NVIDIA GeForce RTX 5070 Laptop GPU\\", vendor: 4318, device: 11608, device_type: DiscreteGpu, device_pci_bus_id: \\"0000:01:00.0\\", driver: \\"NVIDIA\\", driver_info: \\"596.49\\", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 32, transient_saves_memory: Some(false), limit_bucket: None }","allocatedDataBytes":0,"allocatedImageBytes":1024,"backend":"native-wgpu","blockingGpuWaits":0,"bufferExports":{"bytes":0,"readbacks":0,"version":1},"capabilities":{"backend":"native-wgpu","computeKernelAbis":[1],"crossStageGpuHandles":false,"execution":"recording","f16WorkingBytesPerPixel":16,"hardwareVerified":true,"limits":{"maxBufferSize":4294967295,"maxComputeInvocationsPerWorkgroup":1024,"maxComputeWorkgroupSizeX":1024,"maxComputeWorkgroupSizeY":1024,"maxComputeWorkgroupSizeZ":64,"maxComputeWorkgroupStorageSize":49152,"maxComputeWorkgroupsPerDimension":65535,"maxStorageBufferBindingSize":2147483644,"maxStorageBuffersPerShaderStage":524288,"maxUniformBufferBindingSize":65536},"maxKernels":256,"maxPendingPasses":1024,"nativeImages":{"admission":"device-and-session-budget","maxTextureDimension2D":32768,"version":1},"nativeMesh":{"exactAdmission":"session-budget","float32Blendable":true,"version":1},"pixelKernelAbis":[1,2],"profiling":"disabled","storageTypes":["f32","u32","i32"],"version":1},"completed":3,"devicesCreated":1,"diagnosticBlockingWaits":3,"diagnosticReadbackBytes":1536,"diagnosticReadbacks":3,"diagnosticsEnabled":true,"export":{"bytes":0,"cpuImageCopies":0,"enabled":false,"framesWritten":0,"hardwareEncode":false,"httpTransport":false,"pngTransport":false},"externalImages":{"available":true,"enabled":true,"reason":null,"version":1},"frameBindings":{"allSlotsDrain":false,"slotUpdates":0,"version":1},"frameHashes":0,"imageReadbacks":0,"inFlight":0,"nativeModules":{"additionalD3D11Devices":0,"blockingGpuFenceWaits":0,"calls":0,"contentProfile":"reviewed-local-only","inputGpuConversions":0,"instances":0,"loaded":false,"nativeDevicesCreated":0,"outputGpuConversions":0,"productionPixelReadbacks":0,"runtime":null,"runtimeFileHashes":0,"surfaceProfile":"explicit-sdr-srgb8","version":1,"webRenderCachePrecision":"bgra8"},"numericalValidationPasses":0,"peakSubmittedInFlight":1,"persistentState":{"buffers":0,"cursors":{},"version":1},"pipelineCache":{"computeAndMeshCreated":2,"computeAndMeshReused":0,"displayReuses":0,"meshAttachmentSetsReused":0,"retention":"current-program-only","version":1,"workingBuffersReused":0},"pixelTransferBytes":0,"programUpdates":0,"protocolVersion":2,"resourceImports":{"uploadBytes":512,"version":1},"slots":1,"stateCheckpoints":{"bytes":0,"count":0,"cpuReadbacks":0,"restores":0,"version":1},"submitted":3,"workingImageBytes":1024}}
+# Subtest: declared HDR resource imports verified bytes once and produces exact GPU pixels without frame transport
+ok 4 - declared HDR resource imports verified bytes once and produces exact GPU pixels without frame transport
+  ---
+  duration_ms: 4638.3225
+  type: 'test'
+  ...
+# Subtest: small explicit CPU Surface upload preserves HDR and has a clear large-value diagnostic
+ok 5 - small explicit CPU Surface upload preserves HDR and has a clear large-value diagnostic
+  ---
+  duration_ms: 6.4571
+  type: 'test'
+  ...
+# {"case":"state-v1","stats":{"adapter":"AdapterInfo { name: \\"NVIDIA GeForce RTX 5070 Laptop GPU\\", vendor: 4318, device: 11608, device_type: DiscreteGpu, device_pci_bus_id: \\"0000:01:00.0\\", driver: \\"NVIDIA\\", driver_info: \\"596.49\\", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 32, transient_saves_memory: Some(false), limit_bucket: None }","allocatedDataBytes":16,"allocatedImageBytes":256,"backend":"native-wgpu","blockingGpuWaits":0,"bufferExports":{"bytes":0,"readbacks":0,"version":1},"capabilities":{"backend":"native-wgpu","computeKernelAbis":[1],"crossStageGpuHandles":false,"execution":"recording","f16WorkingBytesPerPixel":16,"hardwareVerified":true,"limits":{"maxBufferSize":4294967295,"maxComputeInvocationsPerWorkgroup":1024,"maxComputeWorkgroupSizeX":1024,"maxComputeWorkgroupSizeY":1024,"maxComputeWorkgroupSizeZ":64,"maxComputeWorkgroupStorageSize":49152,"maxComputeWorkgroupsPerDimension":65535,"maxStorageBufferBindingSize":2147483644,"maxStorageBuffersPerShaderStage":524288,"maxUniformBufferBindingSize":65536},"maxKernels":256,"maxPendingPasses":1024,"nativeImages":{"admission":"device-and-session-budget","maxTextureDimension2D":32768,"version":1},"nativeMesh":{"exactAdmission":"session-budget","float32Blendable":true,"version":1},"pixelKernelAbis":[1,2],"profiling":"disabled","storageTypes":["f32","u32","i32"],"version":1},"completed":6,"devicesCreated":1,"diagnosticBlockingWaits":6,"diagnosticReadbackBytes":1152,"diagnosticReadbacks":6,"diagnosticsEnabled":true,"export":{"bytes":0,"cpuImageCopies":0,"enabled":false,"framesWritten":0,"hardwareEncode":false,"httpTransport":false,"pngTransport":false},"externalImages":{"available":true,"enabled":true,"reason":null,"version":1},"frameBindings":{"allSlotsDrain":false,"slotUpdates":0,"version":1},"frameHashes":0,"imageReadbacks":0,"inFlight":0,"nativeModules":{"additionalD3D11Devices":0,"blockingGpuFenceWaits":0,"calls":0,"contentProfile":"reviewed-local-only","inputGpuConversions":0,"instances":0,"loaded":false,"nativeDevicesCreated":0,"outputGpuConversions":0,"productionPixelReadbacks":0,"runtime":null,"runtimeFileHashes":0,"surfaceProfile":"explicit-sdr-srgb8","version":1,"webRenderCachePrecision":"bgra8"},"numericalValidationPasses":0,"peakSubmittedInFlight":1,"persistentState":{"buffers":1,"cursors":{"test/state":[1,1]},"version":1},"pipelineCache":{"computeAndMeshCreated":4,"computeAndMeshReused":4,"displayReuses":0,"meshAttachmentSetsReused":0,"retention":"current-program-only","version":1,"workingBuffersReused":0},"pixelTransferBytes":0,"programUpdates":1,"protocolVersion":2,"resourceImports":{"uploadBytes":0,"version":1},"slots":1,"stateCheckpoints":{"bytes":0,"count":0,"cpuReadbacks":0,"restores":0,"version":1},"submitted":6,"workingImageBytes":256}}
+# Subtest: persistent state is explicit, serial, survives layout changes, and reset/replay restores exact GPU values
+ok 6 - persistent state is explicit, serial, survives layout changes, and reset/replay restores exact GPU values
+  ---
+  duration_ms: 683.4594
+  type: 'test'
+  ...
+# Subtest: ordinary initialization data stays immutable and persistent definitions cannot be replaced
+ok 7 - ordinary initialization data stays immutable and persistent definitions cannot be replaced
+  ---
+  duration_ms: 638.6269
+  type: 'test'
+  ...
+# {"case":"gpu-checkpoint","stats":{"adapter":"AdapterInfo { name: \\"NVIDIA GeForce RTX 5070 Laptop GPU\\", vendor: 4318, device: 11608, device_type: DiscreteGpu, device_pci_bus_id: \\"0000:01:00.0\\", driver: \\"NVIDIA\\", driver_info: \\"596.49\\", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 32, transient_saves_memory: Some(false), limit_bucket: None }","allocatedDataBytes":16,"allocatedImageBytes":128,"backend":"native-wgpu","blockingGpuWaits":0,"bufferExports":{"bytes":0,"readbacks":0,"version":1},"capabilities":{"backend":"native-wgpu","computeKernelAbis":[1],"crossStageGpuHandles":false,"execution":"recording","f16WorkingBytesPerPixel":16,"hardwareVerified":true,"limits":{"maxBufferSize":4294967295,"maxComputeInvocationsPerWorkgroup":1024,"maxComputeWorkgroupSizeX":1024,"maxComputeWorkgroupSizeY":1024,"maxComputeWorkgroupSizeZ":64,"maxComputeWorkgroupStorageSize":49152,"maxComputeWorkgroupsPerDimension":65535,"maxStorageBufferBindingSize":2147483644,"maxStorageBuffersPerShaderStage":524288,"maxUniformBufferBindingSize":65536},"maxKernels":256,"maxPendingPasses":1024,"nativeImages":{"admission":"device-and-session-budget","maxTextureDimension2D":32768,"version":1},"nativeMesh":{"exactAdmission":"session-budget","float32Blendable":true,"version":1},"pixelKernelAbis":[1,2],"profiling":"disabled","storageTypes":["f32","u32","i32"],"version":1},"completed":4,"devicesCreated":1,"diagnosticBlockingWaits":4,"diagnosticReadbackBytes":512,"diagnosticReadbacks":4,"diagnosticsEnabled":true,"export":{"bytes":0,"cpuImageCopies":0,"enabled":false,"framesWritten":0,"hardwareEncode":false,"httpTransport":false,"pngTransport":false},"externalImages":{"available":true,"enabled":true,"reason":null,"version":1},"frameBindings":{"allSlotsDrain":false,"slotUpdates":0,"version":1},"frameHashes":0,"imageReadbacks":0,"inFlight":0,"nativeModules":{"additionalD3D11Devices":0,"blockingGpuFenceWaits":0,"calls":0,"contentProfile":"reviewed-local-only","inputGpuConversions":0,"instances":0,"loaded":false,"nativeDevicesCreated":0,"outputGpuConversions":0,"productionPixelReadbacks":0,"runtime":null,"runtimeFileHashes":0,"surfaceProfile":"explicit-sdr-srgb8","version":1,"webRenderCachePrecision":"bgra8"},"numericalValidationPasses":0,"peakSubmittedInFlight":1,"persistentState":{"buffers":1,"cursors":{"test/state":[0,1]},"version":1},"pipelineCache":{"computeAndMeshCreated":4,"computeAndMeshReused":0,"displayReuses":0,"meshAttachmentSetsReused":0,"retention":"current-program-only","version":1,"workingBuffersReused":0},"pixelTransferBytes":0,"programUpdates":0,"protocolVersion":2,"resourceImports":{"uploadBytes":0,"version":1},"slots":1,"stateCheckpoints":{"bytes":16,"count":1,"cpuReadbacks":0,"restores":1,"version":1},"submitted":4,"workingImageBytes":128}}
+# Subtest: GPU-only named checkpoints rewind cursors and restore exact float state without CPU snapshots
+ok 8 - GPU-only named checkpoints rewind cursors and restore exact float state without CPU snapshots
+  ---
+  duration_ms: 642.235
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 10909.7797

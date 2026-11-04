@@ -1,0 +1,1 @@
+{"name":"rigid-body-effects","version":"0.3.1","type":"module","license":"Apache-2.0 AND MIT AND Zlib AND Unicode-3.0","exports":{".":{"types":"./dist/index.d.ts","import":"./dist/index.js"}},"peerDependencies":{"@frameweave/engine":"0.1.0"},"files":["src","runtime","rust","dist","licenses","LICENSE","NOTICE","README.md","frameweave.package.json"]}

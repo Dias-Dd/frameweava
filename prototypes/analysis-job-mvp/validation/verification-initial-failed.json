@@ -1,0 +1,245 @@
+{
+  "date": "2026-10-28T12:54:48.157Z",
+  "cacheRoot": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-2\\.frameweave\\analysis-job-mvp\\verification-gxoKeU",
+  "passed": false,
+  "checks": [
+    {
+      "name": "main-process-and-observer-browser-remain-responsive",
+      "passed": true,
+      "detail": {
+        "hostTicks": 318,
+        "eventLoopMaxMs": 25.542655,
+        "eventLoopP95Ms": 17.432575,
+        "observerUITicks": 309,
+        "observerUIMaxGapMs": 29.5,
+        "observerClicks": 1,
+        "cold": {
+          "elapsedMs": 3875.0492,
+          "initMs": 1067.5804,
+          "inferenceFrames": 64,
+          "validFrames": 57,
+          "inferenceMedianMs": 17.69999999552965,
+          "inferenceP95Ms": 21.299999997019768
+        }
+      }
+    },
+    {
+      "name": "real-video-real-face-landmarks",
+      "passed": true,
+      "detail": {
+        "frames": 64,
+        "valid": 57,
+        "missing": 7,
+        "movement": {
+          "x": 0.14995911717414856,
+          "y": 0.18446488678455353
+        },
+        "provenance": {
+          "name": "david.webm",
+          "sha256": "4bbe69b7d097379af4d7ad128f02692820dc57a6d8275ea2b9e7eef4399a3e61",
+          "bytes": 3917558
+        },
+        "model": {
+          "id": "face_landmarker/float16",
+          "version": "float16/1",
+          "sha256": "64184e229b263107bc2b804c6625db1341ff2bb731874b0bcc2fe6544e0bc9ff"
+        }
+      }
+    },
+    {
+      "name": "persisted-cache-reused-by-fresh-child",
+      "passed": true,
+      "detail": {
+        "elapsedMs": 185.00440000000003,
+        "inferenceFrames": 0
+      }
+    },
+    {
+      "name": "changed-video-content-invalidates-cache",
+      "passed": true,
+      "detail": {
+        "key": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c",
+        "metrics": {
+          "elapsedMs": 3996.2588000000005,
+          "initMs": 1109.2069999999999,
+          "inferenceFrames": 64,
+          "validFrames": 49,
+          "inferenceMedianMs": 18.19999999552965,
+          "inferenceP95Ms": 22.69999999552965
+        }
+      }
+    },
+    {
+      "name": "changed-model-version-invalidates-cache",
+      "passed": true,
+      "detail": {
+        "key": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0",
+        "metrics": {
+          "elapsedMs": 3887.8065,
+          "initMs": 1033.9071,
+          "inferenceFrames": 64,
+          "validFrames": 57,
+          "inferenceMedianMs": 17.600000001490116,
+          "inferenceP95Ms": 21.5
+        }
+      }
+    },
+    {
+      "name": "changed-parameters-invalidate-cache",
+      "passed": true,
+      "detail": {
+        "elapsedMs": 2647.3027,
+        "initMs": 1037.4912,
+        "inferenceFrames": 32,
+        "validFrames": 25,
+        "inferenceMedianMs": 18.30000000447035,
+        "inferenceP95Ms": 48.600000001490116
+      }
+    },
+    {
+      "name": "changed-model-bytes-are-not-reused-and-fail-observably",
+      "passed": true,
+      "detail": {
+        "id": "59676a51-a7c6-4ce1-bd83-4660d421866c",
+        "state": "failed",
+        "phase": "failed",
+        "completed": 0,
+        "total": 64,
+        "progress": 0,
+        "cacheKey": "b1d6fac7cd2b4ae8d820d90588e73a3a5841aeff7968dd416b85ada7606ed4cf",
+        "cleanup": {
+          "browserClosed": true,
+          "decoderClosed": true,
+          "tempRemoved": true,
+          "childExited": true,
+          "forced": false
+        },
+        "error": {
+          "code": "E_ANALYSIS_MODEL",
+          "severity": "error",
+          "message": "Face Landmarker initialization failed: Error: page.evaluate: Error: UNKNOWN: Unable to open zip archive.; Initialize was not ok; StartGraph failed\n=== Source Location Trace: === \nthird_party/mediapipe/tasks/cc/common.cc:30\nthird_party/mediapipe/tasks/cc/core/model_asset_bundle_resources.cc:62\nthird_party/mediapipe/tasks/cc/core/model_task_graph.cc:270\nthird_party/mediapipe/tasks/cc/vision/face_landmarker/face_landmarker_graph.cc:345\nthird_party/mediapipe/framework/tool/subgraph_expansion.cc:309\nthird_party/mediapipe/framework/validated_graph_config.cc:503\nthird_party/mediapipe/framework/validated_graph_config.cc:365\nthird_party/mediapipe/framework/calculator_graph.cc:529\nresearch/drishti/app/pursuit/wasm/graph_utils.cc:95\n\n    at eu (http://analysis-mvp.local/vision.mjs:1:68269)\n    at _c.setGraph (http://analysis-mvp.local/vision.mjs:1:70541)\n    at _c.u (http://analysis-mvp.local/vision.mjs:1:119912)\n    at http://analysis-mvp.local/vision.mjs:1:69779\n    at async Jh (http://analysis-mvp.local/vision.mjs:1:67873)\n    at async eval (eval at evaluate (:370:30), <anonymous>:1:278)\n    at async <anonymous>:396:30"
+        },
+        "stderr": ""
+      }
+    },
+    {
+      "name": "decoder-failure-propagates-and-cleans",
+      "passed": true,
+      "detail": {
+        "id": "9cfbb176-aaf6-4e23-8aeb-2d57146a753e",
+        "state": "failed",
+        "phase": "failed",
+        "completed": 0,
+        "total": 64,
+        "progress": 0,
+        "cacheKey": "462986673347cc82804f06c4d17ffcb9974c2141ea0c11f1c7eebbae18940059",
+        "cleanup": {
+          "browserClosed": true,
+          "decoderClosed": true,
+          "tempRemoved": true,
+          "childExited": true,
+          "forced": false
+        },
+        "error": {
+          "code": "E_ANALYSIS_DECODE",
+          "severity": "error",
+          "message": "FFmpeg produced 0/64 frames. Truncating packet of size 13921 to 15\r\n[matroska,webm @ 0000013c259cbe40] EBML header parsing failed\r\n[in#0 @ 0000013c259d2bc0] Error opening input: Invalid data found when processing input\r\nError opening input file C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-2\\.frameweave\\analysis-job-mvp\\verification-gxoKeU\\broken.webm.\r\nError opening input files: Invalid data found when processing input\r\n"
+        },
+        "stderr": ""
+      }
+    },
+    {
+      "name": "cancel-during-real-inference-cleans-browser-decoder-and-staging",
+      "passed": true,
+      "detail": {
+        "id": "402b91b6-fe0c-4aba-8d8c-77242f4f0cdc",
+        "state": "cancelled",
+        "phase": "cancelled",
+        "completed": 2,
+        "total": 62,
+        "progress": 0.03225806451612903,
+        "cacheKey": "8e8e700048107a2c622d3a976569b6461e8e5758823bda351006677ff4d0f8e8",
+        "cleanup": {
+          "browserClosed": true,
+          "decoderClosed": true,
+          "tempRemoved": true,
+          "childExited": true,
+          "forced": false
+        },
+        "error": {
+          "code": "E_CANCELLED",
+          "severity": "error",
+          "message": "Analysis cancelled"
+        },
+        "stderr": ""
+      }
+    },
+    {
+      "name": "in-place-source-edit-prevents-cache-publication",
+      "passed": true,
+      "detail": {
+        "id": "5199f671-747f-491e-bf25-40087495cf82",
+        "state": "failed",
+        "phase": "failed",
+        "completed": 24,
+        "total": 24,
+        "progress": 1,
+        "cacheKey": "478193a6e66b00d0013db5268207fa869f068100f56ceb166f319a1e7b61b550",
+        "cleanup": {
+          "browserClosed": true,
+          "decoderClosed": true,
+          "tempRemoved": true,
+          "childExited": true,
+          "forced": false
+        },
+        "error": {
+          "code": "E_ANALYSIS_INPUT_CHANGED",
+          "severity": "error",
+          "message": "Media or model changed during analysis; no result was published"
+        },
+        "stderr": ""
+      }
+    },
+    {
+      "name": "corrupt-cache-is-rejected",
+      "passed": true,
+      "detail": {
+        "id": "31093407-037f-4e11-99e4-03b4f44e1d1a",
+        "state": "failed",
+        "phase": "failed",
+        "completed": 0,
+        "total": 64,
+        "progress": 0,
+        "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765",
+        "cleanup": {
+          "browserClosed": true,
+          "decoderClosed": true,
+          "tempRemoved": true,
+          "childExited": true,
+          "forced": false
+        },
+        "error": {
+          "code": "E_ANALYSIS_CACHE",
+          "severity": "error",
+          "message": "Persisted analysis cache is corrupt; not silently reused or overwritten",
+          "details": "Error: Track hash mismatch"
+        },
+        "stderr": ""
+      }
+    },
+    {
+      "name": "real-track-arbitrary-order-and-missing-policy",
+      "passed": true,
+      "detail": {
+        "queries": 12,
+        "repeatedOrderChecks": 14,
+        "missingTime": 0.125
+      }
+    },
+    {
+      "name": "verification-interrupted",
+      "passed": false,
+      "detail": "AssertionError [ERR_ASSERTION]: Frame 32 is seek-order dependent"
+    }
+  ]
+}

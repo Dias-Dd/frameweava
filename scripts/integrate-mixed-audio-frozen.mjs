@@ -1,0 +1,16 @@
+import {execFileSync} from 'node:child_process';
+import {mkdir,writeFile,readFile} from 'node:fs/promises';
+import {resolve,join} from 'node:path';
+import {createHash} from 'node:crypto';
+import ts from 'typescript';
+const root=resolve(import.meta.dirname,'..'),source='ff747ff2bf83ffcdace8915ccfdcf07e4d62bb19',out=join(root,'artifacts/main-mixed-audio');await mkdir(out,{recursive:true});
+const git=(...args)=>execFileSync('git',args,{cwd:root,windowsHide:true,maxBuffer:32*1024**2});
+const bytes=git('show',source+':modules/native-gpu/validation/mixed-av-seal/integration.patch'),hash=bytes=>createHash('sha256').update(bytes).digest('hex');
+if(hash(bytes)!=='6a278ad78738ca38df166f1699dbd65a26ff54e6abfdafb16edd0a3efbf91e9a')throw Error('Frozen patch identity mismatch');
+const protectedFiles=['src/audio/resources.ts','src/audio/adapter.ts','src/audio/worker.mjs','modules/native-gpu/logic-host.ts'],before={};for(const file of protectedFiles)before[file]=hash(await readFile(join(root,file)));
+const close=text=>{const ast=ts.createSourceFile('renderer.ts',text,ts.ScriptTarget.Latest,true),renderer=ast.statements.find(n=>ts.isClassDeclaration(n)&&n.name?.text==='Renderer'),method=renderer?.members.find(n=>n.name&&ts.isIdentifier(n.name)&&n.name.text==='close');if(!method)throw Error('Missing close method');return method.getText(ast);};
+const rendererBefore=close(await readFile(join(root,'src/render/renderer.ts'),'utf8')),patch=join(out,'integration.patch');await writeFile(patch,bytes);git('apply','--check',patch);git('apply',patch);
+for(const file of protectedFiles)if(hash(await readFile(join(root,file)))!==before[file])throw Error('Protected source changed: '+file);
+if(close(await readFile(join(root,'src/render/renderer.ts'),'utf8'))!==rendererBefore)throw Error('ORT shutdown ordering changed');
+git('restore','--source='+source,'--worktree','--','tests/mixed-audio-execution.test.ts','modules/native-gpu/validation/mixed-av-seal');
+await writeFile(join(out,'intake.json'),JSON.stringify({source,patchSha256:hash(bytes),protectedHashes:before,rendererCloseUnchanged:true},null,2)+'\n');console.log(JSON.stringify({source,protectedFilesUnchanged:true,rendererCloseUnchanged:true}));

@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "baseCommit": "274de01dc2b4ad63be869a2f041c0d6570e4fc7e",
+  "tests": {
+    "passed": 28,
+    "failed": 0,
+    "skipped": 0
+  },
+  "scriptValidationMs": 127544.75,
+  "crossingVariants": 13,
+  "maxScaledCrossing": 0,
+  "sourceHashes": {
+    "modules/native-gpu/authoring.ts": "41e27c0854e6fa8288acf41b9c4a709a3fa58ec880ac4416c44c5f406af4f4db",
+    "modules/native-gpu/build.mjs": "39e8ba2edc54dcfa84da1130461b3ac691843f3d2e96c1c500c7a1a58120598c",
+    "modules/native-gpu/client.ts": "9482ec32a713cc4164b30064a3838cc7b595fb2521f56e3507cbddea66150c53",
+    "modules/native-gpu/memory.ts": "e205879042e76c9e939c24978a9e9f6e701d28750da232458ddda9732a93c557",
+    "modules/native-gpu/mesh-shader.ts": "93d3d4a16adc92a45e610673616fa25acd406bc1f56b4ef6c9dd254fa8de31cf",
+    "modules/native-gpu/scope.ts": "3ad392a791c9f3337bf9b9393534ba5b4939c91d6f68189a454ae03b5a929267",
+    "modules/native-gpu/src/external_windows.rs": "a936cffc7a1cee56d4a6b2e678452f3b7eb0a569e5022c00af8c62094a75ed9f",
+    "modules/native-gpu/src/gpu.rs": "155444a8bb3dd560edd57c733209bd9fc376b728797f727bbe5cb681169dfd76",
+    "modules/native-gpu/src/main.rs": "0fc41a9138fe1f39e030fb31f66103adb2067b8cbc786c8a401bd49f598a549a",
+    "modules/native-gpu/src/native_module.rs": "d3d1e950bd5875ff96a7867573b7c97a503469e062380e59494d2ea589ce6b83",
+    "modules/native-gpu/src/protocol.rs": "cb652f0b9af066ab1e69c2e1f91b8e52afb9772b69fabc41874419f5116e5980",
+    "modules/native-gpu/validation/tsconfig.json": "1a8b59e6144ca572ecd9e660607a206038fc32fd45d50ebf12dac3713de6dbe7",
+    "modules/native-gpu/MESH_RASTER_V1.md": "7828d7bb83dd71ffc3ed9f56d71e80375e567d3009e3764b9251fb18befd612e",
+    "modules/native-gpu/examples/mesh-transparency-v1.tsx": "1b375cd6fe9439641662dd8bbaae4679800e95982c4a512452b1e848a1b37023",
+    "modules/native-gpu/src/half.wgsl": "361008ae3ae0cb56fdabda5771243812d60be2983b3916f37ef1c484bc5895c8",
+    "modules/native-gpu/src/mesh_transparency.rs": "698fd87c0fd178119a7b550daf1cce8d2793b3785717c021a8d05f4bfa8e613a",
+    "modules/native-gpu/validation/benchmark-mesh-transparency.ts": "322bd1df5eb18550c5d0f102bdc2fe50753443c0c4b1ee5ad15bf294839c0a16",
+    "modules/native-gpu/validation/validate-mesh-transparency.mjs": "ccd8841223f6022d93d9ea6277f60ececc614a690652986fc236a3c87a004414",
+    "modules/native-gpu/validation/verify-mesh-transparency.ts": "3aab5d1f35aa43579a28bd84c64945895d6ec57228d2716a0c52dcdae0fb6000",
+    "tests/native-mesh-transparency.test.ts": "768a2e853543c4dc82ba77c5c4e8fcfb6a93b48b83284e4fa3d0bd28d5c0877e"
+  },
+  "media": {
+    "png": {
+      "path": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\artifacts\\native-mesh-transparency\\media\\transparent-cards.png",
+      "sha256": "930bc3ef751c77a3f1c63b6750a6ea329eea4db0c324da95ccf62cb2ca902424"
+    },
+    "exr": {
+      "path": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\artifacts\\native-mesh-transparency\\media\\transparent-cards.exr",
+      "sha256": "bd73b0b09c239d3d25077a4ece13df7853dad5e78b2f8fe301051639de251c79"
+    },
+    "mp4": {
+      "path": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\artifacts\\native-mesh-transparency\\media\\transparent-cards.mp4",
+      "sha256": "90fb87f442d24463bef37124bbcbe163017876759710a2a90aa83d145c2c1617"
+    }
+  },
+  "exrRange": [
+    -0.21033665537834167,
+    3.3804140090942383
+  ],
+  "exrMaxAbsoluteError": 0,
+  "nativeExecutable": {
+    "file": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\.frameweave\\native-target\\release\\frameweave-native-gpu.exe",
+    "bytes": 7869952,
+    "sha256": "0ff9e76554cd5d243ff482056e5d1d310ec9b673981cde83fd6bb7c0c9dc1074"
+  },
+  "nativeInputCount": 14,
+  "limitations": [
+    "Windows RTX5070Laptop Vulkan only",
+    "Native benchmark excludes TSX recording, display, encoding",
+    "No whole repository, independent package, SpiderMonkey or portable exports qualification",
+    "No multiple drawMesh shared depth; exact max256 triangles; sorted mode caller order required"
+  ]
+}

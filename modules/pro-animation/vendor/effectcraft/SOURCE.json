@@ -1,0 +1,8 @@
+{
+  "repository": "https://github.com/storytold/effectcraft",
+  "commit": "861c51f8187bf56efc77cc7b60fc4a513d2b7198",
+  "path": "crates/expr/src/noise.rs",
+  "sha256": "74c2c5be45978bbba2c653a6f1f16b40ecd38543a71efd326818b19fb5fe5420",
+  "selectedLicense": "MIT",
+  "adaptation": "Rust hash64/mix/unit/noise1/wiggle to TS BigInt u64; domain validation is intentionally stricter. No UI/model/renderer/fonts/branding bundled."
+}

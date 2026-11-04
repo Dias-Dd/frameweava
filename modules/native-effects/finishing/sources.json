@@ -1,0 +1,42 @@
+{
+  "effectcraft": {
+    "repository": "https://github.com/storytold/effectcraft",
+    "commit": "ec7ced1f0515f0b6f376dbcc297f1c441f452d6e",
+    "license": "MIT chosen from dual license",
+    "files": [
+      {
+        "file": "vendor/generate3-paths.rs",
+        "path": "crates/effects/src/generate3/paths.rs",
+        "bytes": 24170,
+        "sha256": "35f440418db5dcd8ee78984363b49564dbded98e386de871b1931e509a25162c",
+        "expectedGitBlob": "319368a82d72cbaaa27b512f36477a6f0fad3e39",
+        "actualGitBlob": "319368a82d72cbaaa27b512f36477a6f0fad3e39"
+      },
+      {
+        "file": "vendor/generate3-raster.rs",
+        "path": "crates/effects/src/generate3/raster.rs",
+        "bytes": 14060,
+        "sha256": "b670bfefad1cc88a34e3d827026121b429a78d366230ed46a4fee8e428c29a37",
+        "expectedGitBlob": "1b85818d0ffefb8a1be17243916b64fae56b65a2",
+        "actualGitBlob": "1b85818d0ffefb8a1be17243916b64fae56b65a2"
+      },
+      {
+        "file": "vendor/perspective2.rs",
+        "path": "crates/effects/src/perspective2.rs",
+        "bytes": 12629,
+        "sha256": "01d4c5873e6e9c1c0860f52c8af723f0f02633b0e576e285e5c179278eb99908",
+        "expectedGitBlob": "13846607f3fb5bd9020e01b7124c702d127a57e7",
+        "actualGitBlob": "13846607f3fb5bd9020e01b7124c702d127a57e7"
+      }
+    ]
+  },
+  "adaptation": {
+    "scribble": "Pinned scan runs, closest-chain joins, Chaikin turns, polyline trim and cap/join convex geometry. Boolean path composition and true mask-arclength write-on added; pixel raster and PM/HDR composition use existing native Pixel ABI.",
+    "stereo": "Pinned nine channel/pair equations; explicit red-cyan extension, PM Alpha0 emission, working-color luminance, and default disabled pair alignment follow professional/AE contracts. Existing geometry offset preserves intermediate F32 publication."
+  },
+  "catalogSearch": {
+    "command": "FRAMEWEAVE_HOME=<own> node --import tsx src/cli.ts effects search \"scribble stereo\" --mode keyword --limit 5",
+    "result": [],
+    "note": "CLI --json flag is unsupported for effects search; corrected read-only command returned no installed candidate."
+  }
+}

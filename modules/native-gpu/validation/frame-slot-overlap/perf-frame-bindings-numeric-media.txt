@@ -1,0 +1,1 @@
+{"ok":true,"sceneCases":2,"framesPerCase":4,"exact":"scene/display F32 equality","media":"6 actual decoded H264 frames","result":"C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\artifacts\\perf-frame-bindings\\numeric-and-media.json"}

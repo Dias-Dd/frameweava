@@ -1,0 +1,3 @@
+   Compiling frameweave-native-gpu v0.1.0 (Q:\modules\native-gpu)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 5.53s
+{"nativeBuildReceipt":"C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\.frameweave\\native-target\\debug\\native-build.json","executableSha256":"858d87d7c7caf7cf25a88ae1fff223c6fd031311777c12b7e7595d018231c6c5"}

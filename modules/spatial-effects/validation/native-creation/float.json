@@ -1,0 +1,459 @@
+{
+  "ok": true,
+  "wallMs": 10746.590400000001,
+  "rows": [
+    {
+      "frame": 0,
+      "sourceFormat": "rgba32float",
+      "RGBA": [
+        0.5,
+        0,
+        1,
+        0.75
+      ],
+      "expected": [
+        0.5,
+        0,
+        1,
+        0.75
+      ],
+      "encoding": "lossless float EXR; native PM values retained",
+      "service": {
+        "version": 1,
+        "ok": true,
+        "backend": "native-wgpu",
+        "output": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\modules\\spatial-effects\\validation\\native-creation\\float-0.exr",
+        "frames": 1,
+        "startFrame": 0,
+        "endFrame": 1,
+        "encoder": "exr",
+        "encoderVersion": "ffmpeg version 6.1.1-essentials_build-www.gyan.dev Copyright (c) 2000-2023 the FFmpeg developers",
+        "audio": null,
+        "timings": {
+          "compileMs": 0,
+          "compilation": "included-or-explicit-cached-build",
+          "initMs": 1136.5993999999992,
+          "framePipelineMs": 4.350499999998647,
+          "encoderFinishMs": 89.01939999999922,
+          "totalMs": 1275.9658
+        },
+        "scheduling": {
+          "version": 1,
+          "mode": "throughput",
+          "capacity": 1,
+          "concurrency": 1,
+          "completedFrames": 1,
+          "samples": [
+            {
+              "concurrency": 1,
+              "frames": 1,
+              "wallMs": 4.22899999999936,
+              "fps": 236.46252069050635,
+              "next": 1
+            }
+          ]
+        },
+        "stats": {
+          "adapter": "AdapterInfo { name: \"NVIDIA GeForce RTX 5070 Laptop GPU\", vendor: 4318, device: 11608, device_type: DiscreteGpu, device_pci_bus_id: \"0000:01:00.0\", driver: \"NVIDIA\", driver_info: \"596.49\", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 32, transient_saves_memory: Some(false), limit_bucket: None }",
+          "allocatedDataBytes": 288,
+          "allocatedImageBytes": 65536,
+          "backend": "native-wgpu",
+          "blockingGpuWaits": 0,
+          "capabilities": {
+            "backend": "native-wgpu",
+            "computeKernelAbis": [
+              1
+            ],
+            "crossStageGpuHandles": false,
+            "execution": "recording",
+            "f16WorkingBytesPerPixel": 16,
+            "hardwareVerified": true,
+            "limits": {
+              "maxBufferSize": 4294967295,
+              "maxComputeInvocationsPerWorkgroup": 1024,
+              "maxComputeWorkgroupSizeX": 1024,
+              "maxComputeWorkgroupSizeY": 1024,
+              "maxComputeWorkgroupSizeZ": 64,
+              "maxComputeWorkgroupStorageSize": 49152,
+              "maxComputeWorkgroupsPerDimension": 65535,
+              "maxStorageBufferBindingSize": 2147483644,
+              "maxStorageBuffersPerShaderStage": 524288,
+              "maxUniformBufferBindingSize": 65536
+            },
+            "maxKernels": 256,
+            "maxPendingPasses": 1024,
+            "pixelKernelAbis": [
+              1,
+              2
+            ],
+            "profiling": "disabled",
+            "storageTypes": [
+              "f32",
+              "u32",
+              "i32"
+            ],
+            "version": 1
+          },
+          "completed": 1,
+          "devicesCreated": 1,
+          "diagnosticBlockingWaits": 0,
+          "diagnosticReadbackBytes": 0,
+          "diagnosticReadbacks": 0,
+          "diagnosticsEnabled": false,
+          "export": {
+            "bytes": 65536,
+            "cpuImageCopies": 0,
+            "enabled": true,
+            "framesWritten": 1,
+            "hardwareEncode": false,
+            "httpTransport": false,
+            "pngTransport": false
+          },
+          "frameHashes": 0,
+          "imageReadbacks": 1,
+          "inFlight": 0,
+          "numericalValidationPasses": 0,
+          "peakSubmittedInFlight": 1,
+          "pixelTransferBytes": 65536,
+          "programUpdates": 1,
+          "protocolVersion": 2,
+          "slots": 1,
+          "submitted": 1,
+          "webBridge": {
+            "enabled": false,
+            "explicitReadbackWaits": 0,
+            "readbackBytes": 0,
+            "readbacks": 0,
+            "uploadBytes": 0,
+            "version": 1
+          },
+          "workingImageBytes": 65536,
+          "sourceOutput": {
+            "width": 64,
+            "height": 64,
+            "format": "rgba32float",
+            "alpha": "premultiplied",
+            "color": {
+              "primaries": "rec709",
+              "whitePoint": "D65",
+              "transfer": "linear",
+              "reference": "scene",
+              "range": "full",
+              "referenceWhiteNits": 100
+            }
+          }
+        },
+        "transfer": {
+          "previewReadback": false,
+          "exportMaterialization": true,
+          "format": "gbrapf32le",
+          "route": "native GPU → asynchronous packed buffer → FFmpeg stdin",
+          "zeroCopyEncode": false
+        },
+        "diagnostics": []
+      }
+    },
+    {
+      "frame": 8,
+      "sourceFormat": "rgba16float",
+      "RGBA": [
+        0.5,
+        0,
+        1,
+        0.75
+      ],
+      "expected": [
+        0.5,
+        0,
+        1,
+        0.75
+      ],
+      "encoding": "lossless float EXR; native PM values retained",
+      "service": {
+        "version": 1,
+        "ok": true,
+        "backend": "native-wgpu",
+        "output": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\modules\\spatial-effects\\validation\\native-creation\\float-8.exr",
+        "frames": 1,
+        "startFrame": 8,
+        "endFrame": 9,
+        "encoder": "exr",
+        "encoderVersion": "ffmpeg version 6.1.1-essentials_build-www.gyan.dev Copyright (c) 2000-2023 the FFmpeg developers",
+        "audio": null,
+        "timings": {
+          "compileMs": 0,
+          "compilation": "included-or-explicit-cached-build",
+          "initMs": 1120.7252000000008,
+          "framePipelineMs": 4.432800000000498,
+          "encoderFinishMs": 86.60150000000067,
+          "totalMs": 1253.4928
+        },
+        "scheduling": {
+          "version": 1,
+          "mode": "throughput",
+          "capacity": 1,
+          "concurrency": 1,
+          "completedFrames": 1,
+          "samples": [
+            {
+              "concurrency": 1,
+              "frames": 1,
+              "wallMs": 4.390299999999115,
+              "fps": 227.7748673211857,
+              "next": 1
+            }
+          ]
+        },
+        "stats": {
+          "adapter": "AdapterInfo { name: \"NVIDIA GeForce RTX 5070 Laptop GPU\", vendor: 4318, device: 11608, device_type: DiscreteGpu, device_pci_bus_id: \"0000:01:00.0\", driver: \"NVIDIA\", driver_info: \"596.49\", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 32, transient_saves_memory: Some(false), limit_bucket: None }",
+          "allocatedDataBytes": 288,
+          "allocatedImageBytes": 65536,
+          "backend": "native-wgpu",
+          "blockingGpuWaits": 0,
+          "capabilities": {
+            "backend": "native-wgpu",
+            "computeKernelAbis": [
+              1
+            ],
+            "crossStageGpuHandles": false,
+            "execution": "recording",
+            "f16WorkingBytesPerPixel": 16,
+            "hardwareVerified": true,
+            "limits": {
+              "maxBufferSize": 4294967295,
+              "maxComputeInvocationsPerWorkgroup": 1024,
+              "maxComputeWorkgroupSizeX": 1024,
+              "maxComputeWorkgroupSizeY": 1024,
+              "maxComputeWorkgroupSizeZ": 64,
+              "maxComputeWorkgroupStorageSize": 49152,
+              "maxComputeWorkgroupsPerDimension": 65535,
+              "maxStorageBufferBindingSize": 2147483644,
+              "maxStorageBuffersPerShaderStage": 524288,
+              "maxUniformBufferBindingSize": 65536
+            },
+            "maxKernels": 256,
+            "maxPendingPasses": 1024,
+            "pixelKernelAbis": [
+              1,
+              2
+            ],
+            "profiling": "disabled",
+            "storageTypes": [
+              "f32",
+              "u32",
+              "i32"
+            ],
+            "version": 1
+          },
+          "completed": 1,
+          "devicesCreated": 1,
+          "diagnosticBlockingWaits": 0,
+          "diagnosticReadbackBytes": 0,
+          "diagnosticReadbacks": 0,
+          "diagnosticsEnabled": false,
+          "export": {
+            "bytes": 65536,
+            "cpuImageCopies": 0,
+            "enabled": true,
+            "framesWritten": 1,
+            "hardwareEncode": false,
+            "httpTransport": false,
+            "pngTransport": false
+          },
+          "frameHashes": 0,
+          "imageReadbacks": 1,
+          "inFlight": 0,
+          "numericalValidationPasses": 0,
+          "peakSubmittedInFlight": 1,
+          "pixelTransferBytes": 65536,
+          "programUpdates": 1,
+          "protocolVersion": 2,
+          "slots": 1,
+          "submitted": 1,
+          "webBridge": {
+            "enabled": false,
+            "explicitReadbackWaits": 0,
+            "readbackBytes": 0,
+            "readbacks": 0,
+            "uploadBytes": 0,
+            "version": 1
+          },
+          "workingImageBytes": 65536,
+          "sourceOutput": {
+            "width": 64,
+            "height": 64,
+            "format": "rgba16float",
+            "alpha": "premultiplied",
+            "color": {
+              "primaries": "rec709",
+              "whitePoint": "D65",
+              "transfer": "linear",
+              "reference": "scene",
+              "range": "full",
+              "referenceWhiteNits": 100
+            }
+          }
+        },
+        "transfer": {
+          "previewReadback": false,
+          "exportMaterialization": true,
+          "format": "gbrapf32le",
+          "route": "native GPU → asynchronous packed buffer → FFmpeg stdin",
+          "zeroCopyEncode": false
+        },
+        "diagnostics": []
+      }
+    },
+    {
+      "frame": 9,
+      "sourceFormat": "rgba32float",
+      "RGBA": [
+        -0.5,
+        4,
+        1,
+        0.5
+      ],
+      "expected": [
+        -0.5,
+        4,
+        1,
+        0.5
+      ],
+      "encoding": "lossless float EXR; native PM values retained",
+      "service": {
+        "version": 1,
+        "ok": true,
+        "backend": "native-wgpu",
+        "output": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\modules\\spatial-effects\\validation\\native-creation\\float-9.exr",
+        "frames": 1,
+        "startFrame": 9,
+        "endFrame": 10,
+        "encoder": "exr",
+        "encoderVersion": "ffmpeg version 6.1.1-essentials_build-www.gyan.dev Copyright (c) 2000-2023 the FFmpeg developers",
+        "audio": null,
+        "timings": {
+          "compileMs": 0,
+          "compilation": "included-or-explicit-cached-build",
+          "initMs": 1127.0972000000002,
+          "framePipelineMs": 6.630900000000111,
+          "encoderFinishMs": 83.05240000000049,
+          "totalMs": 1261.8168999999998
+        },
+        "scheduling": {
+          "version": 1,
+          "mode": "throughput",
+          "capacity": 1,
+          "concurrency": 1,
+          "completedFrames": 1,
+          "samples": [
+            {
+              "concurrency": 1,
+              "frames": 1,
+              "wallMs": 6.5877999999993335,
+              "fps": 151.79574364736348,
+              "next": 1
+            }
+          ]
+        },
+        "stats": {
+          "adapter": "AdapterInfo { name: \"NVIDIA GeForce RTX 5070 Laptop GPU\", vendor: 4318, device: 11608, device_type: DiscreteGpu, device_pci_bus_id: \"0000:01:00.0\", driver: \"NVIDIA\", driver_info: \"596.49\", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 32, transient_saves_memory: Some(false), limit_bucket: None }",
+          "allocatedDataBytes": 208,
+          "allocatedImageBytes": 65536,
+          "backend": "native-wgpu",
+          "blockingGpuWaits": 0,
+          "capabilities": {
+            "backend": "native-wgpu",
+            "computeKernelAbis": [
+              1
+            ],
+            "crossStageGpuHandles": false,
+            "execution": "recording",
+            "f16WorkingBytesPerPixel": 16,
+            "hardwareVerified": true,
+            "limits": {
+              "maxBufferSize": 4294967295,
+              "maxComputeInvocationsPerWorkgroup": 1024,
+              "maxComputeWorkgroupSizeX": 1024,
+              "maxComputeWorkgroupSizeY": 1024,
+              "maxComputeWorkgroupSizeZ": 64,
+              "maxComputeWorkgroupStorageSize": 49152,
+              "maxComputeWorkgroupsPerDimension": 65535,
+              "maxStorageBufferBindingSize": 2147483644,
+              "maxStorageBuffersPerShaderStage": 524288,
+              "maxUniformBufferBindingSize": 65536
+            },
+            "maxKernels": 256,
+            "maxPendingPasses": 1024,
+            "pixelKernelAbis": [
+              1,
+              2
+            ],
+            "profiling": "disabled",
+            "storageTypes": [
+              "f32",
+              "u32",
+              "i32"
+            ],
+            "version": 1
+          },
+          "completed": 1,
+          "devicesCreated": 1,
+          "diagnosticBlockingWaits": 0,
+          "diagnosticReadbackBytes": 0,
+          "diagnosticReadbacks": 0,
+          "diagnosticsEnabled": false,
+          "export": {
+            "bytes": 65536,
+            "cpuImageCopies": 0,
+            "enabled": true,
+            "framesWritten": 1,
+            "hardwareEncode": false,
+            "httpTransport": false,
+            "pngTransport": false
+          },
+          "frameHashes": 0,
+          "imageReadbacks": 1,
+          "inFlight": 0,
+          "numericalValidationPasses": 0,
+          "peakSubmittedInFlight": 1,
+          "pixelTransferBytes": 65536,
+          "programUpdates": 1,
+          "protocolVersion": 2,
+          "slots": 1,
+          "submitted": 1,
+          "webBridge": {
+            "enabled": false,
+            "explicitReadbackWaits": 0,
+            "readbackBytes": 0,
+            "readbacks": 0,
+            "uploadBytes": 0,
+            "version": 1
+          },
+          "workingImageBytes": 65536,
+          "sourceOutput": {
+            "width": 64,
+            "height": 64,
+            "format": "rgba32float",
+            "alpha": "premultiplied",
+            "color": {
+              "primaries": "rec709",
+              "whitePoint": "D65",
+              "transfer": "linear",
+              "reference": "scene",
+              "range": "full",
+              "referenceWhiteNits": 100
+            }
+          }
+        },
+        "transfer": {
+          "previewReadback": false,
+          "exportMaterialization": true,
+          "format": "gbrapf32le",
+          "route": "native GPU → asynchronous packed buffer → FFmpeg stdin",
+          "zeroCopyEncode": false
+        },
+        "diagnostics": []
+      }
+    }
+  ]
+}

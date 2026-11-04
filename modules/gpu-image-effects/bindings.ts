@@ -1,0 +1,4 @@
+import type {PluginInit} from '../../src/plugins/sdk.ts';
+import {createGpuImageEffects} from './runtime.ts';
+/** R1 owns invocation and disposal. No new package registry or ambient state. */
+export function initialize(init:PluginInit){const effects=createGpuImageEffects(init);return {exports:{blur:effects.blur,glow:effects.glow,feather:effects.feather,fill:effects.fill,applyMatte:effects.applyMatte,dropShadow:effects.dropShadow,reframe:effects.reframe,mergeMatte:effects.mergeMatte,alphaToRGB:effects.alphaToRGB,flattenBlack:effects.flattenBlack,tile:effects.tile,exposure:effects.exposure,invert:effects.invert,add:effects.add,invertMatte:effects.invertMatte,replaceMatte:effects.replaceMatte,modulate:effects.modulate,over:effects.over,screen:effects.screen,multiply:effects.multiply,offsetRGB:effects.offsetRGB,subtractMatte:effects.subtractMatte,crossfade:effects.crossfade,gpuImageStats:effects.stats},dispose:effects.dispose};}

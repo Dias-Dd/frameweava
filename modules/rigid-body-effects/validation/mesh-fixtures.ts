@@ -1,0 +1,6 @@
+import type {RigidWorldOptions,MeshData,Vec3} from '../src/types.ts';
+export function mesh(id:string,points:Vec3[],indices:number[]):MeshData{return {schema:'frameweave.mesh',version:1,id,coordinates:{spaceId:'test-world',unit:'meter',origin:'local',x:'right',y:'up',z:'toward-viewer',handedness:'right'},topology:'triangles',vertexIds:points.map((_,i)=>'v'+i),restPositions:points,indices:indices};}
+export const cube=()=>mesh('cube',[[-1,-1,-1],[1,-1,-1],[1,-1,1],[-1,-1,1],[-1,1,-1],[1,1,-1],[1,1,1],[-1,1,1],[0,0,0]],[0,2,1,0,3,2,4,5,6,4,6,7,0,1,5,0,5,4,1,2,6,1,6,5,2,3,7,2,7,6,3,0,4,3,4,7]);
+export const plane=()=>mesh('plane',[[-5,0,-5],[5,0,-5],[5,0,5],[-5,0,5]],[0,2,1,0,3,2]);
+export function meshWorld():RigidWorldOptions{return {fps:24,substeps:4,seed:51,bodies:[{id:'floor',kind:'fixed',colliders:[{id:'floor-shape',shape:{kind:'trimesh',mesh:plane()},groups:{memberships:1,filter:2}}]},{id:'box',kind:'dynamic',position:[0,3,0],canSleep:false,colliders:[{id:'box-shape',shape:{kind:'convexHull',mesh:cube()},density:2,groups:{memberships:2,filter:5}}]},{id:'sensor',kind:'fixed',position:[0,1.5,0],colliders:[{id:'sensor-shape',shape:{kind:'cuboid',halfExtents:[2,.05,2]},sensor:true,groups:{memberships:4,filter:2}}]}],budgets:{checkpointInterval:12,maxCheckpoints:5}};}
+export const floorOnly=():RigidWorldOptions=>({fps:24,bodies:[meshWorld().bodies[0]]});

@@ -1,0 +1,3 @@
+import {Composition,Stage,Layer,ref} from '@frameweave/engine';
+import {psfRestorationStage} from '../psf-restoration/stage.ts';export {psfRestorationStage};
+export default <Composition width={1920} height={1080} fps={24} durationInFrames={24} background="transparent"><Stage id="restoration" factory={psfRestorationStage} props={{scene:true,performance:true,iterations:4,single:true}}/><Layer source={ref('restoration')}/></Composition>;

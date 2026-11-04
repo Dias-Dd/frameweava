@@ -1,0 +1,8 @@
+# Explicit optional native adapter environment. Runtime never invokes pip.
+opencolorio==2.5.2
+OpenEXR==3.4.4
+numpy==2.3.4
+cffi==2.0.0
+pycparser==2.23
+setuptools==80.9.0
+pkgconfig==1.5.5

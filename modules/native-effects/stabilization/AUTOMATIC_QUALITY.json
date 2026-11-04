@@ -1,0 +1,1 @@
+{"minimumLongestValidSegmentFrames":3,"minimumAcceptedFlowSamples":20,"medianEndpointErrorPixelsMaximum":1,"minimumNonzeroCameraCorrection":0.0000001,"fixture":"Seven full-size 23x17 procedural camera observations with partial Alpha; actual automatic bidirectional LK, independently generated known geometric motion, no supplied motion used for estimation"}

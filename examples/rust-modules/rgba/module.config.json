@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "kitVersion": 1,
+  "binding": "bytes-v1",
+  "rustc": "1.99.1",
+  "example": "rgba",
+  "execution": "direct"
+}

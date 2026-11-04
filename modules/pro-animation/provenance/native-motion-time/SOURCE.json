@@ -1,0 +1,39 @@
+{
+  "project": "EffectCraft",
+  "repository": "https://github.com/storytold/effectcraft",
+  "commit": "861c51f8187bf56efc77cc7b60fc4a513d2b7198",
+  "chosenLicense": "MIT",
+  "licenseFiles": [
+    "../../vendor/effectcraft/LICENSE-MIT",
+    "../../vendor/effectcraft/LICENSE-APACHE",
+    "../../vendor/effectcraft/NOTICE"
+  ],
+  "upstreamFiles": [
+    {
+      "path": "crates/raster/src/flow.rs",
+      "gitBlob": "feb033d6510711989b96257aa9dc1708301ca0e1",
+      "sha256": "c9ae263b20ac16bc7cd4b4f3c004ff03cfd4c726ff1300aad22d8be4203d9cc3"
+    },
+    {
+      "path": "crates/gpu/src/shaders/fx_time.wgsl",
+      "gitBlob": "d8ca5a3d534cd87aab1874d6bc088d946cb1bc9c",
+      "sha256": "0f269ec214161f3706460e6865cdb9e5ef7deb38c73eceb5c2f374c8619c90d3"
+    }
+  ],
+  "implementationFiles": {
+    "modules/pro-animation/src/native-motion-time/index.ts": "66d3fd8f34722ccc4785a5f438c75ffbaf2b2dcdc1a88f55fde467f6a2cb0397",
+    "modules/pro-animation/src/native-motion-time/kernels.ts": "83ca4558a3bb860268f9489132d932d3aad83a6e07f516ad6b6371a6b3635d93"
+  },
+  "adaptation": [
+    "Original hierarchical SAD block matching, coarse-neighbour seeds, parabolic subpixel fit and component median mapped to existing native Compute ABI; no Rayon/foreign Renderer dependency.",
+    "Original Flow::at and forward/backward two-frame warp mapped to typed motion fields and existing guarded Pair sampler.",
+    "Uses actual image-derived pyramid depth rather than original fixed4-level cap; rejects windows/spacing that cannot fit source instead of silently returning zero flow.",
+    "Search beyond clamped image support is pruned by actual level dimensions/window, not a permanent user-facing motion cap.",
+    "Time Displacement streams source images and uses existing guarded Pair hi/lo storage; published once at selected F16/F32 precision.",
+    "Motion vector blur uses existing compensated temporal reducer and streamed pixel warps; no unbounded single-dispatch shutter loop.",
+    "Alpha conversion retains valid PM zero-Alpha emission; Straight hidden RGB is zeroed."
+  ],
+  "cpuReference": "Selected original Rust block, only rayon iterators replaced with serial std iterators; tests only.",
+  "newDependencies": [],
+  "runtime": "One existing native GPU owner; no CPU image fallback, SDR8 bridge, timeline, scheduler, professional document schema or package manager."
+}

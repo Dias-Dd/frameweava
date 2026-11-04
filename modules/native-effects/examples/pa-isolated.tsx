@@ -1,0 +1,4 @@
+import {Composition,Stage,Layer,ref} from '@frameweave/engine';
+import {isolatedSource,isolatedWarp,isolatedShadow,isolatedGlow,isolatedOver} from '../pa/isolated.ts';
+export {isolatedSource,isolatedWarp,isolatedShadow,isolatedGlow,isolatedOver};
+export default <Composition width={1920} height={1080} fps={{num:30000,den:1001}} durationInFrames={240} background="transparent"><Stage id="source" factory={isolatedSource}/><Stage id="warp" factory={isolatedWarp} inputs={{image:ref('source')}} inputTypes={{image:'surface'}}/><Stage id="shadow" factory={isolatedShadow} inputs={{image:ref('warp')}} inputTypes={{image:'surface'}}/><Stage id="glow" factory={isolatedGlow} inputs={{image:ref('shadow')}} inputTypes={{image:'surface'}}/><Stage id="pa" factory={isolatedOver} inputs={{original:ref('source'),shadow:ref('glow')}} inputTypes={{original:'surface',shadow:'surface'}}/><Layer source={ref('pa')}/></Composition>;

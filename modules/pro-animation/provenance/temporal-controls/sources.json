@@ -1,0 +1,27 @@
+{
+  "baseline": "44cc38d8a2dd2b4888d460ee5ef7c701978ff733",
+  "sourceHashes": {
+    "modules/pro-animation/src/temporal-controls/common.ts": "df0d98514c0720c325bf2eb5d151aac25e610bfdb16e55738a9965cebb5ca568",
+    "modules/pro-animation/src/temporal-controls/difference.ts": "b3342daf86d457f65f96aa18c729c906d5c993f8ad871f72ee4fe450170950e2",
+    "modules/pro-animation/src/temporal-controls/index.ts": "eac400fc798a76a6d5074ab1426a55b60d5044766a935babc00865b12338c3bf",
+    "modules/pro-animation/src/temporal-controls/plans.ts": "54221feb177feee8c86e9c26f213697bdf810395efcb673b303cf476fbde9ef8",
+    "modules/pro-animation/src/temporal-controls/sources.ts": "b71660a6a311db69ba4a0a7038e2c1ddf14969deaa3cf3e024653fa643ad5a8c",
+    "modules/pro-animation/src/temporal-controls/warp-controls.ts": "8d0537678287c64b75e381ce50df4b028d3870babdc43066abc3e678c9815616",
+    "modules/pro-animation/src/temporal-controls/warp-kernels.ts": "430a917821b8f9295e635a7f8e9b49ec50945eca97481e72ab3acf5adfe3320b",
+    "modules/pro-animation/src/temporal-controls/warp.ts": "b8e190e477c171bdcbddc2f759a3b13960bb8ee605ffd235134cd9afba874cc9",
+    "modules/pro-animation/src/native-motion-time/index.ts": "7feabe2311dacfdc3e2dbd1bae30033d5cedd34f08220658892ba60e821f949b",
+    "modules/pro-animation/src/native-motion-time/kernels.ts": "83ca4558a3bb860268f9489132d932d3aad83a6e07f516ad6b6371a6b3635d93",
+    "modules/pro-animation/src/native-time/plans.ts": "8ba88e50f69c0143a3a8103d27640853d12e98ea5464e62d0025fb202d163b07",
+    "modules/pro-animation/src/native-time/reduction.ts": "1abc3e97f31175b7942242578af9c9639953437385f61683be21fe63c2510c99",
+    "modules/native-gpu/temporal.ts": "8e79549ce0b4d53950190fc01619d7e31d62c4629a6a51ce199fc9975d360823",
+    "modules/native-effects/geometry/control.ts": "e3a2398bd2228c156e5b967419aa2a030e10cb3c439c977c392fadd8fa07fc0f",
+    "modules/native-effects/image-estimation/filters.ts": "ef2e4ce29ea8a4713bbc906bb67953889a3d609e4b6d6853cecdf02f4c8d4fc4",
+    "modules/pro-animation/provenance/native-motion-time/SOURCE.json": "8df7d1b9d13942186ec07a1a480dcf838368bca818f0f92633025cd396d835f9"
+  },
+  "existingUpstream": "../native-motion-time/SOURCE.json records EffectCraft861c51f8187bf56efc77cc7b60fc4a513d2b7198, exact original files/blob/SHA and MIT choice; unchanged original licenses/NOTICE remain in vendor/effectcraft",
+  "adaptation": "Own timing/routing/Alpha controls only. Original admitted Core, shared compensated math, guarded reconstruction, motion kernels, grayscale color-fit and temporal reducer reused. Sample prelude moves its reserved zero guard from word8 to word7, never a nonzero control.",
+  "nativeFlowChange": "Own original admission only: allow spacing1 and choose default window>=4. Original matching/pyramid/refinement shader bytes unchanged.",
+  "newRuntimeDependencies": [],
+  "legal": "Final private0.0.9 includes complete original EffectCraft MIT, Apache and NOTICE plus Frameweave license. Production notice aggregation remains Main-owned.",
+  "proprietary": "No Adobe/Kronos source copied. Public control taxonomy only; original professional-linear profile documented."
+}

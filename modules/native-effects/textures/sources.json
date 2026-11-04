@@ -1,0 +1,28 @@
+{
+  "repository": "https://github.com/storytold/effectcraft",
+  "commit": "ec7ced1f0515f0b6f376dbcc297f1c441f452d6e",
+  "license": "MIT",
+  "reuse": "Altered lattice hash, quintic value-noise interpolation, octave sums and turbulent folds from kernels.wgsl/noise3.rs/fx_noise.wgsl. Paired Float32 preserves coordinates/HDR publication. Other 2D material equations are local; no full upstream UI/bit parity claim.",
+  "files": [
+    {
+      "path": "modules/native-effects/textures/vendor/effectcraft/common.wgsl",
+      "sha256": "4244140eba68055a0f1edcd6d0b1d7eee5a244e01c19f3ab0491f8e078702fff"
+    },
+    {
+      "path": "modules/native-effects/textures/vendor/effectcraft/fx_noise.wgsl",
+      "sha256": "2953bf052bd8a92054d8c49653d3691467bb5faba1710300a784ba487ffae2b7"
+    },
+    {
+      "path": "modules/native-effects/textures/vendor/effectcraft/kernels.wgsl",
+      "sha256": "426656075ec524d6c80e82442e09361f36fc73e0cd915f8a7382cffb424ce9c3"
+    },
+    {
+      "path": "modules/native-effects/textures/vendor/effectcraft/LICENSE-MIT",
+      "sha256": "7b6db9a363688683feacdf9b528f059637f2e5d2edbacd8720fc9b26781c9abe"
+    },
+    {
+      "path": "modules/native-effects/textures/vendor/effectcraft/noise3.rs",
+      "sha256": "202c1452e4a7cccf2e3199b14022bedf747c100a8a2b2dd5a91e35c32075f2a1"
+    }
+  ]
+}

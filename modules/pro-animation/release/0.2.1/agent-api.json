@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "p4Reference": "pro-animation@0.2.1",
+  "parameterSchemaVersion": 1,
+  "parameters": {
+    "progress": {
+      "type": "number",
+      "default": 1,
+      "minimum": 0,
+      "maximum": 1
+    },
+    "glow": {
+      "type": "number",
+      "default": 0.8,
+      "minimum": 0,
+      "maximum": 5
+    },
+    "displacement": {
+      "type": "number",
+      "default": 3,
+      "minimum": 0,
+      "maximum": 100
+    }
+  },
+  "profile": "typescript-functions",
+  "functions": [
+    {
+      "name": "revealText",
+      "signature": "(text: string, options: { progress: Signal<number>; unit?: \"grapheme\" | \"word\" | undefined; locale?: string | undefined; }, context: FrameContext): string",
+      "documentation": "Absolute-time prefix reveal using existing Signal and Intl grapheme/word segmentation; no glyph shaping engine."
+    },
+    {
+      "name": "wiggle",
+      "signature": "(options: { frequency: Signal<number>; amplitude: Signal<number>; seed?: number | undefined; dimensions?: number | undefined; octaves?: number | undefined; amplitudeMultiplier?: number | undefined; }, context: FrameContext): number[]",
+      "documentation": "EffectCraft-derived seeded offsets in amplitude units, from Stage-local seconds; pure random access, no integrated state."
+    },
+    {
+      "name": "createVectorTools",
+      "signature": "(graphics: Pick<typeof import(\"C:/Users/ASUS/Documents/Codex/2026-10-28/referenced-chatgpt-conversation-this-is-an/outputs/frameweave-worktrees/agent-2/modules/graphics-contracts/index\"), \"validatePathData\" | \"pathCommands\">): { ...; }",
+      "documentation": "Canonical Graphics Contracts v1 tools; same-topology Morph and bounded native SVG trim sampling."
+    },
+    {
+      "name": "createImageEffects",
+      "signature": "(init: PluginInit): Promise<{ glow(image: HTMLCanvasElement, options: { radius: Signal<number>; intensity: Signal<number>; threshold?: Signal<number> | undefined; }, context: FrameContext): Promise<...>; displacement(image: HTMLCanvasElement, options: { ...; }, context: FrameContext): Promise<...>; dispose(): Promise<...>; }>",
+      "documentation": "Wrap the existing locked P4 algorithms; bounded SDR Canvas8 only, never silently quantize a Surface v2."
+    },
+    {
+      "name": "glow",
+      "signature": "(input: ProfessionalSurface, options: GlowOptions, context?: FrameContext | undefined): ProfessionalSurface",
+      "documentation": "Scene-linear bloom. Extract max(0,1-threshold/Y) of signed RGB and coverage, Gaussian, then add energy."
+    },
+    {
+      "name": "blur",
+      "signature": "(input: ProfessionalSurface, options: BlurOptions, context?: FrameContext | undefined): ProfessionalSurface",
+      "documentation": "CPU reference Gaussian: radius is sigma in physical pixels; finite +/-ceil(3*sigma) normalized kernel."
+    },
+    {
+      "name": "displacement",
+      "signature": "(input: ProfessionalSurface, options: DisplacementOptions, context?: FrameContext | undefined): ProfessionalSurface",
+      "documentation": "Float upgrade of the existing deterministic sine field. Physical px, absolute seconds, bilinear premultiplied sampling."
+    },
+    {
+      "name": "applyFloatKernel",
+      "signature": "(input: ProfessionalSurface, options: FloatEffectOptions, kernel: FloatKernel, context?: FrameContext | undefined): ProfessionalSurface",
+      "documentation": "Trusted authored CPU kernel extension. Shares the exact validation/color/alpha/publication path used by builtins."
+    },
+    {
+      "name": "surfaceFromCoverage",
+      "signature": "(coverage: ArrayLike<number>, options: CoverageOptions): ProfessionalSurface",
+      "documentation": "Coverage is geometry, not an SDR color image. RGB ink is arbitrary finite scene-linear HDR."
+    },
+    {
+      "name": "createCoverageRasterizer",
+      "signature": "(graphics: Pick<typeof import(\"C:/Users/ASUS/Documents/Codex/2026-10-28/referenced-chatgpt-conversation-this-is-an/outputs/frameweave-worktrees/agent-2/modules/graphics-contracts/index\"), \"validatePathData\" | \"pathCommands\">): { ...; }",
+      "documentation": "Browser text/path coverage only. A8 supersampling does not reduce HDR RGB to Canvas8. Fonts remain browser-owned."
+    }
+  ],
+  "errors": [
+    "E_PA_PARAMETER",
+    "E_PA_GRAPHICS",
+    "E_PA_TOPOLOGY",
+    "E_PA_SPACE",
+    "E_PA_SIZE",
+    "E_PA_PRECISION",
+    "E_PA_DISPOSED",
+    "E_PA_BUSY",
+    "E_PA_LIMIT",
+    "E_PA_DEPENDENCY",
+    "E_PA_TEMPORAL"
+  ],
+  "environment": {
+    "webStage": true,
+    "worker": false,
+    "allowWasmRequired": false,
+    "host": "Managed Web bindings; CPU float effects and explicit Legacy Canvas8"
+  },
+  "limitations": [
+    "Trim: single contour, px units, polyline approximation, no offset/wrap",
+    "Morph: matching command topology and point IDs",
+    "Professional: CPU 16F/32F scene-linear; Legacy Canvas overload remains SDR; no professional GPU pass",
+    "Named Web Stage bindings v1 and declaration-only typed managed Flat are supported; JS-only graphs use capsule"
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "baseline": "4b079309a186899647ab8d499ec2b2d88f9f96f1",
+  "reuse": [
+    {
+      "project": "kurbo",
+      "version": "0.13.1",
+      "commit": "838b69ef35f3381cefc007d86aa8364f5a6dc673",
+      "license": "MIT OR Apache-2.0",
+      "crateChecksum": "4b60dfc32f652b926df6192e55525b16d186c69d47876c3ead4da5cc9f8450e2",
+      "adaptation": "Unchanged existing reviewed metric adapter"
+    },
+    {
+      "project": "clipper2-rust / Clipper2",
+      "version": "1.2.0",
+      "license": "BSL-1.0",
+      "crateChecksum": "210e9ea90a5f6c731c23bf642383ad7c006d8b24803c5c33afd5aaeae5a33f66",
+      "commit": "No additional upstream Git commit asserted; exact published crate identity/checksum retained",
+      "adaptation": "Unchanged existing reviewed fill union adapter"
+    },
+    {
+      "project": "Earcut",
+      "sourceInventory": "modules/pro-animation/vendor/earcut/SOURCE.json",
+      "license": "ISC",
+      "adaptation": "Original unchanged triangulator; no new copy/dependency"
+    },
+    {
+      "project": "EffectCraft noise",
+      "commit": "861c51f8187bf56efc77cc7b60fc4a513d2b7198",
+      "license": "MIT selected",
+      "adaptation": "Existing reviewed TS adapter called unchanged"
+    }
+  ],
+  "sourceInventories": [
+    {
+      "path": "modules/pro-animation/rust/curve-metrics/licenses/CURVE-NOTICE",
+      "sha256": "f26d69790f23c4899f1291ab49ff025c31aebef85331aff5201a485f5aa138db"
+    },
+    {
+      "path": "modules/pro-animation/rust/curve-metrics/Cargo.lock",
+      "sha256": "e07257b95c87ad0fde032c9d14afd40710ee984c8a38bb0d61614a7d8be8ab6c"
+    },
+    {
+      "path": "modules/pro-animation/rust/pathops/licenses/CLIPPER2-NOTICE",
+      "sha256": "fd527861dd8c2800251d0726d00a3a412c5d6112e2db364d782e6c937e4369d5"
+    },
+    {
+      "path": "modules/pro-animation/rust/pathops/Cargo.lock",
+      "sha256": "bedc544902f0d6c9db477d78b475fc3c8aff6f9e9b1cddeaae9c1ea5e62107c9"
+    },
+    {
+      "path": "modules/pro-animation/vendor/earcut/SOURCE.json",
+      "sha256": "603a9ceb6ca6b13e0eb89a285cf80f4e0defef88c42ba2b7b52f510b3fb7139b"
+    },
+    {
+      "path": "modules/pro-animation/vendor/effectcraft/PA2-SOURCES.json",
+      "sha256": "79df0f7c3c065cfd83333254f3859c6eb66a4e00bf219a253ee4384d097a3eef"
+    },
+    {
+      "path": "modules/native-effects/pa/kernels.ts",
+      "sha256": "b6a59d6c73787c9090b292c7058f4774e930da1179b62492533480b359831ba2"
+    }
+  ],
+  "newRuntimeDependencies": [],
+  "newPermissionOrHost": false,
+  "algorithmBoundary": "Frameweave rib/fan geometry and parameter-to-native-ink glue only; no new curve/topology/tessellation/renderer/time solver",
+  "catalogAudit": "Keyword search variable width gradient stroke returned only unrelated Web glow/displacement/particles/transform; none claimed as compatible Native strokes",
+  "references": [
+    {
+      "url": "https://www.w3.org/TR/svg-strokes/",
+      "status": "2015 Working Draft, terminology only; no copied code or claimed SVG/AE parity"
+    },
+    {
+      "url": "https://angusj.com/clipper2/Docs/Units/Clipper.Offset/Classes/ClipperOffset/_Body.htm",
+      "status": "Official offset documentation; variable-radius adapter is not this constant-distance offset API"
+    }
+  ],
+  "privateFixtures": "Source/module SHA checked existing own-workspace Kit fixtures; formal R1 factories/permissions/package installation remain Main-owned"
+}

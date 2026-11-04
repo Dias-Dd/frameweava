@@ -1,0 +1,20 @@
+import {Composition,Stage,Layer,ref,keyframes} from '@frameweave/engine';
+import {defineMediaStage,surfaceFromPixels,linear709} from '@frameweave/engine/native';
+import type {ProfessionalSurface} from '@frameweave/engine';
+import {processImage,imageStats} from 'test.resident-blends';
+export const backdrop=defineMediaStage(init=>({renderAt(){const p=new Float32Array(init.width*init.height*4);for(let y=0;y<init.height;y++)for(let x=0;x<init.width;x++){const u=x/(init.width-1),v=y/(init.height-1);p.set([1.2+u,.15+.4*v+.08*Math.cos(x/9),-.3+.15*u,1],(y*init.width+x)*4);}return {surface:surfaceFromPixels(init.width,init.height,p,{format:'rgba32float',color:linear709,alpha:'opaque'})};}}));
+export const foreground=defineMediaStage(init=>({renderAt(ctx){const p=new Float32Array(init.width*init.height*4);for(let y=0;y<init.height;y++)for(let x=0;x<init.width;x++){const u=x/(init.width-1),v=y/(init.height-1),disk=(x-init.width*(.4+.06*ctx.frame))**2+(y-init.height*.5)**2<(init.height*.38)**2,a=disk?((x+ctx.frame*3)%17<9?.7:.35):0;p.set([(.25+.5*u)*a,(.7-.3*v)*a,(1.6+.2*v)*a,a],(y*init.width+x)*4);}return {surface:surfaceFromPixels(init.width,init.height,p,{format:'rgba32float',color:linear709,alpha:'premultiplied'})};}}));
+export const artwork=defineMediaStage(()=>({async renderAt(ctx,inputs:{image:ProfessionalSurface;foreground:ProfessionalSurface}){const surface=await processImage(inputs.image,async(b,fx)=>{
+ const s=await fx.importImage(inputs.foreground);
+ b=await fx.darken(s,b,{opacity:.15});
+ b=await fx.lighten(s,b,{opacity:.16});
+ b=await fx.difference(s,b,{opacity:.08});
+ b=await fx.exclusion(s,b,{opacity:.06});
+ b=await fx.overlay(s,b,{opacity:keyframes([{frame:0,value:.12},{frame:2,value:.16}])});
+ b=await fx.hardLight(s,b,{opacity:.12});
+ b=await fx.linearBurn(s,b,{opacity:.025});
+ b=await fx.subtractBlend(s,b,{opacity:.025});
+ b=await fx.linearLight(s,b,{opacity:.025});
+ return fx.pinLight(s,b,{opacity:.12});
+ },{context:ctx});return {surface,stats:imageStats()};}}));
+export default <Composition width={192} height={108} fps={12} durationInFrames={3} background="#172844"><Stage id="backdrop" factory={backdrop} outputs={{surface:'surface'}}/><Stage id="foreground" factory={foreground} outputs={{surface:'surface'}}/><Stage id="image" factory={artwork} inputs={{image:ref('backdrop'),foreground:ref('foreground')}} outputs={{surface:'surface',stats:'json'}}/><Layer source={ref('backdrop')} scale={.5} y={27}/><Layer source={ref('image')} scale={.5} x={96} y={27}/></Composition>;

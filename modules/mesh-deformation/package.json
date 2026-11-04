@@ -1,0 +1,1 @@
+{"name":"mesh-deformation","version":"0.1.4","type":"module","license":"Apache-2.0 AND MIT","exports":{".":{"types":"./types/index.d.ts","import":"./index.ts"}},"peerDependencies":{"@frameweave/engine":"0.1.0"}}

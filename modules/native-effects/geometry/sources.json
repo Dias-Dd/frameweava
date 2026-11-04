@@ -1,0 +1,42 @@
+{
+  "repository": "https://github.com/storytold/effectcraft",
+  "commit": "ec7ced1f0515f0b6f376dbcc297f1c441f452d6e",
+  "license": "MIT",
+  "files": [
+    {
+      "file": "LICENSE-MIT",
+      "bytes": 1103,
+      "sha256": "7b6db9a363688683feacdf9b528f059637f2e5d2edbacd8720fc9b26781c9abe"
+    },
+    {
+      "file": "crates/gpu/src/shaders/fx_distort.wgsl",
+      "bytes": 19003,
+      "sha256": "9b15392702e4c89c438b3a252ea1efee0209183abbe28c7b135b507133673f75"
+    },
+    {
+      "file": "crates/effects/src/distort.rs",
+      "bytes": 35928,
+      "sha256": "c965a0689d29638c3b4220fd234c4af6a81fe2de48e8dbac5f48bf024712bf5e"
+    },
+    {
+      "file": "crates/effects/src/distort2.rs",
+      "bytes": 53703,
+      "sha256": "b3473ac8e15021ac993deb1e8de072be87b4e409521307f09d6e4eab5a58a9dc"
+    },
+    {
+      "file": "crates/effects/src/generate.rs",
+      "bytes": 28262,
+      "sha256": "e8317c14e3220deba5cfb6e3747b507d91fe3dc9542466332c7b963ffd810041"
+    },
+    {
+      "file": "crates/effects/src/util.rs",
+      "bytes": 30756,
+      "sha256": "777f70ad2f50fe718717f0ac9a5f6bf8b272f72cb9d1ad0e25f8c1d40c68a923"
+    }
+  ],
+  "adaptations": [
+    "Existing inverse maps and grid/Coons geometry from distort.rs/distort2.rs, WGSL twirl/bulge/wave/ripple/lens/fBm",
+    "Existing Frameweave compensated arithmetic/sampler; PM alpha-zero radiance preserved",
+    "Reconstruction, Brown-Conrady, static liquify brushes, kaleidoscope and cylinder are local mathematical implementations; not presented as copied upstream effects"
+  ]
+}

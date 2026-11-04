@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "baseline": "7daae8c1de48062282a8335b73224b3080f3cf36",
+  "ok": true,
+  "wallMs": 6723.156299999999,
+  "rows": [
+    {
+      "name": "real TSX and random/repeated native command packets with all sub-emitter kinds",
+      "ok": true,
+      "wallMs": 6721.8573,
+      "detail": [
+        {
+          "frame": 23,
+          "passes": 2,
+          "images": 1,
+          "data": 4,
+          "kernels": 2
+        },
+        {
+          "frame": 0,
+          "passes": 2,
+          "images": 1,
+          "data": 4,
+          "kernels": 2
+        },
+        {
+          "frame": 23,
+          "passes": 2,
+          "images": 1,
+          "data": 4,
+          "kernels": 2
+        },
+        {
+          "frame": 12,
+          "passes": 2,
+          "images": 1,
+          "data": 4,
+          "kernels": 2
+        },
+        {
+          "frame": 23,
+          "passes": 2,
+          "images": 1,
+          "data": 4,
+          "kernels": 2
+        }
+      ]
+    }
+  ]
+}

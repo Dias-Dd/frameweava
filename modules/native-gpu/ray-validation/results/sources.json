@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "engineCommit": "a0520405f75ad301c234450347520c887b6c97fb",
+  "baseCommit": "d59123d2a206bd599bd2af7e75965558b82f0582",
+  "buildInputsMatchFrozenEngine": true,
+  "executableSha256": "2a64ee71f1a23a96daf9abe38049711d7b299f92e2102e67881e517e0f56b8e2",
+  "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.1\nLLVM version: 23.1.1",
+  "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+  "files": {
+    "examples/native-ray-query/effect.ts": "3aa47cab508e9e47a2bf447ced8bffcfc63874870b030766357c87ad3b407422",
+    "examples/native-ray-query/project.tsx": "85c05fb7d9afb2a3b8e0403d994f208b386261dd69bc51a2bd1063b03a6c1d62",
+    "modules/native-gpu/Cargo.toml": "750185fdc74e63af9609069389cc32e881c7e6499a00b1ac00feb0449e8c48db",
+    "modules/native-gpu/RAY_QUERY.md": "ba4e83a5b6b87fda73e867c52570d3ac2149e02a4318d9ba8796ba6946cb3803",
+    "modules/native-gpu/authoring.ts": "a5b4b39e283155149a06f823c3983077121e81deb9cd7079dce1529a4583fc4c",
+    "modules/native-gpu/bootstrap-program.ts": "7dc4cb72db131d6214f96da7840a4f088e7b4a58cca2059d90413c309880403b",
+    "modules/native-gpu/build.mjs": "321b1ba789e26a76a4a9e6dbdac29bf1f5a930909e19decb453766651f4fc15b",
+    "modules/native-gpu/cli.ts": "af1a2c273f5c986c7424f65619f3dcdc96367971eb332e4103c6228ada553750",
+    "modules/native-gpu/client.ts": "e89f1a1f91d05688eef7542cb0d86d6aac7d9768d6b910fa836ae3d4859a90cc",
+    "modules/native-gpu/extensions.ts": "38aecef8686db36e8b1dd61acfe9a2a98e3820328b7532c01d93719f821c414c",
+    "modules/native-gpu/logic-host.ts": "1dea08b6df85f38925fd1822b999669640d15561baeb378f3043872119678ec9",
+    "modules/native-gpu/memory.ts": "511a2490d346c5c34014cb32429d2d3ccfd8968753e23f0f6af8ded70ed21c56",
+    "modules/native-gpu/preview.ts": "9e524c25cb2e2152a3d860bffa577e1aae2e95d1110bc2c67ea91f8c486858b9",
+    "modules/native-gpu/ray-validation/baseline-cancellation.mjs": "8d7206bdb7e129557764d0e9c9d6c8bf52b689fe0025111e5b7ca817a05217ee",
+    "modules/native-gpu/ray-validation/benchmark.ts": "2ea38a95da37296a693a42fcd98a4e5a44c617ca26c9cb500bbff86a1d42f37a",
+    "modules/native-gpu/ray-validation/cli.mjs": "842d1c7e19d86b1431250fee6f4d72f9977471f97b38467ea82dd29b84d4a016",
+    "modules/native-gpu/rays.ts": "3a1a81b20ee1b11d42ff4e1b08a786907d2f3f93298a301f557e64213276b437",
+    "modules/native-gpu/scope.ts": "0e17b4ada2069f7ec976f2f0953d4127221161e33009075abe8277c6c5449bf2",
+    "modules/native-gpu/service.ts": "2053a80ba41824f7229899c4e1fa63ea64babec35696a102a3c186f56902a33d",
+    "modules/native-gpu/src/external_windows.rs": "5f66e4c91640c7472c82f7b07570ba6a084bbceaa05fd4b5447d71390ba35856",
+    "modules/native-gpu/src/gpu.rs": "e7639a244c1913464796f612a7338b3b68a08840481fb7a64f9a0f40c915a4f1",
+    "modules/native-gpu/src/main.rs": "61c1cac173828ad0de389e54aecc1d08eb00cf70f5d2a8bb9413e10373bb9f65",
+    "modules/native-gpu/src/native_module.rs": "551f5fcd9b561fcdfcdf2a8cb3ff41a9d36a1965703a65e59e68171c9bc3d0ea",
+    "modules/native-gpu/src/native_ray.rs": "22002f2a80831e726a175efd02281e25dfa7e7359eea84a88926edbe04d56d16",
+    "modules/native-gpu/src/protocol.rs": "90d7ccd4786eaa6a2423a75d390ad86fa9427193a43db2bb54a47677fb7871a4",
+    "modules/native-gpu/src/ray/gather.wgsl": "278921d13281ee13d3eaef14205321bb7e72a5821c2d89d22d6ca853d1716af5",
+    "modules/native-gpu/src/ray/query.wgsl": "3014f6b323de0ac3a6b7bacafc648d904bcc20d8becab2b034194023140a2e12",
+    "modules/native-gpu/src/ray_contract.rs": "88b677166264518c184a01e4672f43f1957941c1fcb5a8226c00361233af997d",
+    "modules/native-gpu/src/ray_policy.rs": "b94aef52ae3729a193d983a65f922ad34bcd148137afc18045596b704cc6a6ce",
+    "prototypes/p1-ray-query/Cargo.lock": "800f5d00347d337e48940b128efe3200587a75eb2bac3060cc74fb057d23880f",
+    "prototypes/p1-ray-query/Cargo.toml": "9010a9e9691765e56617966a31952ceca09c2587d33e5ea03e7e274cb8772bc7",
+    "prototypes/p1-ray-query/src/main.rs": "6f31005183477fff6650483867934a789745e21e6a0db805b94fe438ef69139f",
+    "prototypes/p1-ray-query/src/probe.wgsl": "b1450c6498edf80badd0018138d2b4c618a3d4c6f66a57e26d8104bc477be3c5",
+    "src/render/renderer.ts": "0277abf9368a9d4721f886c505736c63236c8e9bac6c12c281e68afafa177d06",
+    "tests/native-ray-query.test.ts": "7736ece3c87027672c1d698f6b4afb807f73784a5b8b421a2cec87846a54ec37",
+    "tests/native-ray-renderer.test.ts": "475535d367757958439f7d75f2a1dfd60427cdc9fe4104bd73fdcda8b4209c1e"
+  },
+  "pendingP1": [
+    "OptiX (SDK and licence/user review, CUDA interop prerequisite)",
+    "OpenVDB/NanoVDB (verified sparse-volume resource/dispatch seam)",
+    "multichannel/deep EXR (typed non-color I/O contract)"
+  ],
+  "unverified": [
+    "AMD",
+    "Intel",
+    "Linux",
+    "macOS",
+    "release build",
+    "full repository regression",
+    "distribution/installation",
+    "six export modes",
+    "physical scanout",
+    "complex path tracing scenes"
+  ],
+  "baselineFailures": [
+    {
+      "test": "native-gpu-cancellation.test.ts: Renderer forwards AbortSignal into actual client slot acquisition",
+      "reproducedAt": "d59123d2a206bd599bd2af7e75965558b82f0582",
+      "log": "raw/baseline-cancellation-2.log",
+      "reason": "existing test mock writes args[5].parameters; baseline Renderer passes a different signature; original assertion untouched"
+    },
+    {
+      "test": "SpiderMonkey eval security baseline",
+      "scope": "prior inference checkpoint only, not rerun or counted as a pass in this campaign",
+      "owner": "Main"
+    }
+  ]
+}

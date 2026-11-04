@@ -1,0 +1,28 @@
+{
+  "name": "pro-animation",
+  "version": "0.7.3",
+  "type": "module",
+  "license": "Apache-2.0 AND MIT",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "peerDependencies": {
+    "@frameweave/engine": "0.1.0",
+    "@frameweave/graphics-contracts": "1.0.0"
+  },
+  "files": [
+    "dist",
+    "src",
+    "vendor",
+    "LICENSE",
+    "NOTICE",
+    "README.md",
+    "PUBLIC_API.md",
+    "effect.json",
+    "frameweave.package.json",
+    "generated"
+  ]
+}

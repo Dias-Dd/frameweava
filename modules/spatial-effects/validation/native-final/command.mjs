@@ -1,0 +1,5 @@
+import {spawn} from 'node:child_process';import {writeFile,readFile,readdir} from 'node:fs/promises';import {performance} from 'node:perf_hooks';
+const [name,command,...args]=process.argv.slice(2),out='modules/spatial-effects/validation/native-final/evidence';if(!name||!command)throw Error('Expected unique log name and command');
+try{await readFile(`${out}/${name}-time.json`);throw Error('Refusing to overwrite prior evidence');}catch(e){if(e.code!=='ENOENT')throw e;}
+const begin=performance.now(),child=spawn(command,args,{windowsHide:true,stdio:['ignore','pipe','pipe'],env:{...process.env,FRAMEWEAVE_HOME:process.env.FRAMEWEAVE_HOME??`${process.cwd()}/.frameweave/native-final-home`}});let output='';for(const stream of [child.stdout,child.stderr])stream.on('data',data=>{output+=data;process.stdout.write(data);});
+const code=await new Promise((resolve,reject)=>{child.on('error',reject);child.on('exit',resolve);});await writeFile(`${out}/${name}.log`,output);await writeFile(`${out}/${name}-time.json`,JSON.stringify({command:[command,...args],exitCode:code,wallMs:performance.now()-begin})+'\n');process.exitCode=code??1;

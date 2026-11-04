@@ -1,0 +1,1 @@
+{"extends":"../../../tsconfig.json","include":["../src/motion-control/**/*.ts","../../../tests/pro-animation-motion-control*.test.ts"],"exclude":["../../../node_modules"]}

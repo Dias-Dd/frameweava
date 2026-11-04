@@ -1,0 +1,18 @@
+import {Composition,Stage,Layer,ref} from '@frameweave/engine';
+import {defineNativeStage} from '@frameweave/engine/native';
+import {characterWave,animateCreation,fadeInCreation,fadeOutCreation,slideInCreation,slideOutCreation,popInCreation,popOutCreation,spinInCreation,spinOutCreation,springInCreation,floatCreation,pulseCreation,swingCreation,staggerCreations,placeCreation} from 'spatial-creation-candidate';
+export const animated=defineNativeStage(()=>animateCreation(characterWave()));
+export const fadeIn=defineNativeStage(()=>fadeInCreation(characterWave()));
+export const fadeOut=defineNativeStage(()=>fadeOutCreation(characterWave(),{at:0}));
+export const slideIn=defineNativeStage(()=>slideInCreation(characterWave(),{direction:'left'}));
+export const slideOut=defineNativeStage(()=>slideOutCreation(characterWave(),{at:0,direction:'right'}));
+export const popIn=defineNativeStage(()=>popInCreation(characterWave()));
+export const popOut=defineNativeStage(()=>popOutCreation(characterWave(),{at:0}));
+export const spinIn=defineNativeStage(()=>spinInCreation(characterWave(),{angle:-90}));
+export const spinOut=defineNativeStage(()=>spinOutCreation(characterWave(),{at:0,angle:90}));
+export const springIn=defineNativeStage(()=>springInCreation(characterWave()));
+export const floating=defineNativeStage(()=>floatCreation(characterWave()));
+export const pulsing=defineNativeStage(()=>pulseCreation(characterWave(),{amount:.12}));
+export const swinging=defineNativeStage(()=>swingCreation(characterWave(),{angle:12}));
+export const staggered=defineNativeStage(()=>staggerCreations([-45,0,45].map(x=>placeCreation(characterWave(),{x,scale:.6})),{interval:2,enter:{kind:'pop',duration:8}}));
+export default Composition({id:'motion-gallery',width:1680,height:360,fps:24,durationInFrames:24,seed:37,background:'#223b50',children:Object.entries({animated,fadeIn,fadeOut,slideIn,slideOut,popIn,popOut,spinIn,spinOut,springIn,floating,pulsing,swinging,staggered}).flatMap(([id,factory],i)=>[Stage({id,factory,width:240,height:180,outputs:{surface:'surface'}}),Layer({source:ref(id),x:i%7*240,y:Math.floor(i/7)*180})])});

@@ -1,0 +1,4 @@
+import {Composition,Stage,Layer,ref} from '@frameweave/engine';import {defineNativeStage} from '@frameweave/engine/native';import {colonizationScene,type ColonizationSceneOptions} from 'spatial-growth-candidate';
+export const options={cloud:{count:280,center:[0,1.2,0],radius:[.85,.85,.5],seed:17},source:{seed:17,speed:1.1,influence:.48,kill:.08,substeps:2},sides:6,tipRadius:.009,maturity:.18,leaves:{tipOnly:false,probability:.24,size:.1,delay:.08},camera:{projection:'orthographic',position:[3,2.2,5],target:[0,.8,0],viewHeight:2.7,near:.01,far:30},stemColor:[.38,.15,.045],leafColor:[.08,.65,.3],emissive:[.005,.012,.006]} satisfies ColonizationSceneOptions;
+export const plant=defineNativeStage(init=>colonizationScene(init,options));
+export default Composition({id:'colonization-shot',width:640,height:360,fps:24,durationInFrames:24,background:'#0b1920',children:[Stage({id:'plant',factory:plant,offset:48,outputs:{surface:'surface'}}),Layer({source:ref('plant')})]});

@@ -1,0 +1,16 @@
+{
+  "wrapper": "Apache-2.0 AND MIT (existing Three.js matrix math)",
+  "noNewDependency": true,
+  "originalBitmapSource": {
+    "project": "googlefonts/fontations / Skrifa",
+    "version": "0.49.0",
+    "file": "skrifa/src/bitmap.rs",
+    "upstream": "https://github.com/googlefonts/fontations",
+    "sha256": "c6111af1af73a3fb8d90db56ae9f608d89ef665b664d4c5c7c7eef5895634a31",
+    "license": "MIT OR Apache-2.0; original bundled notices retained",
+    "reuse": "Original already-pinned parser/metrics; no SFNT decoder or source algorithm copied/reimplemented. Thin coordinate-unit conversion follows BitmapGlyph documented bearings and placement origin."
+  },
+  "svgSpec": "https://learn.microsoft.com/en-us/typography/opentype/spec/svg",
+  "policy": "Explicit crop after original SVG viewport transform. Core static source validation/raster/linear conversion unchanged. No active SVG, path/URL/raw-pixel admission or CPU image effect added.",
+  "fixtures": "Original Apache-2.0 authored genuine OpenType sbix/SVG/gzip fixtures from existing prepare-font-fixtures.py; no production-typeface coverage inferred."
+}

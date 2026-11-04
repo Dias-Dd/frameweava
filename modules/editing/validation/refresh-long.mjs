@@ -1,0 +1,8 @@
+import {readdir,readFile,writeFile,copyFile} from 'node:fs/promises';import {resolve,join} from 'node:path';import {createHash} from 'node:crypto';
+const root=resolve(process.env.EDIT_FROZEN_CORE),rows=[];for(const file of await readdir('modules/editing'))if(file.endsWith('.ts')){const bytes=await readFile(join('modules/editing',file));await copyFile(join('modules/editing',file),join(root,'modules/editing',file));rows.push({file,sha256:createHash('sha256').update(bytes).digest('hex')});}
+const media=resolve(process.env.FRAMEWEAVE_MEDIA_RUNTIME),receipt=JSON.parse(await readFile(join(media,'media-runtime.json'),'utf8')),sha=bytes=>createHash('sha256').update(bytes).digest('hex');
+for(const [file,expected]of Object.entries(receipt.files))if(sha(await readFile(join(media,file)))!==expected)throw Error('Media runtime file differs from its receipt');
+for(const [file,expected]of Object.entries(receipt.sourceHashes))if(sha(await readFile(join(root,'modules/native-gpu/native-media',file)))!==expected)throw Error('Media runtime source differs from frozen Core');
+await writeFile(join(process.env.EDIT_EVIDENCE,'media-runtime-'+process.env.EDIT_RUN+'.json'),JSON.stringify({path:media,sourceMatchesFrozenCore:true,receipt},null,2)+'\n');
+await writeFile(join(process.env.EDIT_EVIDENCE,'overlay-'+process.env.EDIT_RUN+'.json'),JSON.stringify({root,coreUnchanged:true,files:rows},null,2)+'\n');
+await writeFile(resolve('.frameweave/editing/frozen-types.json'),JSON.stringify({extends:resolve('tsconfig.json'),compilerOptions:{paths:{'@frameweave/engine':[join(root,'src/index.ts')],'@frameweave/engine/native':[join(root,'modules/native-gpu/authoring.ts')]}},include:[join(root,'modules/editing/*.ts')],exclude:[]},null,2)+'\n');

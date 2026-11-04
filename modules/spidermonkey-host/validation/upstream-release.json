@@ -1,0 +1,6 @@
+{
+  "name": "libmozjs-x86_64-pc-windows-msvc.tar.gz",
+  "digest": "sha256:dc327a1aaccdf58e0a90f647d22ff7ea4d61e141dfc0e46dc94dcc0b7f4cc32f",
+  "browser_download_url": "https://github.com/servo/mozjs/releases/download/mozjs-sys-v153.6.0-1/libmozjs-x86_64-pc-windows-msvc.tar.gz",
+  "size": 90701755
+}

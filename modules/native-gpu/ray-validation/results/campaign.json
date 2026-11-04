@@ -1,0 +1,196 @@
+{
+  "version": 1,
+  "baseCommit": "d59123d2a206bd599bd2af7e75965558b82f0582",
+  "engineCommit": "a0520405f75ad301c234450347520c887b6c97fb",
+  "campaign": "P1 human-requested ray-query integration; one cumulative campaign, not reset",
+  "commands": [
+    {
+      "command": "probe build (MSVC with erroneous GNU flags)",
+      "log": "ray-probe-build-1.log",
+      "exitCode": 1,
+      "seconds": 1.1896797,
+      "accountedSeconds": 1.1896797
+    },
+    {
+      "command": "probe build (incorrect usage enum)",
+      "log": "ray-probe-build-2.log",
+      "exitCode": 1,
+      "seconds": 0.6085005,
+      "accountedSeconds": 0.6085005
+    },
+    {
+      "command": "probe build/run (edge-aligned input; 128 tie mismatches)",
+      "log": "ray-probe-3.log",
+      "exitCode": 1,
+      "seconds": 3.9148114,
+      "accountedSeconds": 3.9148114
+    },
+    {
+      "command": "probe build/run (non-edge-aligned frozen input)",
+      "log": "ray-probe-4.log",
+      "exitCode": 0,
+      "seconds": 3.2345044,
+      "accountedSeconds": 3.2345044
+    },
+    {
+      "command": "native --check + typecheck, first attempt",
+      "log": "rust-check-1.log",
+      "exitCode": 1,
+      "seconds": 10.2133321,
+      "accountedSeconds": 10.2133321
+    },
+    {
+      "command": "native build + typecheck, second attempt",
+      "log": "native-build-1.log",
+      "exitCode": 1,
+      "seconds": 15.4839895,
+      "accountedSeconds": 15.4839895
+    },
+    {
+      "command": "smoke (missing coordinate metadata)",
+      "log": "smoke-1.log",
+      "exitCode": 1,
+      "seconds": 0.3609832,
+      "accountedSeconds": 0.3609832
+    },
+    {
+      "command": "smoke (reserved WGSL identifier)",
+      "log": "smoke-2.log",
+      "exitCode": 1,
+      "seconds": 1.2972859,
+      "accountedSeconds": 1.2972859
+    },
+    {
+      "command": "native build + smoke (WGSL division)",
+      "log": "smoke-3.log",
+      "exitCode": 1,
+      "seconds": 4.7109693,
+      "accountedSeconds": 4.7109693
+    },
+    {
+      "command": "native build + smoke pass; original elapsed output truncated",
+      "log": "smoke-4.log",
+      "exitCode": 0,
+      "seconds": null,
+      "accountedSeconds": 60
+    },
+    {
+      "command": "native build4 + ray tests1 + typecheck3",
+      "log": "ray-tests-1.log",
+      "exitCode": 1,
+      "seconds": 12.8824873,
+      "accountedSeconds": 12.8824873
+    },
+    {
+      "command": "ray tests2 + typecheck4",
+      "log": "ray-tests-2.log",
+      "exitCode": 0,
+      "seconds": 9.7777478,
+      "accountedSeconds": 9.7777478
+    },
+    {
+      "command": "renderer1 (unused sample binding in example)",
+      "log": "renderer-1.log",
+      "exitCode": 1,
+      "seconds": 11.3952597,
+      "accountedSeconds": 11.3952597
+    },
+    {
+      "command": "renderer2 (serial-slot assertion in new test)",
+      "log": "renderer-2.log",
+      "exitCode": 1,
+      "seconds": 14.1717313,
+      "accountedSeconds": 14.1717313
+    },
+    {
+      "command": "renderer3 real TSX targeted",
+      "log": "renderer-3.log",
+      "exitCode": 0,
+      "seconds": 12.4900647,
+      "accountedSeconds": 12.4900647
+    },
+    {
+      "command": "native build5 + typecheck",
+      "log": "native-build-5.log",
+      "exitCode": 0,
+      "seconds": 11.6183104,
+      "accountedSeconds": 11.6183104
+    },
+    {
+      "command": "20 tests including legacy cancellation fixture",
+      "log": "final-tests.log",
+      "exitCode": 1,
+      "seconds": 32.326755,
+      "accountedSeconds": 32.326755
+    },
+    {
+      "command": "ray final5 + typecheck",
+      "log": "ray-tests-final.log",
+      "exitCode": 0,
+      "seconds": 10.1525664,
+      "accountedSeconds": 10.1525664
+    },
+    {
+      "command": "baseline cancellation setup (bundle path failed)",
+      "log": "baseline-cancellation.log",
+      "exitCode": 1,
+      "seconds": 0.6247018,
+      "accountedSeconds": 0.6247018
+    },
+    {
+      "command": "baseline Renderer cancellation failure reproduction",
+      "log": "baseline-cancellation-2.log",
+      "exitCode": 1,
+      "seconds": 0.8268719,
+      "accountedSeconds": 0.8268719
+    },
+    {
+      "command": "CLI first harness assumed stdout for errors",
+      "log": "cli.log",
+      "exitCode": 1,
+      "seconds": 6.2996707,
+      "accountedSeconds": 6.2996707
+    },
+    {
+      "command": "CLI explicit permission and denied diagnostics",
+      "log": "cli-2.log",
+      "exitCode": 0,
+      "seconds": 12.0685168,
+      "accountedSeconds": 12.0685168
+    },
+    {
+      "command": "native final build + frozen 14 tests",
+      "log": "frozen-tests.log",
+      "exitCode": 0,
+      "seconds": 35.3534671,
+      "accountedSeconds": 35.3534671
+    },
+    {
+      "command": "frozen distinct-frame ray benchmark 160/1080p/4K",
+      "log": "benchmark.log",
+      "exitCode": 0,
+      "seconds": 16.20954,
+      "accountedSeconds": 16.20954
+    },
+    {
+      "command": "real RT -> GPU OCIO -> HEVC HDR10 + decode",
+      "log": "hdr.log",
+      "exitCode": 0,
+      "seconds": 6.6730837,
+      "accountedSeconds": 6.6730837
+    }
+  ],
+  "accountedValidationSeconds": 293.88483060000004,
+  "additionalMetadataAndDiffCheckAllowanceSeconds": 15,
+  "limitSecondsExclusive": 420,
+  "notes": [
+    "Unknown original smoke4 elapsed charged 60 seconds conservatively; actual elapsed not invented.",
+    "Frozen 14-test log is one run on final engine code. Original 20-test run is separately 19 pass / 1 legacy failure, not relabeled green.",
+    "Baseline d591 Renderer bundled into unchanged cancellation test reproduces identical undefined parameters fixture failure. No assertion changed.",
+    "Initial triangle probe had exactly-on-edge float tie differences. All raw failures preserved; non-edge-aligned numerical fixture is documented.",
+    "P0 CUDA/TensorRT and P1 OptiX/sparse VDB/Deep EXR are not implemented by this checkpoint.",
+    "No full repository, release build, installer, six portable-export requalification or physical scanout benchmark.",
+    "Operator opt-in tested through real CLI. Baseline CLI errors are machine JSON on stderr; positive result is stdout. Main owns pending public presenter integration.",
+    "Evidence collector setup failed twice (noncanonical git path, then Rust not on PATH); collector now uses canonical frozen Git paths and explicit installed Rustup executables. Included in metadata/diff-check allowance; no engine assertions changed."
+  ]
+}

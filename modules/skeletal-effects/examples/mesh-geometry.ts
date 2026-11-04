@@ -1,0 +1,5 @@
+import type {MeshData,Vec3} from '@frameweave/engine/graphics-contracts';
+const coordinates={spaceId:'material.world',unit:'meter' as const,origin:'local' as const,x:'right' as const,y:'up' as const,z:'toward-viewer' as const,handedness:'right' as const};
+export function ground():MeshData{return {schema:'frameweave.mesh',version:1,id:'mesh.floor',coordinates,topology:'triangles',vertexIds:['a','b','c','d'],restPositions:[[-3,0,-3],[-3,0,3],[3,0,-3],[3,0,3]],indices:[0,1,2,1,3,2]};}
+export function waveMesh(count=31):MeshData{const restPositions:Vec3[]=[],indices:number[]=[];for(let y=0;y<count;y++)for(let x=0;x<count;x++)restPositions.push([-1.2+2.4*x/(count-1),1.2,-1+2*y/(count-1)]);for(let y=0;y<count-1;y++)for(let x=0;x<count-1;x++){const a=y*count+x;indices.push(a,a+count,a+1,a+1,a+count,a+count+1);}return {schema:'frameweave.mesh',version:1,id:'mesh.wave',coordinates,topology:'triangles',vertexIds:restPositions.map((_,i)=>'v'+i),restPositions,indices};}
+export function wavePositions(mesh:MeshData,time:number):Vec3[]{return mesh.restPositions.map(([x,y,z])=>[x,y+.3*Math.sin(x*3+time*2)*Math.cos(z*2-time),z]);}

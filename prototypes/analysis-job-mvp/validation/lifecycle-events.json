@@ -1,0 +1,2529 @@
+[
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "starting",
+    "completed": 0,
+    "total": 0,
+    "progress": 0
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "hashing",
+    "completed": 0,
+    "total": 64,
+    "progress": 0
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "cache",
+    "completed": 0,
+    "total": 64,
+    "progress": 0,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "initializing",
+    "completed": 0,
+    "total": 64,
+    "progress": 0,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "decoding",
+    "completed": 0,
+    "total": 64,
+    "progress": 0,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 1,
+    "total": 64,
+    "progress": 0.015625,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 2,
+    "total": 64,
+    "progress": 0.03125,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 3,
+    "total": 64,
+    "progress": 0.046875,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 4,
+    "total": 64,
+    "progress": 0.0625,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 5,
+    "total": 64,
+    "progress": 0.078125,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 6,
+    "total": 64,
+    "progress": 0.09375,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 7,
+    "total": 64,
+    "progress": 0.109375,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 8,
+    "total": 64,
+    "progress": 0.125,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 9,
+    "total": 64,
+    "progress": 0.140625,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 10,
+    "total": 64,
+    "progress": 0.15625,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 11,
+    "total": 64,
+    "progress": 0.171875,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 12,
+    "total": 64,
+    "progress": 0.1875,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 13,
+    "total": 64,
+    "progress": 0.203125,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 14,
+    "total": 64,
+    "progress": 0.21875,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 15,
+    "total": 64,
+    "progress": 0.234375,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 16,
+    "total": 64,
+    "progress": 0.25,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 17,
+    "total": 64,
+    "progress": 0.265625,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 18,
+    "total": 64,
+    "progress": 0.28125,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 19,
+    "total": 64,
+    "progress": 0.296875,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 20,
+    "total": 64,
+    "progress": 0.3125,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 21,
+    "total": 64,
+    "progress": 0.328125,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 22,
+    "total": 64,
+    "progress": 0.34375,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 23,
+    "total": 64,
+    "progress": 0.359375,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 24,
+    "total": 64,
+    "progress": 0.375,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 25,
+    "total": 64,
+    "progress": 0.390625,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 26,
+    "total": 64,
+    "progress": 0.40625,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 27,
+    "total": 64,
+    "progress": 0.421875,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 28,
+    "total": 64,
+    "progress": 0.4375,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 29,
+    "total": 64,
+    "progress": 0.453125,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 30,
+    "total": 64,
+    "progress": 0.46875,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 31,
+    "total": 64,
+    "progress": 0.484375,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 32,
+    "total": 64,
+    "progress": 0.5,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 33,
+    "total": 64,
+    "progress": 0.515625,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 34,
+    "total": 64,
+    "progress": 0.53125,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 35,
+    "total": 64,
+    "progress": 0.546875,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 36,
+    "total": 64,
+    "progress": 0.5625,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 37,
+    "total": 64,
+    "progress": 0.578125,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 38,
+    "total": 64,
+    "progress": 0.59375,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 39,
+    "total": 64,
+    "progress": 0.609375,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 40,
+    "total": 64,
+    "progress": 0.625,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 41,
+    "total": 64,
+    "progress": 0.640625,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 42,
+    "total": 64,
+    "progress": 0.65625,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 43,
+    "total": 64,
+    "progress": 0.671875,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 44,
+    "total": 64,
+    "progress": 0.6875,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 45,
+    "total": 64,
+    "progress": 0.703125,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 46,
+    "total": 64,
+    "progress": 0.71875,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 47,
+    "total": 64,
+    "progress": 0.734375,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 48,
+    "total": 64,
+    "progress": 0.75,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 49,
+    "total": 64,
+    "progress": 0.765625,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 50,
+    "total": 64,
+    "progress": 0.78125,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 51,
+    "total": 64,
+    "progress": 0.796875,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 52,
+    "total": 64,
+    "progress": 0.8125,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 53,
+    "total": 64,
+    "progress": 0.828125,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 54,
+    "total": 64,
+    "progress": 0.84375,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 55,
+    "total": 64,
+    "progress": 0.859375,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 56,
+    "total": 64,
+    "progress": 0.875,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 57,
+    "total": 64,
+    "progress": 0.890625,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 58,
+    "total": 64,
+    "progress": 0.90625,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 59,
+    "total": 64,
+    "progress": 0.921875,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 60,
+    "total": 64,
+    "progress": 0.9375,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 61,
+    "total": 64,
+    "progress": 0.953125,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 62,
+    "total": 64,
+    "progress": 0.96875,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 63,
+    "total": 64,
+    "progress": 0.984375,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 64,
+    "total": 64,
+    "progress": 1,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "running",
+    "phase": "committing",
+    "completed": 64,
+    "total": 64,
+    "progress": 1,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "db7812f4-9604-48b0-a01e-8fa76de7e710",
+    "state": "completed",
+    "phase": "completed",
+    "completed": 64,
+    "total": 64,
+    "progress": 1,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765",
+    "cleanup": {
+      "browserClosed": true,
+      "decoderClosed": true,
+      "tempRemoved": true,
+      "childExited": true,
+      "forced": false
+    },
+    "result": {
+      "trackPath": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-2\\.frameweave\\analysis-job-mvp\\verification-Be83Fg\\cache\\8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765\\track.json",
+      "cacheDirectory": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-2\\.frameweave\\analysis-job-mvp\\verification-Be83Fg\\cache\\8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765",
+      "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765",
+      "cacheHit": false,
+      "cleanup": {
+        "browserClosed": true,
+        "decoderClosed": true,
+        "tempRemoved": true,
+        "childExited": true,
+        "forced": false
+      },
+      "metrics": {
+        "elapsedMs": 4439.6383000000005,
+        "initMs": 1387.1960000000001,
+        "inferenceFrames": 64,
+        "validFrames": 57,
+        "inferenceMedianMs": 18.899999998509884,
+        "inferenceP95Ms": 22.899999998509884
+      }
+    },
+    "stderr": ""
+  },
+  {
+    "id": "f799645b-e390-4fd9-9da0-57ebcd08a8c8",
+    "state": "running",
+    "phase": "starting",
+    "completed": 0,
+    "total": 0,
+    "progress": 0
+  },
+  {
+    "id": "f799645b-e390-4fd9-9da0-57ebcd08a8c8",
+    "state": "running",
+    "phase": "hashing",
+    "completed": 0,
+    "total": 64,
+    "progress": 0
+  },
+  {
+    "id": "f799645b-e390-4fd9-9da0-57ebcd08a8c8",
+    "state": "running",
+    "phase": "cache",
+    "completed": 0,
+    "total": 64,
+    "progress": 0,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765"
+  },
+  {
+    "id": "f799645b-e390-4fd9-9da0-57ebcd08a8c8",
+    "state": "completed",
+    "phase": "completed",
+    "completed": 64,
+    "total": 64,
+    "progress": 1,
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765",
+    "cleanup": {
+      "browserClosed": true,
+      "decoderClosed": true,
+      "tempRemoved": true,
+      "childExited": true,
+      "forced": false
+    },
+    "result": {
+      "trackPath": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-2\\.frameweave\\analysis-job-mvp\\verification-Be83Fg\\cache\\8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765\\track.json",
+      "cacheDirectory": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-2\\.frameweave\\analysis-job-mvp\\verification-Be83Fg\\cache\\8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765",
+      "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765",
+      "cacheHit": true,
+      "cleanup": {
+        "browserClosed": true,
+        "decoderClosed": true,
+        "tempRemoved": true,
+        "childExited": true,
+        "forced": false
+      },
+      "metrics": {
+        "elapsedMs": 232.9416,
+        "inferenceFrames": 0
+      }
+    },
+    "stderr": ""
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "starting",
+    "completed": 0,
+    "total": 0,
+    "progress": 0
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "hashing",
+    "completed": 0,
+    "total": 64,
+    "progress": 0
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "cache",
+    "completed": 0,
+    "total": 64,
+    "progress": 0,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "initializing",
+    "completed": 0,
+    "total": 64,
+    "progress": 0,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "decoding",
+    "completed": 0,
+    "total": 64,
+    "progress": 0,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 1,
+    "total": 64,
+    "progress": 0.015625,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 2,
+    "total": 64,
+    "progress": 0.03125,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 3,
+    "total": 64,
+    "progress": 0.046875,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 4,
+    "total": 64,
+    "progress": 0.0625,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 5,
+    "total": 64,
+    "progress": 0.078125,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 6,
+    "total": 64,
+    "progress": 0.09375,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 7,
+    "total": 64,
+    "progress": 0.109375,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 8,
+    "total": 64,
+    "progress": 0.125,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 9,
+    "total": 64,
+    "progress": 0.140625,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 10,
+    "total": 64,
+    "progress": 0.15625,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 11,
+    "total": 64,
+    "progress": 0.171875,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 12,
+    "total": 64,
+    "progress": 0.1875,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 13,
+    "total": 64,
+    "progress": 0.203125,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 14,
+    "total": 64,
+    "progress": 0.21875,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 15,
+    "total": 64,
+    "progress": 0.234375,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 16,
+    "total": 64,
+    "progress": 0.25,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 17,
+    "total": 64,
+    "progress": 0.265625,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 18,
+    "total": 64,
+    "progress": 0.28125,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 19,
+    "total": 64,
+    "progress": 0.296875,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 20,
+    "total": 64,
+    "progress": 0.3125,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 21,
+    "total": 64,
+    "progress": 0.328125,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 22,
+    "total": 64,
+    "progress": 0.34375,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 23,
+    "total": 64,
+    "progress": 0.359375,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 24,
+    "total": 64,
+    "progress": 0.375,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 25,
+    "total": 64,
+    "progress": 0.390625,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 26,
+    "total": 64,
+    "progress": 0.40625,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 27,
+    "total": 64,
+    "progress": 0.421875,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 28,
+    "total": 64,
+    "progress": 0.4375,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 29,
+    "total": 64,
+    "progress": 0.453125,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 30,
+    "total": 64,
+    "progress": 0.46875,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 31,
+    "total": 64,
+    "progress": 0.484375,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 32,
+    "total": 64,
+    "progress": 0.5,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 33,
+    "total": 64,
+    "progress": 0.515625,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 34,
+    "total": 64,
+    "progress": 0.53125,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 35,
+    "total": 64,
+    "progress": 0.546875,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 36,
+    "total": 64,
+    "progress": 0.5625,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 37,
+    "total": 64,
+    "progress": 0.578125,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 38,
+    "total": 64,
+    "progress": 0.59375,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 39,
+    "total": 64,
+    "progress": 0.609375,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 40,
+    "total": 64,
+    "progress": 0.625,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 41,
+    "total": 64,
+    "progress": 0.640625,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 42,
+    "total": 64,
+    "progress": 0.65625,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 43,
+    "total": 64,
+    "progress": 0.671875,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 44,
+    "total": 64,
+    "progress": 0.6875,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 45,
+    "total": 64,
+    "progress": 0.703125,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 46,
+    "total": 64,
+    "progress": 0.71875,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 47,
+    "total": 64,
+    "progress": 0.734375,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 48,
+    "total": 64,
+    "progress": 0.75,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 49,
+    "total": 64,
+    "progress": 0.765625,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 50,
+    "total": 64,
+    "progress": 0.78125,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 51,
+    "total": 64,
+    "progress": 0.796875,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 52,
+    "total": 64,
+    "progress": 0.8125,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 53,
+    "total": 64,
+    "progress": 0.828125,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 54,
+    "total": 64,
+    "progress": 0.84375,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 55,
+    "total": 64,
+    "progress": 0.859375,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 56,
+    "total": 64,
+    "progress": 0.875,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 57,
+    "total": 64,
+    "progress": 0.890625,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 58,
+    "total": 64,
+    "progress": 0.90625,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 59,
+    "total": 64,
+    "progress": 0.921875,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 60,
+    "total": 64,
+    "progress": 0.9375,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 61,
+    "total": 64,
+    "progress": 0.953125,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 62,
+    "total": 64,
+    "progress": 0.96875,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 63,
+    "total": 64,
+    "progress": 0.984375,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 64,
+    "total": 64,
+    "progress": 1,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "running",
+    "phase": "committing",
+    "completed": 64,
+    "total": 64,
+    "progress": 1,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c"
+  },
+  {
+    "id": "b9c6b690-37f9-4f1e-83b5-63d8acbcba00",
+    "state": "completed",
+    "phase": "completed",
+    "completed": 64,
+    "total": 64,
+    "progress": 1,
+    "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c",
+    "cleanup": {
+      "browserClosed": true,
+      "decoderClosed": true,
+      "tempRemoved": true,
+      "childExited": true,
+      "forced": false
+    },
+    "result": {
+      "trackPath": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-2\\.frameweave\\analysis-job-mvp\\verification-Be83Fg\\cache\\38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c\\track.json",
+      "cacheDirectory": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-2\\.frameweave\\analysis-job-mvp\\verification-Be83Fg\\cache\\38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c",
+      "cacheKey": "38408e453f4120e37365694970c0e5e88889fcddbfb1290a03d72899b979dc1c",
+      "cacheHit": false,
+      "cleanup": {
+        "browserClosed": true,
+        "decoderClosed": true,
+        "tempRemoved": true,
+        "childExited": true,
+        "forced": false
+      },
+      "metrics": {
+        "elapsedMs": 3922.7960000000003,
+        "initMs": 1072.6215000000002,
+        "inferenceFrames": 64,
+        "validFrames": 49,
+        "inferenceMedianMs": 18.399999998509884,
+        "inferenceP95Ms": 22.099999994039536
+      }
+    },
+    "stderr": ""
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "starting",
+    "completed": 0,
+    "total": 0,
+    "progress": 0
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "hashing",
+    "completed": 0,
+    "total": 64,
+    "progress": 0
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "cache",
+    "completed": 0,
+    "total": 64,
+    "progress": 0,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "initializing",
+    "completed": 0,
+    "total": 64,
+    "progress": 0,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "decoding",
+    "completed": 0,
+    "total": 64,
+    "progress": 0,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 1,
+    "total": 64,
+    "progress": 0.015625,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 2,
+    "total": 64,
+    "progress": 0.03125,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 3,
+    "total": 64,
+    "progress": 0.046875,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 4,
+    "total": 64,
+    "progress": 0.0625,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 5,
+    "total": 64,
+    "progress": 0.078125,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 6,
+    "total": 64,
+    "progress": 0.09375,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 7,
+    "total": 64,
+    "progress": 0.109375,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 8,
+    "total": 64,
+    "progress": 0.125,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 9,
+    "total": 64,
+    "progress": 0.140625,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 10,
+    "total": 64,
+    "progress": 0.15625,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 11,
+    "total": 64,
+    "progress": 0.171875,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 12,
+    "total": 64,
+    "progress": 0.1875,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 13,
+    "total": 64,
+    "progress": 0.203125,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 14,
+    "total": 64,
+    "progress": 0.21875,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 15,
+    "total": 64,
+    "progress": 0.234375,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 16,
+    "total": 64,
+    "progress": 0.25,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 17,
+    "total": 64,
+    "progress": 0.265625,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 18,
+    "total": 64,
+    "progress": 0.28125,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 19,
+    "total": 64,
+    "progress": 0.296875,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 20,
+    "total": 64,
+    "progress": 0.3125,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 21,
+    "total": 64,
+    "progress": 0.328125,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 22,
+    "total": 64,
+    "progress": 0.34375,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 23,
+    "total": 64,
+    "progress": 0.359375,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 24,
+    "total": 64,
+    "progress": 0.375,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 25,
+    "total": 64,
+    "progress": 0.390625,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 26,
+    "total": 64,
+    "progress": 0.40625,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 27,
+    "total": 64,
+    "progress": 0.421875,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 28,
+    "total": 64,
+    "progress": 0.4375,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 29,
+    "total": 64,
+    "progress": 0.453125,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 30,
+    "total": 64,
+    "progress": 0.46875,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 31,
+    "total": 64,
+    "progress": 0.484375,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 32,
+    "total": 64,
+    "progress": 0.5,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 33,
+    "total": 64,
+    "progress": 0.515625,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 34,
+    "total": 64,
+    "progress": 0.53125,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 35,
+    "total": 64,
+    "progress": 0.546875,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 36,
+    "total": 64,
+    "progress": 0.5625,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 37,
+    "total": 64,
+    "progress": 0.578125,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 38,
+    "total": 64,
+    "progress": 0.59375,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 39,
+    "total": 64,
+    "progress": 0.609375,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 40,
+    "total": 64,
+    "progress": 0.625,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 41,
+    "total": 64,
+    "progress": 0.640625,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 42,
+    "total": 64,
+    "progress": 0.65625,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 43,
+    "total": 64,
+    "progress": 0.671875,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 44,
+    "total": 64,
+    "progress": 0.6875,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 45,
+    "total": 64,
+    "progress": 0.703125,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 46,
+    "total": 64,
+    "progress": 0.71875,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 47,
+    "total": 64,
+    "progress": 0.734375,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 48,
+    "total": 64,
+    "progress": 0.75,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 49,
+    "total": 64,
+    "progress": 0.765625,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 50,
+    "total": 64,
+    "progress": 0.78125,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 51,
+    "total": 64,
+    "progress": 0.796875,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 52,
+    "total": 64,
+    "progress": 0.8125,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 53,
+    "total": 64,
+    "progress": 0.828125,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 54,
+    "total": 64,
+    "progress": 0.84375,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 55,
+    "total": 64,
+    "progress": 0.859375,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 56,
+    "total": 64,
+    "progress": 0.875,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 57,
+    "total": 64,
+    "progress": 0.890625,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 58,
+    "total": 64,
+    "progress": 0.90625,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 59,
+    "total": 64,
+    "progress": 0.921875,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 60,
+    "total": 64,
+    "progress": 0.9375,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 61,
+    "total": 64,
+    "progress": 0.953125,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 62,
+    "total": 64,
+    "progress": 0.96875,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 63,
+    "total": 64,
+    "progress": 0.984375,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 64,
+    "total": 64,
+    "progress": 1,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "running",
+    "phase": "committing",
+    "completed": 64,
+    "total": 64,
+    "progress": 1,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0"
+  },
+  {
+    "id": "4f586091-4674-473a-9ee0-400204b88f66",
+    "state": "completed",
+    "phase": "completed",
+    "completed": 64,
+    "total": 64,
+    "progress": 1,
+    "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0",
+    "cleanup": {
+      "browserClosed": true,
+      "decoderClosed": true,
+      "tempRemoved": true,
+      "childExited": true,
+      "forced": false
+    },
+    "result": {
+      "trackPath": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-2\\.frameweave\\analysis-job-mvp\\verification-Be83Fg\\cache\\67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0\\track.json",
+      "cacheDirectory": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-2\\.frameweave\\analysis-job-mvp\\verification-Be83Fg\\cache\\67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0",
+      "cacheKey": "67760b4cf0241aa8ca1cdeaa7ac4a7ac0652ebddb1282c16f943a1f1a4814fe0",
+      "cacheHit": false,
+      "cleanup": {
+        "browserClosed": true,
+        "decoderClosed": true,
+        "tempRemoved": true,
+        "childExited": true,
+        "forced": false
+      },
+      "metrics": {
+        "elapsedMs": 4346.405199999999,
+        "initMs": 1162.4007,
+        "inferenceFrames": 64,
+        "validFrames": 57,
+        "inferenceMedianMs": 19.299999997019768,
+        "inferenceP95Ms": 22.299999997019768
+      }
+    },
+    "stderr": ""
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "starting",
+    "completed": 0,
+    "total": 0,
+    "progress": 0
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "hashing",
+    "completed": 0,
+    "total": 32,
+    "progress": 0
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "cache",
+    "completed": 0,
+    "total": 32,
+    "progress": 0,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "initializing",
+    "completed": 0,
+    "total": 32,
+    "progress": 0,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "decoding",
+    "completed": 0,
+    "total": 32,
+    "progress": 0,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 1,
+    "total": 32,
+    "progress": 0.03125,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 2,
+    "total": 32,
+    "progress": 0.0625,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 3,
+    "total": 32,
+    "progress": 0.09375,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 4,
+    "total": 32,
+    "progress": 0.125,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 5,
+    "total": 32,
+    "progress": 0.15625,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 6,
+    "total": 32,
+    "progress": 0.1875,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 7,
+    "total": 32,
+    "progress": 0.21875,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 8,
+    "total": 32,
+    "progress": 0.25,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 9,
+    "total": 32,
+    "progress": 0.28125,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 10,
+    "total": 32,
+    "progress": 0.3125,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 11,
+    "total": 32,
+    "progress": 0.34375,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 12,
+    "total": 32,
+    "progress": 0.375,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 13,
+    "total": 32,
+    "progress": 0.40625,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 14,
+    "total": 32,
+    "progress": 0.4375,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 15,
+    "total": 32,
+    "progress": 0.46875,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 16,
+    "total": 32,
+    "progress": 0.5,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 17,
+    "total": 32,
+    "progress": 0.53125,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 18,
+    "total": 32,
+    "progress": 0.5625,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 19,
+    "total": 32,
+    "progress": 0.59375,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 20,
+    "total": 32,
+    "progress": 0.625,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 21,
+    "total": 32,
+    "progress": 0.65625,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 22,
+    "total": 32,
+    "progress": 0.6875,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 23,
+    "total": 32,
+    "progress": 0.71875,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 24,
+    "total": 32,
+    "progress": 0.75,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 25,
+    "total": 32,
+    "progress": 0.78125,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 26,
+    "total": 32,
+    "progress": 0.8125,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 27,
+    "total": 32,
+    "progress": 0.84375,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 28,
+    "total": 32,
+    "progress": 0.875,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 29,
+    "total": 32,
+    "progress": 0.90625,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 30,
+    "total": 32,
+    "progress": 0.9375,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 31,
+    "total": 32,
+    "progress": 0.96875,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 32,
+    "total": 32,
+    "progress": 1,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "running",
+    "phase": "committing",
+    "completed": 32,
+    "total": 32,
+    "progress": 1,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6"
+  },
+  {
+    "id": "7ef1f227-2cb4-4ccd-ac94-bcd903a727a6",
+    "state": "completed",
+    "phase": "completed",
+    "completed": 32,
+    "total": 32,
+    "progress": 1,
+    "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6",
+    "cleanup": {
+      "browserClosed": true,
+      "decoderClosed": true,
+      "tempRemoved": true,
+      "childExited": true,
+      "forced": false
+    },
+    "result": {
+      "trackPath": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-2\\.frameweave\\analysis-job-mvp\\verification-Be83Fg\\cache\\4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6\\track.json",
+      "cacheDirectory": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-2\\.frameweave\\analysis-job-mvp\\verification-Be83Fg\\cache\\4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6",
+      "cacheKey": "4f10373cadd162af27dc70478d8f04caf0619a1914fa754d98bd12374bc684f6",
+      "cacheHit": false,
+      "cleanup": {
+        "browserClosed": true,
+        "decoderClosed": true,
+        "tempRemoved": true,
+        "childExited": true,
+        "forced": false
+      },
+      "metrics": {
+        "elapsedMs": 3474.0053999999996,
+        "initMs": 1350.8263,
+        "inferenceFrames": 32,
+        "validFrames": 25,
+        "inferenceMedianMs": 21.30000000447035,
+        "inferenceP95Ms": 27.399999998509884
+      }
+    },
+    "stderr": ""
+  },
+  {
+    "id": "5ca36776-1984-4a74-bd7c-69d6f412cbb1",
+    "state": "running",
+    "phase": "starting",
+    "completed": 0,
+    "total": 0,
+    "progress": 0
+  },
+  {
+    "id": "5ca36776-1984-4a74-bd7c-69d6f412cbb1",
+    "state": "running",
+    "phase": "hashing",
+    "completed": 0,
+    "total": 62,
+    "progress": 0
+  },
+  {
+    "id": "5ca36776-1984-4a74-bd7c-69d6f412cbb1",
+    "state": "running",
+    "phase": "cache",
+    "completed": 0,
+    "total": 62,
+    "progress": 0,
+    "cacheKey": "8e8e700048107a2c622d3a976569b6461e8e5758823bda351006677ff4d0f8e8"
+  },
+  {
+    "id": "5ca36776-1984-4a74-bd7c-69d6f412cbb1",
+    "state": "running",
+    "phase": "initializing",
+    "completed": 0,
+    "total": 62,
+    "progress": 0,
+    "cacheKey": "8e8e700048107a2c622d3a976569b6461e8e5758823bda351006677ff4d0f8e8"
+  },
+  {
+    "id": "5ca36776-1984-4a74-bd7c-69d6f412cbb1",
+    "state": "running",
+    "phase": "decoding",
+    "completed": 0,
+    "total": 62,
+    "progress": 0,
+    "cacheKey": "8e8e700048107a2c622d3a976569b6461e8e5758823bda351006677ff4d0f8e8"
+  },
+  {
+    "id": "5ca36776-1984-4a74-bd7c-69d6f412cbb1",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 1,
+    "total": 62,
+    "progress": 0.016129032258064516,
+    "cacheKey": "8e8e700048107a2c622d3a976569b6461e8e5758823bda351006677ff4d0f8e8"
+  },
+  {
+    "id": "5ca36776-1984-4a74-bd7c-69d6f412cbb1",
+    "state": "running",
+    "phase": "analyzing",
+    "completed": 2,
+    "total": 62,
+    "progress": 0.03225806451612903,
+    "cacheKey": "8e8e700048107a2c622d3a976569b6461e8e5758823bda351006677ff4d0f8e8"
+  },
+  {
+    "id": "5ca36776-1984-4a74-bd7c-69d6f412cbb1",
+    "state": "cancelling",
+    "phase": "analyzing",
+    "completed": 2,
+    "total": 62,
+    "progress": 0.03225806451612903,
+    "cacheKey": "8e8e700048107a2c622d3a976569b6461e8e5758823bda351006677ff4d0f8e8"
+  },
+  {
+    "id": "5ca36776-1984-4a74-bd7c-69d6f412cbb1",
+    "state": "cancelled",
+    "phase": "cancelled",
+    "completed": 2,
+    "total": 62,
+    "progress": 0.03225806451612903,
+    "cacheKey": "8e8e700048107a2c622d3a976569b6461e8e5758823bda351006677ff4d0f8e8",
+    "cleanup": {
+      "browserClosed": true,
+      "decoderClosed": true,
+      "tempRemoved": true,
+      "childExited": true,
+      "forced": false
+    },
+    "error": {
+      "code": "E_CANCELLED",
+      "severity": "error",
+      "message": "Analysis cancelled"
+    },
+    "stderr": ""
+  }
+]

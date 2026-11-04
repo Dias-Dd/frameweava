@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "algorithm": "Local spherical geometry/quadrature and existing Native compensated Pixel/Compute helpers. No external rendering framework or new GPU host.",
+  "noiseReuse": {
+    "source": "Existing qualified textures/kernels.ts quintic hash/value-noise functions; same algorithm, floor-helper representation adapted",
+    "upstreamRepository": "https://github.com/storytold/effectcraft",
+    "upstreamCommit": "ec7ced1f0515f0b6f376dbcc297f1c441f452d6e",
+    "license": "MIT",
+    "licenseFile": "modules/native-effects/textures/vendor/effectcraft/LICENSE-MIT",
+    "originalReceipts": "modules/native-effects/textures/sources.json"
+  },
+  "files": [
+    {
+      "file": "modules/native-effects/keying/kernels.ts",
+      "sha256": "02f6685e4b628bdc4c9272f005a6dca69b035ec35b2babef2bc97d53719a5315"
+    },
+    {
+      "file": "modules/native-effects/geometry/arithmetic.ts",
+      "sha256": "6da7f18fda663e40772e22d68454a78d05c84e2616fbc3a42d6913fe2439ba15"
+    },
+    {
+      "file": "modules/native-effects/geometry/precision.ts",
+      "sha256": "3abf67d93ec659212a3b5557566296345388fae5614dbeb0da981efb5c2c4ada"
+    },
+    {
+      "file": "modules/native-effects/textures/kernels.ts",
+      "sha256": "3c45e3dde16eebd092bead7e83487583cdf5743053034f10f8834481dddee3ac"
+    },
+    {
+      "file": "modules/native-effects/textures/sources.json",
+      "sha256": "0f5371b07713f4ecf54a3e72420bb4eca295a2e620e21922b7a733b6048404c2"
+    },
+    {
+      "file": "modules/native-effects/textures/vendor/effectcraft/LICENSE-MIT",
+      "sha256": "7b6db9a363688683feacdf9b528f059637f2e5d2edbacd8720fc9b26781c9abe"
+    }
+  ]
+}

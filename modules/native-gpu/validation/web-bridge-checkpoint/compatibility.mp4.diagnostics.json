@@ -1,0 +1,246 @@
+{
+  "version": 1,
+  "ok": true,
+  "backend": "native-wgpu",
+  "output": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\artifacts\\native-web-bridge\\compatibility.mp4",
+  "frames": 6,
+  "startFrame": 0,
+  "endFrame": 6,
+  "encoder": "h264_nvenc",
+  "encoderVersion": "ffmpeg version 6.1.1-essentials_build-www.gyan.dev Copyright (c) 2000-2023 the FFmpeg developers",
+  "audio": null,
+  "timings": {
+    "compileMs": 0,
+    "compilation": "included-or-explicit-cached-build",
+    "initMs": 2357.7476000000024,
+    "framePipelineMs": 1248.5202000000063,
+    "encoderFinishMs": 404.9712999999974,
+    "totalMs": 4062.4349
+  },
+  "scheduling": {
+    "version": 1,
+    "mode": "throughput",
+    "capacity": 1,
+    "concurrency": 1,
+    "completedFrames": 6,
+    "samples": [
+      {
+        "concurrency": 1,
+        "frames": 1,
+        "wallMs": 33.1449000000066,
+        "fps": 30.17055414256193,
+        "next": 1
+      },
+      {
+        "concurrency": 1,
+        "frames": 1,
+        "wallMs": 252.41909999999916,
+        "fps": 3.9616653414896232,
+        "next": 1
+      },
+      {
+        "concurrency": 1,
+        "frames": 1,
+        "wallMs": 222.76950000000215,
+        "fps": 4.488944851067989,
+        "next": 1
+      },
+      {
+        "concurrency": 1,
+        "frames": 1,
+        "wallMs": 226.18070000000444,
+        "fps": 4.421243722386483,
+        "next": 1
+      },
+      {
+        "concurrency": 1,
+        "frames": 1,
+        "wallMs": 235.51780000000144,
+        "fps": 4.245963574727659,
+        "next": 1
+      },
+      {
+        "concurrency": 1,
+        "frames": 1,
+        "wallMs": 278.26090000000113,
+        "fps": 3.5937496069336223,
+        "next": 1
+      }
+    ]
+  },
+  "stats": {
+    "adapter": "AdapterInfo { name: \"NVIDIA GeForce RTX 5070 Laptop GPU\", vendor: 4318, device: 11608, device_type: DiscreteGpu, device_pci_bus_id: \"0000:01:00.0\", driver: \"NVIDIA\", driver_info: \"596.49\", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 32, transient_saves_memory: Some(false), limit_bucket: None }",
+    "allocatedDataBytes": 0,
+    "allocatedImageBytes": 20275200,
+    "backend": "native-wgpu",
+    "blockingGpuWaits": 6,
+    "capabilities": {
+      "backend": "native-wgpu",
+      "computeKernelAbis": [
+        1
+      ],
+      "crossStageGpuHandles": false,
+      "execution": "recording",
+      "f16WorkingBytesPerPixel": 16,
+      "hardwareVerified": true,
+      "limits": {
+        "maxBufferSize": 4294967295,
+        "maxComputeInvocationsPerWorkgroup": 1024,
+        "maxComputeWorkgroupSizeX": 1024,
+        "maxComputeWorkgroupSizeY": 1024,
+        "maxComputeWorkgroupSizeZ": 64,
+        "maxComputeWorkgroupStorageSize": 49152,
+        "maxComputeWorkgroupsPerDimension": 65535,
+        "maxStorageBufferBindingSize": 2147483644,
+        "maxStorageBuffersPerShaderStage": 524288,
+        "maxUniformBufferBindingSize": 65536
+      },
+      "maxKernels": 256,
+      "maxPendingPasses": 1024,
+      "pixelKernelAbis": [
+        1,
+        2
+      ],
+      "profiling": "disabled",
+      "storageTypes": [
+        "f32",
+        "u32",
+        "i32"
+      ],
+      "version": 1
+    },
+    "completed": 12,
+    "devicesCreated": 1,
+    "diagnosticBlockingWaits": 0,
+    "diagnosticReadbackBytes": 0,
+    "diagnosticReadbacks": 0,
+    "diagnosticsEnabled": false,
+    "export": {
+      "bytes": 2073600,
+      "cpuImageCopies": 0,
+      "enabled": true,
+      "framesWritten": 6,
+      "hardwareEncode": true,
+      "httpTransport": false,
+      "pngTransport": false
+    },
+    "frameHashes": 0,
+    "imageReadbacks": 12,
+    "inFlight": 0,
+    "numericalValidationPasses": 0,
+    "peakSubmittedInFlight": 1,
+    "pixelTransferBytes": 13132800,
+    "programUpdates": 12,
+    "protocolVersion": 2,
+    "slots": 1,
+    "submitted": 12,
+    "webBridge": {
+      "enabled": true,
+      "explicitReadbackWaits": 6,
+      "readbackBytes": 11059200,
+      "readbacks": 6,
+      "uploadBytes": 33177600,
+      "version": 1
+    },
+    "workingImageBytes": 25804800,
+    "sourceOutput": {
+      "width": 640,
+      "height": 360,
+      "format": "rgba32float",
+      "alpha": "premultiplied",
+      "color": {
+        "primaries": "rec709",
+        "whitePoint": "D65",
+        "transfer": "linear",
+        "reference": "scene",
+        "range": "full",
+        "referenceWhiteNits": 100
+      }
+    },
+    "compatibility": {
+      "version": 1,
+      "enabled": true,
+      "format": "png-srgb8",
+      "frameConcurrency": 1,
+      "pngInputs": 12,
+      "pngOutputs": 12,
+      "pngBytes": 63180,
+      "readbackMs": 21.090799999998126,
+      "pngEncodeMs": 259.75889999999345,
+      "webMs": 113.35529999999562,
+      "pngDecodeMs": 780.8893999999927,
+      "gpuDevices": {},
+      "diagnostics": [
+        {
+          "code": "W_MEDIA_PREVIEW_CLIPPED",
+          "severity": "warning",
+          "stageId": "canvas",
+          "message": "Explicit preview clamp applied; scene-linear intermediates are unchanged"
+        },
+        {
+          "code": "W_WEB_SDR_BRIDGE",
+          "severity": "warning",
+          "stageId": "canvas",
+          "message": "Explicit Web boundary uses clipped sRGB PNG/RGBA8; native source precision is unchanged"
+        },
+        {
+          "code": "W_WEB_SDR_SOURCE",
+          "severity": "warning",
+          "stageId": "canvas",
+          "message": "Web output is 8-bit sRGB source data, explicitly expanded to native scene-linear RGBA32F"
+        },
+        {
+          "code": "W_WEB_SDR_BRIDGE",
+          "severity": "warning",
+          "stageId": "three",
+          "message": "Explicit Web boundary uses clipped sRGB PNG/RGBA8; native source precision is unchanged"
+        },
+        {
+          "code": "W_WEB_SDR_SOURCE",
+          "severity": "warning",
+          "stageId": "three",
+          "message": "Web output is 8-bit sRGB source data, explicitly expanded to native scene-linear RGBA32F"
+        }
+      ]
+    }
+  },
+  "transfer": {
+    "previewReadback": true,
+    "exportMaterialization": true,
+    "format": "nv12",
+    "route": "native GPU → asynchronous packed buffer → FFmpeg stdin",
+    "zeroCopyEncode": false
+  },
+  "diagnostics": [
+    {
+      "code": "W_MEDIA_PREVIEW_CLIPPED",
+      "severity": "warning",
+      "stageId": "canvas",
+      "message": "Explicit preview clamp applied; scene-linear intermediates are unchanged"
+    },
+    {
+      "code": "W_WEB_SDR_BRIDGE",
+      "severity": "warning",
+      "stageId": "canvas",
+      "message": "Explicit Web boundary uses clipped sRGB PNG/RGBA8; native source precision is unchanged"
+    },
+    {
+      "code": "W_WEB_SDR_SOURCE",
+      "severity": "warning",
+      "stageId": "canvas",
+      "message": "Web output is 8-bit sRGB source data, explicitly expanded to native scene-linear RGBA32F"
+    },
+    {
+      "code": "W_WEB_SDR_BRIDGE",
+      "severity": "warning",
+      "stageId": "three",
+      "message": "Explicit Web boundary uses clipped sRGB PNG/RGBA8; native source precision is unchanged"
+    },
+    {
+      "code": "W_WEB_SDR_SOURCE",
+      "severity": "warning",
+      "stageId": "three",
+      "message": "Web output is 8-bit sRGB source data, explicitly expanded to native scene-linear RGBA32F"
+    }
+  ]
+}

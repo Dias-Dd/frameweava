@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "sourceCommit": "ca86685cbe9d8a5c0043dc64a23541987064d29b",
+  "sourceDirty": "M modules/native-gpu/build.mjs\n M modules/native-gpu/client.ts\n M modules/native-gpu/src/gpu.rs\n M modules/native-gpu/src/main.rs\n M modules/native-gpu/src/protocol.rs\n?? modules/native-gpu/authoring.ts\n?? modules/native-gpu/bootstrap-program.ts\n?? modules/native-gpu/borrow.ts\n?? modules/native-gpu/cli.ts\n?? modules/native-gpu/composite.ts\n?? modules/native-gpu/display.ts\n?? modules/native-gpu/examples/ball.tsx\n?? modules/native-gpu/executable.ts\n?? modules/native-gpu/logic-bootstrap.ts\n?? modules/native-gpu/logic-host.ts\n?? modules/native-gpu/memory.ts\n?? modules/native-gpu/mesh-shader.ts\n?? modules/native-gpu/preview.ts\n?? modules/native-gpu/provenance.ts\n?? modules/native-gpu/react.tsx\n?? modules/native-gpu/scheduler.ts\n?? modules/native-gpu/scope.ts\n?? modules/native-gpu/service.ts\n?? modules/native-gpu/src/encode.rs",
+  "inputHashes": {
+    "Cargo.toml": "c6f082f6dc8eda41c4ba5915019a02ae36f009b8229ea7b78640d81a9f6e7d37",
+    "Cargo.lock": "8f88c179204df0324a79be3ac0b5108564cd8e1de1707c4fffb78938e050d895",
+    "src/main.rs": "f2edbb773e358751d59f65b6f893e986fb3e88fe256a89864a9c292f32b0f3dc",
+    "src/gpu.rs": "48b34aec28036a916799925cbe653c8fce999dc8daa13d3e05c6ee1dc7520444",
+    "src/protocol.rs": "0f49ca0d1aa7cad517814d523de6b5f7593255f4b7264ff6697675d80efd5878",
+    "src/encode.rs": "0e45fc50c4d67096c72b2b924dfd85d59096ae003df639b3cf9656c467ef94aa",
+    "build.mjs": "61127fbb49523e4a28a9f982cdd591b7df3e58dc75eacd47355cb69069054856"
+  },
+  "profile": "debug",
+  "features": [
+    "diagnostics"
+  ],
+  "offline": true,
+  "locked": true,
+  "wallMs": 3809.4323,
+  "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: x86_64-pc-windows-gnu\nrelease: 1.99.1\nLLVM version: 23.1.1",
+  "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+  "flags": {
+    "RUSTFLAGS": "-C link-self-contained=yes",
+    "CARGO_ENCODED_RUSTFLAGS": null,
+    "CARGO_BUILD_TARGET": null
+  },
+  "executable": {
+    "file": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\.frameweave\\native-target\\debug\\frameweave-native-gpu.exe",
+    "bytes": 156794517,
+    "sha256": "7f8e0842ea555f12e616b8ded6eb004b5465eae163089967f2c9c970640e1e6f"
+  }
+}

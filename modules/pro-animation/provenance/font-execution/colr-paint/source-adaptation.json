@@ -1,0 +1,53 @@
+{
+  "project": "googlefonts/fontations / Skrifa",
+  "version": "0.49.0",
+  "commit": "47a301615fd95acf0da9fb7dbcd0ea7c7df36943",
+  "license": "MIT OR Apache-2.0; MIT selected, both original texts retained",
+  "files": {
+    "mod.rs": {
+      "originalSha256": "6bfcc05147822787ae4b2606f25571e487edeeba9fc3981e502414a3ad2f5ea2",
+      "adaptedSha256": "bb9fd9af72508c30d62e76f8d5dccf1530927e0a20792a01c303946c6e1d7c1e"
+    },
+    "instance.rs": {
+      "originalSha256": "fda368aa8db663b7c15c6601421e06548fcf9732d1145c108ba337235e4bb63a",
+      "adaptedSha256": "99af61c1cfb1fd794942cc2be0a9f20a3feb090419088c4199256bb31b0815f5"
+    },
+    "traversal.rs": {
+      "originalSha256": "ad2955a96cd13ae5ef0cc5e93482d0b3886382f066099e24f868848474c17a74",
+      "adaptedSha256": "62c21ed40e0f50af90884eebd84bb4a3322c6a4c282c18fc22120be1041ff283"
+    },
+    "decycler.rs": {
+      "originalSha256": "39701c914a4694eb02008acf833ce12f122ccd5b70d063e3df6ff9232196c49d",
+      "adaptedSha256": "39701c914a4694eb02008acf833ce12f122ccd5b70d063e3df6ff9232196c49d"
+    }
+  },
+  "adaptations": [
+    "Raw library/private module paths remapped to pinned read-fonts/Skrifa public types and local original color module",
+    "One behavior correction: degenerate linear geometry previously emitted first-stop Solid; updated specification requires NonRendering. Original normalization, variations, traversal, cycle/depth guards and callbacks otherwise retained.",
+    "Private effective_coords() replaced by equivalent public is_default()/coords(), preserving the original default-location empty-slice behavior."
+  ],
+  "noPathDependency": "Kit admits registry-only dependencies. Original color source reused as reviewed root Rust source, not modified registry or path-dependency bypass. read-fonts/smallvec versions already in old lock; only new root dependency list changes.",
+  "normative": "https://learn.microsoft.com/en-us/typography/opentype/spec/colr#linear-gradients",
+  "profile": {
+    "method": "font_color_profile",
+    "value": 1,
+    "old22MethodSignatures": "verified identical",
+    "oldRawParser": "still supported for observations/v0; Native v1 execution rejects it instead of inheriting wrong degenerate semantics"
+  },
+  "shaderReuse": {
+    "modules/native-effects/keying/kernels.ts": "02f6685e4b628bdc4c9272f005a6dca69b035ec35b2babef2bc97d53719a5315",
+    "modules/native-effects/geometry/arithmetic.ts": "6da7f18fda663e40772e22d68454a78d05c84e2616fbc3a42d6913fe2439ba15",
+    "modules/native-effects/geometry/precision.ts": "3abf67d93ec659212a3b5557566296345388fae5614dbeb0da981efb5c2c4ada",
+    "modules/native-effects/raster/kernels.ts": "45187ce3aa5d299b2d6ac4cdfbab43950e4386d0695eeb636cbf23e0e973ec36",
+    "modules/native-effects/composite/kernels.ts": "913ef4f8938af60bf9f556a0e3f27389b3d23c0e066c772ba33082c0a9ae9415"
+  },
+  "effectcraft": {
+    "repository": "https://github.com/storytold/effectcraft",
+    "commit": "ec7ced1f0515f0b6f376dbcc297f1c441f452d6e",
+    "license": "MIT",
+    "reuse": "Transitive qualified A3 composite helper prefix; font-local bounded-color overrides documented in colr/README.md",
+    "originalSource": "modules/native-effects/composite/vendor/effectcraft/common.wgsl",
+    "originalSha256": "4244140eba68055a0f1edcd6d0b1d7eee5a244e01c19f3ab0491f8e078702fff",
+    "licenseSha256": "7b6db9a363688683feacdf9b528f059637f2e5d2edbacd8720fc9b26781c9abe"
+  }
+}

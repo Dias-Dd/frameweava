@@ -1,0 +1,1 @@
+{"extends":"../../../tsconfig.json","include":["./*.ts","../images.ts","../examples/raster-*.tsx","../../../tests/native-raster.test.ts"]}

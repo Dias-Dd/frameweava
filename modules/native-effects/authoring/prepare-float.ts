@@ -1,0 +1,8 @@
+import {resolve,join} from 'node:path';import {writeFile,readFile} from 'node:fs/promises';import assert from 'node:assert/strict';
+import {prepareImageAsset} from './node.ts';import {pixelsFromSurface} from '../../../src/media/surface.ts';
+const base=resolve('modules/native-effects/authoring/examples/assets'),out=resolve(process.env.FRAMEWEAVE_AUTHORING_RUN!);
+const source=await prepareImageAsset(join(base,'input.surface.json'),join(base,'input.f32')),photo=await prepareImageAsset(join(base,'input.png'),join(base,'photo.f32'));
+const expected=pixelsFromSurface(JSON.parse(await readFile(join(base,'input.surface.json'),'utf8'))),bytes=await readFile(source.path),actual=Float32Array.from({length:expected.length},(_,i)=>bytes.readFloatLE(i*4));assert.deepEqual(actual,expected);
+await assert.rejects(prepareImageAsset(join(base,'input.surface.json'),source.path),{code:'E_IMAGE_ASSET_EXISTS'});await assert.rejects(prepareImageAsset(join(base,'input.surface.json'),join(base,'never.f32'),{oops:true}as never),{code:'E_IMAGE_ASSET_OPTIONS'});
+await writeFile(join(base,'input.metadata.json'),JSON.stringify({...source,path:'./input.f32',source:{...source.source,path:'./input.surface.json'}},null,2)+'\n');await writeFile(join(base,'photo.metadata.json'),JSON.stringify({...photo,path:'./photo.f32',source:{...photo.source,path:'./input.png'}},null,2)+'\n');
+await writeFile(join(out,'result.json'),JSON.stringify({ok:true,source,photo,sourcePixelsExact:true,existingOutputRejected:true,unknownFieldsRejected:true,scope:'Existing Node image decoders/color transform; immutable Native byte Resource; no CPU image-effect fallback'},null,2)+'\n');

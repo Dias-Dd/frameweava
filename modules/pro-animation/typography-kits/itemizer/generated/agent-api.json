@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "profile": "wasm-bindgen-data-v1",
+  "entryClass": "Engine",
+  "functions": [
+    {
+      "name": "analyze",
+      "signature": "analyze(text: string, base: number): number;",
+      "documentation": ""
+    },
+    {
+      "name": "analyze_line",
+      "signature": "analyze_line(text: string, base: number, start: number, end: number): number;",
+      "documentation": ""
+    },
+    {
+      "name": "metadata",
+      "signature": "metadata(): Float64Array;",
+      "documentation": ""
+    },
+    {
+      "name": "read_bidi_runs",
+      "signature": "read_bidi_runs(start: number, count: number): Float64Array;",
+      "documentation": ""
+    },
+    {
+      "name": "read_candidates",
+      "signature": "read_candidates(start: number, count: number): Float64Array;",
+      "documentation": ""
+    },
+    {
+      "name": "read_levels",
+      "signature": "read_levels(start: number, count: number): Float64Array;",
+      "documentation": ""
+    },
+    {
+      "name": "read_paragraphs",
+      "signature": "read_paragraphs(start: number, count: number): Float64Array;",
+      "documentation": ""
+    },
+    {
+      "name": "read_runs",
+      "signature": "read_runs(start: number, count: number): Float64Array;",
+      "documentation": ""
+    },
+    {
+      "name": "read_visual_indices",
+      "signature": "read_visual_indices(start: number, count: number): Float64Array;",
+      "documentation": ""
+    },
+    {
+      "name": "reset_results",
+      "signature": "reset_results(): void;",
+      "documentation": ""
+    }
+  ],
+  "parameters": {
+    "settings": {
+      "type": "object",
+      "default": {},
+      "properties": {
+        "label": {
+          "type": "string",
+          "default": "Frameweave",
+          "maxLength": 128
+        },
+        "samples": {
+          "type": "array",
+          "default": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "items": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "minItems": 1,
+          "maxItems": 128
+        },
+        "factor": {
+          "type": "number",
+          "default": 1,
+          "minimum": 0,
+          "maximum": 4
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "parameterSchemaVersion": 2,
+  "errors": [
+    "E_BINDGEN_CALL",
+    "E_BINDGEN_DISPOSED",
+    "E_BINDGEN_IMPORTS",
+    "E_PACKAGE_INTEGRITY"
+  ],
+  "environment": {
+    "webStage": true,
+    "worker": true,
+    "allowWasmRequired": true,
+    "host": "reviewed data-only callbacks"
+  },
+  "p4Reference": "test.pa3-text-lines@0.0.1"
+}

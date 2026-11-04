@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import type {ProfessionalFilters} from '../modules/gpu-image-effects/resident/filters.ts';
+import {createNativeProfessionalEffects,unavailableNativeImageMethods,type NativeProfessionalFilters} from '../modules/native-effects/extended.ts';
+import {NativeRecordingScope} from '../modules/native-gpu/scope.ts';
+import {nativeImageEffectNames} from '../modules/native-effects/images.ts';
+import {additionalNativeEffectNames} from '../modules/native-effects/extended.ts';
+test('all original ProfessionalFilters methods have a Native source contract',()=>{const missing:Exclude<keyof ProfessionalFilters,keyof NativeProfessionalFilters> extends never?true:false=true;assert.equal(missing,true);assert.deepEqual(unavailableNativeImageMethods,[]);});
+test('explicit import is not counted as another pixel effect',()=>{assert.ok(![...nativeImageEffectNames,...additionalNativeEffectNames].some(n=>String(n)==='importImage'));});
+test('inline input does not manufacture hardware eligibility',async()=>{const g=new NativeRecordingScope();assert.throws(()=>createNativeProfessionalEffects({gpu:g.api}),{code:'E_NATIVE_EFFECTS_DEVICE'});assert.equal(g.api.stats().uploads,0);await g.api.dispose();});

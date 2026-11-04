@@ -1,0 +1,2 @@
+# Preserve exact reviewed upstream license bytes, including its final blank line.
+LICENSE -whitespace

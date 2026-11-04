@@ -1,0 +1,19 @@
+{
+  "revision": 1,
+  "generator": "0.2.129",
+  "description": "Reviewed data-only wasm-bindgen intrinsic bodies; additions require explicit source review",
+  "intrinsics": {
+    "__wbg___wbindgen_throw_41e9ee4f547fc59a": [
+      "9ab42997906ccabb1203eb398f0ff1cea8fe3b330d5f4b6a0a0d93dbd72e188d"
+    ],
+    "__wbindgen_generic_0000000000000001": [
+      "a33944d2cadb13cbe51cf2d4877b7076aee26c581a269293b5ce3d88c44fd307"
+    ],
+    "__wbindgen_init_externref_table": [
+      "c071d5b1d8246e6ba3a7ee88cdd0965d08c9ee1887c07498732d87b46dd1c284"
+    ],
+    "__wbg_normalize_label_92a87129ab51d9f3": [
+      "935acf81480aaaf3e82c5fb3c22dc7d3e8653a4584750d3d01930df1bb3968fb"
+    ]
+  }
+}

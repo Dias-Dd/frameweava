@@ -1,0 +1,158 @@
+{
+  "version": 1,
+  "sourceCommit": "6ea0b93590c7038cf01c8154fd5b7f194aae297d",
+  "started": "2026-11-01T07:42:05.186Z",
+  "runtime": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\.frameweave\\servo-kit\\bundles\\fcf4de5c6c4d72a90a13b5abc94082258eb064ad41386bd71cf4f3f32aa67017",
+  "steps": [
+    {
+      "name": "build-inputs",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "modules/servo/validation/verify-build.ts"
+      ],
+      "ms": 545.0814,
+      "status": 0,
+      "error": null,
+      "stdoutSha256": "18b926d144ff019a482a5de0b706182ba9609b322fbe08c9d9d5cbf0f5f0cad0",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "types",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "ms": 9322.9511,
+      "status": 0,
+      "error": null,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "module-types",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "-p",
+        "modules/servo/tsconfig.json"
+      ],
+      "ms": 2029.0198999999993,
+      "status": 0,
+      "error": null,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "admission",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "modules/servo/validation/verify-admission.ts"
+      ],
+      "ms": 4742.044900000001,
+      "status": 0,
+      "error": null,
+      "stdoutSha256": "604710dfa6cb0ac4a30393be126db7c0059f816e7d84a74ed9daee02aab87ac4",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "lifecycle",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "modules/servo/validation/verify-lifecycle.ts"
+      ],
+      "ms": 27906.418800000003,
+      "status": 0,
+      "error": null,
+      "stdoutSha256": "691602246ee3eadfc9a68e4e4367c9373f14214fa511ed2141a44626fa21fca7",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "native",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "modules/servo/validation/verify-native.ts"
+      ],
+      "ms": 4819.066500000001,
+      "status": 0,
+      "error": null,
+      "stdoutSha256": "1958ac442568b891c338f608e34f50400b73b0538189a5bad503bac10e7f9120",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "features",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "modules/servo/validation/verify-features.ts"
+      ],
+      "ms": 17750.7088,
+      "status": 0,
+      "error": null,
+      "stdoutSha256": "4cce7fe2fb87b7dfddc87e535b124852ccdb4a4f1c10e07800c28930ba9b095c",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "project",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "modules/servo/validation/verify-project.ts"
+      ],
+      "ms": 11166.33600000001,
+      "status": 0,
+      "error": null,
+      "stdoutSha256": "4bee97632ccb8dd2c7a47f72d5f2cf18b1090d6a44af6c201594d1eed2b53cbf",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "media",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "modules/servo/validation/verify-media.ts"
+      ],
+      "ms": 19959.574999999997,
+      "status": 0,
+      "error": null,
+      "stdoutSha256": "ea7726d4ae15d543e42774ad42b8331fb86b454684ab55ee5f0db3eeaeb074db",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "native-regression",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "--test",
+        "--test-concurrency=1",
+        "tests/native-module.test.ts",
+        "tests/native-gpu-v2.test.ts",
+        "tests/native-gpu-composite.test.ts",
+        "tests/native-gpu-authoring.test.ts",
+        "tests/native-gpu-cancellation.test.ts",
+        "tests/native-gpu-production.test.ts",
+        "tests/native-gpu-security.test.ts",
+        "tests/native-gpu-packages.test.ts"
+      ],
+      "ms": 101194.0936,
+      "status": 0,
+      "error": null,
+      "stdoutSha256": "58ef4918ef42a2a5a213f4a27278eeae2323f37bd336c286e183919bba11a5bd",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "ms": 199485.61750000002
+}

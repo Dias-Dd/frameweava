@@ -1,0 +1,64 @@
+{
+  "three": {
+    "version": "0.186.1",
+    "resolved": "https://registry.npmjs.org/three/-/three-0.186.1.tgz",
+    "integrity": "sha512-blFeqb49wRCSGUGj7gtpfnSGHy2lwDk94RhUmS1c/hTby70kvChbWpkJ4Pm1390LqzzvTmzgXKHPEafJwCb8jA==",
+    "repository": "https://github.com/mrdoob/three.js",
+    "tag": "r186",
+    "license": "MIT",
+    "use": "Actual CCDIKSolver and Bone/Skeleton/matrix math only. No Three renderer/context or image capture.",
+    "files": {
+      "examples/jsm/animation/CCDIKSolver.js": {
+        "bytes": 13640,
+        "sha256": "63de99bc31ba9b4f134dd86cc33099964de2eb51e74eb3283f556a09bbc5a69e"
+      },
+      "src/math/Matrix4.js": {
+        "bytes": 33866,
+        "sha256": "d942c20d95e0864246aa6794934656f6a2871a6e863ce7b096581837810fb555"
+      },
+      "src/math/Quaternion.js": {
+        "bytes": 20496,
+        "sha256": "6c18e09a14f2d2fa7813e23bb257b3a9df542c5f7ad605f79ab8a99fa3bd8497"
+      },
+      "src/math/Euler.js": {
+        "bytes": 9275,
+        "sha256": "33a964a95f6c87ccc65e5d049810f9133e0f1a574777a37a724c7c03b4adba22"
+      },
+      "src/math/Vector3.js": {
+        "bytes": 28214,
+        "sha256": "9fa712118252ac8bbccededa1211d3ccf190c4e74c056b73557f76b66f53cf45"
+      },
+      "src/core/Object3D.js": {
+        "bytes": 41659,
+        "sha256": "09ba0acdf6a5fed399fa6ce9c0d61f9e0c0e6551e2ae43a270c9878a734bdabc"
+      },
+      "src/objects/Bone.js": {
+        "bytes": 612,
+        "sha256": "2af7e9223d192b917ac9109d8dddb00f435c68ebf0f6d31e812d78f6fc4c7031"
+      },
+      "src/objects/Skeleton.js": {
+        "bytes": 7906,
+        "sha256": "37eaa7755b39775411fe32bafbf9a0273bdad6bb7976114ed63f8700f4b4b0e9"
+      },
+      "src/objects/SkinnedMesh.js": {
+        "bytes": 9078,
+        "sha256": "b01477c050eff4c32bb4ae6792cb2948e5908adc09bd13335104e68966f6690f"
+      },
+      "LICENSE": {
+        "bytes": 1081,
+        "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+      }
+    }
+  },
+  "frameweave": {
+    "use": "Existing Graphics MeshData/SkeletonData validators; existing NativeGpuScope compute and drawMesh; unchanged ARAP geometry validation moved to pure module.",
+    "meshValidator": {
+      "arithmeticByteEqualAfterLineEndingNormalization": true,
+      "sha256": "2917b646991bb3c134a848a9fd7f9026e1afbf4ffe951f30b9a3feee29318cda"
+    }
+  },
+  "newCode": {
+    "license": "Apache-2.0",
+    "scope": "Authoring/asset/constraint adapters and conventional resident LBS shader, no imported application runtime"
+  }
+}

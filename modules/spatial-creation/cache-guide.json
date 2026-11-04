@@ -1,0 +1,293 @@
+{
+  "schemaVersion": 1,
+  "id": "spatial-cache-candidate",
+  "status": "experimental-candidate",
+  "exports": [
+    {
+      "name": "cacheTimes",
+      "purpose": "Validate ordered source seconds",
+      "entry": "cache-entry.ts",
+      "types": "cache-types.ts",
+      "example": "examples/cache.tsx",
+      "time": "existing FrameContext and Signal, absolute source seconds",
+      "output": "GPU-owned typed result/image or validated plain metadata",
+      "defaultsAndLimits": "CACHE.md",
+      "dependencies": [
+        "admitted NativeGpuScope",
+        "R1 own resource seals or declared NanoVDB Resource"
+      ],
+      "gpuRequired": false
+    },
+    {
+      "name": "cacheBracket",
+      "purpose": "Map absolute seconds to source indices and weights",
+      "entry": "cache-entry.ts",
+      "types": "cache-types.ts",
+      "example": "examples/cache.tsx",
+      "time": "existing FrameContext and Signal, absolute source seconds",
+      "output": "GPU-owned typed result/image or validated plain metadata",
+      "defaultsAndLimits": "CACHE.md",
+      "dependencies": [
+        "admitted NativeGpuScope",
+        "R1 own resource seals or declared NanoVDB Resource"
+      ],
+      "gpuRequired": false
+    },
+    {
+      "name": "sampleCacheTime",
+      "purpose": "Evaluate existing Signal seconds without clock advance",
+      "entry": "cache-entry.ts",
+      "types": "cache-types.ts",
+      "example": "examples/cache.tsx",
+      "time": "existing FrameContext and Signal, absolute source seconds",
+      "output": "GPU-owned typed result/image or validated plain metadata",
+      "defaultsAndLimits": "CACHE.md",
+      "dependencies": [
+        "admitted NativeGpuScope",
+        "R1 own resource seals or declared NanoVDB Resource"
+      ],
+      "gpuRequired": false
+    },
+    {
+      "name": "pointCacheSource",
+      "purpose": "Declare own sealed point resource",
+      "entry": "cache-entry.ts",
+      "types": "cache-types.ts",
+      "example": "examples/cache.tsx",
+      "time": "existing FrameContext and Signal, absolute source seconds",
+      "output": "GPU-owned typed result/image or validated plain metadata",
+      "defaultsAndLimits": "CACHE.md",
+      "dependencies": [
+        "admitted NativeGpuScope",
+        "R1 own resource seals or declared NanoVDB Resource"
+      ],
+      "gpuRequired": false
+    },
+    {
+      "name": "inspectPointCache",
+      "purpose": "Validate full MDD/PC2 header, times, finite XYZ and exact lengths",
+      "entry": "cache-entry.ts",
+      "types": "cache-types.ts",
+      "example": "examples/cache.tsx",
+      "time": "existing FrameContext and Signal, absolute source seconds",
+      "output": "GPU-owned typed result/image or validated plain metadata",
+      "defaultsAndLimits": "CACHE.md",
+      "dependencies": [
+        "admitted NativeGpuScope",
+        "R1 own resource seals or declared NanoVDB Resource"
+      ],
+      "gpuRequired": false
+    },
+    {
+      "name": "pointCacheOptions",
+      "purpose": "Declare source unit and affine conversion",
+      "entry": "cache-entry.ts",
+      "types": "cache-types.ts",
+      "example": "examples/cache.tsx",
+      "time": "existing FrameContext and Signal, absolute source seconds",
+      "output": "GPU-owned typed result/image or validated plain metadata",
+      "defaultsAndLimits": "CACHE.md",
+      "dependencies": [
+        "admitted NativeGpuScope",
+        "R1 own resource seals or declared NanoVDB Resource"
+      ],
+      "gpuRequired": false
+    },
+    {
+      "name": "volumeCacheOptions",
+      "purpose": "Validate volume sequence and target domain",
+      "entry": "cache-entry.ts",
+      "types": "cache-types.ts",
+      "example": "examples/cache.tsx",
+      "time": "existing FrameContext and Signal, absolute source seconds",
+      "output": "GPU-owned typed result/image or validated plain metadata",
+      "defaultsAndLimits": "CACHE.md",
+      "dependencies": [
+        "admitted NativeGpuScope",
+        "R1 own resource seals or declared NanoVDB Resource"
+      ],
+      "gpuRequired": false
+    },
+    {
+      "name": "openPointCache",
+      "purpose": "Open own R1 point resource with once-validated bytes",
+      "entry": "cache-entry.ts",
+      "types": "cache-types.ts",
+      "example": "examples/cache.tsx",
+      "time": "existing FrameContext and Signal, absolute source seconds",
+      "output": "GPU-owned typed result/image or validated plain metadata",
+      "defaultsAndLimits": "CACHE.md",
+      "dependencies": [
+        "admitted NativeGpuScope",
+        "R1 own resource seals or declared NanoVDB Resource"
+      ],
+      "gpuRequired": true
+    },
+    {
+      "name": "pointCacheFromBytes",
+      "purpose": "Open explicitly owned point bytes",
+      "entry": "cache-entry.ts",
+      "types": "cache-types.ts",
+      "example": "examples/cache.tsx",
+      "time": "existing FrameContext and Signal, absolute source seconds",
+      "output": "GPU-owned typed result/image or validated plain metadata",
+      "defaultsAndLimits": "CACHE.md",
+      "dependencies": [
+        "admitted NativeGpuScope",
+        "R1 own resource seals or declared NanoVDB Resource"
+      ],
+      "gpuRequired": true
+    },
+    {
+      "name": "mixPointCaches",
+      "purpose": "Blend explicit same-index caches",
+      "entry": "cache-entry.ts",
+      "types": "cache-types.ts",
+      "example": "examples/cache.tsx",
+      "time": "existing FrameContext and Signal, absolute source seconds",
+      "output": "GPU-owned typed result/image or validated plain metadata",
+      "defaultsAndLimits": "CACHE.md",
+      "dependencies": [
+        "admitted NativeGpuScope",
+        "R1 own resource seals or declared NanoVDB Resource"
+      ],
+      "gpuRequired": true
+    },
+    {
+      "name": "createVolumeCache",
+      "purpose": "Sample formal sealed NanoVDB sequence on GPU",
+      "entry": "cache-entry.ts",
+      "types": "cache-types.ts",
+      "example": "examples/cache.tsx",
+      "time": "existing FrameContext and Signal, absolute source seconds",
+      "output": "GPU-owned typed result/image or validated plain metadata",
+      "defaultsAndLimits": "CACHE.md",
+      "dependencies": [
+        "admitted NativeGpuScope",
+        "R1 own resource seals or declared NanoVDB Resource"
+      ],
+      "gpuRequired": true
+    },
+    {
+      "name": "createCachedMeshRenderer",
+      "purpose": "Render cached geometry with existing material/raster",
+      "entry": "cache-entry.ts",
+      "types": "cache-types.ts",
+      "example": "examples/cache.tsx",
+      "time": "existing FrameContext and Signal, absolute source seconds",
+      "output": "GPU-owned typed result/image or validated plain metadata",
+      "defaultsAndLimits": "CACHE.md",
+      "dependencies": [
+        "admitted NativeGpuScope",
+        "R1 own resource seals or declared NanoVDB Resource"
+      ],
+      "gpuRequired": true
+    },
+    {
+      "name": "createCachedPointsRenderer",
+      "purpose": "Render cached positions as GPU billboards",
+      "entry": "cache-entry.ts",
+      "types": "cache-types.ts",
+      "example": "examples/cache.tsx",
+      "time": "existing FrameContext and Signal, absolute source seconds",
+      "output": "GPU-owned typed result/image or validated plain metadata",
+      "defaultsAndLimits": "CACHE.md",
+      "dependencies": [
+        "admitted NativeGpuScope",
+        "R1 own resource seals or declared NanoVDB Resource"
+      ],
+      "gpuRequired": true
+    },
+    {
+      "name": "cacheVolumeSlice",
+      "purpose": "Show volume slice and status diagnosis",
+      "entry": "cache-entry.ts",
+      "types": "cache-types.ts",
+      "example": "examples/cache.tsx",
+      "time": "existing FrameContext and Signal, absolute source seconds",
+      "output": "GPU-owned typed result/image or validated plain metadata",
+      "defaultsAndLimits": "CACHE.md",
+      "dependencies": [
+        "admitted NativeGpuScope",
+        "R1 own resource seals or declared NanoVDB Resource"
+      ],
+      "gpuRequired": true
+    },
+    {
+      "name": "renderCachedVolume",
+      "purpose": "Render formal fog or SDF cache",
+      "entry": "cache-entry.ts",
+      "types": "cache-types.ts",
+      "example": "examples/cache.tsx",
+      "time": "existing FrameContext and Signal, absolute source seconds",
+      "output": "GPU-owned typed result/image or validated plain metadata",
+      "defaultsAndLimits": "CACHE.md",
+      "dependencies": [
+        "admitted NativeGpuScope",
+        "R1 own resource seals or declared NanoVDB Resource"
+      ],
+      "gpuRequired": true
+    },
+    {
+      "name": "cachedMeshScene",
+      "purpose": "Create automatic owned mesh cache Stage",
+      "entry": "cache-entry.ts",
+      "types": "cache-types.ts",
+      "example": "examples/cache.tsx",
+      "time": "existing FrameContext and Signal, absolute source seconds",
+      "output": "GPU-owned typed result/image or validated plain metadata",
+      "defaultsAndLimits": "CACHE.md",
+      "dependencies": [
+        "admitted NativeGpuScope",
+        "R1 own resource seals or declared NanoVDB Resource"
+      ],
+      "gpuRequired": true
+    },
+    {
+      "name": "cachedPointsScene",
+      "purpose": "Create automatic point cache Stage",
+      "entry": "cache-entry.ts",
+      "types": "cache-types.ts",
+      "example": "examples/cache.tsx",
+      "time": "existing FrameContext and Signal, absolute source seconds",
+      "output": "GPU-owned typed result/image or validated plain metadata",
+      "defaultsAndLimits": "CACHE.md",
+      "dependencies": [
+        "admitted NativeGpuScope",
+        "R1 own resource seals or declared NanoVDB Resource"
+      ],
+      "gpuRequired": true
+    },
+    {
+      "name": "cachedVolumeScene",
+      "purpose": "Create automatic volume/surface/slice Stage",
+      "entry": "cache-entry.ts",
+      "types": "cache-types.ts",
+      "example": "examples/cache.tsx",
+      "time": "existing FrameContext and Signal, absolute source seconds",
+      "output": "GPU-owned typed result/image or validated plain metadata",
+      "defaultsAndLimits": "CACHE.md",
+      "dependencies": [
+        "admitted NativeGpuScope",
+        "R1 own resource seals or declared NanoVDB Resource"
+      ],
+      "gpuRequired": true
+    }
+  ],
+  "nodeOnly": {
+    "entry": "cache-io.ts",
+    "exports": [
+      "inspectPointCacheFile",
+      "inspectVolumeCacheFile",
+      "writePointCache"
+    ]
+  },
+  "unsupported": [
+    "arbitrary VDB/NVDB container",
+    "Alembic",
+    "topology changes",
+    "automatic retargeting",
+    "CPU pixel fallback",
+    "writable cross-frame GPU state"
+  ]
+}

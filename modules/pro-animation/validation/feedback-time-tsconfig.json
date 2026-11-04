@@ -1,0 +1,66 @@
+{
+  "extends": "../../../tsconfig.json",
+  "include": [
+    "../src/native-feedback-time/**/*.ts",
+    "../../../tests/pro-animation-native-feedback-time.test.ts",
+    "feedback-time-scene/*.tsx"
+  ],
+  "exclude": [
+    "../../../node_modules"
+  ],
+  "compilerOptions": {
+    "paths": {
+      "native-image-effects": [
+        "../../../modules/native-effects/api.d.ts"
+      ],
+      "spatial-fields": [
+        "../../../modules/spatial-fields/index.ts"
+      ],
+      "deformable-effects": [
+        "../../../modules/deformable-effects/src/public.d.ts"
+      ],
+      "mesh-deformation": [
+        "../../../modules/mesh-deformation/index.ts"
+      ],
+      "gpu-resident-effects": [
+        "../../../modules/gpu-image-effects/resident/api.d.ts"
+      ],
+      "puppet-effects": [
+        "../../../modules/puppet-effects/src/public.d.ts"
+      ],
+      "rigid-body-effects": [
+        "../../../modules/rigid-body-effects/src/public.d.ts"
+      ],
+      "skeletal-effects": [
+        "../../../modules/skeletal-effects/src/public.d.ts"
+      ],
+      "spatial-effects": [
+        "../../../modules/spatial-effects/src/index.ts"
+      ],
+      "gpu-image-effects": [
+        "../../../modules/gpu-image-effects/api.d.ts"
+      ],
+      "spatial-compute": [
+        "../../../modules/spatial-compute/index.ts"
+      ],
+      "spatial-vfx": [
+        "../../../modules/spatial-vfx/index.ts"
+      ],
+      "frameweave.resident-example": [
+        "../../../modules/gpu-effects/examples/resident-module/api.d.ts"
+      ],
+      "pro-animation": [
+        "../../../modules/pro-animation/src/public.d.ts"
+      ],
+      "@frameweave/engine": [
+        "../../../src/index.ts"
+      ],
+      "@frameweave/engine/native": [
+        "../../native-gpu/authoring.ts"
+      ],
+      "@frameweave/engine/jsx-runtime": [
+        "../../../src/jsx-runtime.ts"
+      ]
+    }
+  }
+}

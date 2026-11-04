@@ -1,0 +1,5 @@
+Frameweave Deep Image module implementation: Apache-2.0, repository LICENSE.
+Optional native decoder: OpenEXRCore3.4.4 and Imath3.2.2 (BSD-3-Clause), OpenJPH0.24.5 (BSD-2-Clause). Full upstream licenses preserved alongside this notice.
+OpenEXR's pinned vendored libdeflate is covered by upstream external/deflate/COPYING, retained as LICENSE-libdeflate.txt.
+Review exact source archive hashes in prepare-sources.py. Building is explicit and offline after preparation; runtime never downloads code.
+Only the existing GPU owner executes media work. Native decoder is fixed-operation asset I/O. R1 package requests no filesystem/network/process permissions.

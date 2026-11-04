@@ -1,0 +1,728 @@
+{
+  "binding": "bytes-v1",
+  "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+  "target": "wasm32-unknown-unknown",
+  "features": [
+    "dim3",
+    "f64",
+    "std",
+    "serde-serialize",
+    "enhanced-determinism",
+    "solver-bounds-checks"
+  ],
+  "defaultFeatures": false,
+  "hostImports": [],
+  "dependencies": [
+    {
+      "name": "allocator-api2",
+      "version": "0.2.21",
+      "archiveSha256": "683d7910e743518b0e34f1186f92494becacb047c7b6bf616c96772180fef923",
+      "sourceFileCount": 25,
+      "sourceInventorySha256": "ac7a450fe7548b7bd901583e92a11817ac00f8bdc789aee8c22f04360a10021b"
+    },
+    {
+      "name": "approx",
+      "version": "0.5.1",
+      "archiveSha256": "cab112f0a86d568ea0e627cc1d6be74a1e9cd55214684db5561995f6dad897c6",
+      "sourceFileCount": 20,
+      "sourceInventorySha256": "c14a00645852090a1a185b0d723ea21dada7f4b8bb02e9652d3df6d28339982e"
+    },
+    {
+      "name": "arrayvec",
+      "version": "0.7.8",
+      "archiveSha256": "d3fb67a6e08acf24fdeccbac2cb6ac4305825bd1f117462e0e6f2f193345ad56",
+      "sourceFileCount": 22,
+      "sourceInventorySha256": "61b82a7f93102ff8c3bda93510d18ded54c38405d977419abea71dc17fe82886"
+    },
+    {
+      "name": "autocfg",
+      "version": "1.5.1",
+      "archiveSha256": "f2032f911046de80f0a198e0901378627c33f59ea0ac00e363d481118bd70a53",
+      "sourceFileCount": 23,
+      "sourceInventorySha256": "af5e672a7bd774c6315863ad5b57809c12a3fbd8f7eb5083c89780af9e0f3f67"
+    },
+    {
+      "name": "bitflags",
+      "version": "2.13.2",
+      "archiveSha256": "3ded4057c258ba199e2d26386d3af3780957ecaee6c4ef4041c6b4b8b97c0b06",
+      "sourceFileCount": 64,
+      "sourceInventorySha256": "b8ccaadcef22f1c7e53545e6bf6c982a12c56a665110d5dd39d39f111d10e827"
+    },
+    {
+      "name": "bytemuck",
+      "version": "1.25.2",
+      "archiveSha256": "95832e849adfb21180ccb6826a99da14e5d266ae5c2e668e1602cf234f153797",
+      "sourceFileCount": 38,
+      "sourceInventorySha256": "467729aa5f15af90dafe22e570e80a3147429f821220ca84ddb2f7e3a36665cf"
+    },
+    {
+      "name": "byteorder",
+      "version": "1.5.0",
+      "archiveSha256": "1fd0f2584146f6f2ef48085050886acf353beff7305ebd1ae69500e27c67f64b",
+      "sourceFileCount": 14,
+      "sourceInventorySha256": "bbdef961d8aef95322c190e6966744d2cf604836b62eff7306a868c253c92dd1"
+    },
+    {
+      "name": "cobs",
+      "version": "0.3.0",
+      "archiveSha256": "0fa961b519f0b462e3a3b4a34b64d119eeaca1d59af726fe450bbba07a9fc0a1",
+      "sourceFileCount": 14,
+      "sourceInventorySha256": "89027af09a2d3e4d9eed87bf056ab0e6d6acb4f7a049e47feb1b1d1b9ab7d2e1"
+    },
+    {
+      "name": "downcast-rs",
+      "version": "2.0.2",
+      "archiveSha256": "117240f60069e65410b3ae1bb213295bd828f707b5bec6596a1afc8793ce0cbc",
+      "sourceFileCount": 14,
+      "sourceInventorySha256": "a81a2966c98f3f97dbae7669147b125e1c4628ee7249fdb46d7a4e81c421c09c"
+    },
+    {
+      "name": "either",
+      "version": "1.19.0",
+      "archiveSha256": "0e9c71c2167ca323c882b99918929403426e2373ea17242ff5653e0d5e1058be",
+      "sourceFileCount": 15,
+      "sourceInventorySha256": "d89ba11f5a513af9701cd0c1e7116419a6633b30be0b923f845276df6eb0170f"
+    },
+    {
+      "name": "embedded-io",
+      "version": "0.4.0",
+      "archiveSha256": "ef1a6892d9eef45c8fa6b9e0086428a2cca8491aca8f787c534a3d6d0bcb3ced",
+      "sourceFileCount": 19,
+      "sourceInventorySha256": "2b8923f04c2e9168cc63839ea7356b60626f6970da9ef0341503ef2518b2f63f"
+    },
+    {
+      "name": "embedded-io",
+      "version": "0.6.1",
+      "archiveSha256": "edd0f118536f44f5ccd48bcb8b111bdc3de888b58c74639dfb034a357d0f206d",
+      "sourceFileCount": 13,
+      "sourceInventorySha256": "e4e90579e9dd934f20a206a294e045aa7dea669529511a8d23c5c1cca42a18d4"
+    },
+    {
+      "name": "ena",
+      "version": "0.14.4",
+      "archiveSha256": "eabffdaee24bd1bf95c5ef7cec31260444317e72ea56c4c91750e8b7ee58d5f1",
+      "sourceFileCount": 18,
+      "sourceInventorySha256": "6bbb097cb73812c3961b77df5d4b58e362ca07ae4cadd12e0acc9c75ee6886e6"
+    },
+    {
+      "name": "equivalent",
+      "version": "1.0.3",
+      "archiveSha256": "00d174d5400e5e8fd687ad1049e2f578285fa914201b1af7e8b112a4546bd826",
+      "sourceFileCount": 10,
+      "sourceInventorySha256": "87deef41b4739de619c2d414981fcea708bfc55170d6401ad5539db568577b5c"
+    },
+    {
+      "name": "foldhash",
+      "version": "0.2.0",
+      "archiveSha256": "77ce24cb58228fbb8aa041425bb1050850ac19177686ea6e0f41a70416f56fdb",
+      "sourceFileCount": 12,
+      "sourceInventorySha256": "c52d8087b4beb89c45dc019649105db8786d7cd4ce2b9ccf224e1fd11d8c027b"
+    },
+    {
+      "name": "glam",
+      "version": "0.30.10",
+      "archiveSha256": "19fc433e8437a212d1b6f1e68c7824af3aed907da60afa994e7f542d18d12aa9",
+      "sourceFileCount": 262,
+      "sourceInventorySha256": "b49ef71ae78af1ee8dd23224e64dde3f36166e9ca3002db4429a6bd816ca3444"
+    },
+    {
+      "name": "glam",
+      "version": "0.31.1",
+      "archiveSha256": "556f6b2ea90b8d15a74e0e7bb41671c9bdf38cd9f78c284d750b9ce58a2b5be7",
+      "sourceFileCount": 273,
+      "sourceInventorySha256": "b9305665befa931d4bbbddde776cc7b377dafe48cd723cfd6f19a49a8704ae79"
+    },
+    {
+      "name": "glam",
+      "version": "0.32.1",
+      "archiveSha256": "f70749695b063ecbf6b62949ccccde2e733ec3ecbbd71d467dca4e5c6c97cca0",
+      "sourceFileCount": 273,
+      "sourceInventorySha256": "61316dbd048c7453e40a584f55e2cb03d99b1640a73b0a661624328e300d3603"
+    },
+    {
+      "name": "glam",
+      "version": "0.33.12",
+      "archiveSha256": "37bfe73dc8ec21f54d181e5a60554327ec3f1c600c455a75ccbfc65d2106a6c4",
+      "sourceFileCount": 255,
+      "sourceInventorySha256": "c45e2599eafed9195e6a38182ec11796eba270326d2c403f2dbf4d22d7042fdd"
+    },
+    {
+      "name": "glamx",
+      "version": "0.3.1",
+      "archiveSha256": "28d74079318e3a077bd3d15faa90fde24fa37bb9f157f92f853e6019a15fd413",
+      "sourceFileCount": 20,
+      "sourceInventorySha256": "2a186eb578330189dbe8563af301e8bfe16da31448a84ea6c25a1a9fad26329e"
+    },
+    {
+      "name": "hash32",
+      "version": "0.3.1",
+      "archiveSha256": "47d60b12902ba28e2730cd37e95b8c9223af2808df9e902d4df49588d1470606",
+      "sourceFileCount": 16,
+      "sourceInventorySha256": "0fd5c2046293c57660b4e174e2ab3e123d1612ade281fc9091ec157c68c42d02"
+    },
+    {
+      "name": "hashbrown",
+      "version": "0.16.1",
+      "archiveSha256": "841d1cc9bed7f9236f321df977030373f4a4163ae1a7dbfe1a51a2c1a51d9100",
+      "sourceFileCount": 48,
+      "sourceInventorySha256": "f5cc0ddba80b66ccd853529aaa306a21436b61f65a9d82beb6ba1879c5af1131"
+    },
+    {
+      "name": "hashbrown",
+      "version": "0.17.1",
+      "archiveSha256": "ed5909b6e89a2db4456e54cd5f673791d7eca6732202bbf2a9cc504fe2f9b84a",
+      "sourceFileCount": 50,
+      "sourceInventorySha256": "34497250ebada19e7cfbf81c392620e78911050b394dcd94ff04f71fe94d4d56"
+    },
+    {
+      "name": "heapless",
+      "version": "0.8.0",
+      "archiveSha256": "0bfb9eb618601c89945a70e254898da93b13be0388091d42117462b265bb3fad",
+      "sourceFileCount": 42,
+      "sourceInventorySha256": "ac84e91278d997ba8b8033cc5f473b5c32d9537568c74ddcd24ecf67aa73b308"
+    },
+    {
+      "name": "indexmap",
+      "version": "2.14.2",
+      "archiveSha256": "cc4e190f5d26ca7051642629da2c52fc03bde85a03197c99408dcd291734c855",
+      "sourceFileCount": 43,
+      "sourceInventorySha256": "566600378fd7f7287974b77d01c5fb50984fc57cc60075ce548e01185e0c928b"
+    },
+    {
+      "name": "itoa",
+      "version": "1.0.18",
+      "archiveSha256": "8f42a60cbdf9a97f5d2305f08a87dc4e09308d1276d28c869c684d7777685682",
+      "sourceFileCount": 14,
+      "sourceInventorySha256": "ce7a14626667f454eb5122ef15d16a129a3bd1fb28fb4f88c3331342840c96d3"
+    },
+    {
+      "name": "libm",
+      "version": "0.2.16",
+      "archiveSha256": "b6d2cec3eae94f9f509c767b45932f1ada8350c4bdb85af2fcab4a3c14807981",
+      "sourceFileCount": 155,
+      "sourceInventorySha256": "0362727490d52f537681bf7fd4dfe15cec5145b8de56ee8d8827b14789b3115f"
+    },
+    {
+      "name": "log",
+      "version": "0.4.34",
+      "archiveSha256": "f9f8bd3e56ce4dfc153cf470fffbfa98c7620958b312ca5c3a4b8d5181fd13c6",
+      "sourceFileCount": 23,
+      "sourceInventorySha256": "290a441b590e995e13a3660cda6be811c9c2df243947f73190e4677298514bad"
+    },
+    {
+      "name": "matrixmultiply",
+      "version": "0.3.11",
+      "archiveSha256": "3f607c237553f086e7043417a51df26b2eb899d3caff94e6a67592ff992fedc7",
+      "sourceFileCount": 39,
+      "sourceInventorySha256": "5f6eb098adefe52be7c903d01a6c460623acc8f4ecf1431204968f112fd2c895"
+    },
+    {
+      "name": "memchr",
+      "version": "2.8.3",
+      "archiveSha256": "cf8baf1c55e62ffcace7a9f06f4bd9cd3f0c4beb022d3b367256b91b87513d98",
+      "sourceFileCount": 59,
+      "sourceInventorySha256": "243428de4571fe1d3b34c63fd7d1a2ac0235ea108d7836777489f8099977bdd3"
+    },
+    {
+      "name": "nalgebra-macros",
+      "version": "0.3.0",
+      "archiveSha256": "973e7178a678cfd059ccec50887658d482ce16b0aa9da3888ddeab5cd5eb4889",
+      "sourceFileCount": 9,
+      "sourceInventorySha256": "0cd95beefcaee04e3c51aa47800f396c69a7248ba33ee6c5e6d096472453666e"
+    },
+    {
+      "name": "nalgebra",
+      "version": "0.35.0",
+      "archiveSha256": "adc43a60c217b0c6ff46e47f26911015ad8d2e5a8be1af668c67e370d99a4346",
+      "sourceFileCount": 301,
+      "sourceInventorySha256": "a33b7082b24c81250ba1d6bc72fb8f2e7a9b75b014611e2d5b758968769b64a8"
+    },
+    {
+      "name": "num-bigint",
+      "version": "0.4.8",
+      "archiveSha256": "c89e69e7e0f03bea5ef08013795c25018e101932225a656383bd384495ecc367",
+      "sourceFileCount": 53,
+      "sourceInventorySha256": "fdb62e2305dab3d11363428f0c022698605fa0620f4c5ca509cc3d09ea8a002b"
+    },
+    {
+      "name": "num-complex",
+      "version": "0.4.6",
+      "archiveSha256": "73f88a1307638156682bada9d7604135552957b7818057dcef22705b4d509495",
+      "sourceFileCount": 13,
+      "sourceInventorySha256": "01d6934e339e423a7b90c289c7c95bd2470fb43b911cd11c742fc17792a3c92b"
+    },
+    {
+      "name": "num-derive",
+      "version": "0.5.1",
+      "archiveSha256": "e4e98dc3b890f6c23a0f9d3d491a2823d0dea0fa656302a13dd225fa924112a8",
+      "sourceFileCount": 23,
+      "sourceInventorySha256": "2f61afe16dbd18d88f8d1c0980d65937361cf8e2bf3d56036d1ed362dc4e5550"
+    },
+    {
+      "name": "num-integer",
+      "version": "0.1.47",
+      "archiveSha256": "7ce2d95d4b3734dc35aa2f45e1aa22cd416814592a4f9d9205e11affd5b8e10b",
+      "sourceFileCount": 17,
+      "sourceInventorySha256": "775860efb4f8cda03a350b442784f0fad85d6da879cfce7cbb2903d9022057f7"
+    },
+    {
+      "name": "num-rational",
+      "version": "0.4.2",
+      "archiveSha256": "f83d14da390562dca69fc84082e73e548e1ad308d24accdedd2720017cb37824",
+      "sourceFileCount": 10,
+      "sourceInventorySha256": "8a1c599461bbd2c4bc4c3714a68ea76c8df973d9cb83285ee9ce0b9229297993"
+    },
+    {
+      "name": "num-traits",
+      "version": "0.2.19",
+      "archiveSha256": "071dfc062690e90b734c0b2273ce72ad0ffa95f0c74596bc250dcfd960262841",
+      "sourceFileCount": 29,
+      "sourceInventorySha256": "41654ed12d8cffeed30ea3468ce86a3966c2c587e03ab82868d1485dde93d075"
+    },
+    {
+      "name": "ordered-float",
+      "version": "5.5.1",
+      "archiveSha256": "7f59006ce1e204c30956638535b74d317bca99477b9356dfaec54c37f6f600ab",
+      "sourceFileCount": 13,
+      "sourceInventorySha256": "b5c488e81ecbf3165254e1f2df1f954b5eecb4a4cf79376d3171d8e2ec5901c6"
+    },
+    {
+      "name": "parry3d-f64",
+      "version": "0.31.1",
+      "archiveSha256": "ffb9e04261f1783d8f66f36767b2b73132a63c9b30b12a5ed47e1faa240f7591",
+      "sourceFileCount": 349,
+      "sourceInventorySha256": "8a70fa26093d13b0d636037f5738f22d559773fbec4229e954b2a4083d1b2034"
+    },
+    {
+      "name": "postcard",
+      "version": "1.1.3",
+      "archiveSha256": "6764c3b5dd454e283a30e6dfe78e9b31096d9e32036b5d1eaac7a6119ccb9a24",
+      "sourceFileCount": 24,
+      "sourceInventorySha256": "703e668ff68092d9c20a8ae36fc6f8845b92f9e7b6178688e156c3e8448fcc03"
+    },
+    {
+      "name": "proc-macro2",
+      "version": "1.0.107",
+      "archiveSha256": "985e7ec9bb745e6ce6535b544d84d6cd6f7ad8bd711c398938ae983b91a766d9",
+      "sourceFileCount": 33,
+      "sourceInventorySha256": "a5baaa1abdc3431d84462fa51f0e045a69196a85fda922328510d88a71e79f90"
+    },
+    {
+      "name": "profiling-procmacros",
+      "version": "1.0.18",
+      "archiveSha256": "4488a4a36b9a4ba6b9334a32a39971f77c1436ec82c38707bce707699cc3bbcb",
+      "sourceFileCount": 6,
+      "sourceInventorySha256": "dd36b0dd689fc10c81865c690099c87be5455a99ce344f641ae145afe019005c"
+    },
+    {
+      "name": "profiling",
+      "version": "1.0.18",
+      "archiveSha256": "3d595e54a326bc53c1c197b32d295e14b169e3cfeaa8dc82b529f947fba6bcf5",
+      "sourceFileCount": 13,
+      "sourceInventorySha256": "c2e95e8a65cfe69fefc6cbadd41c0ed1ee7d0b02eef4c27da0118610eca9cf9c"
+    },
+    {
+      "name": "quote",
+      "version": "1.0.47",
+      "archiveSha256": "1fbf4db142a473a8d80c26bbf18454ed458bf8d26c8219c331daecfdbd079001",
+      "sourceFileCount": 35,
+      "sourceInventorySha256": "6d2ae701c2de08c9f65c72ae888db5768cce2d04d4219796b93f790cd8e8697c"
+    },
+    {
+      "name": "rapier3d-f64",
+      "version": "0.36.1",
+      "archiveSha256": "f4588855e9c5451702147b5c6ddff4d93887f1e59c9504b6ac3571818f6ec3d2",
+      "sourceFileCount": 245,
+      "sourceInventorySha256": "66ef10d70c6701f03e81847efc025767db25e90b5f3675d4fcf55ed61eb57902"
+    },
+    {
+      "name": "rawpointer",
+      "version": "0.2.1",
+      "archiveSha256": "60a357793950651c4ed0f3f52338f53b2f809f32d83a07f72909fa13e4c6c1e3",
+      "sourceFileCount": 8,
+      "sourceInventorySha256": "c4365a11d74bdf9bce92f94e6b28b13cac65d72fcd1d0e16fd318e160785bd4b"
+    },
+    {
+      "name": "robust",
+      "version": "1.2.0",
+      "archiveSha256": "4e27ee8bb91ca0adcf0ecb116293afa12d393f9c2b9b9cd54d33e8078fe19839",
+      "sourceFileCount": 17,
+      "sourceInventorySha256": "cd7b79cd00113fa392d93aff5f5869c8110bf50d897b26c4ce5ad92a51d76be1"
+    },
+    {
+      "name": "rstar",
+      "version": "0.13.0",
+      "archiveSha256": "5912b862fa5ffb462607bfd1e35036c458c537921f508c8235a83d5f3987edfe",
+      "sourceFileCount": 33,
+      "sourceInventorySha256": "9caca2a6e5a6b11d16e1e9adacc3eada15327447b28809db8b1e1a19c9922463"
+    },
+    {
+      "name": "safe_arch",
+      "version": "1.2.0",
+      "archiveSha256": "42c6efa15875e6ecb39ca61fb0b0c1a40b84fac5a5ffe71eef7d1000c8eb3f5f",
+      "sourceFileCount": 56,
+      "sourceInventorySha256": "246c386f7ad91699a8ed09fdbb71294e57b0ff1ff864f1ec95ee5e1ee756ffda"
+    },
+    {
+      "name": "serde_arrays",
+      "version": "0.2.0",
+      "archiveSha256": "94a16b99c5ea4fe3daccd14853ad260ec00ea043b2708d1fd1da3106dcd8d9df",
+      "sourceFileCount": 17,
+      "sourceInventorySha256": "d6045635dfb09c45e276cc97bf0be3825e00a1c97c32609c7597efbf987edc6e"
+    },
+    {
+      "name": "serde_core",
+      "version": "1.0.229",
+      "archiveSha256": "67dca2c9c51e58a4791a4b1ed58308b39c64224d349a935ab5039aa360942a48",
+      "sourceFileCount": 27,
+      "sourceInventorySha256": "385fd18ed6b3f89d97de0eb4b279893e1a45d1b96b8e54d762b2d659644d460d"
+    },
+    {
+      "name": "serde_derive",
+      "version": "1.0.229",
+      "archiveSha256": "e7a5d71263a5a7d47b41f6b3f06ba276f10cc18b0931f1799f710578e2309348",
+      "sourceFileCount": 36,
+      "sourceInventorySha256": "27dddb2efe38940cfa87087a1d04461e90d8001bb9053801fdd876ef93dc647a"
+    },
+    {
+      "name": "serde_json",
+      "version": "1.0.154",
+      "archiveSha256": "e7e9cc8b1b85264074fbcc02a88680c4096b1e47df8f739dceb03bf482f04bd6",
+      "sourceFileCount": 90,
+      "sourceInventorySha256": "9f341becfdb5eb5200a7394914ba140317fdbf0c522be7f714ffee045c90cf2c"
+    },
+    {
+      "name": "serde",
+      "version": "1.0.229",
+      "archiveSha256": "4148590afebada386688f18773da617792bf2ef03ffc1e4cbd2b1d45b023e0ba",
+      "sourceFileCount": 33,
+      "sourceInventorySha256": "ee0b8c97a87b14c97472c37f483f69e8c6c6aad93286e5dfdcefdd3e5b4fbafa"
+    },
+    {
+      "name": "simba",
+      "version": "0.10.2",
+      "archiveSha256": "f1a7200d82ff1c7b4235efd12f11e2537a402c91cf83a5cb97ce80eef787fde7",
+      "sourceFileCount": 31,
+      "sourceInventorySha256": "df64a287e53d8891e72c21167231606b52f845770f7f08411cfd9b85f475bedd"
+    },
+    {
+      "name": "slab",
+      "version": "0.4.12",
+      "archiveSha256": "0c790de23124f9ab44544d7ac05d60440adc586479ce501c1d6d7da3cd8c9cf5",
+      "sourceFileCount": 13,
+      "sourceInventorySha256": "b7f8b25b3e941a335b76e37074672a6cbb4edaf1102f8dafda473dcc281d0f1e"
+    },
+    {
+      "name": "smallvec",
+      "version": "1.16.4",
+      "archiveSha256": "d0d5d4b1981b8bbbb7aed204cae5726d683d5d6ac7e74ec54122ea28f315e7c8",
+      "sourceFileCount": 11,
+      "sourceInventorySha256": "33f656bdc6165181cc9390fd5fb98a6d1d10b140410a49c37c150e601ce9d623"
+    },
+    {
+      "name": "spade",
+      "version": "2.15.1",
+      "archiveSha256": "9699399fd9349b00b184f5635b074f9ec93afffef30c853f8c875b32c0f8c7fa",
+      "sourceFileCount": 102,
+      "sourceInventorySha256": "859508555bc06ce72141278ccd6176954e3bc0a681012b434f00586f1c30ec32"
+    },
+    {
+      "name": "stable_deref_trait",
+      "version": "1.2.1",
+      "archiveSha256": "6ce2be8dc25455e1f91df71bfa12ad37d7af1092ae736f3a6cd0e37bc7810596",
+      "sourceFileCount": 9,
+      "sourceInventorySha256": "a8f22ab97e37403f49eb813114e976d5e6fdb0b6d918bc776b2a76c07752402d"
+    },
+    {
+      "name": "static_assertions",
+      "version": "1.1.0",
+      "archiveSha256": "a2eb9349b6444b326872e140eb1cf5e7c522154d69e7a0ffb0fb81c06b37543f",
+      "sourceFileCount": 17,
+      "sourceInventorySha256": "dd622c9516fa0c3f414340b85cf8564c34f87b5dab019667ec840e0a7c6185f9"
+    },
+    {
+      "name": "syn",
+      "version": "2.0.119",
+      "archiveSha256": "872831b642d1a07999a962a351ed35b955ea2cfc8f3862091e2a240a84f17297",
+      "sourceFileCount": 105,
+      "sourceInventorySha256": "dc80f7fe0e5862e66a3403c7976ace49ce61a3573326c240b89a0dff33814649"
+    },
+    {
+      "name": "syn",
+      "version": "3.0.9",
+      "archiveSha256": "d78c8dee4c7bf0e14673097256fed6142ce9d3b85a408189d07482442145823b",
+      "sourceFileCount": 104,
+      "sourceInventorySha256": "94a4a55ef2b084778b9dbc5c9d72cb8600768185736f505c35b92b9548ef7142"
+    },
+    {
+      "name": "thiserror-impl",
+      "version": "2.0.21",
+      "archiveSha256": "fe5197923287db20a58125f0bc85c062f7f2c892de97b18c356f9efb14b28524",
+      "sourceFileCount": 17,
+      "sourceInventorySha256": "c1e1e5cdc89c6708336e3cdcad485721fdeb089101d7c0f9ba10e0c227588f79"
+    },
+    {
+      "name": "thiserror",
+      "version": "2.0.21",
+      "archiveSha256": "09e52cb86a36cede5cb101bf8908837b3e4c6e5e59fe7fd85c23fb56200d189e",
+      "sourceFileCount": 105,
+      "sourceInventorySha256": "993077f7dc6e14343d24dae688868d87798516cf1c8191afd9b0d3962426f84e"
+    },
+    {
+      "name": "typenum",
+      "version": "1.20.1",
+      "archiveSha256": "b6f5e870be6c3b371b77fe0ee0bafb859fa4964b4404c27de1d380043c4dda20",
+      "sourceFileCount": 26,
+      "sourceInventorySha256": "61d685ecff8343eb1f07f9e42979d8673e8885a271476a8daad3265878013771"
+    },
+    {
+      "name": "unicode-ident",
+      "version": "1.0.27",
+      "archiveSha256": "a2c754d6c33795a1c324727428e5a7dedb5b06195f9890bdbcba760d3e246563",
+      "sourceFileCount": 26,
+      "sourceInventorySha256": "d103b420408881f1e0560fc733cfeef3c5aba336150b73056d3bdc0393476c72"
+    },
+    {
+      "name": "wide",
+      "version": "1.7.1",
+      "archiveSha256": "d920ac99c3c8edce110cb8d07dbb324d6d026011dce85b1e9355b70f0adacc4f",
+      "sourceFileCount": 62,
+      "sourceInventorySha256": "dc16661f756b9c4b539a702ef133d0edab8aa5c1462d24288f62a18344c655a2"
+    },
+    {
+      "name": "zmij",
+      "version": "1.0.23",
+      "archiveSha256": "29666d0abbfad1e3dc4dcf6144730dd3a3ab225bbbdac83319345b1b44ccfc1b",
+      "sourceFileCount": 17,
+      "sourceInventorySha256": "052b8ca31935bfca16847cc20e774ccb80b19158b5dd48dae6e2dddec00387e7"
+    }
+  ],
+  "inputs": {
+    "rust/Cargo.lock": "cd116432c045e90a29b2ba7c80824732093e91152f29a4ffc3612134b61a4f01",
+    "rust/Cargo.toml": "eac976752314ee115f7f37c456bac6dc0841ea742849082d35dafe122f9b614f",
+    "rust/src/algorithm/geometry.rs": "708f3edc2fe9bff4b5ec6f4bbd4abcceea7e1640f5202a7d21dcfa3c1ecc947b",
+    "rust/src/algorithm/queries.rs": "9f37ca7a18e48d476ff70521b8b8edd707e53ee9d7b06df3a93c6cd7c943cae0",
+    "rust/src/algorithm.rs": "4abe9b7ae5f1960cb6c075c1df1b3f573c1647622a94a160df8e1e091a0ae178",
+    "rust/src/lib.rs": "a6d3b27aa9d6387949d283ef4d7cfadf50a64e6ca62c7db7467382a731448b6f",
+    "runtime/client.ts": "e4e601931b389732bc63f6c17a72d9040892ffb6f709de967bcb66a420265e2b",
+    "runtime/physics.ts": "a319f7fb2dec9ce53b2b9d0fb6f2362b317d9fde7a27ce8adbfd846750687f14",
+    "runtime/session.d.mts": "a9cbbc413cd1d6bd66994e5e96791f6efe7f3952980ef76f2d1539e4769dcbf8",
+    "runtime/session.mjs": "76313f823236c86ea7ea36da677a05a95026e3ba5fd8632b4b9b06fc33fa913a",
+    "runtime/worker.ts": "f4239fb40a92839703499c3528d14a481fdcf9a35f0c2d0b439bc5a04c083195",
+    "licenses/dependencies.json": "dfbcd8a40c1535aa9e294a4c9dff72b3efff1f5a07302d5cd1a08e2ef42e9612",
+    "licenses/overrides/parry3d-f64-0.31.1/LICENSE": "ceacfa4d7fa67df64ab09a56fe248c50a3bfc9bc00374d69bd74ad763b14b89c",
+    "licenses/overrides/parry3d-f64-0.31.1/source.json": "8a68563393a3982a617b8ad3fa4b6a63e0e8dff4b020e9f5f516f7aa70eaaef1",
+    "licenses/overrides/profiling-1.0.18/LICENSE-APACHE": "10d30a673cd5e9349bdc02aeb48f14b3386d27d0da32df8f0a555d4aa16aa551",
+    "licenses/overrides/profiling-1.0.18/LICENSE-MIT": "c8167fdeeed46d3f244d3f85c5bf998ce889343691c32be2c61a8bc4b5c08333",
+    "licenses/overrides/profiling-1.0.18/source.json": "29ef9573a32d8f0829125b8de3de03785750b4d6395e7940a4047810795b154f",
+    "licenses/overrides/profiling-procmacros-1.0.18/LICENSE-APACHE": "10d30a673cd5e9349bdc02aeb48f14b3386d27d0da32df8f0a555d4aa16aa551",
+    "licenses/overrides/profiling-procmacros-1.0.18/LICENSE-MIT": "c8167fdeeed46d3f244d3f85c5bf998ce889343691c32be2c61a8bc4b5c08333",
+    "licenses/overrides/profiling-procmacros-1.0.18/source.json": "29ef9573a32d8f0829125b8de3de03785750b4d6395e7940a4047810795b154f",
+    "licenses/overrides/rapier3d-f64-0.36.1/LICENSE": "ceacfa4d7fa67df64ab09a56fe248c50a3bfc9bc00374d69bd74ad763b14b89c",
+    "licenses/overrides/rapier3d-f64-0.36.1/source.json": "d899252133deafd0817b787f8cc553fa4b16467812cf8d8619ee96d8beb84b67",
+    "licenses/overrides/rstar-0.13.0/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "licenses/overrides/rstar-0.13.0/LICENSE-MIT": "9b3a76c27bac8f3e0ff2d1f64f65941c50310ae3ff69318cea230bd4a36822c5",
+    "licenses/overrides/rstar-0.13.0/source.json": "038868b0dc4add4c4947644556bf6ed367c6d091c8d5fab260fb7c022daede30",
+    "licenses/registry/allocator-api2-0.2.21/LICENSE-APACHE": "20fe7b00e904ed690e3b9fd6073784d3fc428141dbd10b81c01fd143d0797f58",
+    "licenses/registry/allocator-api2-0.2.21/LICENSE-MIT": "36516aefdc84c5d5a1e7485425913a22dbda69eb1930c5e84d6ae4972b5194b9",
+    "licenses/registry/approx-0.5.1/LICENSE": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5",
+    "licenses/registry/arrayvec-0.7.8/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "licenses/registry/arrayvec-0.7.8/LICENSE-MIT": "4da95ec4ecb65b738d470b7d762894ad9c97da93e6cbfb18b570fc2c96f4b871",
+    "licenses/registry/autocfg-1.5.1/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "licenses/registry/autocfg-1.5.1/LICENSE-MIT": "27995d58ad5c1145c1a8cd86244ce844886958a35eb2b78c6b772748669999ac",
+    "licenses/registry/bitflags-2.13.2/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "licenses/registry/bitflags-2.13.2/LICENSE-MIT": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb",
+    "licenses/registry/bytemuck-1.25.2/LICENSE-APACHE": "e3ba223bb1423f0aad8c3dfce0fe3148db48926d41e6fbc3afbbf5ff9e1c89cb",
+    "licenses/registry/bytemuck-1.25.2/LICENSE-MIT": "9df9ba60a11af705f2e451b53762686e615d86f76b169cf075c3237730dbd7e2",
+    "licenses/registry/bytemuck-1.25.2/LICENSE-ZLIB": "84b34dd7608f7fb9b17bd588a6bf392bf7de504e2716f024a77d89f1b145a151",
+    "licenses/registry/byteorder-1.5.0/COPYING": "01c266bced4a434da0051174d6bee16a4c82cf634e2679b6155d40d75012390f",
+    "licenses/registry/byteorder-1.5.0/LICENSE-MIT": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f",
+    "licenses/registry/byteorder-1.5.0/UNLICENSE": "7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c",
+    "licenses/registry/cobs-0.3.0/LICENSE-APACHE": "c6596eb7be8581c18be736c846fb9173b69eccf6ef94c5135893ec56bd92ba08",
+    "licenses/registry/cobs-0.3.0/LICENSE-MIT": "e0cfa1006a64520633de6bfbf563f5b1bea04ef0c5b73f049681931fa297dda3",
+    "licenses/registry/downcast-rs-2.0.2/LICENSE-APACHE": "8173d5c29b4f956d532781d2b86e4e30f83e6b7878dce18c919451d6ba707c90",
+    "licenses/registry/downcast-rs-2.0.2/LICENSE-MIT": "fb252fecf98d9af8f1d9201c5860319a514f5a8a24700dc84fc6ea287a7a4958",
+    "licenses/registry/either-1.19.0/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "licenses/registry/either-1.19.0/LICENSE-MIT": "7576269ea71f767b99297934c0b2367532690f8c4badc695edf8e04ab6a1e545",
+    "licenses/registry/embedded-io-0.4.0/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "licenses/registry/embedded-io-0.4.0/LICENSE-MIT": "423e1c4900b3fbb41cda3e34530b2597d50c2e61473e18c085756c507e46fe1c",
+    "licenses/registry/embedded-io-0.6.1/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "licenses/registry/embedded-io-0.6.1/LICENSE-MIT": "47674f8b7d98c232c6f81346c4cfe48933d913a9e257d7a522ad9f42e3dd61e1",
+    "licenses/registry/ena-0.14.4/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "licenses/registry/ena-0.14.4/LICENSE-MIT": "0621878e61f0d0fda054bcbe02df75192c28bde1ecc8289cbd86aeba2dd72720",
+    "licenses/registry/equivalent-1.0.3/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "licenses/registry/equivalent-1.0.3/LICENSE-MIT": "7365cc8878a1d7ce155a58c4ca09c3d7a6be413efa5334a80ea842912b669349",
+    "licenses/registry/foldhash-0.2.0/LICENSE": "b1181a40b2a7b25cf66fd01481713bc1005df082c53ef73e851e55071b102744",
+    "licenses/registry/glam-0.30.10/LICENSE-APACHE": "be33ddb87a30fd321ab100e2d922cba512e50ec7a63d8e62e5bfc0798dd4b585",
+    "licenses/registry/glam-0.30.10/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "licenses/registry/glam-0.31.1/LICENSE-APACHE": "be33ddb87a30fd321ab100e2d922cba512e50ec7a63d8e62e5bfc0798dd4b585",
+    "licenses/registry/glam-0.31.1/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "licenses/registry/glam-0.32.1/LICENSE-APACHE": "be33ddb87a30fd321ab100e2d922cba512e50ec7a63d8e62e5bfc0798dd4b585",
+    "licenses/registry/glam-0.32.1/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "licenses/registry/glam-0.33.12/LICENSE-APACHE": "be33ddb87a30fd321ab100e2d922cba512e50ec7a63d8e62e5bfc0798dd4b585",
+    "licenses/registry/glam-0.33.12/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "licenses/registry/glamx-0.3.1/LICENSE-APACHE": "be33ddb87a30fd321ab100e2d922cba512e50ec7a63d8e62e5bfc0798dd4b585",
+    "licenses/registry/glamx-0.3.1/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "licenses/registry/hash32-0.3.1/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "licenses/registry/hash32-0.3.1/LICENSE-MIT": "c986bcdb83103d4ddf58aeb7b5302359782e54dc4eea14a0cc27c62dcbd50729",
+    "licenses/registry/hashbrown-0.16.1/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "licenses/registry/hashbrown-0.16.1/LICENSE-MIT": "ff8f68cb076caf8cefe7a6430d4ac086ce6af2ca8ce2c4e5a2004d4552ef52a2",
+    "licenses/registry/hashbrown-0.17.1/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "licenses/registry/hashbrown-0.17.1/LICENSE-MIT": "ff8f68cb076caf8cefe7a6430d4ac086ce6af2ca8ce2c4e5a2004d4552ef52a2",
+    "licenses/registry/heapless-0.8.0/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "licenses/registry/heapless-0.8.0/LICENSE-MIT": "035e70219855119df4273b3c5b97543ae82e0dd60c520416e759107c602f651b",
+    "licenses/registry/indexmap-2.14.2/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "licenses/registry/indexmap-2.14.2/LICENSE-MIT": "ecc269ef87fd38a1d98e30bfac9ba964a9dbd9315c3770fed98d4d7cb5882055",
+    "licenses/registry/itoa-1.0.18/LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "licenses/registry/itoa-1.0.18/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "licenses/registry/libm-0.2.16/LICENSE.txt": "3823dda7cf046602f4b4e77ec8e227863dc4736037cc85bb33d9f19febe16bb7",
+    "licenses/registry/log-0.4.34/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "licenses/registry/log-0.4.34/LICENSE-MIT": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb",
+    "licenses/registry/matrixmultiply-0.3.11/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "licenses/registry/matrixmultiply-0.3.11/LICENSE-MIT": "792d075c7bad6dac258a44e799eb64cbf465e24d9932d27669be08c5ec957e27",
+    "licenses/registry/memchr-2.8.3/COPYING": "01c266bced4a434da0051174d6bee16a4c82cf634e2679b6155d40d75012390f",
+    "licenses/registry/memchr-2.8.3/LICENSE-MIT": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f",
+    "licenses/registry/memchr-2.8.3/UNLICENSE": "7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c",
+    "licenses/registry/nalgebra-0.35.0/LICENSE": "ceacfa4d7fa67df64ab09a56fe248c50a3bfc9bc00374d69bd74ad763b14b89c",
+    "licenses/registry/nalgebra-macros-0.3.0/LICENSE": "ceacfa4d7fa67df64ab09a56fe248c50a3bfc9bc00374d69bd74ad763b14b89c",
+    "licenses/registry/num-bigint-0.4.8/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "licenses/registry/num-bigint-0.4.8/LICENSE-MIT": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb",
+    "licenses/registry/num-complex-0.4.6/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "licenses/registry/num-complex-0.4.6/LICENSE-MIT": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb",
+    "licenses/registry/num-derive-0.5.1/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "licenses/registry/num-derive-0.5.1/LICENSE-MIT": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb",
+    "licenses/registry/num-integer-0.1.47/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "licenses/registry/num-integer-0.1.47/LICENSE-MIT": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb",
+    "licenses/registry/num-rational-0.4.2/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "licenses/registry/num-rational-0.4.2/LICENSE-MIT": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb",
+    "licenses/registry/num-traits-0.2.19/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "licenses/registry/num-traits-0.2.19/LICENSE-MIT": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb",
+    "licenses/registry/ordered-float-5.5.1/LICENSE-MIT": "f7715d38a3fa1b4ac97c5729740752505a39cb92ee83ab5b102aeb5eaa7cdea4",
+    "licenses/registry/parry3d-f64-0.31.1/LICENSE": "ceacfa4d7fa67df64ab09a56fe248c50a3bfc9bc00374d69bd74ad763b14b89c",
+    "licenses/registry/parry3d-f64-0.31.1/source.json": "8a68563393a3982a617b8ad3fa4b6a63e0e8dff4b020e9f5f516f7aa70eaaef1",
+    "licenses/registry/postcard-1.1.3/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "licenses/registry/postcard-1.1.3/LICENSE-MIT": "177540cad091a40e8071db310bc3b6115c4e329a92a234609b60c154b008a888",
+    "licenses/registry/proc-macro2-1.0.107/LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "licenses/registry/proc-macro2-1.0.107/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "licenses/registry/profiling-1.0.18/LICENSE-APACHE": "10d30a673cd5e9349bdc02aeb48f14b3386d27d0da32df8f0a555d4aa16aa551",
+    "licenses/registry/profiling-1.0.18/LICENSE-MIT": "c8167fdeeed46d3f244d3f85c5bf998ce889343691c32be2c61a8bc4b5c08333",
+    "licenses/registry/profiling-1.0.18/source.json": "29ef9573a32d8f0829125b8de3de03785750b4d6395e7940a4047810795b154f",
+    "licenses/registry/profiling-procmacros-1.0.18/LICENSE-APACHE": "10d30a673cd5e9349bdc02aeb48f14b3386d27d0da32df8f0a555d4aa16aa551",
+    "licenses/registry/profiling-procmacros-1.0.18/LICENSE-MIT": "c8167fdeeed46d3f244d3f85c5bf998ce889343691c32be2c61a8bc4b5c08333",
+    "licenses/registry/profiling-procmacros-1.0.18/source.json": "29ef9573a32d8f0829125b8de3de03785750b4d6395e7940a4047810795b154f",
+    "licenses/registry/quote-1.0.47/LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "licenses/registry/quote-1.0.47/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "licenses/registry/rapier3d-f64-0.36.1/LICENSE": "ceacfa4d7fa67df64ab09a56fe248c50a3bfc9bc00374d69bd74ad763b14b89c",
+    "licenses/registry/rapier3d-f64-0.36.1/source.json": "d899252133deafd0817b787f8cc553fa4b16467812cf8d8619ee96d8beb84b67",
+    "licenses/registry/rawpointer-0.2.1/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "licenses/registry/rawpointer-0.2.1/LICENSE-MIT": "7576269ea71f767b99297934c0b2367532690f8c4badc695edf8e04ab6a1e545",
+    "licenses/registry/robust-1.2.0/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "licenses/registry/robust-1.2.0/LICENSE-MIT": "ddb606a4226673241b8dedb155a25b271178d028a2bf74c90ee47fe495f4d9bc",
+    "licenses/registry/rstar-0.13.0/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "licenses/registry/rstar-0.13.0/LICENSE-MIT": "9b3a76c27bac8f3e0ff2d1f64f65941c50310ae3ff69318cea230bd4a36822c5",
+    "licenses/registry/rstar-0.13.0/source.json": "038868b0dc4add4c4947644556bf6ed367c6d091c8d5fab260fb7c022daede30",
+    "licenses/registry/safe_arch-1.2.0/LICENSE-APACHE.md": "e3ba223bb1423f0aad8c3dfce0fe3148db48926d41e6fbc3afbbf5ff9e1c89cb",
+    "licenses/registry/safe_arch-1.2.0/LICENSE-MIT.md": "e57011537d230b14e790f6666dc00816f7b371ebbd7da8a12491e51086fec278",
+    "licenses/registry/safe_arch-1.2.0/LICENSE-ZLIB.md": "c43b9a9b1387ed53d2c49263838261129a010e280e3a174a792242c3e2c98db9",
+    "licenses/registry/serde_arrays-0.2.0/COPYRIGHT": "1fe2be9825c4477c6e246b0310543c0b98b497a4b53f58d15dd8367d88a69109",
+    "licenses/registry/serde_arrays-0.2.0/LICENSE-APACHE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "licenses/registry/serde_arrays-0.2.0/LICENSE-MIT": "62e090ea82fd7f7fecce434b6ae2eb51680cc6288fb0f2620d0fab4b13cea236",
+    "licenses/registry/serde_core-1.0.229/LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "licenses/registry/serde_core-1.0.229/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "licenses/registry/serde_derive-1.0.229/LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "licenses/registry/serde_derive-1.0.229/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "licenses/registry/serde_json-1.0.154/LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "licenses/registry/serde_json-1.0.154/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "licenses/registry/serde-1.0.229/LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "licenses/registry/serde-1.0.229/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "licenses/registry/simba-0.10.2/LICENSE": "ceacfa4d7fa67df64ab09a56fe248c50a3bfc9bc00374d69bd74ad763b14b89c",
+    "licenses/registry/slab-0.4.12/LICENSE": "8ce0830173fdac609dfb4ea603fdc002c2f4af0dc9b1a005653f5da9cf534b18",
+    "licenses/registry/smallvec-1.16.4/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "licenses/registry/smallvec-1.16.4/LICENSE-MIT": "0b28172679e0009b655da42797c03fd163a3379d5cfa67ba1f1655e974a2a1a9",
+    "licenses/registry/spade-2.15.1/LICENSE-APACHE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "licenses/registry/spade-2.15.1/LICENSE-MIT": "fc1a4c9482e823f450af4c85471ca6e58d1fd0b3bd0998be4547b1be4a5bc4af",
+    "licenses/registry/stable_deref_trait-1.2.1/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "licenses/registry/stable_deref_trait-1.2.1/LICENSE-MIT": "5e05b024f653a5ce199e77cbbbd42fb5553562ec714b819421ed0c3e552a75d7",
+    "licenses/registry/static_assertions-1.1.0/LICENSE-APACHE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "licenses/registry/static_assertions-1.1.0/LICENSE-MIT": "ea084a2373ebc1f0902c09266e7bf25a05ab3814c1805bb017ffa7308f90c061",
+    "licenses/registry/syn-2.0.119/LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "licenses/registry/syn-2.0.119/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "licenses/registry/syn-3.0.9/LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "licenses/registry/syn-3.0.9/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "licenses/registry/thiserror-2.0.21/LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "licenses/registry/thiserror-2.0.21/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "licenses/registry/thiserror-impl-2.0.21/LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "licenses/registry/thiserror-impl-2.0.21/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "licenses/registry/typenum-1.20.1/LICENSE": "db11fec9946737df39ca3898d9cd8c10ec6f6c3a884a6802b0ad0b81b4e8f23a",
+    "licenses/registry/typenum-1.20.1/LICENSE-APACHE": "516b24e051bf5630880ebbd55c40a25ce9552ebaf8970a53e8976eb70e522406",
+    "licenses/registry/typenum-1.20.1/LICENSE-MIT": "a825bd853ab71619a4923d7b4311221427848070ff44d990da39b0b274c1683f",
+    "licenses/registry/unicode-ident-1.0.27/LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "licenses/registry/unicode-ident-1.0.27/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "licenses/registry/unicode-ident-1.0.27/LICENSE-UNICODE": "f7db81051789b729fea528a63ec4c938fdcb93d9d61d97dc8cc2e9df6d47f2a1",
+    "licenses/registry/wide-1.7.1/LICENSE-APACHE.txt": "d64ac6ba60c7352115244dcfcb46c24f934603dd92e64835beafe7631c485abc",
+    "licenses/registry/wide-1.7.1/LICENSE-MIT.txt": "69c62cda6938d510467c134dc0b5c83fb9c8ca847b9cd9d9d2fe9ab427c82100",
+    "licenses/registry/wide-1.7.1/LICENSE-ZLIB.txt": "3c6921f3dfec0bed0cfa2d632616edd7380a875c8ad76c7b23dc59892259f62c",
+    "licenses/registry/zmij-1.0.23/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "licenses/rust-std/COPYRIGHT": "172020dbfd5b53a226dfde77616190a48dcff519b0bc0e6deb91a8450782c4af",
+    "licenses/rust-std/LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "licenses/rust-std/LICENSE-MIT": "b71bd43a069ca0641a9ecfe585ca7b3c53b5cc1608f8b68321168698e28b5ea1",
+    "licenses/rust-std/source.json": "b7d99caf2dc4fd47b2717c05a850e08cc4b2d0de7aacabea766ee94f10e245fb",
+    "src/config.ts": "3c8ce8e2007a31db597ec65c6aa5e919e41e62d5cb945005448fac022c12f745",
+    "src/mesh-shapes.ts": "9eaa6f48d9ef1d02e1b74d40c44a1e116ff068a83c7d0002605476f3a231ba8c",
+    "src/types.ts": "f801528a6fa28ec5a63b0bdaa974a9fda9dfbee5444b495765bbe2d167f411a1",
+    "scripts/build-solver.mjs": "86c7b34695dd7bf0771762f4aac22e35f3340972f4c1e84213536abf4918b78e"
+  },
+  "coreInputs": {
+    "src/core/errors.ts": "34a53214b9d42824f67cf0cc246598a2ee2987b69003457d8c4795b1b2828444",
+    "src/core/simulation.ts": "492135a26fd18bd5f4083c66d96898e050c7d7caaf6773e8663240c7f9e5ea69",
+    "src/core/time.ts": "b1d9e8a3be47adee369daea66273bc10feac51ae08968c90ca939756a14006aa",
+    "src/core/animation.ts": "46d208a844d6455fd0905a1606cab51c8800ac10e08cfe7766b3c12dab9d26d0",
+    "src/media/surface-storage.ts": "6f5da5019b97915d5bbaef56d6987d708d4cab882d6083081a2fb77947773bb3",
+    "src/media/surface.ts": "5e166fe71d383219d6053cbb28d370f43d3daf07e1f71ac93702c5826928f279",
+    "src/audio/block.ts": "131fac039d892c9cce706a39d5ad28288dda8fc78270de6241bb182494835e63",
+    "src/audio/contract.ts": "83491ac37c49c7308064d04da2e44d4cfae088bd6ddb52ac78b2b950e364ce8d",
+    "src/core/effects.ts": "8001dea9c8afc14f01341712169aa97a8516308ac5e82d305e7674d195361202",
+    "src/core/native-source.ts": "49fe30331cfbca989cb578507dbd04345d768eb70a0f033bc5a4ba4a1d8aab8e",
+    "src/core/ports.ts": "96b957fb77fc163399db5cfdb5b7c2d0eaec498223d56a7dd49c7c863d2a85f4",
+    "src/core/graph.ts": "6b2aeb15e5d4b8e7d7911201fc3a4ee3bed61f4f577a093374a639079e3af42c"
+  },
+  "outputs": {
+    "dist/module.wasm": "31440f0ac1e070c74cacc72af5fd929d00161ae817c79ad99a1e86b48b893654",
+    "dist/worker.js": "c721b4a883fa640be182a3b5e0bc42356611a83387feae8fd29e2884af301644"
+  },
+  "wasmBytes": 2929675,
+  "note": "Core FixedStepRunner is bundled unchanged into the Kit Worker/data adapter. Rust only steps/serializes/restores the exact reviewed Rapier world. Runtime never downloads Cargo/code.",
+  "workerRebuild": {
+    "version": 1,
+    "baselineCommit": "cf57cb0c839971a2662852437e60eca53107f737",
+    "baselineRecordSha256": "6c0859cb11b5ad0d7239528ff69cffe30c6bd4b7632e3bec9b76544e6a1a751e",
+    "generatorSha256": "378ef16a22df37777df1b9b56e0521e11721f8f18a4f8437352e4880f703bb9a",
+    "changes": [
+      {
+        "file": "src/core/native-source.ts",
+        "beforeSha256": "004066a1ceea21dee5302e42eacf141e8851e562957fb94ce067d26953829c3a",
+        "afterSha256": "49fe30331cfbca989cb578507dbd04345d768eb70a0f033bc5a4ba4a1d8aab8e",
+        "emittedJavaScriptSha256": "ec6da66d6573ce9263a0dfcfdd129481c53223e31823fd61534f29fc2447e970"
+      }
+    ],
+    "workerSha256": "c721b4a883fa640be182a3b5e0bc42356611a83387feae8fd29e2884af301644",
+    "wasmSha256": "31440f0ac1e070c74cacc72af5fd929d00161ae817c79ad99a1e86b48b893654",
+    "rustRebuilt": false,
+    "wasmReused": true,
+    "note": "WASM/compiler/dependency provenance retained from the verified baseline. Current Worker actually rebundled; byte-identical output and identical emitted Core JavaScript are required."
+  },
+  "integrationReview": {
+    "frozenSource": "6c5dee0f74820fb9670a92fb0443f0040b84e60f",
+    "previousReceiptSha256": "9ed4793fcda395c7efce465374d51fe2ad0937c0f1957f9f68fc89ef4cda3d7d",
+    "method": "Original bytes verified, TypeScript emitted JS exactly identical after comment removal; all original output hashes retained",
+    "changes": [
+      {
+        "path": "runtime/client.ts",
+        "originalSha256": "77980e1e35950b781cf10daaed373072bef2459186a95352558fc790a8204500",
+        "currentSha256": "e4e601931b389732bc63f6c17a72d9040892ffb6f709de967bcb66a420265e2b",
+        "identicalExecutableSha256": "460b0602140ca03cf15c1dc3f32f2112495a936ac46bfbd4d610a360fb8e9248"
+      }
+    ]
+  }
+}

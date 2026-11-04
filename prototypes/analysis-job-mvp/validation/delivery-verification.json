@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "localReferencesChecked": 1976,
+  "htmlPages": [
+    "report.html",
+    "C3-INTEGRATION.html",
+    "source-evidence.html"
+  ],
+  "video": {
+    "duration": 8,
+    "width": 640,
+    "height": 480
+  },
+  "headings": 10,
+  "pageErrors": []
+}

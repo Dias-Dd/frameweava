@@ -1,0 +1,200 @@
+{
+  "name": "@frameweave/engine",
+  "version": "0.1.0",
+  "type": "module",
+  "license": "MIT",
+  "description": "Stage-isolated deterministic TypeScript video engine with versioned visual plugins — P0–P4",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./lib/index.js"
+    },
+    "./jsx-runtime": {
+      "types": "./src/jsx-runtime.ts",
+      "import": "./lib/jsx-runtime.js"
+    },
+    "./jsx-dev-runtime": {
+      "types": "./src/jsx-runtime.ts",
+      "import": "./lib/jsx-runtime.js"
+    },
+    "./node": {
+      "types": "./src/node.ts",
+      "import": "./lib/node.js"
+    },
+    "./plugins": {
+      "types": "./src/plugins/sdk.ts",
+      "import": "./lib/plugins/sdk.js"
+    },
+    "./cli": {
+      "types": "./src/cli-entry.ts",
+      "import": "./lib/cli-entry.js"
+    },
+    "./analysis": {
+      "types": "./src/analysis-tools/index.ts",
+      "import": "./lib/analysis-tools/index.js"
+    },
+    "./shared-state": {
+      "types": "./src/shared-state/authoring.ts",
+      "import": "./lib/shared-state/authoring.js"
+    },
+    "./render-session": {
+      "types": "./modules/render-session/index.ts",
+      "import": "./lib-modules/render-session/index.js"
+    },
+    "./repl": {
+      "types": "./modules/repl/index.ts",
+      "import": "./lib-modules/repl/index.js"
+    },
+    "./stage-orchestration": {
+      "types": "./modules/stage-orchestration/types.ts",
+      "import": "./lib-modules/stage-orchestration/types.js"
+    },
+    "./graphics-contracts": {
+      "types": "./modules/graphics-contracts/index.ts",
+      "import": "./lib-modules/graphics-contracts/index.js"
+    },
+    "./audio": {
+      "types": "./src/audio/index.ts",
+      "import": "./lib/audio/index.js"
+    },
+    "./audio/node": {
+      "types": "./src/audio/node.ts",
+      "import": "./lib/audio/node.js"
+    },
+    "./packages": {
+      "types": "./src/packages/flat-runtime.ts",
+      "import": "./lib/packages/flat-runtime.js"
+    },
+    "./native": {
+      "types": "./modules/native-gpu/authoring.ts",
+      "import": "./lib-modules/native-gpu/authoring.js"
+    },
+    "./native/react": {
+      "types": "./modules/native-gpu/react.tsx",
+      "import": "./lib-modules/native-gpu/react.js"
+    },
+    "./editing": {
+      "types": "./modules/editing/index.ts",
+      "import": "./lib-modules/editing/index.js"
+    },
+    "./editing/node": {
+      "types": "./modules/editing/node.ts",
+      "import": "./lib-modules/editing/node.js"
+    },
+    "./image-effects": {
+      "types": "./modules/native-effects/authoring/index.ts",
+      "frameweave-source": "./modules/native-effects/authoring/index.ts",
+      "import": "./lib-modules/native-effects/authoring/index.js"
+    },
+    "./image-effects/node": {
+      "types": "./modules/native-effects/authoring/node.ts",
+      "frameweave-source": "./modules/native-effects/authoring/node.ts",
+      "import": "./lib-modules/native-effects/authoring/node.js"
+    },
+    "./spatial-vfx": {
+      "types": "./modules/spatial-vfx/stage.ts",
+      "frameweave-source": "./modules/spatial-vfx/stage.ts",
+      "import": "./lib-modules/spatial-vfx/stage.js"
+    },
+    "./servo": {
+      "types": "./modules/servo/index.ts",
+      "frameweave-source": "./modules/servo/index.ts",
+      "import": "./lib-modules/servo/index.js"
+    },
+    "./servo/node": {
+      "types": "./modules/servo/node.ts",
+      "frameweave-source": "./modules/servo/node.ts",
+      "import": "./lib-modules/servo/node.js"
+    },
+    "./typography": {
+      "types": "./modules/pro-animation/typography.ts",
+      "frameweave-source": "./modules/pro-animation/typography.ts",
+      "import": "./lib-modules/pro-animation/typography.js"
+    },
+    "./typography/node": {
+      "types": "./modules/pro-animation/typography-node.ts",
+      "frameweave-source": "./modules/pro-animation/typography-node.ts",
+      "import": "./lib-modules/pro-animation/typography-node.js"
+    }
+  },
+  "scripts": {
+    "engine": "tsx src/cli.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/*.test.ts",
+    "test:e2e": "tsx --test tests/e2e.test.ts",
+    "verify": "npm run typecheck && npm test",
+    "frameweave": "tsx src/cli.ts",
+    "test:p4": "tsx --test tests/plugins.test.ts",
+    "test:extended": "tsx --test tests/library-export.test.ts",
+    "test:packages": "tsx --test tests/packages.test.ts",
+    "verify:p4-r1": "tsx scripts/verify-p4-r1.ts",
+    "build:distribution": "node scripts/build-distribution.mjs",
+    "pack:distribution": "npm run build:distribution && npm pack ./dist --pack-destination artifacts",
+    "test:distribution": "tsx --test tests/distribution.test.ts",
+    "benchmark:media": "tsx scripts/benchmark-professional-media.ts"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@fontsource/space-grotesk": "5.3.0",
+    "@huggingface/transformers": "4.3.2",
+    "@types/node": "22.20.5",
+    "@types/react": "19.3.0",
+    "@types/react-reconciler": "0.33.0",
+    "@types/three": "0.186.0",
+    "@webgpu/types": "0.1.74",
+    "@xmldom/xmldom": "0.8.15",
+    "esbuild": "0.28.2",
+    "ffmpeg-static": "5.3.0",
+    "react": "19.3.1",
+    "react-reconciler": "0.34.0",
+    "sharp": "0.35.5",
+    "three": "0.186.1",
+    "tsx": "4.20.6",
+    "typescript": "5.9.3"
+  },
+  "bin": {
+    "frameweave": "./bin/frameweave.mjs"
+  },
+  "files": [
+    "native-bin",
+    "prototypes/performance-advanced-effects",
+    "bin",
+    "lib",
+    "lib-modules",
+    "src",
+    "plugins/builtin",
+    "examples/analysis/brightness-task.ts",
+    "prototypes/analysis-job-mvp/*.ts",
+    "prototypes/analysis-job-mvp/*.mjs",
+    "prototypes/analysis-job-mvp/package.json",
+    "licenses",
+    "docs/CLI_DISTRIBUTION.md",
+    "docs/ACL_1.md",
+    "docs/authoring/AGENTS.md",
+    "docs/PROFESSIONAL_MEDIA_ENGINE.md",
+    "docs/PROFESSIONAL_MEDIA_VALIDATION.md",
+    "docs/PME_AUDIO_STAGE_CONTRACT.md",
+    "tools/professional-media",
+    "examples/professional-media",
+    "examples/creation",
+    "examples/stage-orchestration/public.tsx",
+    "docs/CREATION_AUDIO.md",
+    "tsconfig.json",
+    "npm-shrinkwrap.json",
+    "distribution.json",
+    "LICENSE",
+    "NOTICE",
+    "lib-plugins",
+    "lib-examples",
+    "prototypes/analysis-job-mvp/*.js",
+    "modules",
+    "catalog",
+    "frameweave.official-catalog.json",
+    "examples/pro-animation",
+    "examples/native-image-effects",
+    "docs/MANAGED_TYPESCRIPT_MODULES.md",
+    "docs/NATIVE_ONLY_MIGRATION.md"
+  ]
+}

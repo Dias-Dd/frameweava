@@ -1,0 +1,34 @@
+{
+  "repository": "https://github.com/storytold/effectcraft",
+  "commit": "ec7ced1f0515f0b6f376dbcc297f1c441f452d6e",
+  "license": "MIT",
+  "files": [
+    {
+      "file": "LICENSE-MIT",
+      "bytes": 1103,
+      "sha256": "7b6db9a363688683feacdf9b528f059637f2e5d2edbacd8720fc9b26781c9abe"
+    },
+    {
+      "file": "crates/effects/src/blur2.rs",
+      "bytes": 42124,
+      "sha256": "5c6267189871002c788167e18c8d318bd3a178a73b30dc5e160a3ff0176faabd"
+    },
+    {
+      "file": "crates/effects/src/blur3.rs",
+      "bytes": 17442,
+      "sha256": "b5f2dc481c4ac932c3e01b44a510e81725e1d8f3a167b76ad57237c00364a6b6"
+    },
+    {
+      "file": "crates/gpu/src/bokeh.rs",
+      "bytes": 2767,
+      "sha256": "e8fae32353fd70041ec8123bc807dc2435627c2d4a47946ab8e80de86874c472"
+    }
+  ],
+  "localReuse": "Existing Native Pixel/Data/Compute ABI, paired scalar arithmetic, Native recipe lifecycle, keying box means/Gaussian and qualified geometry sampler",
+  "adaptations": [
+    "Port EffectCraft blur2.rs iris_spans, retaining F64 geometry and Rust ties-away conversion; native compensated prefix/gather adaptation without its GPU host",
+    "Local NLM, guided/atrous, diffusion/TV, adaptive statistics and robust impulse implementations; mathematical references only, no restricted IPOL implementation copied",
+    "Existing one-component metric depth semantic with zero missing; CoC radius/validity uses a separate generic typed field; no TVG/port/ABI change",
+    "Explicit known-background composition reuses qualified native raster source-over"
+  ]
+}

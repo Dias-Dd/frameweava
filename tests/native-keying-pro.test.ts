@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {createNativeProKeyEffects} from '../modules/native-effects/keying-pro/index.ts';
+import {bandOracle,walkerOracle,trimapOracle,defaultAdvanced} from '../modules/native-effects/keying-pro/reference.ts';
+import {distanceOracle} from '../modules/native-effects/keying/reference.ts';
+test('Native effects require actual hardware admission before use',()=>{assert.throws(()=>createNativeProKeyEffects({} as never),{code:'E_NATIVE_EFFECTS_DEVICE'});});
+test('bounded band oracle agrees with exhaustive independent nearest sites, empty and full masks',()=>{for(let sample=0;sample<96;sample++){const p=Array.from({length:5*3},(_,i)=>[0,0,0,sample===0?0:sample===1?1:Number(((i*1103515245+sample*12345)>>>5)%7<3)]).flat(),d=distanceOracle(p,5,3),a=bandOracle(p,5,3,2.3,1.1);for(let i=0;i<15;i++){const x=d[i*2],expected=d[i*2+1]?Math.max(0,Math.min(1,(x+1.1)/1.1))*(1-Math.max(0,Math.min(1,x/2.3))):0;assert.ok(Math.abs(a[i*4+3]-expected)<1e-7);}}});
+test('screened Dirichlet matting matches an independent analytic 1D solution and hard constraints',()=>{const p=Array.from({length:5},()=>[.2,.2,.2,1]).flat(),r=walkerOracle(p,5,1);for(const [i,a]of [[0,0],[1,.55/2.1],[2,.5],[3,1-.55/2.1],[4,1]])assert.ok(Math.abs(r.image[i*4+3]-a)<1e-6);assert.ok([...r.diagnostics].every(Number.isFinite));assert.ok([...r.image].every(v=>v>=0&&v<=1));});
+test('trimap is categorical and retains unknown between opposed seed strokes',()=>{assert.deepEqual([...trimapOracle(5,1)],[0,-1,-1,-1,1]);});
+test('physical green removal preserves signed HDR foreground and original coverage',()=>{const a=.4,source=Float32Array.of(1.5*a,(1-a)+.625*a,-.25*a,1),r=defaultAdvanced([...source],1,1);assert.ok(Math.abs(r[3]-a)<1e-6);assert.ok(Math.abs(r[0]-1.5*a)<1e-6);assert.ok(Math.abs(r[2]+.25*a)<1e-6);});
+test('source Alpha0 PM emission survives color-only keying while hidden straight RGB is not invented',()=>{const r=defaultAdvanced([.2,-.1,.4,0],1,1);assert.deepEqual([...r],[Math.fround(.2),Math.fround(-.1),Math.fround(.4),0]);});

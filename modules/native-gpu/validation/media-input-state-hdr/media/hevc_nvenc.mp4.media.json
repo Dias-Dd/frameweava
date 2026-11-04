@@ -1,0 +1,233 @@
+{
+  "schemaVersion": 1,
+  "frames": 6,
+  "options": {
+    "preset": "hdr10",
+    "outputColor": {
+      "primaries": "rec2020",
+      "whitePoint": "D65",
+      "transfer": "pq",
+      "reference": "display",
+      "range": "full",
+      "referenceWhiteNits": 100,
+      "peakNits": 1000
+    },
+    "conversion": {
+      "kind": "colorimetric",
+      "clip": false
+    },
+    "alpha": {
+      "mode": "flatten",
+      "matte": [
+        0,
+        0,
+        0
+      ]
+    },
+    "hdr10": {
+      "masteringDisplay": {
+        "red": [
+          0.708,
+          0.292
+        ],
+        "green": [
+          0.17,
+          0.797
+        ],
+        "blue": [
+          0.131,
+          0.046
+        ],
+        "white": [
+          0.3127,
+          0.329
+        ],
+        "minNits": 0.005,
+        "maxNits": 1000
+      },
+      "maxCLL": 1000,
+      "maxFALL": 400
+    },
+    "encoder": "hevc_nvenc",
+    "audio": {
+      "path": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\artifacts\\native-media-delivery\\hdr-rHGkAn\\.frameweave-audio-8e9ef5d41e4db364afc44c72.f32",
+      "sampleRate": 48000,
+      "channels": 2,
+      "channelLayout": "stereo",
+      "format": "f32le",
+      "startSample": 0
+    },
+    "fps": {
+      "num": 60,
+      "den": 1
+    },
+    "width": 320,
+    "height": 180
+  },
+  "args": [
+    "-hide_banner",
+    "-loglevel",
+    "error",
+    "-n",
+    "-threads",
+    "2",
+    "-f",
+    "rawvideo",
+    "-pixel_format",
+    "gbrpf32le",
+    "-video_size",
+    "320x180",
+    "-framerate",
+    "60/1",
+    "-i",
+    "pipe:0",
+    "-vf",
+    "zscale=matrixin=gbr:matrix=2020_ncl:primariesin=2020:primaries=2020:transferin=smpte2084:transfer=smpte2084:rangein=full:range=limited,format=yuv420p10le,format=p010le",
+    "-c:v",
+    "hevc_nvenc",
+    "-preset",
+    "p4",
+    "-rc",
+    "vbr",
+    "-cq",
+    "12",
+    "-b:v",
+    "0",
+    "-pix_fmt",
+    "p010le",
+    "-color_primaries",
+    "bt2020",
+    "-color_trc",
+    "smpte2084",
+    "-colorspace",
+    "bt2020nc",
+    "-color_range",
+    "tv",
+    "-bf",
+    "0",
+    "-f",
+    "hevc",
+    "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\artifacts\\native-media-delivery\\hdr-rHGkAn\\hevc_nvenc.mp4.encoded-2306dc4a42da49b72a8b00a5.hevc"
+  ],
+  "conversions": [
+    {
+      "frame": 0,
+      "clippedSamples": 0
+    },
+    {
+      "frame": 1,
+      "clippedSamples": 0
+    },
+    {
+      "frame": 2,
+      "clippedSamples": 0
+    },
+    {
+      "frame": 3,
+      "clippedSamples": 0
+    },
+    {
+      "frame": 4,
+      "clippedSamples": 0
+    },
+    {
+      "frame": 5,
+      "clippedSamples": 0
+    }
+  ],
+  "clippedTotal": 0,
+  "frameRecordsTruncated": false,
+  "timings": [
+    {
+      "frame": 0,
+      "phase": "output-transform-and-code-range",
+      "durationMs": 53.216199999998935
+    },
+    {
+      "frame": 0,
+      "phase": "pack-and-alpha-color-adapter",
+      "durationMs": 11.916799999999057
+    },
+    {
+      "frame": 0,
+      "phase": "stdin-write-and-backpressure",
+      "durationMs": 0.5758999999998196
+    },
+    {
+      "frame": 1,
+      "phase": "output-transform-and-code-range",
+      "durationMs": 39.56490000000122
+    },
+    {
+      "frame": 1,
+      "phase": "pack-and-alpha-color-adapter",
+      "durationMs": 6.146600000000035
+    },
+    {
+      "frame": 1,
+      "phase": "stdin-write-and-backpressure",
+      "durationMs": 0.3349999999991269
+    },
+    {
+      "frame": 2,
+      "phase": "output-transform-and-code-range",
+      "durationMs": 48.31390000000101
+    },
+    {
+      "frame": 2,
+      "phase": "pack-and-alpha-color-adapter",
+      "durationMs": 7.263699999999517
+    },
+    {
+      "frame": 2,
+      "phase": "stdin-write-and-backpressure",
+      "durationMs": 0.7641999999977998
+    },
+    {
+      "frame": 3,
+      "phase": "output-transform-and-code-range",
+      "durationMs": 47.51540000000023
+    },
+    {
+      "frame": 3,
+      "phase": "pack-and-alpha-color-adapter",
+      "durationMs": 12.64259999999922
+    },
+    {
+      "frame": 3,
+      "phase": "stdin-write-and-backpressure",
+      "durationMs": 0.5859000000018568
+    },
+    {
+      "frame": 4,
+      "phase": "output-transform-and-code-range",
+      "durationMs": 46.2957000000024
+    },
+    {
+      "frame": 4,
+      "phase": "pack-and-alpha-color-adapter",
+      "durationMs": 3.173799999996845
+    },
+    {
+      "frame": 4,
+      "phase": "stdin-write-and-backpressure",
+      "durationMs": 0.6871000000028289
+    },
+    {
+      "frame": 5,
+      "phase": "output-transform-and-code-range",
+      "durationMs": 44.4487999999983
+    },
+    {
+      "frame": 5,
+      "phase": "pack-and-alpha-color-adapter",
+      "durationMs": 4.160400000000664
+    },
+    {
+      "frame": 5,
+      "phase": "stdin-write-and-backpressure",
+      "durationMs": 0.6707000000023982
+    }
+  ],
+  "finalDrainMs": 112.13570000000254
+}

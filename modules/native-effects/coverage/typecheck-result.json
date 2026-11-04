@@ -1,0 +1,6 @@
+{
+  "command": "node node_modules/typescript/bin/tsc --noEmit --skipLibCheck --target es2022 --module esnext --moduleResolution bundler --allowImportingTsExtensions --resolveJsonModule modules/native-effects/coverage/parameter-index.ts modules/native-effects/coverage/update-crosswalk.ts",
+  "exitCode": 0,
+  "wallMs": 1025.7965,
+  "scope": "Offline audit scripts only; no runtime/GPU/source behavior changed"
+}

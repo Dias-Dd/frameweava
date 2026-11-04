@@ -1,0 +1,3 @@
+import{mkdir,writeFile}from'node:fs/promises';import{dirname,join,resolve}from'node:path';import{execFileSync}from'node:child_process';
+const root=resolve('.frameweave/mixed-av-seal/pristine-3b');for(const name of ['src/render/renderer.ts','modules/render-session/index.ts','modules/native-gpu/service.ts']){await mkdir(dirname(join(root,name)),{recursive:true});await writeFile(join(root,name),execFileSync('git',['show','3b59e16bc2600c8630b49cff8e8996aef46c35a0:'+name],{maxBuffer:2*1024**2}));}
+execFileSync('git',['apply','--check','--directory=.frameweave/mixed-av-seal/pristine-3b','modules/native-gpu/validation/mixed-av-seal/integration.patch'],{stdio:'inherit',windowsHide:true});console.log('The same function-only patch also applies cleanly to frozen 3b59e16');

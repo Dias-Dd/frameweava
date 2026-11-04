@@ -1,0 +1,24 @@
+{
+  "repository": "https://github.com/InteractiveComputerGraphics/SPlisHSPlasH",
+  "revision": "dba6b26b9387ab6bdd187d6df0a7c9d490d03500",
+  "license": "MIT",
+  "scope": "Selected Akinci2013 cohesion/curvature and cohesion kernel math, not solver or runtime",
+  "files": {
+    "LICENSE": {
+      "source": "LICENSE",
+      "sha256": "608181acd95c1b672b984157254568d581b6d9eafc3e5785899ce1ac85dc9c29"
+    },
+    "SPHKernels.h": {
+      "source": "SPlisHSPlasH/SPHKernels.h",
+      "sha256": "b4cc0631c171b4d25a298ae320828058fa52445a7c5bf7f4517119727f9c3819"
+    },
+    "SurfaceTension_Akinci2013.cpp": {
+      "source": "SPlisHSPlasH/SurfaceTension/SurfaceTension_Akinci2013.cpp",
+      "sha256": "63304943e74cc48ec7f69636a43def984504862269848bd8b61e94b3fe2d7a51"
+    },
+    "SurfaceTension_Akinci2013.h": {
+      "source": "SPlisHSPlasH/SurfaceTension/SurfaceTension_Akinci2013.h",
+      "sha256": "8021bbadb3284c5153f021395ba416da670febb525374947b86d72140439d7a1"
+    }
+  }
+}

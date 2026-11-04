@@ -1,0 +1,28 @@
+{
+  "baseline": "edeec53657efa5660af7c002d541675d78094042",
+  "timestamp": "2026-11-01T06:25:15.590Z",
+  "wallMs": 2461.6832999999997,
+  "profile": "debug",
+  "rows": [
+    {
+      "name": "persistent binary RPC, Promise, native GC, logs, WASM denial and explicit allow",
+      "ok": true,
+      "wallMs": 2456.0879999999997,
+      "detail": {
+        "engine": "spidermonkey",
+        "pid": 17232,
+        "closed": false,
+        "requests": 6,
+        "bytesIn": 994,
+        "bytesOut": 12852,
+        "binaryReplies": true,
+        "stderr": "frameweave-spidermonkey sandbox=appcontainer network_capabilities=0 child_pid=80784\nJS: echo {\"text\":\"状态 🕷️\",\"value\":0}\nJS: echo {\"text\":\"状态 🕷️\",\"value\":0}\nJS: echo {\"text\":\"状态 🕷️\",\"value\":0}\nJS: echo {}\n"
+      }
+    },
+    {
+      "name": "missing or tampered executable fails, no Chromium fallback",
+      "ok": true,
+      "wallMs": 2.6145000000005894
+    }
+  ]
+}

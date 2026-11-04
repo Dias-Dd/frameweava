@@ -1,0 +1,10 @@
+Frameweave Puppet Effects: Apache-2.0. Independent ARAP kernel from EffectCraft,
+commit 861c51f8187bf56efc77cc7b60fc4a513d2b7198, selected MIT license.
+Copyright (c) 2026 ArtCraft Team and the EffectCraft contributors.
+Preserved source, copyright, MIT/Apache notices and adaptation script are in
+vendor/effectcraft. No fonts, UI, brand assets or external application crates.
+
+The byte ABI shim, client, Worker and session are copied from Frameweave's existing
+Rust/WASM Kit bytes-v1 template under Apache-2.0. Runtime authorization, resource
+verification, Worker policy, transfer, disposal and per-call byte limit are reused.
+Rust 1.99.1 standard-library notices are in licenses/rust-std.

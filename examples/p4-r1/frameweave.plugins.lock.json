@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "runtime": {
+    "apiVersion": 1,
+    "engineVersion": "0.1.0",
+    "integrity": "d655ef4cc535631f5544cf1c1c2dabb5836a018daeb8093ac84ca107f6c35173"
+  },
+  "plugins": {
+    "example.orbit-grid@1.0.0": {
+      "integrity": "921ea3fda3583cef21d9cfbd068bd4f3c59a79ffd4c3b51fbe29802c04af2495",
+      "dependencies": {}
+    },
+    "fw.displacement@1.0.0": {
+      "integrity": "833aeb3b384be911ab04d834a827fbe22475198ac2709b3090b19d4836d060ed",
+      "dependencies": {}
+    },
+    "fw.glow@1.0.0": {
+      "integrity": "ad4337582b187173a853e91806d3af2439b019563323d9e3fa88ec9fa9fcd393",
+      "dependencies": {}
+    },
+    "fw.cinematic-glow@1.0.0": {
+      "integrity": "0b33415ba789d6e5ed1017d1f67221917682e4ab5aa581604dd4e8202f8f80d0",
+      "dependencies": {
+        "fw.displacement": "fw.displacement@1.0.0",
+        "fw.glow": "fw.glow@1.0.0"
+      }
+    },
+    "fw.kinetic-type@1.0.0": {
+      "integrity": "003318ced10e8b210fd5590c5efb7b60ed8aac7962044ee4a8d8ceb05cb4d3b6",
+      "dependencies": {}
+    },
+    "fw.mix@1.0.0": {
+      "integrity": "cd258b13ec282d29056a0241cdf2557e9a7c3ed03083683777e70fb4174d9b83",
+      "dependencies": {}
+    },
+    "fw.motion-blur@1.0.0": {
+      "integrity": "9168af02ceb70b629ec53024b3b1d37edf448d184a9d4e6cf0af2231d9d1e636",
+      "dependencies": {}
+    },
+    "fw.noise@1.0.0": {
+      "integrity": "c5595a5fcbedc03e13d637b4a3dbf231c2448f458db278e37a49b36ddf7436e9",
+      "dependencies": {}
+    },
+    "fw.particles@1.0.0": {
+      "integrity": "9569d381f141d77e117e2409f8b4de69c3cdaa2f69dbdbc7738c4f60eed8df79",
+      "dependencies": {}
+    },
+    "fw.transform@1.0.0": {
+      "integrity": "d80a24c6b80e0f6d535ecd076c178709c4f8443841ffb395033650afca514004",
+      "dependencies": {}
+    }
+  }
+}

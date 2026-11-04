@@ -1,0 +1,2 @@
+export type * from './physical-lighting-types.ts';export {physicalMaterial,litObject,litPlane,litBox,litSphere,groundPlane,sunLight,pointLight,spotLight,constantEnvironment,imageEnvironment,studioEnvironment,planPhysicalLighting,samplePhysicalMaterial,samplePhysicalLight} from './physical-lighting-models.ts';export {renderLitAov,createLitRenderer,litScene} from './physical-lighting.ts';
+export {createAovCapture as captureLitGeometry} from './aov-capture.ts';

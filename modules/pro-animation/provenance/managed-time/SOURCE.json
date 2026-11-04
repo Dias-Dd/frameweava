@@ -1,0 +1,21 @@
+{
+  "license": "Existing repository Apache-2.0; no newly copied third-party implementation/dependency",
+  "sourceParent": "13eafa5246d0785f4dff00b212f6c3e44f63f357",
+  "coreSource": "c7685c25a0d843a65566388ea8e055853fac8cfc",
+  "coreEvidence": "7ad93fd90836da47cb3fd41fa9194bffb6a5a62c",
+  "sourceProfile": "native-pixel-prefix-v1",
+  "role": "One thin consumer factory. Original PA time plans, compensated reduction and native effects reused without algorithm changes. Core owns authentication, subframe evaluation, cancellation and leases.",
+  "files": {
+    "modules/pro-animation/src/native-time/managed.ts": "79b1826ee917d048f76a6766a23ba030fface1e437357136bb1a86841ae06bff",
+    "modules/pro-animation/src/native-time/index.ts": "4cf615e265ef13f14e8691b562a972296a9a0a92f1ab908acdae028211f98351",
+    "modules/pro-animation/src/native-time/plans.ts": "8ba88e50f69c0143a3a8103d27640853d12e98ea5464e62d0025fb202d163b07",
+    "modules/pro-animation/src/native-time/reduction.ts": "1abc3e97f31175b7942242578af9c9639953437385f61683be21fe63c2510c99",
+    "modules/pro-animation/src/native-time/types.ts": "268a125b0db47b7e7c5f8f6564ce1cb079e1cd8c375fdb10cca6f509ba513d88",
+    "modules/pro-animation/src/shutter-sampling.ts": "e006a25afeadf0d5b18c661c0aeef3b929ee66bdaf75bd629c081b70e0663c26",
+    "modules/native-effects/pa/kernels.ts": "b6a59d6c73787c9090b292c7058f4774e930da1179b62492533480b359831ba2",
+    "modules/native-effects/pa/filters.ts": "d855b8cc1a6798ae7765396c1195455b75b975348e815fbc14d559e81b015204",
+    "modules/gpu-image-effects/resident/blends/filters.ts": "9e52f8209b778ccb4fc4afa54e75b077f5e764f9f16b320e71415324af79701d"
+  },
+  "coreSnapshotInventory": "docs/pro-animation/upstream-time-validation/consumer-source.json",
+  "newGpuKernel": "None in production; private fixture shaders are authored test source generators only."
+}

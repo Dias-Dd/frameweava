@@ -1,0 +1,1304 @@
+{
+  "mesh": {
+    "schema": "frameweave.mesh",
+    "version": 1,
+    "id": "native-character",
+    "coordinates": {
+      "spaceId": "character-local",
+      "unit": "meter",
+      "origin": "local",
+      "x": "right",
+      "y": "up",
+      "z": "toward-viewer",
+      "handedness": "right"
+    },
+    "topology": "triangles",
+    "vertexIds": [
+      "v0",
+      "v1",
+      "v2",
+      "v3",
+      "v4",
+      "v5",
+      "v6",
+      "v7",
+      "v8",
+      "v9",
+      "v10",
+      "v11",
+      "v12",
+      "v13",
+      "v14",
+      "v15",
+      "v16",
+      "v17",
+      "v18",
+      "v19",
+      "v20",
+      "v21",
+      "v22",
+      "v23",
+      "v24",
+      "v25",
+      "v26",
+      "v27",
+      "v28",
+      "v29",
+      "v30",
+      "v31",
+      "v32",
+      "v33",
+      "v34",
+      "v35",
+      "v36",
+      "v37",
+      "v38",
+      "v39"
+    ],
+    "restPositions": [
+      [
+        -0.29500000000000004,
+        -0.2,
+        0
+      ],
+      [
+        0.255,
+        -0.2,
+        0
+      ],
+      [
+        0.255,
+        0.65,
+        0
+      ],
+      [
+        -0.29500000000000004,
+        0.65,
+        0
+      ],
+      [
+        -0.21,
+        0.65,
+        0
+      ],
+      [
+        0.21,
+        0.65,
+        0
+      ],
+      [
+        0.21,
+        1.12,
+        0
+      ],
+      [
+        -0.21,
+        1.12,
+        0
+      ],
+      [
+        0.26713377259595533,
+        0.5646406024173102,
+        0
+      ],
+      [
+        0.17286622740404464,
+        0.4353593975826898,
+        0
+      ],
+      [
+        0.6528662274040447,
+        0.0853593975826898,
+        0
+      ],
+      [
+        0.7471337725959553,
+        0.2146406024173102,
+        0
+      ],
+      [
+        0.7513078941294612,
+        0.18990613987846983,
+        0
+      ],
+      [
+        0.6486921058705387,
+        0.11009386012153016,
+        0
+      ],
+      [
+        0.9986921058705388,
+        -0.33990613987846985,
+        0
+      ],
+      [
+        1.1013078941294612,
+        -0.26009386012153013,
+        0
+      ],
+      [
+        -0.17286622740404464,
+        0.4353593975826898,
+        0
+      ],
+      [
+        -0.26713377259595533,
+        0.5646406024173102,
+        0
+      ],
+      [
+        -0.7471337725959553,
+        0.2146406024173102,
+        0
+      ],
+      [
+        -0.6528662274040447,
+        0.0853593975826898,
+        0
+      ],
+      [
+        -0.6486921058705387,
+        0.11009386012153016,
+        0
+      ],
+      [
+        -0.7513078941294612,
+        0.18990613987846983,
+        0
+      ],
+      [
+        -1.1013078941294612,
+        -0.26009386012153013,
+        0
+      ],
+      [
+        -0.9986921058705388,
+        -0.33990613987846985,
+        0
+      ],
+      [
+        0.2586393923832144,
+        -0.14356010126946428,
+        0
+      ],
+      [
+        0.06136060761678562,
+        -0.17643989873053573,
+        0
+      ],
+      [
+        0.1513606076167856,
+        -0.7164398987305357,
+        0
+      ],
+      [
+        0.3486393923832144,
+        -0.6835601012694642,
+        0
+      ],
+      [
+        0.3284464540552736,
+        -0.6843107091889452,
+        0
+      ],
+      [
+        0.17155354594472638,
+        -0.7156892908110547,
+        0
+      ],
+      [
+        0.27155354594472636,
+        -1.2156892908110546,
+        0
+      ],
+      [
+        0.4284464540552736,
+        -1.1843107091889453,
+        0
+      ],
+      [
+        -0.06136060761678562,
+        -0.17643989873053573,
+        0
+      ],
+      [
+        -0.2586393923832144,
+        -0.14356010126946428,
+        0
+      ],
+      [
+        -0.3486393923832144,
+        -0.6835601012694642,
+        0
+      ],
+      [
+        -0.1513606076167856,
+        -0.7164398987305357,
+        0
+      ],
+      [
+        -0.17155354594472638,
+        -0.7156892908110547,
+        0
+      ],
+      [
+        -0.3284464540552736,
+        -0.6843107091889452,
+        0
+      ],
+      [
+        -0.4284464540552736,
+        -1.1843107091889453,
+        0
+      ],
+      [
+        -0.27155354594472636,
+        -1.2156892908110546,
+        0
+      ]
+    ],
+    "indices": [
+      0,
+      1,
+      2,
+      0,
+      2,
+      3,
+      4,
+      5,
+      6,
+      4,
+      6,
+      7,
+      8,
+      9,
+      10,
+      8,
+      10,
+      11,
+      12,
+      13,
+      14,
+      12,
+      14,
+      15,
+      16,
+      17,
+      18,
+      16,
+      18,
+      19,
+      20,
+      21,
+      22,
+      20,
+      22,
+      23,
+      24,
+      25,
+      26,
+      24,
+      26,
+      27,
+      28,
+      29,
+      30,
+      28,
+      30,
+      31,
+      32,
+      33,
+      34,
+      32,
+      34,
+      35,
+      36,
+      37,
+      38,
+      36,
+      38,
+      39
+    ],
+    "controls": [
+      {
+        "id": "body",
+        "vertexId": "v0"
+      },
+      {
+        "id": "head",
+        "vertexId": "v4"
+      },
+      {
+        "id": "upper-arm-r",
+        "vertexId": "v8"
+      },
+      {
+        "id": "hand-r",
+        "vertexId": "v12"
+      },
+      {
+        "id": "upper-arm-l",
+        "vertexId": "v16"
+      },
+      {
+        "id": "hand-l",
+        "vertexId": "v20"
+      },
+      {
+        "id": "upper-leg-r",
+        "vertexId": "v24"
+      },
+      {
+        "id": "foot-r",
+        "vertexId": "v28"
+      },
+      {
+        "id": "upper-leg-l",
+        "vertexId": "v32"
+      },
+      {
+        "id": "foot-l",
+        "vertexId": "v36"
+      }
+    ]
+  },
+  "skeleton": {
+    "schema": "frameweave.skeleton",
+    "version": 1,
+    "id": "native-character.rig",
+    "coordinates": {
+      "spaceId": "character-local",
+      "unit": "meter",
+      "origin": "local",
+      "x": "right",
+      "y": "up",
+      "z": "toward-viewer",
+      "handedness": "right"
+    },
+    "meshId": "native-character",
+    "bones": [
+      {
+        "id": "spine",
+        "parentId": null,
+        "bindMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          -0.2,
+          0,
+          1
+        ],
+        "inverseBindMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0.2,
+          0,
+          1
+        ]
+      },
+      {
+        "id": "head",
+        "parentId": "spine",
+        "bindMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0.65,
+          0,
+          1
+        ],
+        "inverseBindMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          -0.65,
+          0,
+          1
+        ]
+      },
+      {
+        "id": "arm.r",
+        "parentId": "spine",
+        "bindMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0.22,
+          0.5,
+          0,
+          1
+        ],
+        "inverseBindMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -0.22,
+          -0.5,
+          0,
+          1
+        ]
+      },
+      {
+        "id": "forearm.r",
+        "parentId": "arm.r",
+        "bindMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0.7,
+          0.15,
+          0,
+          1
+        ],
+        "inverseBindMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -0.7,
+          -0.15,
+          0,
+          1
+        ]
+      },
+      {
+        "id": "hand.r",
+        "parentId": "forearm.r",
+        "bindMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1.05,
+          -0.3,
+          0,
+          1
+        ],
+        "inverseBindMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -1.05,
+          0.3,
+          0,
+          1
+        ]
+      },
+      {
+        "id": "arm.l",
+        "parentId": "spine",
+        "bindMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -0.22,
+          0.5,
+          0,
+          1
+        ],
+        "inverseBindMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0.22,
+          -0.5,
+          0,
+          1
+        ]
+      },
+      {
+        "id": "forearm.l",
+        "parentId": "arm.l",
+        "bindMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -0.7,
+          0.15,
+          0,
+          1
+        ],
+        "inverseBindMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0.7,
+          -0.15,
+          0,
+          1
+        ]
+      },
+      {
+        "id": "hand.l",
+        "parentId": "forearm.l",
+        "bindMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -1.05,
+          -0.3,
+          0,
+          1
+        ],
+        "inverseBindMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1.05,
+          0.3,
+          0,
+          1
+        ]
+      },
+      {
+        "id": "leg.r",
+        "parentId": "spine",
+        "bindMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0.16,
+          -0.16,
+          0,
+          1
+        ],
+        "inverseBindMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -0.16,
+          0.16,
+          0,
+          1
+        ]
+      },
+      {
+        "id": "shin.r",
+        "parentId": "leg.r",
+        "bindMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0.25,
+          -0.7,
+          0,
+          1
+        ],
+        "inverseBindMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -0.25,
+          0.7,
+          0,
+          1
+        ]
+      },
+      {
+        "id": "foot.r",
+        "parentId": "shin.r",
+        "bindMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0.35,
+          -1.2,
+          0,
+          1
+        ],
+        "inverseBindMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -0.35,
+          1.2,
+          0,
+          1
+        ]
+      },
+      {
+        "id": "leg.l",
+        "parentId": "spine",
+        "bindMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -0.16,
+          -0.16,
+          0,
+          1
+        ],
+        "inverseBindMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0.16,
+          0.16,
+          0,
+          1
+        ]
+      },
+      {
+        "id": "shin.l",
+        "parentId": "leg.l",
+        "bindMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -0.25,
+          -0.7,
+          0,
+          1
+        ],
+        "inverseBindMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0.25,
+          0.7,
+          0,
+          1
+        ]
+      },
+      {
+        "id": "foot.l",
+        "parentId": "shin.l",
+        "bindMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -0.35,
+          -1.2,
+          0,
+          1
+        ],
+        "inverseBindMatrix": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0.35,
+          1.2,
+          0,
+          1
+        ]
+      }
+    ],
+    "weights": [
+      {
+        "vertexId": "v0",
+        "influences": [
+          {
+            "boneId": "spine",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v1",
+        "influences": [
+          {
+            "boneId": "spine",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v2",
+        "influences": [
+          {
+            "boneId": "spine",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v3",
+        "influences": [
+          {
+            "boneId": "spine",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v4",
+        "influences": [
+          {
+            "boneId": "head",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v5",
+        "influences": [
+          {
+            "boneId": "head",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v6",
+        "influences": [
+          {
+            "boneId": "head",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v7",
+        "influences": [
+          {
+            "boneId": "head",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v8",
+        "influences": [
+          {
+            "boneId": "arm.r",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v9",
+        "influences": [
+          {
+            "boneId": "arm.r",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v10",
+        "influences": [
+          {
+            "boneId": "arm.r",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v11",
+        "influences": [
+          {
+            "boneId": "arm.r",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v12",
+        "influences": [
+          {
+            "boneId": "forearm.r",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v13",
+        "influences": [
+          {
+            "boneId": "forearm.r",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v14",
+        "influences": [
+          {
+            "boneId": "forearm.r",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v15",
+        "influences": [
+          {
+            "boneId": "forearm.r",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v16",
+        "influences": [
+          {
+            "boneId": "arm.l",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v17",
+        "influences": [
+          {
+            "boneId": "arm.l",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v18",
+        "influences": [
+          {
+            "boneId": "arm.l",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v19",
+        "influences": [
+          {
+            "boneId": "arm.l",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v20",
+        "influences": [
+          {
+            "boneId": "forearm.l",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v21",
+        "influences": [
+          {
+            "boneId": "forearm.l",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v22",
+        "influences": [
+          {
+            "boneId": "forearm.l",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v23",
+        "influences": [
+          {
+            "boneId": "forearm.l",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v24",
+        "influences": [
+          {
+            "boneId": "leg.r",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v25",
+        "influences": [
+          {
+            "boneId": "leg.r",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v26",
+        "influences": [
+          {
+            "boneId": "leg.r",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v27",
+        "influences": [
+          {
+            "boneId": "leg.r",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v28",
+        "influences": [
+          {
+            "boneId": "shin.r",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v29",
+        "influences": [
+          {
+            "boneId": "shin.r",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v30",
+        "influences": [
+          {
+            "boneId": "shin.r",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v31",
+        "influences": [
+          {
+            "boneId": "shin.r",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v32",
+        "influences": [
+          {
+            "boneId": "leg.l",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v33",
+        "influences": [
+          {
+            "boneId": "leg.l",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v34",
+        "influences": [
+          {
+            "boneId": "leg.l",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v35",
+        "influences": [
+          {
+            "boneId": "leg.l",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v36",
+        "influences": [
+          {
+            "boneId": "shin.l",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v37",
+        "influences": [
+          {
+            "boneId": "shin.l",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v38",
+        "influences": [
+          {
+            "boneId": "shin.l",
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "vertexId": "v39",
+        "influences": [
+          {
+            "boneId": "shin.l",
+            "weight": 1
+          }
+        ]
+      }
+    ]
+  }
+}

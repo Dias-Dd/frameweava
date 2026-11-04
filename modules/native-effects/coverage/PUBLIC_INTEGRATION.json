@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "snapshot": "a1bd8ffda97d52666234d64d866ec6aa134c50db",
+  "status": "proposal_only_not_applied_or_installed",
+  "owner": "Main",
+  "package": {
+    "id": "native-image-effects",
+    "version": "0.6.0",
+    "manifestSha256": "18eb4cf12f6914be9d21089e44e5ce5616d685413b586c4405565c1511198b46"
+  },
+  "factories": [
+    {
+      "name": "createNativeStabilizationEffects",
+      "entry": "modules/native-effects/stabilization/index.ts",
+      "entrySha256": "1442c5721bf8fee297eb1c16ca33a3bc2dd8b83d1647e83155817c3c097e67ce",
+      "sourceEntryPresent": true,
+      "domainExportPresent": false,
+      "manifestGpuExportPresent": false,
+      "evidenceCommit": "930ffa5c688e815b0e7433c04b4ed4260e8f9d42",
+      "evidence": "docs/native-stabilization-borders-evidence"
+    },
+    {
+      "name": "createNativePsfRestorationEffects",
+      "entry": "modules/native-effects/psf-restoration/index.ts",
+      "entrySha256": "60e50ff8fc907db5ec25baa363b1c1bdf4b09f34d413b01d8d6ec131c8fdb8db",
+      "sourceEntryPresent": true,
+      "domainExportPresent": false,
+      "manifestGpuExportPresent": false,
+      "evidenceCommit": "d9e251ef349ffec3b0172e356b541c10b32c1fce",
+      "evidence": "docs/native-psf-restoration-evidence"
+    },
+    {
+      "name": "createNativeVideoRotoEffects",
+      "entry": "modules/native-effects/video-roto/index.ts",
+      "entrySha256": "ed0ffa6d968019195b6975b4d486b0e221294f89f01cb500f42a89e8258cdcbc",
+      "sourceEntryPresent": true,
+      "domainExportPresent": false,
+      "manifestGpuExportPresent": false,
+      "evidenceCommit": "a1bd8ffda97d52666234d64d866ec6aa134c50db",
+      "evidence": "docs/native-video-roto-long-evidence"
+    },
+    {
+      "name": "parseVideoRotoBundle",
+      "entry": "modules/native-effects/video-roto/index.ts",
+      "entrySha256": "ed0ffa6d968019195b6975b4d486b0e221294f89f01cb500f42a89e8258cdcbc",
+      "sourceEntryPresent": true,
+      "domainExportPresent": false,
+      "manifestGpuExportPresent": false,
+      "evidenceCommit": "a1bd8ffda97d52666234d64d866ec6aa134c50db",
+      "evidence": "docs/native-video-roto-long-evidence"
+    }
+  ],
+  "actions": [
+    "Review frozen dependencies/source and add ordinary named exports to existing domains.ts and gpuExports, retaining the same R1 lifecycle and borrowed GPU scope",
+    "Choose a fresh immutable package version; existing connect-native-libraries.mjs pins0.6.0 and also rewrites animation artifacts, so do not run it blindly against published bytes",
+    "Keep inference weights/resources caller-declared, exact hashed and reviewed; private photograph and derived QA file are not package assets",
+    "Review SDK/runtime pin and explicit inference requirements without granting trust or new filesystem/network/process permissions",
+    "Independently install the resulting package, exercise new factory calls through actual Native binding, render and qualify existing portable export paths"
+  ],
+  "limits": [
+    "Source presence and typed export proposal are not proof of installed runtime behavior",
+    "No automatic download/model execution or runtime binaries bundled by this proposal",
+    "Other GPU providers/OS and general transient image-import determinism remain separate qualifications"
+  ]
+}

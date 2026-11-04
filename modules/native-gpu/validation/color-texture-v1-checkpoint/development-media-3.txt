@@ -1,0 +1,23 @@
+C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\native-gpu\client.ts:35
+const error=(code:string,message:string)=>new EngineError(code,message);
+                                          ^
+
+
+EngineError: Native response exceeded bounded control channel
+    at error (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\native-gpu\client.ts:35:43)
+    at NativeGpuClient.receive (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\native-gpu\client.ts:70:48)
+    at Socket.<anonymous> (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\native-gpu\client.ts:59:48)
+    at Socket.emit (node:events:519:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+    at Pipe.callbackTrampoline (node:internal/async_hooks:130:17) {
+  code: 'E_NATIVE_PROTOCOL',
+  stageId: undefined,
+  frame: undefined,
+  hint: undefined,
+  details: undefined
+}
+
+Node.js v22.19.0

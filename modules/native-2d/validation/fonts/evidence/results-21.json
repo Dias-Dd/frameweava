@@ -1,0 +1,1180 @@
+{
+  "ok": true,
+  "rows": [
+    {
+      "name": "real scene Canvas default measureText fillText same services and pre-cancelled frame",
+      "ok": true,
+      "detail": {
+        "records": [
+          {
+            "frame": 12,
+            "hash": "317aa85652cbc91b645621b79af46122f69ecf53dd014feb841e6fd58dbc2389",
+            "stats": {
+              "metrics": {
+                "width": 133.488,
+                "height": 28.799999999999997,
+                "baseline": 24,
+                "layout": {
+                  "schema": "frameweave.text-layout",
+                  "version": 1,
+                  "id": "shaped.bidi-text",
+                  "coordinates": {
+                    "spaceId": "native-2d",
+                    "unit": "px",
+                    "origin": "top-left",
+                    "x": "right",
+                    "y": "down",
+                    "width": 256,
+                    "height": 96
+                  },
+                  "text": "Canvas 中文",
+                  "layout": {
+                    "engine": "unicode-bidi+harfrust",
+                    "version": "0.3.18+0.15.0",
+                    "clusterUnit": "utf16"
+                  },
+                  "fonts": [
+                    {
+                      "id": "font.0",
+                      "source": {
+                        "resourceId": "pkg_d43437adef656aa53a5b05ad",
+                        "kind": "font",
+                        "sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+                        "bytes": 17772300
+                      },
+                      "faceIndex": 0
+                    }
+                  ],
+                  "styles": [
+                    {
+                      "id": "style.0",
+                      "fontId": "font.0",
+                      "fontSize": 24,
+                      "fill": {
+                        "space": "srgb",
+                        "alpha": "straight",
+                        "rgba": [
+                          1,
+                          1,
+                          1,
+                          1
+                        ]
+                      }
+                    }
+                  ],
+                  "paragraphs": [
+                    {
+                      "id": "paragraph.0",
+                      "start": 0,
+                      "end": 9,
+                      "direction": "ltr"
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "id": "line.0",
+                      "paragraphId": "paragraph.0",
+                      "start": 0,
+                      "end": 9,
+                      "baseline": 24
+                    }
+                  ],
+                  "glyphs": [
+                    {
+                      "id": "glyph.0",
+                      "lineId": "line.0",
+                      "styleId": "style.0",
+                      "glyphId": 36,
+                      "cluster": {
+                        "start": 0,
+                        "end": 1
+                      },
+                      "x": 0,
+                      "y": 24,
+                      "advanceX": 15.312000000000001,
+                      "advanceY": 0
+                    },
+                    {
+                      "id": "glyph.1",
+                      "lineId": "line.0",
+                      "styleId": "style.0",
+                      "glyphId": 66,
+                      "cluster": {
+                        "start": 1,
+                        "end": 2
+                      },
+                      "x": 15.312000000000001,
+                      "y": 24,
+                      "advanceX": 13.512,
+                      "advanceY": 0
+                    },
+                    {
+                      "id": "glyph.2",
+                      "lineId": "line.0",
+                      "styleId": "style.0",
+                      "glyphId": 79,
+                      "cluster": {
+                        "start": 2,
+                        "end": 3
+                      },
+                      "x": 28.824,
+                      "y": 24,
+                      "advanceX": 14.64,
+                      "advanceY": 0
+                    },
+                    {
+                      "id": "glyph.3",
+                      "lineId": "line.0",
+                      "styleId": "style.0",
+                      "glyphId": 87,
+                      "cluster": {
+                        "start": 3,
+                        "end": 4
+                      },
+                      "x": 43.464,
+                      "y": 24,
+                      "advanceX": 11.904,
+                      "advanceY": 0
+                    },
+                    {
+                      "id": "glyph.4",
+                      "lineId": "line.0",
+                      "styleId": "style.0",
+                      "glyphId": 66,
+                      "cluster": {
+                        "start": 4,
+                        "end": 5
+                      },
+                      "x": 55.367999999999995,
+                      "y": 24,
+                      "advanceX": 13.512,
+                      "advanceY": 0
+                    },
+                    {
+                      "id": "glyph.5",
+                      "lineId": "line.0",
+                      "styleId": "style.0",
+                      "glyphId": 84,
+                      "cluster": {
+                        "start": 5,
+                        "end": 6
+                      },
+                      "x": 68.88,
+                      "y": 24,
+                      "advanceX": 11.232000000000001,
+                      "advanceY": 0
+                    },
+                    {
+                      "id": "glyph.6",
+                      "lineId": "line.0",
+                      "styleId": "style.0",
+                      "glyphId": 1,
+                      "cluster": {
+                        "start": 6,
+                        "end": 7
+                      },
+                      "x": 80.112,
+                      "y": 24,
+                      "advanceX": 5.376,
+                      "advanceY": 0
+                    },
+                    {
+                      "id": "glyph.7",
+                      "lineId": "line.0",
+                      "styleId": "style.0",
+                      "glyphId": 8805,
+                      "cluster": {
+                        "start": 7,
+                        "end": 8
+                      },
+                      "x": 85.488,
+                      "y": 24,
+                      "advanceX": 24,
+                      "advanceY": 0
+                    },
+                    {
+                      "id": "glyph.8",
+                      "lineId": "line.0",
+                      "styleId": "style.0",
+                      "glyphId": 14750,
+                      "cluster": {
+                        "start": 8,
+                        "end": 9
+                      },
+                      "x": 109.488,
+                      "y": 24,
+                      "advanceX": 24,
+                      "advanceY": 0
+                    }
+                  ]
+                },
+                "fontIdentities": [
+                  {
+                    "resourceId": "pkg_d43437adef656aa53a5b05ad",
+                    "kind": "font",
+                    "sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+                    "bytes": 17772300
+                  }
+                ]
+              },
+              "scene": {
+                "closed": false,
+                "frames": 1,
+                "backend": "native-wgpu",
+                "completion": "recorded-only",
+                "finish": {
+                  "closed": false,
+                  "frames": 1,
+                  "operations": 0,
+                  "retainedCopies": 0,
+                  "plans": [],
+                  "completion": "recorded-only"
+                },
+                "kind": "native-2d",
+                "last": {
+                  "staticGeometryReused": false,
+                  "geometrySeedBytes": 36540,
+                  "matrixUploadBytes": 128,
+                  "batches": 1,
+                  "isolatedGroups": 0,
+                  "resourceImports": 0,
+                  "atlasWorkingBytes": 1632,
+                  "logicalImageBytes": 393216,
+                  "workingBytesPerPixel": 16,
+                  "geometry": {
+                    "preparations": 1,
+                    "hits": 0,
+                    "entries": 1
+                  },
+                  "completion": "recorded-only"
+                },
+                "layout": {
+                  "layouts": 0,
+                  "hits": 0,
+                  "textPreparations": 0,
+                  "boxes": {},
+                  "algorithm": "fixed flexily0.8.3 Node, no synthetic text measurer"
+                },
+                "tree": {
+                  "version": 2,
+                  "nodes": 2,
+                  "descriptorBytes": 818,
+                  "cache": "Per-node geometry/layout/style/transform revisions; no frame-result cache"
+                },
+                "renderer": "Existing Native mesh/PixelScope, shared batched geometry/paint; no per-object Stage",
+                "defaultAssets": {
+                  "closed": false,
+                  "loadedKits": [
+                    "font",
+                    "itemizer",
+                    "paths"
+                  ],
+                  "fonts": [
+                    {
+                      "id": "default",
+                      "instance": {
+                        "source": {
+                          "resourceId": "pkg_d43437adef656aa53a5b05ad",
+                          "kind": "font",
+                          "sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+                          "bytes": 17772300
+                        },
+                        "faceIndex": 0,
+                        "variations": {
+                          "wght": 400
+                        },
+                        "normalizedCoordinates": [
+                          0.3900146484375
+                        ]
+                      }
+                    }
+                  ],
+                  "geometry": {
+                    "closed": false,
+                    "busy": false,
+                    "preparations": 1,
+                    "hits": 2,
+                    "cacheEntries": 1,
+                    "logicalCacheBytes": 144268,
+                    "maxCacheBytes": 33554432,
+                    "ownership": "borrowed providers; owned data cache",
+                    "physicalMemory": "unknown"
+                  },
+                  "execution": "Original PA WASM geometry + existing Native mesh rendering",
+                  "ownership": "owns Kit/font clients and geometry cache; borrows R1 loader/GPU"
+                }
+              },
+              "globalAbortController": "undefined"
+            }
+          },
+          {
+            "frame": 0,
+            "hash": "317aa85652cbc91b645621b79af46122f69ecf53dd014feb841e6fd58dbc2389",
+            "stats": {
+              "metrics": {
+                "width": 133.488,
+                "height": 28.799999999999997,
+                "baseline": 24,
+                "layout": {
+                  "schema": "frameweave.text-layout",
+                  "version": 1,
+                  "id": "shaped.bidi-text",
+                  "coordinates": {
+                    "spaceId": "native-2d",
+                    "unit": "px",
+                    "origin": "top-left",
+                    "x": "right",
+                    "y": "down",
+                    "width": 256,
+                    "height": 96
+                  },
+                  "text": "Canvas 中文",
+                  "layout": {
+                    "engine": "unicode-bidi+harfrust",
+                    "version": "0.3.18+0.15.0",
+                    "clusterUnit": "utf16"
+                  },
+                  "fonts": [
+                    {
+                      "id": "font.0",
+                      "source": {
+                        "resourceId": "pkg_d43437adef656aa53a5b05ad",
+                        "kind": "font",
+                        "sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+                        "bytes": 17772300
+                      },
+                      "faceIndex": 0
+                    }
+                  ],
+                  "styles": [
+                    {
+                      "id": "style.0",
+                      "fontId": "font.0",
+                      "fontSize": 24,
+                      "fill": {
+                        "space": "srgb",
+                        "alpha": "straight",
+                        "rgba": [
+                          1,
+                          1,
+                          1,
+                          1
+                        ]
+                      }
+                    }
+                  ],
+                  "paragraphs": [
+                    {
+                      "id": "paragraph.0",
+                      "start": 0,
+                      "end": 9,
+                      "direction": "ltr"
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "id": "line.0",
+                      "paragraphId": "paragraph.0",
+                      "start": 0,
+                      "end": 9,
+                      "baseline": 24
+                    }
+                  ],
+                  "glyphs": [
+                    {
+                      "id": "glyph.0",
+                      "lineId": "line.0",
+                      "styleId": "style.0",
+                      "glyphId": 36,
+                      "cluster": {
+                        "start": 0,
+                        "end": 1
+                      },
+                      "x": 0,
+                      "y": 24,
+                      "advanceX": 15.312000000000001,
+                      "advanceY": 0
+                    },
+                    {
+                      "id": "glyph.1",
+                      "lineId": "line.0",
+                      "styleId": "style.0",
+                      "glyphId": 66,
+                      "cluster": {
+                        "start": 1,
+                        "end": 2
+                      },
+                      "x": 15.312000000000001,
+                      "y": 24,
+                      "advanceX": 13.512,
+                      "advanceY": 0
+                    },
+                    {
+                      "id": "glyph.2",
+                      "lineId": "line.0",
+                      "styleId": "style.0",
+                      "glyphId": 79,
+                      "cluster": {
+                        "start": 2,
+                        "end": 3
+                      },
+                      "x": 28.824,
+                      "y": 24,
+                      "advanceX": 14.64,
+                      "advanceY": 0
+                    },
+                    {
+                      "id": "glyph.3",
+                      "lineId": "line.0",
+                      "styleId": "style.0",
+                      "glyphId": 87,
+                      "cluster": {
+                        "start": 3,
+                        "end": 4
+                      },
+                      "x": 43.464,
+                      "y": 24,
+                      "advanceX": 11.904,
+                      "advanceY": 0
+                    },
+                    {
+                      "id": "glyph.4",
+                      "lineId": "line.0",
+                      "styleId": "style.0",
+                      "glyphId": 66,
+                      "cluster": {
+                        "start": 4,
+                        "end": 5
+                      },
+                      "x": 55.367999999999995,
+                      "y": 24,
+                      "advanceX": 13.512,
+                      "advanceY": 0
+                    },
+                    {
+                      "id": "glyph.5",
+                      "lineId": "line.0",
+                      "styleId": "style.0",
+                      "glyphId": 84,
+                      "cluster": {
+                        "start": 5,
+                        "end": 6
+                      },
+                      "x": 68.88,
+                      "y": 24,
+                      "advanceX": 11.232000000000001,
+                      "advanceY": 0
+                    },
+                    {
+                      "id": "glyph.6",
+                      "lineId": "line.0",
+                      "styleId": "style.0",
+                      "glyphId": 1,
+                      "cluster": {
+                        "start": 6,
+                        "end": 7
+                      },
+                      "x": 80.112,
+                      "y": 24,
+                      "advanceX": 5.376,
+                      "advanceY": 0
+                    },
+                    {
+                      "id": "glyph.7",
+                      "lineId": "line.0",
+                      "styleId": "style.0",
+                      "glyphId": 8805,
+                      "cluster": {
+                        "start": 7,
+                        "end": 8
+                      },
+                      "x": 85.488,
+                      "y": 24,
+                      "advanceX": 24,
+                      "advanceY": 0
+                    },
+                    {
+                      "id": "glyph.8",
+                      "lineId": "line.0",
+                      "styleId": "style.0",
+                      "glyphId": 14750,
+                      "cluster": {
+                        "start": 8,
+                        "end": 9
+                      },
+                      "x": 109.488,
+                      "y": 24,
+                      "advanceX": 24,
+                      "advanceY": 0
+                    }
+                  ]
+                },
+                "fontIdentities": [
+                  {
+                    "resourceId": "pkg_d43437adef656aa53a5b05ad",
+                    "kind": "font",
+                    "sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+                    "bytes": 17772300
+                  }
+                ]
+              },
+              "scene": {
+                "closed": false,
+                "frames": 2,
+                "backend": "native-wgpu",
+                "completion": "recorded-only",
+                "finish": {
+                  "closed": false,
+                  "frames": 2,
+                  "operations": 0,
+                  "retainedCopies": 0,
+                  "plans": [],
+                  "completion": "recorded-only"
+                },
+                "kind": "native-2d",
+                "last": {
+                  "staticGeometryReused": false,
+                  "geometrySeedBytes": 36540,
+                  "matrixUploadBytes": 128,
+                  "batches": 1,
+                  "isolatedGroups": 0,
+                  "resourceImports": 0,
+                  "atlasWorkingBytes": 1632,
+                  "logicalImageBytes": 393216,
+                  "workingBytesPerPixel": 16,
+                  "geometry": {
+                    "preparations": 2,
+                    "hits": 0,
+                    "entries": 1
+                  },
+                  "completion": "recorded-only"
+                },
+                "layout": {
+                  "layouts": 0,
+                  "hits": 0,
+                  "textPreparations": 0,
+                  "boxes": {},
+                  "algorithm": "fixed flexily0.8.3 Node, no synthetic text measurer"
+                },
+                "tree": {
+                  "version": 3,
+                  "nodes": 2,
+                  "descriptorBytes": 818,
+                  "cache": "Per-node geometry/layout/style/transform revisions; no frame-result cache"
+                },
+                "renderer": "Existing Native mesh/PixelScope, shared batched geometry/paint; no per-object Stage",
+                "defaultAssets": {
+                  "closed": false,
+                  "loadedKits": [
+                    "font",
+                    "itemizer",
+                    "paths"
+                  ],
+                  "fonts": [
+                    {
+                      "id": "default",
+                      "instance": {
+                        "source": {
+                          "resourceId": "pkg_d43437adef656aa53a5b05ad",
+                          "kind": "font",
+                          "sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+                          "bytes": 17772300
+                        },
+                        "faceIndex": 0,
+                        "variations": {
+                          "wght": 400
+                        },
+                        "normalizedCoordinates": [
+                          0.3900146484375
+                        ]
+                      }
+                    }
+                  ],
+                  "geometry": {
+                    "closed": false,
+                    "busy": false,
+                    "preparations": 1,
+                    "hits": 5,
+                    "cacheEntries": 1,
+                    "logicalCacheBytes": 144268,
+                    "maxCacheBytes": 33554432,
+                    "ownership": "borrowed providers; owned data cache",
+                    "physicalMemory": "unknown"
+                  },
+                  "execution": "Original PA WASM geometry + existing Native mesh rendering",
+                  "ownership": "owns Kit/font clients and geometry cache; borrows R1 loader/GPU"
+                }
+              },
+              "globalAbortController": "undefined"
+            }
+          },
+          {
+            "frame": 12,
+            "hash": "317aa85652cbc91b645621b79af46122f69ecf53dd014feb841e6fd58dbc2389",
+            "stats": {
+              "metrics": {
+                "width": 133.488,
+                "height": 28.799999999999997,
+                "baseline": 24,
+                "layout": {
+                  "schema": "frameweave.text-layout",
+                  "version": 1,
+                  "id": "shaped.bidi-text",
+                  "coordinates": {
+                    "spaceId": "native-2d",
+                    "unit": "px",
+                    "origin": "top-left",
+                    "x": "right",
+                    "y": "down",
+                    "width": 256,
+                    "height": 96
+                  },
+                  "text": "Canvas 中文",
+                  "layout": {
+                    "engine": "unicode-bidi+harfrust",
+                    "version": "0.3.18+0.15.0",
+                    "clusterUnit": "utf16"
+                  },
+                  "fonts": [
+                    {
+                      "id": "font.0",
+                      "source": {
+                        "resourceId": "pkg_d43437adef656aa53a5b05ad",
+                        "kind": "font",
+                        "sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+                        "bytes": 17772300
+                      },
+                      "faceIndex": 0
+                    }
+                  ],
+                  "styles": [
+                    {
+                      "id": "style.0",
+                      "fontId": "font.0",
+                      "fontSize": 24,
+                      "fill": {
+                        "space": "srgb",
+                        "alpha": "straight",
+                        "rgba": [
+                          1,
+                          1,
+                          1,
+                          1
+                        ]
+                      }
+                    }
+                  ],
+                  "paragraphs": [
+                    {
+                      "id": "paragraph.0",
+                      "start": 0,
+                      "end": 9,
+                      "direction": "ltr"
+                    }
+                  ],
+                  "lines": [
+                    {
+                      "id": "line.0",
+                      "paragraphId": "paragraph.0",
+                      "start": 0,
+                      "end": 9,
+                      "baseline": 24
+                    }
+                  ],
+                  "glyphs": [
+                    {
+                      "id": "glyph.0",
+                      "lineId": "line.0",
+                      "styleId": "style.0",
+                      "glyphId": 36,
+                      "cluster": {
+                        "start": 0,
+                        "end": 1
+                      },
+                      "x": 0,
+                      "y": 24,
+                      "advanceX": 15.312000000000001,
+                      "advanceY": 0
+                    },
+                    {
+                      "id": "glyph.1",
+                      "lineId": "line.0",
+                      "styleId": "style.0",
+                      "glyphId": 66,
+                      "cluster": {
+                        "start": 1,
+                        "end": 2
+                      },
+                      "x": 15.312000000000001,
+                      "y": 24,
+                      "advanceX": 13.512,
+                      "advanceY": 0
+                    },
+                    {
+                      "id": "glyph.2",
+                      "lineId": "line.0",
+                      "styleId": "style.0",
+                      "glyphId": 79,
+                      "cluster": {
+                        "start": 2,
+                        "end": 3
+                      },
+                      "x": 28.824,
+                      "y": 24,
+                      "advanceX": 14.64,
+                      "advanceY": 0
+                    },
+                    {
+                      "id": "glyph.3",
+                      "lineId": "line.0",
+                      "styleId": "style.0",
+                      "glyphId": 87,
+                      "cluster": {
+                        "start": 3,
+                        "end": 4
+                      },
+                      "x": 43.464,
+                      "y": 24,
+                      "advanceX": 11.904,
+                      "advanceY": 0
+                    },
+                    {
+                      "id": "glyph.4",
+                      "lineId": "line.0",
+                      "styleId": "style.0",
+                      "glyphId": 66,
+                      "cluster": {
+                        "start": 4,
+                        "end": 5
+                      },
+                      "x": 55.367999999999995,
+                      "y": 24,
+                      "advanceX": 13.512,
+                      "advanceY": 0
+                    },
+                    {
+                      "id": "glyph.5",
+                      "lineId": "line.0",
+                      "styleId": "style.0",
+                      "glyphId": 84,
+                      "cluster": {
+                        "start": 5,
+                        "end": 6
+                      },
+                      "x": 68.88,
+                      "y": 24,
+                      "advanceX": 11.232000000000001,
+                      "advanceY": 0
+                    },
+                    {
+                      "id": "glyph.6",
+                      "lineId": "line.0",
+                      "styleId": "style.0",
+                      "glyphId": 1,
+                      "cluster": {
+                        "start": 6,
+                        "end": 7
+                      },
+                      "x": 80.112,
+                      "y": 24,
+                      "advanceX": 5.376,
+                      "advanceY": 0
+                    },
+                    {
+                      "id": "glyph.7",
+                      "lineId": "line.0",
+                      "styleId": "style.0",
+                      "glyphId": 8805,
+                      "cluster": {
+                        "start": 7,
+                        "end": 8
+                      },
+                      "x": 85.488,
+                      "y": 24,
+                      "advanceX": 24,
+                      "advanceY": 0
+                    },
+                    {
+                      "id": "glyph.8",
+                      "lineId": "line.0",
+                      "styleId": "style.0",
+                      "glyphId": 14750,
+                      "cluster": {
+                        "start": 8,
+                        "end": 9
+                      },
+                      "x": 109.488,
+                      "y": 24,
+                      "advanceX": 24,
+                      "advanceY": 0
+                    }
+                  ]
+                },
+                "fontIdentities": [
+                  {
+                    "resourceId": "pkg_d43437adef656aa53a5b05ad",
+                    "kind": "font",
+                    "sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+                    "bytes": 17772300
+                  }
+                ]
+              },
+              "scene": {
+                "closed": false,
+                "frames": 3,
+                "backend": "native-wgpu",
+                "completion": "recorded-only",
+                "finish": {
+                  "closed": false,
+                  "frames": 3,
+                  "operations": 0,
+                  "retainedCopies": 0,
+                  "plans": [],
+                  "completion": "recorded-only"
+                },
+                "kind": "native-2d",
+                "last": {
+                  "staticGeometryReused": false,
+                  "geometrySeedBytes": 36540,
+                  "matrixUploadBytes": 128,
+                  "batches": 1,
+                  "isolatedGroups": 0,
+                  "resourceImports": 0,
+                  "atlasWorkingBytes": 1632,
+                  "logicalImageBytes": 393216,
+                  "workingBytesPerPixel": 16,
+                  "geometry": {
+                    "preparations": 3,
+                    "hits": 0,
+                    "entries": 1
+                  },
+                  "completion": "recorded-only"
+                },
+                "layout": {
+                  "layouts": 0,
+                  "hits": 0,
+                  "textPreparations": 0,
+                  "boxes": {},
+                  "algorithm": "fixed flexily0.8.3 Node, no synthetic text measurer"
+                },
+                "tree": {
+                  "version": 4,
+                  "nodes": 2,
+                  "descriptorBytes": 818,
+                  "cache": "Per-node geometry/layout/style/transform revisions; no frame-result cache"
+                },
+                "renderer": "Existing Native mesh/PixelScope, shared batched geometry/paint; no per-object Stage",
+                "defaultAssets": {
+                  "closed": false,
+                  "loadedKits": [
+                    "font",
+                    "itemizer",
+                    "paths"
+                  ],
+                  "fonts": [
+                    {
+                      "id": "default",
+                      "instance": {
+                        "source": {
+                          "resourceId": "pkg_d43437adef656aa53a5b05ad",
+                          "kind": "font",
+                          "sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+                          "bytes": 17772300
+                        },
+                        "faceIndex": 0,
+                        "variations": {
+                          "wght": 400
+                        },
+                        "normalizedCoordinates": [
+                          0.3900146484375
+                        ]
+                      }
+                    }
+                  ],
+                  "geometry": {
+                    "closed": false,
+                    "busy": false,
+                    "preparations": 1,
+                    "hits": 8,
+                    "cacheEntries": 1,
+                    "logicalCacheBytes": 144268,
+                    "maxCacheBytes": 33554432,
+                    "ownership": "borrowed providers; owned data cache",
+                    "physicalMemory": "unknown"
+                  },
+                  "execution": "Original PA WASM geometry + existing Native mesh rendering",
+                  "ownership": "owns Kit/font clients and geometry cache; borrows R1 loader/GPU"
+                }
+              },
+              "globalAbortController": "undefined"
+            }
+          }
+        ],
+        "backend": {
+          "adapter": "AdapterInfo { name: \"NVIDIA GeForce RTX 5070 Laptop GPU\", vendor: 4318, device: 11608, device_type: DiscreteGpu, device_pci_bus_id: \"0000:01:00.0\", driver: \"NVIDIA\", driver_info: \"596.49\", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 32, transient_saves_memory: Some(false), limit_bucket: None }",
+          "allocatedDataBytes": 97280,
+          "allocatedImageBytes": 394064,
+          "backend": "native-wgpu",
+          "blockingGpuWaits": 0,
+          "bufferExports": {
+            "bytes": 1228152,
+            "readbacks": 6,
+            "version": 1
+          },
+          "capabilities": {
+            "backend": "native-wgpu",
+            "capacityPolicy": "configured-metadata-and-device-budget",
+            "computeKernelAbis": [
+              1
+            ],
+            "crossStageGpuHandles": false,
+            "execution": "recording",
+            "f16WorkingBytesPerPixel": 16,
+            "hardwareVerified": true,
+            "limits": {
+              "maxBufferSize": 4294967295,
+              "maxComputeInvocationsPerWorkgroup": 1024,
+              "maxComputeWorkgroupSizeX": 1024,
+              "maxComputeWorkgroupSizeY": 1024,
+              "maxComputeWorkgroupSizeZ": 64,
+              "maxComputeWorkgroupStorageSize": 49152,
+              "maxComputeWorkgroupsPerDimension": 65535,
+              "maxStorageBufferBindingSize": 2147483644,
+              "maxStorageBuffersPerShaderStage": 524288,
+              "maxUniformBufferBindingSize": 65536
+            },
+            "maxKernels": 1073741824,
+            "maxPendingPasses": 1073741824,
+            "nativeImages": {
+              "admission": "device-and-session-budget",
+              "maxTextureDimension2D": 32768,
+              "version": 1
+            },
+            "nativeInference": {
+              "imageContinuation": "same-frame-prefix-v1",
+              "outputAliasing": "forbidden",
+              "persistentOutput": "explicit-stateStep",
+              "preallocatedOutputs": true,
+              "stateContinuation": true,
+              "version": 1
+            },
+            "nativeMesh": {
+              "exactAdmission": "session-budget",
+              "float32Blendable": true,
+              "version": 1
+            },
+            "nativeRayQuery": {
+              "available": true,
+              "enabled": false,
+              "experimental": true,
+              "maxBlasPrimitives": 536870911,
+              "maxTlasInstances": 16777215,
+              "profile": "opaque-triangles-v1",
+              "version": 1
+            },
+            "pixelKernelAbis": [
+              1,
+              2
+            ],
+            "profiling": "disabled",
+            "storageTypes": [
+              "f32",
+              "u32",
+              "i32"
+            ],
+            "version": 1
+          },
+          "completed": 3,
+          "devicesCreated": 1,
+          "diagnosticBlockingWaits": 0,
+          "diagnosticReadbackBytes": 0,
+          "diagnosticReadbacks": 0,
+          "diagnosticsEnabled": false,
+          "export": {
+            "bytes": 0,
+            "cpuImageCopies": 0,
+            "enabled": false,
+            "framesWritten": 0,
+            "hardwareEncode": false,
+            "httpTransport": false,
+            "pngTransport": false
+          },
+          "externalImages": {
+            "available": true,
+            "enabled": true,
+            "reason": null,
+            "version": 1
+          },
+          "frameBindings": {
+            "allSlotsDrain": false,
+            "slotUpdates": 0,
+            "version": 1
+          },
+          "frameHashes": 0,
+          "hardwareOptixRayQuery": {
+            "accelerationPolicy": "rebuild sanitized opaque geometry per query; no refit or AS cache yet",
+            "adapterLuid": "0000000000016501",
+            "additionalD3D12Devices": 0,
+            "bridgeHostFenceWaitsPerRun": 0,
+            "completedRays": 0,
+            "cpuGeometryReadbacks": 0,
+            "cpuPixelReadbacks": 0,
+            "enabled": false,
+            "gpuBridgeCopyBytes": 0,
+            "knownSharedAsScratchAndPinnedBytes": 0,
+            "physicalPeakBytes": "unknown",
+            "profile": "optix-cuda-opaque-triangles-v1",
+            "residentQueries": 0,
+            "retiredQueries": 0,
+            "runtime": null,
+            "runtimeVerified": false,
+            "status": "not-probed",
+            "submittedRays": 0,
+            "version": 1
+          },
+          "hardwareRayQuery": {
+            "cachedSceneBuilds": 0,
+            "completedRays": 0,
+            "cpuGeometryReadbacks": 0,
+            "cpuPixelReadbacks": 0,
+            "driverReportedAsAndScratchBytes": 0,
+            "enabled": false,
+            "geometryBuilds": 0,
+            "physicalPeakBytes": "unknown",
+            "profile": "opaque-triangles-v1",
+            "refitImplemented": false,
+            "residentScenes": 0,
+            "retiredScenes": 0,
+            "runtimeVerified": false,
+            "submittedRays": 0,
+            "tlasBuilds": 0,
+            "version": 1
+          },
+          "hardwareVideo": {
+            "additionalD3D11Devices": 0,
+            "blockingGpuFenceWaits": 0,
+            "cpuPixelReadbacks": 0,
+            "cpuPixelUploads": 0,
+            "driverManagedDecodeBytes": "unknown",
+            "format": "rgba32float",
+            "loaded": false,
+            "requests": 0,
+            "residentSlots": 0,
+            "sources": 0,
+            "timestampPolicy": "ordinal + source-relative PTS verification",
+            "version": 1
+          },
+          "imageReadbacks": 0,
+          "inFlight": 0,
+          "inference": {
+            "adapterLuid": "0000000000016501",
+            "additionalD3D12Devices": 0,
+            "backendManagedMemoryBytes": "unknown",
+            "cpuPixelReadbacks": 0,
+            "cpuPixelUploads": 0,
+            "gpuResident": true,
+            "interopDevice": "same-adapter D3D12/DirectML",
+            "models": [],
+            "perRunBridgeHostFenceWaits": 0,
+            "profile": "ort-dml-resident-f32-v1",
+            "retiredModels": 0,
+            "runtime": null,
+            "runtimeInternalWaits": "unknown",
+            "runtimeVerified": false,
+            "runtimes": [],
+            "status": "not-probed",
+            "version": 1
+          },
+          "nativeEncoding": {
+            "backend": "native-d3d11-ocio-nvenc",
+            "completed": 0,
+            "compressedBytes": 0,
+            "cpuPixelReadbacks": 0,
+            "cpuPixelUploads": 0,
+            "enabled": false,
+            "encodedBytesCpuOnly": true,
+            "gpuColour": true,
+            "residentSlots": 0,
+            "submitted": 0,
+            "version": 1
+          },
+          "nativeModules": {
+            "additionalD3D11Devices": 0,
+            "blockingGpuFenceWaits": 0,
+            "calls": 0,
+            "contentProfile": "reviewed-local-only",
+            "inputGpuConversions": 0,
+            "instances": 0,
+            "loaded": false,
+            "nativeDevicesCreated": 0,
+            "outputGpuConversions": 0,
+            "productionPixelReadbacks": 0,
+            "runtime": null,
+            "runtimeFileHashes": 0,
+            "surfaceProfile": "explicit-sdr-srgb8",
+            "version": 1,
+            "webRenderCachePrecision": "bgra8"
+          },
+          "numericalValidationPasses": 0,
+          "peakSubmittedInFlight": 1,
+          "persistentState": {
+            "buffers": 0,
+            "cursors": {},
+            "version": 1
+          },
+          "pipelineCache": {
+            "computeAndMeshCreated": 9,
+            "computeAndMeshReused": 17,
+            "displayReuses": 0,
+            "meshAttachmentSetsReused": 4,
+            "retention": "current-program-only",
+            "version": 1,
+            "workingBuffersReused": 8
+          },
+          "pixelTransferBytes": 0,
+          "programUpdates": 3,
+          "protocolVersion": 2,
+          "resourceImports": {
+            "binaryUploadBytes": 0,
+            "uploadBytes": 0,
+            "version": 1
+          },
+          "slots": 1,
+          "stateCheckpoints": {
+            "bytes": 0,
+            "count": 0,
+            "cpuReadbacks": 0,
+            "restores": 0,
+            "version": 1
+          },
+          "submitted": 3,
+          "workingImageBytes": 394064,
+          "stateContinuations": {
+            "version": 1,
+            "segments": 0,
+            "frames": 0,
+            "rollbacks": 0,
+            "pending": false,
+            "failed": false
+          },
+          "sourceOutput": {
+            "width": 256,
+            "height": 96,
+            "format": "rgba32float",
+            "alpha": "premultiplied",
+            "color": {
+              "primaries": "rec709",
+              "whitePoint": "D65",
+              "transfer": "linear",
+              "reference": "scene",
+              "range": "full",
+              "referenceWhiteNits": 100
+            }
+          }
+        },
+        "cancelBeforeSubmit": true
+      },
+      "wallMs": 9563.913100000002
+    }
+  ]
+}

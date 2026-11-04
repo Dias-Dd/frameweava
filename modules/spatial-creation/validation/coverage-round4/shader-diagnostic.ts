@@ -1,0 +1,8 @@
+import {mkdir,writeFile} from 'node:fs/promises';import {resolve,join} from 'node:path';import {execFileSync} from 'node:child_process';
+import {nativeComputeShader} from '../../../gpu-effects/compute-shader.ts';import {nativePixelShader} from '../../../gpu-effects/pixel-shader.ts';
+import {waveTerrainCode,waveInitCode,waveStepCode,waveRenderCode} from '../../water-kernels.ts';import {heightCausticsCode} from '../../height-caustics.ts';
+const root=resolve('.frameweave/c4-shader');await mkdir(root,{recursive:true});
+const compute=(id:string,code:string,b:('read'|'read_write')[],words:number)=>nativeComputeShader({abiVersion:1,id:'water/'+id,version:'0.1.0',bindings:b.map(access=>({type:'f32',access})),parameterWords:words,workgroupSize:[64,1,1],code});
+const codes=[compute('terrain',waveTerrainCode,['read','read_write'],24),compute('init',waveInitCode,['read','read','read_write'],8),compute('step',waveStepCode,['read','read','read','read','read_write'],16),nativePixelShader({abiVersion:2,id:'water/render',version:'0.1.0',inputCount:0,dataInputs:[{type:'f32'},{type:'f32'}],parameterWords:16,code:waveRenderCode}),nativePixelShader({abiVersion:1,id:'water/caustics',version:'0.1.0',inputCount:3,parameterWords:32,code:heightCausticsCode})];
+let failed=false;for(const [i,code]of codes.entries()){const path=join(root,'kernel-'+i+'.wgsl');await writeFile(path,code);await writeFile(join(process.env.CREATION_EVIDENCE!,'shader-'+process.env.CREATION_RUN_ID+'-'+i+'.wgsl'),code);console.log('KERNEL',i);try{execFileSync(resolve('.frameweave/c2-shader/validate-shader.exe'),[path],{stdio:'inherit',windowsHide:true});}catch{failed=true;}}
+if(failed)process.exitCode=1;

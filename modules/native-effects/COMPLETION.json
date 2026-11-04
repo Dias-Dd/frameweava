@@ -1,0 +1,225 @@
+{
+  "schemaVersion": 1,
+  "objective": "Complete Agent-3 professional GPU image-effect scope and verify 100% coverage against explicit functional requirements; no inferred completion from export counts.",
+  "baseline": "6307d9b0359b2f745369d96f90d0fe9cbdbe2c6e",
+  "maximumRounds": 8,
+  "rounds": [
+    {
+      "round": 1,
+      "scope": [
+        "Scribble path generation, masks, edge modes, caps/joins, write-on and variation",
+        "Stereo image combination, alignment, balanced channel modes"
+      ],
+      "status": "qualified_private_source",
+      "evidence": "docs/native-finishing-evidence"
+    },
+    {
+      "round": 2,
+      "scope": [
+        "Motion-aware temporal denoise",
+        "Temporal grain statistics and frequency-dependent cross-channel grain matching"
+      ],
+      "status": "qualified_private_source",
+      "evidence": "docs/native-temporal-restoration-evidence",
+      "module": "modules/native-effects/temporal-restoration"
+    },
+    {
+      "round": 3,
+      "scope": [
+        "Sequence camera path analysis/optimization",
+        "Local mesh stabilization",
+        "Automatic crop and scale"
+      ],
+      "status": "qualified_private_source",
+      "evidence": "docs/native-stabilization-evidence",
+      "module": "modules/native-effects/stabilization",
+      "inventory": "modules/native-effects/stabilization/INVENTORY.json"
+    },
+    {
+      "round": 4,
+      "scope": [
+        "Video segmentation memory",
+        "Long-sequence propagation and occlusion reacquisition"
+      ],
+      "status": "qualified_bounded_51_observation_replay_private_source",
+      "module": "modules/native-effects/video-roto",
+      "evidence": "docs/native-video-roto-evidence",
+      "qualified": [
+        "Native GPU learned spatial/pointer memory and exact empty-slot masking",
+        "Independent original unpadded Torch reference within unchanged gates",
+        "21 source-frame replay including missing observation; 17-frame full occlusion/reacquisition and repeat/random determinism",
+        "F32/F16 PM HDR/negative RGB, PNG/Float32 EXR/decoded MP4",
+        "51 actual observed frames with exact preallocated outputs and same-frame prefix cuts; identical segmented/uncut output hash",
+        "Backward/repeated queries exactly match original qualified short-replay output",
+        "Original unpadded Torch attention/decoder over full long-replay banks; all established gates pass",
+        "Actual external abort and source exception after accepted eight-observation inference segment, rollback/latch and process closure"
+      ],
+      "unqualified": [
+        "Incremental cross-authored-frame persistent checkpoint/recovery and constant-memory streaming are not implemented by this within-frame replay adapter",
+        "Original transient image-import path changes source pixels on repeated requests in this baseline; isolated existing immutable-init raw-resource path qualifies, general engine defect remains with owner",
+        "Whole-film throughput, other providers/devices, arbitrary subjects and public SDK/R1/portable integration"
+      ],
+      "resolvedPriorFailures": {
+        "original": "Round4 50-frame write EOF retained, original cause remains undiagnosed",
+        "newQualification": "docs/native-video-roto-long-evidence; actual 51-observation result passes on coherent frozen Core plus explicit immutable-init binary QA source"
+      },
+      "additionalEvidence": "docs/native-video-roto-long-evidence"
+    },
+    {
+      "round": 5,
+      "scope": [
+        "Spatially varying PSF restoration",
+        "Joint multiframe deconvolution"
+      ],
+      "status": "qualified_private_source",
+      "module": "modules/native-effects/psf-restoration",
+      "evidence": "docs/native-psf-restoration-evidence"
+    },
+    {
+      "round": 6,
+      "scope": [
+        "OCIO dynamic uniform binding/update/integrity",
+        "Resolve retained ACES2 strict numeric failure"
+      ],
+      "status": "partial",
+      "completed": [
+        "Typed dynamic OCIO uniforms, exact word integrity, existing Signal leaves and bounded curve-table relationships",
+        "Native GPU scene/display execution, v1 regression, real PNG/EXR/MP4 and failure/retry cleanup"
+      ],
+      "remaining": [
+        "Original broad ACES2 display ramp still fails unchanged 3e-6 gate; experimental CPU-order preparation is opt-in and unqualified"
+      ],
+      "evidence": "docs/native-ocio-v2-evidence"
+    },
+    {
+      "round": 7,
+      "scope": [
+        "Complete official AE effect/parameter crosswalk within Agent-3 scope",
+        "Implement any uncovered in-scope behavior",
+        "Formal public SDK/package/portable integration with Main"
+      ],
+      "status": "qualified_stabilization_checkpoint_full_crosswalk_unproven",
+      "knownFollowups": [
+        "Complete official per-control behavioral crosswalk; current source matches are unproven, not full coverage",
+        "Long SAM2 qualification and Main public SDK/package/portable integration remain required",
+        "Cross-frame binary Resource seed identity remains a Core limitation; same-frame prefix does not repair it"
+      ],
+      "completed": [
+        "Largest admissible finite-lattice stabilization strength under explicit zoom cap",
+        "Global-centre magnification preservation in global/mesh inverse maps; unscaled crop mask",
+        "Segment-aware actual-observation temporal border synthesis; preserved missing-frame behavior",
+        "240 real GPU/F64 checks at unchanged F32/F16 gates, real PNG/F32 EXR/decoded MP4, actual 1080p/4K resident chain",
+        "Official 282-row AE factual catalog and source-candidate crosswalk; name matches explicitly do not establish parameter/functional coverage"
+      ],
+      "evidence": "docs/native-stabilization-borders-evidence"
+    },
+    {
+      "round": 8,
+      "scope": [
+        "Requirement-by-requirement acceptance of original scope",
+        "Real TSX, GPU, media and quality sequences",
+        "Final coverage and integration audit"
+      ],
+      "status": "not_complete_spherical_checkpoint_partial",
+      "completed": [
+        "Actual long SAM2 prerequired Core adaptation and numerical/media/failure qualification",
+        "Full official AE source-candidate crosswalk retained without converting name matches to coverage claims",
+        "Twelve experimental spherical image function implementations; five have passing current GPU numerical cases, not whole-family acceptance"
+      ],
+      "remaining": [
+        "Spherical denoise/sharpen numerical failures and Glitch timeout; projection, media and performance acceptance remain incomplete",
+        "Five remaining unmatched source-navigation rows and full official behavior/control parity audit",
+        "Main-owned public SDK/package/portable qualification and Core transient source repeat issue"
+      ]
+    }
+  ],
+  "excludedOwnership": [
+    "Agent-4 simulation, Puppet, spatial asset/lighting/render-data generation and water-driven caustics",
+    "Agent-1 GPU owner, inference runtime, private resource ABI and generic host implementation",
+    "Main public entry, immutable package identity, locks and distribution ownership"
+  ],
+  "standingUserExclusions": [
+    "Proprietary format import",
+    "Automatic upstream Stage temporal sampling; explicit time samples remain supported"
+  ],
+  "acceptedDeviations": [
+    {
+      "id": "ocio-aces2-frozen-numeric-discrepancy",
+      "date": "2026-11-03",
+      "userDecision": "那就算了？反正你修了好几轮都没解决",
+      "context": "After disclosure of measured worst scaled error 3.3974647521972656e-6 versus the 3e-6 gate and no established visible issue, user accepted stopping further pursuit of this discrepancy.",
+      "status": "known_deviation_accepted_further_pursuit_stopped",
+      "evidence": "docs/native-ocio-v2-evidence/16-aces/result.json",
+      "scope": "Retained measured OCIO2.5.2 ACES2 display comparisons only; not a blanket waiver of arbitrary color errors or evidence that the original strict gate passed.",
+      "blocksCompletion": false
+    }
+  ],
+  "invariants": [
+    "GPU-only production pixels with qualified hardware",
+    "Signed scene-linear HDR and PM Alpha, F16/F32, logical publication order",
+    "Existing Stage DAG, security, deterministic time and resource ownership",
+    "No silent pin/lock/trust changes; no branch synchronization",
+    "One cumulative verification ledger per coherent campaign, under420s and below implementation time including failures"
+  ],
+  "completion": {
+    "status": "not_complete",
+    "requires": [
+      "All functional requirements mapped to source and actual evidence",
+      "Official AE in-scope crosswalk complete, not a count of similarly named functions",
+      "No missing or failed required checks",
+      "Actual reviewed SDK/package integration, not fixture-only availability",
+      "No unsupported capability reported as available"
+    ],
+    "audit": {
+      "crosswalk": "modules/native-effects/coverage/AE_CROSSWALK.json",
+      "parameterIndex": "modules/native-effects/coverage/PARAMETER_INDEX.json",
+      "publicIntegration": "modules/native-effects/coverage/PUBLIC_INTEGRATION.json",
+      "status": "Unproven functional/control equivalence; corrected source navigation is not completion",
+      "sourceScopeCorrections": [
+        "Inherited professional foundation interfaces were omitted from initial scan",
+        "Typed callable exports and existing Native time/transitions now indexed",
+        "Immersive Video category corrected; VR Blur retained as actual first effect",
+        "Existing Agent-2 time/text/animation ownership explicitly retained"
+      ]
+    }
+  },
+  "dependencies": {
+    "nativeInference": {
+      "source": "76f6a50514e8ca34a3602bf8e5955b4bd9d7d655",
+      "evidence": "ed64c15e67c3a0be9d4a26435cea635cf547239a",
+      "agent1Report": "Static positive-shape named F32 IO, explicit memory inputs/outputs possible. No F16/dynamic shape or SAM2 memory adapter qualified. Same-LUID auxiliary D3D12/CUDA GPU copies; no CPU tensor/pixel transit. SDK/owner must be coherently built in this own worktree, no partial Core mixing.",
+      "ourVideoModelQualification": {
+        "profile": "sam2.1-base-plus-video-memory-f32-v1",
+        "provider": "directml",
+        "observations": 51,
+        "evidence": "docs/native-video-roto-long-evidence",
+        "scope": "Bounded same-authored-frame replay only"
+      }
+    },
+    "nativeDataDeclarationBudget": {
+      "baseline": "cb306bdb550cecd5883a781b4af52be249f33e7b",
+      "source": "modules/native-gpu/src/protocol.rs:222",
+      "guard": "operator-configured after frozen Core synchronization; original256 guard retained in earlier evidence",
+      "configurable": true,
+      "agent1Confirmed": true,
+      "requested": "Operator-adjustable Program data declaration count separate from byte/device/transport limits, coherent init/reconfigure/frame validation. No owner edit in this branch.",
+      "currentWorkload": "Real 1080p/4K four-observation, nine-strength framing + global/mesh scale preservation + temporal synthesis passes with own rebuilt owner; no long-sequence/unbounded-capacity inference",
+      "agent1FrozenRemoval": "8ea45f637f895d7ffbbd6153a8dcb6ad858cfe0c",
+      "synchronizedHere": true,
+      "integrationCommit": "8a190daa463ac83752a5a0258c5de89260ea5126"
+    },
+    "nativeInferenceOutputReuse": {
+      "status": "frozen_core_synchronized_bounded_sam2_replay_qualified",
+      "frozenSource": "9dc5017c3251ea7b9eee22f35efd15476c1039e0",
+      "frozenEvidence": "ba2b2d656d93062a0c8ab8a3d7cac2c25dc22cba",
+      "actualSam2LongSequenceQualifiedHere": {
+        "observations": 51,
+        "mode": "Same-frame transient replay; bounded output reuse, explicit8-observation cuts; no persistent/infinite-stream claim",
+        "evidence": "docs/native-video-roto-long-evidence"
+      },
+      "requested": "Optional exact named preallocated outputs plus owner stateStep/epoch and inference flush integration. Do not bypass current guards.",
+      "integrationCommit": "8a190daa463ac83752a5a0258c5de89260ea5126",
+      "buildEvidence": "docs/native-stabilization-borders-evidence/15-build"
+    }
+  }
+}

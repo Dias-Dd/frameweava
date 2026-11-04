@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "apiVersion": 1,
+  "id": "kit.bindgen-bindings",
+  "version": "1.0.0",
+  "name": "kit.bindgen-bindings",
+  "description": "wasm-bindgen UTF-8, f64 arrays, Result and reviewed JS callback fixture",
+  "source": {
+    "kind": "local",
+    "authority": "frameweave.examples"
+  },
+  "compatible": "^0.1.0",
+  "platforms": [
+    "web"
+  ],
+  "capabilities": [
+    "wasm",
+    "canvas2d"
+  ],
+  "permissions": {
+    "filesystem": false,
+    "network": false,
+    "process": false
+  },
+  "entry": "main",
+  "effect": "./effect.json",
+  "modules": {
+    "main": {
+      "format": "javascript",
+      "path": "./index.ts"
+    },
+    "api": {
+      "format": "javascript",
+      "path": "./generated/api.ts"
+    },
+    "binding": {
+      "format": "javascript",
+      "path": "./dist/binding.mjs"
+    },
+    "bindingBytes": {
+      "format": "resource",
+      "path": "./dist/binding.mjs"
+    },
+    "bytes": {
+      "format": "resource",
+      "path": "./dist/generated/module_bg.wasm"
+    },
+    "worker": {
+      "format": "resource",
+      "path": "./dist/worker.js"
+    },
+    "profile": {
+      "format": "resource",
+      "path": "./dist/import-profile.json"
+    },
+    "asset0": {
+      "format": "resource",
+      "path": "./dist/generated/module.d.ts"
+    },
+    "asset1": {
+      "format": "resource",
+      "path": "./dist/generated/module.js"
+    },
+    "asset2": {
+      "format": "resource",
+      "path": "./dist/generated/module_bg.wasm"
+    },
+    "asset3": {
+      "format": "resource",
+      "path": "./dist/generated/module_bg.wasm.d.ts"
+    },
+    "asset4": {
+      "format": "resource",
+      "path": "./dist/generated/snippets/fw_bindgen_module-0f213f43746e09ee/js/host.js"
+    }
+  },
+  "dependencies": {}
+}

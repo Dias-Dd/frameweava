@@ -1,0 +1,7 @@
+import {mkdir,writeFile} from 'node:fs/promises';import {resolve,join} from 'node:path';import {execFileSync} from 'node:child_process';
+import {nativeComputeShader} from '../../../gpu-effects/compute-shader.ts';import {nativePixelShader} from '../../../gpu-effects/pixel-shader.ts';
+import {foamAdvanceCode,foamPairCode,foamDrawCode} from '../../foam-kernels.ts';
+const root=resolve('.frameweave/c3-shader');await mkdir(root,{recursive:true});
+const codes=[nativeComputeShader({abiVersion:1,id:'foam/advance',version:'0.1.0',bindings:[{type:'f32',access:'read'},{type:'f32',access:'read'},{type:'f32',access:'read_write'}],parameterWords:32,workgroupSize:[64,1,1],code:foamAdvanceCode}),nativeComputeShader({abiVersion:1,id:'foam/pair',version:'0.1.0',bindings:[{type:'f32',access:'read'},{type:'f32',access:'read_write'}],parameterWords:12,workgroupSize:[64,1,1],code:foamPairCode}),nativePixelShader({abiVersion:2,id:'foam/draw',version:'0.1.0',inputCount:0,dataInputs:[{type:'f32'},{type:'f32'},{type:'f32'}],parameterWords:24,code:foamDrawCode})];
+let failed=false;for(const [i,code]of codes.entries()){const path=join(root,'kernel-'+i+'.wgsl');await writeFile(path,code);await writeFile(join(process.env.CREATION_EVIDENCE!,'shader-'+process.env.CREATION_RUN_ID+'-'+i+'.wgsl'),code);console.log('KERNEL',i);try{execFileSync(resolve('.frameweave/c2-shader/validate-shader.exe'),[path],{stdio:'inherit',windowsHide:true});}catch{failed=true;}}
+if(failed)process.exitCode=1;

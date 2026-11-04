@@ -1,0 +1,2023 @@
+{
+  "version": 1,
+  "label": "reuse-2",
+  "scope": "Caller → Native GPU completion with actual window; wait is not a GPU query. Profiling wrappers measure host phases; no PNG/encoding.",
+  "cases": [
+    {
+      "name": "project-4k60",
+      "width": 3840,
+      "height": 2160,
+      "working": "rgba32float scene-linear Rec709",
+      "display": "actual native window",
+      "maxBytes": 6442450944,
+      "compileMs": 8875.2133,
+      "initMs": 1568.181199999999,
+      "rows": [
+        {
+          "frame": 18,
+          "recordMs": 25.46179999999913,
+          "keyMs": 0.9725000000016735,
+          "data": [
+            {
+              "length": 18,
+              "initial": 18,
+              "immutable": true
+            },
+            {
+              "length": 24,
+              "initial": 24,
+              "immutable": true
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 704,
+              "initial": 704,
+              "immutable": false
+            },
+            {
+              "length": 65484,
+              "initial": 65484,
+              "immutable": false
+            },
+            {
+              "length": 4,
+              "initial": 4,
+              "immutable": false
+            },
+            {
+              "length": 72,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 216,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 144,
+              "initial": 0,
+              "immutable": false
+            }
+          ],
+          "passes": 24,
+          "kernels": 20,
+          "changed": null,
+          "reconfigureMs": 171.26870000000054,
+          "admitMs": 178.0666000000001,
+          "submitAckMs": 6.537899999999354,
+          "ackAtMs": 210.3158000000003,
+          "totalMs": 258.3068000000003,
+          "completionWaitMs": 47.990999999999985
+        },
+        {
+          "frame": 19,
+          "recordMs": 15.738900000000285,
+          "keyMs": 0.9375,
+          "data": [
+            {
+              "length": 18,
+              "initial": 18,
+              "immutable": true
+            },
+            {
+              "length": 24,
+              "initial": 24,
+              "immutable": true
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 704,
+              "initial": 704,
+              "immutable": false
+            },
+            {
+              "length": 65493,
+              "initial": 65493,
+              "immutable": false
+            },
+            {
+              "length": 4,
+              "initial": 4,
+              "immutable": false
+            },
+            {
+              "length": 72,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 216,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 144,
+              "initial": 0,
+              "immutable": false
+            }
+          ],
+          "passes": 24,
+          "kernels": 20,
+          "changed": {
+            "images": false,
+            "data": true,
+            "passes": true,
+            "kernels": false
+          },
+          "reconfigureMs": 14.204100000000835,
+          "admitMs": 22.80069999999978,
+          "submitAckMs": 5.61410000000069,
+          "ackAtMs": 44.18209999999999,
+          "totalMs": 92.08959999999934,
+          "completionWaitMs": 47.907499999999345
+        },
+        {
+          "frame": 20,
+          "recordMs": 12.382900000000518,
+          "keyMs": 1.172099999999773,
+          "data": [
+            {
+              "length": 18,
+              "initial": 18,
+              "immutable": true
+            },
+            {
+              "length": 24,
+              "initial": 24,
+              "immutable": true
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 880,
+              "initial": 880,
+              "immutable": false
+            },
+            {
+              "length": 65673,
+              "initial": 65673,
+              "immutable": false
+            },
+            {
+              "length": 4,
+              "initial": 4,
+              "immutable": false
+            },
+            {
+              "length": 72,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 216,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 144,
+              "initial": 0,
+              "immutable": false
+            }
+          ],
+          "passes": 24,
+          "kernels": 20,
+          "changed": {
+            "images": false,
+            "data": true,
+            "passes": true,
+            "kernels": false
+          },
+          "reconfigureMs": 15.465000000000146,
+          "admitMs": 25.78149999999914,
+          "submitAckMs": 3.7885999999998603,
+          "ackAtMs": 41.97990000000027,
+          "totalMs": 93.0555000000004,
+          "completionWaitMs": 51.07560000000012
+        },
+        {
+          "frame": 21,
+          "recordMs": 8.696400000000722,
+          "keyMs": 0.8249999999989086,
+          "data": [
+            {
+              "length": 18,
+              "initial": 18,
+              "immutable": true
+            },
+            {
+              "length": 24,
+              "initial": 24,
+              "immutable": true
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 880,
+              "initial": 880,
+              "immutable": false
+            },
+            {
+              "length": 65679,
+              "initial": 65679,
+              "immutable": false
+            },
+            {
+              "length": 4,
+              "initial": 4,
+              "immutable": false
+            },
+            {
+              "length": 72,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 216,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 144,
+              "initial": 0,
+              "immutable": false
+            }
+          ],
+          "passes": 24,
+          "kernels": 20,
+          "changed": {
+            "images": false,
+            "data": true,
+            "passes": true,
+            "kernels": false
+          },
+          "reconfigureMs": 15.065800000000309,
+          "admitMs": 24.98999999999978,
+          "submitAckMs": 2.2880000000004657,
+          "ackAtMs": 36.00140000000101,
+          "totalMs": 86.87640000000101,
+          "completionWaitMs": 50.875
+        },
+        {
+          "frame": 22,
+          "recordMs": 8.837600000000748,
+          "keyMs": 0.9261999999998807,
+          "data": [
+            {
+              "length": 18,
+              "initial": 18,
+              "immutable": true
+            },
+            {
+              "length": 24,
+              "initial": 24,
+              "immutable": true
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 896,
+              "initial": 896,
+              "immutable": false
+            },
+            {
+              "length": 65685,
+              "initial": 65685,
+              "immutable": false
+            },
+            {
+              "length": 4,
+              "initial": 4,
+              "immutable": false
+            },
+            {
+              "length": 72,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 216,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 144,
+              "initial": 0,
+              "immutable": false
+            }
+          ],
+          "passes": 24,
+          "kernels": 20,
+          "changed": {
+            "images": false,
+            "data": true,
+            "passes": true,
+            "kernels": false
+          },
+          "reconfigureMs": 15.69919999999911,
+          "admitMs": 24.71190000000024,
+          "submitAckMs": 2.372799999999188,
+          "ackAtMs": 35.952400000000125,
+          "totalMs": 86.41650000000118,
+          "completionWaitMs": 50.464100000001054
+        },
+        {
+          "frame": 23,
+          "recordMs": 9.1229000000003,
+          "keyMs": 1.1255999999993946,
+          "data": [
+            {
+              "length": 18,
+              "initial": 18,
+              "immutable": true
+            },
+            {
+              "length": 24,
+              "initial": 24,
+              "immutable": true
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 1072,
+              "initial": 1072,
+              "immutable": false
+            },
+            {
+              "length": 65869,
+              "initial": 65869,
+              "immutable": false
+            },
+            {
+              "length": 4,
+              "initial": 4,
+              "immutable": false
+            },
+            {
+              "length": 72,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 216,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 144,
+              "initial": 0,
+              "immutable": false
+            }
+          ],
+          "passes": 24,
+          "kernels": 20,
+          "changed": {
+            "images": false,
+            "data": true,
+            "passes": true,
+            "kernels": false
+          },
+          "reconfigureMs": 16.715799999999945,
+          "admitMs": 25.937699999998586,
+          "submitAckMs": 2.0108000000000175,
+          "ackAtMs": 37.10139999999956,
+          "totalMs": 87.97869999999966,
+          "completionWaitMs": 50.877300000000105
+        },
+        {
+          "frame": 168,
+          "recordMs": 25.4966000000004,
+          "keyMs": 1.5072999999993044,
+          "data": [
+            {
+              "length": 18,
+              "initial": 18,
+              "immutable": true
+            },
+            {
+              "length": 24,
+              "initial": 24,
+              "immutable": true
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 11472,
+              "initial": 11472,
+              "immutable": false
+            },
+            {
+              "length": 73684,
+              "initial": 73684,
+              "immutable": false
+            },
+            {
+              "length": 4,
+              "initial": 4,
+              "immutable": false
+            },
+            {
+              "length": 72,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 216,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 144,
+              "initial": 0,
+              "immutable": false
+            }
+          ],
+          "passes": 24,
+          "kernels": 20,
+          "changed": {
+            "images": false,
+            "data": true,
+            "passes": true,
+            "kernels": false
+          },
+          "reconfigureMs": 16.132700000000114,
+          "admitMs": 26.93369999999959,
+          "submitAckMs": 2.6996999999992113,
+          "ackAtMs": 55.15939999999864,
+          "totalMs": 104.78169999999955,
+          "completionWaitMs": 49.622300000000905
+        },
+        {
+          "frame": 169,
+          "recordMs": 10.781399999999849,
+          "keyMs": 1.174699999999575,
+          "data": [
+            {
+              "length": 18,
+              "initial": 18,
+              "immutable": true
+            },
+            {
+              "length": 24,
+              "initial": 24,
+              "immutable": true
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 11472,
+              "initial": 11472,
+              "immutable": false
+            },
+            {
+              "length": 73695,
+              "initial": 73695,
+              "immutable": false
+            },
+            {
+              "length": 4,
+              "initial": 4,
+              "immutable": false
+            },
+            {
+              "length": 72,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 216,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 144,
+              "initial": 0,
+              "immutable": false
+            }
+          ],
+          "passes": 24,
+          "kernels": 20,
+          "changed": {
+            "images": false,
+            "data": true,
+            "passes": true,
+            "kernels": false
+          },
+          "reconfigureMs": 18.01429999999891,
+          "admitMs": 29.350900000001275,
+          "submitAckMs": 2.1661000000003696,
+          "ackAtMs": 42.32810000000063,
+          "totalMs": 91.87350000000151,
+          "completionWaitMs": 49.54540000000088
+        },
+        {
+          "frame": 170,
+          "recordMs": 9.930199999998877,
+          "keyMs": 1.2052000000003318,
+          "data": [
+            {
+              "length": 18,
+              "initial": 18,
+              "immutable": true
+            },
+            {
+              "length": 24,
+              "initial": 24,
+              "immutable": true
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 11504,
+              "initial": 11504,
+              "immutable": false
+            },
+            {
+              "length": 73725,
+              "initial": 73725,
+              "immutable": false
+            },
+            {
+              "length": 4,
+              "initial": 4,
+              "immutable": false
+            },
+            {
+              "length": 72,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 216,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 144,
+              "initial": 0,
+              "immutable": false
+            }
+          ],
+          "passes": 24,
+          "kernels": 20,
+          "changed": {
+            "images": false,
+            "data": true,
+            "passes": true,
+            "kernels": false
+          },
+          "reconfigureMs": 17.467000000000553,
+          "admitMs": 29.782200000001467,
+          "submitAckMs": 2.0322999999989406,
+          "ackAtMs": 41.84389999999985,
+          "totalMs": 91.91220000000067,
+          "completionWaitMs": 50.06830000000082
+        },
+        {
+          "frame": 171,
+          "recordMs": 10.30789999999979,
+          "keyMs": 1.8771000000015192,
+          "data": [
+            {
+              "length": 18,
+              "initial": 18,
+              "immutable": true
+            },
+            {
+              "length": 24,
+              "initial": 24,
+              "immutable": true
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 11504,
+              "initial": 11504,
+              "immutable": false
+            },
+            {
+              "length": 73715,
+              "initial": 73715,
+              "immutable": false
+            },
+            {
+              "length": 4,
+              "initial": 4,
+              "immutable": false
+            },
+            {
+              "length": 72,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 216,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 144,
+              "initial": 0,
+              "immutable": false
+            }
+          ],
+          "passes": 24,
+          "kernels": 20,
+          "changed": {
+            "images": false,
+            "data": true,
+            "passes": true,
+            "kernels": false
+          },
+          "reconfigureMs": 17.40649999999914,
+          "admitMs": 29.247599999998783,
+          "submitAckMs": 3.527799999999843,
+          "ackAtMs": 43.123499999999694,
+          "totalMs": 92.28729999999996,
+          "completionWaitMs": 49.163800000000265
+        },
+        {
+          "frame": 172,
+          "recordMs": 11.83849999999984,
+          "keyMs": 1.1538999999993393,
+          "data": [
+            {
+              "length": 18,
+              "initial": 18,
+              "immutable": true
+            },
+            {
+              "length": 24,
+              "initial": 24,
+              "immutable": true
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 11392,
+              "initial": 11392,
+              "immutable": false
+            },
+            {
+              "length": 73621,
+              "initial": 73621,
+              "immutable": false
+            },
+            {
+              "length": 4,
+              "initial": 4,
+              "immutable": false
+            },
+            {
+              "length": 72,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 216,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 144,
+              "initial": 0,
+              "immutable": false
+            }
+          ],
+          "passes": 24,
+          "kernels": 20,
+          "changed": {
+            "images": false,
+            "data": true,
+            "passes": true,
+            "kernels": false
+          },
+          "reconfigureMs": 19.84569999999985,
+          "admitMs": 30.347100000000864,
+          "submitAckMs": 2.138599999998405,
+          "ackAtMs": 44.36059999999998,
+          "totalMs": 95.19599999999991,
+          "completionWaitMs": 50.835399999999936
+        },
+        {
+          "frame": 173,
+          "recordMs": 12.315200000000914,
+          "keyMs": 1.216099999999642,
+          "data": [
+            {
+              "length": 18,
+              "initial": 18,
+              "immutable": true
+            },
+            {
+              "length": 24,
+              "initial": 24,
+              "immutable": true
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 11568,
+              "initial": 11568,
+              "immutable": false
+            },
+            {
+              "length": 73758,
+              "initial": 73758,
+              "immutable": false
+            },
+            {
+              "length": 4,
+              "initial": 4,
+              "immutable": false
+            },
+            {
+              "length": 72,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 216,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 144,
+              "initial": 0,
+              "immutable": false
+            }
+          ],
+          "passes": 24,
+          "kernels": 20,
+          "changed": {
+            "images": false,
+            "data": true,
+            "passes": true,
+            "kernels": false
+          },
+          "reconfigureMs": 18.180700000000797,
+          "admitMs": 29.010599999999613,
+          "submitAckMs": 1.752199999998993,
+          "ackAtMs": 43.10540000000037,
+          "totalMs": 94.23070000000007,
+          "completionWaitMs": 51.1252999999997
+        }
+      ],
+      "stats": {
+        "adapter": "AdapterInfo { name: \"NVIDIA GeForce RTX 5070 Laptop GPU\", vendor: 4318, device: 11608, device_type: DiscreteGpu, device_pci_bus_id: \"0000:01:00.0\", driver: \"NVIDIA\", driver_info: \"596.49\", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 32, transient_saves_memory: Some(false), limit_bucket: None }",
+        "allocatedDataBytes": 1029744,
+        "allocatedImageBytes": 2392662528,
+        "backend": "native-wgpu",
+        "blockingGpuWaits": 0,
+        "bufferExports": {
+          "bytes": 0,
+          "readbacks": 0,
+          "version": 1
+        },
+        "capabilities": {
+          "backend": "native-wgpu",
+          "computeKernelAbis": [
+            1
+          ],
+          "crossStageGpuHandles": false,
+          "execution": "recording",
+          "f16WorkingBytesPerPixel": 16,
+          "hardwareVerified": true,
+          "limits": {
+            "maxBufferSize": 4294967295,
+            "maxComputeInvocationsPerWorkgroup": 1024,
+            "maxComputeWorkgroupSizeX": 1024,
+            "maxComputeWorkgroupSizeY": 1024,
+            "maxComputeWorkgroupSizeZ": 64,
+            "maxComputeWorkgroupStorageSize": 49152,
+            "maxComputeWorkgroupsPerDimension": 65535,
+            "maxStorageBufferBindingSize": 2147483644,
+            "maxStorageBuffersPerShaderStage": 524288,
+            "maxUniformBufferBindingSize": 65536
+          },
+          "maxKernels": 256,
+          "maxPendingPasses": 1024,
+          "nativeImages": {
+            "admission": "device-and-session-budget",
+            "maxTextureDimension2D": 32768,
+            "version": 1
+          },
+          "nativeMesh": {
+            "exactAdmission": "session-budget",
+            "float32Blendable": true,
+            "version": 1
+          },
+          "pixelKernelAbis": [
+            1,
+            2
+          ],
+          "profiling": "disabled",
+          "storageTypes": [
+            "f32",
+            "u32",
+            "i32"
+          ],
+          "version": 1
+        },
+        "completed": 12,
+        "devicesCreated": 1,
+        "diagnosticBlockingWaits": 0,
+        "diagnosticReadbackBytes": 0,
+        "diagnosticReadbacks": 0,
+        "diagnosticsEnabled": false,
+        "export": {
+          "bytes": 0,
+          "cpuImageCopies": 0,
+          "enabled": false,
+          "framesWritten": 0,
+          "hardwareEncode": false,
+          "httpTransport": false,
+          "pngTransport": false
+        },
+        "externalImages": {
+          "available": true,
+          "enabled": true,
+          "reason": null,
+          "version": 1
+        },
+        "frameHashes": 0,
+        "imageReadbacks": 0,
+        "inFlight": 0,
+        "nativeModules": {
+          "additionalD3D11Devices": 0,
+          "blockingGpuFenceWaits": 0,
+          "calls": 0,
+          "contentProfile": "reviewed-local-only",
+          "inputGpuConversions": 0,
+          "instances": 0,
+          "loaded": false,
+          "nativeDevicesCreated": 0,
+          "outputGpuConversions": 0,
+          "productionPixelReadbacks": 0,
+          "runtime": null,
+          "runtimeFileHashes": 0,
+          "surfaceProfile": "explicit-sdr-srgb8",
+          "version": 1,
+          "webRenderCachePrecision": "bgra8"
+        },
+        "numericalValidationPasses": 0,
+        "peakSubmittedInFlight": 1,
+        "persistentState": {
+          "buffers": 0,
+          "cursors": {},
+          "version": 1
+        },
+        "pipelineCache": {
+          "computeAndMeshCreated": 27,
+          "computeAndMeshReused": 287,
+          "displayReuses": 11,
+          "meshAttachmentSetsReused": 66,
+          "retention": "current-program-only",
+          "version": 1,
+          "workingBuffersReused": 166
+        },
+        "pixelTransferBytes": 0,
+        "programUpdates": 12,
+        "protocolVersion": 2,
+        "resourceImports": {
+          "uploadBytes": 0,
+          "version": 1
+        },
+        "slots": 3,
+        "submitted": 12,
+        "workingImageBytes": 8364630528,
+        "sourceOutput": {
+          "width": 3840,
+          "height": 2160,
+          "format": "rgba32float",
+          "alpha": "premultiplied",
+          "color": {
+            "primaries": "rec709",
+            "whitePoint": "D65",
+            "transfer": "linear",
+            "reference": "scene",
+            "range": "full",
+            "referenceWhiteNits": 100
+          }
+        }
+      }
+    },
+    {
+      "name": "project-servo-4k60",
+      "width": 3840,
+      "height": 2160,
+      "working": "rgba32float scene-linear Rec709",
+      "display": "actual native window",
+      "maxBytes": 6442450944,
+      "compileMs": 7699.7997,
+      "initMs": 1975.548600000002,
+      "rows": [
+        {
+          "frame": 18,
+          "recordMs": 21.95679999999993,
+          "keyMs": 1.2634000000034575,
+          "data": [
+            {
+              "length": 18,
+              "initial": 18,
+              "immutable": true
+            },
+            {
+              "length": 24,
+              "initial": 24,
+              "immutable": true
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 704,
+              "initial": 704,
+              "immutable": false
+            },
+            {
+              "length": 65484,
+              "initial": 65484,
+              "immutable": false
+            },
+            {
+              "length": 4,
+              "initial": 4,
+              "immutable": false
+            },
+            {
+              "length": 72,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 216,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 144,
+              "initial": 0,
+              "immutable": false
+            }
+          ],
+          "passes": 26,
+          "kernels": 21,
+          "changed": null,
+          "reconfigureMs": 515.6526000000013,
+          "admitMs": 523.9219999999987,
+          "submitAckMs": 210.92259999999806,
+          "ackAtMs": 756.8375999999989,
+          "totalMs": 762.6427000000003,
+          "completionWaitMs": 5.805100000001403
+        },
+        {
+          "frame": 19,
+          "recordMs": 11.801899999998568,
+          "keyMs": 1.050600000002305,
+          "data": [
+            {
+              "length": 18,
+              "initial": 18,
+              "immutable": true
+            },
+            {
+              "length": 24,
+              "initial": 24,
+              "immutable": true
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 704,
+              "initial": 704,
+              "immutable": false
+            },
+            {
+              "length": 65493,
+              "initial": 65493,
+              "immutable": false
+            },
+            {
+              "length": 4,
+              "initial": 4,
+              "immutable": false
+            },
+            {
+              "length": 72,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 216,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 144,
+              "initial": 0,
+              "immutable": false
+            }
+          ],
+          "passes": 26,
+          "kernels": 21,
+          "changed": {
+            "images": false,
+            "data": true,
+            "passes": true,
+            "kernels": false
+          },
+          "reconfigureMs": 14.897499999999127,
+          "admitMs": 25.513299999998708,
+          "submitAckMs": 13.615099999999074,
+          "ackAtMs": 50.96689999999944,
+          "totalMs": 93.85719999999856,
+          "completionWaitMs": 42.890299999999115
+        },
+        {
+          "frame": 20,
+          "recordMs": 9.453300000001036,
+          "keyMs": 0.9013000000013562,
+          "data": [
+            {
+              "length": 18,
+              "initial": 18,
+              "immutable": true
+            },
+            {
+              "length": 24,
+              "initial": 24,
+              "immutable": true
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 880,
+              "initial": 880,
+              "immutable": false
+            },
+            {
+              "length": 65673,
+              "initial": 65673,
+              "immutable": false
+            },
+            {
+              "length": 4,
+              "initial": 4,
+              "immutable": false
+            },
+            {
+              "length": 72,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 216,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 144,
+              "initial": 0,
+              "immutable": false
+            }
+          ],
+          "passes": 26,
+          "kernels": 21,
+          "changed": {
+            "images": false,
+            "data": true,
+            "passes": true,
+            "kernels": false
+          },
+          "reconfigureMs": 17.59280000000217,
+          "admitMs": 25.725800000000163,
+          "submitAckMs": 12.39600000000064,
+          "ackAtMs": 47.61200000000099,
+          "totalMs": 90.89609999999811,
+          "completionWaitMs": 43.284099999997125
+        },
+        {
+          "frame": 21,
+          "recordMs": 10.486300000000483,
+          "keyMs": 1.0211999999992258,
+          "data": [
+            {
+              "length": 18,
+              "initial": 18,
+              "immutable": true
+            },
+            {
+              "length": 24,
+              "initial": 24,
+              "immutable": true
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 880,
+              "initial": 880,
+              "immutable": false
+            },
+            {
+              "length": 65679,
+              "initial": 65679,
+              "immutable": false
+            },
+            {
+              "length": 4,
+              "initial": 4,
+              "immutable": false
+            },
+            {
+              "length": 72,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 216,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 144,
+              "initial": 0,
+              "immutable": false
+            }
+          ],
+          "passes": 26,
+          "kernels": 21,
+          "changed": {
+            "images": false,
+            "data": true,
+            "passes": true,
+            "kernels": false
+          },
+          "reconfigureMs": 13.941799999996874,
+          "admitMs": 22.875199999998586,
+          "submitAckMs": 9.66479999999865,
+          "ackAtMs": 43.06010000000242,
+          "totalMs": 90.59029999999984,
+          "completionWaitMs": 47.53019999999742
+        },
+        {
+          "frame": 22,
+          "recordMs": 8.275699999998324,
+          "keyMs": 0.7481000000007043,
+          "data": [
+            {
+              "length": 18,
+              "initial": 18,
+              "immutable": true
+            },
+            {
+              "length": 24,
+              "initial": 24,
+              "immutable": true
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 896,
+              "initial": 896,
+              "immutable": false
+            },
+            {
+              "length": 65685,
+              "initial": 65685,
+              "immutable": false
+            },
+            {
+              "length": 4,
+              "initial": 4,
+              "immutable": false
+            },
+            {
+              "length": 72,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 216,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 144,
+              "initial": 0,
+              "immutable": false
+            }
+          ],
+          "passes": 26,
+          "kernels": 21,
+          "changed": {
+            "images": false,
+            "data": true,
+            "passes": true,
+            "kernels": false
+          },
+          "reconfigureMs": 13.595699999998033,
+          "admitMs": 21.053799999997864,
+          "submitAckMs": 9.41740000000209,
+          "ackAtMs": 38.917199999999866,
+          "totalMs": 85.15580000000045,
+          "completionWaitMs": 46.23860000000059
+        },
+        {
+          "frame": 23,
+          "recordMs": 8.904700000002777,
+          "keyMs": 0.7621999999973923,
+          "data": [
+            {
+              "length": 18,
+              "initial": 18,
+              "immutable": true
+            },
+            {
+              "length": 24,
+              "initial": 24,
+              "immutable": true
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 1072,
+              "initial": 1072,
+              "immutable": false
+            },
+            {
+              "length": 65869,
+              "initial": 65869,
+              "immutable": false
+            },
+            {
+              "length": 4,
+              "initial": 4,
+              "immutable": false
+            },
+            {
+              "length": 72,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 216,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 144,
+              "initial": 0,
+              "immutable": false
+            }
+          ],
+          "passes": 26,
+          "kernels": 21,
+          "changed": {
+            "images": false,
+            "data": true,
+            "passes": true,
+            "kernels": false
+          },
+          "reconfigureMs": 13.313100000003033,
+          "admitMs": 20.583800000000338,
+          "submitAckMs": 9.699600000003556,
+          "ackAtMs": 39.23440000000119,
+          "totalMs": 85.35210000000006,
+          "completionWaitMs": 46.11769999999888
+        },
+        {
+          "frame": 168,
+          "recordMs": 25.891999999999825,
+          "keyMs": 1.1025000000008731,
+          "data": [
+            {
+              "length": 18,
+              "initial": 18,
+              "immutable": true
+            },
+            {
+              "length": 24,
+              "initial": 24,
+              "immutable": true
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 11472,
+              "initial": 11472,
+              "immutable": false
+            },
+            {
+              "length": 73684,
+              "initial": 73684,
+              "immutable": false
+            },
+            {
+              "length": 4,
+              "initial": 4,
+              "immutable": false
+            },
+            {
+              "length": 72,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 216,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 144,
+              "initial": 0,
+              "immutable": false
+            }
+          ],
+          "passes": 26,
+          "kernels": 21,
+          "changed": {
+            "images": false,
+            "data": true,
+            "passes": true,
+            "kernels": false
+          },
+          "reconfigureMs": 17.21640000000116,
+          "admitMs": 26.823300000000017,
+          "submitAckMs": 12.219700000001467,
+          "ackAtMs": 64.95799999999872,
+          "totalMs": 107.99429999999847,
+          "completionWaitMs": 43.036299999999756
+        },
+        {
+          "frame": 169,
+          "recordMs": 12.112400000001799,
+          "keyMs": 1.1160000000018044,
+          "data": [
+            {
+              "length": 18,
+              "initial": 18,
+              "immutable": true
+            },
+            {
+              "length": 24,
+              "initial": 24,
+              "immutable": true
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 11472,
+              "initial": 11472,
+              "immutable": false
+            },
+            {
+              "length": 73695,
+              "initial": 73695,
+              "immutable": false
+            },
+            {
+              "length": 4,
+              "initial": 4,
+              "immutable": false
+            },
+            {
+              "length": 72,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 216,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 144,
+              "initial": 0,
+              "immutable": false
+            }
+          ],
+          "passes": 26,
+          "kernels": 21,
+          "changed": {
+            "images": false,
+            "data": true,
+            "passes": true,
+            "kernels": false
+          },
+          "reconfigureMs": 17.91319999999905,
+          "admitMs": 27.8765999999996,
+          "submitAckMs": 8.490300000001298,
+          "ackAtMs": 48.510300000001735,
+          "totalMs": 94.8061000000016,
+          "completionWaitMs": 46.29579999999987
+        },
+        {
+          "frame": 170,
+          "recordMs": 9.799300000002404,
+          "keyMs": 1.235899999999674,
+          "data": [
+            {
+              "length": 18,
+              "initial": 18,
+              "immutable": true
+            },
+            {
+              "length": 24,
+              "initial": 24,
+              "immutable": true
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 11504,
+              "initial": 11504,
+              "immutable": false
+            },
+            {
+              "length": 73725,
+              "initial": 73725,
+              "immutable": false
+            },
+            {
+              "length": 4,
+              "initial": 4,
+              "immutable": false
+            },
+            {
+              "length": 72,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 216,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 144,
+              "initial": 0,
+              "immutable": false
+            }
+          ],
+          "passes": 26,
+          "kernels": 21,
+          "changed": {
+            "images": false,
+            "data": true,
+            "passes": true,
+            "kernels": false
+          },
+          "reconfigureMs": 20.09900000000198,
+          "admitMs": 30.848699999998644,
+          "submitAckMs": 8.549600000002101,
+          "ackAtMs": 49.22390000000087,
+          "totalMs": 93.78759999999966,
+          "completionWaitMs": 44.56369999999879
+        },
+        {
+          "frame": 171,
+          "recordMs": 12.959599999998318,
+          "keyMs": 1.2872000000024855,
+          "data": [
+            {
+              "length": 18,
+              "initial": 18,
+              "immutable": true
+            },
+            {
+              "length": 24,
+              "initial": 24,
+              "immutable": true
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 11504,
+              "initial": 11504,
+              "immutable": false
+            },
+            {
+              "length": 73715,
+              "initial": 73715,
+              "immutable": false
+            },
+            {
+              "length": 4,
+              "initial": 4,
+              "immutable": false
+            },
+            {
+              "length": 72,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 216,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 144,
+              "initial": 0,
+              "immutable": false
+            }
+          ],
+          "passes": 26,
+          "kernels": 21,
+          "changed": {
+            "images": false,
+            "data": true,
+            "passes": true,
+            "kernels": false
+          },
+          "reconfigureMs": 15.79780000000028,
+          "admitMs": 26.685300000001007,
+          "submitAckMs": 8.792599999997037,
+          "ackAtMs": 48.46570000000065,
+          "totalMs": 93.73830000000089,
+          "completionWaitMs": 45.27260000000024
+        },
+        {
+          "frame": 172,
+          "recordMs": 11.691200000001118,
+          "keyMs": 1.1288999999997031,
+          "data": [
+            {
+              "length": 18,
+              "initial": 18,
+              "immutable": true
+            },
+            {
+              "length": 24,
+              "initial": 24,
+              "immutable": true
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 11392,
+              "initial": 11392,
+              "immutable": false
+            },
+            {
+              "length": 73621,
+              "initial": 73621,
+              "immutable": false
+            },
+            {
+              "length": 4,
+              "initial": 4,
+              "immutable": false
+            },
+            {
+              "length": 72,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 216,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 144,
+              "initial": 0,
+              "immutable": false
+            }
+          ],
+          "passes": 26,
+          "kernels": 21,
+          "changed": {
+            "images": false,
+            "data": true,
+            "passes": true,
+            "kernels": false
+          },
+          "reconfigureMs": 17.54650000000038,
+          "admitMs": 27.82550000000265,
+          "submitAckMs": 8.390999999999622,
+          "ackAtMs": 47.93260000000009,
+          "totalMs": 94.83130000000165,
+          "completionWaitMs": 46.898700000001554
+        },
+        {
+          "frame": 173,
+          "recordMs": 10.704200000000128,
+          "keyMs": 1.2986000000018976,
+          "data": [
+            {
+              "length": 18,
+              "initial": 18,
+              "immutable": true
+            },
+            {
+              "length": 24,
+              "initial": 24,
+              "immutable": true
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 18,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 11568,
+              "initial": 11568,
+              "immutable": false
+            },
+            {
+              "length": 73758,
+              "initial": 73758,
+              "immutable": false
+            },
+            {
+              "length": 4,
+              "initial": 4,
+              "immutable": false
+            },
+            {
+              "length": 72,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 216,
+              "initial": 0,
+              "immutable": false
+            },
+            {
+              "length": 144,
+              "initial": 0,
+              "immutable": false
+            }
+          ],
+          "passes": 26,
+          "kernels": 21,
+          "changed": {
+            "images": false,
+            "data": true,
+            "passes": true,
+            "kernels": false
+          },
+          "reconfigureMs": 19.535899999998946,
+          "admitMs": 30.517899999998917,
+          "submitAckMs": 8.232500000001892,
+          "ackAtMs": 49.47560000000158,
+          "totalMs": 96.90629999999874,
+          "completionWaitMs": 47.43069999999716
+        }
+      ],
+      "stats": {
+        "adapter": "AdapterInfo { name: \"NVIDIA GeForce RTX 5070 Laptop GPU\", vendor: 4318, device: 11608, device_type: DiscreteGpu, device_pci_bus_id: \"0000:01:00.0\", driver: \"NVIDIA\", driver_info: \"596.49\", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 32, transient_saves_memory: Some(false), limit_bucket: None }",
+        "allocatedDataBytes": 1029744,
+        "allocatedImageBytes": 2392662528,
+        "backend": "native-wgpu",
+        "blockingGpuWaits": 0,
+        "bufferExports": {
+          "bytes": 0,
+          "readbacks": 0,
+          "version": 1
+        },
+        "capabilities": {
+          "backend": "native-wgpu",
+          "computeKernelAbis": [
+            1
+          ],
+          "crossStageGpuHandles": false,
+          "execution": "recording",
+          "f16WorkingBytesPerPixel": 16,
+          "hardwareVerified": true,
+          "limits": {
+            "maxBufferSize": 4294967295,
+            "maxComputeInvocationsPerWorkgroup": 1024,
+            "maxComputeWorkgroupSizeX": 1024,
+            "maxComputeWorkgroupSizeY": 1024,
+            "maxComputeWorkgroupSizeZ": 64,
+            "maxComputeWorkgroupStorageSize": 49152,
+            "maxComputeWorkgroupsPerDimension": 65535,
+            "maxStorageBufferBindingSize": 2147483644,
+            "maxStorageBuffersPerShaderStage": 524288,
+            "maxUniformBufferBindingSize": 65536
+          },
+          "maxKernels": 256,
+          "maxPendingPasses": 1024,
+          "nativeImages": {
+            "admission": "device-and-session-budget",
+            "maxTextureDimension2D": 32768,
+            "version": 1
+          },
+          "nativeMesh": {
+            "exactAdmission": "session-budget",
+            "float32Blendable": true,
+            "version": 1
+          },
+          "pixelKernelAbis": [
+            1,
+            2
+          ],
+          "profiling": "disabled",
+          "storageTypes": [
+            "f32",
+            "u32",
+            "i32"
+          ],
+          "version": 1
+        },
+        "completed": 12,
+        "devicesCreated": 1,
+        "diagnosticBlockingWaits": 0,
+        "diagnosticReadbackBytes": 0,
+        "diagnosticReadbacks": 0,
+        "diagnosticsEnabled": false,
+        "export": {
+          "bytes": 0,
+          "cpuImageCopies": 0,
+          "enabled": false,
+          "framesWritten": 0,
+          "hardwareEncode": false,
+          "httpTransport": false,
+          "pngTransport": false
+        },
+        "externalImages": {
+          "available": true,
+          "enabled": true,
+          "reason": null,
+          "version": 1
+        },
+        "frameHashes": 0,
+        "imageReadbacks": 0,
+        "inFlight": 0,
+        "nativeModules": {
+          "additionalD3D11Devices": 2,
+          "blockingGpuFenceWaits": 0,
+          "calls": 12,
+          "contentProfile": "reviewed-local-only",
+          "inputGpuConversions": 0,
+          "instances": 3,
+          "loaded": true,
+          "nativeDevicesCreated": 0,
+          "outputGpuConversions": 12,
+          "productionPixelReadbacks": 0,
+          "runtime": {
+            "frames": 12,
+            "instances": 3,
+            "logicalBridgeResources": 844437815033859,
+            "networkBlocked": 0,
+            "renderingContextReadbackAttempts": 0,
+            "telemetry": {
+              "display_list_received_count": 16,
+              "image_cache_cpu_bytes": 0,
+              "image_cache_gpu_hits": 0,
+              "last_lock_us": 0,
+              "last_locked_gl_textures": [],
+              "last_unlock_us": 0,
+              "last_wr_render_us": 159.4,
+              "last_wr_update_us": 0.5,
+              "lock_call_count": 0,
+              "release_call_count": 0,
+              "total_lock_us": 0,
+              "total_unlock_us": 0,
+              "unlock_call_count": 0
+            },
+            "version": 1
+          },
+          "runtimeFileHashes": 5,
+          "surfaceProfile": "explicit-sdr-srgb8",
+          "version": 1,
+          "webRenderCachePrecision": "bgra8"
+        },
+        "numericalValidationPasses": 0,
+        "peakSubmittedInFlight": 1,
+        "persistentState": {
+          "buffers": 0,
+          "cursors": {},
+          "version": 1
+        },
+        "pipelineCache": {
+          "computeAndMeshCreated": 28,
+          "computeAndMeshReused": 298,
+          "displayReuses": 11,
+          "meshAttachmentSetsReused": 66,
+          "retention": "current-program-only",
+          "version": 1,
+          "workingBuffersReused": 166
+        },
+        "pixelTransferBytes": 0,
+        "programUpdates": 12,
+        "protocolVersion": 2,
+        "resourceImports": {
+          "uploadBytes": 0,
+          "version": 1
+        },
+        "slots": 3,
+        "submitted": 12,
+        "workingImageBytes": 9160892928,
+        "sourceOutput": {
+          "width": 3840,
+          "height": 2160,
+          "format": "rgba32float",
+          "alpha": "premultiplied",
+          "color": {
+            "primaries": "rec709",
+            "whitePoint": "D65",
+            "transfer": "linear",
+            "reference": "scene",
+            "range": "full",
+            "referenceWhiteNits": 100
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "code": "ERR_ASSERTION",
+  "message": "The expression evaluated to a falsy value:\n\n  createTypography({allowWasm:true,coordinates:{spaceId:'native-2d',unit:'px',origin:'top-left',x:'right',y:'down',width:256,height:128},fonts:[{id:'default',path:process.env.NATIVE2D_DEFAULT_FONT,sha256:'a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da',variations:{wght:400}}]})\n",
+  "stack": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  createTypography({allowWasm:true,coordinates:{spaceId:'native-2d',unit:'px',origin:'top-left',x:'right',y:'down',width:256,height:128},fonts:[{id:'default',path:process.env.NATIVE2D_DEFAULT_FONT,sha256:'a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da',variations:{wght:400}}]})\n\n    at <anonymous> (D:\\frameweave-worktrees\\agent-4\\modules\\native-2d\\validation\\fonts\\verify.ts:28:979)\n    at async check (D:\\frameweave-worktrees\\agent-4\\modules\\native-2d\\validation\\fonts\\verify.ts:7:203)\n    at async <anonymous> (D:\\frameweave-worktrees\\agent-4\\modules\\native-2d\\validation\\fonts\\verify.ts:24:1)"
+}

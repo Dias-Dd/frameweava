@@ -1,0 +1,23 @@
+{
+  "repository": "https://github.com/mrdoob/three.js",
+  "tag": "r186",
+  "npm": {
+    "version": "0.186.1",
+    "resolved": "https://registry.npmjs.org/three/-/three-0.186.1.tgz",
+    "integrity": "sha512-blFeqb49wRCSGUGj7gtpfnSGHy2lwDk94RhUmS1c/hTby70kvChbWpkJ4Pm1390LqzzvTmzgXKHPEafJwCb8jA==",
+    "license": "MIT"
+  },
+  "license": "MIT",
+  "use": "Existing exact workspace dependency, native Three Stage-local rendering/cameras/geometries; no new dependency/runtime or shader source copied",
+  "files": {
+    "LICENSE": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
+    "src/renderers/WebGLRenderer.js": "9e8740aad691246b31b3704014e8f3bbd38a8e7bf4b1b4d23868541b023cc63a",
+    "src/renderers/webgl/WebGLTextures.js": "a1947fd09ac98b3a57e40018dc8eccfce9c40f2cf4b6200b3180a00af5406451",
+    "src/core/RenderTarget.js": "e2d00d331e0eab1a2b5e53fbd9f2d87c69170b92b7a33c0059a8ea5eb3383820",
+    "src/cameras/PerspectiveCamera.js": "1cc44938885f785649a978ecb6f57c444561381ddab24de19fc59b400009b111",
+    "src/cameras/OrthographicCamera.js": "5525c2365774222ee96c4e4303d0257a4b16739e1e69769977c0a739b4f3fd54",
+    "src/geometries/BoxGeometry.js": "9b3799b446b031e55ac60795859f3f941cb8bd32579ea43d29f32d98cd661d7c",
+    "src/geometries/IcosahedronGeometry.js": "43d6dc2837507722d2a5ab0a6865ddd4c3bb2fdad9ebf90056556a46bd795ef9",
+    "src/textures/DepthTexture.js": "45b9054043ee8ce46be8abcf86316242398e072c463271d716a86872902317c3"
+  }
+}

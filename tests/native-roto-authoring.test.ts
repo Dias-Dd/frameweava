@@ -1,0 +1,14 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {brushControls} from '../modules/native-effects/roto-authoring/controls.ts';
+import {contourOracle,heightReference} from '../modules/native-effects/roto-authoring/reference.ts';
+import {contoursToPathData} from '../modules/native-effects/roto-authoring/contours.ts';
+import {plannedAuthoringNames} from '../modules/native-effects/roto-authoring/types.ts';
+const controls=(stroke:Parameters<typeof brushControls>[1],options:Parameters<typeof brushControls>[2]={})=>brushControls('fixture',stroke,options,undefined,undefined,n=>n),point={id:'s',points:[{id:'p',position:[2,3] as const}]};
+test('20 real domain entries have distinct names',()=>assert.equal(new Set(plannedAuthoringNames).size,20));
+test('pressure and stable identities are strict',()=>{assert.throws(()=>controls({id:'s',points:[{id:'p'}]} as never),{code:'E_NATIVE_FILTER_PARAMETER'});assert.throws(()=>controls({id:'s',points:[point.points[0],point.points[0]]}),{code:'E_NATIVE_FILTER_PARAMETER'});assert.throws(()=>controls(point,{flow:2}),{code:'E_NATIVE_FILTER_PARAMETER'});});
+test('zero pressure/radius do not invent paint',()=>{assert.equal(controls(point,{radius:0}).dabs.length,0);assert.ok(controls({id:'s',points:[{id:'p',position:[2,3],pressure:0}]}).dabs.every(v=>v.radius===0));assert.equal(controls(point).dabs.length,1);});
+test('unknown curve/dab topology input fails explicitly',()=>{assert.throws(()=>controls({...point,arbitrary:true} as never),{code:'E_NATIVE_FILTER_PARAMETER'});assert.throws(()=>controls(point,{spacing:0}),{code:'E_NATIVE_FILTER_PARAMETER'});});
+const contours=()=>{const w=4,h=3,p=Float32Array.from({length:w*h*4},(_,j)=>j%4===3&&Math.floor(j/4)===5?1:0),v=contourOracle(p,w,h);return {version:1 as const,id:'test',width:w,height:h,cellsWidth:w+1,cellsHeight:h+1,vertices:v.vertices,edges:v.edges,valid:v.valid};};
+test('marching contours serialize into existing closed PathData',()=>{const p=contoursToPathData(contours(),{maxSegments:80});assert.equal(p.openChains,0);assert.equal(p.paths.length,1);assert.equal(p.paths[0].commands.at(-1)?.op,'Z');});
+test('geometry export bounds, versions and finite values are strict',()=>{assert.throws(()=>contoursToPathData(contours(),{maxSegments:0}),{code:'E_GRAPHICS_CONTOUR'});const v=contours();v.vertices[0]=NaN;assert.throws(()=>contoursToPathData(v,{maxSegments:80}),{code:'E_GRAPHICS_CONTOUR'});assert.throws(()=>contoursToPathData({...contours(),version:2} as never,{maxSegments:80}),{code:'E_GRAPHICS_CONTOUR'});});
+test('height oracle remains a signed typed field',()=>{const h=heightReference(19,13);assert.equal(h.length,247);assert.ok(h.some(v=>v>0)&&h.every(Number.isFinite));});

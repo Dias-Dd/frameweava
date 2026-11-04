@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "baseline": "1838113262afee390f8b26054aeaf26079a786d7",
+  "objective": "Typed static data preparation and existing advanced estimation/paint recipes",
+  "implementationStartedAt": "2026-11-03T13:25:01.366734+00:00",
+  "clock": "Conservative since field implementation edit, earlier audit/design excluded",
+  "status": "verified_source_candidate_not_published",
+  "unitTests": 36,
+  "gpuPaths": 35,
+  "gpuComparisons": 76,
+  "validatedFields": [
+    "pixel-vector/f32",
+    "motion-dxdy-confidence/f32",
+    "object-ID/full-u32",
+    "linear-spectrum/f32",
+    "mono-waveform/headroom-f32"
+  ],
+  "device": "NVIDIA GeForce RTX5070 Laptop GPU / Vulkan / NVIDIA596.49",
+  "validationMeasuredMs": 118307.24829999999,
+  "validationAccountedMs": 123307.24829999999,
+  "implementationMsBeforeFirstTest": 338685,
+  "evidence": "docs/native-image-field-authoring-evidence",
+  "limits": [
+    "Source candidate only: formal package/installed/portable binding remains Main-owned",
+    "No audio output/analysis or neural model inference is implied by these helpers",
+    "Static data preparation only; dynamic producer fields remain the original typed GPU path",
+    "Borrowed-buffer validators check metadata without reading data or granting ownership",
+    "Per-recipe estimation/profile/brush planning remains original; no persistent analysis/profile/geometry cache claim",
+    "No new algorithms/owner/ABI/ports/permissions; no other vendor/OS qualification",
+    "Spherical draft and prior transient import NaN report remain untouched"
+  ],
+  "retainedFailures": "4-gpu qualified24 F32 paths then retained the original sequential-smudge stencil rejection. Types were narrowed to the original supported controls; fixtures dropped only the unsupported smudge/wet-mix stencils. 6-rest ran F32 index24 onward, all F16 paths and repeats. 8-media preserved the waveform generator/template semantics failure; new spectrumOverlay/waveformOverlay compounds were then checked in10-overlays and complete media rerun11-media passed. Numerical thresholds and original algorithms were unchanged."
+}

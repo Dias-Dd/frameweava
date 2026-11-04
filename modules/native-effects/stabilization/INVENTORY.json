@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "checkpoint": "completion-round-7-of-8",
+  "entry": "modules/native-effects/stabilization/index.ts",
+  "factory": "createNativeStabilizationEffects",
+  "status": "qualified-private-native-source",
+  "methods": [
+    {
+      "name": "analyzeCameraSequence",
+      "kind": "gpu-analysis",
+      "capability": "Exact-time segmented observation analysis; supplied typed motion or actual automatic bidirectional LK; translation/similarity/affine/homography; composed global and local image-mesh paths"
+    },
+    {
+      "name": "optimizeCameraPath",
+      "kind": "gpu-analysis",
+      "capability": "Nonuniform-time banded velocity/acceleration/jerk objective; smooth or locked segment viewpoint; no image averaging"
+    },
+    {
+      "name": "stabilizationMap",
+      "kind": "gpu-data",
+      "capability": "Global projective or local mesh inverse; analytic Jacobian/Newton, explicit geometry validity and strength; optional centre magnification preservation, including local mesh target coordinates"
+    },
+    {
+      "name": "planAutoCrop",
+      "kind": "gpu-analysis",
+      "capability": "Single or intersected sequence geometry; largest integer-primary-grid aspect-preserving crop, deterministic centre choice, isotropic zoom and explicit maxZoom validity"
+    },
+    {
+      "name": "warpStabilized",
+      "kind": "gpu-image",
+      "capability": "Qualified source bilinear sampling through typed coordinate map/crop; source F16/F32, working colour, PM/HDR and amount; optional fixed-canvas unscaled crop mask"
+    },
+    {
+      "name": "stabilizeSequencePath",
+      "kind": "gpu-composition",
+      "capability": "Exact composition of the same methods, default shared sequence crop; qualified against manual pipeline hash; explicit fitMaxZoom and actual-observation synthesize framing modes"
+    },
+    {
+      "name": "fitStabilizationFraming",
+      "kind": "gpu-analysis",
+      "capability": "Fixed-workspace finite-lattice search for largest sampled admissible strength under maxZoom; explicit diagnostics and resolution"
+    },
+    {
+      "name": "synthesizeStabilizedEdges",
+      "kind": "gpu-composition",
+      "capability": "Actual same-segment timestamped donor images, camera/mesh cross-mapping, PM weighted normalization, edge crop/feather and GPU coverage"
+    }
+  ],
+  "countPolicy": "Eight real recipe methods; variants are not additional function names. No public SDK/package availability inferred.",
+  "limits": [
+    "Finite strength lattice, not continuous global optimum; preserveScale specifies centre magnification, not all-pixel area preservation",
+    "Explicit donor observations only, no automatic upstream sampling or generative content completion",
+    "Device/session budgets apply; no arbitrary permanent image ceiling added",
+    "Other devices/OS, arbitrary footage, runtime device loss, full official per-control parity and Main public/package/portable integration not established"
+  ]
+}

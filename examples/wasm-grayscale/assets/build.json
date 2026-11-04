@@ -1,0 +1,19 @@
+{
+  "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "target": "wasm32-unknown-unknown",
+  "source": "rust/src/lib.rs",
+  "sourceSha256": "174560ef466c3ca446df18e8a2b5bfb45af2e771c99efea103d7614755e2c126",
+  "output": "assets/grayscale.wasm",
+  "wasmSha256": "5effdc6f8d82fb87c995b108db24073725abe30f25e04e16d0506d160364c941",
+  "bytes": 27551,
+  "flags": [
+    "--edition=2021",
+    "--crate-type=cdylib",
+    "--target=wasm32-unknown-unknown",
+    "-C opt-level=s",
+    "-C panic=abort",
+    "-C strip=symbols",
+    "-C debuginfo=0"
+  ],
+  "abiVersion": 1
+}

@@ -1,0 +1,13 @@
+import {readFile,writeFile,mkdir,mkdtemp} from 'node:fs/promises';import {resolve,join} from 'node:path';import {execFileSync} from 'node:child_process';
+import {buildProject} from '../../../../src/compiler/build.ts';import {Renderer} from '../../../../src/render/renderer.ts';
+const base=resolve('.frameweave/resident-buffers');await mkdir(base,{recursive:true});const dir=await mkdtemp(join(base,'benchmark-'));
+const source=(await readFile(resolve('examples/native-resident-buffers/project.tsx'),'utf8')).replace("target=c.globalFrame>=4?1:0","target=0");await writeFile(join(dir,'grid.tsx'),source);
+const cases=[];
+for(const resident of [false,true,false]){
+ const entry=join(dir,'project-'+cases.length+'.tsx');await writeFile(entry,`import{Composition,Stage,Layer,ref}from'@frameweave/engine';import{grid}from'./grid';export{grid};export default <Composition width={1920} height={1080} fps={24} durationInFrames={40} background="transparent"><Stage id="grid" factory={grid} props={{resident:${resident}}}/><Layer source={ref('grid')}/></Composition>;`);
+ let now=performance.now();const build=await buildProject(entry),compileMs=performance.now()-now;now=performance.now();const r=await Renderer.create(build,{nativeGpu:{executable:resolve('.frameweave/native-target/release/frameweave-native-gpu.exe'),slots:2,maxBytes:512*1024**2}}),startupMs=performance.now()-now;
+ const frameMs:number[]=[];let coldFrameMs=0,stats;
+ try{for(let frame=0;frame<25;frame++){now=performance.now();const ticket=await r.submitNativeFrame(frame);await ticket.completed;const ms=performance.now()-now;if(frame===0)coldFrameMs=ms;if(frame>=5)frameMs.push(ms);}stats=await r.nativeStats();}finally{await r.close();}
+ const sorted=[...frameMs].sort((a,b)=>a-b),median=(sorted[9]+sorted[10])/2,p95=sorted[Math.ceil(sorted.length*.95)-1];cases.push({resident,compileMs,startupMs,coldFrameMs,measuredFrames:[5,24],frameMs,medianMs:median,p95Ms:p95,stats});
+}
+const result={version:1,sourceCommit:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8',windowsHide:true}).trim(),workload:{width:1920,height:1080,vertices:6144,geometryBytes:98304,format:'rgba32float',color:'linear709',alpha:'premultiplied',slots:2,backend:'native-wgpu/Vulkan',binaryProfile:'release',readback:false},clock:'submitNativeFrame through completed, excludes compile/startup and includes logic/recording/transport/GPU completion',otherMachineActivity:'not controlled; external agent activity may affect timing',physicalPeakMemory:null,cases};await writeFile(join(base,'benchmark.json'),JSON.stringify(result,null,2));console.log(JSON.stringify(cases.map(c=>({resident:c.resident,medianMs:c.medianMs,p95Ms:c.p95Ms,uploads:c.stats.residentBuffers})),null,2));

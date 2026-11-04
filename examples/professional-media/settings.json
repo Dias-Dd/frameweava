@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "media": {
+    "workingColor": {"primaries":"acescg","whitePoint":"D60","transfer":"linear","reference":"scene","range":"full","referenceWhiteNits":100},
+    "preview": {"color":{"primaries":"rec709","whitePoint":"D65","transfer":"srgb","reference":"display","range":"full","referenceWhiteNits":100},"clip":true,"ocio":{"source":"ACEScg","display":"sRGB - Display","view":"ACES 2.0 - SDR 100 nits (Rec.709)"}}
+  },
+  "video": {
+    "preset": "hdr10",
+    "outputColor": {"primaries":"rec2020","whitePoint":"D65","transfer":"pq","reference":"display","range":"full","referenceWhiteNits":100,"peakNits":1000},
+    "conversion": {"kind":"ocio","clip":false,"transform":{"source":"ACEScg","display":"Rec.2100-PQ - Display","view":"ACES 2.0 - HDR 1000 nits (Rec.2020)"}},
+    "alpha": {"mode":"flatten","matte":[0,0,0]},
+    "hdr10": {"masteringDisplay":{"red":[0.708,0.292],"green":[0.17,0.797],"blue":[0.131,0.046],"white":[0.3127,0.329],"minNits":0.005,"maxNits":1000},"maxCLL":1000,"maxFALL":400}
+  }
+}

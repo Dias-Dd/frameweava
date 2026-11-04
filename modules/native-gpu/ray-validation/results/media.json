@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "rows": [
+    {
+      "output": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\.frameweave\\p1\\results\\rays.png",
+      "bytes": 590,
+      "frames": 1,
+      "timings": {
+        "compileMs": 0,
+        "compilation": "included-or-explicit-cached-build",
+        "initMs": 965.6058000000012,
+        "framePipelineMs": 9.811900000000605,
+        "encoderFinishMs": 173.92169999999896,
+        "totalMs": 1194.221599999999
+      }
+    },
+    {
+      "output": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\.frameweave\\p1\\results\\rays.exr",
+      "bytes": 232219,
+      "frames": 1,
+      "timings": {
+        "compileMs": 0,
+        "compilation": "included-or-explicit-cached-build",
+        "initMs": 878.6021000000001,
+        "framePipelineMs": 22.575000000000728,
+        "encoderFinishMs": 123.40179999999964,
+        "totalMs": 1071.316999999999
+      }
+    },
+    {
+      "output": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\.frameweave\\p1\\results\\rays.mp4",
+      "bytes": 2295,
+      "frames": 8,
+      "timings": {
+        "compileMs": 0,
+        "compilation": "included-or-explicit-cached-build",
+        "initMs": 869.4608999999982,
+        "framePipelineMs": 135.57900000000154,
+        "encoderFinishMs": 165.84360000000015,
+        "totalMs": 1214.6526000000013
+      }
+    }
+  ]
+}

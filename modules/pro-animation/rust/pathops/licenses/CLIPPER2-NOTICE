@@ -1,0 +1,4 @@
+Clipper2 Rust port by Lars Brubaker; original Clipper2 algorithms copyright (c) Angus Johnson 2010-2025.
+The dependency is used unchanged through clipper2-rust 1.2.0, BSL-1.0.
+See PA3_PATHOPS_SOURCES.json for the fixed published crate and source hashes.
+WASM redistribution also retains the official Kit dependency/std notices in the reviewed carrier.

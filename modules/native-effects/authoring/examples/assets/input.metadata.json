@@ -1,0 +1,39 @@
+{
+  "kind": "prepared-float-image",
+  "schemaVersion": 1,
+  "path": "./input.f32",
+  "width": 160,
+  "height": 90,
+  "color": {
+    "primaries": "rec709",
+    "whitePoint": "D65",
+    "transfer": "linear",
+    "reference": "scene",
+    "range": "full",
+    "referenceWhiteNits": 100
+  },
+  "alpha": "premultiplied",
+  "format": "rgba32float",
+  "native": {
+    "width": 160,
+    "height": 90,
+    "color": {
+      "primaries": "rec709",
+      "whitePoint": "D65",
+      "transfer": "linear",
+      "reference": "scene",
+      "range": "full",
+      "referenceWhiteNits": 100
+    },
+    "alpha": "premultiplied",
+    "format": "rgba32float"
+  },
+  "layout": "row-major-rgba-f32le",
+  "byteLength": 230400,
+  "sha256": "7be3ea22d2a4e0a50235e64b444f8d59814284f93c9fd26e3b6831250f666130",
+  "source": {
+    "path": "./input.surface.json",
+    "sha256": "6ea4b921d4edb2ada8d2530c6e21f25b46ae6764e0d2a712ace4cf49f8078ad3",
+    "decode": "surface-v2"
+  }
+}

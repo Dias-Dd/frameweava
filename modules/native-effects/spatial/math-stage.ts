@@ -1,0 +1,5 @@
+import {defineNativeStage} from '../../native-gpu/authoring.ts';
+import {commonWGSL,kernels} from '../../spatial-vfx/shaders.ts';
+import {linear709} from '../../../src/media/surface.ts';
+/** Test-only sampling of the original shader helpers, not a replacement effect. */
+export const spatialMath=defineNativeStage<Record<string,never>,{mode:'noise'|'orbit'}>(init=>({async renderAt(c,_inputs,p){const code=p.mode==='noise'?commonWGSL+'fn pixel(p:vec2u)->vec4f{let q=vec3f(f32(p.x)*.125-2.25,-.75,1.125);return vec4f(sv_noise(q),sv_noise(q+.25),sv_rand(vec3i(i32(p.x)-16,2,-7)),1);}':kernels.orbitalTrails.split('fn pixel(')[0]+'fn pixel(p:vec2u)->vec4f{return vec4f(sv_orbit(p.x%6u,(f32(p.x)-16.)*.375),1);}';const kernel=await init.gpu.compile({abiVersion:1,id:'fixture/native-spatial-math-'+p.mode,version:'1.0.0',inputCount:0,parameterWords:40,code}),params=new Float32Array(40);new Uint32Array(params.buffer)[24]=[73,0,0x7fffffff,0xffffffff][c.globalFrame%4];params[27]=.8;params[28]=4;return init.gpu.run(kernel,[],{parameters:params,output:{width:32,height:1,format:'rgba32float',alpha:'opaque',color:linear709}});}}));

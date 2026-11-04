@@ -1,0 +1,13 @@
+{
+  "mode": "Invoke the existing separately provisioned FFmpeg executable; no FFmpeg C source copied or linked into TypeScript",
+  "reviewedSourceTag": "n6.1.1",
+  "components": [
+    {"name":"scdet","license":"LGPL-2.1-or-later","source":"https://github.com/FFmpeg/FFmpeg/blob/n6.1.1/libavfilter/vf_scdet.c"},
+    {"name":"silencedetect","license":"LGPL-2.1-or-later","source":"https://github.com/FFmpeg/FFmpeg/blob/n6.1.1/libavfilter/af_silencedetect.c"},
+    {"name":"astats","license":"LGPL-2.1-or-later","source":"https://github.com/FFmpeg/FFmpeg/blob/n6.1.1/libavfilter/af_astats.c"}
+  ],
+  "documentation": "https://ffmpeg.org/ffmpeg-filters.html",
+  "binaryLicense": "Depends on the actual FFmpeg build. The existing tested essentials binary enables GPL/version3; its distribution obligations remain with that separately distributed component.",
+  "provenance": "Every C3 identity records actual FFmpeg/FFprobe hashes and executable version; reviewed source tag alone does not certify arbitrary replacement binaries.",
+  "originalCode": "Parameter/selection/lifecycle glue and RMS-rise candidate rules are original Apache-2.0 repository code. These candidates are not a borrowed musical beat recognizer."
+}

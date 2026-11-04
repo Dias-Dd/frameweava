@@ -1,0 +1,84 @@
+{
+  "name": "@cto.af/linebreak",
+  "version": "3.0.5",
+  "commit": "56fd90dcf53e6eef429b14863b10dde4c9b923d3",
+  "license": "MIT",
+  "repository": {
+    "url": "git+https://github.com/cto-af/linebreak.git",
+    "type": "git"
+  },
+  "integrity": "sha512-9q1DpxBLYiNmDrrd97/ykIb7QWEPx+CDCY2wLFM1c+HA4CjF60tMiaEkxE+OPn6PKp6YqrqbmilA7dGRUori1w==",
+  "archiveSha256": "d1e6e2bc655dd411804925bf6bd0bbde17d1ad5993f85f3ea82abde4aea919a8",
+  "dependencies": {
+    "@cto.af/unicode-trie-runtime": "3.2.6"
+  },
+  "artifacts": [
+    {
+      "upstream": "LICENSE",
+      "local": "modules/pro-animation/vendor/unicode-linebreak/LICENSE",
+      "bytes": 1079,
+      "sha256": "62112025b949ce7ffb95c409f9ebccfe4010703872ce22ef3ec1a4268ad7ae47"
+    },
+    {
+      "upstream": "lib/break.js",
+      "local": "modules/pro-animation/vendor/unicode-linebreak/lib/break.js",
+      "bytes": 645,
+      "sha256": "6c2035a8661a5267a1c24fb655a7aa230015e10df6fdf709d5c73fb5a006f7b5"
+    },
+    {
+      "upstream": "lib/EastAsianWidth.js",
+      "local": "modules/pro-animation/vendor/unicode-linebreak/lib/EastAsianWidth.js",
+      "bytes": 1680,
+      "sha256": "e0e63e16b82a4a8e8f6ece14e05212e4adfcee6f683c229cada8f91bdf3a805f"
+    },
+    {
+      "upstream": "lib/index.js",
+      "local": "modules/pro-animation/vendor/unicode-linebreak/lib/index.js",
+      "bytes": 27274,
+      "sha256": "76d91ab6fb6545d02a8f7655107f4e8256911212270c29b86640a327e040b1bf"
+    },
+    {
+      "upstream": "lib/LineBreak.js",
+      "local": "modules/pro-animation/vendor/unicode-linebreak/lib/LineBreak.js",
+      "bytes": 8179,
+      "sha256": "a5e8b40fa28abe25d24efa3d6821ccdf25fa25c6689e75bc6eab2a3b6bd0c586"
+    },
+    {
+      "upstream": "lib/state.js",
+      "local": "modules/pro-animation/vendor/unicode-linebreak/lib/state.js",
+      "bytes": 6313,
+      "sha256": "4a7cfc3c04c3d3acdc2af2c9f8be5cdf1c698df34701b7e277f59ba2b3364f95"
+    },
+    {
+      "upstream": "package.json",
+      "local": "modules/pro-animation/vendor/unicode-linebreak/package.upstream.json",
+      "bytes": 1258,
+      "sha256": "d4324ef7ab25fb300b824c99691a75374dd23c68616cf7081674cceddcf063b1"
+    },
+    {
+      "upstream": "README.md",
+      "local": "modules/pro-animation/vendor/unicode-linebreak/README.md",
+      "bytes": 3028,
+      "sha256": "62ad971f43e2257ff646c6e2323a2d34ef6b0902d07588040f798f4b69463818"
+    }
+  ],
+  "adaptations": [
+    {
+      "file": "lib/EastAsianWidth.js",
+      "reason": "Relative separately pinned dependency only; source algorithms unchanged",
+      "originalSha256": "e0e63e16b82a4a8e8f6ece14e05212e4adfcee6f683c229cada8f91bdf3a805f",
+      "localSha256": "821214d66e6791942321cddb182e4b9567c111beba6f162d55c117c7ebf2f034"
+    },
+    {
+      "file": "lib/LineBreak.js",
+      "reason": "Relative separately pinned dependency only; source algorithms unchanged",
+      "originalSha256": "a5e8b40fa28abe25d24efa3d6821ccdf25fa25c6689e75bc6eab2a3b6bd0c586",
+      "localSha256": "e3dc99fd4cac5dc3561b2ee2d208fbbdc0c53e4698edb3cd4033ff2631c35ee3"
+    }
+  ],
+  "fixedCommitLicense": {
+    "url": "https://raw.githubusercontent.com/cto-af/linebreak/56fd90dcf53e6eef429b14863b10dde4c9b923d3/LICENSE",
+    "sha256": "62112025b949ce7ffb95c409f9ebccfe4010703872ce22ef3ec1a4268ad7ae47",
+    "bytes": 1079
+  }
+}

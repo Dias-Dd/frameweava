@@ -1,0 +1,14 @@
+{
+  "pixelF32Scaled": 0.000003,
+  "pixelF16Scaled": 0.0006,
+  "dataF32Scaled": 0.000003,
+  "scale": "abs(actual-reference)/max(1,abs(reference)); same pre-existing gates",
+  "reference": "Independent F64 direct DFT, complex Cholesky, dense inverse DFT and FIR convolution; Gaussian publishes F32 per existing axis boundary",
+  "quality": {
+    "denoiseRmseRatioMaximum": 1.0,
+    "hermitianAndFactorReconstructionScaled": 0.000003,
+    "synthesisCovarianceStandardDeviations": 6,
+    "sampleModel": "Predicted zero/one-time-lag covariance from dense FIR; estimate over disjoint space/time noise footprints, deterministic fixed seed; no tuned pixel-error relaxation"
+  },
+  "temporal": "Exact rational seconds; uniform observed windows only; floor/hold synthesis lattice including negative times; no interpolation across occlusion"
+}

@@ -1,0 +1,61 @@
+TAP version 13
+# {"case":"dynamic-native-images","results":[{"format":"rgba32float","dimensions":[4097,4097],"workingBytes":268566544,"samples":[0,0,4,0.5,512,0,20,0.5,0,-1024,20,0.5,512,-1024,19,0.5,256,-512,20,0.5,511.875,-1023.5,16,0.5],"stats":{"adapter":"AdapterInfo { name: \\"NVIDIA GeForce RTX 5070 Laptop GPU\\", vendor: 4318, device: 11608, device_type: DiscreteGpu, device_pci_bus_id: \\"0000:01:00.0\\", driver: \\"NVIDIA\\", driver_info: \\"596.49\\", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 32, transient_saves_memory: Some(false), limit_bucket: None }","allocatedDataBytes":0,"allocatedImageBytes":268566640,"backend":"native-wgpu","blockingGpuWaits":0,"bufferExports":{"bytes":0,"readbacks":0,"version":1},"capabilities":{"backend":"native-wgpu","computeKernelAbis":[1],"crossStageGpuHandles":false,"execution":"recording","f16WorkingBytesPerPixel":16,"hardwareVerified":true,"limits":{"maxBufferSize":4294967295,"maxComputeInvocationsPerWorkgroup":1024,"maxComputeWorkgroupSizeX":1024,"maxComputeWorkgroupSizeY":1024,"maxComputeWorkgroupSizeZ":64,"maxComputeWorkgroupStorageSize":49152,"maxComputeWorkgroupsPerDimension":65535,"maxStorageBufferBindingSize":2147483644,"maxStorageBuffersPerShaderStage":524288,"maxUniformBufferBindingSize":65536},"maxKernels":256,"maxPendingPasses":1024,"nativeImages":{"admission":"device-and-session-budget","maxTextureDimension2D":32768,"version":1},"nativeMesh":{"exactAdmission":"session-budget","float32Blendable":true,"version":1},"pixelKernelAbis":[1,2],"profiling":"disabled","storageTypes":["f32","u32","i32"],"version":1},"completed":1,"devicesCreated":1,"diagnosticBlockingWaits":1,"diagnosticReadbackBytes":96,"diagnosticReadbacks":1,"diagnosticsEnabled":true,"export":{"bytes":0,"cpuImageCopies":0,"enabled":false,"framesWritten":0,"hardwareEncode":false,"httpTransport":false,"pngTransport":false},"externalImages":{"available":true,"enabled":true,"reason":null,"version":1},"frameHashes":0,"imageReadbacks":0,"inFlight":0,"nativeModules":{"additionalD3D11Devices":0,"blockingGpuFenceWaits":0,"calls":0,"contentProfile":"reviewed-local-only","inputGpuConversions":0,"instances":0,"loaded":false,"nativeDevicesCreated":0,"outputGpuConversions":0,"productionPixelReadbacks":0,"runtime":null,"runtimeFileHashes":0,"surfaceProfile":"explicit-sdr-srgb8","version":1,"webRenderCachePrecision":"bgra8"},"numericalValidationPasses":0,"peakSubmittedInFlight":1,"persistentState":{"buffers":0,"cursors":{},"version":1},"pixelTransferBytes":0,"programUpdates":0,"protocolVersion":2,"resourceImports":{"uploadBytes":0,"version":1},"slots":1,"submitted":1,"webBridge":{"enabled":false,"explicitReadbackWaits":0,"readbackBytes":0,"readbacks":0,"uploadBytes":0,"version":1},"workingImageBytes":268566640}},{"format":"rgba16float","dimensions":[4097,4097],"workingBytes":268566544,"samples":[0,0,4,0.5,512,0,20,0.5,0,-1024,20,0.5,512,-1024,19,0.5,256,-512,20,0.5,512,-1023.5,16,0.5],"stats":{"adapter":"AdapterInfo { name: \\"NVIDIA GeForce RTX 5070 Laptop GPU\\", vendor: 4318, device: 11608, device_type: DiscreteGpu, device_pci_bus_id: \\"0000:01:00.0\\", driver: \\"NVIDIA\\", driver_info: \\"596.49\\", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 32, transient_saves_memory: Some(false), limit_bucket: None }","allocatedDataBytes":0,"allocatedImageBytes":268566640,"backend":"native-wgpu","blockingGpuWaits":0,"bufferExports":{"bytes":0,"readbacks":0,"version":1},"capabilities":{"backend":"native-wgpu","computeKernelAbis":[1],"crossStageGpuHandles":false,"execution":"recording","f16WorkingBytesPerPixel":16,"hardwareVerified":true,"limits":{"maxBufferSize":4294967295,"maxComputeInvocationsPerWorkgroup":1024,"maxComputeWorkgroupSizeX":1024,"maxComputeWorkgroupSizeY":1024,"maxComputeWorkgroupSizeZ":64,"maxComputeWorkgroupStorageSize":49152,"maxComputeWorkgroupsPerDimension":65535,"maxStorageBufferBindingSize":2147483644,"maxStorageBuffersPerShaderStage":524288,"maxUniformBufferBindingSize":65536},"maxKernels":256,"maxPendingPasses":1024,"nativeImages":{"admission":"device-and-session-budget","maxTextureDimension2D":32768,"version":1},"nativeMesh":{"exactAdmission":"session-budget","float32Blendable":true,"version":1},"pixelKernelAbis":[1,2],"profiling":"disabled","storageTypes":["f32","u32","i32"],"version":1},"completed":1,"devicesCreated":1,"diagnosticBlockingWaits":1,"diagnosticReadbackBytes":96,"diagnosticReadbacks":1,"diagnosticsEnabled":true,"export":{"bytes":0,"cpuImageCopies":0,"enabled":false,"framesWritten":0,"hardwareEncode":false,"httpTransport":false,"pngTransport":false},"externalImages":{"available":true,"enabled":true,"reason":null,"version":1},"frameHashes":0,"imageReadbacks":0,"inFlight":0,"nativeModules":{"additionalD3D11Devices":0,"blockingGpuFenceWaits":0,"calls":0,"contentProfile":"reviewed-local-only","inputGpuConversions":0,"instances":0,"loaded":false,"nativeDevicesCreated":0,"outputGpuConversions":0,"productionPixelReadbacks":0,"runtime":null,"runtimeFileHashes":0,"surfaceProfile":"explicit-sdr-srgb8","version":1,"webRenderCachePrecision":"bgra8"},"numericalValidationPasses":0,"peakSubmittedInFlight":1,"persistentState":{"buffers":0,"cursors":{},"version":1},"pixelTransferBytes":0,"programUpdates":0,"protocolVersion":2,"resourceImports":{"uploadBytes":0,"version":1},"slots":1,"submitted":1,"webBridge":{"enabled":false,"explicitReadbackWaits":0,"readbackBytes":0,"readbacks":0,"uploadBytes":0,"version":1},"workingImageBytes":268566640}}]}
+# Subtest: Native admits 4097 squared F16/F32 images on actual GPU; Web retains its original 16MP policy
+ok 1 - Native admits 4097 squared F16/F32 images on actual GPU; Web retains its original 16MP policy
+  ---
+  duration_ms: 1857.0803
+  type: 'test'
+  ...
+# Subtest: metadata uses U32 addressing and actual device limits, with separate texture attachment checks
+ok 2 - metadata uses U32 addressing and actual device limits, with separate texture attachment checks
+  ---
+  duration_ms: 0.5784
+  type: 'test'
+  ...
+# Subtest: actual Native admission distinguishes storage-only width from texture width and rejects device/session overflows
+not ok 3 - actual Native admission distinguishes storage-only width from texture width and rejects device/session overflows
+  ---
+  duration_ms: 1760.4415
+  type: 'test'
+  location: 'C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\tests\\native-image-admission.test.ts:1:4229'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      Comparison {
+    +   code: 'E_NATIVE_BUDGET'
+    -   code: 'E_NATIVE_IMAGE_LIMIT'
+      }
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    code: 'E_NATIVE_IMAGE_LIMIT'
+  actual:
+  error: 'image exceeds hardware storage-buffer limit'
+  stack: |-
+    error (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\native-gpu\client.ts:35:43)
+    NativeGpuClient.receive (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\native-gpu\client.ts:88:82)
+    Socket.<anonymous> (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\native-gpu\client.ts:59:48)
+    Socket.emit (node:events:519:28)
+    addChunk (node:internal/streams/readable:561:12)
+    readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    Readable.push (node:internal/streams/readable:392:5)
+    Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+  operator: 'rejects'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async TestContext.<anonymous> (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\tests\native-image-admission.test.ts:33:283)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 2
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3942.634

@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "sourceCommit": "24ca456eadcfb4a7b42da51f8af9c94b73608136",
+  "sourceDirty": "M modules/native-gpu/README.md\n M modules/native-gpu/client.ts\n M modules/native-gpu/logic-bootstrap.ts\n M modules/native-gpu/logic-host.ts\n M modules/native-gpu/memory.ts\n M modules/native-gpu/service.ts\n M modules/native-gpu/src/encode.rs\n M modules/native-gpu/src/gpu.rs\n M modules/native-gpu/src/main.rs\n M modules/native-gpu/src/protocol.rs\n?? modules/native-gpu/examples/web-compatibility.tsx\n?? modules/native-gpu/validation/verify-web-bridge.mjs\n?? modules/native-gpu/visual-boundary.ts\n?? modules/native-gpu/web-bridge.ts",
+  "inputHashes": {
+    "Cargo.toml": "c6f082f6dc8eda41c4ba5915019a02ae36f009b8229ea7b78640d81a9f6e7d37",
+    "Cargo.lock": "8f88c179204df0324a79be3ac0b5108564cd8e1de1707c4fffb78938e050d895",
+    "src/main.rs": "427d1dcd700b445f6fc211ef78b3881eeac339796aeb7ab2bd608a8685e8a23a",
+    "src/gpu.rs": "c67bdad154be42ffe53fdba45313f9ed96d236c32aa4f726d4774510ebe85104",
+    "src/protocol.rs": "88cd3b1c6633d2f68bdb3bb96ecef17982f9f6b3b8441044ca88efa947164a85",
+    "src/encode.rs": "4cf8b2d6bfde061adc38e9e4d414bb63ac16723be6652013f5fdef7089678c6b",
+    "build.mjs": "61127fbb49523e4a28a9f982cdd591b7df3e58dc75eacd47355cb69069054856"
+  },
+  "profile": "release",
+  "features": [],
+  "offline": true,
+  "locked": true,
+  "wallMs": 25000.5235,
+  "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: x86_64-pc-windows-gnu\nrelease: 1.99.1\nLLVM version: 23.1.1",
+  "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+  "flags": {
+    "RUSTFLAGS": "-C link-self-contained=yes",
+    "CARGO_ENCODED_RUSTFLAGS": null,
+    "CARGO_BUILD_TARGET": null
+  },
+  "executable": {
+    "file": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\.frameweave\\native-target\\release\\frameweave-native-gpu.exe",
+    "bytes": 7728202,
+    "sha256": "2fd6f44a680b9e0980ac9e217cffdc23f94b81fcf4027ac3eccdfcfaa9c9831d"
+  }
+}

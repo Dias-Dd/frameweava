@@ -1,0 +1,17 @@
+Frameweave Rigid Body Effects: Apache-2.0.
+Rapier3d-f640.36.1 and Parry3d-f640.31.1: Apache-2.0, Dimforge contributors.
+The immutable crates.io release archives/Cargo.lock checksums are the source
+authority. Their .cargo_vcs_info records dirty:true; do not claim that the
+archive source is byte-identical to the referenced Git commit. Omitted root
+notices were obtained from those exact repository revisions and hash-pinned.
+
+69 locked dependencies and complete carried notices: licenses/dependencies.json.
+Permissive license branches are selected where available; retain MIT, Apache2,
+Zlib and Unicode3 notice obligations. No GPL application code/assets included.
+Postcard1.1.3 is used for private same-build snapshots, not a public stable world
+format. No bincode dependency is introduced.
+
+The existing Frameweave C1 bytes-v1 shim/client/session/Worker are reused under
+Apache-2.0; authored adaptations route call data through Core FixedStepRunner
+and drop the Rust world on fw_dispose. No second message bus, registry, runner,
+renderer or permissions mechanism is provided. Rust std notices are carried.

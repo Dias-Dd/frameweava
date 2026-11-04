@@ -1,0 +1,388 @@
+{
+  "version": 1,
+  "baseline": "e3869cc9d99998e7ecc2c773cc9f6a73506a8651",
+  "roundBudget": 15,
+  "roundsCompleted": 14,
+  "claim": "complete-for-fixed-scope",
+  "scope": "The fifteen concrete gaps enumerated and authorized on 2026-11-02. Not a claim about all future Adobe, Blender or third-party features.",
+  "items": [
+    {
+      "id": 1,
+      "name": "Puppet regional overlap controls",
+      "status": "implemented-and-verified",
+      "round": 1,
+      "entry": "puppetImage({controls:[puppetOverlapPin(...)]})",
+      "evidence": "validation/coverage-round1/evidence/campaign.json",
+      "acceptance": [
+        "signed additive positive/negative In Front field on rest UV",
+        "extent and constant/linear/smooth falloff",
+        "existing Signal/keyframe time evaluation",
+        "actual Native F16/F32 transparent depth ordering",
+        "full-image independent RGBA/Alpha/black-white reference",
+        "random/repeated/reopened frames",
+        "real original ARAP with public R1 controls and fully decoded one-second video",
+        "legacy Puppet PNG byte-identical"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Persistent and ephemeral particle property maps",
+      "status": "implemented-and-verified",
+      "round": 2,
+      "entry": "mappedParticleField / mapParticleProperties",
+      "evidence": "validation/coverage-round2/evidence/campaign.json",
+      "acceptance": [
+        "all 11 numeric attributes, 5 channels, replace/add/multiply and strengths",
+        "actual resident imageToBuffer bridge, no production readback or CPU pixels",
+        "persistent reset/replay + ephemeral non-mutation",
+        "F16/F32 signed/HDR RGBA, Alpha, black/white full-image references",
+        "current/birth lookup, XY/XZ/YZ, boundaries, linear/nearest and Alpha weighting",
+        "random/repeated/reopened frames and original closed-form history reference",
+        "public two-Stage animated surface input, empty output and missing-input diagnostics",
+        "subframe historical gradients through existing Scalar Signals",
+        "public editable TSX and fully decoded one-second MP4"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Foam interactions and flow maps",
+      "status": "implemented-and-verified",
+      "round": 3,
+      "entry": "foamField / createFoamSimulation / renderFoamBubbles",
+      "evidence": "validation/coverage-round3/evidence/campaign.json",
+      "acceptance": [
+        "GPU continuous births and generations; growth and frailty-controlled popping",
+        "wind, viscosity, turbulence, overlap repulsion, stickiness and pop impulse",
+        "real resident historical flow map, custom texture and environment reflection",
+        "all five material profiles; F16/F32 signed HDR/Alpha/black-white numeric reference",
+        "analytic transport, exponential velocity recurrence and constant flow gradient reference",
+        "random/repeated/reopened reset/replay, typed budgets, compile-failure cleanup, close/concurrent/cancel rules"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Shatter geometry and driven fragments",
+      "status": "implemented-and-verified",
+      "round": 3,
+      "entry": "shatterImage / shatterMesh / shatterPattern / extrudeShatterFragments",
+      "evidence": "validation/coverage-round3/evidence/campaign.json",
+      "acceptance": [
+        "five original pattern families, clipped full image coverage and explicit label groups",
+        "actual extruded front/back/interior faces; UVs; true 3D Graphics mesh fracture",
+        "timed spherical blasts, drag, gravity, mass variance, randomness and grouped tumbling",
+        "later-blast angular continuity; independent absolute-time analytic reference",
+        "transparent zero-thickness image identity F16/F32 signed HDR/Alpha/black-white",
+        "real public three-Stage TSX and fully decoded one-second video; final PNG0/12/23 byte-identical"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Wave World terrain, boundaries and sources",
+      "status": "implemented-and-verified",
+      "round": 4,
+      "entry": "waveWorld / createWaveWorld / waveTerrain / waveObstacle",
+      "evidence": "validation/coverage-round4/evidence/campaign.json",
+      "acceptance": [
+        "GPU wave height/velocity with explicitly qualified CFL and existing fixed-step reset/replay",
+        "static planes/shores/islands and actual resident historical elevation map",
+        "depth-dependent speed, dry no-flux coastline and circle/box obstacles",
+        "point/line/ring producers, Core scalar Signals and aligned initial height/velocity grids",
+        "independent closed-form discrete Neumann eigenmode; explicit absorbing boundaries",
+        "signed height/depth/plane normal/lit outputs, PM wet coverage, F16/F32 references",
+        "random/repeated/reopened frames; public unstable-timestep E_CREATION_STABILITY"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Heightfield-driven caustics",
+      "status": "implemented-and-verified",
+      "round": 4,
+      "entry": "heightCaustics / renderHeightCaustics",
+      "evidence": "validation/coverage-round4/evidence/campaign.json",
+      "acceptance": [
+        "actual supplied height and signed/unorm normal images drive bottom refraction",
+        "world-unit derivatives and full 2x2 Jacobian, explicit finite focusing bound",
+        "clamp/repeat/mirror/transparent bottom sampling, scaling and soft Alpha",
+        "directional/point lighting, surface opacity and actual sky image reflections",
+        "original Native PA Gaussian reused with independent F64 smoothing/optics reference",
+        "F16/F32 signed HDR RGB, Alpha, black/white full-image comparisons",
+        "editable three-Stage public TSX, PNG0/12/23 and fully decoded one-second MP4"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Advanced collisions, coupling, tearing and plasticity",
+      "status": "implemented-and-verified",
+      "rounds": [
+        5,
+        6
+      ],
+      "entry": "createContactPhysics / createCoupledPhysics / coupledPhysicsScene / fractureBodies",
+      "evidence": [
+        "validation/coverage-round5/evidence/campaign.json",
+        "validation/coverage-round6/evidence/campaign.json"
+      ],
+      "acceptance": [
+        "F64 PBD constraints in the existing C1 WASM binding and original Core runner",
+        "swept particle, vertex-face, edge-edge and sphere/triangle/edge interior contacts",
+        "moving primitive and explicit kinematic Graphics mesh colliders",
+        "normal inequality impulses, friction, restitution, equal/opposite momentum",
+        "random/repeat/reopen, full-size cloth and rope, fail/reset, cancel/busy/close and zero live raw buffers",
+        "real isolated SpiderMonkey public R1 F16/F32 Native GPU frames; default WASM denial",
+        "PNG0/12/23 visually inspected and fully decoded one-second MP4",
+        "actual pinned Rapier finite rigid/soft contact and attachments; momentum conservation",
+        "real automatic strain tearing and explicit blade cuts; actual triangulation and split particle lineage",
+        "binary whole-world restore preserves physical tears, plastic rest shape and broken joints",
+        "permanent plastic set under real load; sparse checkpoint restore and instance reopen exactly repeat F64 values",
+        "true R3 fragment convex hulls, force/torque-separated bond breaking and Native GPU display",
+        "public editable cutting-cloth TSX; PNG0/12/23, complete decoded one-second MP4 and visual inspection",
+        "existing R5 contact PNG12 remains byte-identical; 24 focused tests plus actual Native renderer checks"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Character asset import, retarget, morph and contact controls",
+      "status": "implemented-and-verified",
+      "round": 7,
+      "entry": "characterActor / importGltfCharacter / importBvhMotion / createCharacterRetargeter / characterMorph / twoBoneIK / footPlant / footContact",
+      "evidence": "validation/coverage-round7/evidence/checkpoint.json",
+      "acceptance": [
+        "Actual fixed Three loaders, AnimationMixer, SkeletonUtils retarget; no DOM/implicit file/network/decoder load",
+        "Full JOINTS_n+WEIGHTS_n preserved before Three normalization, no four-influence truncation",
+        "GPU CSR/morph positions match independent F64 oracle; normal-only morph import",
+        "Absolute Core time, FK/morph Signals, scalar Ozz pole/soft reach math, foot plane and explicit anchor",
+        "F16/F32 raw RGBA/Alpha/black-white oracle; soft transparent edges, PM/straight, blend/mask/opaque and fade",
+        "random/repeated/reopened Native frames, failed call cleanup/busy/close and actual public image Resource",
+        "Public real TSX PNG/storyboard/one-second fully decoded MP4 and legacy PNG byte-identical"
+      ],
+      "boundaries": [
+        "GPU normals are finite and visually checked; no separate exhaustive normal oracle or arbitrary degeneracy proof",
+        "Native recipe single-scatter GGX is not pixel-equivalent to Three MeshStandardMaterial",
+        "Compressed/instanced/nontriangle and additional material map adapters not implemented; explicit errors",
+        "Pixel layer ray scan can be quadratic; maxBytes/maxRayTests configurable, no implicit resolution/layer truncation",
+        "Current SpiderMonkey lacks AbortController global. Pre-cancel signal guard verified by Node unit scope double only; external Renderer cancellation unchanged",
+        "Recorder stats count cumulative slots, not live GPU leases. Physical GPU peak memory is unknown",
+        "Windows NVIDIA RTX5070Laptop Vulkan596.49 only; other hardware/OS and L3 integration not verified",
+        "Deep/VDB integration awaits coherent Main runtime; owner-dependencies.json records exact frozen versions",
+        "BVH import is bounded by explicit text maxBytes and post-parse maxNodes; no separate pre-parse BVH channel/frame work budget has been verified. General untrusted-asset fuzzing is not included."
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Complete free-surface liquid simulation",
+      "status": "implemented-and-verified",
+      "round": 8,
+      "entry": "liquidScene / createLiquidSimulation / reconstructLiquidField / renderLiquidSurface; liquid-entry.ts",
+      "evidence": "validation/coverage-round8/evidence/checkpoint.json",
+      "acceptance": [
+        "Actual resident GPU cubic-SPH PBF pressure, Jacobi XSPH, vorticity, Akinci cohesion/curvature; independent F64 reference",
+        "Core fixed time, original seededRandom and native managed state only",
+        "Same-owner >1024-command continuation, 100-0-100 and new-instance exact hashes; no quality reduction",
+        "Typed adjustable seeds/emitters, budgets and kinematic swept plane/sphere/box contacts",
+        "Real 3D kg/m³ reconstruction and isosurface/optics F16/F32 RGBA/Alpha/black-white reference",
+        "Actual birth schedule and empty output; busy, pre-cancel, Core rollback/latch/close",
+        "Editable public R1 TSX PNG0/12/23, storyboard and fully decoded 1-second24-frameMP4"
+      ],
+      "boundaries": [
+        "Candidate source/R1 is executable; final published spatial-creation catalog promotion is Main responsibility",
+        "All-pairs O(N²), no accelerated neighbour grid",
+        "Uniform single-phase particles; analytic kinematic one-way contacts, no two-way fluid/Rapier, mesh boundary sampling, adhesion or thermal/multiphase solve",
+        "Box sweeps use conservative expanded AABB; field/particle/time resolution and physical convergence are explicit author choices",
+        "Surface is sampled SPH field + isosurface/Beer/Fresnel; optional refraction is screen-space, not a full ray-traced scene",
+        "Surface-tension coefficient is the discrete Akinci coefficient, not SI N/m calibration",
+        "No CPU pixels or solver fallback; F32 physics, F16/F32 color; physical GPU peak unknown",
+        "Windows RTX5070Laptop/Vulkan596.49 tested; other GPUs/OS and L3 distribution not verified"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Coupled density, heat, fuel and combustion",
+      "status": "implemented-and-verified",
+      "round": 9,
+      "entry": "gasScene / smokePlumeScene / firePlumeScene / createGasSimulation / renderGasVolume; gas-entry.ts",
+      "evidence": "validation/coverage-round9/evidence/checkpoint.json",
+      "acceptance": [
+        "Resident GPU soot, excess-temperature, fuel and burn-rate coupling; independent F64 chemistry",
+        "Existing spatial-compute semi-Lagrangian advection, compatible periodic projection, weighted Jacobi and Core NativeReplay",
+        "Nonuniform true3D advection/projection independent F64 oracle; existing keyframe source sampled at fixed subframe time",
+        "100-0-1-12-100 and new-instance exact raw hashes; same-owner continuation beyond1024 commands",
+        "F16/F32 true3D volume RGBA/Alpha/black-white reference, signed linear smoke and empty vacuum",
+        "Pre-cancel, busy/closed guards, deliberate frame101 rollback/latch, repeated close",
+        "Public editable R1 TSX PNG0/12/23, storyboard and fully decoded1second24frameMP4 through explicit existing PME reference delivery"
+      ],
+      "boundaries": [
+        "Default direct Native MP4 encoder fails on current Core continuation (E_NATIVE_ENCODE), reported to Agent1; not claimed passing",
+        "Explicit --settings --professional-backend reference delivers same GPU scene; final-delivery F32 readback/CPU color transform is explicit",
+        "Dense uniform grid, visual first-order chemistry; no oxygen species, detailed chemistry, solid/no-slip obstacles, thermal expansion or engineering CFD",
+        "Periodic pressure plus zero-advection exterior/edge sponge is approximate absorbing boundary",
+        "Authored linear HDR palette, not calibrated physical blackbody; no scene shadows or multiple scattering",
+        "Final .0.1.3 candidate actualGPU raw + PNG12 verified; full24frame clip .0.1.1, default recipe PNG12 byte-identical after guard/zero-threshold branch and carried-license changes",
+        "Formal catalog/RuntimePin/L3 distribution remain Main responsibility; WindowsRTX5070LaptopVulkan only, physicalpeak unknown"
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Spectral ocean, shallow-water interaction and foam",
+      "status": "implemented-and-verified",
+      "round": 10,
+      "entry": "oceanScene / shoreScene / createOceanSimulation / createOceanRenderer; ocean-entry.ts",
+      "evidence": "validation/coverage-round10/evidence/checkpoint.json",
+      "acceptance": [
+        "Actual resident GPU Phillips/Tessendorf finite-depth six-complex-channel inverse FFT; independent Float64 direct Fourier summation",
+        "Original Core RNG, NativeReplay and managed state continuation; 100-0-1-12-23-100 and fresh-instance exact hashes",
+        "Nonlinear hydrostatic-reconstruction Rusanov shallow water, reflective or spectrum boundary, actual wet/dry advance, static-lake equilibrium and closed-volume conservation",
+        "Actual F64 shallow reference and observed CFL qualification, time-window Signal wakes and volume accounting",
+        "Moving Signal bathymetry matches analytical shape; global-frame controls initialize at correct zero offset",
+        "GPU historical Jacobian/flow foam transport and decay matches independent reference",
+        "Existing Native raster-v1, real displaced mesh/camera projection; F16/F32 signed/HDR>1 raw RGBA/Alpha/black-white oracle",
+        "Pre-cancel, busy/closed guards, controlled frame101 rollback/latch, double dispose/close",
+        "Editable public TSX PNG0/12/23 and full decoded1second24frameMP4 through explicit PME reference delivery; actual shot CFL .33723"
+      ],
+      "boundaries": [
+        "A finite dense radix2 patch, no spectral cascades/infinite LOD; JONSWAP is a scalar PSD query only, not the built-in GPU spectrum profile",
+        "First-order shallow hydrostatic finite volumes with explicit dry tolerance/CFL; not general 3D overturning/splash or turbulence",
+        "CFL is author-qualified, not an automatic adaptive GPU solver or CPU feedback loop; actual maximum neighboring signal CFL is retained in shallow channel4",
+        "Kinematic moving topography, no two-way vessel/rigid solver; visual foam field is not bubble mass conservation",
+        "Analytic sun/sky material, no external HDR IBL, traced refraction or shadow/scattering platform",
+        "Core direct encoder/continuation fix1edf68f9 is frozen by Agent1 but awaits Main integration; current explicit PME reference final delivery verified",
+        "Managed package helpers run inside initialized Native Stage; module-scope options must be plain data",
+        "Windows RTX5070Laptop Vulkan only; physical GPU peak unknown; final catalog/RuntimePin/L3 distribution by Main"
+      ]
+    },
+    {
+      "id": 12,
+      "name": "L-system and space-colonization growth",
+      "status": "implemented-and-verified",
+      "round": 11,
+      "entry": "lsystemScene / colonizationScene / growthScene / createColonizationSimulation / recordGrowthGeometry; growth-entry.ts",
+      "evidence": "validation/coverage-round11/evidence/checkpoint.json",
+      "acceptance": [
+        "Real fixed MIT lindenmayer1.5.4; typed parametric, branch-context and explicitly weighted deterministic Core RNG successors, deletions, large single production",
+        "3D Turtle branch stack, pen-up roots, width, tropism, leaf markers and path-length birth time; pipe radii, pruning, complete mesh chunks and rig lineage",
+        "Original F64 Runions solver with actual all-node nearest assignment, kill, bootstrap and spatial hash; independent brute-force F64 oracle",
+        "Actual existing Core FixedStepRunner; fixed substeps/Signals, owned snapshots/restore, budgets, failed seek recovery and local abort/closed guards",
+        "100-0-1-12-23-100 and fresh100/0 exact CPU-state and GPU hashes through real SpiderMonkey Native Stage",
+        "GPU branch/leaf vertices and normals, full caps, shaded Gouraud atlas and camera projection through existing Native raster-v1",
+        "Independent full-image F64 F16/F32 signed HDR>1 RGBA/Alpha/black-white oracle, empty/hidden transparency, busy/dispose and pre-cancel",
+        "Public installed R1 TSX growth and L-system PNG0/12/23, visually inspected storyboards; direct Native one-second24frame MP4 fully decoded"
+      ],
+      "boundaries": [
+        "CPU F64 topology/control is intentional; actual GPU F32 vertex expansion, material and Native raster. No new runner, host, Stage port or CPU pixel fallback.",
+        "Classic Runions visual growth and grammar; no branch Boolean union, botanical biomechanics, automatic mesh/rig asset import or branch obstacle/self-contact solver.",
+        "Existing physics local-frame/time controls; globalFrame/globalTime/progress in history-dependent controls explicitly reject. Display/material/camera use actual full FrameContext.",
+        "CPU snapshots own plain values, failed simulation seek preserves last committed sample and next seek rebuilds. A successful CPU sample followed by an unrelated Stage/GPU failure is not a whole-JS transaction; close/reopen/replay for a failed Session.",
+        "CPU object memory and physical GPU peak unknown; byte/work/default budgets configurable. F32 geometry and existing device/u32 limits remain.",
+        "Optional MeshData chunks respect existing16384vertices and SkeletonData256bones; Native geometry is not truncated to those export limits.",
+        "Simple two-light/rim Gouraud material, no PBR/IBL/shadow claim. Native raster edge antialiasing was not expanded in this task.",
+        "Final0.1.1 candidate raw kernel/solver source identical to0.1.0 qualified24frame clip; only carried L-system camera recipe/version changed. Final L-system PNG0/12/23 checked; final growth12 PNG byte-identical.",
+        "Windows RTX5070Laptop Vulkan596.49 only; final public catalog/RuntimePin/L3 isolated installation remains Main work. No owner executable/protocol was swapped."
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Extended AOV, IDs, Cryptomatte and Deep workflow",
+      "status": "implemented-and-verified",
+      "round": 12,
+      "entry": "createAovCapture / aovScene / captureCryptomatte / importSurfaceDeep / mergeSurfaceDeep / aov-io.ts; aov-entry.ts",
+      "evidence": "validation/coverage-round12/evidence/checkpoint.json",
+      "acceptance": [
+        "Typed real geometric/material AOV: P/Pref/Z/rayDistance/N/Ns/UV/barycentrics/motion/validity/albedo/emission/opacity, exact UInt32 object/material/primitive IDs",
+        "Existing Three geometry/camera/pose preparation and compensated half-open ray math; owned buffers, explicit current/previous poses, no new owner/Stage ABI",
+        "Fixed unmodified MIT MurmurHash3 implementation, official Psyop UTF8 vectors, independent public-domain Python cross-check; exact standard manifest/hash/conversion metadata",
+        "Actual subpixel AA and full front-to-back alpha visibility weights, all-name Crypto ranks, same-name aggregation and GPU named-matte selection",
+        "All surface hits in GPU Deep; stable merge, crop, holdout and HDR/PM flatten; no layer/resolution truncation",
+        "49-channel actual lossless EXR bit-exact independent OpenEXR validation; full-range UInt IDs and Float Crypto ID bits, negative/HDR preservation",
+        "Existing real Deep writer/decoder and formal sealed Resource import; mixed FLOAT/HALF/UINT GPU roundtrip, same-scope different code/layout cache identities",
+        "100-0-1-12-23-100, fresh100/0 exact media/data hashes; repeated frame executes, pre-cancel, busy/foreign/closed/dispose, deliberate101failure",
+        "Public installed editable TSX PNG0/12/23/storyboard and actual direct Native fully decoded one-second24frameMP4; final candidate PNG12 byte-identical",
+        "Old producer byte hashes checked, nonedge compatibility verified and actual shared-edge differences explicitly preserved"
+      ],
+      "boundaries": [
+        "Optional explicit MeshData/pose/unlit-material producer. No automatic AOV reconstruction from every unrelated Native/Three beauty shader or material-map system.",
+        "Formal surface-point Deep only, ZBack=Z. Finite volume intervals remain explicitly unsupported by the current owner contract; no bypass, volume splitting or cross-camera/window reprojection.",
+        "Nearest geometric fields use center-ray binary coverage and retain opacity-zero geometry. Actual Cryptomatte AA/visible-opacity ranks are separate and tested; raw ID labels are never filtered numeric floats.",
+        "Existing legacy spatial/native/ray/character source bytes are unchanged. New optional compensated half-open rule has measured shared-edge differences: legacy missed hits/selected farther geometry. Interior max error4.768e-7; no whole-image pixel identity claim.",
+        "Zero supplied/interpolated shading normals fall back to geometric normal; actual native fixture verifies it. Motion tests prior positiveW/near/far only, not previous visibility.",
+        "Complete ray scans can be quadratic; no acceleration/performance/realtime claim. Byte/work budgets configurable; u32/device and legacy optional MeshData limits remain. Physical GPU/process peak unknown.",
+        "GPU fields/Deep are Stage/session-local capabilities with explicit ownership, not JSON image ports. Dispose is logical retirement, not queue completion; Core owns loss/cancel/reopen.",
+        "File export is an explicit data readback/materialization. Trusted Node aov-io.ts uses existing Deep I/O and fixed OpenEXR3.4.4; it is not a managed Stage filesystem permission or newly wired public CLI command.",
+        "Final0.1.3 candidate actual raw GPU+FLOAT/HALF/UINT file roundtrip and PNG12 tested. Full24frame1second video from0.1.1; finalPNG12 byte-identical after mixed-depth/ID validation and shading-normal-zero changes, same shot algorithm/parameters/quality.",
+        "Windows RTX5070Laptop Vulkan596.49 only. Nuke/Fusion UI and independent installed-engine/catalog/RuntimePin distribution are not claimed verified; Main owns integration."
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Volume and simulation cache import and time sampling",
+      "status": "implemented-and-verified",
+      "round": 13,
+      "entry": "cache-entry.ts; cachedMeshScene/cachedPointsScene/cachedVolumeScene; Node cache-io.ts",
+      "evidence": "validation/coverage-round13/evidence/checkpoint.json",
+      "acceptance": [
+        "21 authoring/runtime/export functions; named R1 imports and plain TS/TSX, no second simulation runner or GPU host",
+        "Complete BE MDD and LE PC2 headers/times/finite XYZ/size validation; explicit PC2 FPS, source units and affine transform; independent real Three MDDLoader oracle",
+        "Existing sealed own R1 resource loader and formal raw/NanoVDB Resource admission; no filesystem/network/WASM grant",
+        "GPU point interpolation, source-segment velocity, explicit same-index blending, area-weighted mesh normals, existing Native material/raster and point billboards",
+        "Pinned OpenVDB12.1.1/NanoVDB32.8 Apache2 archive/header hashes, real fully checksum-validated upstream fog/SDF files; independent upstream world-map nearest/trilinear reference",
+        "Different source maps/topologies resampled on explicit meter world domains; signed/background values and per-source active weights/status preserved",
+        "FrameContext/Signal/keyframes absolute time, clamp/error/loop/pingpong/step; reverse derivative and same requested frame execution counter",
+        "100-0-1-12-23-100 plus fresh100/0, same pixels/data hashes; busy/foreign/closed/idempotent dispose, pre-cancel and controlled frame101 failure",
+        "Existing real GPU PBF + Core NativeReplay -> completed named data export -> streaming PC2 writer -> installed R1 GPU playback with independent numeric reference",
+        "Actual GPU F16/F32 HDR/Alpha/black-white differences and independent F64 Beer image integration",
+        "Final0.1.5 public installed TSX PNG0/12/23, inspected storyboard and 24-frame fully decoded direct Native MP4",
+        "14 L0 tests, strict types, matching owner/SpiderMonkey executable/source receipts; cumulative campaign below420seconds including failures/build/install"
+      ],
+      "boundaries": [
+        "Supported source profiles are single raw uncompressed breadth-first NanoVDB32.8 Float fog/SDF and fixed-topology MDD/PC2. Arbitrary VDB/NVDB containers, vector grids, Alembic and automatic retargeting are not implemented.",
+        "All volume source buffers are initialized and budgeted as one immutable sequence. Dynamic frame-local Resource replacement of different sizes exposes a confirmed Core seed identity bug; streaming awaits owner integration, not patched here.",
+        "Whole point-module bytes obey existing SpiderMonkey snapshot limits (48MiB default/63MiB ceiling in this baseline). Library byte/work budgets are configurable; physical/device/u32 limits remain. Newer owner capacity delivery not silently synchronized.",
+        "Velocity is derivative per source second, not the chain-rule derivative of an arbitrary time Signal. GPU computation/source headers are F32; no bit-identity promise to an F64 DCC solver.",
+        "SDF preview reuses the liquid zero-contour shader with positive-interior absorption, not a measured geometric thickness/PBR renderer. Fog is existing single-path Beer integration, not multiple scattering.",
+        "Node writer/export is a trusted explicit authoring operation. It streams one callback frame at a time and refuses clobber; not new Stage filesystem access or an atomically invisible file transaction.",
+        "No resident CPU pixel readback/fallback. Validation and baking use explicit completed named buffer exports; logical dispose is distinct from physical GPU completion.",
+        "H264 is lossy: final decoded-vs-PNG mean RGB about0.0059, local max0.369; raw float image comparison is measured separately.",
+        "Windows RTX5070Laptop Vulkan596.49 only; Main catalog/SDK RuntimePin, independent installed-engine and L3 portable distribution remain Main integration."
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Native creator shadows, IBL and transparent layering",
+      "status": "implemented-and-verified",
+      "round": 14,
+      "entry": "physical-lighting-entry.ts; litScene/createLitRenderer/renderLitAov with litObject/Plane/Box/Sphere and light/environment descriptors",
+      "evidence": "validation/coverage-round14/evidence/checkpoint.json",
+      "acceptance": [
+        "19 typed creator/response/light/environment/budget/capture/render functions; normal TS/TSX and existing FrameContext/Signal/keyframes",
+        "Existing Three topology/camera, AOV geometry packing/lifetime and compensated half-open rays; original qualified single-scatter GGX D/Smith profile reused",
+        "Actual world geometry shadows including scalar transparent coverage transmittance; finite angular sun quadrature for soft shadows",
+        "Point inverse-square and spot cone sources with finite light-distance visibility; independent beyond-light blocker test",
+        "Real sealed PM/HDR Surface-v2 lat-long image; per-texel unpremultiplication, bilinear longitude wrap/pole clamp; cosine diffuse and GGX-NDF specular IBL integration",
+        "GPU studio HDR environment uses the same actual integration; optional true ray-sampled environment occlusion/background",
+        "Complete stable front-to-back transparent surface layers with no fixed layer truncation, opaque early completion only",
+        "Default Three sphere has true analytic normals, standard default offline budget admits it; typed lighting response excludes unrelated frame base-color overrides",
+        "Six independent F64 analytic rectangle references for hard/soft/transparent shadow, point, spot, IBL and occlusion; F32/F16 RGB/Alpha/black-white measured",
+        "100-0-1-12-23-100 and fresh100/0 exact hashes, actual recorded-count increments; pre-cancel, busy, repeated close/dispose and controlled101failure",
+        "35 targeted tests:13 new plus12 AOV and10 studio/material/camera regressions; strict types and exact runtime/source/license receipts",
+        "Final0.1.2 installed public R1 editable creator PNG0/12/23, visually inspected storyboard and fully decoded direct Native 24frame1secondMP4",
+        "139.11second cumulative verification campaign including failure/build/install, no Core/ABI/permission changes"
+      ],
+      "boundaries": [
+        "New explicit MeshData/pose creator path. Old studioLighting/materials/creators retain their old behavior; no automatic extraction from arbitrary third-party beauty render or GPU-only deformation readback.",
+        "Single-scatter isotropic GGX and finite deterministic quadrature. No PMREM/Three MeshStandardMaterial pixel-equivalence, multiple-bounce GI, spectral transport, caustics or denoising claim.",
+        "Opacity is surface coverage with scalar shadow transmittance. No physically refractive glass, solid absorption or finite-volume Deep intervals.",
+        "Low-level AOV leases belong to this package coordinator; use captureLitGeometry + renderLitAov together, not an implicitly foreign independently bundled AOV lease.",
+        "All requested layers/samples retained. Work/byte budgets configurable, real device/u32/F32 and legacy optional MeshData limits remain; scans can be quadratic, no performance/realtime or physical peak-memory claim.",
+        "Logical retirement and record counts are distinct from actual GPU completion. Real tests awaited Renderer tickets; Core owns loss/cancel/session reconstruction.",
+        "Decoded H264 mean RGB difference about0.0053–0.0056 and local max0.330; codec output is not treated as a lossless reference. Raw F32 max4.565e-7 versus independent F64, F16 max0.000421.",
+        "Windows RTX5070Laptop Vulkan596.49 only; independent installed-engine/portable/catalog/SDK RuntimePin validation is Main integration. Existing Core binaryResourceFrameIdentity gap from R13 remains explicitly recorded outside this lighting implementation."
+      ]
+    }
+  ],
+  "completion": {
+    "implementedAndVerified": 15,
+    "total": 15,
+    "percent": 100,
+    "mainIntegrationPending": true,
+    "meaning": "All fifteen authorized concrete gap profiles have real implementation and evidence. Not a certification of every feature of Adobe/Blender or every future Core/backend/format.",
+    "knownCoreIntegration": "owner-dependencies.json records the separately confirmed dynamic binary Resource seed gap; cache playback uses the verified admitted immutable-sequence path."
+  }
+}

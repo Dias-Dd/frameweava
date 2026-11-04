@@ -1,0 +1,38 @@
+{
+  "baseline": "0a7c5ff8ff1b94171be2f647966b3bdf3f31536c",
+  "ok": false,
+  "wallMs": 22667.003399999998,
+  "rows": [
+    {
+      "name": "SpiderMonkey TSX random/repeated resident recording and fresh host replay",
+      "ok": false,
+      "wallMs": 2773.9824999999996,
+      "error": {
+        "code": "E_STAGE_FACTORY_EXPORT",
+        "message": "Stage 'observatory' factory must be a named export of the project entry. Export the function/const (or re-export it), or use entry + exportName for another module.",
+        "stack": "EngineError: Stage 'observatory' factory must be a named export of the project entry. Export the function/const (or re-export it), or use entry + exportName for another module.\n    at buildProject (file:///C:/Users/ASUS/Documents/Codex/2026-10-28/referenced-chatgpt-conversation-this-is-an/outputs/frameweave-worktrees/agent-4/src/compiler/build.ts:141:15)\n    at async <anonymous> (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\modules\\spatial-vfx\\validation\\native-recipes.ts:8:8)\n    at async check (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\modules\\spatial-vfx\\validation\\native-recipes.ts:5:133)\n    at async <anonymous> (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\modules\\spatial-vfx\\validation\\native-recipes.ts:7:1)"
+      }
+    },
+    {
+      "name": "four actual Native GPU recipes, HDR/F16/F32 and analytic holdout/disabled-layer oracles",
+      "ok": false,
+      "wallMs": 19855.8425,
+      "error": {
+        "code": "E_STAGE_FACTORY_EXPORT",
+        "message": "Stage 'recipes' factory must be a named export of the project entry. Export the function/const (or re-export it), or use entry + exportName for another module.",
+        "stack": "EngineError: Stage 'recipes' factory must be a named export of the project entry. Export the function/const (or re-export it), or use entry + exportName for another module.\n    at buildProject (file:///C:/Users/ASUS/Documents/Codex/2026-10-28/referenced-chatgpt-conversation-this-is-an/outputs/frameweave-worktrees/agent-4/src/compiler/build.ts:141:15)\n    at async <anonymous> (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\modules\\spatial-vfx\\validation\\native-recipes.ts:19:69)\n    at async check (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\modules\\spatial-vfx\\validation\\native-recipes.ts:5:133)\n    at async <anonymous> (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\modules\\spatial-vfx\\validation\\native-recipes.ts:12:1)"
+      }
+    },
+    {
+      "name": "professional orbital shot: initial/middle/final/repeat PNG, storyboard and full 1-second MP4 decode",
+      "ok": false,
+      "wallMs": 30.613499999999476,
+      "error": {
+        "code": "ERR_ASSERTION",
+        "message": "undefined == true",
+        "stack": "AssertionError [ERR_ASSERTION]: undefined == true\n    at <anonymous> (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\modules\\spatial-vfx\\validation\\native-recipes.ts:25:9)\n    at check (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\modules\\spatial-vfx\\validation\\native-recipes.ts:5:139)\n    at <anonymous> (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\modules\\spatial-vfx\\validation\\native-recipes.ts:24:7)"
+      }
+    }
+  ],
+  "scope": "Native source integration with reference Core hooks; not installed SDK acceptance"
+}

@@ -1,0 +1,1 @@
+{"extends":"../../../tsconfig.json","include":["../index.ts","./*.ts","../examples/color-*.tsx","../../../tests/native-color-effects.test.ts","../../../tests/native-effects.test.ts","../../../tests/native-pa-images.test.ts"]}

@@ -1,0 +1,393 @@
+{
+  "schemaVersion": 1,
+  "id": "frameweave.editing",
+  "status": "Main SDK source integrated through cb1c24aa; scoped owner long-media evidence accepted; installed release separate",
+  "purpose": "Describe cuts, retiming, captions, effects, audio and measured edit selections without managing Native GPU buffers or temporary images.",
+  "entries": {
+    "authoring": "./authoring.ts",
+    "runtime": "./runtime.ts",
+    "node": "./node.ts"
+  },
+  "units": {
+    "timeline": "project frames; half-open intervals",
+    "sourceSampling": "rational presentation seconds derived from project fps",
+    "transforms": "existing Engine Transform and Signals, Stage FrameContext"
+  },
+  "functions": [
+    {
+      "name": "video",
+      "input": "Resource id, project-relative path, source dimensions and optional decoding/color policy",
+      "output": "VideoAsset",
+      "defaults": {
+        "decoder": "cpu",
+        "metadataPolicy": "validate",
+        "interpretation": "tagged Rec709, display reference white 100 nits"
+      },
+      "limits": "Existing tagged planar YUV importer profile; hardware requires its admitted runtime and never falls back."
+    },
+    {
+      "name": "image",
+      "input": "Resource id, path, source dimensions and optional decoding/alpha policy",
+      "output": "ImageAsset",
+      "defaults": {
+        "decode": "icc-sdr",
+        "missingProfile": "error",
+        "alpha": "premultiplied"
+      },
+      "limits": "Surface-v2 input currently requires scene-linear Rec709 and an explicit matching Alpha convention."
+    },
+    {
+      "name": "clip",
+      "input": "EditAsset and duration; optional from/fit/sampling/transform",
+      "output": "EditClip",
+      "defaults": {
+        "from": 0,
+        "fit": "contain",
+        "sampling": "linear"
+      },
+      "example": "clip(footage,{from:24,duration:120})"
+    },
+    {
+      "name": "splitClip",
+      "input": "EditClip and interior project-frame offset",
+      "output": "Two clips retaining the original source sampling",
+      "example": "const [before,after]=splitClip(shot,60)"
+    },
+    {
+      "name": "sequence",
+      "input": "Clips in authored order",
+      "output": "Non-overlapping EditTrack",
+      "example": "sequence(intro,interview,outro)"
+    },
+    {
+      "name": "at",
+      "input": "Project frame and clip",
+      "output": "PlacedClip",
+      "example": "[at(120,logoClip)]"
+    },
+    {
+      "name": "speedClip",
+      "input": "Affine video clip and rate multiplier; optional duration override",
+      "output": "Retimed EditClip",
+      "defaults": {
+        "duration": "ceil(previous duration / abs(multiplier)); zero holds first sample"
+      },
+      "example": "speedClip(reverseClip(shot),2)",
+      "limits": "Image stream only. Audio and optical flow are not implicitly generated."
+    },
+    {
+      "name": "reverseClip",
+      "input": "Affine video clip",
+      "output": "Same source samples in reverse order",
+      "limits": "Retains existing decoder seek costs."
+    },
+    {
+      "name": "freezeClip",
+      "input": "Affine clip, sample offset and optional output duration",
+      "output": "Held video EditClip",
+      "example": "freezeClip(shot,13,48)"
+    },
+    {
+      "name": "remapClip",
+      "input": "Video clip, existing Core Signal/keyframes of absolute source project-frame positions",
+      "output": "Mapped EditClip",
+      "limits": "Evaluated against actual Stage FrameContext. Cannot also use from/speed; invalid or out-of-source samples fail."
+    },
+    {
+      "name": "editingStage",
+      "input": "fps and tracks, optional duration/background/float format",
+      "output": "Named exported Native Stage factory with a resident edit plan",
+      "example": "export const edited=editingStage({fps:24,tracks:[sequence(intro,outro)]})",
+      "limits": "Use a named ESM export. Reuses current Native factory identity; no serialized closure or new execution protocol."
+    },
+    {
+      "name": "editComposition",
+      "input": "width/height/fps/tracks and a named Native Stage factory",
+      "output": "Existing TVG Composition",
+      "limits": "One clip or an explicitly declared two-clip transition per track; extra tracks are overlays. Audio remains round 5."
+    },
+    {
+      "name": "createEditingStage",
+      "input": "Existing admitted NativeStageInit; optional cancellation signal",
+      "output": "Existing NativeStageInstance plus inspect()",
+      "ownership": "Borrows scope; returned GPU image owned by caller; logically releases all intermediates. Session retains completion and recovery."
+    },
+    {
+      "name": "inspectFootage",
+      "entry": "node",
+      "input": "Explicit local file path and metadata policy",
+      "output": "Typed VideoAsset plus actual media probe",
+      "limits": "Node host preparation only; does not bypass Resource declarations or source seals."
+    },
+    {
+      "name": "parseSubtitles",
+      "input": "SRT/basic WebVTT source and explicit markup/settings policies",
+      "output": "SubtitleCue[] with integer millisecond intervals",
+      "defaults": {
+        "markup": "error",
+        "settings": "error"
+      },
+      "dependencies": [
+        "subtitle@4.2.2 MIT parser"
+      ],
+      "limits": "Canonical three-digit milliseconds; no full WebVTT CSS/regions or ASS."
+    },
+    {
+      "name": "subtitleFrames",
+      "input": "SubtitleCue and project fps",
+      "output": "Half-open project frame interval",
+      "defaults": {
+        "rounding": "ceil both endpoints to preserve visibility at project sample times"
+      }
+    },
+    {
+      "name": "shiftSubtitles",
+      "input": "Cues and integer millisecond offset",
+      "output": "New cues; originals unchanged"
+    },
+    {
+      "name": "prepareSubtitles",
+      "entry": "node",
+      "input": "Cues, viewport/fps, borrowed admitted typography provider or source services, optional style",
+      "output": "Edit tracks plus structured preparation diagnostics",
+      "defaults": {
+        "placement": "bottom",
+        "align": "center",
+        "ink": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "plate": [
+          0,
+          0,
+          0,
+          0.68
+        ],
+        "overlap": "error",
+        "empty": "error"
+      },
+      "limits": "Actual source services and frozen official Node preparation SDK seam tested. Does not grant WASM or dispose borrowed providers. Full Engine SDK distribution is Main's integration scope."
+    },
+    {
+      "name": "prepareTitle",
+      "entry": "node",
+      "input": "Text and borrowed typography preparation service",
+      "output": "TextAsset with original canonical paragraph geometry",
+      "limits": "Prepare explicitly in Node. Font size/wrap are preparation values; transform/opacity remain animated clip parameters."
+    },
+    {
+      "name": "preparedText",
+      "input": "Existing real PreparedParagraphMeshes plus ink/placement/plate",
+      "output": "TextAsset usable with clip()",
+      "limits": "No invented glyph boxes. Geometry prepared in resident Stage initialization before owner seed sealing."
+    },
+    {
+      "limits": "Stage owns format, Alpha, working color and cancellation. Other defaults and parameter bounds are the original algorithm contracts. GPU required.",
+      "example": "effect('glow',{radius:3,intensity:.4,threshold:.7})",
+      "input": "One of twenty existing image algorithms and its original typed options",
+      "defaults": {
+        "blur": "radius 2 sigma px, transparent boundary",
+        "glow": "radius 6 sigma px, intensity .5, threshold 1"
+      },
+      "output": "Serializable EditImageEffect",
+      "name": "effect"
+    },
+    {
+      "example": "withEffects(shot,effect('exposure',{stops:.3}),effect('glow'))",
+      "name": "withEffects",
+      "output": "New clip retaining its time, fit and transform",
+      "limits": "Effects run after fit/transform and before clip opacity. Blur radius uses composition pixels.",
+      "input": "EditClip and ordered effect calls"
+    },
+    {
+      "defaults": {
+        "progress": "(frame - incoming.at) / (duration - 1); duration 1 uses 1"
+      },
+      "name": "transition",
+      "output": "EditTransition",
+      "limits": "No handles invented. Overlap must fit both clips; triple overlap fails. Optional progress is a Core Signal.",
+      "input": "crossDissolve, fadeThroughColor, directionalWipe, irisWipe or pushTransition, duration in project frames, optional original controls"
+    },
+    {
+      "example": "sequenceWithTransitions([intro,main],transition('crossDissolve',{duration:12}))",
+      "name": "sequenceWithTransitions",
+      "output": "EditTrack with explicit two-clip overlaps",
+      "limits": "Duration is sum of clips minus overlaps. Reuses original source head/tail frames, without hidden extra handles.",
+      "input": "Declared clips, one transition or an array of nullable boundary transitions"
+    },
+    {
+      "name": "audioSource",
+      "input": "Resource id, local source path, output sampleRate/layout/sampleCount, optional audio stream ordinal and explicit conversion",
+      "output": "Named exported AU-1 source factory",
+      "defaults": {
+        "permissions": "none granted",
+        "stream": 0,
+        "conversion": {
+          "sampleRate": "reject",
+          "layout": "reject"
+        },
+        "supported": "mono/stereo 48/96kHz output"
+      },
+      "example": "export const voice=audioSource('voice','./voice.wav',{sampleRate:48000,layout:'mono',sampleCount:48000})",
+      "limits": "Uses existing Core init.audio interval service when present. Legacy Core keeps small-WAV limits and rejects unavailable stream/conversion. Compressed sampleCount is an authored source view, not a claim of exact decoded duration. Actual reads verify full coverage; no time stretching."
+    },
+    {
+      "name": "audioClip",
+      "input": "EditAudioSource, project-frame from/duration or sample-precise fromSamples, optional Core gain/pan Signals and fade frame counts",
+      "output": "EditAudioClip",
+      "defaults": {
+        "from": 0,
+        "gain": 1,
+        "pan": 0,
+        "fadeIn": 0,
+        "fadeOut": 0
+      },
+      "example": "audioClip(voice,{from:24,duration:120,gain:.8,fadeIn:6,fadeOut:6})",
+      "limits": "Choose from or fromSamples. No hidden resampling, extraction, speed/pitch processing or source-boundary clamping. Existing mixer evaluates at absolute sample coordinates."
+    },
+    {
+      "name": "audioAt",
+      "input": "Project frame and EditAudioClip",
+      "output": "PlacedAudioClip",
+      "example": "audioAt(240,musicClip)",
+      "limits": "Overlaps mix through existing AU-1 mixer; library does not create a second mixer."
+    },
+    {
+      "name": "audioSequence",
+      "input": "Audio clips",
+      "output": "AudioEditTrack with adjacent placements",
+      "example": "audioSequence(introVoice,mainVoice)",
+      "limits": "Each placed clip lowers into an ordinary Stage time mapping and Layer trim/gain/pan. Existing worker/resource costs remain."
+    },
+    {
+      "name": "audioComposition",
+      "input": "fps, audio tracks, optional finite duration/seed",
+      "output": "Ordinary audio-only Composition",
+      "example": "audioComposition({fps:24,tracks:[audioSequence(audioClip(voice,{duration:24}))]})",
+      "limits": "Public create exports WAV without requesting a visual frame. A/V uses editComposition({...,audio:[...]}) instead."
+    },
+    {
+      "name": "inspectAudioSource",
+      "entry": "node",
+      "input": "Explicit local WAV path and optional baseDirectory/cancellation",
+      "output": "EditAudioInfo with actual source metadata",
+      "limits": "Uses existing WAV IO inspector and its retained budget. Does not authorize Resource access or convert compressed audio."
+    },
+    {
+      "name": "inspectAudioResource",
+      "entry": "node",
+      "input": "Borrowed genuine sealed Core AudioResourceReader, declared Resource id/path and optional output profile/stream/conversion",
+      "output": "EditAudioInfo for prepared authoring",
+      "defaults": {
+        "stream": 0,
+        "conversion": {
+          "sampleRate": "reject",
+          "layout": "reject"
+        }
+      },
+      "limits": "Caller owns/closes reader. Whole PCM is never loaded. Exact WAV sample counts are converted to complete output samples; compressed/container input requires explicit intended sampleCount and actual interval coverage. Does not admit an arbitrary file path."
+    },
+    {
+      "name": "analyzeEditSource",
+      "entry": "node",
+      "input": "Project-scoped local media, projectRoot and explicit parameter/resource budgets",
+      "output": "Existing C3 AnalysisResult plus authenticated EditCues",
+      "defaults": {
+        "sceneThreshold": 10,
+        "silenceDb": -35,
+        "minSilenceSeconds": 0.25,
+        "windowSeconds": 0.02,
+        "onsetRiseDb": 8,
+        "onsetFloorDb": -35,
+        "onsetGapSeconds": 0.1,
+        "maxRecords": 1000000,
+        "maxInputBytes": 17179869184,
+        "timeoutMs": 300000
+      },
+      "dependencies": [
+        "Existing C3 task/executor/store",
+        "Configured FFmpeg/FFprobe"
+      ],
+      "limits": "First video/audio stream; finite media duration and usable stream alignment required. CPU analysis, no JS pixels/full PCM. Silence timestamps retain backend text precision; RMS candidates are not musical beats or semantic recognition. Public Analysis catalog registration remains Main work."
+    },
+    {
+      "name": "readEditCues",
+      "entry": "node",
+      "input": "Explicit C3 cache root and SHA256 artifact key",
+      "output": "Reauthenticated EditCues",
+      "limits": "Checks C3 manifest/files, hashes the consumed bytes again, validates source identity; no stat-only cache trust."
+    },
+    {
+      "name": "verifyCueSource",
+      "entry": "node",
+      "input": "Cues and explicit project-scoped source path",
+      "output": "Verified source SHA256/bytes",
+      "limits": "Run before generating edits from persisted recommendations; source changes require reanalysis."
+    },
+    {
+      "name": "sceneRanges",
+      "input": "Validated EditCues with real video analysis",
+      "output": "Half-open source intervals partitioned by measured cuts"
+    },
+    {
+      "name": "audibleRanges",
+      "input": "Validated audio cues and padding/join/minimum seconds",
+      "output": "Source intervals complementing measured silence",
+      "defaults": {
+        "paddingSeconds": 0.08,
+        "joinGapSeconds": 0.08,
+        "minSeconds": 0.1
+      },
+      "limits": "Audible-content selection, not speech recognition; missing audio is an error and empty selection stays empty."
+    },
+    {
+      "name": "snapToOnsets",
+      "input": "Cues, source cut times and maximum distance",
+      "output": "Nearest candidate times with explicit matched/unmatched flags",
+      "defaults": {
+        "maxDistanceSeconds": 0.08
+      },
+      "limits": "Windowed RMS-rise candidates, not a tempo model."
+    },
+    {
+      "name": "clipsFromRanges",
+      "input": "VideoAsset, source ranges, fps, optional fit/transform/effects and rounding",
+      "output": "Ordinary 1x EditClip[]",
+      "defaults": {
+        "rounding": "sample"
+      },
+      "limits": "sample uses ceil/ceil membership; cover uses floor/ceil coverage and may repeat adjacent boundary frames. Apply normal time helpers afterward."
+    },
+    {
+      "name": "audioFromRanges",
+      "input": "EditAudioSource, matching source ranges/fps/rounding and explicit audioOffsetSeconds",
+      "output": "Matching Audio clips with sample-precise source starts",
+      "defaults": {
+        "rounding": "sample",
+        "audioOffsetSeconds": 0
+      },
+      "limits": "Offset must fit source samples. Reuses normal AU-1 Stage props/local AudioBlock coordinates; no new clock or sampler."
+    }
+  ],
+  "effectLifecycle": {
+    "internal": "same Stage and borrowed Native GPU owner; original recipe processor, F32 PM scene-linear Rec709 internal images",
+    "final": "declared F16/F32 publication; no-effect/no-transition path retains its previous format",
+    "order": "source sampling, fit/transform, clip effects, clip opacity, transition, track source-over, final effects, format publication",
+    "publication": "one owned GPU publication at end of each nonempty effect chain; no CPU readback or Canvas",
+    "disposal": "original recipe retains its result until next use/dispose; edit publishes a separate owned result; caller owns final output; logical release is not GPU completion"
+  },
+  "dependencies": [
+    "existing Native GPU scope and Resource service",
+    "existing Renderer/CLI and FFmpeg input/encoding",
+    "existing spatial-creation and PixelEffects primitives"
+  ],
+  "permissions": "No automatic trust, WASM grants, browser startup or private file access.",
+  "example": "./examples/cuts.tsx",
+  "longVideoQualification": "passed actual640x36024fps21-minute30240-frame A/V render + full decode on Windows/Vulkan with explicit hardware source decode; see validation/evidence-round7/final.json; installed/cross-machine release remains Main L3; owner patched frozen Core3b59/cf214 and Native efdb9d77, not a current Main binary rerun",
+  "sdk": {
+    "authoringAndRuntime": "@frameweave/engine/editing",
+    "node": "@frameweave/engine/editing/node"
+  }
+}

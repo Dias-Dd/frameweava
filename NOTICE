@@ -1,0 +1,44 @@
+FrameWeave, development edition 0.1.0
+Copyright 2026 FrameWeave contributors
+
+Original Frameweave code in this source release is available under the MIT License.
+Existing Apache-2.0 grants and notices are preserved. Builders for existing
+versioned effect packages retain their original license payload.
+See LICENSE and licenses/APACHE-2.0.txt.
+This project does not include or derive from Remotion source or tests.
+
+Third-party software retains its own licenses and notices. See licenses/inventory.json
+and the preserved license/NOTICE files under licenses/. package-lock.json records exact
+dependency versions. Generated video assets do not replace the editable source project.
+
+The npm installation used for this delivery includes FFmpeg 6.1.1 from gyan.dev,
+configured with --enable-gpl --enable-version3 --enable-libx264. This executable is
+GPL v3, not MIT/Apache or LGPL. FFmpeg runs as a separate command-line process.
+The source archive does not redistribute the executable; npm ci downloads it.
+Its license and build/source metadata are preserved in licenses/ffmpeg-static-5.3.0/.
+FFmpeg source reference recorded by that distribution:
+https://github.com/FFmpeg/FFmpeg/commit/e38092ef93
+For other installations, inspect the actual binary with ffmpeg -version.
+
+Space Grotesk font files are SIL Open Font License 1.1; their license is retained.
+sharp is Apache-2.0; its libvips/native dependencies have their own notices, including
+LGPL for libvips. The actual installed @img/sharp-win32-x64 package declares
+Apache-2.0 AND LGPL-3.0-or-later. See its preserved native package license.
+Microsoft Edge is an installed external browser, not redistributed by this project;
+Microsoft terms and Chromium third-party notices apply to that browser installation.
+
+The optional local semantic search uses @huggingface/transformers 4.3.2 (Apache-2.0)
+and ONNX Runtime (MIT), with additional upstream notices preserved under licenses/.
+The pinned q8 Xenova/paraphrase-multilingual-MiniLM-L12-v2 model derives from the
+Apache-2.0 Sentence Transformers model. Model cards, attribution and Apache license
+are preserved in licenses/multilingual-minilm/. Weights are downloaded to the user
+cache on first indexing; this source archive does not redistribute model weights.
+
+Optional spatial-vfx module: FastNoiseLite v1.1.1 hash/value-lattice subset, MIT.
+Exact reviewed upstream source and license: modules/spatial-vfx/vendor/SOURCE.json and LICENSE-MIT.
+
+Optional fixed ACES2 SDR display: OpenColorIO2.5.2-derived WGSL/tables, BSD-3-Clause.
+Attribution and redistribution terms: modules/gpu-effects/PIXEL_DISPLAY_LICENSE.txt.
+
+Optional spatial-compute module: authored Apache-2.0 WGSL with FastNoiseLite1.1.1
+MIT hash/value subset. Preserved source/license: modules/spatial-compute/vendor/.

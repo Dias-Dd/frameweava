@@ -1,0 +1,18 @@
+Curve precision geometry/control and Native creation chain
+Own Frameweave transport/geometry/control adapters: Apache-2.0.
+Original kurbo0.13.1: MIT OR Apache-2.0, fixed838b69ef35f3381cefc007d86aa8364f5a6dc673.
+Preserve rust/curve-metrics/licenses/CURVE-NOTICE, KURBO-AUTHORS (including
+Nicolas Silva), KURBO-LICENSE-MIT and KURBO-LICENSE-APACHE.
+Original source file identities and changes are recorded in SOURCE.json.
+The parent Frameweave Curve Engine original byte snapshot is retained separately;
+only owned result storage/init/reset are appended in curve-base.rs. Original
+kurbo numerical sources are compiled unchanged, not copied into a new algorithm.
+
+The exact existing Cargo.lock/19 transitive dependencies and original generated
+Kit licences remain mandatory on distribution. dependency-licenses.json reads
+actual pinned Cargo.toml expressions and archive identities; it does not replace
+full notices. unicode-ident additionally requires Unicode-3.0.
+Existing Clipper2 BSL-1.0 and Earcut ISC retain their notices. Core Signal,
+EffectCraft-backed original cubic evaluation and Native owner/stroke/Glow/Layer
+retain their existing licences. No Adobe code/assets or external engine.
+No new public dependency, package version, permission, SDK pin or P4 ABI changed.

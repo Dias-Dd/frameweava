@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "resource": "deep",
+  "bytes": 2861,
+  "part": 0,
+  "dataWindow": [
+    -3,
+    5,
+    4,
+    8
+  ],
+  "displayWindow": [
+    -8,
+    -2,
+    20,
+    16
+  ],
+  "samples": 48,
+  "channels": [
+    {
+      "name": "A",
+      "type": "half"
+    },
+    {
+      "name": "B",
+      "type": "float"
+    },
+    {
+      "name": "G",
+      "type": "float"
+    },
+    {
+      "name": "R",
+      "type": "half"
+    },
+    {
+      "name": "Z",
+      "type": "float"
+    },
+    {
+      "name": "ZBack",
+      "type": "float"
+    },
+    {
+      "name": "auxHalf",
+      "type": "half"
+    },
+    {
+      "name": "objectId",
+      "type": "uint"
+    }
+  ],
+  "maxDecodedBytes": 33554432,
+  "maxSamplesPerPixel": 64,
+  "maxParts": 8,
+  "surface": {
+    "r": "R",
+    "g": "G",
+    "b": "B",
+    "a": "A",
+    "z": "Z",
+    "zBack": "ZBack",
+    "alpha": "premultiplied",
+    "color": {
+      "primaries": "rec709",
+      "whitePoint": "D65",
+      "transfer": "linear",
+      "reference": "scene",
+      "range": "full",
+      "referenceWhiteNits": 100
+    }
+  }
+}

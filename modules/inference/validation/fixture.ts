@@ -1,0 +1,4 @@
+/** Test-only compilation through the real SDK aliases, without a dist install. */
+import {build} from 'esbuild';import {alias} from '../../../src/compiler/build.ts';import {resolve,join} from 'node:path';import {mkdir,mkdtemp,writeFile} from 'node:fs/promises';import {pathToFileURL} from 'node:url';
+let pending:Promise<typeof import('../../../examples/native-inference/effect.ts')>;
+export function inferenceFixture(){return pending??=(async()=>{const root=resolve('.frameweave/inference');await mkdir(root,{recursive:true});const dir=await mkdtemp(join(root,'fixture-')),file=join(dir,'effect.mjs'),bundle=await build({entryPoints:[resolve('examples/native-inference/effect.ts')],outfile:file,bundle:true,platform:'node',format:'esm',packages:'external',alias,write:false});await writeFile(file,bundle.outputFiles[0].contents);return import(pathToFileURL(file).href);})();}

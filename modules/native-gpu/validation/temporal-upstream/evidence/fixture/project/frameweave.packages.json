@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "requirements": {
+    "test.temporal-upstream": "1.0.0"
+  },
+  "trustedSources": [
+    "local:test.temporal-upstream"
+  ]
+}

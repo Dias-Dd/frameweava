@@ -1,0 +1,45 @@
+{
+  "ok": false,
+  "consumer": "C:\\Users\\ASUS\\Documents\\Codex\\fw-native-only-consumer-oqSJBA",
+  "rows": [
+    {
+      "name": "pack",
+      "ok": true,
+      "ms": 4968.7036
+    },
+    {
+      "name": "install",
+      "ok": true,
+      "ms": 16196.638500000001
+    },
+    {
+      "name": "version",
+      "ok": true,
+      "ms": 1538.9910999999993
+    },
+    {
+      "name": "doctor",
+      "ok": true,
+      "ms": 3297.599699999999
+    },
+    {
+      "name": "init",
+      "ok": true,
+      "ms": 2276.9269999999997
+    },
+    {
+      "name": "frame",
+      "ok": false,
+      "ms": 8107.0228000000025,
+      "error": {
+        "code": 1,
+        "message": "Command failed: C:\\Program Files\\nodejs\\node.exe C:\\Users\\ASUS\\Documents\\Codex\\fw-native-only-consumer-oqSJBA\\node_modules\\@frameweave\\engine\\bin\\frameweave.mjs frame scene/project.tsx --width 160 --frame 12 --output C:\\Users\\ASUS\\Documents\\Codex\\fw-native-only-consumer-oqSJBA\\frame.png --json\n{\n  \"ok\": false,\n  \"diagnostics\": [\n    {\n      \"code\": \"E_SPIDERMONKEY_MISSING\",\n      \"severity\": \"error\",\n      \"message\": \"Build the SpiderMonkey host explicitly; no V8 fallback\"\n    }\n  ]\n}\n"
+      }
+    }
+  ],
+  "wallMs": 36471.670699999995,
+  "error": {
+    "code": 1,
+    "message": "Command failed: C:\\Program Files\\nodejs\\node.exe C:\\Users\\ASUS\\Documents\\Codex\\fw-native-only-consumer-oqSJBA\\node_modules\\@frameweave\\engine\\bin\\frameweave.mjs frame scene/project.tsx --width 160 --frame 12 --output C:\\Users\\ASUS\\Documents\\Codex\\fw-native-only-consumer-oqSJBA\\frame.png --json\n{\n  \"ok\": false,\n  \"diagnostics\": [\n    {\n      \"code\": \"E_SPIDERMONKEY_MISSING\",\n      \"severity\": \"error\",\n      \"message\": \"Build the SpiderMonkey host explicitly; no V8 fallback\"\n    }\n  ]\n}\n"
+  }
+}

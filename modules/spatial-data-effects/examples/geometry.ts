@@ -1,0 +1,7 @@
+import {BoxGeometry,IcosahedronGeometry,type BufferGeometry} from 'three';
+import type {MeshData,Matrix4,Vec3,SpatialSample} from '../src/types.ts';
+function data(g:BufferGeometry,id:string):MeshData {try{const p=g.getAttribute('position'),points:Vec3[]=Array.from({length:p.count},(_,i)=>[p.getX(i),p.getY(i),p.getZ(i)]);return {schema:'frameweave.mesh',version:1,id,coordinates:{spaceId:'local.'+id,unit:'meter',origin:'local',x:'right',y:'up',z:'toward-viewer',handedness:'right'},topology:'triangles',vertexIds:points.map((_,i)=>'v'+i),restPositions:points,indices:g.index?Array.from(g.index.array):points.map((_,i)=>i)};}finally{g.dispose();}}
+export function makeMeshes(){return [data(new BoxGeometry(1.5,1.5,1.5),'cube'),data(new IcosahedronGeometry(1,1),'facets'),data(new BoxGeometry(6,.2,3),'floor')];}
+function model(angle:number,x:number,y:number,z:number):Matrix4 {const c=Math.cos(angle),s=Math.sin(angle);return [c,0,-s,0,0,1,0,0,s,0,c,0,x,y,z,1];}
+/** Stateless author TS: prior sample is explicit; request order is irrelevant. */
+export function makeSample(frame:number,fps:{num:number;den:number}):SpatialSample {const t=frame*fps.den/fps.num;return {context:{frame,time:t,fps},camera:{projection:'perspective',position:[3+.2*Math.sin(t),2.2,7],target:[0,0,0],near:.1,far:50,verticalFov:42},objects:[{id:'cube',model:model(t*.9,-.9,.15+Math.sin(t)*.25,.6*Math.sin(t*.8))},{id:'facets',model:model(-t*.6,1,.1,0)},{id:'floor',model:model(0,0,-1.1,0)}]};}

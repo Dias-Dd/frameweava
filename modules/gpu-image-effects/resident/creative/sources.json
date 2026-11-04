@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "repository": "https://github.com/storytold/effectcraft",
+  "commit": "ec7ced1f0515f0b6f376dbcc297f1c441f452d6e",
+  "license": "MIT",
+  "sources": [
+    {
+      "path": "crates/gpu/src/shaders/kernels.wgsl",
+      "archive": "vendor/kernels.wgsl",
+      "bytes": 37016,
+      "sha256": "426656075ec524d6c80e82442e09361f36fc73e0cd915f8a7382cffb424ce9c3",
+      "scope": "pointwise Tint and linear Brightness/Contrast"
+    },
+    {
+      "path": "crates/gpu/src/shaders/fx_color.wgsl",
+      "archive": "vendor/fx_color.wgsl",
+      "bytes": 26992,
+      "sha256": "a98b63fd8b8e0581951b86f779f7488c0eeafdd2023373e6208643345ce22c81",
+      "scope": "Color Balance, six-hue Black & White and Tritone"
+    },
+    {
+      "path": "crates/gpu/src/shaders/common.wgsl",
+      "archive": "vendor/common.wgsl",
+      "bytes": 15692,
+      "sha256": "4244140eba68055a0f1edcd6d0b1d7eee5a244e01c19f3ab0491f8e078702fff",
+      "scope": "hash_noise copied verbatim apart from whitespace"
+    },
+    {
+      "path": "crates/gpu/src/shaders/fx_noise.wgsl",
+      "archive": "vendor/fx_noise.wgsl",
+      "bytes": 26250,
+      "sha256": "2953bf052bd8a92054d8c49653d3691467bb5faba1710300a784ba487ffae2b7",
+      "scope": "Sobel stencil; hash-driven grain building blocks"
+    },
+    {
+      "path": "crates/gpu/src/shaders/fx_stylize.wgsl",
+      "archive": "vendor/fx_stylize.wgsl",
+      "bytes": 34469,
+      "sha256": "4a055788a4c76cb3a796ac545e48c47d3700e79a95f98ee972186e9be77c97d9",
+      "scope": "CC Vignette inverse-square falloff and fxs_texturize relief lighting"
+    }
+  ],
+  "adaptation": "Public PixelScope parameter/read/write ABI; shared compensated Float32/PM arithmetic; working-space luma, no implicit negative/HDR clipping, explicit optional tonal clamp. Pixelate is a native integer centre sampler: importing a whole external raster engine for that operation costs more than the adapter.",
+  "runtimeDependenciesAdded": [],
+  "formalRelease": "Main-owned; existing 0.1.0 manifest/pins untouched"
+}

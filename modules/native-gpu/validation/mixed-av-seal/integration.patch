@@ -1,0 +1,202 @@
+--- a/src/render/renderer.ts
++++ b/src/render/renderer.ts
+@@ -22,6 +22,7 @@
+ import {composeMediaFrame,mediaPreview,expandLegacySurface} from '../media/node.ts';
+ import {assertMediaPolicy,type ProfessionalFrame} from '../media/compositor.ts';
+ import {AudioAdapter} from '../audio/adapter.ts';
++import {audioExecutionStages} from '../audio/execution-stages.ts';
+ import {audioResourceOptions} from '../audio/resource-options.ts';
+ import {layersForMedia} from '../core/output-plan.ts';
+ import {isAudioBlock,isAudioDescriptor,assertAudioBlock} from '../audio/block.ts';
+@@ -132,6 +133,7 @@
+   private nativeKernelKeys=new Map<string,Map<string,number>>();private nativeResourceKeys=new WeakMap<object,number>();private nextNativeKey=0;
+   private adapters=new Map<string,StageAdapter>();
+   private initializationErrors=new Map<string,EngineError>();
++  private initializedStages=new Set<string>();
+   private cache=new StageCache();
+   private callEpochs=new Map<string,number>();
+   private mediaCache=new ValueCache<{surface:ProfessionalSurface;diagnostics:Diagnostic[]}>();
+@@ -141,9 +143,15 @@
+   private closed=false;
+   private closing?:Promise<void>;
+   private fingerprint='';
+-  private constructor(private build:BuiltProject,private options:RendererOptions,private width:number,private height:number){}
++  private constructor(private build:BuiltProject,private options:RendererOptions,private width:number,private height:number,private audioOnly=false){}
+   static registerAdapter(engine:string,factory:AdapterFactory){customAdapters.set(engine,factory);}
+-  static async create(build:BuiltProject,options:RendererOptions={}):Promise<Renderer>{
++  static async create(build:BuiltProject,options:RendererOptions={}):Promise<Renderer>{return this.createForExecution(build,options,false);}
++  /** Same Renderer, full compiler seal; initialize only the audio dependency closure. */
++  static async createAudio(build:BuiltProject,options:RendererOptions={}):Promise<Renderer>{
++    if(options.nativeGpu)throw new EngineError('E_AUDIO_OPTIONS','Audio-only initialization does not accept Native image options');
++    return this.createForExecution(build,options,true);
++  }
++  private static async createForExecution(build:BuiltProject,options:RendererOptions,audioOnly:boolean):Promise<Renderer>{
+     if(options.audioResources)options={...options,audioResources:audioResourceOptions(options.audioResources)};
+     assertWasmOption(options.allowWasm);
+     if(Object.hasOwn(options,'executablePath')||Object.hasOwn(options,'presentationWindow'))throw new EngineError('E_WEB_REMOVED','Browser executable/window options were removed; use nativeGpu.window.');
+@@ -152,6 +160,7 @@
+     if(options.media)options={...options,media:structuredClone(options.media)};
+     assertValidTVG(build.manifest);
+     assertNativeExecution(build.manifest.stages);
++    const stages=audioOnly?audioExecutionStages(build.manifest):build.manifest.stages;
+     const c=build.manifest.composition;
+     const width=options.width ?? (options.height?Math.round(c.width*options.height/c.height):c.width);
+     const height=options.height ?? Math.round(c.height*width/c.width);
+@@ -181,18 +190,29 @@
+       try{if(nativePlan.program.version===2){renderer.nativeBufferExporter=await NativeBufferExporter.create();renderer.nativeBufferExporter.configure(nativePlan.program);}renderer.nativeClient=await NativeGpuClient.create(nativePlan.program,{executable:options.nativeGpu.executable,window:options.nativeGpu.window,timeoutMs:options.timeoutMs});}catch(error){await renderer.close();throw error;}
+       return renderer;
+     }
+-    if(build.manifest.stages.some(s=>s.engine==='native-gpu'))throw new EngineError('E_NATIVE_BACKEND_REQUIRED','Explicit nativeGpu backend selection is required');
+-    const renderer=new Renderer(build,options,width,height);
++    if(stages.some(s=>s.engine==='native-gpu'))throw new EngineError('E_NATIVE_BACKEND_REQUIRED','Explicit nativeGpu backend selection is required');
++    const renderer=new Renderer(build,options,width,height,audioOnly);
+     try {
+       renderer.fingerprint=hashValue([build.hash,'native-host',platform(),arch(),width,height,options.allowWasm===true,options.media??null]);
++      await renderer.initializeStages(stages);
++      return renderer;
++    }catch(error){await renderer.close();throw error;}
++  }
++  private async initializeStages(stages:StageSpec[]){
++    if(this.closed)throw new EngineError('E_RENDERER_CLOSED','Renderer has closed.');
++    const {build,options}=this,c=build.manifest.composition,renderer=this;
++    if(!this.fingerprint)this.fingerprint=hashValue([build.hash,'native-host',platform(),arch(),this.width,this.height,options.allowWasm===true,options.media??null]);
+       const environment={build,options};
+-      for(const engine of new Set(build.manifest.stages.map(stage=>stage.engine))){
++      for(const engine of new Set(stages.map(stage=>stage.engine))){
++        if(renderer.adapters.has(engine))continue;
+         const custom=customAdapters.get(engine);
+         const adapter=custom?await custom(environment):engine==='audio'?new AudioAdapter(build,options.timeoutMs??20000,options.onProfile,options.audioResources):engine==='mock'?new MockAdapter('mock',c.width,c.height):undefined;
+         if(!adapter)throw new EngineError('E_BACKEND_UNAVAILABLE',`Stage backend ${engine} is not implemented.`,{hint:'Use native-gpu with SpiderMonkey; HTML/CSS belongs in the Servo module.'});
+         renderer.adapters.set(engine,adapter);
++        if(adapter instanceof AudioAdapter){const stop=()=>{void adapter.dispose().catch(()=>{});};if(renderer.nativeAbort.signal.aborted)stop();else renderer.nativeAbort.signal.addEventListener("abort",stop,{once:true});}
+       }
+-      await Promise.all(build.manifest.stages.map(async stage=>{
++      await Promise.all(stages.filter(stage=>!renderer.initializedStages.has(stage.id)).map(async stage=>{
++        renderer.initializedStages.add(stage.id);
+         try{
+           await measure(options.onProfile,'stage.init',()=>renderer.adapters.get(stage.engine)!.init(stage),{stageId:stage.id});
+           options.onLog?.(`Initialized Stage ${stage.id} (${stage.engine})`);
+@@ -202,8 +222,6 @@
+           options.onLog?.(`Stage ${stage.id} initialization failed (${failure.code})`);
+         }
+       }));
+-      return renderer;
+-    }catch(error){await renderer.close();throw error;}
+   }
+   /** Existing DAG/time evaluator; only recording/submission is ordered. GPU work
+    * remains in flight in separate bounded slots, default 2. No fake CPU outputs. */
+@@ -364,10 +382,13 @@
+     const task=this.queue.then(async()=>{const result=await this.execute(intervalFrame(this.build.manifest,snapshot),stageId,undefined,snapshot);return {stageOutputs:result.outputs,diagnostics:result.diagnostics,cacheHits:result.cacheHits};});this.queue=task.catch(()=>{});return task;
+   }
+   private async execute(frame:number,stageId?:string,execution?:FrameExecution,interval?:SampleInterval,native?:{parameters:number[][];published:Set<string>}){
+-    if(this.nativeClient&&!native)throw new EngineError('E_NATIVE_MATERIALIZATION','Native resident output requires submitNativeFrame; CPU/file materialization is not implemented in this checkpoint');
++    if(this.nativeClient&&!native&&!interval)throw new EngineError('E_NATIVE_MATERIALIZATION','Native resident output requires submitNativeFrame; CPU/file materialization is not implemented in this checkpoint');
+     if(this.closed)throw new EngineError('E_RENDERER_CLOSED','Renderer has closed.');
+     const tvg=this.build.manifest,c=tvg.composition;
+-    assertSharedExecution(tvg.stages,execution);
++    if(this.audioOnly&&!interval)throw new EngineError('E_AUDIO_INTERVAL_ONLY','This Renderer was initialized for sample intervals');
++    const stages=interval?audioExecutionStages(tvg,stageId):tvg.stages;
++    if(interval)await this.initializeStages(stages);
++    assertSharedExecution(stages,execution);
+     if(!Number.isInteger(frame) || frame<0 || frame>=c.durationInFrames)throw new EngineError('E_FRAME_RANGE',`Frame ${frame} is outside [0, ${c.durationInFrames-1}].`,{frame});
+     let needed:Set<string>|undefined;
+     if(stageId){
+@@ -377,7 +398,7 @@
+     }
+     const outputs:Record<string,Record<string,PortValue>>={},diagnostics:Diagnostic[]=[];
+     let cacheHits=0;
+-    for(const level of topologicalLevels(tvg.stages)){
++    for(const level of topologicalLevels(stages)){
+       const results=await Promise.allSettled(level.filter(stage=>(!needed || needed.has(stage.id)) && isActive(stage,frame)).map(async stage=>{
+         if(native){
+           const plan=this.nativePlan!.stages.get(stage.id)!;
+--- a/modules/render-session/index.ts
++++ b/modules/render-session/index.ts
+@@ -38,7 +38,7 @@
+   private tail:Promise<unknown>=Promise.resolve();private closing?:Promise<void>;private interruption?:Promise<void>;
+   private accepting=true;private stopped=false;private cancelled=false;
+   private build?:BuiltProject;private files:string[]=[];private signature?:string;private trust?:string;
+-  private renderer?:Renderer;private starting?:Promise<Renderer>;
++  private renderer?:Renderer;private starting?:Promise<Renderer>;private rendererAudioOnly=false;
+   private builds=0;private hostStarts=0;private generation=0;private invalidations=0;
+   private shared=new SharedSessionAdapter(this.id);
+   private callAttempts=0;
+@@ -81,7 +81,7 @@
+     if(isExecutionOwner(this.callHost))return Promise.reject(error('E_STAGE_CALL_REENTRANT','Cannot re-enter the owning Session queue'));
+     const task=this.tail.then(()=>withExecutionOwner(this.callHost,run));this.tail=task.catch(()=>{});return task;
+   }
+-  private async retire(){const r=this.renderer;this.renderer=undefined;if(r)await r.close();}
++  private async retire(){const r=this.renderer;this.renderer=undefined;this.rendererAudioOnly=false;if(r)await r.close();}
+   private async prepare():Promise<BuiltProject>{
+     try{
+       this.active();const state=await catalog(this.project);
+@@ -107,8 +107,10 @@
+       throw e;
+     }
+   }
+-  private async acquire(build:BuiltProject,options?:RendererOptions){
++  private async acquire(build:BuiltProject,options?:RendererOptions,audioOnly=false){
+     this.active();
++    if(this.renderer&&this.rendererAudioOnly&&!audioOnly)await this.retire();
++    if(!options&&audioOnly){const {nativeGpu:_native,...policy}=this.policy;options={...policy};}
+     if(!options){
+       const c=build.manifest.composition,width=this.policy.width??(this.policy.height?Math.round(c.width*this.policy.height/c.height):this.policy.mode==='preview'?Math.min(640,c.width):c.width),height=this.policy.height??Math.round(c.height*width/c.width);
+       const native=build.manifest.stages.some(s=>s.engine==='native-gpu');
+@@ -119,7 +121,8 @@
+       await this.retire();
+     }
+     if(!this.renderer){
+-      this.starting=Renderer.create(build,options);
++      this.starting=audioOnly?Renderer.createAudio(build,options):Renderer.create(build,options);
++      this.rendererAudioOnly=audioOnly;
+       try{this.renderer=await this.starting;this.hostStarts++;}finally{this.starting=undefined;}
+       if(this.stopped){await this.retire();this.active();}
+     }
+@@ -164,10 +167,10 @@
+   mediaFrame(frame:number,stageId?:string):Promise<ProfessionalFrame&{shared?:SharedCommit}>{return this.raw(frame,'media',{stageId});}
+   describeAudio(rate:AudioSampleRate){return this.enqueue(async()=>{const build=await this.prepare();if(this.isShared)throw error('E_AUDIO_SHARED_INTERVAL','Audio intervals are not shared frame transactions');return audioProjectInfo(build.manifest,rate);});}
+   evaluateInterval(interval:SampleInterval,options:SessionFrameOptions={}){
+-    const snapshot=structuredClone(interval);assertInterval(snapshot);const stageId=options.stageId;return this.withSignal(options.signal,async()=>{const build=await this.prepare();if(this.isShared)throw error('E_AUDIO_SHARED_INTERVAL','Audio intervals require a stateless project');const seal=this.signature,renderer=await this.acquire(build);try{const result=await renderer.evaluateInterval(snapshot,stageId);this.active();await this.prepare();if(seal!==this.signature)throw error('E_RENDER_SESSION_CHANGED','Audio inputs changed during execution');return result;}catch(e){if(this.stopped)throw this.closedError();if(e instanceof EngineError&&['E_STAGE_TIMEOUT','E_AUDIO_WORKER_CLOSED'].includes(e.code))await this.retire();throw e;}});
++    const snapshot=structuredClone(interval);assertInterval(snapshot);const stageId=options.stageId;return this.withSignal(options.signal,async()=>{const build=await this.prepare();if(this.isShared)throw error('E_AUDIO_SHARED_INTERVAL','Audio intervals require a stateless project');const seal=this.signature,renderer=await this.acquire(build,undefined,true);try{const result=await renderer.evaluateInterval(snapshot,stageId);this.active();await this.prepare();if(seal!==this.signature)throw error('E_RENDER_SESSION_CHANGED','Audio inputs changed during execution');return result;}catch(e){if(this.stopped)throw this.closedError();if(e instanceof EngineError&&['E_STAGE_TIMEOUT','E_AUDIO_WORKER_CLOSED'].includes(e.code))await this.retire();throw e;}});
+   }
+   mixAudio(interval:SampleInterval,options:{layout:'mono'|'stereo';signal?:AbortSignal}){
+-    const snapshot=structuredClone(interval);assertInterval(snapshot);const layout=options.layout;return this.withSignal(options.signal,async()=>{const build=await this.prepare();if(this.isShared)throw error('E_AUDIO_SHARED_INTERVAL','Audio mixing does not publish shared frame state');const seal=this.signature,renderer=await this.acquire(build);try{const result=await mixAudioLayers(build.manifest,snapshot,{layout,gap:'silence',evaluate:(request,stageId)=>renderer.evaluateInterval(request,stageId)});this.active();await this.prepare();if(seal!==this.signature)throw error('E_RENDER_SESSION_CHANGED','Audio inputs changed during mixing');return result;}catch(e){if(this.stopped)throw this.closedError();if(e instanceof EngineError&&['E_STAGE_TIMEOUT','E_AUDIO_WORKER_CLOSED'].includes(e.code))await this.retire();throw e;}});
++    const snapshot=structuredClone(interval);assertInterval(snapshot);const layout=options.layout;return this.withSignal(options.signal,async()=>{const build=await this.prepare();if(this.isShared)throw error('E_AUDIO_SHARED_INTERVAL','Audio mixing does not publish shared frame state');const seal=this.signature,renderer=await this.acquire(build,undefined,true);try{const result=await mixAudioLayers(build.manifest,snapshot,{layout,gap:'silence',evaluate:(request,stageId)=>renderer.evaluateInterval(request,stageId)});this.active();await this.prepare();if(seal!==this.signature)throw error('E_RENDER_SESSION_CHANGED','Audio inputs changed during mixing');return result;}catch(e){if(this.stopped)throw this.closedError();if(e instanceof EngineError&&['E_STAGE_TIMEOUT','E_AUDIO_WORKER_CLOSED'].includes(e.code))await this.retire();throw e;}});
+   }
+   nativeStats(){return this.enqueue(async()=>{const build=await this.prepare();return (await this.acquire(build)).nativeStats();});}
+   readShared<T extends Value>(variable:Variable<T>){return this.enqueue(async()=>{await this.prepare();return this.shared.read(variable);});}
+--- a/modules/native-gpu/service.ts
++++ b/modules/native-gpu/service.ts
+@@ -32,8 +32,8 @@
+  const stages=build.manifest.stages.filter(s=>s.engine==='audio'),ids=new Set(stages.map(s=>s.id));
+  if(stages.some(s=>Object.values(s.inputs).some(v=>v&&typeof v==='object'&&'$ref'in v&&!ids.has(String(v.$ref)))))throw new EngineError('E_NATIVE_AUDIO_DEPENDENCY','Native audio input must be an explicit supported audio dependency; cross-media values need the shared execution adapter');
+  const rate=stages[0]?.audio?.sampleRate;if(!rate)throw new EngineError('E_AUDIO_METADATA','Placed audio requires a declared sample rate');
+- const manifest={...build.manifest,stages,layers:layersForMedia(build.manifest,'audio')},renderer=await Renderer.create({...build,manifest}),handle=await open(path,'wx');
+- const start=frameToSample(startFrame,rate,manifest.composition.fps),end=frameToSample(endFrame,rate,manifest.composition.fps);
++ const renderer=await Renderer.createAudio(build),handle=await open(path,'wx').catch(async error=>{await renderer.close();throw error;});
++ const start=frameToSample(startFrame,rate,build.manifest.composition.fps),end=frameToSample(endFrame,rate,build.manifest.composition.fps);
+  try{
+   if(!raw)await handle.write(wavHeader({sampleRate:rate,layout:'stereo',sampleCount:end-start,format:'float32'}));
+   reportProgress(onProgress,{phase:'audio',completed:0,total:end-start,unit:'samples'});for(let first=start;first<end;first+=4096){if(signal?.aborted)throw new EngineError('E_RENDER_CANCELLED','Audio export cancelled');const block=await mixAudioLayers(build.manifest,{unit:'samples',sampleRate:rate,start:first,endExclusive:Math.min(end,first+4096)},{layout:'stereo',gap:'silence',evaluate:async(interval,stageId)=>renderer.evaluateInterval(interval,stageId)}),encoded=encodePcm(block,'float32',{clip:'reject',dither:{kind:'none'}});let offset=0;while(offset<encoded.bytes.length){const n=await handle.write(encoded.bytes,offset,encoded.bytes.length-offset);if(!n.bytesWritten)throw new EngineError('E_AUDIO_WRITE','PCM output made no progress');offset+=n.bytesWritten;}reportProgress(onProgress,{phase:'audio',completed:Math.min(end,first+4096)-start,total:end-start,unit:'samples'});}
+--- /dev/null
++++ b/src/audio/execution-stages.ts
+@@ -0,0 +1,19 @@
++import type {StageSpec,TVG} from '../core/types.ts';
++import {EngineError} from '../core/errors.ts';
++import {isPortRef} from '../core/graph.ts';
++
++/** Execution selection only. Never replace the authenticated BuiltProject/TVG.
++ * Frame-only CPU producers remain valid explicit dependencies of an Audio Stage.
++ * Native resident media requires its own bridge, not implicit materialization. */
++export function audioExecutionStages(tvg:TVG,stageId?:string):StageSpec[]{
++ const byId=new Map(tvg.stages.map(stage=>[stage.id,stage]));
++ const roots=stageId===undefined?tvg.stages.filter(s=>s.engine==='audio'||Object.values(s.outputs).includes('audio')):[byId.get(stageId)];
++ if(roots.some(s=>!s))throw new EngineError('E_STAGE_REFERENCE',`Unknown Stage ${stageId}`,{stageId});
++ if(stageId!==undefined&&roots[0]!.engine==='native-gpu')throw new EngineError('E_AUDIO_CAPABILITY','Native image targets do not support CPU sample-interval execution',{stageId});
++ const needed=new Set<string>(),pending=roots as StageSpec[];
++ while(pending.length){const stage=pending.pop()!;if(needed.has(stage.id))continue;
++  if(stage.engine==='native-gpu')throw new EngineError('E_AUDIO_DEPENDENCY','Audio intervals cannot implicitly execute Native image dependencies',{stageId:stage.id});
++  needed.add(stage.id);for(const input of Object.values(stage.inputs))if(isPortRef(input)){const producer=byId.get(input.$ref);if(!producer)throw new EngineError('E_STAGE_REF','Missing audio dependency',{stageId:stage.id});pending.push(producer);}
++ }
++ return tvg.stages.filter(s=>needed.has(s.id));
++}

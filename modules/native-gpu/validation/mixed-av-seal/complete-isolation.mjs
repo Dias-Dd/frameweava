@@ -1,0 +1,3 @@
+import{spawn,execFileSync}from'node:child_process';import{resolve}from'node:path';import{mkdir}from'node:fs/promises';
+const root=resolve('.frameweave/mixed-av-seal/core'),commit='cf214adb3c0453dcba6af828c8456363e682f31c';await mkdir(resolve(root,'examples'),{recursive:true});
+const tar=spawn('tar',['-xf','-','-C',root],{windowsHide:true}),git=spawn('git',['archive','--format=tar',commit,'examples/analysis','prototypes/analysis-job-mvp'],{windowsHide:true});git.stdout.pipe(tar.stdin);git.stderr.pipe(process.stderr);tar.stderr.pipe(process.stderr);await Promise.all([git,tar].map(p=>new Promise((r,j)=>{p.once('error',j);p.once('close',code=>code===0?r():j(Error('Archive failed '+code)));})));

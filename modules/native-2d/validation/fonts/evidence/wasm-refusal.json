@@ -1,0 +1,5 @@
+{
+  "code": "E_PACKAGE_PERMISSION",
+  "message": "Default font/path assets require explicit --allow-wasm",
+  "details": "EngineError@frameweave-host.js:523:11\nerror2D2@frameweave-host.js:40522:11\nkernel102@frameweave-host.js:52719:55\nownedDefaultServices2D2/getPaths/paths<@frameweave-host.js:52744:26\ngetPaths@frameweave-host.js:52753:7\nbooleanPathsStream@frameweave-host.js:52790:21\nbooleanPathsStream@frameweave-host.js:52697:14\ncanonicalFilledFaces2@frameweave-host.js:45531:5\nnormalizePathFill2@frameweave-host.js:45706:12\npreparePathFillMesh2@frameweave-host.js:45722:5\nprepareNodeGeometry2@frameweave-host.js:45810:46\nget@frameweave-host.js:45878:27\npreparePool2@frameweave-host.js:45913:31\nscene2D3/frame2/<@frameweave-host.js:48055:145\nasync*withGpuResources3@frameweave-host.js:45601:22\nframe2@frameweave-host.js:48053:60\ncreationStage2/renderAt/task<@frameweave-host.js:47935:26\nrenderAt@frameweave-host.js:47949:9\nrenderAt@frameweave-host.js:48198:20\nrenderAt@frameweave-host.js:2166:38\nrenderAt@frameweave-host.js:80787:24\nnativeDispatcher/</<@frameweave-host.js:82087:158\n"
+}

@@ -1,0 +1,12 @@
+{
+  "commit": "b0c8ca5e2df904df535c5678ed798b017eaab6d3",
+  "module": "spatial-effects@0.3.0",
+  "esbuild": "0.28.2",
+  "inputs": {
+    "modules/spatial-effects/src/simulation.ts": "ed49eb993e7bbdc43252ce7fa482d3252d0b1b06e3902b7f8c5aae3e10c89468",
+    "modules/spatial-effects/src/types.ts": "918029c9c96e58c4a6dcc7fbb7262a1e7bb470aef3fc7a0cc747544921f20120",
+    "src/core/simulation.ts": "492135a26fd18bd5f4083c66d96898e050c7d7caaf6773e8663240c7f9e5ea69",
+    "src/core/time.ts": "b1d9e8a3be47adee369daea66273bc10feac51ae08968c90ca939756a14006aa"
+  },
+  "output": "b44777aba1bb67ea5e1bc2bb3929fe3b472f9d18bf1b549a8dc4d1e89225889c"
+}

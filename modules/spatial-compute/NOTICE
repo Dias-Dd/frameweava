@@ -1,0 +1,3 @@
+Frameweave spatial-compute: authored mathematical kernels, Apache-2.0.
+Hash/ValCoord/Hermite subset adapted from FastNoiseLite1.1.1, Copyright (c)2023 Jordan Peck and contributors, MIT. See vendor/SOURCE.json and vendor/LICENSE-MIT.
+Mathematical references are not source-code license grants. No GPL/NVIDIA/Blender/third-party solver source copied.

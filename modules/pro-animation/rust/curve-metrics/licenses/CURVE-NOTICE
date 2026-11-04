@@ -1,0 +1,8 @@
+Frameweave PA3-CURVE-001
+
+kurbo 0.13.1, fixed published source commit 838b69ef35f3381cefc007d86aa8364f5a6dc673, MIT OR Apache-2.0.
+The original arclen/inv_arclen/eval algorithms are compiled unchanged. Preserve KURBO-LICENSE-MIT, KURBO-LICENSE-APACHE and KURBO-AUTHORS, including Nicolas Silva attribution.
+
+The thin adapter endpoint_tangent helper adapts private PathSeg::tangents from src/bezpath.rs of that same commit. Only exact-zero endpoint derivatives enter the fallback. Its threshold is zero rather than upstream EPS=1e-12, preserving the first mathematically nonzero control direction in declared physical units. The upstream crate is not patched.
+
+Canonical PathData validation, total length budget allocation, tangent validity, explicit contour/join rules and owned Kit transport are Frameweave adapters, not an external renderer or timeline. Complete dependency and Rust standard-library notices are collected by the existing official Kit. New notices live outside the legacy vendor aggregation.

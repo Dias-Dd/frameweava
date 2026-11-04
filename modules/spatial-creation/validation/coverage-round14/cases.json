@@ -1,0 +1,399 @@
+[
+  {
+    "name": "hard",
+    "objects": [
+      {
+        "name": "floor",
+        "size": [
+          2,
+          2
+        ],
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "material": {
+          "name": "floor-material",
+          "model": "lambert",
+          "color": [
+            0.4,
+            0.6,
+            0.8
+          ]
+        }
+      },
+      {
+        "name": "glass",
+        "size": [
+          0.5,
+          1
+        ],
+        "position": [
+          0.5,
+          0,
+          1
+        ],
+        "material": {
+          "name": "glass-material",
+          "model": "unlit",
+          "color": [
+            2,
+            0.05,
+            0.1
+          ],
+          "opacity": 0.5
+        }
+      }
+    ],
+    "lights": [
+      {
+        "kind": "sun",
+        "direction": [
+          0.5,
+          0,
+          1
+        ],
+        "color": [
+          2,
+          1,
+          0.5
+        ],
+        "intensity": 1
+      }
+    ],
+    "environment": {
+      "kind": "constant",
+      "color": [
+        0,
+        0,
+        0
+      ],
+      "samples": 1
+    }
+  },
+  {
+    "name": "soft",
+    "objects": [
+      {
+        "name": "floor",
+        "size": [
+          2,
+          2
+        ],
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "material": {
+          "name": "floor-material",
+          "model": "lambert",
+          "color": [
+            0.4,
+            0.6,
+            0.8
+          ]
+        }
+      },
+      {
+        "name": "glass",
+        "size": [
+          0.5,
+          1
+        ],
+        "position": [
+          0.5,
+          0,
+          1
+        ],
+        "material": {
+          "name": "glass-material",
+          "model": "unlit",
+          "color": [
+            2,
+            0.05,
+            0.1
+          ],
+          "opacity": 0.5
+        }
+      }
+    ],
+    "lights": [
+      {
+        "kind": "sun",
+        "direction": [
+          0.5,
+          0,
+          1
+        ],
+        "color": [
+          2,
+          1,
+          0.5
+        ],
+        "intensity": 1,
+        "angularRadius": 20,
+        "samples": 8
+      }
+    ],
+    "environment": {
+      "kind": "constant",
+      "color": [
+        0,
+        0,
+        0
+      ],
+      "samples": 1
+    }
+  },
+  {
+    "name": "point",
+    "objects": [
+      {
+        "name": "floor",
+        "size": [
+          2,
+          2
+        ],
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "material": {
+          "name": "floor-material",
+          "model": "lambert",
+          "color": [
+            0.4,
+            0.6,
+            0.8
+          ]
+        }
+      },
+      {
+        "name": "beyond-light",
+        "size": [
+          2,
+          1
+        ],
+        "position": [
+          4,
+          0,
+          2
+        ],
+        "material": {
+          "name": "beyond",
+          "model": "unlit",
+          "color": [
+            1,
+            0,
+            0
+          ]
+        }
+      }
+    ],
+    "lights": [
+      {
+        "kind": "point",
+        "position": [
+          2,
+          0,
+          1
+        ],
+        "color": [
+          4,
+          2,
+          1
+        ],
+        "intensity": 1
+      }
+    ],
+    "environment": {
+      "kind": "constant",
+      "color": [
+        0,
+        0,
+        0
+      ],
+      "samples": 1
+    }
+  },
+  {
+    "name": "spot",
+    "objects": [
+      {
+        "name": "floor",
+        "size": [
+          2,
+          2
+        ],
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "material": {
+          "name": "floor-material",
+          "model": "lambert",
+          "color": [
+            0.4,
+            0.6,
+            0.8
+          ]
+        }
+      }
+    ],
+    "lights": [
+      {
+        "kind": "spot",
+        "position": [
+          0,
+          0,
+          2
+        ],
+        "direction": [
+          0,
+          0,
+          -1
+        ],
+        "color": [
+          4,
+          2,
+          1
+        ],
+        "intensity": 1,
+        "innerAngle": 15,
+        "outerAngle": 35
+      }
+    ],
+    "environment": {
+      "kind": "constant",
+      "color": [
+        0,
+        0,
+        0
+      ],
+      "samples": 1
+    }
+  },
+  {
+    "name": "ibl",
+    "objects": [
+      {
+        "name": "floor",
+        "size": [
+          2,
+          2
+        ],
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "material": {
+          "name": "metal",
+          "color": [
+            0.5,
+            0.3,
+            0.05
+          ],
+          "roughness": 0.4,
+          "metalness": 0.6,
+          "opacity": 0.6
+        }
+      }
+    ],
+    "lights": [],
+    "environment": {
+      "kind": "image",
+      "source": {
+        "resource": {
+          "resource": "hdr",
+          "size": [
+            4,
+            2
+          ],
+          "decode": "surface-v2"
+        }
+      },
+      "samples": 32,
+      "background": true,
+      "backgroundOpacity": 0.2
+    }
+  },
+  {
+    "name": "occlusion",
+    "objects": [
+      {
+        "name": "floor",
+        "size": [
+          2,
+          2
+        ],
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "material": {
+          "name": "floor-material",
+          "model": "lambert",
+          "color": [
+            0.4,
+            0.6,
+            0.8
+          ]
+        }
+      },
+      {
+        "name": "glass",
+        "size": [
+          0.5,
+          1
+        ],
+        "position": [
+          0.5,
+          0,
+          1
+        ],
+        "material": {
+          "name": "glass-material",
+          "model": "unlit",
+          "color": [
+            2,
+            0.05,
+            0.1
+          ],
+          "opacity": 0.5
+        }
+      }
+    ],
+    "lights": [
+      {
+        "kind": "sun",
+        "direction": [
+          0.5,
+          0,
+          1
+        ],
+        "color": [
+          2,
+          1,
+          0.5
+        ],
+        "intensity": 1
+      }
+    ],
+    "environment": {
+      "kind": "constant",
+      "color": [
+        2,
+        0.5,
+        0.25
+      ],
+      "samples": 32,
+      "occlusion": true
+    }
+  }
+]

@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "sourceCommit": "6ea0b93590c7038cf01c8154fd5b7f194aae297d",
+  "started": "2026-11-01T07:31:04.587Z",
+  "runtime": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\.frameweave\\servo-kit\\bundles\\a5d6f8833dbbc530d402d02803ceec6145c821e142a850907b3223d0a5ba1d3a",
+  "steps": [
+    {
+      "name": "build-inputs",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "modules/servo/validation/verify-build.ts"
+      ],
+      "ms": 744.727,
+      "status": 0,
+      "error": null,
+      "stdoutSha256": "18b926d144ff019a482a5de0b706182ba9609b322fbe08c9d9d5cbf0f5f0cad0",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "types",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "ms": 9493.9119,
+      "status": 0,
+      "error": null,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "admission",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "modules/servo/validation/verify-admission.ts"
+      ],
+      "ms": 4396.553400000001,
+      "status": 0,
+      "error": null,
+      "stdoutSha256": "604710dfa6cb0ac4a30393be126db7c0059f816e7d84a74ed9daee02aab87ac4",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "lifecycle",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "modules/servo/validation/verify-lifecycle.ts"
+      ],
+      "ms": 12765.5197,
+      "status": 1,
+      "error": null,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "594554882d5f3b89b2798990123607f50a2967003013df5887d43198586932c5"
+    }
+  ],
+  "ms": 27453.516
+}

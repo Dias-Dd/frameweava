@@ -1,0 +1,37 @@
+{
+  "ok": true,
+  "rows": [
+    {
+      "name": "fresh immutable R1 candidate install with reviewed default assets",
+      "ok": true,
+      "detail": {
+        "installed": [
+          "native-2d-candidate@0.4.5"
+        ],
+        "roots": {
+          "native-2d-candidate": "native-2d-candidate@0.4.5"
+        },
+        "lockfile": "D:\\frameweave-worktrees\\agent-4\\.frameweave\\native-2d\\font-project-font-package-17\\frameweave.packages.lock.json"
+      },
+      "wallMs": 2634.7007000000003
+    },
+    {
+      "name": "public creator PNG first middle final and complete one-second MP4",
+      "ok": true,
+      "detail": {
+        "video": "D:\\frameweave-worktrees\\agent-4\\modules\\native-2d\\validation\\fonts\\evidence\\fonts-18.mp4",
+        "frames": 24,
+        "seconds": 1,
+        "completeDecode": true,
+        "pngs": [
+          0,
+          12,
+          23
+        ],
+        "encoder": "libx264",
+        "scope": "Actual Native GPU; lossy H264 separate from float comparisons"
+      },
+      "wallMs": 45357.2274
+    }
+  ]
+}

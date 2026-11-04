@@ -1,0 +1,55 @@
+TAP version 13
+# {"case":"persistent-video","stats":{"version":1,"backend":"ffmpeg-cpu","hardwareDecode":false,"gpuDirect":false,"opens":2,"decodedFrames":9,"seeks":1,"cacheHits":1}}
+# Subtest: declared video decodes all frames, seeks by PTS, rejects undeclared/tampered inputs, and renders in native Stage
+not ok 1 - declared video decodes all frames, seeks by PTS, rejects undeclared/tampered inputs, and renders in native Stage
+  ---
+  duration_ms: 2530.7535
+  type: 'test'
+  location: 'C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\tests\\native-media-delivery.test.ts:1:1776'
+  failureType: 'testCodeFailure'
+  error: |-
+    C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\artifacts\native-media-delivery\video-xLzNac\project.tsx:3:92 TS2345: Argument of type '{ position: { frame: number; }; version: number; id: string; decode: string; decoder: string; boundary: string; interpretation: { primaries: string; whitePoint: string; transfer: string; reference: string; range: string; referenceWhiteNits: number; }; metadataPolicy: string; output: { ...; }; cacheBytes: number; }' is not assignable to parameter of type 'NativeResource'.
+      Type '{ position: { frame: number; }; version: number; id: string; decode: string; decoder: string; boundary: string; interpretation: { primaries: string; whitePoint: string; transfer: string; reference: string; range: string; referenceWhiteNits: number; }; metadataPolicy: string; output: { ...; }; cacheBytes: number; }' is not assignable to type 'NativeVideoResource'.
+        Types of property 'version' are incompatible.
+          Type 'number' is not assignable to type '1'.
+  code: 'E_TYPECHECK'
+  name: 'EngineError'
+  stack: |-
+    typecheckProject (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\src\compiler\typecheck.ts:41:11)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async buildProject (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\src\compiler\build.ts:98:3)
+    async TestContext.<anonymous> (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\tests\native-media-delivery.test.ts:48:14)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: native float final delivery preserves EXR and produces real 10-bit HEVC/AV1 HDR with metadata and AU-1 audio
+not ok 2 - native float final delivery preserves EXR and produces real 10-bit HEVC/AV1 HDR with metadata and AU-1 audio
+  ---
+  duration_ms: 11088.9862
+  type: 'test'
+  location: 'C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\tests\\native-media-delivery.test.ts:4:1489'
+  failureType: 'testCodeFailure'
+  error: |-
+    [hevc_nvenc @ 000001cd9e88d6c0] InitializeEncoder failed: invalid param (8): Frame dimensions are less than the minimum supported value.
+    [vost#0:0/hevc_nvenc @ 000001cd9e8b0c40] Error while opening encoder - maybe incorrect parameters such as bit_rate, rate, width or height.
+    Error while filtering: Invalid argument
+    [out#0/hevc @ 000001cd9e8afdc0] Nothing was written into output file, because at least one of its streams received no packets.
+    
+  code: 'E_MEDIA_ENCODE'
+  name: 'EngineError'
+  stack: |-
+    ChildProcess.<anonymous> (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\src\media\encoding.ts:93:180)
+    Object.onceWrapper (node:events:634:26)
+    ChildProcess.emit (node:events:519:28)
+    maybeClose (node:internal/child_process:1101:16)
+    ChildProcess._handle.onexit (node:internal/child_process:304:5)
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 0
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 15250.6144

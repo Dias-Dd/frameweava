@@ -1,0 +1,229 @@
+{
+  "schemaVersion": 1,
+  "scope": "The 49 user-confirmed missing foundations; not all Adobe effects",
+  "longTermGoal": "paused",
+  "effects": [
+    {
+      "name": "boxBlur",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "directionalBlur",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "radialBlur",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "zoomBlur",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "channelBlur",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "compoundBlur",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "sharpen",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "convolve3x3",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "emboss",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "colorEmboss",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "findEdges",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "posterize",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "threshold",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "thresholdRGB",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "erodeImage",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "dilateImage",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "hueSaturation",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "colorize",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "vibrance",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "photoFilter",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "gammaPedestalGain",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "exposure",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "leaveColor",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "changeColor",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "changeToColor",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "channelArithmetic",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "setChannels",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "shiftChannels",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "removeColorMatting",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "solidComposite",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "noise",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "orderedDither",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "checkerboard",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "linearGradient",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "radialGradient",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "fourColorGradient",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "gradientMap",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "autoLevels",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "autoContrast",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "autoColor",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "equalize",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "shadowHighlight",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "selectiveColor",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "broadcastColors",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "videoLimiter",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "median",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "dustAndScratches",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "bilateralBlur",
+      "status": "gpu-verified"
+    },
+    {
+      "name": "smartBlur",
+      "status": "gpu-verified"
+    }
+  ],
+  "advancedWarpStarted": false,
+  "verification": {
+    "flow": "artifacts/gpu-image-effects/chain-foundations/flow.json",
+    "individualComparisons": 98,
+    "bounds": {
+      "rgba32float": 3e-06,
+      "rgba16float": 0.0006
+    },
+    "maxScaled": {
+      "rgba16float": 0.0004704663797769463,
+      "rgba32float": 1.559781632203707e-07
+    },
+    "full49StageChain": true,
+    "hardware": {
+      "vendor": "nvidia",
+      "architecture": "blackwell",
+      "isFallbackAdapter": false
+    },
+    "otherVendors": "unverified",
+    "finalTypes": "passed",
+    "statisticsTransport": "explicit readback/decode-only/typed upload; all statistics GPU",
+    "unit": "passed",
+    "testWallMs": 140189.2027,
+    "implementationBeforeTestsWallMs": 1621122,
+    "flowComplete": true
+  }
+}

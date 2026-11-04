@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "baseCommit": "15c4bff6c8006d288ee2eb6d7e3989a9e3d4f1ba",
+  "sourceIdentity": {
+    "src/render/renderer.ts": "60a8f5947242c8c00cd68bf2fb496c39a140013e4ab2712123b1b971325a3e90",
+    "modules/native-gpu/logic-host.ts": "1239d0c40f68cc1888e5bbd0d9ceaaddb98fdd77031df598e6fda2ad3f218852",
+    "modules/native-gpu/web-bridge.ts": "4e15153b6f388c2126534feb7f20c608560a95f1a78752fabcd8cc9c7d021f69",
+    "modules/native-gpu/service.ts": "d360a33c8cdc24ee764f30bce01016906092a4927faeb65756288104dbeb85cd",
+    "tests/native-web-prefix-cancellation.test.ts": "5a83d7a9c8c30494c0473875141e0c9c31aa1300d4ad8c2ae7a242aaa85817fc"
+  },
+  "native": {
+    "debug": {
+      "file": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\.frameweave\\native-target\\debug\\frameweave-native-gpu.exe",
+      "bytes": 157394504,
+      "sha256": "6a668cc8d8da9ae9a56f8275b2ba7739b9f3614949a9e7b5caf8434fa23acb50"
+    },
+    "release": {
+      "file": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\.frameweave\\native-target\\release\\frameweave-native-gpu.exe",
+      "bytes": 7728202,
+      "sha256": "2fd6f44a680b9e0980ac9e217cffdc23f94b81fcf4027ac3eccdfcfaa9c9831d"
+    }
+  },
+  "scope": "Four TypeScript owner files only; no Rust/protocol/P4/permission changes and no native rebuild required.",
+  "batches": [
+    {
+      "path": "before",
+      "status": "expected failure",
+      "tests": {
+        "pass": 0,
+        "fail": 1
+      },
+      "reason": "Before fix: cancellation during a real native.render RPC still increments native submitted from 0 to 1."
+    },
+    {
+      "path": "after",
+      "status": "18 passed / 1 setup failure",
+      "tests": {
+        "pass": 18,
+        "fail": 1
+      },
+      "reason": "The export test incorrectly selected a diagnostic executable; the existing production profile gate correctly refused it with E_NATIVE_BINARY_PROFILE. Corrected fixture to use the production release binary; assertions retained."
+    },
+    {
+      "path": "final",
+      "status": "passed",
+      "tests": {
+        "pass": 12,
+        "fail": 0
+      },
+      "reason": "All five new real-GPU cancellation cases plus seven existing client cancellation tests pass; final typecheck passes. The four implementation file hashes are identical to the preceding 18/19 batch, whose seven existing bridge cases including real PNG/MP4 passed."
+    }
+  ],
+  "totalMeasuredValidationMs": 216201.99049999999,
+  "contract": [
+    "Cancellation propagates from Renderer frame/batch/prepare and renderNativeProject through recording, PNG prefix and actual NativeGpuClient.submit signal boundary.",
+    "Cancellation never retracts accepted native pipe/GPU work: drain accepted prefix, then stop readback and downstream submission.",
+    "Completed native.render RPC deltas are reconciled before noticing cancellation, preserving subsequent retries.",
+    "prepareNativeFrame adds only an optional options.signal argument; existing callers remain valid."
+  ],
+  "notRun": [
+    "Performance benchmarks",
+    "Whole repository regression",
+    "Linux/macOS",
+    "Full independent package installation"
+  ],
+  "notes": "Raw logs are separate batches, not one all-green cohort. No existing failure assertions were weakened; no Main files, SDK pins or locks modified.",
+  "rawLogEncoding": "Failure stdout files ending .txt.gz are losslessly compressed to preserve original assertion whitespace. All original logs remain in artifacts/native-web-cancellation."
+}

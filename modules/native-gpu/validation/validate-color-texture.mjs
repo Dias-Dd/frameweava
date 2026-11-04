@@ -1,0 +1,14 @@
+import {spawnSync,execFileSync} from 'node:child_process';
+import {mkdirSync,readFileSync,writeFileSync,existsSync} from 'node:fs';
+import {resolve,join} from 'node:path';
+import {createHash} from 'node:crypto';
+const out=resolve('artifacts/native-color-texture/final');mkdirSync(out,{recursive:true});
+const tests=['native-color-texture','native-gpu-v2','native-gpu-composite','native-state','native-image-data','native-gpu-production','native-gpu-security','native-gpu-cancellation'];
+const steps=[['debug-build',['modules/native-gpu/build.mjs','--diagnostics']],['release-build',['modules/native-gpu/build.mjs','--release']],['types',['node_modules/typescript/bin/tsc','--noEmit']],['validation-types',['node_modules/typescript/bin/tsc','--noEmit','-p','modules/native-gpu/validation/tsconfig.json']],['targeted',['--import','tsx','--test','--test-concurrency=1',...tests.map(n=>`tests/${n}.test.ts`)]],['tsx-media',['--import','tsx','modules/native-gpu/validation/verify-color-texture.ts']]];
+const resume=process.argv.includes('--resume'),sha=b=>createHash('sha256').update(b).digest('hex'),report=resume?JSON.parse(readFileSync(join(out,'campaign.json'),'utf8')):{version:1,baseCommit:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),started:new Date().toISOString(),environment:{platform:process.platform,node:process.version},steps:[]};
+const prefix=resume?'resumed-':'',selected=resume?steps.slice(2):steps;
+// Resume preserves the failed run and its cost. Rust inputs must still match
+// both receipts; a changed Rust source requires a fresh build before resuming.
+if(resume)for(const profile of ['debug','release']){const receipt=JSON.parse(readFileSync(resolve('.frameweave/native-target',profile,'native-build.json'),'utf8'));for(const [file,hash]of Object.entries(receipt.inputHashes))if(sha(readFileSync(resolve('modules/native-gpu',file)))!==hash)throw Error('Native build inputs changed; rebuild explicitly before --resume');}
+for(const [name,args]of selected){const at=performance.now(),r=spawnSync(process.execPath,args,{encoding:'utf8',windowsHide:true,timeout:180000,maxBuffer:32*1024**2,env:{...process.env,FRAMEWEAVE_HOME:resolve('.frameweave/user-home')}}),stdout=r.stdout??'',stderr=r.stderr??'';writeFileSync(join(out,prefix+name+'.stdout.txt'),stdout);writeFileSync(join(out,prefix+name+'.stderr.txt'),stderr);const entry={name:prefix+name,args,status:r.status,error:r.error?.message??null,ms:performance.now()-at,stdoutSha256:sha(stdout),stderrSha256:sha(stderr)};report.steps.push(entry);console.log(JSON.stringify(entry));report.ms=report.steps.reduce((n,s)=>n+s.ms,0);writeFileSync(join(out,'campaign.json'),JSON.stringify(report,null,2)+'\n');if(r.status!==0){process.exitCode=1;break;}}
+for(const profile of ['debug','release']){const p=resolve('.frameweave/native-target',profile,'native-build.json');if(existsSync(p))writeFileSync(join(out,profile+'-build.json'),readFileSync(p));}

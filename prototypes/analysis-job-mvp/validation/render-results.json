@@ -1,0 +1,1674 @@
+{
+  "cache": {
+    "trackPath": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-2\\.frameweave\\analysis-job-mvp\\cache\\8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765\\track.json",
+    "cacheDirectory": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-2\\.frameweave\\analysis-job-mvp\\cache\\8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765",
+    "cacheKey": "8c7d6cae1eb316c4f568a0ecd97da4fbd7c5639e9354ad5266f1258d5bca3765",
+    "cacheHit": true,
+    "cleanup": {
+      "browserClosed": true,
+      "decoderClosed": true,
+      "tempRemoved": true,
+      "childExited": true,
+      "forced": false
+    },
+    "metrics": {
+      "elapsedMs": 214.33220000000006,
+      "inferenceFrames": 0
+    }
+  },
+  "renderMs": 8681.129700000001,
+  "metadata": {
+    "width": 640,
+    "height": 480,
+    "fps": 8,
+    "duration": 8,
+    "frames": 64,
+    "decodable": true
+  },
+  "frames": [
+    {
+      "frame": 0,
+      "track": {
+        "x": 0.576631486415863,
+        "y": 0.3554867208003998,
+        "valid": true,
+        "trackId": "face-segment-1",
+        "sample": {
+          "mediaTime": 0,
+          "valid": true,
+          "trackId": "face-segment-1",
+          "anchor": {
+            "x": 0.576631486415863,
+            "y": 0.3554867208003998
+          },
+          "box": {
+            "x": 0.4913405776023865,
+            "y": 0.3554867208003998,
+            "width": 0.17058181762695312,
+            "height": 0.23080715537071228
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 1,
+      "track": {
+        "x": 0,
+        "y": 0,
+        "valid": false,
+        "trackId": "",
+        "sample": {
+          "mediaTime": 0.125,
+          "valid": false,
+          "reason": "missing-detection"
+        }
+      },
+      "label": false
+    },
+    {
+      "frame": 2,
+      "track": {
+        "x": 0.5446830838918686,
+        "y": 0.3557721674442291,
+        "valid": true,
+        "trackId": "face-segment-2",
+        "sample": {
+          "mediaTime": 0.25,
+          "valid": true,
+          "trackId": "face-segment-2",
+          "anchor": {
+            "x": 0.5446830838918686,
+            "y": 0.3557721674442291
+          },
+          "box": {
+            "x": 0.458408921957016,
+            "y": 0.3557721674442291,
+            "width": 0.1725483238697052,
+            "height": 0.23586449027061462
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 3,
+      "track": {
+        "x": 0.5382688790559769,
+        "y": 0.3446418046951294,
+        "valid": true,
+        "trackId": "face-segment-2",
+        "sample": {
+          "mediaTime": 0.375,
+          "valid": true,
+          "trackId": "face-segment-2",
+          "anchor": {
+            "x": 0.5382688790559769,
+            "y": 0.3446418046951294
+          },
+          "box": {
+            "x": 0.44731101393699646,
+            "y": 0.3446418046951294,
+            "width": 0.18191573023796082,
+            "height": 0.2383858561515808
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 4,
+      "track": {
+        "x": 0,
+        "y": 0,
+        "valid": false,
+        "trackId": "",
+        "sample": {
+          "mediaTime": 0.5,
+          "valid": false,
+          "reason": "missing-detection"
+        }
+      },
+      "label": false
+    },
+    {
+      "frame": 5,
+      "track": {
+        "x": 0.4616950750350952,
+        "y": 0.32834383845329285,
+        "valid": true,
+        "trackId": "face-segment-3",
+        "sample": {
+          "mediaTime": 0.625,
+          "valid": true,
+          "trackId": "face-segment-3",
+          "anchor": {
+            "x": 0.4616950750350952,
+            "y": 0.32834383845329285
+          },
+          "box": {
+            "x": 0.36742109060287476,
+            "y": 0.32834383845329285,
+            "width": 0.18854796886444092,
+            "height": 0.24674585461616516
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 6,
+      "track": {
+        "x": 0,
+        "y": 0,
+        "valid": false,
+        "trackId": "",
+        "sample": {
+          "mediaTime": 0.75,
+          "valid": false,
+          "reason": "missing-detection"
+        }
+      },
+      "label": false
+    },
+    {
+      "frame": 7,
+      "track": {
+        "x": 0.49790894985198975,
+        "y": 0.3868715465068817,
+        "valid": true,
+        "trackId": "face-segment-4",
+        "sample": {
+          "mediaTime": 0.875,
+          "valid": true,
+          "trackId": "face-segment-4",
+          "anchor": {
+            "x": 0.49790894985198975,
+            "y": 0.3868715465068817
+          },
+          "box": {
+            "x": 0.4144969582557678,
+            "y": 0.3868715465068817,
+            "width": 0.16682398319244385,
+            "height": 0.24112793803215027
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 8,
+      "track": {
+        "x": 0.5051994621753693,
+        "y": 0.38008299469947815,
+        "valid": true,
+        "trackId": "face-segment-4",
+        "sample": {
+          "mediaTime": 1,
+          "valid": true,
+          "trackId": "face-segment-4",
+          "anchor": {
+            "x": 0.5051994621753693,
+            "y": 0.38008299469947815
+          },
+          "box": {
+            "x": 0.41859203577041626,
+            "y": 0.38008299469947815,
+            "width": 0.173214852809906,
+            "height": 0.23974314332008362
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 9,
+      "track": {
+        "x": 0,
+        "y": 0,
+        "valid": false,
+        "trackId": "",
+        "sample": {
+          "mediaTime": 1.125,
+          "valid": false,
+          "reason": "missing-detection"
+        }
+      },
+      "label": false
+    },
+    {
+      "frame": 10,
+      "track": {
+        "x": 0.5656879842281342,
+        "y": 0.2913486063480377,
+        "valid": true,
+        "trackId": "face-segment-5",
+        "sample": {
+          "mediaTime": 1.25,
+          "valid": true,
+          "trackId": "face-segment-5",
+          "anchor": {
+            "x": 0.5656879842281342,
+            "y": 0.2913486063480377
+          },
+          "box": {
+            "x": 0.47351592779159546,
+            "y": 0.2913486063480377,
+            "width": 0.1843441128730774,
+            "height": 0.2631608545780182
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 11,
+      "track": {
+        "x": 0.581811249256134,
+        "y": 0.2907845675945282,
+        "valid": true,
+        "trackId": "face-segment-5",
+        "sample": {
+          "mediaTime": 1.375,
+          "valid": true,
+          "trackId": "face-segment-5",
+          "anchor": {
+            "x": 0.581811249256134,
+            "y": 0.2907845675945282
+          },
+          "box": {
+            "x": 0.4848484992980957,
+            "y": 0.2907845675945282,
+            "width": 0.19392549991607666,
+            "height": 0.27456411719322205
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 12,
+      "track": {
+        "x": 0.5762710720300674,
+        "y": 0.27398622035980225,
+        "valid": true,
+        "trackId": "face-segment-5",
+        "sample": {
+          "mediaTime": 1.5,
+          "valid": true,
+          "trackId": "face-segment-5",
+          "anchor": {
+            "x": 0.5762710720300674,
+            "y": 0.27398622035980225
+          },
+          "box": {
+            "x": 0.47523537278175354,
+            "y": 0.27398622035980225,
+            "width": 0.2020713984966278,
+            "height": 0.2785450220108032
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 13,
+      "track": {
+        "x": 0.5474719852209091,
+        "y": 0.28976911306381226,
+        "valid": true,
+        "trackId": "face-segment-5",
+        "sample": {
+          "mediaTime": 1.625,
+          "valid": true,
+          "trackId": "face-segment-5",
+          "anchor": {
+            "x": 0.5474719852209091,
+            "y": 0.28976911306381226
+          },
+          "box": {
+            "x": 0.4525204598903656,
+            "y": 0.28976911306381226,
+            "width": 0.18990305066108704,
+            "height": 0.2752055525779724
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 14,
+      "track": {
+        "x": 0.5053903162479401,
+        "y": 0.3140595257282257,
+        "valid": true,
+        "trackId": "face-segment-5",
+        "sample": {
+          "mediaTime": 1.75,
+          "valid": true,
+          "trackId": "face-segment-5",
+          "anchor": {
+            "x": 0.5053903162479401,
+            "y": 0.3140595257282257
+          },
+          "box": {
+            "x": 0.4096452593803406,
+            "y": 0.3140595257282257,
+            "width": 0.19149011373519897,
+            "height": 0.2807144224643707
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 15,
+      "track": {
+        "x": 0.47508785128593445,
+        "y": 0.31917378306388855,
+        "valid": true,
+        "trackId": "face-segment-5",
+        "sample": {
+          "mediaTime": 1.875,
+          "valid": true,
+          "trackId": "face-segment-5",
+          "anchor": {
+            "x": 0.47508785128593445,
+            "y": 0.31917378306388855
+          },
+          "box": {
+            "x": 0.374295711517334,
+            "y": 0.31917378306388855,
+            "width": 0.20158427953720093,
+            "height": 0.284250944852829
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 16,
+      "track": {
+        "x": 0.47644613683223724,
+        "y": 0.29018932580947876,
+        "valid": true,
+        "trackId": "face-segment-5",
+        "sample": {
+          "mediaTime": 2,
+          "valid": true,
+          "trackId": "face-segment-5",
+          "anchor": {
+            "x": 0.47644613683223724,
+            "y": 0.29018932580947876
+          },
+          "box": {
+            "x": 0.38357362151145935,
+            "y": 0.29018932580947876,
+            "width": 0.1857450306415558,
+            "height": 0.2844488024711609
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 17,
+      "track": {
+        "x": 0.49237513542175293,
+        "y": 0.28240615129470825,
+        "valid": true,
+        "trackId": "face-segment-5",
+        "sample": {
+          "mediaTime": 2.125,
+          "valid": true,
+          "trackId": "face-segment-5",
+          "anchor": {
+            "x": 0.49237513542175293,
+            "y": 0.28240615129470825
+          },
+          "box": {
+            "x": 0.3898393511772156,
+            "y": 0.28240615129470825,
+            "width": 0.2050715684890747,
+            "height": 0.2938922643661499
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 18,
+      "track": {
+        "x": 0,
+        "y": 0,
+        "valid": false,
+        "trackId": "",
+        "sample": {
+          "mediaTime": 2.25,
+          "valid": false,
+          "reason": "missing-detection"
+        }
+      },
+      "label": false
+    },
+    {
+      "frame": 19,
+      "track": {
+        "x": 0.5600450485944748,
+        "y": 0.3197602927684784,
+        "valid": true,
+        "trackId": "face-segment-6",
+        "sample": {
+          "mediaTime": 2.375,
+          "valid": true,
+          "trackId": "face-segment-6",
+          "anchor": {
+            "x": 0.5600450485944748,
+            "y": 0.3197602927684784
+          },
+          "box": {
+            "x": 0.4631853997707367,
+            "y": 0.3197602927684784,
+            "width": 0.1937192976474762,
+            "height": 0.29298481345176697
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 20,
+      "track": {
+        "x": 0,
+        "y": 0,
+        "valid": false,
+        "trackId": "",
+        "sample": {
+          "mediaTime": 2.5,
+          "valid": false,
+          "reason": "missing-detection"
+        }
+      },
+      "label": false
+    },
+    {
+      "frame": 21,
+      "track": {
+        "x": 0.5784969329833984,
+        "y": 0.32214444875717163,
+        "valid": true,
+        "trackId": "face-segment-7",
+        "sample": {
+          "mediaTime": 2.625,
+          "valid": true,
+          "trackId": "face-segment-7",
+          "anchor": {
+            "x": 0.5784969329833984,
+            "y": 0.32214444875717163
+          },
+          "box": {
+            "x": 0.48531556129455566,
+            "y": 0.32214444875717163,
+            "width": 0.18636274337768555,
+            "height": 0.28296327590942383
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 22,
+      "track": {
+        "x": 0.5672660022974014,
+        "y": 0.33326223492622375,
+        "valid": true,
+        "trackId": "face-segment-7",
+        "sample": {
+          "mediaTime": 2.75,
+          "valid": true,
+          "trackId": "face-segment-7",
+          "anchor": {
+            "x": 0.5672660022974014,
+            "y": 0.33326223492622375
+          },
+          "box": {
+            "x": 0.46875008940696716,
+            "y": 0.33326223492622375,
+            "width": 0.19703182578086853,
+            "height": 0.2749191224575043
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 23,
+      "track": {
+        "x": 0.5624411553144455,
+        "y": 0.30733051896095276,
+        "valid": true,
+        "trackId": "face-segment-7",
+        "sample": {
+          "mediaTime": 2.875,
+          "valid": true,
+          "trackId": "face-segment-7",
+          "anchor": {
+            "x": 0.5624411553144455,
+            "y": 0.30733051896095276
+          },
+          "box": {
+            "x": 0.4732528626918793,
+            "y": 0.30733051896095276,
+            "width": 0.17837658524513245,
+            "height": 0.2782759368419647
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 24,
+      "track": {
+        "x": 0.5479583442211151,
+        "y": 0.34486714005470276,
+        "valid": true,
+        "trackId": "face-segment-7",
+        "sample": {
+          "mediaTime": 3,
+          "valid": true,
+          "trackId": "face-segment-7",
+          "anchor": {
+            "x": 0.5479583442211151,
+            "y": 0.34486714005470276
+          },
+          "box": {
+            "x": 0.4551677703857422,
+            "y": 0.34486714005470276,
+            "width": 0.18558114767074585,
+            "height": 0.27146396040916443
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 25,
+      "track": {
+        "x": 0.5442052930593491,
+        "y": 0.35328859090805054,
+        "valid": true,
+        "trackId": "face-segment-7",
+        "sample": {
+          "mediaTime": 3.125,
+          "valid": true,
+          "trackId": "face-segment-7",
+          "anchor": {
+            "x": 0.5442052930593491,
+            "y": 0.35328859090805054
+          },
+          "box": {
+            "x": 0.4514981210231781,
+            "y": 0.35328859090805054,
+            "width": 0.18541434407234192,
+            "height": 0.2809007167816162
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 26,
+      "track": {
+        "x": 0.5215520560741425,
+        "y": 0.3387429118156433,
+        "valid": true,
+        "trackId": "face-segment-7",
+        "sample": {
+          "mediaTime": 3.25,
+          "valid": true,
+          "trackId": "face-segment-7",
+          "anchor": {
+            "x": 0.5215520560741425,
+            "y": 0.3387429118156433
+          },
+          "box": {
+            "x": 0.43501710891723633,
+            "y": 0.3387429118156433,
+            "width": 0.17306989431381226,
+            "height": 0.27030783891677856
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 27,
+      "track": {
+        "x": 0.5136361867189407,
+        "y": 0.3395850956439972,
+        "valid": true,
+        "trackId": "face-segment-7",
+        "sample": {
+          "mediaTime": 3.375,
+          "valid": true,
+          "trackId": "face-segment-7",
+          "anchor": {
+            "x": 0.5136361867189407,
+            "y": 0.3395850956439972
+          },
+          "box": {
+            "x": 0.42651399970054626,
+            "y": 0.3395850956439972,
+            "width": 0.17424437403678894,
+            "height": 0.2665655314922333
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 28,
+      "track": {
+        "x": 0,
+        "y": 0,
+        "valid": false,
+        "trackId": "",
+        "sample": {
+          "mediaTime": 3.5,
+          "valid": false,
+          "reason": "missing-detection"
+        }
+      },
+      "label": false
+    },
+    {
+      "frame": 29,
+      "track": {
+        "x": 0.5482331961393356,
+        "y": 0.3429461717605591,
+        "valid": true,
+        "trackId": "face-segment-8",
+        "sample": {
+          "mediaTime": 3.625,
+          "valid": true,
+          "trackId": "face-segment-8",
+          "anchor": {
+            "x": 0.5482331961393356,
+            "y": 0.3429461717605591
+          },
+          "box": {
+            "x": 0.4593223035335541,
+            "y": 0.3429461717605591,
+            "width": 0.1778217852115631,
+            "height": 0.2639996409416199
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 30,
+      "track": {
+        "x": 0.5746809840202332,
+        "y": 0.3054189085960388,
+        "valid": true,
+        "trackId": "face-segment-8",
+        "sample": {
+          "mediaTime": 3.75,
+          "valid": true,
+          "trackId": "face-segment-8",
+          "anchor": {
+            "x": 0.5746809840202332,
+            "y": 0.3054189085960388
+          },
+          "box": {
+            "x": 0.4846077561378479,
+            "y": 0.3054189085960388,
+            "width": 0.1801464557647705,
+            "height": 0.2697627544403076
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 31,
+      "track": {
+        "x": 0.5970422327518463,
+        "y": 0.3174160122871399,
+        "valid": true,
+        "trackId": "face-segment-8",
+        "sample": {
+          "mediaTime": 3.875,
+          "valid": true,
+          "trackId": "face-segment-8",
+          "anchor": {
+            "x": 0.5970422327518463,
+            "y": 0.3174160122871399
+          },
+          "box": {
+            "x": 0.5032539963722229,
+            "y": 0.3174160122871399,
+            "width": 0.18757647275924683,
+            "height": 0.27776241302490234
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 32,
+      "track": {
+        "x": 0.6024405658245087,
+        "y": 0.321133017539978,
+        "valid": true,
+        "trackId": "face-segment-8",
+        "sample": {
+          "mediaTime": 4,
+          "valid": true,
+          "trackId": "face-segment-8",
+          "anchor": {
+            "x": 0.6024405658245087,
+            "y": 0.321133017539978
+          },
+          "box": {
+            "x": 0.5134459137916565,
+            "y": 0.321133017539978,
+            "width": 0.17798930406570435,
+            "height": 0.27911025285720825
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 33,
+      "track": {
+        "x": 0.5984959900379181,
+        "y": 0.3179154396057129,
+        "valid": true,
+        "trackId": "face-segment-8",
+        "sample": {
+          "mediaTime": 4.125,
+          "valid": true,
+          "trackId": "face-segment-8",
+          "anchor": {
+            "x": 0.5984959900379181,
+            "y": 0.3179154396057129
+          },
+          "box": {
+            "x": 0.5124170184135437,
+            "y": 0.3179154396057129,
+            "width": 0.17215794324874878,
+            "height": 0.2698015570640564
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 34,
+      "track": {
+        "x": 0.5787587463855743,
+        "y": 0.3392637372016907,
+        "valid": true,
+        "trackId": "face-segment-8",
+        "sample": {
+          "mediaTime": 4.25,
+          "valid": true,
+          "trackId": "face-segment-8",
+          "anchor": {
+            "x": 0.5787587463855743,
+            "y": 0.3392637372016907
+          },
+          "box": {
+            "x": 0.4931737780570984,
+            "y": 0.3392637372016907,
+            "width": 0.1711699366569519,
+            "height": 0.25931960344314575
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 35,
+      "track": {
+        "x": 0.5550417602062225,
+        "y": 0.3597956597805023,
+        "valid": true,
+        "trackId": "face-segment-8",
+        "sample": {
+          "mediaTime": 4.375,
+          "valid": true,
+          "trackId": "face-segment-8",
+          "anchor": {
+            "x": 0.5550417602062225,
+            "y": 0.3597956597805023
+          },
+          "box": {
+            "x": 0.471280574798584,
+            "y": 0.3597956597805023,
+            "width": 0.1675223708152771,
+            "height": 0.2601872980594635
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 36,
+      "track": {
+        "x": 0.5294394344091415,
+        "y": 0.34083184599876404,
+        "valid": true,
+        "trackId": "face-segment-8",
+        "sample": {
+          "mediaTime": 4.5,
+          "valid": true,
+          "trackId": "face-segment-8",
+          "anchor": {
+            "x": 0.5294394344091415,
+            "y": 0.34083184599876404
+          },
+          "box": {
+            "x": 0.44646915793418884,
+            "y": 0.34083184599876404,
+            "width": 0.1659405529499054,
+            "height": 0.261514276266098
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 37,
+      "track": {
+        "x": 0.527641236782074,
+        "y": 0.3375606834888458,
+        "valid": true,
+        "trackId": "face-segment-8",
+        "sample": {
+          "mediaTime": 4.625,
+          "valid": true,
+          "trackId": "face-segment-8",
+          "anchor": {
+            "x": 0.527641236782074,
+            "y": 0.3375606834888458
+          },
+          "box": {
+            "x": 0.4452173709869385,
+            "y": 0.3375606834888458,
+            "width": 0.164847731590271,
+            "height": 0.263345330953598
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 38,
+      "track": {
+        "x": 0.5346696376800537,
+        "y": 0.35264527797698975,
+        "valid": true,
+        "trackId": "face-segment-8",
+        "sample": {
+          "mediaTime": 4.75,
+          "valid": true,
+          "trackId": "face-segment-8",
+          "anchor": {
+            "x": 0.5346696376800537,
+            "y": 0.35264527797698975
+          },
+          "box": {
+            "x": 0.44951653480529785,
+            "y": 0.35264527797698975,
+            "width": 0.17030620574951172,
+            "height": 0.27532243728637695
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 39,
+      "track": {
+        "x": 0.5507271885871887,
+        "y": 0.34997043013572693,
+        "valid": true,
+        "trackId": "face-segment-8",
+        "sample": {
+          "mediaTime": 4.875,
+          "valid": true,
+          "trackId": "face-segment-8",
+          "anchor": {
+            "x": 0.5507271885871887,
+            "y": 0.34997043013572693
+          },
+          "box": {
+            "x": 0.46415191888809204,
+            "y": 0.34997043013572693,
+            "width": 0.17315053939819336,
+            "height": 0.27615323662757874
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 40,
+      "track": {
+        "x": 0.5698228776454926,
+        "y": 0.31347253918647766,
+        "valid": true,
+        "trackId": "face-segment-8",
+        "sample": {
+          "mediaTime": 5,
+          "valid": true,
+          "trackId": "face-segment-8",
+          "anchor": {
+            "x": 0.5698228776454926,
+            "y": 0.31347253918647766
+          },
+          "box": {
+            "x": 0.4820132851600647,
+            "y": 0.31347253918647766,
+            "width": 0.1756191849708557,
+            "height": 0.29174503684043884
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 41,
+      "track": {
+        "x": 0.6031117737293243,
+        "y": 0.2948870062828064,
+        "valid": true,
+        "trackId": "face-segment-8",
+        "sample": {
+          "mediaTime": 5.125,
+          "valid": true,
+          "trackId": "face-segment-8",
+          "anchor": {
+            "x": 0.6031117737293243,
+            "y": 0.2948870062828064
+          },
+          "box": {
+            "x": 0.5065574049949646,
+            "y": 0.2948870062828064,
+            "width": 0.19310873746871948,
+            "height": 0.31004953384399414
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 42,
+      "track": {
+        "x": 0.6116541922092438,
+        "y": 0.3081022799015045,
+        "valid": true,
+        "trackId": "face-segment-8",
+        "sample": {
+          "mediaTime": 5.25,
+          "valid": true,
+          "trackId": "face-segment-8",
+          "anchor": {
+            "x": 0.6116541922092438,
+            "y": 0.3081022799015045
+          },
+          "box": {
+            "x": 0.5186517238616943,
+            "y": 0.3081022799015045,
+            "width": 0.18600493669509888,
+            "height": 0.30751845240592957
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 43,
+      "track": {
+        "x": 0.6054377555847168,
+        "y": 0.2948794960975647,
+        "valid": true,
+        "trackId": "face-segment-8",
+        "sample": {
+          "mediaTime": 5.375,
+          "valid": true,
+          "trackId": "face-segment-8",
+          "anchor": {
+            "x": 0.6054377555847168,
+            "y": 0.2948794960975647
+          },
+          "box": {
+            "x": 0.5126774907112122,
+            "y": 0.2948794960975647,
+            "width": 0.18552052974700928,
+            "height": 0.30623793601989746
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 44,
+      "track": {
+        "x": 0.6034441888332367,
+        "y": 0.2591601312160492,
+        "valid": true,
+        "trackId": "face-segment-8",
+        "sample": {
+          "mediaTime": 5.5,
+          "valid": true,
+          "trackId": "face-segment-8",
+          "anchor": {
+            "x": 0.6034441888332367,
+            "y": 0.2591601312160492
+          },
+          "box": {
+            "x": 0.5103510618209839,
+            "y": 0.2591601312160492,
+            "width": 0.18618625402450562,
+            "height": 0.2992806136608124
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 45,
+      "track": {
+        "x": 0.5762318223714828,
+        "y": 0.26019224524497986,
+        "valid": true,
+        "trackId": "face-segment-8",
+        "sample": {
+          "mediaTime": 5.625,
+          "valid": true,
+          "trackId": "face-segment-8",
+          "anchor": {
+            "x": 0.5762318223714828,
+            "y": 0.26019224524497986
+          },
+          "box": {
+            "x": 0.4844609200954437,
+            "y": 0.26019224524497986,
+            "width": 0.18354180455207825,
+            "height": 0.29396292567253113
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 46,
+      "track": {
+        "x": 0.5470108389854431,
+        "y": 0.27676910161972046,
+        "valid": true,
+        "trackId": "face-segment-8",
+        "sample": {
+          "mediaTime": 5.75,
+          "valid": true,
+          "trackId": "face-segment-8",
+          "anchor": {
+            "x": 0.5470108389854431,
+            "y": 0.27676910161972046
+          },
+          "box": {
+            "x": 0.45505452156066895,
+            "y": 0.27676910161972046,
+            "width": 0.18391263484954834,
+            "height": 0.2926625609397888
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 47,
+      "track": {
+        "x": 0.534112423658371,
+        "y": 0.23444655537605286,
+        "valid": true,
+        "trackId": "face-segment-8",
+        "sample": {
+          "mediaTime": 5.875,
+          "valid": true,
+          "trackId": "face-segment-8",
+          "anchor": {
+            "x": 0.534112423658371,
+            "y": 0.23444655537605286
+          },
+          "box": {
+            "x": 0.4419505000114441,
+            "y": 0.23444655537605286,
+            "width": 0.18432384729385376,
+            "height": 0.29545190930366516
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 48,
+      "track": {
+        "x": 0.5230500400066376,
+        "y": 0.22369009256362915,
+        "valid": true,
+        "trackId": "face-segment-8",
+        "sample": {
+          "mediaTime": 6,
+          "valid": true,
+          "trackId": "face-segment-8",
+          "anchor": {
+            "x": 0.5230500400066376,
+            "y": 0.22369009256362915
+          },
+          "box": {
+            "x": 0.4342763423919678,
+            "y": 0.22369009256362915,
+            "width": 0.1775473952293396,
+            "height": 0.2895422577857971
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 49,
+      "track": {
+        "x": 0.5284896045923233,
+        "y": 0.24490302801132202,
+        "valid": true,
+        "trackId": "face-segment-8",
+        "sample": {
+          "mediaTime": 6.125,
+          "valid": true,
+          "trackId": "face-segment-8",
+          "anchor": {
+            "x": 0.5284896045923233,
+            "y": 0.24490302801132202
+          },
+          "box": {
+            "x": 0.43863263726234436,
+            "y": 0.24490302801132202,
+            "width": 0.17971393465995789,
+            "height": 0.30057114362716675
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 50,
+      "track": {
+        "x": 0.5347261875867844,
+        "y": 0.27911561727523804,
+        "valid": true,
+        "trackId": "face-segment-8",
+        "sample": {
+          "mediaTime": 6.25,
+          "valid": true,
+          "trackId": "face-segment-8",
+          "anchor": {
+            "x": 0.5347261875867844,
+            "y": 0.27911561727523804
+          },
+          "box": {
+            "x": 0.44032540917396545,
+            "y": 0.27911561727523804,
+            "width": 0.18880155682563782,
+            "height": 0.2995704412460327
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 51,
+      "track": {
+        "x": 0.5510395914316177,
+        "y": 0.24667856097221375,
+        "valid": true,
+        "trackId": "face-segment-8",
+        "sample": {
+          "mediaTime": 6.375,
+          "valid": true,
+          "trackId": "face-segment-8",
+          "anchor": {
+            "x": 0.5510395914316177,
+            "y": 0.24667856097221375
+          },
+          "box": {
+            "x": 0.4560938775539398,
+            "y": 0.24667856097221375,
+            "width": 0.18989142775535583,
+            "height": 0.3266533315181732
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 52,
+      "track": {
+        "x": 0.5553924441337585,
+        "y": 0.20565563440322876,
+        "valid": true,
+        "trackId": "face-segment-8",
+        "sample": {
+          "mediaTime": 6.5,
+          "valid": true,
+          "trackId": "face-segment-8",
+          "anchor": {
+            "x": 0.5553924441337585,
+            "y": 0.20565563440322876
+          },
+          "box": {
+            "x": 0.45770126581192017,
+            "y": 0.20565563440322876,
+            "width": 0.19538235664367676,
+            "height": 0.3346056342124939
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 53,
+      "track": {
+        "x": 0.5476205348968506,
+        "y": 0.22638411819934845,
+        "valid": true,
+        "trackId": "face-segment-8",
+        "sample": {
+          "mediaTime": 6.625,
+          "valid": true,
+          "trackId": "face-segment-8",
+          "anchor": {
+            "x": 0.5476205348968506,
+            "y": 0.22638411819934845
+          },
+          "box": {
+            "x": 0.4476768970489502,
+            "y": 0.22638411819934845,
+            "width": 0.19988727569580078,
+            "height": 0.33828316628932953
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 54,
+      "track": {
+        "x": 0.545339360833168,
+        "y": 0.26960131525993347,
+        "valid": true,
+        "trackId": "face-segment-8",
+        "sample": {
+          "mediaTime": 6.75,
+          "valid": true,
+          "trackId": "face-segment-8",
+          "anchor": {
+            "x": 0.545339360833168,
+            "y": 0.26960131525993347
+          },
+          "box": {
+            "x": 0.4478234350681305,
+            "y": 0.26960131525993347,
+            "width": 0.19503185153007507,
+            "height": 0.3236103951931
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 55,
+      "track": {
+        "x": 0.5430262684822083,
+        "y": 0.23886126279830933,
+        "valid": true,
+        "trackId": "face-segment-8",
+        "sample": {
+          "mediaTime": 6.875,
+          "valid": true,
+          "trackId": "face-segment-8",
+          "anchor": {
+            "x": 0.5430262684822083,
+            "y": 0.23886126279830933
+          },
+          "box": {
+            "x": 0.44884806871414185,
+            "y": 0.23886126279830933,
+            "width": 0.1883563995361328,
+            "height": 0.31391340494155884
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 56,
+      "track": {
+        "x": 0.5373458564281464,
+        "y": 0.2085253745317459,
+        "valid": true,
+        "trackId": "face-segment-8",
+        "sample": {
+          "mediaTime": 7,
+          "valid": true,
+          "trackId": "face-segment-8",
+          "anchor": {
+            "x": 0.5373458564281464,
+            "y": 0.2085253745317459
+          },
+          "box": {
+            "x": 0.44618088006973267,
+            "y": 0.2085253745317459,
+            "width": 0.1823299527168274,
+            "height": 0.30454979836940765
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 57,
+      "track": {
+        "x": 0.5452532470226288,
+        "y": 0.22371356189250946,
+        "valid": true,
+        "trackId": "face-segment-8",
+        "sample": {
+          "mediaTime": 7.125,
+          "valid": true,
+          "trackId": "face-segment-8",
+          "anchor": {
+            "x": 0.5452532470226288,
+            "y": 0.22371356189250946
+          },
+          "box": {
+            "x": 0.4554603695869446,
+            "y": 0.22371356189250946,
+            "width": 0.1795857548713684,
+            "height": 0.30175967514514923
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 58,
+      "track": {
+        "x": 0.546250119805336,
+        "y": 0.25843051075935364,
+        "valid": true,
+        "trackId": "face-segment-8",
+        "sample": {
+          "mediaTime": 7.25,
+          "valid": true,
+          "trackId": "face-segment-8",
+          "anchor": {
+            "x": 0.546250119805336,
+            "y": 0.25843051075935364
+          },
+          "box": {
+            "x": 0.4590185582637787,
+            "y": 0.25843051075935364,
+            "width": 0.17446312308311462,
+            "height": 0.29106488823890686
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 59,
+      "track": {
+        "x": 0.5198637396097183,
+        "y": 0.28182336688041687,
+        "valid": true,
+        "trackId": "face-segment-8",
+        "sample": {
+          "mediaTime": 7.375,
+          "valid": true,
+          "trackId": "face-segment-8",
+          "anchor": {
+            "x": 0.5198637396097183,
+            "y": 0.28182336688041687
+          },
+          "box": {
+            "x": 0.42825350165367126,
+            "y": 0.28182336688041687,
+            "width": 0.18322047591209412,
+            "height": 0.286966472864151
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 60,
+      "track": {
+        "x": 0.4851410835981369,
+        "y": 0.2629958987236023,
+        "valid": true,
+        "trackId": "face-segment-8",
+        "sample": {
+          "mediaTime": 7.5,
+          "valid": true,
+          "trackId": "face-segment-8",
+          "anchor": {
+            "x": 0.4851410835981369,
+            "y": 0.2629958987236023
+          },
+          "box": {
+            "x": 0.3934544622898102,
+            "y": 0.2629958987236023,
+            "width": 0.18337324261665344,
+            "height": 0.2777023911476135
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 61,
+      "track": {
+        "x": 0.46297474205493927,
+        "y": 0.26387467980384827,
+        "valid": true,
+        "trackId": "face-segment-8",
+        "sample": {
+          "mediaTime": 7.625,
+          "valid": true,
+          "trackId": "face-segment-8",
+          "anchor": {
+            "x": 0.46297474205493927,
+            "y": 0.26387467980384827
+          },
+          "box": {
+            "x": 0.3786737024784088,
+            "y": 0.26387467980384827,
+            "width": 0.1686020791530609,
+            "height": 0.27158334851264954
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 62,
+      "track": {
+        "x": 0.47885526716709137,
+        "y": 0.23950201272964478,
+        "valid": true,
+        "trackId": "face-segment-8",
+        "sample": {
+          "mediaTime": 7.75,
+          "valid": true,
+          "trackId": "face-segment-8",
+          "anchor": {
+            "x": 0.47885526716709137,
+            "y": 0.23950201272964478
+          },
+          "box": {
+            "x": 0.39159128069877625,
+            "y": 0.23950201272964478,
+            "width": 0.17452797293663025,
+            "height": 0.2659125328063965
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    },
+    {
+      "frame": 63,
+      "track": {
+        "x": 0.5033542662858963,
+        "y": 0.20240665972232819,
+        "valid": true,
+        "trackId": "face-segment-8",
+        "sample": {
+          "mediaTime": 7.875,
+          "valid": true,
+          "trackId": "face-segment-8",
+          "anchor": {
+            "x": 0.5033542662858963,
+            "y": 0.20240665972232819
+          },
+          "box": {
+            "x": 0.4278593957424164,
+            "y": 0.20240665972232819,
+            "width": 0.15098974108695984,
+            "height": 0.2640209347009659
+          },
+          "confidence": null,
+          "interpolated": false
+        }
+      },
+      "label": true
+    }
+  ]
+}

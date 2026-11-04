@@ -1,0 +1,8 @@
+{
+  "startedAt": "2026-11-02T09:52:47.099142+00:00",
+  "extensionRound": 2,
+  "allowedRounds": 4,
+  "base": "1278e39c760e08cc617c6972b441619a7358f98d",
+  "scope": "GPU motion/registration, automatic deblur and spectral grain estimation; no new host/Core/registry/analysis scheduler",
+  "catalogObservation": "Pinned EffectCraft has full keylight.rs and track KLT/stabilize/fit plus temporal camera-shake code. Retain audit for final keying feature parity; no claim that importing source is qualification."
+}

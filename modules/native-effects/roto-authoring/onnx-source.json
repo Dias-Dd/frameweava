@@ -1,0 +1,13 @@
+{
+  "repository": "https://huggingface.co/Xenova/slimsam-77-uniform",
+  "revision": "5850ab45f587c112167512ffef949107115e26a0",
+  "license": "Apache-2.0",
+  "profile": "slimsam-77-uniform-f32-points-v1",
+  "files": {
+    "vision_encoder.onnx": {"bytes":23276014,"sha256":"9f8433273a6750b587779baa0cf5508111001bf7e7acfcf585d370139fd366d0"},
+    "prompt_encoder_mask_decoder.onnx": {"bytes":16557892,"sha256":"f4514391764fbd56e08e119060d874ecd7d52994bfb1968af159e12d4943b5bb"}
+  },
+  "adaptation": "Freeze positive batch/point dimensions, add exact F32-label to Int64 Cast; retain every learned operator/weight and original output. Point capacity is part of derived immutable model identity.",
+  "runtime": "Existing Agent-1 DirectML frozen bd188034/d59123d2; no inference verification for this model yet",
+  "qualified": false
+}

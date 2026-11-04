@@ -1,0 +1,73 @@
+{
+  "id": "wasm-bindgen-data-v1",
+  "revision": 1,
+  "generator": "0.2.129",
+  "entryClass": "Engine",
+  "methods": [
+    "append_font",
+    "begin_font",
+    "color_glyph_paint",
+    "color_palette",
+    "finish_font",
+    "font_axes",
+    "font_bitmap_strikes",
+    "font_color_profile",
+    "font_embedded_bytes",
+    "font_embedded_metadata",
+    "font_metrics",
+    "glyph_metrics",
+    "map_codepoints",
+    "map_variants",
+    "normalized_coords",
+    "outline_glyph",
+    "read_glyphs",
+    "read_outline",
+    "reset_results",
+    "resolve_location",
+    "set_variations",
+    "shape_run_context",
+    "shape_run"
+  ],
+  "imports": [
+    {
+      "module": "./module_bg.js",
+      "name": "__wbg___wbindgen_throw_41e9ee4f547fc59a",
+      "kind": "function"
+    },
+    {
+      "module": "./module_bg.js",
+      "name": "__wbindgen_generic_0000000000000001",
+      "kind": "function"
+    },
+    {
+      "module": "./module_bg.js",
+      "name": "__wbindgen_init_externref_table",
+      "kind": "function"
+    }
+  ],
+  "resources": [
+    "bindingBytes",
+    "asset0",
+    "asset1",
+    "asset2",
+    "asset3"
+  ],
+  "review": {
+    "policySha256": "916d3da74e7d55e7c8b933cc7979b5d59c906ca90fb3014d8b2dfa6080c2b881",
+    "snippets": [],
+    "intrinsics": {
+      "__wbg___wbindgen_throw_41e9ee4f547fc59a": {
+        "sha256": "9ab42997906ccabb1203eb398f0ff1cea8fe3b330d5f4b6a0a0d93dbd72e188d",
+        "body": "function (arg0, arg1) {\n    throw new Error(getStringFromWasm0(arg0, arg1));\n}"
+      },
+      "__wbindgen_generic_0000000000000001": {
+        "sha256": "a33944d2cadb13cbe51cf2d4877b7076aee26c581a269293b5ce3d88c44fd307",
+        "body": "function (arg0, arg1) {\n    const ret = getStringFromWasm0(arg0, arg1);\n    return ret;\n}"
+      },
+      "__wbindgen_init_externref_table": {
+        "sha256": "c071d5b1d8246e6ba3a7ee88cdd0965d08c9ee1887c07498732d87b46dd1c284",
+        "body": "function () {\n    const table = wasm.__wbindgen_externrefs;\n    const offset = table.grow(4);\n    table.set(0, undefined);\n    table.set(offset + 0, undefined);\n    table.set(offset + 1, null);\n    table.set(offset + 2, true);\n    table.set(offset + 3, false);\n}"
+      }
+    }
+  }
+}

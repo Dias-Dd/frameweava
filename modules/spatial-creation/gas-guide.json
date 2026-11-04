@@ -1,0 +1,514 @@
+{
+  "schemaVersion": 1,
+  "scope": "candidate-native-gas",
+  "functions": [
+    {
+      "name": "gasReaction",
+      "purpose": "set temperature-gated first-order fuel-to-heat/soot coefficients",
+      "input": "See carried TypeScript declarations and GAS.md for typed parameters, units, defaults and limits",
+      "output": "owned typed options; no GPU allocation",
+      "time": "Core Signal / FrameContext; no new clock",
+      "dependencies": [
+        "existing spatial-compute",
+        "Core NativeReplay",
+        "admitted native-wgpu",
+        "Three camera math"
+      ],
+      "gpuRequired": false,
+      "example": "examples/gas.tsx",
+      "limitations": "GAS.md",
+      "defaults": {
+        "ambient": 293.15,
+        "ignition": 600,
+        "fullBurn": 900,
+        "burnRate": 3,
+        "heatYield": 1800,
+        "sootYield": 0.15,
+        "cooling": 0.35,
+        "densityDecay": 0.08,
+        "fuelDecay": 0
+      },
+      "parameters": "api.d.ts function signature; GAS.md includes SI units and source rates",
+      "bounds": "nonnegative densities/rates, positive extents, distinct increasing Kelvin thresholds; finite F32, actual device and configurable budgets"
+    },
+    {
+      "name": "gasSource",
+      "purpose": "shape and time-window volumetric source",
+      "input": "See carried TypeScript declarations and GAS.md for typed parameters, units, defaults and limits",
+      "output": "owned typed options; no GPU allocation",
+      "time": "Core Signal / FrameContext; no new clock",
+      "dependencies": [
+        "existing spatial-compute",
+        "Core NativeReplay",
+        "admitted native-wgpu",
+        "Three camera math"
+      ],
+      "gpuRequired": false,
+      "example": "examples/gas.tsx",
+      "limitations": "GAS.md",
+      "defaults": {
+        "shape": "sphere",
+        "center": [
+          0,
+          0.25,
+          0
+        ],
+        "extent": [
+          0.15,
+          0.15,
+          0.15
+        ],
+        "density": 0,
+        "heat": 0,
+        "fuel": 0,
+        "acceleration": [
+          0,
+          0,
+          0
+        ]
+      },
+      "parameters": "api.d.ts function signature; GAS.md includes SI units and source rates",
+      "bounds": "nonnegative densities/rates, positive extents, distinct increasing Kelvin thresholds; finite F32, actual device and configurable budgets"
+    },
+    {
+      "name": "smokeSource",
+      "purpose": "emit density/heat with existing time/Signal controls",
+      "input": "See carried TypeScript declarations and GAS.md for typed parameters, units, defaults and limits",
+      "output": "owned typed options; no GPU allocation",
+      "time": "Core Signal / FrameContext; no new clock",
+      "dependencies": [
+        "existing spatial-compute",
+        "Core NativeReplay",
+        "admitted native-wgpu",
+        "Three camera math"
+      ],
+      "gpuRequired": false,
+      "example": "examples/gas.tsx",
+      "limitations": "GAS.md",
+      "defaults": {
+        "density": 2,
+        "heat": 900,
+        "acceleration": [
+          0,
+          0.2,
+          0
+        ]
+      },
+      "parameters": "api.d.ts function signature; GAS.md includes SI units and source rates",
+      "bounds": "nonnegative densities/rates, positive extents, distinct increasing Kelvin thresholds; finite F32, actual device and configurable budgets"
+    },
+    {
+      "name": "flameSource",
+      "purpose": "emit fuel/heat with existing time/Signal controls",
+      "input": "See carried TypeScript declarations and GAS.md for typed parameters, units, defaults and limits",
+      "output": "owned typed options; no GPU allocation",
+      "time": "Core Signal / FrameContext; no new clock",
+      "dependencies": [
+        "existing spatial-compute",
+        "Core NativeReplay",
+        "admitted native-wgpu",
+        "Three camera math"
+      ],
+      "gpuRequired": false,
+      "example": "examples/gas.tsx",
+      "limitations": "GAS.md",
+      "defaults": {
+        "fuel": 1.5,
+        "heat": 3000,
+        "density": 0.03,
+        "acceleration": [
+          0,
+          0.4,
+          0
+        ]
+      },
+      "parameters": "api.d.ts function signature; GAS.md includes SI units and source rates",
+      "bounds": "nonnegative densities/rates, positive extents, distinct increasing Kelvin thresholds; finite F32, actual device and configurable budgets"
+    },
+    {
+      "name": "heatSource",
+      "purpose": "heat an explicit bounded 3D region",
+      "input": "See carried TypeScript declarations and GAS.md for typed parameters, units, defaults and limits",
+      "output": "owned typed options; no GPU allocation",
+      "time": "Core Signal / FrameContext; no new clock",
+      "dependencies": [
+        "existing spatial-compute",
+        "Core NativeReplay",
+        "admitted native-wgpu",
+        "Three camera math"
+      ],
+      "gpuRequired": false,
+      "example": "examples/gas.tsx",
+      "limitations": "GAS.md",
+      "defaults": {
+        "heat": 1800
+      },
+      "parameters": "api.d.ts function signature; GAS.md includes SI units and source rates",
+      "bounds": "nonnegative densities/rates, positive extents, distinct increasing Kelvin thresholds; finite F32, actual device and configurable budgets"
+    },
+    {
+      "name": "gasPocket",
+      "purpose": "seed an explicit ellipsoid/box with absolute temperature and velocity",
+      "input": "See carried TypeScript declarations and GAS.md for typed parameters, units, defaults and limits",
+      "output": "owned typed options; no GPU allocation",
+      "time": "Core Signal / FrameContext; no new clock",
+      "dependencies": [
+        "existing spatial-compute",
+        "Core NativeReplay",
+        "admitted native-wgpu",
+        "Three camera math"
+      ],
+      "gpuRequired": false,
+      "example": "examples/gas.tsx",
+      "limitations": "GAS.md",
+      "defaults": {
+        "density": 0,
+        "temperature": 293.15,
+        "fuel": 0,
+        "velocity": [
+          0,
+          0,
+          0
+        ]
+      },
+      "parameters": "api.d.ts function signature; GAS.md includes SI units and source rates",
+      "bounds": "nonnegative densities/rates, positive extents, distinct increasing Kelvin thresholds; finite F32, actual device and configurable budgets"
+    },
+    {
+      "name": "ignitionGate",
+      "purpose": "smooth thermal ignition factor",
+      "input": "See carried TypeScript declarations and GAS.md for typed parameters, units, defaults and limits",
+      "output": "dimensionless [0,1] scalar",
+      "time": "Core Signal / FrameContext; no new clock",
+      "dependencies": [
+        "existing spatial-compute",
+        "Core NativeReplay",
+        "admitted native-wgpu",
+        "Three camera math"
+      ],
+      "gpuRequired": false,
+      "example": "examples/gas.tsx",
+      "limitations": "GAS.md",
+      "defaults": {},
+      "parameters": "api.d.ts function signature; GAS.md includes SI units and source rates",
+      "bounds": "nonnegative densities/rates, positive extents, distinct increasing Kelvin thresholds; finite F32, actual device and configurable budgets"
+    },
+    {
+      "name": "burnFuel",
+      "purpose": "bounded first-order chemistry analytical query",
+      "input": "See carried TypeScript declarations and GAS.md for typed parameters, units, defaults and limits",
+      "output": "CPU {fuel,consumed,heat,soot}",
+      "time": "Core Signal / FrameContext; no new clock",
+      "dependencies": [
+        "existing spatial-compute",
+        "Core NativeReplay",
+        "admitted native-wgpu",
+        "Three camera math"
+      ],
+      "gpuRequired": false,
+      "example": "examples/gas.tsx",
+      "limitations": "GAS.md",
+      "defaults": {},
+      "parameters": "api.d.ts function signature; GAS.md includes SI units and source rates",
+      "bounds": "nonnegative densities/rates, positive extents, distinct increasing Kelvin thresholds; finite F32, actual device and configurable budgets"
+    },
+    {
+      "name": "coolGas",
+      "purpose": "exact exponential ambient cooling query",
+      "input": "See carried TypeScript declarations and GAS.md for typed parameters, units, defaults and limits",
+      "output": "absolute Kelvin scalar",
+      "time": "Core Signal / FrameContext; no new clock",
+      "dependencies": [
+        "existing spatial-compute",
+        "Core NativeReplay",
+        "admitted native-wgpu",
+        "Three camera math"
+      ],
+      "gpuRequired": false,
+      "example": "examples/gas.tsx",
+      "limitations": "GAS.md",
+      "defaults": {},
+      "parameters": "api.d.ts function signature; GAS.md includes SI units and source rates",
+      "bounds": "nonnegative densities/rates, positive extents, distinct increasing Kelvin thresholds; finite F32, actual device and configurable budgets"
+    },
+    {
+      "name": "gasBuoyancy",
+      "purpose": "thermal lift minus soot weight query",
+      "input": "See carried TypeScript declarations and GAS.md for typed parameters, units, defaults and limits",
+      "output": "Y-up acceleration scalar",
+      "time": "Core Signal / FrameContext; no new clock",
+      "dependencies": [
+        "existing spatial-compute",
+        "Core NativeReplay",
+        "admitted native-wgpu",
+        "Three camera math"
+      ],
+      "gpuRequired": false,
+      "example": "examples/gas.tsx",
+      "limitations": "GAS.md",
+      "defaults": {},
+      "parameters": "api.d.ts function signature; GAS.md includes SI units and source rates",
+      "bounds": "nonnegative densities/rates, positive extents, distinct increasing Kelvin thresholds; finite F32, actual device and configurable budgets"
+    },
+    {
+      "name": "firePalette",
+      "purpose": "authored HDR flame RGB ramp, not physical blackbody",
+      "input": "See carried TypeScript declarations and GAS.md for typed parameters, units, defaults and limits",
+      "output": "owned authored linear HDR RGB ramp",
+      "time": "Core Signal / FrameContext; no new clock",
+      "dependencies": [
+        "existing spatial-compute",
+        "Core NativeReplay",
+        "admitted native-wgpu",
+        "Three camera math"
+      ],
+      "gpuRequired": false,
+      "example": "examples/gas.tsx",
+      "limitations": "GAS.md",
+      "defaults": {
+        "cool": [
+          2,
+          0.08,
+          0.005
+        ],
+        "warm": [
+          8,
+          1.5,
+          0.05
+        ],
+        "hot": [
+          18,
+          10,
+          3
+        ],
+        "thresholds": [
+          600,
+          1100,
+          1800
+        ]
+      },
+      "parameters": "api.d.ts function signature; GAS.md includes SI units and source rates",
+      "bounds": "nonnegative densities/rates, positive extents, distinct increasing Kelvin thresholds; finite F32, actual device and configurable budgets"
+    },
+    {
+      "name": "planGas",
+      "purpose": "account complete dense solver state before allocation",
+      "input": "See carried TypeScript declarations and GAS.md for typed parameters, units, defaults and limits",
+      "output": "owned CPU resource plan; no allocation",
+      "time": "Core Signal / FrameContext; no new clock",
+      "dependencies": [
+        "existing spatial-compute",
+        "Core NativeReplay",
+        "admitted native-wgpu",
+        "Three camera math"
+      ],
+      "gpuRequired": false,
+      "example": "examples/gas.tsx",
+      "limitations": "GAS.md",
+      "defaults": {
+        "dimensions": [
+          32,
+          48,
+          32
+        ],
+        "bounds": [
+          [
+            -1,
+            0,
+            -1
+          ],
+          [
+            1,
+            3,
+            1
+          ]
+        ],
+        "maxBytes": 268435456,
+        "maxWork": 200000000000
+      },
+      "parameters": "api.d.ts function signature; GAS.md includes SI units and source rates",
+      "bounds": "nonnegative densities/rates, positive extents, distinct increasing Kelvin thresholds; finite F32, actual device and configurable budgets"
+    },
+    {
+      "name": "createGasSimulation",
+      "purpose": "managed dense Eulerian soot, heat and fuel solver",
+      "input": "See carried TypeScript declarations and GAS.md for typed parameters, units, defaults and limits",
+      "output": "owned simulation; record(ctx) returns borrowed thermo4 and velocity3 fields until next call/dispose",
+      "time": "Core Signal / FrameContext; no new clock",
+      "dependencies": [
+        "existing spatial-compute",
+        "Core NativeReplay",
+        "admitted native-wgpu",
+        "Three camera math"
+      ],
+      "gpuRequired": true,
+      "example": "examples/gas.tsx",
+      "limitations": "GAS.md",
+      "defaults": {
+        "dimensions": [
+          32,
+          48,
+          32
+        ],
+        "bounds": [
+          [
+            -1,
+            0,
+            -1
+          ],
+          [
+            1,
+            3,
+            1
+          ]
+        ],
+        "maxBytes": 268435456,
+        "maxWork": 200000000000
+      },
+      "parameters": "api.d.ts function signature; GAS.md includes SI units and source rates",
+      "bounds": "nonnegative densities/rates, positive extents, distinct increasing Kelvin thresholds; finite F32, actual device and configurable budgets"
+    },
+    {
+      "name": "gasScene",
+      "purpose": "compose existing fixed-step solver and true GPU volume draw",
+      "input": "See carried TypeScript declarations and GAS.md for typed parameters, units, defaults and limits",
+      "output": "owned normal Native Stage; automatic solver and image lifetime",
+      "time": "Core Signal / FrameContext; no new clock",
+      "dependencies": [
+        "existing spatial-compute",
+        "Core NativeReplay",
+        "admitted native-wgpu",
+        "Three camera math"
+      ],
+      "gpuRequired": true,
+      "example": "examples/gas.tsx",
+      "limitations": "GAS.md",
+      "defaults": {
+        "dimensions": [
+          32,
+          48,
+          32
+        ],
+        "bounds": [
+          [
+            -1,
+            0,
+            -1
+          ],
+          [
+            1,
+            3,
+            1
+          ]
+        ],
+        "maxBytes": 268435456,
+        "maxWork": 200000000000
+      },
+      "parameters": "api.d.ts function signature; GAS.md includes SI units and source rates",
+      "bounds": "nonnegative densities/rates, positive extents, distinct increasing Kelvin thresholds; finite F32, actual device and configurable budgets"
+    },
+    {
+      "name": "smokePlumeScene",
+      "purpose": "direct smoke-plume creation preset",
+      "input": "See carried TypeScript declarations and GAS.md for typed parameters, units, defaults and limits",
+      "output": "owned normal Native Stage; no flame emission preset",
+      "time": "Core Signal / FrameContext; no new clock",
+      "dependencies": [
+        "existing spatial-compute",
+        "Core NativeReplay",
+        "admitted native-wgpu",
+        "Three camera math"
+      ],
+      "gpuRequired": true,
+      "example": "examples/gas.tsx",
+      "limitations": "GAS.md",
+      "defaults": {
+        "dimensions": [
+          32,
+          48,
+          32
+        ],
+        "bounds": [
+          [
+            -1,
+            0,
+            -1
+          ],
+          [
+            1,
+            3,
+            1
+          ]
+        ],
+        "maxBytes": 268435456,
+        "maxWork": 200000000000
+      },
+      "parameters": "api.d.ts function signature; GAS.md includes SI units and source rates",
+      "bounds": "nonnegative densities/rates, positive extents, distinct increasing Kelvin thresholds; finite F32, actual device and configurable budgets"
+    },
+    {
+      "name": "firePlumeScene",
+      "purpose": "direct coupled-fire creation preset",
+      "input": "See carried TypeScript declarations and GAS.md for typed parameters, units, defaults and limits",
+      "output": "owned normal Native Stage; source/pocket fire preset",
+      "time": "Core Signal / FrameContext; no new clock",
+      "dependencies": [
+        "existing spatial-compute",
+        "Core NativeReplay",
+        "admitted native-wgpu",
+        "Three camera math"
+      ],
+      "gpuRequired": true,
+      "example": "examples/gas.tsx",
+      "limitations": "GAS.md",
+      "defaults": {
+        "dimensions": [
+          32,
+          48,
+          32
+        ],
+        "bounds": [
+          [
+            -1,
+            0,
+            -1
+          ],
+          [
+            1,
+            3,
+            1
+          ]
+        ],
+        "maxBytes": 268435456,
+        "maxWork": 200000000000
+      },
+      "parameters": "api.d.ts function signature; GAS.md includes SI units and source rates",
+      "bounds": "nonnegative densities/rates, positive extents, distinct increasing Kelvin thresholds; finite F32, actual device and configurable budgets"
+    },
+    {
+      "name": "renderGasVolume",
+      "purpose": "GPU Beer/emission true 3D ray integration",
+      "input": "See carried TypeScript declarations and GAS.md for typed parameters, units, defaults and limits",
+      "output": "owned GPU linear Rec709 PM F16/F32 image; caller releases",
+      "time": "Core Signal / FrameContext; no new clock",
+      "dependencies": [
+        "existing spatial-compute",
+        "Core NativeReplay",
+        "admitted native-wgpu",
+        "Three camera math"
+      ],
+      "gpuRequired": true,
+      "example": "examples/gas.tsx",
+      "limitations": "GAS.md",
+      "defaults": {
+        "stepScale": 0.75,
+        "extinction": 2,
+        "flameExtinction": 0.3,
+        "emission": 0.8,
+        "maxSamples": 1000000000
+      },
+      "parameters": "api.d.ts function signature; GAS.md includes SI units and source rates",
+      "bounds": "nonnegative densities/rates, positive extents, distinct increasing Kelvin thresholds; finite F32, actual device and configurable budgets"
+    }
+  ]
+}

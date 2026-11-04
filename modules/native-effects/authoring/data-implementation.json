@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "objective": "Metric depth, explicit multi-frame and existing Track Reader authoring usability",
+  "baseline": "88832c3ce021018f2a839dcbf656e5a4d4a78381",
+  "implementationStartedAt": "2026-11-03T12:19:57.278841+00:00",
+  "clock": "Conservative implementation duration since runtime asset-cache edit; earlier audit excluded",
+  "status": "verified_source_candidate_not_published",
+  "unitTests": 21,
+  "gpuExactComparisons": 63,
+  "device": "NVIDIA RTX 5070 Laptop GPU / Vulkan / NVIDIA 596.49",
+  "validationMeasuredMs": 126996.9285,
+  "validationAccountedMs": 131996.92849999998,
+  "implementationMsBeforeFirstTest": 509907,
+  "evidence": "docs/native-image-data-authoring-evidence",
+  "limits": [
+    "Source candidate only; installed/portable binding remains Main-owned",
+    "Binary depth Resource decoding not added: explicit arrays/Float32Array or original native typed fields",
+    "Fractional Stage frames need explicit rational time: FrameContext lacks the exact local-rate mapping",
+    "All supplied observed images are resolved before existing window selection",
+    "Temporal profiles/camera analysis are recipe-local and recomputed; no persistent analysis-cache claim",
+    "Existing transient import NaN/spherical WIP unmodified",
+    "Other platforms/backends not qualified"
+  ],
+  "restoredBaselineTest": "tests/native-image-data.test.ts remains byte-identical to HEAD; the new test is tests/native-image-authoring-data.test.ts"
+}

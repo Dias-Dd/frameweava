@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "openColorIO": {
+    "repository": "https://github.com/AcademySoftwareFoundation/OpenColorIO",
+    "version": "2.5.2",
+    "commit": "c52966a6677723d5bd2dbef0ccec3fed9cbc3790",
+    "license": "BSD-3-Clause",
+    "files": [
+      {
+        "file": "modules/native-effects/closure-filters/vendor/FixedFunctionOpCPU.cpp",
+        "sha256": "39a0e23af26b8df16c1ea2c98b6138bbdf20b35139f584e89e539d497d77bfe6"
+      },
+      {
+        "file": "modules/native-effects/closure-filters/vendor/FixedFunctionOpGPU.cpp",
+        "sha256": "10a63926f852a61f1129e7cded2c2a6cf03ffa6e44a7d075f282e54b3c1c38b8"
+      },
+      {
+        "file": "modules/native-effects/closure-filters/vendor/ACES2-Transform.cpp",
+        "sha256": "5a718f6739e8d14be2191c4a7316a9707c2e744e6e31aafbac5b61999ae3b14c"
+      }
+    ],
+    "experiment": "CPU direct Aab->tone and post-sum chroma harmonic scaling; unchanged original gate, rejected as a production fix",
+    "productionApplied": false
+  },
+  "keylight": {
+    "repository": "https://github.com/storytold/effectcraft",
+    "commit": "ec7ced1f0515f0b6f376dbcc297f1c441f452d6e",
+    "license": "MIT chosen from dual license",
+    "file": "modules/native-effects/keying-pro/vendor/EffectCraft-keylight.rs",
+    "sha256": "baba8352af7d9fbc9c53da90a3b9b48b61d8040af3d4cfa0facefd15f0878524",
+    "adaptation": "Corrected-source biased linear color and channel-ordered positive screen difference; existing HDR foreground grade. Actual existing edgeGrade coverage shown as opaque technical view; no proprietary parity."
+  }
+}

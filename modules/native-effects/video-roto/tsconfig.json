@@ -1,0 +1,1 @@
+{"extends":"../../../tsconfig.json","compilerOptions":{"noEmit":true},"include":["./*.ts","./*.tsx","../../../tests/native-video-roto.test.ts"]}

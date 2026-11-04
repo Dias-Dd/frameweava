@@ -1,0 +1,57 @@
+{
+  "ok": true,
+  "rows": [
+    {
+      "name": "creative text source diagnosis through original public provider",
+      "ok": true,
+      "detail": [
+        {
+          "id": "eyebrow",
+          "ok": true,
+          "glyphs": 22
+        },
+        {
+          "id": "heading",
+          "ok": true,
+          "glyphs": 10
+        },
+        {
+          "id": "body",
+          "ok": false,
+          "error": {
+            "code": "E_PA_TEXT_BLOCK_SHAPE",
+            "message": "Shaping failed for this original-source line",
+            "stack": "EngineError: Shaping failed for this original-source line\n    at shapeBidiText (D:\\frameweave-worktrees\\agent-4\\.frameweave\\editing\\formal-typography-consumer\\node_modules\\@frameweave\\typography-preparation\\lib-modules\\pro-animation\\typography-node.js:2096:13)\n    at async layoutParagraph (D:\\frameweave-worktrees\\agent-4\\.frameweave\\editing\\formal-typography-consumer\\node_modules\\@frameweave\\typography-preparation\\lib-modules\\pro-animation\\typography-node.js:3840:217)\n    at async <anonymous> (D:\\frameweave-worktrees\\agent-4\\.frameweave\\editing\\formal-typography-consumer\\node_modules\\@frameweave\\typography-preparation\\lib-modules\\pro-animation\\typography-node.js:5481:29)",
+            "details": {
+              "line": 1,
+              "sourceRange": {
+                "start": 20,
+                "end": 36
+              },
+              "original": {
+                "code": "E_PA_TEXT_LINE_SCRIPT",
+                "severity": "error",
+                "message": "Choose an explicit script for an unresolved item",
+                "details": {
+                  "start": 15,
+                  "end": 16,
+                  "candidates": [
+                    "Bopo",
+                    "Hang",
+                    "Hani",
+                    "Hira",
+                    "Kana",
+                    "Mong",
+                    "Phag",
+                    "Yiii"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ],
+      "wallMs": 375.4758999999999
+    }
+  ]
+}

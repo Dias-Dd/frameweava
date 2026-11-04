@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "apiVersion": 1,
+  "id": "native-image-effects",
+  "version": "0.7.0",
+  "name": "Native Resident Image Effects",
+  "description": "Native professional image domains, stabilization, PSF restoration and typed video segmentation. Spherical WIP is source-only and excluded from the public entry.",
+  "tags": [
+    "native",
+    "gpu",
+    "resident",
+    "hdr",
+    "colour",
+    "blend",
+    "creative",
+    "film-grain",
+    "vignette"
+  ],
+  "source": {
+    "kind": "local",
+    "authority": "frameweave.gpu-images"
+  },
+  "compatible": "0.1.0",
+  "platforms": [
+    "web"
+  ],
+  "capabilities": [
+    "native-gpu"
+  ],
+  "permissions": {
+    "filesystem": false,
+    "network": false,
+    "process": false
+  },
+  "entry": "main",
+  "modules": {
+    "main": {
+      "format": "javascript",
+      "path": "./public.ts"
+    },
+    "bindings": {
+      "format": "javascript",
+      "path": "./bindings.ts"
+    }
+  },
+  "bindings": {
+    "schemaVersion": 2,
+    "module": "bindings",
+    "types": "./api.d.ts",
+    "initialize": "initialize",
+    "engine": "native-gpu",
+    "gpu": "required",
+    "gpuApi": "native-wgpu",
+    "gpuExports": [
+      "processImage",
+      "processRaster",
+      "processPa",
+      "generatePa",
+      "generateImage",
+      "processBuiltin",
+      "createNativeClosureEffects",
+      "createNativeClosureImageEffects",
+      "createNativeCompositeEffects",
+      "createNativeFinishingEffects",
+      "createNativeGeometryEffects",
+      "createNativeGradingEffects",
+      "defineLut",
+      "cubeLut",
+      "createNativeEstimationEffects",
+      "createNativeProKeyEffects",
+      "createNativeKeyingEffects",
+      "createNativeOpticalEffects",
+      "createNativeRestorationEffects",
+      "depthField",
+      "createNativePaintEffects",
+      "contoursToPathData",
+      "createNativeStylizeEffects",
+      "createNativeTemporalEffects",
+      "createNativeTextureEffects",
+      "createNativePsfRestorationEffects",
+      "createNativeStabilizationEffects",
+      "createNativeVideoRotoEffects",
+      "parseVideoRotoBundle"
+    ]
+  }
+}

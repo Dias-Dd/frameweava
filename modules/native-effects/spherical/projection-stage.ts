@@ -1,0 +1,9 @@
+/** Dedicated real-GPU projection boundary fixture; no CPU pixel inputs. */
+import {defineNativeStage} from '../../native-gpu/authoring.ts';
+import {linear709} from '../../../src/media/surface.ts';
+import {publish} from '../composite/stage.ts';
+import {createNativeSphericalEffects} from './index.ts';
+import {projections} from './control.ts';
+const plate={abiVersion:1 as const,id:'fixture/spherical/projection-grid',version:'1.0.0',inputCount:0,parameterWords:0,code:`fn pixel(p:vec2u)->vec4f{let a=.2+.3*f32(p.x%3u);return vec4f(vec3f(-.3+f32(p.x)*.1,1.5-f32(p.y)*.1,.5+f32(p.x+p.y)*.05)*a,a);}`};
+export function projectionCase(frame:number){const index=frame%8,projection=projections[index],width=index===5?9:index===6?18:index===7?12:7,height=index===5?6:index===6?3:index===7?9:7,fov:readonly[number,number]=index===1?[90,70]:index>=2&&index<=4?[180,180]:[360,180];return {projection,width,height,fov,half:frame>=8&&frame<16,amount:frame>=16?.35:1};}
+export const sphericalProjectionStage=defineNativeStage<Record<string,never>,Record<string,never>>(async init=>{const g=init.gpu,fx=createNativeSphericalEffects(init);return {async renderAt(context){const o=projectionCase(context.frame),source=await g.run(await g.compile(plate),[],{output:{width:init.width,height:init.height,format:o.half?'rgba16float':'rgba32float',color:linear709,alpha:'premultiplied'}});await publish(g,'source',source);return fx.processImage(source,async(image,f)=>{const converted=await f.vrConverter(image,{outputProjection:o.projection,outputFieldOfView:o.fov,width:o.width,height:o.height,amount:o.amount});await publish(g,'converted',converted);const result=await f.vrConverter(converted,{inputProjection:o.projection,inputFieldOfView:o.fov,width:init.width,height:init.height});await publish(g,'result',result);return result;},{context});},async dispose(){await fx.dispose();await fx.dispose();}};});

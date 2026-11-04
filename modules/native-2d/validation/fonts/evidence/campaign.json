@@ -1,0 +1,403 @@
+{
+  "scope": "native-2d PA default font/path assets",
+  "budgetMs": 420000,
+  "includesFailedAttempts": true,
+  "cumulativeWallMs": 419528.0402999999,
+  "rows": [
+    {
+      "file": "build-02-time.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "modules/native-2d/scripts/build.ts",
+        "D:\\frameweave-worktrees\\agent-4\\.frameweave\\native-2d\\font-package-02"
+      ],
+      "exitCode": 0,
+      "wallMs": 4227.3279999999995
+    },
+    {
+      "file": "build-04-time.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "modules/native-2d/scripts/build.ts",
+        "D:\\frameweave-worktrees\\agent-4\\.frameweave\\native-2d\\font-package-04"
+      ],
+      "exitCode": 0,
+      "wallMs": 4677.3812
+    },
+    {
+      "file": "build-06-time.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "modules/native-2d/scripts/build.ts",
+        "D:\\frameweave-worktrees\\agent-4\\.frameweave\\native-2d\\font-package-06"
+      ],
+      "exitCode": 0,
+      "wallMs": 4474.400799999999
+    },
+    {
+      "file": "build-09-time.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "modules/native-2d/scripts/build.ts",
+        "D:\\frameweave-worktrees\\agent-4\\.frameweave\\native-2d\\font-package-09"
+      ],
+      "exitCode": 0,
+      "wallMs": 4211.4171
+    },
+    {
+      "file": "build-12-time.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "modules/native-2d/scripts/build.ts",
+        "D:\\frameweave-worktrees\\agent-4\\.frameweave\\native-2d\\font-package-12"
+      ],
+      "exitCode": 0,
+      "wallMs": 4361.9899
+    },
+    {
+      "file": "build-15-time.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "modules/native-2d/scripts/build.ts",
+        "D:\\frameweave-worktrees\\agent-4\\.frameweave\\native-2d\\font-package-15"
+      ],
+      "exitCode": 0,
+      "wallMs": 4416.6612
+    },
+    {
+      "file": "build-17-time.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "modules/native-2d/scripts/build.ts",
+        "D:\\frameweave-worktrees\\agent-4\\.frameweave\\native-2d\\font-package-17"
+      ],
+      "exitCode": 0,
+      "wallMs": 4507.5803
+    },
+    {
+      "file": "build-19-time.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "modules/native-2d/scripts/build.ts",
+        "D:\\frameweave-worktrees\\agent-4\\.frameweave\\native-2d\\font-package-19"
+      ],
+      "exitCode": 0,
+      "wallMs": 4168.619000000001
+    },
+    {
+      "file": "discovery-01-time.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "src/cli.ts",
+        "effects",
+        "search",
+        "native font text path glyph",
+        "--mode",
+        "keyword",
+        "--json"
+      ],
+      "exitCode": 0,
+      "wallMs": 1629.5881000000002
+    },
+    {
+      "file": "real-03-time.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "modules/native-2d/validation/fonts/verify.ts"
+      ],
+      "exitCode": 1,
+      "wallMs": 3906.5937
+    },
+    {
+      "file": "real-05-time.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "modules/native-2d/validation/fonts/verify.ts"
+      ],
+      "exitCode": 1,
+      "wallMs": 12875.291099999999
+    },
+    {
+      "file": "real-07-time.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "modules/native-2d/validation/fonts/verify.ts"
+      ],
+      "exitCode": 0,
+      "wallMs": 13706.5253
+    },
+    {
+      "file": "real-10-time.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "modules/native-2d/validation/fonts/verify.ts"
+      ],
+      "exitCode": 1,
+      "wallMs": 13469.533300000001
+    },
+    {
+      "file": "real-11-time.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "modules/native-2d/validation/fonts/verify.ts"
+      ],
+      "exitCode": 1,
+      "wallMs": 10615.4552
+    },
+    {
+      "file": "real-13-time.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "modules/native-2d/validation/fonts/verify.ts"
+      ],
+      "exitCode": 1,
+      "wallMs": 60032.89
+    },
+    {
+      "file": "real-14-time.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "modules/native-2d/validation/fonts/verify.ts"
+      ],
+      "exitCode": 0,
+      "wallMs": 1986.4631
+    },
+    {
+      "file": "real-16-time.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "modules/native-2d/validation/fonts/verify.ts"
+      ],
+      "exitCode": 1,
+      "wallMs": 57478.5712
+    },
+    {
+      "file": "real-18-time.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "modules/native-2d/validation/fonts/verify.ts"
+      ],
+      "exitCode": 0,
+      "wallMs": 49546.2028
+    },
+    {
+      "file": "real-20-time.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "modules/native-2d/validation/fonts/verify.ts"
+      ],
+      "exitCode": 1,
+      "wallMs": 99708.76879999999
+    },
+    {
+      "file": "real-21-time.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "modules/native-2d/validation/fonts/verify.ts"
+      ],
+      "exitCode": null,
+      "wallMs": 26535.4483
+    },
+    {
+      "file": "types-01-time.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "-p",
+        "modules/native-2d/validation/fonts/tsconfig.json"
+      ],
+      "exitCode": 2,
+      "wallMs": 2732.1013999999996
+    },
+    {
+      "file": "types-02-time.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "-p",
+        "modules/native-2d/validation/fonts/tsconfig.json"
+      ],
+      "exitCode": 0,
+      "wallMs": 2734.8675
+    },
+    {
+      "file": "types-04-time.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "-p",
+        "modules/native-2d/validation/fonts/tsconfig.json"
+      ],
+      "exitCode": 0,
+      "wallMs": 3631.9201
+    },
+    {
+      "file": "types-06-time.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "-p",
+        "modules/native-2d/validation/fonts/tsconfig.json"
+      ],
+      "exitCode": 0,
+      "wallMs": 3517.4694
+    },
+    {
+      "file": "types-09-time.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "-p",
+        "modules/native-2d/validation/fonts/tsconfig.json"
+      ],
+      "exitCode": 0,
+      "wallMs": 3321.6065000000003
+    },
+    {
+      "file": "types-12-time.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "-p",
+        "modules/native-2d/validation/fonts/tsconfig.json"
+      ],
+      "exitCode": 0,
+      "wallMs": 3324.8244
+    },
+    {
+      "file": "types-15-time.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "-p",
+        "modules/native-2d/validation/fonts/tsconfig.json"
+      ],
+      "exitCode": 0,
+      "wallMs": 3468.3668000000002
+    },
+    {
+      "file": "types-17-time.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "-p",
+        "modules/native-2d/validation/fonts/tsconfig.json"
+      ],
+      "exitCode": 0,
+      "wallMs": 3750.2397
+    },
+    {
+      "file": "types-19-time.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "-p",
+        "modules/native-2d/validation/fonts/tsconfig.json"
+      ],
+      "exitCode": 0,
+      "wallMs": 3413.1259
+    },
+    {
+      "file": "unit-02-time.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "--test",
+        "modules/native-2d/validation/model.test.ts",
+        "modules/native-2d/validation/canvas-layout.test.ts",
+        "modules/native-2d/validation/svg.test.ts"
+      ],
+      "exitCode": 0,
+      "wallMs": 582.1134000000002
+    },
+    {
+      "file": "unit-16-time.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "--test",
+        "modules/native-2d/validation/model.test.ts",
+        "modules/native-2d/validation/canvas-layout.test.ts",
+        "modules/native-2d/validation/svg.test.ts",
+        "modules/native-2d/validation/fonts/cancellation.test.mjs"
+      ],
+      "exitCode": 0,
+      "wallMs": 546.7906
+    },
+    {
+      "file": "unit-19-time.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "--import",
+        "tsx",
+        "--test",
+        "modules/native-2d/validation/model.test.ts",
+        "modules/native-2d/validation/canvas-layout.test.ts",
+        "modules/native-2d/validation/svg.test.ts",
+        "modules/native-2d/validation/fonts/cancellation.test.mjs"
+      ],
+      "exitCode": 0,
+      "wallMs": 565.5066999999995
+    },
+    {
+      "file": "vendor-08-time.json",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "modules/native-2d/scripts/vendor-cancellation.mjs"
+      ],
+      "exitCode": 0,
+      "wallMs": 1402.3995
+    }
+  ]
+}

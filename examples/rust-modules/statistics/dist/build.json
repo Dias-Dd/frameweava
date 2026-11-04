@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "binding": "bytes-v1",
+  "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "target": "wasm32-unknown-unknown",
+  "flags": [
+    "--edition=2021",
+    "--crate-type=cdylib",
+    "--target=wasm32-unknown-unknown",
+    "-C",
+    "opt-level=s",
+    "-C",
+    "panic=abort",
+    "-C",
+    "strip=symbols",
+    "-C",
+    "debuginfo=0",
+    "--remap-path-prefix",
+    "<module>=."
+  ],
+  "esbuild": "0.28.2",
+  "inputs": {
+    ".gitignore": "a8c5a99f72e22ff2555440fc488910e791db88c94777f9698e14725ab7cda3e4",
+    "LICENSE": "f10eac8ebb531c62961df87ffa421817ccce7b36032a6c76abd50f66742c4232",
+    "README.md": "2926e2073bb081811dabf23534867f01e6200c7abfff16bf22d09d4e5a002b31",
+    "contract.ts": "9f62937b07e84bbe0eeb04a485a162a1c12041629bb83b408df4e76aade30b1c",
+    "effect.json": "7e60b64e222a92565a18f640ec3a9b725f11b08b98def46e7abb00306e1be060",
+    "frameweave.package.json": "e375f9ea3b22c14a675c2a669ef0e85d8e0af5cf1c231abd87daef169cff9236",
+    "host.mjs": "2dc6f96237dabd66d263f66f3f6980d9d468a016346d8ab92baf446563c43e17",
+    "index.ts": "7213e8e2b169009aa91cf47c9f7a0f84c6faf18403fa0204f909f93aeaf1e217",
+    "licenses/rust-std/COPYRIGHT": "172020dbfd5b53a226dfde77616190a48dcff519b0bc0e6deb91a8450782c4af",
+    "licenses/rust-std/LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "licenses/rust-std/LICENSE-MIT": "b71bd43a069ca0641a9ecfe585ca7b3c53b5cc1608f8b68321168698e28b5ea1",
+    "licenses/rust-std/source.json": "b7d99caf2dc4fd47b2717c05a850e08cc4b2d0de7aacabea766ee94f10e245fb",
+    "module.config.json": "6dfb7dcaf6faba50b04ec8870c2a151f63f8a0ab23bee5df86b0aebe7efedfce",
+    "module.mjs": "0a6faf3f8ba19c7246610cdfee6a475fa628878446198920706e74bf057dcbe4",
+    "runtime/client.ts": "52a78d3717dc32428cd552222713c6ecf4c7a961c2dd8a002930a1c4ba14f204",
+    "runtime/session.d.mts": "a9cbbc413cd1d6bd66994e5e96791f6efe7f3952980ef76f2d1539e4769dcbf8",
+    "runtime/session.mjs": "76313f823236c86ea7ea36da677a05a95026e3ba5fd8632b4b9b06fc33fa913a",
+    "runtime/worker.ts": "901686249711107b812e5649885fb7422dcee91735cf1edb1947a5d87b4032bc",
+    "rust/Cargo.toml": "041d2acbae10f1ae84700f634ac3a4b0897355581fb419ecf5c626f474578213",
+    "rust/src/algorithm.rs": "b6c5bdb48d3dbe264dfaa9d48b4a36208f2f22e3d98237c7231e1f88c2c587ea",
+    "rust/src/lib.rs": "0a4805c5342f634f12c813769d12ba9796acca679aa888392d3145d6dc940110",
+    "test.mjs": "c93b956c4f6c318c555e2bda6891183719bc6e405d5bda99bc8d5552d733ff17",
+    "tests/vectors.json": "b9d35a60a506688b7e452bca549ecd695a4aec52c045dc2217980ef2857a718c"
+  },
+  "outputs": {
+    "dist/module.wasm": "42632c3682dce1d3f4c1cf6a9325e1a1793623812fb5c5699ea1ccfc8c2a1bc7",
+    "dist/worker.js": "86f8638a9053cc110d75ce6ee7e9733114c1457dcaa3d608aaccfe9c28008de1",
+    "generated/types.ts": "a9dfd981cbaa4bd35893bfb296f74a8b0c8b9810b79b4082b1a9efc0d01f21e5"
+  }
+}

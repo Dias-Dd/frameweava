@@ -1,0 +1,25 @@
+{
+  "license": "Apache-2.0, existing repository code only",
+  "sourceParent": "822309d6d34d1dccc80d48b25daf816075d17997",
+  "files": {
+    "modules/pro-animation/src/native-feedback-time/index.ts": "7426ad34c9255678d7150d05a3e92d70fa71784f59bb1236d7d8a27f7a30053e",
+    "modules/pro-animation/src/native-feedback-time/kernels.ts": "ddb0c0678c503a13338b5085b9a38a834baaa0490b9523d803be7bf1210a28d0",
+    "src/core/simulation.ts": "492135a26fd18bd5f4083c66d96898e050c7d7caaf6773e8663240c7f9e5ea69",
+    "modules/native-gpu/state.ts": "9fe18f07f7086731788a237d4993cbf2967b122447a58b1fbff351ae16b7133d",
+    "modules/native-gpu/scope.ts": "06b1b4937ffd0790cd14bfefcfd788a9aeb9c668bb7e839fda9ce6603cc1d909",
+    "modules/native-effects/pa/kernels.ts": "b6a59d6c73787c9090b292c7058f4774e930da1179b62492533480b359831ba2"
+  },
+  "reuse": [
+    "Original FixedStepRunner unchanged; synchronous cloneable seek decisions adapt to ordered awaited native commands.",
+    "Existing native persistent stateStep counters guard publication and checkpoint reads; no pixel readback or new state protocol.",
+    "Existing native guarded Pair/coordinate sampler; paired F32 GPU history and checkpoint storage.",
+    "Original Stage/Signal/Renderer/MFR/Resource/Layer/media interfaces unchanged."
+  ],
+  "newThirdPartyDependencies": [],
+  "notClaimed": [
+    "Automatic GPU device recovery",
+    "Ticket completion as an arbitrary shader numerical scan",
+    "Unregistered/cross-Stage/history source replay outside explicit callback contract",
+    "Main formal release and six export modes"
+  ]
+}

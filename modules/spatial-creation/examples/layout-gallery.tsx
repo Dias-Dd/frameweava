@@ -1,0 +1,18 @@
+import {Composition,Stage,Layer,ref} from '@frameweave/engine';import {defineNativeStage} from '@frameweave/engine/native';
+import {characterWave,solidBackground,stackCreations,rowCreations,columnCreations,gridCreations,radialCreations,arcCreations,spiralCreations,scatterCreations,cascadeCreations,fanCreations,arrangeCreations,frameCreation,cardCreation,creationGallery} from 'spatial-creation-candidate';
+const sources=()=>['#20bad2','#e9a36d','#c7c2ff'].map(color=>solidBackground({color,opacity:.85}));
+const scene=()=>stackCreations([solidBackground({color:'#16334b'}),characterWave()]);
+export const row=defineNativeStage(()=>rowCreations(sources()));
+export const column=defineNativeStage(()=>columnCreations(sources()));
+export const grid=defineNativeStage(()=>gridCreations(sources()));
+export const radial=defineNativeStage(()=>radialCreations(sources(),{itemSize:[75,100]}));
+export const arc=defineNativeStage(()=>arcCreations(sources(),{itemSize:[75,100],radius:48}));
+export const spiral=defineNativeStage(()=>spiralCreations(sources(),{itemSize:[75,100]}));
+export const scatter=defineNativeStage(()=>scatterCreations(sources(),{itemSize:[90,120],seed:37}));
+export const cascade=defineNativeStage(()=>cascadeCreations(sources()));
+export const fan=defineNativeStage(()=>fanCreations(sources()));
+export const arranged=defineNativeStage(()=>arrangeCreations(sources(),{layout:{kind:'grid',columns:2,align:'end'}}));
+export const framed=defineNativeStage(()=>frameCreation(scene()));
+export const card=defineNativeStage(()=>cardCreation(scene()));
+export const gallery=defineNativeStage(()=>creationGallery([scene(),scene()]));
+export default Composition({id:'layout-gallery',width:1680,height:360,fps:24,durationInFrames:24,seed:37,background:'#30475e',children:Object.entries({row,column,grid,radial,arc,spiral,scatter,cascade,fan,arranged,framed,card,gallery}).flatMap(([id,factory],i)=>[Stage({id,factory,width:240,height:180,outputs:{surface:'surface'}}),Layer({source:ref(id),x:i%7*240,y:Math.floor(i/7)*180})])});

@@ -1,0 +1,15 @@
+import {readFile,writeFile,mkdir} from 'node:fs/promises';import {resolve,join} from 'node:path';import {execFileSync} from 'node:child_process';import {createHash} from 'node:crypto';import {nativeComputeShader} from '../../../gpu-effects/compute-shader.ts';import {nativePixelShader} from '../../../gpu-effects/pixel-shader.ts';import * as k from '../../aov-kernels.ts';
+const out=resolve(process.env.CREATION_EVIDENCE!);await mkdir(out,{recursive:true});const prep=String.raw`from pathlib import Path
+import json,hashlib,zipfile,os
+base=Path('.frameweave/spatial-coverage-upstream/aov');meta=json.loads((base/'openexr-wheel.json').read_text(encoding='utf-8'));wheel=base/meta['file']['filename'];assert hashlib.sha256(wheel.read_bytes()).hexdigest()==meta['file']['digests']['sha256'];target=Path('.frameweave/spatial-creation/aov-python-site').resolve();target.mkdir(parents=True,exist_ok=True);files={}
+with zipfile.ZipFile(wheel)as archive:
+ for row in archive.infolist():
+  if row.is_dir():continue
+  path=(target/row.filename).resolve();assert path.is_relative_to(target);data=archive.read(row);files[row.filename]=hashlib.sha256(data).hexdigest()
+  if path.exists():assert hashlib.sha256(path.read_bytes()).hexdigest()==files[row.filename],row.filename
+  else:path.parent.mkdir(parents=True,exist_ok=True);path.write_bytes(data)
+print(json.dumps({'wheel':meta,'files':files}))
+`;
+const raw=execFileSync(process.env.FRAMEWEAVE_MEDIA_PYTHON!,['-c',prep],{encoding:'utf8',windowsHide:true});await writeFile(join(out,'python-runtime.json'),raw);console.log(execFileSync(process.env.FRAMEWEAVE_MEDIA_PYTHON!,['-c','import OpenEXR,numpy,json;assert OpenEXR.__version__=="3.4.4";print(json.dumps({"OpenEXR":OpenEXR.__version__,"numpy":numpy.__version__}))'],{encoding:'utf8',windowsHide:true}));
+for(const [name,code,bindings,words]of [['capture',k.aovCaptureCode,'fuFU UU'.replaceAll(' ',''),12],['extract',k.aovExtractCode,'fFF',5],['weights',k.cryptoWeightsCode,'fuF',12],['rank',k.cryptoRankCode,'FuF',4],['merge',k.deepMergeCode,'uuuuUU',4],['transform',k.deepTransformCode,'uuuUU',8]] as const){const path=join(out,name+'.wgsl');await writeFile(path,nativeComputeShader({abiVersion:1,id:'test/aov-'+name,version:'1.0.0',bindings:[...bindings].map(s=>({type:s.toLowerCase()==='f'?'f32':'u32',access:s===s.toLowerCase()?'read':'read_write'})),parameterWords:words,workgroupSize:[8,8,1],code}));console.log(name,execFileSync(resolve('.frameweave/c2-shader/validate-shader.exe'),[path],{encoding:'utf8',windowsHide:true}));}
+for(const [name,code,types,words]of [['preview',k.aovPreviewCode,['f32','u32'],3],['matte',k.cryptoMatteCode,['f32','u32'],2],['flatten',k.deepFlattenCode,['u32','u32'],1]] as const){const path=join(out,name+'.wgsl');await writeFile(path,nativePixelShader({abiVersion:2,id:'test/aov-'+name,version:'1.0.0',inputCount:0,dataInputs:types.map(type=>({type})),parameterWords:words,code}));console.log(name,execFileSync(resolve('.frameweave/c2-shader/validate-shader.exe'),[path],{encoding:'utf8',windowsHide:true}));}

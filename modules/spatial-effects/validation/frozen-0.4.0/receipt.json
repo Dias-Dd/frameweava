@@ -1,0 +1,13 @@
+{
+  "base": "35a290a9e28ff25e89bc24c74213dbfad05c4816",
+  "version": "0.4.0",
+  "kind": "dev-only frozen original particle renderer bundle; Apache2 Frameweave and existing MIT Three0.186.1; not packaged",
+  "inputs": {
+    "modules/spatial-effects/src/renderer.ts": "19d5e2fd9206b28e28aa8097e4bd827ebfdb8df7b50096c810c2353d331d4738",
+    "modules/spatial-effects/src/native-target.ts": "b5da29ce2f69a6844e21e500ba1219df28b36ad15be72e26e9397f5bd615ac62",
+    "modules/spatial-effects/src/types.ts": "d1f1b849d4e9ad13e39a6a53605d059e1b52ee981bff9d2b55dc1b65bc03beec",
+    "node_modules/three/package.json": "f9c474a27c920b9435353a6235968f4453436bee0444fac7e5fd289c8fa463de",
+    "node_modules/three/LICENSE": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+  },
+  "output": "1c1b439d1fd42522e9a74e733085e97ee4df20b25fca33b196f4aaada6f2cae6"
+}

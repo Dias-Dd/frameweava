@@ -1,0 +1,6 @@
+{
+ "extends":"../../../tsconfig.json",
+ "compilerOptions":{"paths":{"@frameweave/engine":["../../../src/index.ts"],"@frameweave/engine/native":["../../native-gpu/authoring.ts"]}},
+ "include":["../*.ts","../examples/*.tsx","./*.ts","./*.tsx"],
+ "exclude":["./prepare-formal-text.ts"]
+}

@@ -1,0 +1,5 @@
+[
+  {"method":"tessellate","args":[{"type":"Float32Array","values":[0,0,1,0,1,1,0,1]}],"area":1,"triangleCount":2},
+  {"method":"tessellate","args":[{"type":"Float32Array","values":[0,0,2,0,2,1,1,1,1,2,0,2]}],"area":3,"triangleCount":4},
+  {"method":"tessellate","args":[{"type":"Float32Array","values":[0,0]}],"error":"Expected 3..128"}
+]

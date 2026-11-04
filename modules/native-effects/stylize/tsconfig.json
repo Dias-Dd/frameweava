@@ -1,0 +1,1 @@
+{"extends":"../../../tsconfig.json","include":["./*.ts","../examples/stylize-*.tsx"],"exclude":["./vendor"]}

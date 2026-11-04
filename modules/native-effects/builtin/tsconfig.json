@@ -1,0 +1,1 @@
+{"extends":"../../../tsconfig.json","include":["../index.ts","./*.ts","../examples/builtin-*.tsx","../../../tests/native-builtin-effects.test.ts","../../../tests/native-effects.test.ts","../../../tests/native-pa-images.test.ts"]}

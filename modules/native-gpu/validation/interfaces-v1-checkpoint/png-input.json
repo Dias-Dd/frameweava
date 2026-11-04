@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "ok": true,
+  "profile": "existing LCMS ICC16 import then explicit linear F32/PM",
+  "maxError": 0.00002139517636842725,
+  "expected": [
+    0.10835350593952589,
+    0.025735257536774643,
+    0.5019607843137255,
+    0.5019607843137255
+  ],
+  "pixels": [
+    0.10837490111589432,
+    0.025738341733813286,
+    0.501960813999176,
+    0.501960813999176
+  ],
+  "python": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\.frameweave\\pme-python\\Scripts\\python.exe"
+}

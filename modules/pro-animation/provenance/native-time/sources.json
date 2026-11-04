@@ -1,0 +1,14 @@
+{
+ "reviewedUpstream":{"project":"EffectCraft","repository":"https://github.com/storytold/effectcraft","commit":"ec7ced1f0515f0b6f376dbcc297f1c441f452d6e","license":"MIT (selected from upstream dual licence)"},
+ "files":[
+  {"upstream":"crates/effects/src/time_fx.rs","archive":"time_fx.rs","bytes":54626,"sha256":"88a7beec97c596e585ffefa6b7775f6de8ad3052b26b85855f5470b6043efeec"},
+  {"upstream":"crates/gpu/src/fx_time.rs","archive":"fx_time.rs","bytes":11766,"sha256":"c753d67143bdda59aaf41d001a13870c3a8c2c135930bee2f498b041341e5afd"},
+  {"upstream":"crates/gpu/src/shaders/fx_time.wgsl","archive":"fx_time.wgsl","bytes":6586,"sha256":"0f269ec214161f3706460e6865cdb9e5ef7deb38c73eceb5c2f374c8619c90d3"},
+  {"upstream":"LICENSE-MIT","archive":"LICENSE-MIT","bytes":1103,"sha256":"7b6db9a363688683feacdf9b528f059637f2e5d2edbacd8720fc9b26781c9abe"}
+ ],
+ "decision":"Do not import EffectCtx, Buf, Renderer, frame fetch/upload host, parameter registry, fixed 255-echo clamp, RGB>=0 clamp or framewise unguarded F32 summation. Their dependencies and numerical policy conflict with existing Frameweave native residency/signed HDR. Keep the elementary absolute-time sampling formulas and bind existing Core time/Signal, original shared guarded Pair arithmetic, resident image views and Compute/Pixel ABI2. No Rust-to-TS translation of the upstream effect engine.",
+ "actualReuse":["Existing Core animation/time/seededRandom","Existing shutterSamples and affine FrameContext contract","Unmodified guarded Pair arithmetic prefix from modules/native-effects/pa/kernels.ts displacement","Existing professional PM difference/subtract blend implementation; its EffectCraft MIT source/NOTICE is already tracked under gpu-image-effects"],
+ "behaviourReference":"https://helpx.adobe.com/after-effects/desktop/apply-effects-and-animation-presets/list-of-effects/time-effects.html",
+ "differences":["Explicit finite sourceAt only; no hidden Stage-prefix resample","No optical flow fallback","Signed/HDR RGB never display-clamped","Actual midpoint shutter quadrature reuses existing contract","in-front/in-back names explicitly define layer order; no vendor enum-label equivalence claim","timeDifference is the existing PM blend, not Adobe SDR/Alpha parameter parity"],
+ "newExternalDependencies":[]
+}

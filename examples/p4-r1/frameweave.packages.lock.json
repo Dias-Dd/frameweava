@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "apiVersion": 1,
+  "platform": "web",
+  "requirements": {
+    "example.orbit-grid": "1.0.0"
+  },
+  "roots": {
+    "example.orbit-grid": "example.orbit-grid@1.0.0"
+  },
+  "packages": {
+    "example.orbit-grid@1.0.0": {
+      "integrity": "sha256-a326abfb38f33be3257f8e6f1fb0d9632e4415e5a9af1698593a52222f33bbf0",
+      "source": {
+        "kind": "local",
+        "authority": "frameweave.examples"
+      },
+      "modules": {
+        "layout": "sha256-3da51f7394d6672805f635541cb09fee7e8712e16394f5604d770fb991b1e3e0",
+        "main": "sha256-f32c1547ce67b6b48fd6cc799e2d429edb1b12e156789f6ed43a5277dab93442",
+        "palette": "sha256-79dbff908c089992f52bed09507adb34ea3e69790c778f133ceeab0cd8c4600d",
+        "phase": "sha256-8c2e0b82ab0b03bcbfb0a6171b2cb0eee45f2fdedc671ca87017682c120e6849",
+        "shader": "sha256-32923e65c278377f0bc07dc48e6f2d0c7c5a86149475014ab8d745e6fb37876a"
+      },
+      "dependencies": {}
+    }
+  }
+}

@@ -1,0 +1,236 @@
+{
+  "schemaVersion": 1,
+  "id": "spatial-lighting-candidate",
+  "status": "experimental-candidate",
+  "exports": [
+    {
+      "name": "physicalMaterial",
+      "purpose": "Typed coverage/GGX/Lambert/unlit response",
+      "types": "physical-lighting-types.ts",
+      "example": "examples/physical-lighting.tsx",
+      "defaults": "PHYSICAL_LIGHTING.md",
+      "time": "Existing FrameContext, scalar Signal/keyframes; fixed deterministic quadrature",
+      "permissions": "Admitted Native GPU and declared existing R1 Resources; no new grants",
+      "gpuRequired": false
+    },
+    {
+      "name": "litObject",
+      "purpose": "Existing MeshData plus physical response",
+      "types": "physical-lighting-types.ts",
+      "example": "examples/physical-lighting.tsx",
+      "defaults": "PHYSICAL_LIGHTING.md",
+      "time": "Existing FrameContext, scalar Signal/keyframes; fixed deterministic quadrature",
+      "permissions": "Admitted Native GPU and declared existing R1 Resources; no new grants",
+      "gpuRequired": false
+    },
+    {
+      "name": "litPlane",
+      "purpose": "Plane creation",
+      "types": "physical-lighting-types.ts",
+      "example": "examples/physical-lighting.tsx",
+      "defaults": "PHYSICAL_LIGHTING.md",
+      "time": "Existing FrameContext, scalar Signal/keyframes; fixed deterministic quadrature",
+      "permissions": "Admitted Native GPU and declared existing R1 Resources; no new grants",
+      "gpuRequired": false
+    },
+    {
+      "name": "litBox",
+      "purpose": "Box creation",
+      "types": "physical-lighting-types.ts",
+      "example": "examples/physical-lighting.tsx",
+      "defaults": "PHYSICAL_LIGHTING.md",
+      "time": "Existing FrameContext, scalar Signal/keyframes; fixed deterministic quadrature",
+      "permissions": "Admitted Native GPU and declared existing R1 Resources; no new grants",
+      "gpuRequired": false
+    },
+    {
+      "name": "litSphere",
+      "purpose": "Sphere creation",
+      "types": "physical-lighting-types.ts",
+      "example": "examples/physical-lighting.tsx",
+      "defaults": "PHYSICAL_LIGHTING.md",
+      "time": "Existing FrameContext, scalar Signal/keyframes; fixed deterministic quadrature",
+      "permissions": "Admitted Native GPU and declared existing R1 Resources; no new grants",
+      "gpuRequired": false
+    },
+    {
+      "name": "groundPlane",
+      "purpose": "Horizontal floor",
+      "types": "physical-lighting-types.ts",
+      "example": "examples/physical-lighting.tsx",
+      "defaults": "PHYSICAL_LIGHTING.md",
+      "time": "Existing FrameContext, scalar Signal/keyframes; fixed deterministic quadrature",
+      "permissions": "Admitted Native GPU and declared existing R1 Resources; no new grants",
+      "gpuRequired": false
+    },
+    {
+      "name": "sunLight",
+      "purpose": "Distant source with true soft/hard shadows",
+      "types": "physical-lighting-types.ts",
+      "example": "examples/physical-lighting.tsx",
+      "defaults": "PHYSICAL_LIGHTING.md",
+      "time": "Existing FrameContext, scalar Signal/keyframes; fixed deterministic quadrature",
+      "permissions": "Admitted Native GPU and declared existing R1 Resources; no new grants",
+      "gpuRequired": false
+    },
+    {
+      "name": "pointLight",
+      "purpose": "Inverse-square point source",
+      "types": "physical-lighting-types.ts",
+      "example": "examples/physical-lighting.tsx",
+      "defaults": "PHYSICAL_LIGHTING.md",
+      "time": "Existing FrameContext, scalar Signal/keyframes; fixed deterministic quadrature",
+      "permissions": "Admitted Native GPU and declared existing R1 Resources; no new grants",
+      "gpuRequired": false
+    },
+    {
+      "name": "spotLight",
+      "purpose": "Inverse-square cone source",
+      "types": "physical-lighting-types.ts",
+      "example": "examples/physical-lighting.tsx",
+      "defaults": "PHYSICAL_LIGHTING.md",
+      "time": "Existing FrameContext, scalar Signal/keyframes; fixed deterministic quadrature",
+      "permissions": "Admitted Native GPU and declared existing R1 Resources; no new grants",
+      "gpuRequired": false
+    },
+    {
+      "name": "constantEnvironment",
+      "purpose": "Constant environment radiance",
+      "types": "physical-lighting-types.ts",
+      "example": "examples/physical-lighting.tsx",
+      "defaults": "PHYSICAL_LIGHTING.md",
+      "time": "Existing FrameContext, scalar Signal/keyframes; fixed deterministic quadrature",
+      "permissions": "Admitted Native GPU and declared existing R1 Resources; no new grants",
+      "gpuRequired": false
+    },
+    {
+      "name": "imageEnvironment",
+      "purpose": "Sealed HDR lat-long image radiance",
+      "types": "physical-lighting-types.ts",
+      "example": "examples/physical-lighting.tsx",
+      "defaults": "PHYSICAL_LIGHTING.md",
+      "time": "Existing FrameContext, scalar Signal/keyframes; fixed deterministic quadrature",
+      "permissions": "Admitted Native GPU and declared existing R1 Resources; no new grants",
+      "gpuRequired": false
+    },
+    {
+      "name": "studioEnvironment",
+      "purpose": "GPU studio radiance map",
+      "types": "physical-lighting-types.ts",
+      "example": "examples/physical-lighting.tsx",
+      "defaults": "PHYSICAL_LIGHTING.md",
+      "time": "Existing FrameContext, scalar Signal/keyframes; fixed deterministic quadrature",
+      "permissions": "Admitted Native GPU and declared existing R1 Resources; no new grants",
+      "gpuRequired": false
+    },
+    {
+      "name": "planPhysicalLighting",
+      "purpose": "Complete geometry/shadow/sample budget plan",
+      "types": "physical-lighting-types.ts",
+      "example": "examples/physical-lighting.tsx",
+      "defaults": "PHYSICAL_LIGHTING.md",
+      "time": "Existing FrameContext, scalar Signal/keyframes; fixed deterministic quadrature",
+      "permissions": "Admitted Native GPU and declared existing R1 Resources; no new grants",
+      "gpuRequired": false
+    },
+    {
+      "name": "samplePhysicalMaterial",
+      "purpose": "Existing Signal material evaluation",
+      "types": "physical-lighting-types.ts",
+      "example": "examples/physical-lighting.tsx",
+      "defaults": "PHYSICAL_LIGHTING.md",
+      "time": "Existing FrameContext, scalar Signal/keyframes; fixed deterministic quadrature",
+      "permissions": "Admitted Native GPU and declared existing R1 Resources; no new grants",
+      "gpuRequired": false
+    },
+    {
+      "name": "samplePhysicalLight",
+      "purpose": "Existing Signal light evaluation",
+      "types": "physical-lighting-types.ts",
+      "example": "examples/physical-lighting.tsx",
+      "defaults": "PHYSICAL_LIGHTING.md",
+      "time": "Existing FrameContext, scalar Signal/keyframes; fixed deterministic quadrature",
+      "permissions": "Admitted Native GPU and declared existing R1 Resources; no new grants",
+      "gpuRequired": false
+    },
+    {
+      "name": "captureLitGeometry",
+      "purpose": "Existing owned AOV geometry capture",
+      "types": "physical-lighting-types.ts",
+      "example": "examples/physical-lighting.tsx",
+      "defaults": "PHYSICAL_LIGHTING.md",
+      "time": "Existing FrameContext, scalar Signal/keyframes; fixed deterministic quadrature",
+      "permissions": "Admitted Native GPU and declared existing R1 Resources; no new grants",
+      "gpuRequired": true
+    },
+    {
+      "name": "renderLitAov",
+      "purpose": "Shade owned AOV with real light visibility/IBL/layers",
+      "types": "physical-lighting-types.ts",
+      "example": "examples/physical-lighting.tsx",
+      "defaults": "PHYSICAL_LIGHTING.md",
+      "time": "Existing FrameContext, scalar Signal/keyframes; fixed deterministic quadrature",
+      "permissions": "Admitted Native GPU and declared existing R1 Resources; no new grants",
+      "gpuRequired": true
+    },
+    {
+      "name": "createLitRenderer",
+      "purpose": "Reusable explicit-pose lighting service",
+      "types": "physical-lighting-types.ts",
+      "example": "examples/physical-lighting.tsx",
+      "defaults": "PHYSICAL_LIGHTING.md",
+      "time": "Existing FrameContext, scalar Signal/keyframes; fixed deterministic quadrature",
+      "permissions": "Admitted Native GPU and declared existing R1 Resources; no new grants",
+      "gpuRequired": true
+    },
+    {
+      "name": "litScene",
+      "purpose": "Managed ready-to-render object/light/environment Stage",
+      "types": "physical-lighting-types.ts",
+      "example": "examples/physical-lighting.tsx",
+      "defaults": "PHYSICAL_LIGHTING.md",
+      "time": "Existing FrameContext, scalar Signal/keyframes; fixed deterministic quadrature",
+      "permissions": "Admitted Native GPU and declared existing R1 Resources; no new grants",
+      "gpuRequired": true
+    }
+  ],
+  "models": [
+    "ggx",
+    "lambert",
+    "unlit"
+  ],
+  "materialDefaults": {
+    "roughness": 0.35,
+    "metalness": 0,
+    "opacity": 1,
+    "castShadow": true,
+    "receiveShadow": true
+  },
+  "environmentDefaults": {
+    "samples": 32,
+    "rotation": 0,
+    "intensity": 1,
+    "background": false,
+    "occlusion": false
+  },
+  "budgets": {
+    "maxRayTests": 1000000000000,
+    "maxBytes": 536870912,
+    "samplesPerPixel": 1,
+    "shadowBias": 0.0001,
+    "configurable": true
+  },
+  "limitations": [
+    "Coverage transparency, not refraction",
+    "Single-scatter IBL, not GI",
+    "Explicit MeshData/poses; no automatic GPU character readback",
+    "Ownership local to same R1 coordinator",
+    "Device/u32/F32 limits remain"
+  ],
+  "sources": [
+    "Three.js0.186.1 MIT",
+    "Existing AOV/Native/R1 services",
+    "Original Apache2 integration"
+  ],
+  "newRuntimeDependencies": []
+}

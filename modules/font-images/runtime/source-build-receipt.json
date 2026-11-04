@@ -1,0 +1,11 @@
+{
+  "kit": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-2\\.frameweave\\pa4-font\\kit",
+  "buildMs": 7507.3272,
+  "wasmSha256": "1220102271683d298626283fa24e311b08c65a032b5ac8093bfe797227d40e31",
+  "sourceSha256": "e269e68e99e60221bc530b9fb1d1a67a52b08bb1b98ff12cb06fb9d59923548d",
+  "cargoLockSha256": "bbcfe7de3e53f171bbd20bbaf1b5d9ed60feef313e7146b7845673fa9d625c62",
+  "generator": "wasm-bindgen 0.2.129",
+  "dependencyCount": 27,
+  "policyChanged": false,
+  "package": "Test fixture only; Main owns published pro-animation wiring/version/permissions"
+}

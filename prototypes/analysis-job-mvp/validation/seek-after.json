@@ -1,0 +1,38 @@
+[
+  {
+    "stage": "video",
+    "changed": 0,
+    "max": 0,
+    "bounds": [
+      99999,
+      99999,
+      0,
+      0
+    ],
+    "outputsEqual": true
+  },
+  {
+    "stage": "label",
+    "changed": 0,
+    "max": 0,
+    "bounds": [
+      99999,
+      99999,
+      0,
+      0
+    ],
+    "outputsEqual": true
+  },
+  {
+    "stage": "final",
+    "changed": 0,
+    "max": 0,
+    "bounds": [
+      99999,
+      99999,
+      0,
+      0
+    ],
+    "outputsEqual": true
+  }
+]

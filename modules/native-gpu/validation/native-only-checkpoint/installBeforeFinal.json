@@ -1,0 +1,40 @@
+{
+  "ok": true,
+  "consumer": "C:\\Users\\ASUS\\Documents\\Codex\\fw-native-only-consumer-oqSJBA",
+  "engine": "C:\\Users\\ASUS\\Documents\\Codex\\fw-native-only-consumer-oqSJBA\\node_modules\\@frameweave\\engine",
+  "tar": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\artifacts\\native-only-runtime\\frameweave-engine-0.1.0.tgz",
+  "ffmpeg": {
+    "provisioning": "explicit private copy; npm postinstall not run",
+    "sha256": "04e1307997530f9cf2fe35cba2ca7e8875ca91da02f89d6c7243df819c94ad00"
+  },
+  "rows": [
+    {
+      "name": "version",
+      "ok": true,
+      "ms": 1361.604
+    },
+    {
+      "name": "doctor",
+      "ok": true,
+      "ms": 3181.5008
+    },
+    {
+      "name": "frame",
+      "ok": true,
+      "ms": 7937.601200000001
+    },
+    {
+      "name": "preview",
+      "ok": true,
+      "ms": 6954.0657999999985
+    },
+    {
+      "name": "analysis-list",
+      "ok": true,
+      "ms": 1960.5985
+    }
+  ],
+  "wallMs": 21522.453700000002,
+  "platform": "win32",
+  "scope": "Local private installation; no public redistribution qualification; real Native PNG and preview without Chromium"
+}

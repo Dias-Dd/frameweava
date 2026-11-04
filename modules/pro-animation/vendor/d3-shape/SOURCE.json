@@ -1,0 +1,413 @@
+{
+  "project": "d3-shape",
+  "version": "3.2.0",
+  "commit": "8ec82658454750cfa29efb1e0ea514e3dd9b2297",
+  "license": "ISC",
+  "repository": {
+    "url": "git+https://github.com/d3/d3-shape.git",
+    "type": "git"
+  },
+  "tarball": {
+    "shasum": "a1a839cbd9ba45f28674c69d7f855bcf91dfc6a5",
+    "tarball": "https://registry.npmjs.org/d3-shape/-/d3-shape-3.2.0.tgz",
+    "fileCount": 65,
+    "integrity": "sha512-SaLBuwGm3MOViRq2ABk3eLoxwZELpH6zhl3FbAoJ7Vm1gofKx6El1Ib5z23NUEhF9AsGl7y+dzLe5Cw2AArGTA==",
+    "signatures": [
+      {
+        "sig": "MEYCIQDTtyw+AtmH6gd2uChXUEmwt8Hpqd75ntYw4hui9d7GpgIhALz/5Dp746uWIQbsJuFjrAJzwiTZLBXwqqxcipxYdD+w",
+        "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+      }
+    ],
+    "unpackedSize": 247267,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjokelACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2VmpoThAAmXLoPCNq5k/30WTprlMofmAjUkC6ml/dUvMCHS0JAUr0h5Ew\r\nbH85QlG64m+tClO9Qdp1iFQcaFwulK2/6sZ0P/MqZ0Fg48hHz7eNcW3OHV2U\r\nCHM1jjKfNlh+hKsvR9DE7oPgCKpcjIcUZfk6HLl2z54HbpELm090by0QG93s\r\nktqHbQKns0B+JiV4hg+YT3WD5xKfmuIQ/zq7MpoyJ8uP90xvrbwi6bFivi4n\r\nu/E6mi6knMYEm53yi7pAIgXxkhLnC1gKqXuh5Nv4EzL/XChAZ9d4Z7cn4SUZ\r\nhHzgURs0o+193zyqvqoT7Grwx7VovMCSX5ddRs+rt/qM+Ow4Of7j9fjgLpTE\r\nuhxb9xGGTdfv8Z0iewCwIb1JHdG8Vc2rLnbbIspCBjoiFi7Cv9fXWJxf+clh\r\n5HfRpK+i3lI/FgRB4pmXTK4EN7eEg4XFTEfMDFOEP+1PtNc4trmpZp+79Gso\r\nkyIThaCMEq/no4+lG3pq/9ZLyS7pG3oUgDUVRohV1Jibez3OVHmzFSL2xhzO\r\nkuY+jK0xj+6y8bC+Nu62YoMg9UVar1Un84Xt9r1NgMk/y9lQ3nVwWajmhl/E\r\nwQXaB8CmkfH3ef+jXV3EC8XfYUl8MdfdIzzwcLrz4so1zBx+Gph8zuEZ9kYt\r\nFwAFhAW5NF/Lo8C1B9a1IAPZZqW3QMper3s=\r\n=A8yy\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "archiveSha256": "8b4b2bc9daa99a957abe17656c5944fd3f28efb88f788e6b4fdba346cb80e602",
+  "artifacts": [
+    {
+      "upstream": "LICENSE",
+      "local": "modules/pro-animation/vendor/d3-shape/LICENSE",
+      "bytes": 731,
+      "sha256": "faa682e3e430941f958d26180458f5934a62f58dac4d70ccdd15608c15d0f884"
+    },
+    {
+      "upstream": "src/order/appearance.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/order/appearance.js",
+      "bytes": 339,
+      "sha256": "345efa9c6249ffea52d0036c6b145c518f7e376c9e9a823504f02c543e9b76d9"
+    },
+    {
+      "upstream": "src/arc.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/arc.js",
+      "bytes": 8844,
+      "sha256": "e657e8455af7c62613bde73cd45cea79709608d97759fe5e4c3e5ef6cdbd8deb"
+    },
+    {
+      "upstream": "src/area.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/area.js",
+      "bytes": 3218,
+      "sha256": "a2b2a221aaac4ed5715ff22d5a8d2264dd2992bd7ba22b0973e1555f6c3fd85a"
+    },
+    {
+      "upstream": "src/areaRadial.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/areaRadial.js",
+      "bytes": 944,
+      "sha256": "c72c0a115b4cc3078f8b182334eb3955604005ae846bc5f720524729dc4d15b4"
+    },
+    {
+      "upstream": "src/array.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/array.js",
+      "bytes": 242,
+      "sha256": "2acfcf25c5cb21c4c631bdd605431564d44d8693729dc6cf091f4c206f0ec97a"
+    },
+    {
+      "upstream": "src/order/ascending.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/order/ascending.js",
+      "bytes": 308,
+      "sha256": "beaeeff99e891ce2e2e1db5a7f74d40bc3773f9d245d605b4bed09add36a17a1"
+    },
+    {
+      "upstream": "src/symbol/asterisk.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/symbol/asterisk.js",
+      "bytes": 377,
+      "sha256": "92c2c8cb95917454028874cd542aa21d08b75be4df1a28f985ccb472fafcae67"
+    },
+    {
+      "upstream": "src/curve/basis.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/curve/basis.js",
+      "bytes": 1448,
+      "sha256": "2b75b71399e8d92d021e28bb2b4f7d6c41e3d2dff89f69c877ea7f664698086b"
+    },
+    {
+      "upstream": "src/curve/basisClosed.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/curve/basisClosed.js",
+      "bytes": 1536,
+      "sha256": "d577db3caddaaca6b026cdf801feaebbc78f43227d5ef73130528bfe5261891e"
+    },
+    {
+      "upstream": "src/curve/basisOpen.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/curve/basisOpen.js",
+      "bytes": 1078,
+      "sha256": "d0e317ce9bff65684f69f734c2f61f0fe8d08e28782d9eb64236fd13287bd42b"
+    },
+    {
+      "upstream": "src/curve/bump.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/curve/bump.js",
+      "bytes": 1749,
+      "sha256": "5c0b6fde8f33ec58e2017389a91be8eea9d071ec3698886419d8cb72b2461764"
+    },
+    {
+      "upstream": "src/curve/bundle.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/curve/bundle.js",
+      "bytes": 1084,
+      "sha256": "8ea2ba769352b26a109f89f0c67770cb552fe6346162ef1f783af70d48fe5e25"
+    },
+    {
+      "upstream": "src/curve/cardinal.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/curve/cardinal.js",
+      "bytes": 1639,
+      "sha256": "0e9893ab95b71f4cfe52ddfdaa55de4997c1944774f6906c2fc5ea9f1421dffa"
+    },
+    {
+      "upstream": "src/curve/cardinalClosed.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/curve/cardinalClosed.js",
+      "bytes": 1611,
+      "sha256": "f2066fe1f82f92826ec5a3470a3143994adc75b3f897a1ab7c019ec84047c0a3"
+    },
+    {
+      "upstream": "src/curve/cardinalOpen.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/curve/cardinalOpen.js",
+      "bytes": 1297,
+      "sha256": "7b6cb6af9aa763f060b34db7554f1d4e617b5a9f6405c51273ba55a12e52068d"
+    },
+    {
+      "upstream": "src/curve/catmullRom.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/curve/catmullRom.js",
+      "bytes": 2649,
+      "sha256": "ce34a4dea067b85dd7d7e3c374dbeceb6424a0f31e7f2964943c6a8371c7a9cc"
+    },
+    {
+      "upstream": "src/curve/catmullRomClosed.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/curve/catmullRomClosed.js",
+      "bytes": 2092,
+      "sha256": "75a9910094d5b757db0b6b1af9ffef2ae48a4b0808a10c58d4346004ddb80c2c"
+    },
+    {
+      "upstream": "src/curve/catmullRomOpen.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/curve/catmullRomOpen.js",
+      "bytes": 1772,
+      "sha256": "f2916fcb03ec4867a0fda78486c31e2a72a38bb668543743da087cc8204c99dd"
+    },
+    {
+      "upstream": "src/symbol/circle.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/symbol/circle.js",
+      "bytes": 182,
+      "sha256": "b2fa5824c1a50a9da2c1185e846c3cc6de21a102ab5b0bb0e14befbe3eb5dc76"
+    },
+    {
+      "upstream": "src/constant.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/constant.js",
+      "bytes": 81,
+      "sha256": "a3fd5aae83ac9e867555a68c77473491daae75a4cde62101976d549051fbee39"
+    },
+    {
+      "upstream": "src/symbol/cross.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/symbol/cross.js",
+      "bytes": 497,
+      "sha256": "3e807da072572d979f8dbbdd5e436f707aeb3eac7776c3dc368bf51eea1a74fd"
+    },
+    {
+      "upstream": "src/descending.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/descending.js",
+      "bytes": 86,
+      "sha256": "53e053d929e47f6eae2f4695ffd308ba325633467d43c171a98e706492f36332"
+    },
+    {
+      "upstream": "src/order/descending.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/order/descending.js",
+      "bytes": 115,
+      "sha256": "181703d5cb56757b1a48aa60d848e5adc69fd7e9b71ff4b19b1deae809a1a2b1"
+    },
+    {
+      "upstream": "src/symbol/diamond.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/symbol/diamond.js",
+      "bytes": 329,
+      "sha256": "7e0943be5be2ea30b280f9918f812d55b67f9f815b4eda030e171d9b9d8cf047"
+    },
+    {
+      "upstream": "src/symbol/diamond2.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/symbol/diamond2.js",
+      "bytes": 249,
+      "sha256": "f8252861157ae90799ab6ff8f178c8f1bca9fdd81ae39b24e56dcaccf151cb97"
+    },
+    {
+      "upstream": "src/offset/diverging.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/offset/diverging.js",
+      "bytes": 431,
+      "sha256": "179b464f4e559549df4adc75c079aa67d57b3df52c629f2e2108f4c370386212"
+    },
+    {
+      "upstream": "src/offset/expand.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/offset/expand.js",
+      "bytes": 322,
+      "sha256": "685450893d08883da8bbac3222debcad3bf27c9055aa79a2fd859af08597c422"
+    },
+    {
+      "upstream": "src/identity.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/identity.js",
+      "bytes": 43,
+      "sha256": "97f313a5604caca012249ba7b3477b4cd95e8a62411ba881addb5154472956ed"
+    },
+    {
+      "upstream": "src/index.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/index.js",
+      "bytes": 3355,
+      "sha256": "af9cd9a1ba0f1d58d8458526ec8eb0d19b2745c9ca45248c23f889730b1c0700"
+    },
+    {
+      "upstream": "src/order/insideOut.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/order/insideOut.js",
+      "bytes": 518,
+      "sha256": "e7ed8be68f51c1debf71096319c552130e7f8d814d8164be7294c94638885dbe"
+    },
+    {
+      "upstream": "src/line.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/line.js",
+      "bytes": 1733,
+      "sha256": "90eac879faa69aa2178a21e4ed2838c8f975e3d3282936dcc415b48573352da6"
+    },
+    {
+      "upstream": "src/curve/linear.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/curve/linear.js",
+      "bytes": 744,
+      "sha256": "e377d1440cd2547ad2e38050898e2cd765eb9d248cc5702f287763353ac43b87"
+    },
+    {
+      "upstream": "src/curve/linearClosed.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/curve/linearClosed.js",
+      "bytes": 517,
+      "sha256": "40c4e61dc9afb03f89d3897208bfe62ea1a3d1996d89e2ec866fb1d6d05e0f34"
+    },
+    {
+      "upstream": "src/lineRadial.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/lineRadial.js",
+      "bytes": 402,
+      "sha256": "27703a73b88fcd3a31f103e16f8fe24ebb65ec670db8531420fbb77f653ae89d"
+    },
+    {
+      "upstream": "src/link.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/link.js",
+      "bytes": 1835,
+      "sha256": "2c423e973f3222c37ec215ad04d4441d36f1a88cc21a16d091ebc5fe091d5517"
+    },
+    {
+      "upstream": "src/math.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/math.js",
+      "bytes": 492,
+      "sha256": "876190a6d1250f781fa8ca8a1bd0fba1a3db718fe2355c5a69b034aac6caf490"
+    },
+    {
+      "upstream": "src/curve/monotone.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/curve/monotone.js",
+      "bytes": 3203,
+      "sha256": "6f6fe0f729d096814f8282128d4caf6337de0b13e2ea5cedc1c528223c64056c"
+    },
+    {
+      "upstream": "src/curve/natural.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/curve/natural.js",
+      "bytes": 1761,
+      "sha256": "be8d0d5fa2627d733b2950ea88ec42c4bd5fc70ff64a8858bde68a51d6f27e62"
+    },
+    {
+      "upstream": "src/offset/none.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/offset/none.js",
+      "bytes": 309,
+      "sha256": "29f22a2172b248c02edf338ce4dca53f0712031c9ccbb0af60a766b9f3284099"
+    },
+    {
+      "upstream": "src/order/none.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/order/none.js",
+      "bytes": 120,
+      "sha256": "76fc17867678d56f1be890bb1bb3bd6ec9224f252174d63639a4558caa47cc19"
+    },
+    {
+      "upstream": "src/noop.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/noop.js",
+      "bytes": 29,
+      "sha256": "bb88c2b91d4fbaa228252328f7ecad919a5a27117e81e7fe4755374570c58563"
+    },
+    {
+      "upstream": "src/path.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/path.js",
+      "bytes": 393,
+      "sha256": "121bd97e99ead26d6bd84f20296c10040dc9caa9fceeca34d5ff917ef6e49065"
+    },
+    {
+      "upstream": "src/pie.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/pie.js",
+      "bytes": 2396,
+      "sha256": "5316912248e7e426fd41bab3af62719bada72fb0394a097c6cf251667f053c75"
+    },
+    {
+      "upstream": "src/symbol/plus.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/symbol/plus.js",
+      "bytes": 248,
+      "sha256": "20fae722061d6035a2e316536c2a1dca4b4c42c4884224e5b37d1536c12dce59"
+    },
+    {
+      "upstream": "src/point.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/point.js",
+      "bytes": 81,
+      "sha256": "779a4b8b14f835989d178a34c9e61174bf062abd5243c9d26393a754a9af7023"
+    },
+    {
+      "upstream": "src/pointRadial.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/pointRadial.js",
+      "bytes": 101,
+      "sha256": "972e68207d43b60656fff2a5d0d3a736ac410234521f16ee678b06ae4dc0a48b"
+    },
+    {
+      "upstream": "src/curve/radial.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/curve/radial.js",
+      "bytes": 658,
+      "sha256": "7babec77d74dc01aa724759a060acb6655f930f27bd31db29e90987a32b64672"
+    },
+    {
+      "upstream": "src/order/reverse.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/order/reverse.js",
+      "bytes": 100,
+      "sha256": "b22224a8cc95d6733a3f90780167f3f5b760cbcb84ed15dfeb8d0f1bce894f7d"
+    },
+    {
+      "upstream": "src/offset/silhouette.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/offset/silhouette.js",
+      "bytes": 317,
+      "sha256": "d8c478eff183a386f924f9e85f2c7f3adbdfd0c39cb71f65f0e7e21834443ad2"
+    },
+    {
+      "upstream": "src/symbol/square.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/symbol/square.js",
+      "bytes": 160,
+      "sha256": "e72aaffdba0fc386105456ccb7de0059d2c441499d984964ef571212b3b47554"
+    },
+    {
+      "upstream": "src/symbol/square2.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/symbol/square2.js",
+      "bytes": 250,
+      "sha256": "b609fc99645f682f62163a0adc3ddec73cda3c124623e23f0b46872f0e500e30"
+    },
+    {
+      "upstream": "src/stack.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/stack.js",
+      "bytes": 1428,
+      "sha256": "d53a92ad2b8212cb90eb143e721a59c97a77031c9e86ee1880b3c0b7dedc6aa6"
+    },
+    {
+      "upstream": "src/symbol/star.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/symbol/star.js",
+      "bytes": 603,
+      "sha256": "6329b4d39e3c0a2453d5a2dfc5845e62fd04a13c51ca11cf948fdcab9a73482d"
+    },
+    {
+      "upstream": "src/curve/step.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/curve/step.js",
+      "bytes": 1373,
+      "sha256": "ca0436ff3c69e55272927ef94c9f909280496f492e9649ffd4f4fded0c977c7b"
+    },
+    {
+      "upstream": "src/symbol.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/symbol.js",
+      "bytes": 1839,
+      "sha256": "0b4cdaee30f23496ec3d4d0603ba304ce7552694597efc0cf0732713228349c0"
+    },
+    {
+      "upstream": "src/symbol/times.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/symbol/times.js",
+      "bytes": 251,
+      "sha256": "29606b4f21e2cb79b9834693786e9267a9a706d78d833ae7ad25eafe5d1381a9"
+    },
+    {
+      "upstream": "src/symbol/triangle.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/symbol/triangle.js",
+      "bytes": 273,
+      "sha256": "8de7b9ac705bc88d3129a713c25667ea0a06238ddb490daeadcfa457e4cd1f0d"
+    },
+    {
+      "upstream": "src/symbol/triangle2.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/symbol/triangle2.js",
+      "bytes": 319,
+      "sha256": "37dd3edf660c9777f26049b958ebac29058cb44f8737d0c488992fdf25596542"
+    },
+    {
+      "upstream": "src/offset/wiggle.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/offset/wiggle.js",
+      "bytes": 743,
+      "sha256": "7384d619603f2e48e61ff492d85dbda93e9280d19d5d7eb9a2af1bdaecac9ef6"
+    },
+    {
+      "upstream": "src/symbol/wye.js",
+      "local": "modules/pro-animation/vendor/d3-shape/src/symbol/wye.js",
+      "bytes": 734,
+      "sha256": "e35e51caebadbb3aaa7e87b604568b3ae507be5770e4ae0586f14a701a50270a"
+    },
+    {
+      "upstream": "package.json",
+      "local": "modules/pro-animation/vendor/d3-shape/package.upstream.json",
+      "bytes": 1668,
+      "sha256": "c3d084a64bc3c85c407db4282be588a42484c4dc2639bb0a21424fe29ff38335"
+    }
+  ],
+  "runtimeDependencies": {
+    "d3-path": "^3.1.0"
+  },
+  "adaptations": [
+    {
+      "file": "src/path.js",
+      "reason": "Only bare module specifier redirected to the separately pinned local d3-path; algorithm bytes unchanged",
+      "originalSha256": "121bd97e99ead26d6bd84f20296c10040dc9caa9fceeca34d5ff917ef6e49065",
+      "localSha256": "200cbbf9fbf997734c0e079c860202235ff7ede8701f5696a6d536f8b3812c42"
+    }
+  ],
+  "locallyAuthoredDeclarations": [
+    "src/index.d.ts"
+  ]
+}

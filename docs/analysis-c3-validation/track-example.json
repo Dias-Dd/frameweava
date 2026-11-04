@@ -1,0 +1,1278 @@
+{
+  "schemaVersion": "analysis.track/1",
+  "cacheKey": "0b4bb132b421a13766550e3c40d1d00e8f07b0cdc6319f20a3f451573940383e",
+  "media": {
+    "name": "david.webm",
+    "sha256": "4bbe69b7d097379af4d7ad128f02692820dc57a6d8275ea2b9e7eef4399a3e61",
+    "bytes": 3917558
+  },
+  "model": {
+    "id": "face_landmarker/float16",
+    "version": "float16/1",
+    "sha256": "64184e229b263107bc2b804c6625db1341ff2bb731874b0bcc2fe6544e0bc9ff"
+  },
+  "algorithm": {
+    "id": "mediapipe.FaceLandmarker",
+    "packageVersion": "1.2.0",
+    "implementationSha256": "fcdeeb2b5b0eb5d1cea63602e15d98d2df02f57c96aef3c75dc93cf09bbc0a9e",
+    "runtimeSha256": "6adbb9f12e9711a962144ca8f72448daf7832ccadc5f393d75e729ddc731fee5",
+    "decoderSha256": "04e1307997530f9cf2fe35cba2ca7e8875ca91da02f89d6c7243df819c94ad00",
+    "browserVersion": "156.0.4314.50",
+    "delegate": "CPU",
+    "runningMode": "VIDEO",
+    "numFaces": 1,
+    "identity": "single-visible-face-segments-not-person-identity"
+  },
+  "config": {
+    "startSeconds": 0,
+    "endSeconds": 8,
+    "sampleRate": 8,
+    "analysisWidth": 640,
+    "minFaceDetectionConfidence": 0.5,
+    "minFacePresenceConfidence": 0.5,
+    "minTrackingConfidence": 0.5
+  },
+  "time": {
+    "unit": "microseconds",
+    "origin": "source-media-start",
+    "range": "start-inclusive-end-exclusive",
+    "sampling": "ffmpeg-fps-near-grid",
+    "startUs": 0,
+    "endUs": 8000000
+  },
+  "coordinates": {
+    "unit": "normalized",
+    "origin": "top-left",
+    "x": "right",
+    "y": "down",
+    "space": "decoded-square-pixel-display-frame",
+    "width": 640,
+    "height": 480
+  },
+  "samples": [
+    {
+      "timestampUs": 0,
+      "frameIndex": 0,
+      "valid": true,
+      "trackId": "face-segment-1",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.576631486415863,
+        "y": 0.3554867208003998
+      },
+      "box": {
+        "x": 0.4913405776023865,
+        "y": 0.3554867208003998,
+        "width": 0.17058181762695312,
+        "height": 0.23080715537071228
+      },
+      "frameAsset": "frame-00000.png",
+      "frameSha256": "45ec7130c26db775960711e8695774546d9d1eccb9bef87ec134feea318b1d55"
+    },
+    {
+      "timestampUs": 125000,
+      "frameIndex": 1,
+      "valid": false,
+      "trackId": null,
+      "confidence": null,
+      "landmarkCount": 0,
+      "anchor": null,
+      "box": null,
+      "frameAsset": "frame-00001.png",
+      "frameSha256": "840416daf8fcf0f14f240050b5069da5400788a070ca70720efad0e77fa9416d"
+    },
+    {
+      "timestampUs": 250000,
+      "frameIndex": 2,
+      "valid": true,
+      "trackId": "face-segment-2",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5446830838918686,
+        "y": 0.3557721674442291
+      },
+      "box": {
+        "x": 0.458408921957016,
+        "y": 0.3557721674442291,
+        "width": 0.1725483238697052,
+        "height": 0.23586449027061462
+      },
+      "frameAsset": "frame-00002.png",
+      "frameSha256": "f36ce46b63d89c0fb894856d333d3b07c689996355b2c34ba9fb6d7f3efcb332"
+    },
+    {
+      "timestampUs": 375000,
+      "frameIndex": 3,
+      "valid": true,
+      "trackId": "face-segment-2",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5382688790559769,
+        "y": 0.3446418046951294
+      },
+      "box": {
+        "x": 0.44731101393699646,
+        "y": 0.3446418046951294,
+        "width": 0.18191573023796082,
+        "height": 0.2383858561515808
+      },
+      "frameAsset": "frame-00003.png",
+      "frameSha256": "79ae727b04ff377d46729a316b206cc03c3f787c9fe676c20c35fcc316a41f58"
+    },
+    {
+      "timestampUs": 500000,
+      "frameIndex": 4,
+      "valid": false,
+      "trackId": null,
+      "confidence": null,
+      "landmarkCount": 0,
+      "anchor": null,
+      "box": null,
+      "frameAsset": "frame-00004.png",
+      "frameSha256": "fd5446f0ba32e4701d0f80af1105bace1328e2f31ff6f141a94dafae71ba6484"
+    },
+    {
+      "timestampUs": 625000,
+      "frameIndex": 5,
+      "valid": true,
+      "trackId": "face-segment-3",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.4616950750350952,
+        "y": 0.32834383845329285
+      },
+      "box": {
+        "x": 0.36742109060287476,
+        "y": 0.32834383845329285,
+        "width": 0.18854796886444092,
+        "height": 0.24674585461616516
+      },
+      "frameAsset": "frame-00005.png",
+      "frameSha256": "e210ac1d417f81b571d7f8ae42fe0570c3f6cdf80dd7bb45d69432f307c1d0ca"
+    },
+    {
+      "timestampUs": 750000,
+      "frameIndex": 6,
+      "valid": false,
+      "trackId": null,
+      "confidence": null,
+      "landmarkCount": 0,
+      "anchor": null,
+      "box": null,
+      "frameAsset": "frame-00006.png",
+      "frameSha256": "07551f7e0569b11d0fca44351e0197b4481983a4ace49593e34d345cf3a49ab9"
+    },
+    {
+      "timestampUs": 875000,
+      "frameIndex": 7,
+      "valid": true,
+      "trackId": "face-segment-4",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.49790894985198975,
+        "y": 0.3868715465068817
+      },
+      "box": {
+        "x": 0.4144969582557678,
+        "y": 0.3868715465068817,
+        "width": 0.16682398319244385,
+        "height": 0.24112793803215027
+      },
+      "frameAsset": "frame-00007.png",
+      "frameSha256": "d6f9e02a8dbbe9667d153404b0d58efed1fb754cbc3dff1f8dafdbcb9f31b07e"
+    },
+    {
+      "timestampUs": 1000000,
+      "frameIndex": 8,
+      "valid": true,
+      "trackId": "face-segment-4",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5051994621753693,
+        "y": 0.38008299469947815
+      },
+      "box": {
+        "x": 0.41859203577041626,
+        "y": 0.38008299469947815,
+        "width": 0.173214852809906,
+        "height": 0.23974314332008362
+      },
+      "frameAsset": "frame-00008.png",
+      "frameSha256": "be4a2dade2ab906d54a6f84de359cd41fbea3403a536782fb62c8ef6809f3a69"
+    },
+    {
+      "timestampUs": 1125000,
+      "frameIndex": 9,
+      "valid": false,
+      "trackId": null,
+      "confidence": null,
+      "landmarkCount": 0,
+      "anchor": null,
+      "box": null,
+      "frameAsset": "frame-00009.png",
+      "frameSha256": "c4d329d83dc11043fff3db26f74cb5a958acb11dedfa5fe8d20770720427e9ab"
+    },
+    {
+      "timestampUs": 1250000,
+      "frameIndex": 10,
+      "valid": true,
+      "trackId": "face-segment-5",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5656879842281342,
+        "y": 0.2913486063480377
+      },
+      "box": {
+        "x": 0.47351592779159546,
+        "y": 0.2913486063480377,
+        "width": 0.1843441128730774,
+        "height": 0.2631608545780182
+      },
+      "frameAsset": "frame-00010.png",
+      "frameSha256": "6a2bf0838a32624ef1f28ec93b1ce574c648c9872ab9ba4d07d0f583895e9d37"
+    },
+    {
+      "timestampUs": 1375000,
+      "frameIndex": 11,
+      "valid": true,
+      "trackId": "face-segment-5",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.581811249256134,
+        "y": 0.2907845675945282
+      },
+      "box": {
+        "x": 0.4848484992980957,
+        "y": 0.2907845675945282,
+        "width": 0.19392549991607666,
+        "height": 0.27456411719322205
+      },
+      "frameAsset": "frame-00011.png",
+      "frameSha256": "f9ec0bd2e8de2795be32a862bd02387a5cf094572cceccc49dd1fd983279e1f5"
+    },
+    {
+      "timestampUs": 1500000,
+      "frameIndex": 12,
+      "valid": true,
+      "trackId": "face-segment-5",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5762710720300674,
+        "y": 0.27398622035980225
+      },
+      "box": {
+        "x": 0.47523537278175354,
+        "y": 0.27398622035980225,
+        "width": 0.2020713984966278,
+        "height": 0.2785450220108032
+      },
+      "frameAsset": "frame-00012.png",
+      "frameSha256": "ba34e37dc8c787590709a4ab97357b7bdb3fcf624cde5ce2ec92820ca7d39e98"
+    },
+    {
+      "timestampUs": 1625000,
+      "frameIndex": 13,
+      "valid": true,
+      "trackId": "face-segment-5",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5474719852209091,
+        "y": 0.28976911306381226
+      },
+      "box": {
+        "x": 0.4525204598903656,
+        "y": 0.28976911306381226,
+        "width": 0.18990305066108704,
+        "height": 0.2752055525779724
+      },
+      "frameAsset": "frame-00013.png",
+      "frameSha256": "29f46657b3cce5e58eab79511c928dd2d24b526849e8edefa386320be390fd2d"
+    },
+    {
+      "timestampUs": 1750000,
+      "frameIndex": 14,
+      "valid": true,
+      "trackId": "face-segment-5",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5053903162479401,
+        "y": 0.3140595257282257
+      },
+      "box": {
+        "x": 0.4096452593803406,
+        "y": 0.3140595257282257,
+        "width": 0.19149011373519897,
+        "height": 0.2807144224643707
+      },
+      "frameAsset": "frame-00014.png",
+      "frameSha256": "670a4c29351eb6e3e1f8ca723a3ed8944d1489830a10ef915fcc39abb9654d3c"
+    },
+    {
+      "timestampUs": 1875000,
+      "frameIndex": 15,
+      "valid": true,
+      "trackId": "face-segment-5",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.47508785128593445,
+        "y": 0.31917378306388855
+      },
+      "box": {
+        "x": 0.374295711517334,
+        "y": 0.31917378306388855,
+        "width": 0.20158427953720093,
+        "height": 0.284250944852829
+      },
+      "frameAsset": "frame-00015.png",
+      "frameSha256": "4f9f533aac87865b52738e2b62fe87170b3dda24498a6a01a4772f8c82a0c07f"
+    },
+    {
+      "timestampUs": 2000000,
+      "frameIndex": 16,
+      "valid": true,
+      "trackId": "face-segment-5",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.47644613683223724,
+        "y": 0.29018932580947876
+      },
+      "box": {
+        "x": 0.38357362151145935,
+        "y": 0.29018932580947876,
+        "width": 0.1857450306415558,
+        "height": 0.2844488024711609
+      },
+      "frameAsset": "frame-00016.png",
+      "frameSha256": "cf8e91bd28b3c1502456471515b07029caa8da59727ba92cc1d62b91d293969f"
+    },
+    {
+      "timestampUs": 2125000,
+      "frameIndex": 17,
+      "valid": true,
+      "trackId": "face-segment-5",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.49237513542175293,
+        "y": 0.28240615129470825
+      },
+      "box": {
+        "x": 0.3898393511772156,
+        "y": 0.28240615129470825,
+        "width": 0.2050715684890747,
+        "height": 0.2938922643661499
+      },
+      "frameAsset": "frame-00017.png",
+      "frameSha256": "fc0f2525575995588305b940ab0aa0a31adbec8b24d18a227d80987f6708c11b"
+    },
+    {
+      "timestampUs": 2250000,
+      "frameIndex": 18,
+      "valid": false,
+      "trackId": null,
+      "confidence": null,
+      "landmarkCount": 0,
+      "anchor": null,
+      "box": null,
+      "frameAsset": "frame-00018.png",
+      "frameSha256": "1a867913caac2518826158a640a7911be72edeb568f632447c397beb1e81fc0e"
+    },
+    {
+      "timestampUs": 2375000,
+      "frameIndex": 19,
+      "valid": true,
+      "trackId": "face-segment-6",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5600450485944748,
+        "y": 0.3197602927684784
+      },
+      "box": {
+        "x": 0.4631853997707367,
+        "y": 0.3197602927684784,
+        "width": 0.1937192976474762,
+        "height": 0.29298481345176697
+      },
+      "frameAsset": "frame-00019.png",
+      "frameSha256": "66f853c0cec6b5d14c27899103d1a29df29c57f6e7d39bbcb17cd5aea262d2b7"
+    },
+    {
+      "timestampUs": 2500000,
+      "frameIndex": 20,
+      "valid": false,
+      "trackId": null,
+      "confidence": null,
+      "landmarkCount": 0,
+      "anchor": null,
+      "box": null,
+      "frameAsset": "frame-00020.png",
+      "frameSha256": "55338a7501448b9a5b13604425fdc54f53fb104e7cbba61ec7b55200fc68821d"
+    },
+    {
+      "timestampUs": 2625000,
+      "frameIndex": 21,
+      "valid": true,
+      "trackId": "face-segment-7",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5784969329833984,
+        "y": 0.32214444875717163
+      },
+      "box": {
+        "x": 0.48531556129455566,
+        "y": 0.32214444875717163,
+        "width": 0.18636274337768555,
+        "height": 0.28296327590942383
+      },
+      "frameAsset": "frame-00021.png",
+      "frameSha256": "7e7589425e03b04a674460fdf2d442143d363d2541f78800fedf561e406789dc"
+    },
+    {
+      "timestampUs": 2750000,
+      "frameIndex": 22,
+      "valid": true,
+      "trackId": "face-segment-7",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5672660022974014,
+        "y": 0.33326223492622375
+      },
+      "box": {
+        "x": 0.46875008940696716,
+        "y": 0.33326223492622375,
+        "width": 0.19703182578086853,
+        "height": 0.2749191224575043
+      },
+      "frameAsset": "frame-00022.png",
+      "frameSha256": "3591ed7c516414da6de60a27f759a485473d6ceacc3db569c2e7385c044b16d0"
+    },
+    {
+      "timestampUs": 2875000,
+      "frameIndex": 23,
+      "valid": true,
+      "trackId": "face-segment-7",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5624411553144455,
+        "y": 0.30733051896095276
+      },
+      "box": {
+        "x": 0.4732528626918793,
+        "y": 0.30733051896095276,
+        "width": 0.17837658524513245,
+        "height": 0.2782759368419647
+      },
+      "frameAsset": "frame-00023.png",
+      "frameSha256": "d944aec26aab566599c41533dcd92fbde9fad19f81268a9f709ed557689f8869"
+    },
+    {
+      "timestampUs": 3000000,
+      "frameIndex": 24,
+      "valid": true,
+      "trackId": "face-segment-7",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5479583442211151,
+        "y": 0.34486714005470276
+      },
+      "box": {
+        "x": 0.4551677703857422,
+        "y": 0.34486714005470276,
+        "width": 0.18558114767074585,
+        "height": 0.27146396040916443
+      },
+      "frameAsset": "frame-00024.png",
+      "frameSha256": "9f239ffbff06e9c91a898768850fd688c36cb340be7432bf329eacc5b03bbafe"
+    },
+    {
+      "timestampUs": 3125000,
+      "frameIndex": 25,
+      "valid": true,
+      "trackId": "face-segment-7",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5442052930593491,
+        "y": 0.35328859090805054
+      },
+      "box": {
+        "x": 0.4514981210231781,
+        "y": 0.35328859090805054,
+        "width": 0.18541434407234192,
+        "height": 0.2809007167816162
+      },
+      "frameAsset": "frame-00025.png",
+      "frameSha256": "2a856605e4d55ddc8b4609ea56368952fdd73e75e07919a7752ea601a6a576e4"
+    },
+    {
+      "timestampUs": 3250000,
+      "frameIndex": 26,
+      "valid": true,
+      "trackId": "face-segment-7",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5215520560741425,
+        "y": 0.3387429118156433
+      },
+      "box": {
+        "x": 0.43501710891723633,
+        "y": 0.3387429118156433,
+        "width": 0.17306989431381226,
+        "height": 0.27030783891677856
+      },
+      "frameAsset": "frame-00026.png",
+      "frameSha256": "cdc6f52cb23f279e9de8bda209ab582d8e43337c520da07d85c1c6c8e7c750c4"
+    },
+    {
+      "timestampUs": 3375000,
+      "frameIndex": 27,
+      "valid": true,
+      "trackId": "face-segment-7",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5136361867189407,
+        "y": 0.3395850956439972
+      },
+      "box": {
+        "x": 0.42651399970054626,
+        "y": 0.3395850956439972,
+        "width": 0.17424437403678894,
+        "height": 0.2665655314922333
+      },
+      "frameAsset": "frame-00027.png",
+      "frameSha256": "c0190d832462237dfee4ec5daceff156b420777061405934b4eb3d9d190090ca"
+    },
+    {
+      "timestampUs": 3500000,
+      "frameIndex": 28,
+      "valid": false,
+      "trackId": null,
+      "confidence": null,
+      "landmarkCount": 0,
+      "anchor": null,
+      "box": null,
+      "frameAsset": "frame-00028.png",
+      "frameSha256": "182949732a72e9017256425156df972d843d0179462ca816f17b2ec693fb6bbd"
+    },
+    {
+      "timestampUs": 3625000,
+      "frameIndex": 29,
+      "valid": true,
+      "trackId": "face-segment-8",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5482331961393356,
+        "y": 0.3429461717605591
+      },
+      "box": {
+        "x": 0.4593223035335541,
+        "y": 0.3429461717605591,
+        "width": 0.1778217852115631,
+        "height": 0.2639996409416199
+      },
+      "frameAsset": "frame-00029.png",
+      "frameSha256": "c425814356e16ad0e352e6359c1e7c794fdf829de21448eef1b9fafac7376f3d"
+    },
+    {
+      "timestampUs": 3750000,
+      "frameIndex": 30,
+      "valid": true,
+      "trackId": "face-segment-8",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5746809840202332,
+        "y": 0.3054189085960388
+      },
+      "box": {
+        "x": 0.4846077561378479,
+        "y": 0.3054189085960388,
+        "width": 0.1801464557647705,
+        "height": 0.2697627544403076
+      },
+      "frameAsset": "frame-00030.png",
+      "frameSha256": "45494a33082358fc7aaf2d11de5fdeec940b0c9c120496e2e0c35a2cc2ca967d"
+    },
+    {
+      "timestampUs": 3875000,
+      "frameIndex": 31,
+      "valid": true,
+      "trackId": "face-segment-8",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5970422327518463,
+        "y": 0.3174160122871399
+      },
+      "box": {
+        "x": 0.5032539963722229,
+        "y": 0.3174160122871399,
+        "width": 0.18757647275924683,
+        "height": 0.27776241302490234
+      },
+      "frameAsset": "frame-00031.png",
+      "frameSha256": "8d999e56fd85a29252088452432ecc1e27a6c5f0a152e6e4fe2db00ae9eed678"
+    },
+    {
+      "timestampUs": 4000000,
+      "frameIndex": 32,
+      "valid": true,
+      "trackId": "face-segment-8",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.6024405658245087,
+        "y": 0.321133017539978
+      },
+      "box": {
+        "x": 0.5134459137916565,
+        "y": 0.321133017539978,
+        "width": 0.17798930406570435,
+        "height": 0.27911025285720825
+      },
+      "frameAsset": "frame-00032.png",
+      "frameSha256": "65f68e2d133f3a09f293130c36d29e1ae3cd912119ceefc9185720313a1d1d5b"
+    },
+    {
+      "timestampUs": 4125000,
+      "frameIndex": 33,
+      "valid": true,
+      "trackId": "face-segment-8",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5984959900379181,
+        "y": 0.3179154396057129
+      },
+      "box": {
+        "x": 0.5124170184135437,
+        "y": 0.3179154396057129,
+        "width": 0.17215794324874878,
+        "height": 0.2698015570640564
+      },
+      "frameAsset": "frame-00033.png",
+      "frameSha256": "c096bfaa7ca941a529a0f9fc39bad38c507e440a862a4ee505d2f831d11554b0"
+    },
+    {
+      "timestampUs": 4250000,
+      "frameIndex": 34,
+      "valid": true,
+      "trackId": "face-segment-8",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5787587463855743,
+        "y": 0.3392637372016907
+      },
+      "box": {
+        "x": 0.4931737780570984,
+        "y": 0.3392637372016907,
+        "width": 0.1711699366569519,
+        "height": 0.25931960344314575
+      },
+      "frameAsset": "frame-00034.png",
+      "frameSha256": "26599f2b82ab990f16a7089704fccbd70ab7ea038bef96c9670152350434ef04"
+    },
+    {
+      "timestampUs": 4375000,
+      "frameIndex": 35,
+      "valid": true,
+      "trackId": "face-segment-8",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5550417602062225,
+        "y": 0.3597956597805023
+      },
+      "box": {
+        "x": 0.471280574798584,
+        "y": 0.3597956597805023,
+        "width": 0.1675223708152771,
+        "height": 0.2601872980594635
+      },
+      "frameAsset": "frame-00035.png",
+      "frameSha256": "01d92a89a98adee00d2c6ae70c5544b934721236257c4cd3974562d3b8680434"
+    },
+    {
+      "timestampUs": 4500000,
+      "frameIndex": 36,
+      "valid": true,
+      "trackId": "face-segment-8",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5294394344091415,
+        "y": 0.34083184599876404
+      },
+      "box": {
+        "x": 0.44646915793418884,
+        "y": 0.34083184599876404,
+        "width": 0.1659405529499054,
+        "height": 0.261514276266098
+      },
+      "frameAsset": "frame-00036.png",
+      "frameSha256": "0c8a4f247a0c8cf4fc2ad3fc88ccab151d0b37d1d06c6a5a675882def66964af"
+    },
+    {
+      "timestampUs": 4625000,
+      "frameIndex": 37,
+      "valid": true,
+      "trackId": "face-segment-8",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.527641236782074,
+        "y": 0.3375606834888458
+      },
+      "box": {
+        "x": 0.4452173709869385,
+        "y": 0.3375606834888458,
+        "width": 0.164847731590271,
+        "height": 0.263345330953598
+      },
+      "frameAsset": "frame-00037.png",
+      "frameSha256": "1054b83dc1cec325381bcdb58f98310dd37178489ee41f43994d6d930fd053a5"
+    },
+    {
+      "timestampUs": 4750000,
+      "frameIndex": 38,
+      "valid": true,
+      "trackId": "face-segment-8",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5346696376800537,
+        "y": 0.35264527797698975
+      },
+      "box": {
+        "x": 0.44951653480529785,
+        "y": 0.35264527797698975,
+        "width": 0.17030620574951172,
+        "height": 0.27532243728637695
+      },
+      "frameAsset": "frame-00038.png",
+      "frameSha256": "214ed17687817d4c0534998974623ef97c10ce7511c2750518cb41a54d410e0f"
+    },
+    {
+      "timestampUs": 4875000,
+      "frameIndex": 39,
+      "valid": true,
+      "trackId": "face-segment-8",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5507271885871887,
+        "y": 0.34997043013572693
+      },
+      "box": {
+        "x": 0.46415191888809204,
+        "y": 0.34997043013572693,
+        "width": 0.17315053939819336,
+        "height": 0.27615323662757874
+      },
+      "frameAsset": "frame-00039.png",
+      "frameSha256": "ffa3295c3b3b21f1f284279f1910badd0cfcb65531bac41fd111020bfd5af362"
+    },
+    {
+      "timestampUs": 5000000,
+      "frameIndex": 40,
+      "valid": true,
+      "trackId": "face-segment-8",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5698228776454926,
+        "y": 0.31347253918647766
+      },
+      "box": {
+        "x": 0.4820132851600647,
+        "y": 0.31347253918647766,
+        "width": 0.1756191849708557,
+        "height": 0.29174503684043884
+      },
+      "frameAsset": "frame-00040.png",
+      "frameSha256": "5c2e0f0749262ceeb91f529f33aff4f583d096ffde34bd6c857b73454c353e01"
+    },
+    {
+      "timestampUs": 5125000,
+      "frameIndex": 41,
+      "valid": true,
+      "trackId": "face-segment-8",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.6031117737293243,
+        "y": 0.2948870062828064
+      },
+      "box": {
+        "x": 0.5065574049949646,
+        "y": 0.2948870062828064,
+        "width": 0.19310873746871948,
+        "height": 0.31004953384399414
+      },
+      "frameAsset": "frame-00041.png",
+      "frameSha256": "6f27a157983965de52e44663ece68b14f6fbc03de10d070192f307b817a260f9"
+    },
+    {
+      "timestampUs": 5250000,
+      "frameIndex": 42,
+      "valid": true,
+      "trackId": "face-segment-8",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.6116541922092438,
+        "y": 0.3081022799015045
+      },
+      "box": {
+        "x": 0.5186517238616943,
+        "y": 0.3081022799015045,
+        "width": 0.18600493669509888,
+        "height": 0.30751845240592957
+      },
+      "frameAsset": "frame-00042.png",
+      "frameSha256": "2ad3dca5ea3295858b1d0e5dfbb9bc0f50b23512bbf1dc563a4cf2b6a7a7143c"
+    },
+    {
+      "timestampUs": 5375000,
+      "frameIndex": 43,
+      "valid": true,
+      "trackId": "face-segment-8",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.6054377555847168,
+        "y": 0.2948794960975647
+      },
+      "box": {
+        "x": 0.5126774907112122,
+        "y": 0.2948794960975647,
+        "width": 0.18552052974700928,
+        "height": 0.30623793601989746
+      },
+      "frameAsset": "frame-00043.png",
+      "frameSha256": "7c6d0b4e701f6910e6156981240ed3675b36f5b8e0ce272182ac1a3a85855037"
+    },
+    {
+      "timestampUs": 5500000,
+      "frameIndex": 44,
+      "valid": true,
+      "trackId": "face-segment-8",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.6034441888332367,
+        "y": 0.2591601312160492
+      },
+      "box": {
+        "x": 0.5103510618209839,
+        "y": 0.2591601312160492,
+        "width": 0.18618625402450562,
+        "height": 0.2992806136608124
+      },
+      "frameAsset": "frame-00044.png",
+      "frameSha256": "c3ae72b70a2fd4c36d4127ff131c8b56bb1ade212e8ad77bbac05de456d6f655"
+    },
+    {
+      "timestampUs": 5625000,
+      "frameIndex": 45,
+      "valid": true,
+      "trackId": "face-segment-8",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5762318223714828,
+        "y": 0.26019224524497986
+      },
+      "box": {
+        "x": 0.4844609200954437,
+        "y": 0.26019224524497986,
+        "width": 0.18354180455207825,
+        "height": 0.29396292567253113
+      },
+      "frameAsset": "frame-00045.png",
+      "frameSha256": "8925d125f6f95543d9c2a1bfd371dfe71653379e49c12bd397b339502a3f3c36"
+    },
+    {
+      "timestampUs": 5750000,
+      "frameIndex": 46,
+      "valid": true,
+      "trackId": "face-segment-8",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5470108389854431,
+        "y": 0.27676910161972046
+      },
+      "box": {
+        "x": 0.45505452156066895,
+        "y": 0.27676910161972046,
+        "width": 0.18391263484954834,
+        "height": 0.2926625609397888
+      },
+      "frameAsset": "frame-00046.png",
+      "frameSha256": "6b1cf3cf200603134c00254877f7cba4e55b66ed50996816d7a9e32e80f28522"
+    },
+    {
+      "timestampUs": 5875000,
+      "frameIndex": 47,
+      "valid": true,
+      "trackId": "face-segment-8",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.534112423658371,
+        "y": 0.23444655537605286
+      },
+      "box": {
+        "x": 0.4419505000114441,
+        "y": 0.23444655537605286,
+        "width": 0.18432384729385376,
+        "height": 0.29545190930366516
+      },
+      "frameAsset": "frame-00047.png",
+      "frameSha256": "b402b1764f7bdf99ca5dedb550c7b79cf7d8c3712b3941d72bbf410ab4ddff5c"
+    },
+    {
+      "timestampUs": 6000000,
+      "frameIndex": 48,
+      "valid": true,
+      "trackId": "face-segment-8",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5230500400066376,
+        "y": 0.22369009256362915
+      },
+      "box": {
+        "x": 0.4342763423919678,
+        "y": 0.22369009256362915,
+        "width": 0.1775473952293396,
+        "height": 0.2895422577857971
+      },
+      "frameAsset": "frame-00048.png",
+      "frameSha256": "3ddd416417e139e62f8aefd863eab7c2fe28e70512c54764c7cd7dfda382984e"
+    },
+    {
+      "timestampUs": 6125000,
+      "frameIndex": 49,
+      "valid": true,
+      "trackId": "face-segment-8",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5284896045923233,
+        "y": 0.24490302801132202
+      },
+      "box": {
+        "x": 0.43863263726234436,
+        "y": 0.24490302801132202,
+        "width": 0.17971393465995789,
+        "height": 0.30057114362716675
+      },
+      "frameAsset": "frame-00049.png",
+      "frameSha256": "6b293c99043de456152f9832d3d04cdd2fb8f94671a00579cf6cd80685d28b23"
+    },
+    {
+      "timestampUs": 6250000,
+      "frameIndex": 50,
+      "valid": true,
+      "trackId": "face-segment-8",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5347261875867844,
+        "y": 0.27911561727523804
+      },
+      "box": {
+        "x": 0.44032540917396545,
+        "y": 0.27911561727523804,
+        "width": 0.18880155682563782,
+        "height": 0.2995704412460327
+      },
+      "frameAsset": "frame-00050.png",
+      "frameSha256": "cc03e9aa86d615b522b5bf3910d6e3413321ebb92b2d525617ef8c0794593a19"
+    },
+    {
+      "timestampUs": 6375000,
+      "frameIndex": 51,
+      "valid": true,
+      "trackId": "face-segment-8",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5510395914316177,
+        "y": 0.24667856097221375
+      },
+      "box": {
+        "x": 0.4560938775539398,
+        "y": 0.24667856097221375,
+        "width": 0.18989142775535583,
+        "height": 0.3266533315181732
+      },
+      "frameAsset": "frame-00051.png",
+      "frameSha256": "e0512cc56b494a4e354a11d956049f62246034046030d8e022f9e329bf5dea99"
+    },
+    {
+      "timestampUs": 6500000,
+      "frameIndex": 52,
+      "valid": true,
+      "trackId": "face-segment-8",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5553924441337585,
+        "y": 0.20565563440322876
+      },
+      "box": {
+        "x": 0.45770126581192017,
+        "y": 0.20565563440322876,
+        "width": 0.19538235664367676,
+        "height": 0.3346056342124939
+      },
+      "frameAsset": "frame-00052.png",
+      "frameSha256": "43807cbda05635dcc8a313e480db145af1f5155d45b8574e8b410effe08bfd66"
+    },
+    {
+      "timestampUs": 6625000,
+      "frameIndex": 53,
+      "valid": true,
+      "trackId": "face-segment-8",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5476205348968506,
+        "y": 0.22638411819934845
+      },
+      "box": {
+        "x": 0.4476768970489502,
+        "y": 0.22638411819934845,
+        "width": 0.19988727569580078,
+        "height": 0.33828316628932953
+      },
+      "frameAsset": "frame-00053.png",
+      "frameSha256": "c26ed180330f1f38b585c26f9aa630a487664c65e0709fc7efbb1e820c52273a"
+    },
+    {
+      "timestampUs": 6750000,
+      "frameIndex": 54,
+      "valid": true,
+      "trackId": "face-segment-8",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.545339360833168,
+        "y": 0.26960131525993347
+      },
+      "box": {
+        "x": 0.4478234350681305,
+        "y": 0.26960131525993347,
+        "width": 0.19503185153007507,
+        "height": 0.3236103951931
+      },
+      "frameAsset": "frame-00054.png",
+      "frameSha256": "a7c047ff3227e9384b484e82e4ce320aae19440813350fa0228ba5f731833896"
+    },
+    {
+      "timestampUs": 6875000,
+      "frameIndex": 55,
+      "valid": true,
+      "trackId": "face-segment-8",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5430262684822083,
+        "y": 0.23886126279830933
+      },
+      "box": {
+        "x": 0.44884806871414185,
+        "y": 0.23886126279830933,
+        "width": 0.1883563995361328,
+        "height": 0.31391340494155884
+      },
+      "frameAsset": "frame-00055.png",
+      "frameSha256": "70d5f296e82b936de02444cc619acc2fb7313653d7267c4787f687bc2dc809f8"
+    },
+    {
+      "timestampUs": 7000000,
+      "frameIndex": 56,
+      "valid": true,
+      "trackId": "face-segment-8",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5373458564281464,
+        "y": 0.2085253745317459
+      },
+      "box": {
+        "x": 0.44618088006973267,
+        "y": 0.2085253745317459,
+        "width": 0.1823299527168274,
+        "height": 0.30454979836940765
+      },
+      "frameAsset": "frame-00056.png",
+      "frameSha256": "c79c5472acb077c93400951a45c4a709a7f24d4f797359a5c969fcee816f0a04"
+    },
+    {
+      "timestampUs": 7125000,
+      "frameIndex": 57,
+      "valid": true,
+      "trackId": "face-segment-8",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5452532470226288,
+        "y": 0.22371356189250946
+      },
+      "box": {
+        "x": 0.4554603695869446,
+        "y": 0.22371356189250946,
+        "width": 0.1795857548713684,
+        "height": 0.30175967514514923
+      },
+      "frameAsset": "frame-00057.png",
+      "frameSha256": "8c7267978b547537892d0d91f054a58b7fa4b70932ec58eef7847d976bce879d"
+    },
+    {
+      "timestampUs": 7250000,
+      "frameIndex": 58,
+      "valid": true,
+      "trackId": "face-segment-8",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.546250119805336,
+        "y": 0.25843051075935364
+      },
+      "box": {
+        "x": 0.4590185582637787,
+        "y": 0.25843051075935364,
+        "width": 0.17446312308311462,
+        "height": 0.29106488823890686
+      },
+      "frameAsset": "frame-00058.png",
+      "frameSha256": "21467aff403696de012a8d3c8f52b71e31bd8acb235172dc2d24b5b56aa5e8e1"
+    },
+    {
+      "timestampUs": 7375000,
+      "frameIndex": 59,
+      "valid": true,
+      "trackId": "face-segment-8",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5198637396097183,
+        "y": 0.28182336688041687
+      },
+      "box": {
+        "x": 0.42825350165367126,
+        "y": 0.28182336688041687,
+        "width": 0.18322047591209412,
+        "height": 0.286966472864151
+      },
+      "frameAsset": "frame-00059.png",
+      "frameSha256": "27b497fbaa0bd5027ad6c46a8f6be68e2f649ee64b5dd63dfd109e3d97d79315"
+    },
+    {
+      "timestampUs": 7500000,
+      "frameIndex": 60,
+      "valid": true,
+      "trackId": "face-segment-8",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.4851410835981369,
+        "y": 0.2629958987236023
+      },
+      "box": {
+        "x": 0.3934544622898102,
+        "y": 0.2629958987236023,
+        "width": 0.18337324261665344,
+        "height": 0.2777023911476135
+      },
+      "frameAsset": "frame-00060.png",
+      "frameSha256": "d23f1270d8881c65909f23552404825b999e53144c484e7e0f93d602089a5f1f"
+    },
+    {
+      "timestampUs": 7625000,
+      "frameIndex": 61,
+      "valid": true,
+      "trackId": "face-segment-8",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.46297474205493927,
+        "y": 0.26387467980384827
+      },
+      "box": {
+        "x": 0.3786737024784088,
+        "y": 0.26387467980384827,
+        "width": 0.1686020791530609,
+        "height": 0.27158334851264954
+      },
+      "frameAsset": "frame-00061.png",
+      "frameSha256": "d0e34a6af299130a64acfc818603d87c4505a75d3b82c5553dcd4042fd4a09c1"
+    },
+    {
+      "timestampUs": 7750000,
+      "frameIndex": 62,
+      "valid": true,
+      "trackId": "face-segment-8",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.47885526716709137,
+        "y": 0.23950201272964478
+      },
+      "box": {
+        "x": 0.39159128069877625,
+        "y": 0.23950201272964478,
+        "width": 0.17452797293663025,
+        "height": 0.2659125328063965
+      },
+      "frameAsset": "frame-00062.png",
+      "frameSha256": "4d83fb8bf0cceaaecd571b3bf8d06f641f87e15e1eb985a2faa22e443b1a629d"
+    },
+    {
+      "timestampUs": 7875000,
+      "frameIndex": 63,
+      "valid": true,
+      "trackId": "face-segment-8",
+      "confidence": null,
+      "landmarkCount": 478,
+      "anchor": {
+        "x": 0.5033542662858963,
+        "y": 0.20240665972232819
+      },
+      "box": {
+        "x": 0.4278593957424164,
+        "y": 0.20240665972232819,
+        "width": 0.15098974108695984,
+        "height": 0.2640209347009659
+      },
+      "frameAsset": "frame-00063.png",
+      "frameSha256": "2b2bc45b4929bda5db0234a848fe4a3009749fb2c86054f6a4fdcc2c8927d3a3"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "requirements": {
+    "example.orbit-grid": "1.0.0"
+  },
+  "trustedSources": [
+    "local:frameweave.examples"
+  ]
+}

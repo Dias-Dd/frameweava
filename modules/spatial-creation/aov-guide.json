@@ -1,0 +1,480 @@
+{
+  "schemaVersion": 1,
+  "functions": [
+    {
+      "name": "cryptoHash",
+      "purpose": "Cryptomatte compatible UTF8 UInt32 identity",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1; explicit trusted Node for file materialization",
+      "inputs": "Strongly typed declared meshes/poses/materials or owned AovFrame/CryptoFrame/SurfaceDeep; see declaration",
+      "outputs": "Owned CPU values or GPU buffers/images; dispose owned frame/field/crypto/deep",
+      "defaults": "AOV.md;512MiB configurable own-buffer budget,2e9rayTests,2x2Crypto grid, all-label ranks",
+      "parameters": "meters, seconds, exact UInt32 IDs, linear709 colors and existing Signals",
+      "example": "examples/aov.tsx; validation/coverage-round12/fixture.tsx",
+      "dependencies": [
+        "Three fixed MIT geometry/camera/ray",
+        "MIT murmurhash3js-revisited3.0.0",
+        "existing Native C2/pixel and sealed Deep Resource",
+        "explicit optional reviewed OpenEXR3.4.4 writer"
+      ],
+      "gpuRequired": false,
+      "limits": "Surface-point Deep, explicit unlit material producer; no volume intervals/PBR inference/implicit reprojection. Physical peak unknown."
+    },
+    {
+      "name": "cryptoFloat",
+      "purpose": "Reinterpret corrected Crypto identity as Float32",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1; explicit trusted Node for file materialization",
+      "inputs": "Strongly typed declared meshes/poses/materials or owned AovFrame/CryptoFrame/SurfaceDeep; see declaration",
+      "outputs": "Owned CPU values or GPU buffers/images; dispose owned frame/field/crypto/deep",
+      "defaults": "AOV.md;512MiB configurable own-buffer budget,2e9rayTests,2x2Crypto grid, all-label ranks",
+      "parameters": "meters, seconds, exact UInt32 IDs, linear709 colors and existing Signals",
+      "example": "examples/aov.tsx; validation/coverage-round12/fixture.tsx",
+      "dependencies": [
+        "Three fixed MIT geometry/camera/ray",
+        "MIT murmurhash3js-revisited3.0.0",
+        "existing Native C2/pixel and sealed Deep Resource",
+        "explicit optional reviewed OpenEXR3.4.4 writer"
+      ],
+      "gpuRequired": false,
+      "limits": "Surface-point Deep, explicit unlit material producer; no volume intervals/PBR inference/implicit reprojection. Physical peak unknown."
+    },
+    {
+      "name": "cryptoManifest",
+      "purpose": "Own a collision-checked named manifest",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1; explicit trusted Node for file materialization",
+      "inputs": "Strongly typed declared meshes/poses/materials or owned AovFrame/CryptoFrame/SurfaceDeep; see declaration",
+      "outputs": "Owned CPU values or GPU buffers/images; dispose owned frame/field/crypto/deep",
+      "defaults": "AOV.md;512MiB configurable own-buffer budget,2e9rayTests,2x2Crypto grid, all-label ranks",
+      "parameters": "meters, seconds, exact UInt32 IDs, linear709 colors and existing Signals",
+      "example": "examples/aov.tsx; validation/coverage-round12/fixture.tsx",
+      "dependencies": [
+        "Three fixed MIT geometry/camera/ray",
+        "MIT murmurhash3js-revisited3.0.0",
+        "existing Native C2/pixel and sealed Deep Resource",
+        "explicit optional reviewed OpenEXR3.4.4 writer"
+      ],
+      "gpuRequired": false,
+      "limits": "Surface-point Deep, explicit unlit material producer; no volume intervals/PBR inference/implicit reprojection. Physical peak unknown."
+    },
+    {
+      "name": "cryptoMetadata",
+      "purpose": "Build standard Cryptomatte EXR metadata",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1; explicit trusted Node for file materialization",
+      "inputs": "Strongly typed declared meshes/poses/materials or owned AovFrame/CryptoFrame/SurfaceDeep; see declaration",
+      "outputs": "Owned CPU values or GPU buffers/images; dispose owned frame/field/crypto/deep",
+      "defaults": "AOV.md;512MiB configurable own-buffer budget,2e9rayTests,2x2Crypto grid, all-label ranks",
+      "parameters": "meters, seconds, exact UInt32 IDs, linear709 colors and existing Signals",
+      "example": "examples/aov.tsx; validation/coverage-round12/fixture.tsx",
+      "dependencies": [
+        "Three fixed MIT geometry/camera/ray",
+        "MIT murmurhash3js-revisited3.0.0",
+        "existing Native C2/pixel and sealed Deep Resource",
+        "explicit optional reviewed OpenEXR3.4.4 writer"
+      ],
+      "gpuRequired": false,
+      "limits": "Surface-point Deep, explicit unlit material producer; no volume intervals/PBR inference/implicit reprojection. Physical peak unknown."
+    },
+    {
+      "name": "aovMaterial",
+      "purpose": "Validate explicit unlit material Signals",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1; explicit trusted Node for file materialization",
+      "inputs": "Strongly typed declared meshes/poses/materials or owned AovFrame/CryptoFrame/SurfaceDeep; see declaration",
+      "outputs": "Owned CPU values or GPU buffers/images; dispose owned frame/field/crypto/deep",
+      "defaults": "AOV.md;512MiB configurable own-buffer budget,2e9rayTests,2x2Crypto grid, all-label ranks",
+      "parameters": "meters, seconds, exact UInt32 IDs, linear709 colors and existing Signals",
+      "example": "examples/aov.tsx; validation/coverage-round12/fixture.tsx",
+      "dependencies": [
+        "Three fixed MIT geometry/camera/ray",
+        "MIT murmurhash3js-revisited3.0.0",
+        "existing Native C2/pixel and sealed Deep Resource",
+        "explicit optional reviewed OpenEXR3.4.4 writer"
+      ],
+      "gpuRequired": false,
+      "limits": "Surface-point Deep, explicit unlit material producer; no volume intervals/PBR inference/implicit reprojection. Physical peak unknown."
+    },
+    {
+      "name": "aovObject",
+      "purpose": "Own an existing Graphics mesh and identity",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1; explicit trusted Node for file materialization",
+      "inputs": "Strongly typed declared meshes/poses/materials or owned AovFrame/CryptoFrame/SurfaceDeep; see declaration",
+      "outputs": "Owned CPU values or GPU buffers/images; dispose owned frame/field/crypto/deep",
+      "defaults": "AOV.md;512MiB configurable own-buffer budget,2e9rayTests,2x2Crypto grid, all-label ranks",
+      "parameters": "meters, seconds, exact UInt32 IDs, linear709 colors and existing Signals",
+      "example": "examples/aov.tsx; validation/coverage-round12/fixture.tsx",
+      "dependencies": [
+        "Three fixed MIT geometry/camera/ray",
+        "MIT murmurhash3js-revisited3.0.0",
+        "existing Native C2/pixel and sealed Deep Resource",
+        "explicit optional reviewed OpenEXR3.4.4 writer"
+      ],
+      "gpuRequired": false,
+      "limits": "Surface-point Deep, explicit unlit material producer; no volume intervals/PBR inference/implicit reprojection. Physical peak unknown."
+    },
+    {
+      "name": "planAov",
+      "purpose": "Plan full data/layer cost without truncation",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1; explicit trusted Node for file materialization",
+      "inputs": "Strongly typed declared meshes/poses/materials or owned AovFrame/CryptoFrame/SurfaceDeep; see declaration",
+      "outputs": "Owned CPU values or GPU buffers/images; dispose owned frame/field/crypto/deep",
+      "defaults": "AOV.md;512MiB configurable own-buffer budget,2e9rayTests,2x2Crypto grid, all-label ranks",
+      "parameters": "meters, seconds, exact UInt32 IDs, linear709 colors and existing Signals",
+      "example": "examples/aov.tsx; validation/coverage-round12/fixture.tsx",
+      "dependencies": [
+        "Three fixed MIT geometry/camera/ray",
+        "MIT murmurhash3js-revisited3.0.0",
+        "existing Native C2/pixel and sealed Deep Resource",
+        "explicit optional reviewed OpenEXR3.4.4 writer"
+      ],
+      "gpuRequired": false,
+      "limits": "Surface-point Deep, explicit unlit material producer; no volume intervals/PBR inference/implicit reprojection. Physical peak unknown."
+    },
+    {
+      "name": "createAovCapture",
+      "purpose": "Capture real geometric/material AOV and all optional surface hits",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1; explicit trusted Node for file materialization",
+      "inputs": "Strongly typed declared meshes/poses/materials or owned AovFrame/CryptoFrame/SurfaceDeep; see declaration",
+      "outputs": "Owned CPU values or GPU buffers/images; dispose owned frame/field/crypto/deep",
+      "defaults": "AOV.md;512MiB configurable own-buffer budget,2e9rayTests,2x2Crypto grid, all-label ranks",
+      "parameters": "meters, seconds, exact UInt32 IDs, linear709 colors and existing Signals",
+      "example": "examples/aov.tsx; validation/coverage-round12/fixture.tsx",
+      "dependencies": [
+        "Three fixed MIT geometry/camera/ray",
+        "MIT murmurhash3js-revisited3.0.0",
+        "existing Native C2/pixel and sealed Deep Resource",
+        "explicit optional reviewed OpenEXR3.4.4 writer"
+      ],
+      "gpuRequired": true,
+      "limits": "Surface-point Deep, explicit unlit material producer; no volume intervals/PBR inference/implicit reprojection. Physical peak unknown."
+    },
+    {
+      "name": "aovChannel",
+      "purpose": "Extract an owned typed data/validity channel",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1; explicit trusted Node for file materialization",
+      "inputs": "Strongly typed declared meshes/poses/materials or owned AovFrame/CryptoFrame/SurfaceDeep; see declaration",
+      "outputs": "Owned CPU values or GPU buffers/images; dispose owned frame/field/crypto/deep",
+      "defaults": "AOV.md;512MiB configurable own-buffer budget,2e9rayTests,2x2Crypto grid, all-label ranks",
+      "parameters": "meters, seconds, exact UInt32 IDs, linear709 colors and existing Signals",
+      "example": "examples/aov.tsx; validation/coverage-round12/fixture.tsx",
+      "dependencies": [
+        "Three fixed MIT geometry/camera/ray",
+        "MIT murmurhash3js-revisited3.0.0",
+        "existing Native C2/pixel and sealed Deep Resource",
+        "explicit optional reviewed OpenEXR3.4.4 writer"
+      ],
+      "gpuRequired": true,
+      "limits": "Surface-point Deep, explicit unlit material producer; no volume intervals/PBR inference/implicit reprojection. Physical peak unknown."
+    },
+    {
+      "name": "aovPreview",
+      "purpose": "Display diagnostic data as float color",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1; explicit trusted Node for file materialization",
+      "inputs": "Strongly typed declared meshes/poses/materials or owned AovFrame/CryptoFrame/SurfaceDeep; see declaration",
+      "outputs": "Owned CPU values or GPU buffers/images; dispose owned frame/field/crypto/deep",
+      "defaults": "AOV.md;512MiB configurable own-buffer budget,2e9rayTests,2x2Crypto grid, all-label ranks",
+      "parameters": "meters, seconds, exact UInt32 IDs, linear709 colors and existing Signals",
+      "example": "examples/aov.tsx; validation/coverage-round12/fixture.tsx",
+      "dependencies": [
+        "Three fixed MIT geometry/camera/ray",
+        "MIT murmurhash3js-revisited3.0.0",
+        "existing Native C2/pixel and sealed Deep Resource",
+        "explicit optional reviewed OpenEXR3.4.4 writer"
+      ],
+      "gpuRequired": true,
+      "limits": "Surface-point Deep, explicit unlit material producer; no volume intervals/PBR inference/implicit reprojection. Physical peak unknown."
+    },
+    {
+      "name": "cryptoSelection",
+      "purpose": "Resolve explicit names into exact UInt32 identities",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1; explicit trusted Node for file materialization",
+      "inputs": "Strongly typed declared meshes/poses/materials or owned AovFrame/CryptoFrame/SurfaceDeep; see declaration",
+      "outputs": "Owned CPU values or GPU buffers/images; dispose owned frame/field/crypto/deep",
+      "defaults": "AOV.md;512MiB configurable own-buffer budget,2e9rayTests,2x2Crypto grid, all-label ranks",
+      "parameters": "meters, seconds, exact UInt32 IDs, linear709 colors and existing Signals",
+      "example": "examples/aov.tsx; validation/coverage-round12/fixture.tsx",
+      "dependencies": [
+        "Three fixed MIT geometry/camera/ray",
+        "MIT murmurhash3js-revisited3.0.0",
+        "existing Native C2/pixel and sealed Deep Resource",
+        "explicit optional reviewed OpenEXR3.4.4 writer"
+      ],
+      "gpuRequired": false,
+      "limits": "Surface-point Deep, explicit unlit material producer; no volume intervals/PBR inference/implicit reprojection. Physical peak unknown."
+    },
+    {
+      "name": "captureCryptomatte",
+      "purpose": "Generate visibility/AA-weighted full Crypto ranks",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1; explicit trusted Node for file materialization",
+      "inputs": "Strongly typed declared meshes/poses/materials or owned AovFrame/CryptoFrame/SurfaceDeep; see declaration",
+      "outputs": "Owned CPU values or GPU buffers/images; dispose owned frame/field/crypto/deep",
+      "defaults": "AOV.md;512MiB configurable own-buffer budget,2e9rayTests,2x2Crypto grid, all-label ranks",
+      "parameters": "meters, seconds, exact UInt32 IDs, linear709 colors and existing Signals",
+      "example": "examples/aov.tsx; validation/coverage-round12/fixture.tsx",
+      "dependencies": [
+        "Three fixed MIT geometry/camera/ray",
+        "MIT murmurhash3js-revisited3.0.0",
+        "existing Native C2/pixel and sealed Deep Resource",
+        "explicit optional reviewed OpenEXR3.4.4 writer"
+      ],
+      "gpuRequired": true,
+      "limits": "Surface-point Deep, explicit unlit material producer; no volume intervals/PBR inference/implicit reprojection. Physical peak unknown."
+    },
+    {
+      "name": "cryptomatteMatte",
+      "purpose": "Select GPU coverage by manifest name",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1; explicit trusted Node for file materialization",
+      "inputs": "Strongly typed declared meshes/poses/materials or owned AovFrame/CryptoFrame/SurfaceDeep; see declaration",
+      "outputs": "Owned CPU values or GPU buffers/images; dispose owned frame/field/crypto/deep",
+      "defaults": "AOV.md;512MiB configurable own-buffer budget,2e9rayTests,2x2Crypto grid, all-label ranks",
+      "parameters": "meters, seconds, exact UInt32 IDs, linear709 colors and existing Signals",
+      "example": "examples/aov.tsx; validation/coverage-round12/fixture.tsx",
+      "dependencies": [
+        "Three fixed MIT geometry/camera/ray",
+        "MIT murmurhash3js-revisited3.0.0",
+        "existing Native C2/pixel and sealed Deep Resource",
+        "explicit optional reviewed OpenEXR3.4.4 writer"
+      ],
+      "gpuRequired": true,
+      "limits": "Surface-point Deep, explicit unlit material producer; no volume intervals/PBR inference/implicit reprojection. Physical peak unknown."
+    },
+    {
+      "name": "flattenSurfaceDeep",
+      "purpose": "Composite surface-point Deep streams on GPU",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1; explicit trusted Node for file materialization",
+      "inputs": "Strongly typed declared meshes/poses/materials or owned AovFrame/CryptoFrame/SurfaceDeep; see declaration",
+      "outputs": "Owned CPU values or GPU buffers/images; dispose owned frame/field/crypto/deep",
+      "defaults": "AOV.md;512MiB configurable own-buffer budget,2e9rayTests,2x2Crypto grid, all-label ranks",
+      "parameters": "meters, seconds, exact UInt32 IDs, linear709 colors and existing Signals",
+      "example": "examples/aov.tsx; validation/coverage-round12/fixture.tsx",
+      "dependencies": [
+        "Three fixed MIT geometry/camera/ray",
+        "MIT murmurhash3js-revisited3.0.0",
+        "existing Native C2/pixel and sealed Deep Resource",
+        "explicit optional reviewed OpenEXR3.4.4 writer"
+      ],
+      "gpuRequired": true,
+      "limits": "Surface-point Deep, explicit unlit material producer; no volume intervals/PBR inference/implicit reprojection. Physical peak unknown."
+    },
+    {
+      "name": "mergeSurfaceDeep",
+      "purpose": "Stably interleave same-camera/window Deep sources",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1; explicit trusted Node for file materialization",
+      "inputs": "Strongly typed declared meshes/poses/materials or owned AovFrame/CryptoFrame/SurfaceDeep; see declaration",
+      "outputs": "Owned CPU values or GPU buffers/images; dispose owned frame/field/crypto/deep",
+      "defaults": "AOV.md;512MiB configurable own-buffer budget,2e9rayTests,2x2Crypto grid, all-label ranks",
+      "parameters": "meters, seconds, exact UInt32 IDs, linear709 colors and existing Signals",
+      "example": "examples/aov.tsx; validation/coverage-round12/fixture.tsx",
+      "dependencies": [
+        "Three fixed MIT geometry/camera/ray",
+        "MIT murmurhash3js-revisited3.0.0",
+        "existing Native C2/pixel and sealed Deep Resource",
+        "explicit optional reviewed OpenEXR3.4.4 writer"
+      ],
+      "gpuRequired": true,
+      "limits": "Surface-point Deep, explicit unlit material producer; no volume intervals/PBR inference/implicit reprojection. Physical peak unknown."
+    },
+    {
+      "name": "cropSurfaceDeep",
+      "purpose": "Crop explicit surface depth range",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1; explicit trusted Node for file materialization",
+      "inputs": "Strongly typed declared meshes/poses/materials or owned AovFrame/CryptoFrame/SurfaceDeep; see declaration",
+      "outputs": "Owned CPU values or GPU buffers/images; dispose owned frame/field/crypto/deep",
+      "defaults": "AOV.md;512MiB configurable own-buffer budget,2e9rayTests,2x2Crypto grid, all-label ranks",
+      "parameters": "meters, seconds, exact UInt32 IDs, linear709 colors and existing Signals",
+      "example": "examples/aov.tsx; validation/coverage-round12/fixture.tsx",
+      "dependencies": [
+        "Three fixed MIT geometry/camera/ray",
+        "MIT murmurhash3js-revisited3.0.0",
+        "existing Native C2/pixel and sealed Deep Resource",
+        "explicit optional reviewed OpenEXR3.4.4 writer"
+      ],
+      "gpuRequired": true,
+      "limits": "Surface-point Deep, explicit unlit material producer; no volume intervals/PBR inference/implicit reprojection. Physical peak unknown."
+    },
+    {
+      "name": "holdoutSurfaceDeep",
+      "purpose": "Retain selected surface occlusion while removing beauty",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1; explicit trusted Node for file materialization",
+      "inputs": "Strongly typed declared meshes/poses/materials or owned AovFrame/CryptoFrame/SurfaceDeep; see declaration",
+      "outputs": "Owned CPU values or GPU buffers/images; dispose owned frame/field/crypto/deep",
+      "defaults": "AOV.md;512MiB configurable own-buffer budget,2e9rayTests,2x2Crypto grid, all-label ranks",
+      "parameters": "meters, seconds, exact UInt32 IDs, linear709 colors and existing Signals",
+      "example": "examples/aov.tsx; validation/coverage-round12/fixture.tsx",
+      "dependencies": [
+        "Three fixed MIT geometry/camera/ray",
+        "MIT murmurhash3js-revisited3.0.0",
+        "existing Native C2/pixel and sealed Deep Resource",
+        "explicit optional reviewed OpenEXR3.4.4 writer"
+      ],
+      "gpuRequired": true,
+      "limits": "Surface-point Deep, explicit unlit material producer; no volume intervals/PBR inference/implicit reprojection. Physical peak unknown."
+    },
+    {
+      "name": "importSurfaceDeep",
+      "purpose": "Import a sealed formal Deep Resource into resident sample data",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1; explicit trusted Node for file materialization",
+      "inputs": "Strongly typed declared meshes/poses/materials or owned AovFrame/CryptoFrame/SurfaceDeep; see declaration",
+      "outputs": "Owned CPU values or GPU buffers/images; dispose owned frame/field/crypto/deep",
+      "defaults": "AOV.md;512MiB configurable own-buffer budget,2e9rayTests,2x2Crypto grid, all-label ranks",
+      "parameters": "meters, seconds, exact UInt32 IDs, linear709 colors and existing Signals",
+      "example": "examples/aov.tsx; validation/coverage-round12/fixture.tsx",
+      "dependencies": [
+        "Three fixed MIT geometry/camera/ray",
+        "MIT murmurhash3js-revisited3.0.0",
+        "existing Native C2/pixel and sealed Deep Resource",
+        "explicit optional reviewed OpenEXR3.4.4 writer"
+      ],
+      "gpuRequired": true,
+      "limits": "Surface-point Deep, explicit unlit material producer; no volume intervals/PBR inference/implicit reprojection. Physical peak unknown."
+    },
+    {
+      "name": "surfaceDeepDocument",
+      "purpose": "Materialize explicit readbacks as existing DeepDocument",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1; explicit trusted Node for file materialization",
+      "inputs": "Strongly typed declared meshes/poses/materials or owned AovFrame/CryptoFrame/SurfaceDeep; see declaration",
+      "outputs": "Owned CPU values or GPU buffers/images; dispose owned frame/field/crypto/deep",
+      "defaults": "AOV.md;512MiB configurable own-buffer budget,2e9rayTests,2x2Crypto grid, all-label ranks",
+      "parameters": "meters, seconds, exact UInt32 IDs, linear709 colors and existing Signals",
+      "example": "examples/aov.tsx; validation/coverage-round12/fixture.tsx",
+      "dependencies": [
+        "Three fixed MIT geometry/camera/ray",
+        "MIT murmurhash3js-revisited3.0.0",
+        "existing Native C2/pixel and sealed Deep Resource",
+        "explicit optional reviewed OpenEXR3.4.4 writer"
+      ],
+      "gpuRequired": false,
+      "limits": "Surface-point Deep, explicit unlit material producer; no volume intervals/PBR inference/implicit reprojection. Physical peak unknown."
+    },
+    {
+      "name": "aovDeepSource",
+      "purpose": "Derive exact declaration from real decoded Deep document",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1; explicit trusted Node for file materialization",
+      "inputs": "Strongly typed declared meshes/poses/materials or owned AovFrame/CryptoFrame/SurfaceDeep; see declaration",
+      "outputs": "Owned CPU values or GPU buffers/images; dispose owned frame/field/crypto/deep",
+      "defaults": "AOV.md;512MiB configurable own-buffer budget,2e9rayTests,2x2Crypto grid, all-label ranks",
+      "parameters": "meters, seconds, exact UInt32 IDs, linear709 colors and existing Signals",
+      "example": "examples/aov.tsx; validation/coverage-round12/fixture.tsx",
+      "dependencies": [
+        "Three fixed MIT geometry/camera/ray",
+        "MIT murmurhash3js-revisited3.0.0",
+        "existing Native C2/pixel and sealed Deep Resource",
+        "explicit optional reviewed OpenEXR3.4.4 writer"
+      ],
+      "gpuRequired": false,
+      "limits": "Surface-point Deep, explicit unlit material producer; no volume intervals/PBR inference/implicit reprojection. Physical peak unknown."
+    },
+    {
+      "name": "aovFileChannels",
+      "purpose": "Create lossless FLOAT/UINT multichannel EXR planes",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1; explicit trusted Node for file materialization",
+      "inputs": "Strongly typed declared meshes/poses/materials or owned AovFrame/CryptoFrame/SurfaceDeep; see declaration",
+      "outputs": "Owned CPU values or GPU buffers/images; dispose owned frame/field/crypto/deep",
+      "defaults": "AOV.md;512MiB configurable own-buffer budget,2e9rayTests,2x2Crypto grid, all-label ranks",
+      "parameters": "meters, seconds, exact UInt32 IDs, linear709 colors and existing Signals",
+      "example": "examples/aov.tsx; validation/coverage-round12/fixture.tsx",
+      "dependencies": [
+        "Three fixed MIT geometry/camera/ray",
+        "MIT murmurhash3js-revisited3.0.0",
+        "existing Native C2/pixel and sealed Deep Resource",
+        "explicit optional reviewed OpenEXR3.4.4 writer"
+      ],
+      "gpuRequired": false,
+      "limits": "Surface-point Deep, explicit unlit material producer; no volume intervals/PBR inference/implicit reprojection. Physical peak unknown."
+    },
+    {
+      "name": "aovScene",
+      "purpose": "Create projected surfaces without temporary GPU boilerplate",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1; explicit trusted Node for file materialization",
+      "inputs": "Strongly typed declared meshes/poses/materials or owned AovFrame/CryptoFrame/SurfaceDeep; see declaration",
+      "outputs": "Owned CPU values or GPU buffers/images; dispose owned frame/field/crypto/deep",
+      "defaults": "AOV.md;512MiB configurable own-buffer budget,2e9rayTests,2x2Crypto grid, all-label ranks",
+      "parameters": "meters, seconds, exact UInt32 IDs, linear709 colors and existing Signals",
+      "example": "examples/aov.tsx; validation/coverage-round12/fixture.tsx",
+      "dependencies": [
+        "Three fixed MIT geometry/camera/ray",
+        "MIT murmurhash3js-revisited3.0.0",
+        "existing Native C2/pixel and sealed Deep Resource",
+        "explicit optional reviewed OpenEXR3.4.4 writer"
+      ],
+      "gpuRequired": true,
+      "limits": "Surface-point Deep, explicit unlit material producer; no volume intervals/PBR inference/implicit reprojection. Physical peak unknown."
+    },
+    {
+      "name": "aovPlane",
+      "purpose": "Create Three plane with named AOV material",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1; explicit trusted Node for file materialization",
+      "inputs": "Strongly typed declared meshes/poses/materials or owned AovFrame/CryptoFrame/SurfaceDeep; see declaration",
+      "outputs": "Owned CPU values or GPU buffers/images; dispose owned frame/field/crypto/deep",
+      "defaults": "AOV.md;512MiB configurable own-buffer budget,2e9rayTests,2x2Crypto grid, all-label ranks",
+      "parameters": "meters, seconds, exact UInt32 IDs, linear709 colors and existing Signals",
+      "example": "examples/aov.tsx; validation/coverage-round12/fixture.tsx",
+      "dependencies": [
+        "Three fixed MIT geometry/camera/ray",
+        "MIT murmurhash3js-revisited3.0.0",
+        "existing Native C2/pixel and sealed Deep Resource",
+        "explicit optional reviewed OpenEXR3.4.4 writer"
+      ],
+      "gpuRequired": false,
+      "limits": "Surface-point Deep, explicit unlit material producer; no volume intervals/PBR inference/implicit reprojection. Physical peak unknown."
+    },
+    {
+      "name": "aovBox",
+      "purpose": "Create Three box with named AOV material",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1; explicit trusted Node for file materialization",
+      "inputs": "Strongly typed declared meshes/poses/materials or owned AovFrame/CryptoFrame/SurfaceDeep; see declaration",
+      "outputs": "Owned CPU values or GPU buffers/images; dispose owned frame/field/crypto/deep",
+      "defaults": "AOV.md;512MiB configurable own-buffer budget,2e9rayTests,2x2Crypto grid, all-label ranks",
+      "parameters": "meters, seconds, exact UInt32 IDs, linear709 colors and existing Signals",
+      "example": "examples/aov.tsx; validation/coverage-round12/fixture.tsx",
+      "dependencies": [
+        "Three fixed MIT geometry/camera/ray",
+        "MIT murmurhash3js-revisited3.0.0",
+        "existing Native C2/pixel and sealed Deep Resource",
+        "explicit optional reviewed OpenEXR3.4.4 writer"
+      ],
+      "gpuRequired": false,
+      "limits": "Surface-point Deep, explicit unlit material producer; no volume intervals/PBR inference/implicit reprojection. Physical peak unknown."
+    },
+    {
+      "name": "aovSphere",
+      "purpose": "Create Three sphere with named AOV material",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1; explicit trusted Node for file materialization",
+      "inputs": "Strongly typed declared meshes/poses/materials or owned AovFrame/CryptoFrame/SurfaceDeep; see declaration",
+      "outputs": "Owned CPU values or GPU buffers/images; dispose owned frame/field/crypto/deep",
+      "defaults": "AOV.md;512MiB configurable own-buffer budget,2e9rayTests,2x2Crypto grid, all-label ranks",
+      "parameters": "meters, seconds, exact UInt32 IDs, linear709 colors and existing Signals",
+      "example": "examples/aov.tsx; validation/coverage-round12/fixture.tsx",
+      "dependencies": [
+        "Three fixed MIT geometry/camera/ray",
+        "MIT murmurhash3js-revisited3.0.0",
+        "existing Native C2/pixel and sealed Deep Resource",
+        "explicit optional reviewed OpenEXR3.4.4 writer"
+      ],
+      "gpuRequired": false,
+      "limits": "Surface-point Deep, explicit unlit material producer; no volume intervals/PBR inference/implicit reprojection. Physical peak unknown."
+    }
+  ]
+}

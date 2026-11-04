@@ -1,0 +1,17 @@
+{
+  "name": "event-target-shim",
+  "version": "5.0.1",
+  "repository": {
+    "url": "git+https://github.com/mysticatea/event-target-shim.git",
+    "type": "git"
+  },
+  "gitHead": "410bad2ce333e7eeaafbc6acae0679aa685281c9",
+  "license": "MIT",
+  "archive": "https://registry.npmjs.org/event-target-shim/-/event-target-shim-5.0.1.tgz",
+  "integrity": "sha512-i/2XbnSz/uxRCU6+NdVJgKWDTM427+MqYbkQzD321DuCQJUqOuJKIA0IM2+W2xtYHdKOmZ4dR6fExsd4SXL+WQ==",
+  "file": "dist/event-target-shim.mjs",
+  "sourceSha256": "b0ef9133c4a14f35516accd98bbd51af5e297589398ce8078ed59b29b61773f3",
+  "carriedSha256": "b0ef9133c4a14f35516accd98bbd51af5e297589398ce8078ed59b29b61773f3",
+  "modifications": "none",
+  "use": "Lexically scoped standard cancellation ponyfill; never installed on globalThis"
+}

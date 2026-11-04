@@ -1,0 +1,18 @@
+{
+ "version":1,
+ "implementation":"Original incremental Frameweave WGSL/operator adaptation; no new third-party shader/framework binary imported",
+ "reused":[
+  "modules/native-effects/image-estimation/deblur-kernels.ts: existing residual/regularized-gradient approach; original fixed-kernel API remains unchanged",
+  "modules/native-effects/keying/kernels.ts: existing pair arithmetic and image publication",
+  "modules/native-effects/geometry/arithmetic.ts: existing guarded arithmetic",
+  "modules/native-effects/closure-filters/runtime.ts: working colour, typed storage, image views",
+  "modules/native-effects/images.ts: existing recipe ownership/lifecycle/cancellation",
+  "modules/native-effects/image-estimation/time.ts: existing rational time validation/order"
+ ],
+ "mathematicalReferences":[
+  {"title":"An Iteration Formula for Fredholm Integral Equations of the First Kind","author":"L. Landweber","year":1951,"url":"https://www.jstor.org/stable/2372313","doi":"10.2307/2372313","use":"Historical iteration reference only; no article text or code copied"},
+  {"title":"Astronomy and Astrophysics author manuscript, multiple spatially variant PSF least-squares deblurring","url":"https://www.math.emory.edu/~nagy/research/papers/multiple2.pdf","use":"Problem-family reference only; this implementation does not copy an inaccessible PDF's algorithm/code or claim an FFT/SVD implementation"}
+ ],
+ "newDependencies":[],
+ "notes":"Nonnegative-operator diagonal majorizer and boundary-preimage transpose are derived and independently checked here. No Rust/WGSL translation or second GPU owner is needed; existing constant-PSF code did not implement this varying operator. No third-party code license inferred from a paper citation."
+}

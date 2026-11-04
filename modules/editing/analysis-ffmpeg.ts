@@ -1,0 +1,19 @@
+import {spawn,execFile} from 'node:child_process';import {promisify} from 'node:util';import {open,writeFile} from 'node:fs/promises';import {join} from 'node:path';import {EngineError} from '../../src/core/errors.ts';import type {AnalysisExecutionContext} from '../../src/analysis/types.ts';
+export interface MetadataFrame {time:number;pts:number;values:Record<string,string>}
+/** Streaming parser for FFmpeg's existing metadata print format. No media pixels/PCM enter JS. */
+export class MetadataFrames {
+ private text='';private current?:MetadataFrame;constructor(private readonly receive:(frame:MetadataFrame)=>void){}
+ push(chunk:string){this.text+=chunk;if(this.text.length>1024*1024)throw new EngineError('E_EDIT_ANALYSIS_OUTPUT','Metadata line exceeds its byte budget');for(let at;(at=this.text.indexOf('\n'))>=0;){const line=this.text.slice(0,at).trim();this.text=this.text.slice(at+1);this.line(line);}}
+ private line(line:string){if(line.startsWith('frame:')){this.flush();const match=/\bpts_time:(\S+)/.exec(line),time=Number(match?.[1]),ptsMatch=/\bpts:\s*(-?\d+)/.exec(line),pts=Number(ptsMatch?.[1]);if(!match||!Number.isFinite(time)||!ptsMatch||!Number.isSafeInteger(pts))throw new EngineError('E_EDIT_ANALYSIS_TIME','FFmpeg metadata lacks finite safe-integer PTS');this.current={time,pts,values:{}};}else if(line.startsWith('lavfi.')){if(!this.current)throw new EngineError('E_EDIT_ANALYSIS_OUTPUT','Metadata has no frame header');const at=line.indexOf('=');if(at<0)throw new EngineError('E_EDIT_ANALYSIS_OUTPUT','Malformed metadata');this.current.values[line.slice(0,at)]=line.slice(at+1);}}
+ private flush(){if(this.current)this.receive(this.current);this.current=undefined;}
+ finish(){if(this.text.trim())this.line(this.text.trim());this.text='';this.flush();}
+}
+export async function mediaProbe(file:string,ffprobe:string,signal:AbortSignal,timeoutMs:number,demuxer:string){const result=await promisify(execFile)(ffprobe,['-v','error','-protocol_whitelist','file,pipe','-f',demuxer,'-show_streams','-show_format','-of','json',file],{windowsHide:true,signal,timeout:timeoutMs,maxBuffer:4*1024**2});return JSON.parse(result.stdout);}
+/** Owned subprocess, original C3 cancellation/cleanup, bounded diagnostic buffers and raw metadata evidence. */
+export async function filterMetadata(ffmpeg:string,args:string[],name:string,ctx:AnalysisExecutionContext,timeoutMs:number,receive:(frame:MetadataFrame)=>void){
+ const log=await open(join(ctx.directory,name+'.txt'),'wx'),child=spawn(ffmpeg,['-v','error','-nostdin','-threads','2',...args],{windowsHide:true,stdio:['ignore','pipe','pipe']}),parser=new MetadataFrames(receive);let stderr='',error:Error|undefined,timedOut=false,closed=false;
+ const finished=new Promise<{code:number|null;signal:NodeJS.Signals|null}>(yes=>{child.once('error',e=>{error=e;});child.once('close',(code,signal)=>{closed=true;yes({code,signal});});});
+ const stop=()=>{if(!closed)child.kill();},cleanup=async()=>{stop();await finished;};ctx.deferCleanup('ffmpeg-'+name,cleanup);const timer=setTimeout(()=>{timedOut=true;stop();},timeoutMs);ctx.signal.addEventListener('abort',stop,{once:true});if(ctx.signal.aborted)stop();child.stderr.on('data',b=>{stderr=(stderr+b.toString()).slice(-32768);});
+ try{for await(const chunk of child.stdout){ctx.signal.throwIfAborted();await log.writeFile(chunk);parser.push(chunk.toString());}const exit=await finished;ctx.signal.throwIfAborted();if(timedOut)throw new EngineError('E_EDIT_ANALYSIS_TIMEOUT','Analysis filter exceeded its explicit timeout');if(error||exit.code!==0)throw new EngineError('E_EDIT_ANALYSIS_BACKEND',stderr||error?.message||'FFmpeg filter failed');parser.finish();await writeFile(join(ctx.directory,name+'-stderr.txt'),stderr);return {metadata:name+'.txt',stderr:name+'-stderr.txt'};}
+ finally{clearTimeout(timer);ctx.signal.removeEventListener('abort',stop);await cleanup();await log.close();}
+}

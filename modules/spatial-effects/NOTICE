@@ -1,0 +1,9 @@
+Frameweave spatial-effects 0.5.0
+New integration, particle math, tests and shaders: Apache-2.0, as the Frameweave project.
+Native GPU rendering reuses the existing exact three@0.186.1 dependency.
+Three.js: Copyright 2010-2026 three.js authors, MIT; reviewed native renderer subset bundled, with license in licenses/three-MIT.txt.
+FastNoiseLite1.1.1: Copyright 2020/2023 Jordan Peck and Contributors; MIT, license in vendor/fastnoise-lite/LICENSE-MIT.
+Fixed upstream commit7ccfbc16eb1c932568f177d63a9ba51d89bbe516; raw JS/GLSL/C++ preserved. JS adds vector exports only, GPU adapts array/literal syntax and selects unchanged branches.
+No Blender, EffectCraft, Rapier or external physics solver source is copied.
+
+0.5.0: normalized-age adaptation reuses existing Core numeric keyframes/easing; sprite billboard/atlas shader and authored example SVG are Frameweave Apache-2.0 code. Texture upload/rendering reuse exact Three0.186.1 MIT. PM-before-interpolation follows the existing Frameweave Puppet sampler rule, no new external dependency or physics source.

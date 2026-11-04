@@ -1,0 +1,53 @@
+{
+  "baseline": "f4fafbcc4a1d697e6d20a4eb56ff66499838bca5",
+  "workingTreeAdditions": [
+    "docs/effects-catalog",
+    "scripts/generate-effects-catalog.mjs",
+    "examples/effects-library-tour"
+  ],
+  "exampleSha256": "03eccedb35f952e42bb082e03d27f226c5cfde8e162f881aac8845de02da896e",
+  "checked": {
+    "packageSetup": "PASS",
+    "png": "PASS 640x360",
+    "storyboard": "PASS frames0,24,48,60,72,95 full640x360",
+    "video": "PASS 96 frames at24fps /4s /640x360 /h264_nvenc",
+    "completeDecode": {
+      "code": 0,
+      "width": 640,
+      "height": 360,
+      "fps": 24,
+      "frames": 96,
+      "seconds": 4,
+      "decodedRgbaBytes": 88473600,
+      "decodeSeconds": 0.12378800000000001,
+      "baseline": "f4fafbcc4a1d697e6d20a4eb56ff66499838bca5"
+    },
+    "repeatFrame": {
+      "pass": true,
+      "frame": 36,
+      "rgbaSha256": "de4ab4158f71874fd9e22aacd9352096a2722467332cf0bb8442cb5943363b98",
+      "pixels": 230400
+    }
+  },
+  "cumulativeValidationSeconds": 80.7727846,
+  "originalFailure": {
+    "command": "simultaneous same-entry CLI builds for storyboard/video",
+    "code": "E_PACKAGE_INTEGRITY",
+    "cause": "buildProject defaults to the same cache directory for the same entry; concurrent writers can change sealed stage bytes",
+    "recovery": "Run same-project CLI operations sequentially; normal integrity checks retained",
+    "logs": [
+      "artifacts/effects-library-catalog/video.stderr.log",
+      "artifacts/effects-library-catalog/video-repeat.log"
+    ]
+  },
+  "notRun": [
+    "full effect-library certification",
+    "whole repository tests",
+    "outside npm consumer",
+    "six export modes",
+    "other GPUs/OSes",
+    "interactive preview UI"
+  ],
+  "coreSourceChanges": false,
+  "otherWorktreesModified": false
+}

@@ -1,0 +1,31 @@
+{
+  "repository": "https://github.com/storytold/effectcraft",
+  "commit": "861c51f8187bf56efc77cc7b60fc4a513d2b7198",
+  "files": [
+    {
+      "upstreamPath": "crates/path/src/interp.rs",
+      "vendored": "path-interp.rs",
+      "sha256": "07d929d3cbe2d62982de5b1043a386020e859e1be97dd457cd8c1fdda146f362",
+      "license": "MIT (selected from MIT OR Apache-2.0)",
+      "dependenciesOfAdaptedSubset": "std only; no UI, ShapePath model, kurbo or glyph/font binary is shipped"
+    },
+    {
+      "upstreamPath": "crates/path/src/ops.rs",
+      "vendored": "path-ops.rs",
+      "sha256": "98679efdf568338fe274c7cfc9719afe525c5ac07c6d5ad47cf06ebbdf6347ac",
+      "license": "MIT (selected from MIT OR Apache-2.0)",
+      "dependenciesOfAdaptedSubset": "std only; no UI, ShapePath model, kurbo or glyph/font binary is shipped"
+    },
+    {
+      "upstreamPath": "crates/text/src/selectors.rs",
+      "vendored": "text-selectors.rs",
+      "sha256": "700bea361b8e9b105f043f094172eb753cc04703513edb924bb2f49b617bb63f",
+      "license": "MIT (selected from MIT OR Apache-2.0)",
+      "dependenciesOfAdaptedSubset": "std only; no UI, ShapePath model, kurbo or glyph/font binary is shipped"
+    }
+  ],
+  "adaptations": {
+    "path": "split/evaluation and normalized positional cost; arc-length bounds and explicit contour policies are Frameweave adapters, not full upstream correspond",
+    "text": "pure selectors reviewed; implementation/reference validation belongs to PA-2B"
+  }
+}

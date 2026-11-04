@@ -1,0 +1,50 @@
+TAP version 13
+# Subtest: declared video decodes all frames, seeks by PTS, rejects undeclared/tampered inputs, and renders in native Stage
+not ok 1 - declared video decodes all frames, seeks by PTS, rejects undeclared/tampered inputs, and renders in native Stage
+  ---
+  duration_ms: 1549.2484
+  type: 'test'
+  location: 'C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\tests\\native-media-delivery.test.ts:1:1776'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+    
+      decoder.frame({frame:0})
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\tests\native-media-delivery.test.ts:40:41)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: native float final delivery preserves EXR and produces real 10-bit HEVC/AV1 HDR with metadata and AU-1 audio
+not ok 2 - native float final delivery preserves EXR and produces real 10-bit HEVC/AV1 HDR with metadata and AU-1 audio
+  ---
+  duration_ms: 12665.0179
+  type: 'test'
+  location: 'C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\tests\\native-media-delivery.test.ts:4:1489'
+  failureType: 'testCodeFailure'
+  error: 'HDR output needs a 10-bit HEVC/AV1 encoder'
+  code: 'E_MEDIA_CODEC'
+  name: 'EngineError'
+  stack: |-
+    Function.create (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\src\media\encoding.ts:100:361)
+    renderAccurateNative (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\native-gpu\service.ts:75:49)
+    async TestContext.<anonymous> (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\tests\native-media-delivery.test.ts:75:16)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 0
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 16780.6154

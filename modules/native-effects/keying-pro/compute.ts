@@ -1,0 +1,18 @@
+import type {GpuComputeKernelSource} from '../../gpu-effects/compute-types.ts';
+import {math} from '../keying/kernels.ts';
+import {guarded} from '../geometry/arithmetic.ts';
+const make=(id:string,bindings:GpuComputeKernelSource['bindings'],code:string):GpuComputeKernelSource=>({abiVersion:1,id:'frameweave/keying-pro/'+id,version:'1.0.0',bindings,parameterWords:128,workgroupSize:[8,8,1],code:guarded(math+code)});
+export const trimap=make('stroke-trimap',[{type:'f32',access:'read'},{type:'f32',access:'read_write'}],`
+fn table(i:u32)->Pair{return constant(load0(i*2u),load0(i*2u+1u));}
+fn compute(p:vec3u,_l:vec3u,_g:vec3u){let x=add(uintPair(p.x),scalar(.5));let y=add(uintPair(p.y),scalar(.5));var label=-1.;for(var j=0u;j<paramU32(2u);j++){let i=j*6u;let ax=table(i);let ay=table(i+1u);let bx=table(i+2u);let by=table(i+3u);let dx=subtract(bx,ax);let dy=subtract(by,ay);let norm=add(multiply(dx,dx),multiply(dy,dy));var t=scalar(0.);if(greater(norm,scalar(0.))){t=clampP(divide(add(multiply(subtract(x,ax),dx),multiply(subtract(y,ay),dy)),norm));}let xx=subtract(subtract(x,ax),multiply(t,dx));let yy=subtract(subtract(y,ay),multiply(t,dy));if(!greater(add(multiply(xx,xx),multiply(yy,yy)),multiply(table(i+4u),table(i+4u)))){label=rounded(table(i+5u)).x;}}store1(p.y*paramU32(0u)+p.x,label);}
+`);
+export const initialise=make('walker-init',[{type:'f32',access:'read'},{type:'f32',access:'read_write'}],`fn compute(p:vec3u,_l:vec3u,_g:vec3u){let i=p.y*paramU32(0u)+p.x;let label=load0(i);store1(i,select(arg(0u),label,label>=0.));}`);
+export const walk=make('walker-step',[{type:'f32',access:'read'},{type:'f32',access:'read'},{type:'f32',access:'read'},{type:'f32',access:'read_write'}],`
+fn color(i:u32)->Pair{let v=associate(vec4f(load0(i*4u),load0(i*4u+1u),load0(i*4u+2u),load0(i*4u+3u)),paramU32(2u));let c=straight(v);return divide(c,rgb(add(scalar(1.),absPair(ch(c,0u))),add(scalar(1.),absPair(ch(c,1u))),add(scalar(1.),absPair(ch(c,2u))),scalar(1.)));}
+fn compute(p:vec3u,_l:vec3u,_g:vec3u){let width=paramU32(0u);let height=paramU32(1u);let i=p.y*width+p.x;let label=load1(i);if(label>=0.){store3(i,label);return;}let c=color(i);var total=multiply(argP(2u),argP(3u));var norm=argP(2u);for(var j=0u;j<4u;j++){var nx=i32(p.x);var ny=i32(p.y);switch j{case 0u:{nx--;}case 1u:{nx++;}case 2u:{ny--;}default:{ny++;}}if(nx<0||ny<0||nx>=i32(width)||ny>=i32(height)){continue;}let n=u32(ny)*width+u32(nx);let delta=subtract(c,color(n));let w=maxP(argP(1u),expPair(negate(multiply(argP(0u),dotRGB(delta,delta)))));total=add(total,multiply(w,scalar(load2(n))));norm=add(norm,w);}store3(i,rounded(clampP(divide(total,norm))).x);}
+`);
+
+export const seedRows=make('seed-count-rows',[{type:'f32',access:'read'},{type:'u32',access:'read_write'}],`fn compute(p:vec3u,_l:vec3u,_g:vec3u){var fg=0u;var bg=0u;for(var x=0u;x<paramU32(0u);x++){let label=load0(p.x*paramU32(0u)+x);if(label==1.){fg++;}if(label==0.){bg++;}}store1(p.x*2u,fg);store1(p.x*2u+1u,bg);}`);
+export const seedFinish=make('seed-count-finish',[{type:'u32',access:'read'},{type:'u32',access:'read_write'}],`fn compute(_p:vec3u,_l:vec3u,_g:vec3u){var fg=0u;var bg=0u;for(var y=0u;y<paramU32(1u);y++){fg+=load0(y*2u);bg+=load0(y*2u+1u);}store1(0u,fg);store1(1u,bg);}`);
+
+export const quality=make('walker-quality',[{type:'f32',access:'read'},{type:'f32',access:'read'},{type:'f32',access:'read'},{type:'u32',access:'read'},{type:'f32',access:'read_write'}],`fn compute(p:vec3u,_l:vec3u,_g:vec3u){let i=p.y*paramU32(0u)+p.x;let residual=abs(load2(i)-load1(i));store4(i*4u,residual);store4(i*4u+1u,select(0.,1.,load3(0u)>0u&&load3(1u)>0u));store4(i*4u+2u,select(0.,1.,load0(i)>=0.));store4(i*4u+3u,select(0.,1.,residual<=arg(0u)));}`);

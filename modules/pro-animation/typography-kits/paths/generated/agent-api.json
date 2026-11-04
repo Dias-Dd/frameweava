@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "profile": "wasm-bindgen-data-v1",
+  "entryClass": "Engine",
+  "functions": [
+    {
+      "name": "append",
+      "signature": "append(values: Float64Array, finish: boolean): void;",
+      "documentation": "Append interleaved physical x/y values to the current contour; no whole-input transport cap is added."
+    },
+    {
+      "name": "begin",
+      "signature": "begin(grid: number, origin_x: number, origin_y: number): void;",
+      "documentation": "Start a new solve using an explicit physical-pixel integer grid and floating origin."
+    },
+    {
+      "name": "boolean",
+      "signature": "boolean(operation: number): number;",
+      "documentation": "Boolean modes: 0 union, 1 intersection, 2 first-minus-rest, 3 xor."
+    },
+    {
+      "name": "collapsed_contours",
+      "signature": "collapsed_contours(): number;",
+      "documentation": ""
+    },
+    {
+      "name": "face_info",
+      "signature": "face_info(face: number): Float64Array;",
+      "documentation": "Returns point counts for the solid outer ring followed by each immediate hole."
+    },
+    {
+      "name": "finish_operand",
+      "signature": "finish_operand(rule: number): void;",
+      "documentation": "Normalize one PathData operand with its own fill rule before combining operands.\nRule 0=nonzero, 1=evenodd; overlapping independent operands never cancel by winding accident."
+    },
+    {
+      "name": "finish_stroke_contour",
+      "signature": "finish_stroke_contour(closed: boolean): void;",
+      "documentation": "Finish a raw centerline contour. Unlike filled operands, two distinct open points are valid."
+    },
+    {
+      "name": "input_points",
+      "signature": "input_points(): number;",
+      "documentation": ""
+    },
+    {
+      "name": "offset",
+      "signature": "offset(distance: number, join: number, miter: number, arc_tolerance: number): number;",
+      "documentation": "Offset the already-normalized union. Positive expands filled regions, negative insets them.\nJoins 0=miter, 1=round, 2=bevel, 3=square; tolerances are physical pixels."
+    },
+    {
+      "name": "read_contour",
+      "signature": "read_contour(face: number, contour: number, start: number, count: number): Float64Array;",
+      "documentation": "Read a bounded transport chunk. The caller never sees Rust pointers or a live memory view."
+    },
+    {
+      "name": "reset",
+      "signature": "reset(): void;",
+      "documentation": "Release owned geometry after consumption/error without destroying the reusable Kit session."
+    },
+    {
+      "name": "stroke",
+      "signature": "stroke(width: number, cap: number, join: number, miter: number, arc_tolerance: number): number;",
+      "documentation": "Convert raw centerlines to true filled stroke outlines. width is full physical pixel width.\nOpen caps 0=butt,1=round,2=square; closed paths use Joined, never Polygon filling."
+    }
+  ],
+  "parameters": {
+    "settings": {
+      "type": "object",
+      "default": {},
+      "properties": {
+        "label": {
+          "type": "string",
+          "default": "Frameweave",
+          "maxLength": 128
+        },
+        "samples": {
+          "type": "array",
+          "default": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "items": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "minItems": 1,
+          "maxItems": 128
+        },
+        "factor": {
+          "type": "number",
+          "default": 1,
+          "minimum": 0,
+          "maximum": 4
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "parameterSchemaVersion": 2,
+  "errors": [
+    "E_BINDGEN_CALL",
+    "E_BINDGEN_DISPOSED",
+    "E_BINDGEN_IMPORTS",
+    "E_PACKAGE_INTEGRITY"
+  ],
+  "environment": {
+    "webStage": true,
+    "worker": true,
+    "allowWasmRequired": true,
+    "host": "reviewed data-only callbacks"
+  },
+  "p4Reference": "test.pa3-pathops@0.0.1"
+}

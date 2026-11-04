@@ -1,0 +1,1 @@
+{"extends":"../../../../tsconfig.json","compilerOptions":{"paths":{"@frameweave/engine":["../../../../src/index.ts"],"@frameweave/engine/native":["../../../native-gpu/authoring.ts"],"native-2d-candidate":["../../index.ts"]}},"include":["../../*.ts","../../scripts/*.ts","./*.ts","./*.tsx","../model.test.ts","../canvas-layout.test.ts","../svg.test.ts"]}

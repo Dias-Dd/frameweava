@@ -1,0 +1,8 @@
+EffectCraft review snapshots
+Copyright (c) 2026 ArtCraft Team and the EffectCraft contributors
+MIT licence selected; exact fixed-source files are retained with their raw bytes.
+
+Frameweave's new adapter does not import the EffectCraft renderer, effect host,
+registry, timeline or CPU frame upload loop. Shared Frameweave GPU arithmetic
+and the existing MIT-attributed PM blend implementation are reused in place.
+No Adobe code, assets or proprietary algorithms are distributed.

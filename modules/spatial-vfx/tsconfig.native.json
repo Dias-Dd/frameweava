@@ -1,0 +1,1 @@
+{"extends":"../../tsconfig.json","compilerOptions":{"noEmit":true,"paths":{"@frameweave/engine":["../../src/index.ts"],"@frameweave/engine/native":["../native-gpu/authoring.ts"]}},"include":["index.ts","types.ts","shaders.ts","native.ts","examples/native/*.tsx","examples/native/*.ts","validation/native-recipes.ts","../../tests/native-spatial-recipes.test.ts"]}

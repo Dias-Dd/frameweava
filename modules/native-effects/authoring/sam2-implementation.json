@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "baseline": "99a3fed7dd8810af9af5e22105669537be65bd61",
+  "objective": "Ordinary video Roto model/source/seed-mask preparation with explicit replay, using original SAM2 GPU adapter",
+  "implementationStartedAt": "2026-11-04T00:00:14.832448+00:00",
+  "status": "verified_source_candidate_not_published",
+  "evidence": "docs/native-image-sam2-authoring-evidence/completion.json",
+  "unitTests": 5,
+  "numericComparisons": 10,
+  "validationMeasuredMs": 228392.14630000002,
+  "validationAccountedMs": 238392.14630000002,
+  "limits": [
+    "Official immutable public bindings, installation and portable qualification remain Main-owned",
+    "Only actual single-slot SAM2 scene MP4 is newly qualified; default multi-slot and other GPU/provider/OS not newly tested",
+    "Original v11 admission/old-Core cleanup failures retained; accepted fixture uses exact standard v10 model data",
+    "Experimental spherical family remains separate and unqualified"
+  ],
+  "coreBackport": "0e52714220543dc41c4f0bd4bca3b6d16e279c80",
+  "mp4SingleSlot": "passed3frames_independent_decode_and_lossy_pixel_gate",
+  "synchronizedCore": {
+    "mainSource": "cf214adb3c0453dcba6af828c8456363e682f31c",
+    "localBackport": "0e52714220543dc41c4f0bd4bca3b6d16e279c80",
+    "completed": true
+  }
+}

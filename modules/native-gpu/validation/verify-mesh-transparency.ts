@@ -1,0 +1,21 @@
+import assert from 'node:assert/strict';
+import {resolve} from 'node:path';
+import {mkdir,writeFile} from 'node:fs/promises';
+import {execFile} from 'node:child_process';
+import {promisify} from 'node:util';
+import sharp from 'sharp';
+import {buildProject} from '../../../src/compiler/build.ts';
+import {Renderer} from '../../../src/render/renderer.ts';
+import {ffmpegPath,probeVideo} from '../../../src/encoding/ffmpeg.ts';
+import {renderNativeProject} from '../service.ts';
+const exec=promisify(execFile),out=resolve('artifacts/native-mesh-transparency/media');await mkdir(out,{recursive:true});
+const project=resolve('modules/native-gpu/examples/mesh-transparency-v1.tsx'),debug=resolve('.frameweave/native-target/debug/frameweave-native-gpu.exe'),release=resolve('.frameweave/native-target/release/frameweave-native-gpu.exe'),start=performance.now(),build=await buildProject(project),compileMs=performance.now()-start;
+const renderer=await Renderer.create(build,{nativeGpu:{executable:debug,dynamic:'interactive'}}),frames:Float32Array[]=[];let stats;
+try{for(const frame of [0,12,23,0]){const ticket=await renderer.submitNativeFrame(frame);await ticket.completed;const value=await renderer.exportNativeBuffer(ticket,'cards/reference');assert.ok(value.values instanceof Float32Array);frames.push(value.values as Float32Array);}assert.deepEqual(frames[0],frames[3]);assert.notDeepEqual(frames[0],frames[1]);stats=await renderer.nativeStats();assert.equal(stats.devicesCreated,1);assert.equal(stats.imageReadbacks,0);assert.equal(stats.pixelTransferBytes,0);}finally{await renderer.close();}
+const png=resolve(out,'transparent-cards.png'),exr=resolve(out,'transparent-cards.exr'),mp4=resolve(out,'transparent-cards.mp4'),outputs=[];
+for(const [path,start,end]of [[png,12,13],[exr,0,1],[mp4,0,6]] as const)outputs.push(await renderNativeProject(project,{build,output:path,native:release,start,end,maxConcurrency:2,initialConcurrency:2}));
+const pngInfo=await sharp(png).metadata();assert.equal(pngInfo.width,640);assert.equal(pngInfo.height,360);
+const decoded=await exec(ffmpegPath(),['-v','error','-i',exr,'-f','rawvideo','-pix_fmt','gbrapf32le','pipe:1'],{encoding:'buffer',windowsHide:true,maxBuffer:8*1024**2}),plane=640*360;let min=Infinity,max=-Infinity,error=0;
+for(let i=0;i<plane;i++)for(let channel=0;channel<4;channel++){const v=decoded.stdout.readFloatLE(((channel===0?2:channel===1?0:channel===2?1:3)*plane+i)*4);assert.ok(Number.isFinite(v));if(channel<3){min=Math.min(min,v);max=Math.max(max,v);}error=Math.max(error,Math.abs(v-frames[0][i*4+channel]));}assert.ok(min<0);assert.ok(max>1);assert.equal(error,0);
+const probe=await probeVideo(mp4);assert.equal(probe.frames,6);assert.ok(probe.decodable);await exec(ffmpegPath(),['-v','error','-i',mp4,'-f','null','-'],{windowsHide:true});
+const summary={version:1,ok:true,compileMs,frames:[0,12,23,0],exactRepeat:true,stats,png,exr,mp4,exrRange:[min,max],exrMaxAbsoluteError:error,probe,outputs};await writeFile(resolve(out,'result.json'),JSON.stringify(summary,null,2)+'\n');console.log(JSON.stringify(summary));

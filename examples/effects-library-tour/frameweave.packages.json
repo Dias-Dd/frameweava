@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "requirements": {
+    "native-image-effects": "0.5.0"
+  },
+  "trustedSources": [
+    "local:frameweave.gpu-images"
+  ]
+}

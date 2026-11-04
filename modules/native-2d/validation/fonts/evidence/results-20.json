@@ -1,0 +1,2569 @@
+{
+  "ok": false,
+  "rows": [
+    {
+      "name": "public preparation SDK to native-2d seam, exact original geometry, cancellation and cache identity",
+      "ok": true,
+      "detail": {
+        "positions": 1323,
+        "exactOriginalGeometry": true,
+        "stats": {
+          "closed": true,
+          "busy": false,
+          "preparations": 2,
+          "hits": 1,
+          "cacheEntries": 0,
+          "logicalCacheBytes": 0,
+          "maxCacheBytes": 1048576,
+          "ownership": "borrowed providers; owned data cache",
+          "physicalMemory": "unknown"
+        },
+        "providerRemainsBorrowed": true,
+        "cancelledCandidateCached": false,
+        "preAbortedLoaderCalls": 0
+      },
+      "wallMs": 459.16740000000027
+    },
+    {
+      "name": "fresh immutable R1 candidate install with reviewed default assets",
+      "ok": true,
+      "detail": {
+        "installed": [
+          "native-2d-candidate@0.4.6"
+        ],
+        "roots": {
+          "native-2d-candidate": "native-2d-candidate@0.4.6"
+        },
+        "lockfile": "D:\\frameweave-worktrees\\agent-4\\.frameweave\\native-2d\\font-project-font-package-19\\frameweave.packages.lock.json"
+      },
+      "wallMs": 2615.7775
+    },
+    {
+      "name": "real SpiderMonkey PA font/path clients, F32/F16 HDR alpha, random repeat and reopen",
+      "ok": true,
+      "detail": {
+        "records": [
+          {
+            "format": "rgba32float",
+            "instance": 0,
+            "frame": 100,
+            "hash": "1bb643bed546a7384556a4651bf30b679185f1528ddda4fcee88be04e42cb4af",
+            "wallMs": 827.5926,
+            "stats": {
+              "closed": false,
+              "frames": 1,
+              "backend": "native-wgpu",
+              "completion": "recorded-only",
+              "finish": {
+                "closed": false,
+                "frames": 1,
+                "operations": 0,
+                "retainedCopies": 0,
+                "plans": [],
+                "completion": "recorded-only"
+              },
+              "kind": "native-2d",
+              "last": {
+                "staticGeometryReused": false,
+                "geometrySeedBytes": 108060,
+                "matrixUploadBytes": 256,
+                "batches": 1,
+                "isolatedGroups": 0,
+                "resourceImports": 0,
+                "atlasWorkingBytes": 8496,
+                "logicalImageBytes": 524288,
+                "workingBytesPerPixel": 16,
+                "geometry": {
+                  "preparations": 3,
+                  "hits": 0,
+                  "entries": 3
+                },
+                "completion": "recorded-only"
+              },
+              "layout": {
+                "layouts": 0,
+                "hits": 0,
+                "textPreparations": 0,
+                "boxes": {},
+                "algorithm": "fixed flexily0.8.3 Node, no synthetic text measurer"
+              },
+              "tree": {
+                "version": 2,
+                "nodes": 4,
+                "descriptorBytes": 2316,
+                "cache": "Per-node geometry/layout/style/transform revisions; no frame-result cache"
+              },
+              "renderer": "Existing Native mesh/PixelScope, shared batched geometry/paint; no per-object Stage",
+              "defaultAssets": {
+                "closed": false,
+                "loadedKits": [
+                  "paths",
+                  "font",
+                  "itemizer"
+                ],
+                "fonts": [
+                  {
+                    "id": "default",
+                    "instance": {
+                      "source": {
+                        "resourceId": "pkg_d43437adef656aa53a5b05ad",
+                        "kind": "font",
+                        "sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+                        "bytes": 17772300
+                      },
+                      "faceIndex": 0,
+                      "variations": {
+                        "wght": 400
+                      },
+                      "normalizedCoordinates": [
+                        0.3900146484375
+                      ]
+                    }
+                  }
+                ],
+                "geometry": {
+                  "closed": false,
+                  "busy": false,
+                  "preparations": 2,
+                  "hits": 0,
+                  "cacheEntries": 2,
+                  "logicalCacheBytes": 353668,
+                  "maxCacheBytes": 33554432,
+                  "ownership": "borrowed providers; owned data cache",
+                  "physicalMemory": "unknown"
+                },
+                "execution": "Original PA WASM geometry + existing Native mesh rendering",
+                "ownership": "owns Kit/font clients and geometry cache; borrows R1 loader/GPU"
+              },
+              "globalAbortController": "undefined",
+              "globalAbortSignal": "undefined"
+            }
+          },
+          {
+            "format": "rgba32float",
+            "instance": 0,
+            "frame": 0,
+            "hash": "1be4638984d0095a53071d075df5ff706ec43503c529df62cf843a97dd67f392",
+            "wallMs": 43.66409999999996,
+            "stats": {
+              "closed": false,
+              "frames": 2,
+              "backend": "native-wgpu",
+              "completion": "recorded-only",
+              "finish": {
+                "closed": false,
+                "frames": 2,
+                "operations": 0,
+                "retainedCopies": 0,
+                "plans": [],
+                "completion": "recorded-only"
+              },
+              "kind": "native-2d",
+              "last": {
+                "staticGeometryReused": false,
+                "geometrySeedBytes": 108060,
+                "matrixUploadBytes": 256,
+                "batches": 1,
+                "isolatedGroups": 0,
+                "resourceImports": 0,
+                "atlasWorkingBytes": 8496,
+                "logicalImageBytes": 524288,
+                "workingBytesPerPixel": 16,
+                "geometry": {
+                  "preparations": 5,
+                  "hits": 1,
+                  "entries": 3
+                },
+                "completion": "recorded-only"
+              },
+              "layout": {
+                "layouts": 0,
+                "hits": 0,
+                "textPreparations": 0,
+                "boxes": {},
+                "algorithm": "fixed flexily0.8.3 Node, no synthetic text measurer"
+              },
+              "tree": {
+                "version": 2,
+                "nodes": 4,
+                "descriptorBytes": 2316,
+                "cache": "Per-node geometry/layout/style/transform revisions; no frame-result cache"
+              },
+              "renderer": "Existing Native mesh/PixelScope, shared batched geometry/paint; no per-object Stage",
+              "defaultAssets": {
+                "closed": false,
+                "loadedKits": [
+                  "paths",
+                  "font",
+                  "itemizer"
+                ],
+                "fonts": [
+                  {
+                    "id": "default",
+                    "instance": {
+                      "source": {
+                        "resourceId": "pkg_d43437adef656aa53a5b05ad",
+                        "kind": "font",
+                        "sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+                        "bytes": 17772300
+                      },
+                      "faceIndex": 0,
+                      "variations": {
+                        "wght": 400
+                      },
+                      "normalizedCoordinates": [
+                        0.3900146484375
+                      ]
+                    }
+                  }
+                ],
+                "geometry": {
+                  "closed": false,
+                  "busy": false,
+                  "preparations": 2,
+                  "hits": 2,
+                  "cacheEntries": 2,
+                  "logicalCacheBytes": 353668,
+                  "maxCacheBytes": 33554432,
+                  "ownership": "borrowed providers; owned data cache",
+                  "physicalMemory": "unknown"
+                },
+                "execution": "Original PA WASM geometry + existing Native mesh rendering",
+                "ownership": "owns Kit/font clients and geometry cache; borrows R1 loader/GPU"
+              },
+              "globalAbortController": "undefined",
+              "globalAbortSignal": "undefined"
+            }
+          },
+          {
+            "format": "rgba32float",
+            "instance": 0,
+            "frame": 12,
+            "hash": "584197fd31d146ae7fea44c6ddb9ebd76de50c140cfc6e15b8be127356ee9708",
+            "wallMs": 37.097900000000664,
+            "stats": {
+              "closed": false,
+              "frames": 3,
+              "backend": "native-wgpu",
+              "completion": "recorded-only",
+              "finish": {
+                "closed": false,
+                "frames": 3,
+                "operations": 0,
+                "retainedCopies": 0,
+                "plans": [],
+                "completion": "recorded-only"
+              },
+              "kind": "native-2d",
+              "last": {
+                "staticGeometryReused": false,
+                "geometrySeedBytes": 108060,
+                "matrixUploadBytes": 256,
+                "batches": 1,
+                "isolatedGroups": 0,
+                "resourceImports": 0,
+                "atlasWorkingBytes": 8496,
+                "logicalImageBytes": 524288,
+                "workingBytesPerPixel": 16,
+                "geometry": {
+                  "preparations": 7,
+                  "hits": 2,
+                  "entries": 3
+                },
+                "completion": "recorded-only"
+              },
+              "layout": {
+                "layouts": 0,
+                "hits": 0,
+                "textPreparations": 0,
+                "boxes": {},
+                "algorithm": "fixed flexily0.8.3 Node, no synthetic text measurer"
+              },
+              "tree": {
+                "version": 2,
+                "nodes": 4,
+                "descriptorBytes": 2316,
+                "cache": "Per-node geometry/layout/style/transform revisions; no frame-result cache"
+              },
+              "renderer": "Existing Native mesh/PixelScope, shared batched geometry/paint; no per-object Stage",
+              "defaultAssets": {
+                "closed": false,
+                "loadedKits": [
+                  "paths",
+                  "font",
+                  "itemizer"
+                ],
+                "fonts": [
+                  {
+                    "id": "default",
+                    "instance": {
+                      "source": {
+                        "resourceId": "pkg_d43437adef656aa53a5b05ad",
+                        "kind": "font",
+                        "sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+                        "bytes": 17772300
+                      },
+                      "faceIndex": 0,
+                      "variations": {
+                        "wght": 400
+                      },
+                      "normalizedCoordinates": [
+                        0.3900146484375
+                      ]
+                    }
+                  }
+                ],
+                "geometry": {
+                  "closed": false,
+                  "busy": false,
+                  "preparations": 2,
+                  "hits": 4,
+                  "cacheEntries": 2,
+                  "logicalCacheBytes": 353668,
+                  "maxCacheBytes": 33554432,
+                  "ownership": "borrowed providers; owned data cache",
+                  "physicalMemory": "unknown"
+                },
+                "execution": "Original PA WASM geometry + existing Native mesh rendering",
+                "ownership": "owns Kit/font clients and geometry cache; borrows R1 loader/GPU"
+              },
+              "globalAbortController": "undefined",
+              "globalAbortSignal": "undefined"
+            }
+          },
+          {
+            "format": "rgba32float",
+            "instance": 0,
+            "frame": 23,
+            "hash": "57ece09d6b92669712c3f949815175855c5065150d1dafcd1a64240ccfb935d9",
+            "wallMs": 37.391200000000026,
+            "stats": {
+              "closed": false,
+              "frames": 4,
+              "backend": "native-wgpu",
+              "completion": "recorded-only",
+              "finish": {
+                "closed": false,
+                "frames": 4,
+                "operations": 0,
+                "retainedCopies": 0,
+                "plans": [],
+                "completion": "recorded-only"
+              },
+              "kind": "native-2d",
+              "last": {
+                "staticGeometryReused": false,
+                "geometrySeedBytes": 108060,
+                "matrixUploadBytes": 256,
+                "batches": 1,
+                "isolatedGroups": 0,
+                "resourceImports": 0,
+                "atlasWorkingBytes": 8496,
+                "logicalImageBytes": 524288,
+                "workingBytesPerPixel": 16,
+                "geometry": {
+                  "preparations": 9,
+                  "hits": 3,
+                  "entries": 3
+                },
+                "completion": "recorded-only"
+              },
+              "layout": {
+                "layouts": 0,
+                "hits": 0,
+                "textPreparations": 0,
+                "boxes": {},
+                "algorithm": "fixed flexily0.8.3 Node, no synthetic text measurer"
+              },
+              "tree": {
+                "version": 2,
+                "nodes": 4,
+                "descriptorBytes": 2316,
+                "cache": "Per-node geometry/layout/style/transform revisions; no frame-result cache"
+              },
+              "renderer": "Existing Native mesh/PixelScope, shared batched geometry/paint; no per-object Stage",
+              "defaultAssets": {
+                "closed": false,
+                "loadedKits": [
+                  "paths",
+                  "font",
+                  "itemizer"
+                ],
+                "fonts": [
+                  {
+                    "id": "default",
+                    "instance": {
+                      "source": {
+                        "resourceId": "pkg_d43437adef656aa53a5b05ad",
+                        "kind": "font",
+                        "sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+                        "bytes": 17772300
+                      },
+                      "faceIndex": 0,
+                      "variations": {
+                        "wght": 400
+                      },
+                      "normalizedCoordinates": [
+                        0.3900146484375
+                      ]
+                    }
+                  }
+                ],
+                "geometry": {
+                  "closed": false,
+                  "busy": false,
+                  "preparations": 2,
+                  "hits": 6,
+                  "cacheEntries": 2,
+                  "logicalCacheBytes": 353668,
+                  "maxCacheBytes": 33554432,
+                  "ownership": "borrowed providers; owned data cache",
+                  "physicalMemory": "unknown"
+                },
+                "execution": "Original PA WASM geometry + existing Native mesh rendering",
+                "ownership": "owns Kit/font clients and geometry cache; borrows R1 loader/GPU"
+              },
+              "globalAbortController": "undefined",
+              "globalAbortSignal": "undefined"
+            }
+          },
+          {
+            "format": "rgba32float",
+            "instance": 0,
+            "frame": 100,
+            "hash": "1bb643bed546a7384556a4651bf30b679185f1528ddda4fcee88be04e42cb4af",
+            "wallMs": 38.85180000000037,
+            "stats": {
+              "closed": false,
+              "frames": 5,
+              "backend": "native-wgpu",
+              "completion": "recorded-only",
+              "finish": {
+                "closed": false,
+                "frames": 5,
+                "operations": 0,
+                "retainedCopies": 0,
+                "plans": [],
+                "completion": "recorded-only"
+              },
+              "kind": "native-2d",
+              "last": {
+                "staticGeometryReused": false,
+                "geometrySeedBytes": 108060,
+                "matrixUploadBytes": 256,
+                "batches": 1,
+                "isolatedGroups": 0,
+                "resourceImports": 0,
+                "atlasWorkingBytes": 8496,
+                "logicalImageBytes": 524288,
+                "workingBytesPerPixel": 16,
+                "geometry": {
+                  "preparations": 11,
+                  "hits": 4,
+                  "entries": 3
+                },
+                "completion": "recorded-only"
+              },
+              "layout": {
+                "layouts": 0,
+                "hits": 0,
+                "textPreparations": 0,
+                "boxes": {},
+                "algorithm": "fixed flexily0.8.3 Node, no synthetic text measurer"
+              },
+              "tree": {
+                "version": 2,
+                "nodes": 4,
+                "descriptorBytes": 2316,
+                "cache": "Per-node geometry/layout/style/transform revisions; no frame-result cache"
+              },
+              "renderer": "Existing Native mesh/PixelScope, shared batched geometry/paint; no per-object Stage",
+              "defaultAssets": {
+                "closed": false,
+                "loadedKits": [
+                  "paths",
+                  "font",
+                  "itemizer"
+                ],
+                "fonts": [
+                  {
+                    "id": "default",
+                    "instance": {
+                      "source": {
+                        "resourceId": "pkg_d43437adef656aa53a5b05ad",
+                        "kind": "font",
+                        "sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+                        "bytes": 17772300
+                      },
+                      "faceIndex": 0,
+                      "variations": {
+                        "wght": 400
+                      },
+                      "normalizedCoordinates": [
+                        0.3900146484375
+                      ]
+                    }
+                  }
+                ],
+                "geometry": {
+                  "closed": false,
+                  "busy": false,
+                  "preparations": 2,
+                  "hits": 8,
+                  "cacheEntries": 2,
+                  "logicalCacheBytes": 353668,
+                  "maxCacheBytes": 33554432,
+                  "ownership": "borrowed providers; owned data cache",
+                  "physicalMemory": "unknown"
+                },
+                "execution": "Original PA WASM geometry + existing Native mesh rendering",
+                "ownership": "owns Kit/font clients and geometry cache; borrows R1 loader/GPU"
+              },
+              "globalAbortController": "undefined",
+              "globalAbortSignal": "undefined"
+            }
+          },
+          {
+            "format": "rgba32float",
+            "instance": 0,
+            "backend": {
+              "adapter": "AdapterInfo { name: \"NVIDIA GeForce RTX 5070 Laptop GPU\", vendor: 4318, device: 11608, device_type: DiscreteGpu, device_pci_bus_id: \"0000:01:00.0\", driver: \"NVIDIA\", driver_info: \"596.49\", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 32, transient_saves_memory: Some(false), limit_bucket: None }",
+              "allocatedDataBytes": 246408,
+              "allocatedImageBytes": 529232,
+              "backend": "native-wgpu",
+              "blockingGpuWaits": 0,
+              "bufferExports": {
+                "bytes": 3179012,
+                "readbacks": 11,
+                "version": 1
+              },
+              "capabilities": {
+                "backend": "native-wgpu",
+                "capacityPolicy": "configured-metadata-and-device-budget",
+                "computeKernelAbis": [
+                  1
+                ],
+                "crossStageGpuHandles": false,
+                "execution": "recording",
+                "f16WorkingBytesPerPixel": 16,
+                "hardwareVerified": true,
+                "limits": {
+                  "maxBufferSize": 4294967295,
+                  "maxComputeInvocationsPerWorkgroup": 1024,
+                  "maxComputeWorkgroupSizeX": 1024,
+                  "maxComputeWorkgroupSizeY": 1024,
+                  "maxComputeWorkgroupSizeZ": 64,
+                  "maxComputeWorkgroupStorageSize": 49152,
+                  "maxComputeWorkgroupsPerDimension": 65535,
+                  "maxStorageBufferBindingSize": 2147483644,
+                  "maxStorageBuffersPerShaderStage": 524288,
+                  "maxUniformBufferBindingSize": 65536
+                },
+                "maxKernels": 268435456,
+                "maxPendingPasses": 268435456,
+                "nativeImages": {
+                  "admission": "device-and-session-budget",
+                  "maxTextureDimension2D": 32768,
+                  "version": 1
+                },
+                "nativeInference": {
+                  "imageContinuation": "same-frame-prefix-v1",
+                  "outputAliasing": "forbidden",
+                  "persistentOutput": "explicit-stateStep",
+                  "preallocatedOutputs": true,
+                  "stateContinuation": true,
+                  "version": 1
+                },
+                "nativeMesh": {
+                  "exactAdmission": "session-budget",
+                  "float32Blendable": true,
+                  "version": 1
+                },
+                "nativeRayQuery": {
+                  "available": true,
+                  "enabled": false,
+                  "experimental": true,
+                  "maxBlasPrimitives": 536870911,
+                  "maxTlasInstances": 16777215,
+                  "profile": "opaque-triangles-v1",
+                  "version": 1
+                },
+                "pixelKernelAbis": [
+                  1,
+                  2
+                ],
+                "profiling": "disabled",
+                "storageTypes": [
+                  "f32",
+                  "u32",
+                  "i32"
+                ],
+                "version": 1
+              },
+              "completed": 6,
+              "devicesCreated": 1,
+              "diagnosticBlockingWaits": 0,
+              "diagnosticReadbackBytes": 0,
+              "diagnosticReadbacks": 0,
+              "diagnosticsEnabled": false,
+              "export": {
+                "bytes": 0,
+                "cpuImageCopies": 0,
+                "enabled": false,
+                "framesWritten": 0,
+                "hardwareEncode": false,
+                "httpTransport": false,
+                "pngTransport": false
+              },
+              "externalImages": {
+                "available": true,
+                "enabled": true,
+                "reason": null,
+                "version": 1
+              },
+              "frameBindings": {
+                "allSlotsDrain": false,
+                "slotUpdates": 0,
+                "version": 1
+              },
+              "frameHashes": 0,
+              "hardwareOptixRayQuery": {
+                "accelerationPolicy": "rebuild sanitized opaque geometry per query; no refit or AS cache yet",
+                "adapterLuid": "0000000000016501",
+                "additionalD3D12Devices": 0,
+                "bridgeHostFenceWaitsPerRun": 0,
+                "completedRays": 0,
+                "cpuGeometryReadbacks": 0,
+                "cpuPixelReadbacks": 0,
+                "enabled": false,
+                "gpuBridgeCopyBytes": 0,
+                "knownSharedAsScratchAndPinnedBytes": 0,
+                "physicalPeakBytes": "unknown",
+                "profile": "optix-cuda-opaque-triangles-v1",
+                "residentQueries": 0,
+                "retiredQueries": 0,
+                "runtime": null,
+                "runtimeVerified": false,
+                "status": "not-probed",
+                "submittedRays": 0,
+                "version": 1
+              },
+              "hardwareRayQuery": {
+                "cachedSceneBuilds": 0,
+                "completedRays": 0,
+                "cpuGeometryReadbacks": 0,
+                "cpuPixelReadbacks": 0,
+                "driverReportedAsAndScratchBytes": 0,
+                "enabled": false,
+                "geometryBuilds": 0,
+                "physicalPeakBytes": "unknown",
+                "profile": "opaque-triangles-v1",
+                "refitImplemented": false,
+                "residentScenes": 0,
+                "retiredScenes": 0,
+                "runtimeVerified": false,
+                "submittedRays": 0,
+                "tlasBuilds": 0,
+                "version": 1
+              },
+              "hardwareVideo": {
+                "additionalD3D11Devices": 0,
+                "blockingGpuFenceWaits": 0,
+                "cpuPixelReadbacks": 0,
+                "cpuPixelUploads": 0,
+                "driverManagedDecodeBytes": "unknown",
+                "format": "rgba32float",
+                "loaded": false,
+                "requests": 0,
+                "residentSlots": 0,
+                "sources": 0,
+                "timestampPolicy": "ordinal + source-relative PTS verification",
+                "version": 1
+              },
+              "imageReadbacks": 0,
+              "inFlight": 0,
+              "inference": {
+                "adapterLuid": "0000000000016501",
+                "additionalD3D12Devices": 0,
+                "backendManagedMemoryBytes": "unknown",
+                "cpuPixelReadbacks": 0,
+                "cpuPixelUploads": 0,
+                "gpuResident": true,
+                "interopDevice": "same-adapter D3D12/DirectML",
+                "models": [],
+                "perRunBridgeHostFenceWaits": 0,
+                "profile": "ort-dml-resident-f32-v1",
+                "retiredModels": 0,
+                "runtime": null,
+                "runtimeInternalWaits": "unknown",
+                "runtimeVerified": false,
+                "runtimes": [],
+                "status": "not-probed",
+                "version": 1
+              },
+              "nativeEncoding": {
+                "backend": "native-d3d11-ocio-nvenc",
+                "completed": 0,
+                "compressedBytes": 0,
+                "cpuPixelReadbacks": 0,
+                "cpuPixelUploads": 0,
+                "enabled": false,
+                "encodedBytesCpuOnly": true,
+                "gpuColour": true,
+                "residentSlots": 0,
+                "submitted": 0,
+                "version": 1
+              },
+              "nativeModules": {
+                "additionalD3D11Devices": 0,
+                "blockingGpuFenceWaits": 0,
+                "calls": 0,
+                "contentProfile": "reviewed-local-only",
+                "inputGpuConversions": 0,
+                "instances": 0,
+                "loaded": false,
+                "nativeDevicesCreated": 0,
+                "outputGpuConversions": 0,
+                "productionPixelReadbacks": 0,
+                "runtime": null,
+                "runtimeFileHashes": 0,
+                "surfaceProfile": "explicit-sdr-srgb8",
+                "version": 1,
+                "webRenderCachePrecision": "bgra8"
+              },
+              "numericalValidationPasses": 0,
+              "peakSubmittedInFlight": 1,
+              "persistentState": {
+                "buffers": 0,
+                "cursors": {},
+                "version": 1
+              },
+              "pipelineCache": {
+                "computeAndMeshCreated": 9,
+                "computeAndMeshReused": 41,
+                "displayReuses": 0,
+                "meshAttachmentSetsReused": 10,
+                "retention": "current-program-only",
+                "version": 1,
+                "workingBuffersReused": 20
+              },
+              "pixelTransferBytes": 0,
+              "programUpdates": 6,
+              "protocolVersion": 2,
+              "resourceImports": {
+                "binaryUploadBytes": 0,
+                "uploadBytes": 0,
+                "version": 1
+              },
+              "slots": 1,
+              "stateCheckpoints": {
+                "bytes": 0,
+                "count": 0,
+                "cpuReadbacks": 0,
+                "restores": 0,
+                "version": 1
+              },
+              "submitted": 6,
+              "workingImageBytes": 529232,
+              "stateContinuations": {
+                "version": 1,
+                "segments": 0,
+                "frames": 0,
+                "rollbacks": 0,
+                "pending": false,
+                "failed": false
+              },
+              "sourceOutput": {
+                "width": 256,
+                "height": 128,
+                "format": "rgba32float",
+                "alpha": "premultiplied",
+                "color": {
+                  "primaries": "rec709",
+                  "whitePoint": "D65",
+                  "transfer": "linear",
+                  "reference": "scene",
+                  "range": "full",
+                  "referenceWhiteNits": 100
+                }
+              }
+            }
+          },
+          {
+            "format": "rgba32float",
+            "instance": 1,
+            "frame": 100,
+            "hash": "1bb643bed546a7384556a4651bf30b679185f1528ddda4fcee88be04e42cb4af",
+            "wallMs": 804.8984999999993,
+            "stats": {
+              "closed": false,
+              "frames": 1,
+              "backend": "native-wgpu",
+              "completion": "recorded-only",
+              "finish": {
+                "closed": false,
+                "frames": 1,
+                "operations": 0,
+                "retainedCopies": 0,
+                "plans": [],
+                "completion": "recorded-only"
+              },
+              "kind": "native-2d",
+              "last": {
+                "staticGeometryReused": false,
+                "geometrySeedBytes": 108060,
+                "matrixUploadBytes": 256,
+                "batches": 1,
+                "isolatedGroups": 0,
+                "resourceImports": 0,
+                "atlasWorkingBytes": 8496,
+                "logicalImageBytes": 524288,
+                "workingBytesPerPixel": 16,
+                "geometry": {
+                  "preparations": 3,
+                  "hits": 0,
+                  "entries": 3
+                },
+                "completion": "recorded-only"
+              },
+              "layout": {
+                "layouts": 0,
+                "hits": 0,
+                "textPreparations": 0,
+                "boxes": {},
+                "algorithm": "fixed flexily0.8.3 Node, no synthetic text measurer"
+              },
+              "tree": {
+                "version": 2,
+                "nodes": 4,
+                "descriptorBytes": 2316,
+                "cache": "Per-node geometry/layout/style/transform revisions; no frame-result cache"
+              },
+              "renderer": "Existing Native mesh/PixelScope, shared batched geometry/paint; no per-object Stage",
+              "defaultAssets": {
+                "closed": false,
+                "loadedKits": [
+                  "paths",
+                  "font",
+                  "itemizer"
+                ],
+                "fonts": [
+                  {
+                    "id": "default",
+                    "instance": {
+                      "source": {
+                        "resourceId": "pkg_d43437adef656aa53a5b05ad",
+                        "kind": "font",
+                        "sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+                        "bytes": 17772300
+                      },
+                      "faceIndex": 0,
+                      "variations": {
+                        "wght": 400
+                      },
+                      "normalizedCoordinates": [
+                        0.3900146484375
+                      ]
+                    }
+                  }
+                ],
+                "geometry": {
+                  "closed": false,
+                  "busy": false,
+                  "preparations": 2,
+                  "hits": 0,
+                  "cacheEntries": 2,
+                  "logicalCacheBytes": 353668,
+                  "maxCacheBytes": 33554432,
+                  "ownership": "borrowed providers; owned data cache",
+                  "physicalMemory": "unknown"
+                },
+                "execution": "Original PA WASM geometry + existing Native mesh rendering",
+                "ownership": "owns Kit/font clients and geometry cache; borrows R1 loader/GPU"
+              },
+              "globalAbortController": "undefined",
+              "globalAbortSignal": "undefined"
+            }
+          },
+          {
+            "format": "rgba32float",
+            "instance": 1,
+            "frame": 0,
+            "hash": "1be4638984d0095a53071d075df5ff706ec43503c529df62cf843a97dd67f392",
+            "wallMs": 33.125700000000506,
+            "stats": {
+              "closed": false,
+              "frames": 2,
+              "backend": "native-wgpu",
+              "completion": "recorded-only",
+              "finish": {
+                "closed": false,
+                "frames": 2,
+                "operations": 0,
+                "retainedCopies": 0,
+                "plans": [],
+                "completion": "recorded-only"
+              },
+              "kind": "native-2d",
+              "last": {
+                "staticGeometryReused": false,
+                "geometrySeedBytes": 108060,
+                "matrixUploadBytes": 256,
+                "batches": 1,
+                "isolatedGroups": 0,
+                "resourceImports": 0,
+                "atlasWorkingBytes": 8496,
+                "logicalImageBytes": 524288,
+                "workingBytesPerPixel": 16,
+                "geometry": {
+                  "preparations": 5,
+                  "hits": 1,
+                  "entries": 3
+                },
+                "completion": "recorded-only"
+              },
+              "layout": {
+                "layouts": 0,
+                "hits": 0,
+                "textPreparations": 0,
+                "boxes": {},
+                "algorithm": "fixed flexily0.8.3 Node, no synthetic text measurer"
+              },
+              "tree": {
+                "version": 2,
+                "nodes": 4,
+                "descriptorBytes": 2316,
+                "cache": "Per-node geometry/layout/style/transform revisions; no frame-result cache"
+              },
+              "renderer": "Existing Native mesh/PixelScope, shared batched geometry/paint; no per-object Stage",
+              "defaultAssets": {
+                "closed": false,
+                "loadedKits": [
+                  "paths",
+                  "font",
+                  "itemizer"
+                ],
+                "fonts": [
+                  {
+                    "id": "default",
+                    "instance": {
+                      "source": {
+                        "resourceId": "pkg_d43437adef656aa53a5b05ad",
+                        "kind": "font",
+                        "sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+                        "bytes": 17772300
+                      },
+                      "faceIndex": 0,
+                      "variations": {
+                        "wght": 400
+                      },
+                      "normalizedCoordinates": [
+                        0.3900146484375
+                      ]
+                    }
+                  }
+                ],
+                "geometry": {
+                  "closed": false,
+                  "busy": false,
+                  "preparations": 2,
+                  "hits": 2,
+                  "cacheEntries": 2,
+                  "logicalCacheBytes": 353668,
+                  "maxCacheBytes": 33554432,
+                  "ownership": "borrowed providers; owned data cache",
+                  "physicalMemory": "unknown"
+                },
+                "execution": "Original PA WASM geometry + existing Native mesh rendering",
+                "ownership": "owns Kit/font clients and geometry cache; borrows R1 loader/GPU"
+              },
+              "globalAbortController": "undefined",
+              "globalAbortSignal": "undefined"
+            }
+          },
+          {
+            "format": "rgba32float",
+            "instance": 1,
+            "backend": {
+              "adapter": "AdapterInfo { name: \"NVIDIA GeForce RTX 5070 Laptop GPU\", vendor: 4318, device: 11608, device_type: DiscreteGpu, device_pci_bus_id: \"0000:01:00.0\", driver: \"NVIDIA\", driver_info: \"596.49\", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 32, transient_saves_memory: Some(false), limit_bucket: None }",
+              "allocatedDataBytes": 246400,
+              "allocatedImageBytes": 529232,
+              "backend": "native-wgpu",
+              "blockingGpuWaits": 0,
+              "bufferExports": {
+                "bytes": 1061888,
+                "readbacks": 4,
+                "version": 1
+              },
+              "capabilities": {
+                "backend": "native-wgpu",
+                "capacityPolicy": "configured-metadata-and-device-budget",
+                "computeKernelAbis": [
+                  1
+                ],
+                "crossStageGpuHandles": false,
+                "execution": "recording",
+                "f16WorkingBytesPerPixel": 16,
+                "hardwareVerified": true,
+                "limits": {
+                  "maxBufferSize": 4294967295,
+                  "maxComputeInvocationsPerWorkgroup": 1024,
+                  "maxComputeWorkgroupSizeX": 1024,
+                  "maxComputeWorkgroupSizeY": 1024,
+                  "maxComputeWorkgroupSizeZ": 64,
+                  "maxComputeWorkgroupStorageSize": 49152,
+                  "maxComputeWorkgroupsPerDimension": 65535,
+                  "maxStorageBufferBindingSize": 2147483644,
+                  "maxStorageBuffersPerShaderStage": 524288,
+                  "maxUniformBufferBindingSize": 65536
+                },
+                "maxKernels": 268435456,
+                "maxPendingPasses": 268435456,
+                "nativeImages": {
+                  "admission": "device-and-session-budget",
+                  "maxTextureDimension2D": 32768,
+                  "version": 1
+                },
+                "nativeInference": {
+                  "imageContinuation": "same-frame-prefix-v1",
+                  "outputAliasing": "forbidden",
+                  "persistentOutput": "explicit-stateStep",
+                  "preallocatedOutputs": true,
+                  "stateContinuation": true,
+                  "version": 1
+                },
+                "nativeMesh": {
+                  "exactAdmission": "session-budget",
+                  "float32Blendable": true,
+                  "version": 1
+                },
+                "nativeRayQuery": {
+                  "available": true,
+                  "enabled": false,
+                  "experimental": true,
+                  "maxBlasPrimitives": 536870911,
+                  "maxTlasInstances": 16777215,
+                  "profile": "opaque-triangles-v1",
+                  "version": 1
+                },
+                "pixelKernelAbis": [
+                  1,
+                  2
+                ],
+                "profiling": "disabled",
+                "storageTypes": [
+                  "f32",
+                  "u32",
+                  "i32"
+                ],
+                "version": 1
+              },
+              "completed": 2,
+              "devicesCreated": 1,
+              "diagnosticBlockingWaits": 0,
+              "diagnosticReadbackBytes": 0,
+              "diagnosticReadbacks": 0,
+              "diagnosticsEnabled": false,
+              "export": {
+                "bytes": 0,
+                "cpuImageCopies": 0,
+                "enabled": false,
+                "framesWritten": 0,
+                "hardwareEncode": false,
+                "httpTransport": false,
+                "pngTransport": false
+              },
+              "externalImages": {
+                "available": true,
+                "enabled": true,
+                "reason": null,
+                "version": 1
+              },
+              "frameBindings": {
+                "allSlotsDrain": false,
+                "slotUpdates": 0,
+                "version": 1
+              },
+              "frameHashes": 0,
+              "hardwareOptixRayQuery": {
+                "accelerationPolicy": "rebuild sanitized opaque geometry per query; no refit or AS cache yet",
+                "adapterLuid": "0000000000016501",
+                "additionalD3D12Devices": 0,
+                "bridgeHostFenceWaitsPerRun": 0,
+                "completedRays": 0,
+                "cpuGeometryReadbacks": 0,
+                "cpuPixelReadbacks": 0,
+                "enabled": false,
+                "gpuBridgeCopyBytes": 0,
+                "knownSharedAsScratchAndPinnedBytes": 0,
+                "physicalPeakBytes": "unknown",
+                "profile": "optix-cuda-opaque-triangles-v1",
+                "residentQueries": 0,
+                "retiredQueries": 0,
+                "runtime": null,
+                "runtimeVerified": false,
+                "status": "not-probed",
+                "submittedRays": 0,
+                "version": 1
+              },
+              "hardwareRayQuery": {
+                "cachedSceneBuilds": 0,
+                "completedRays": 0,
+                "cpuGeometryReadbacks": 0,
+                "cpuPixelReadbacks": 0,
+                "driverReportedAsAndScratchBytes": 0,
+                "enabled": false,
+                "geometryBuilds": 0,
+                "physicalPeakBytes": "unknown",
+                "profile": "opaque-triangles-v1",
+                "refitImplemented": false,
+                "residentScenes": 0,
+                "retiredScenes": 0,
+                "runtimeVerified": false,
+                "submittedRays": 0,
+                "tlasBuilds": 0,
+                "version": 1
+              },
+              "hardwareVideo": {
+                "additionalD3D11Devices": 0,
+                "blockingGpuFenceWaits": 0,
+                "cpuPixelReadbacks": 0,
+                "cpuPixelUploads": 0,
+                "driverManagedDecodeBytes": "unknown",
+                "format": "rgba32float",
+                "loaded": false,
+                "requests": 0,
+                "residentSlots": 0,
+                "sources": 0,
+                "timestampPolicy": "ordinal + source-relative PTS verification",
+                "version": 1
+              },
+              "imageReadbacks": 0,
+              "inFlight": 0,
+              "inference": {
+                "adapterLuid": "0000000000016501",
+                "additionalD3D12Devices": 0,
+                "backendManagedMemoryBytes": "unknown",
+                "cpuPixelReadbacks": 0,
+                "cpuPixelUploads": 0,
+                "gpuResident": true,
+                "interopDevice": "same-adapter D3D12/DirectML",
+                "models": [],
+                "perRunBridgeHostFenceWaits": 0,
+                "profile": "ort-dml-resident-f32-v1",
+                "retiredModels": 0,
+                "runtime": null,
+                "runtimeInternalWaits": "unknown",
+                "runtimeVerified": false,
+                "runtimes": [],
+                "status": "not-probed",
+                "version": 1
+              },
+              "nativeEncoding": {
+                "backend": "native-d3d11-ocio-nvenc",
+                "completed": 0,
+                "compressedBytes": 0,
+                "cpuPixelReadbacks": 0,
+                "cpuPixelUploads": 0,
+                "enabled": false,
+                "encodedBytesCpuOnly": true,
+                "gpuColour": true,
+                "residentSlots": 0,
+                "submitted": 0,
+                "version": 1
+              },
+              "nativeModules": {
+                "additionalD3D11Devices": 0,
+                "blockingGpuFenceWaits": 0,
+                "calls": 0,
+                "contentProfile": "reviewed-local-only",
+                "inputGpuConversions": 0,
+                "instances": 0,
+                "loaded": false,
+                "nativeDevicesCreated": 0,
+                "outputGpuConversions": 0,
+                "productionPixelReadbacks": 0,
+                "runtime": null,
+                "runtimeFileHashes": 0,
+                "surfaceProfile": "explicit-sdr-srgb8",
+                "version": 1,
+                "webRenderCachePrecision": "bgra8"
+              },
+              "numericalValidationPasses": 0,
+              "peakSubmittedInFlight": 1,
+              "persistentState": {
+                "buffers": 0,
+                "cursors": {},
+                "version": 1
+              },
+              "pipelineCache": {
+                "computeAndMeshCreated": 9,
+                "computeAndMeshReused": 9,
+                "displayReuses": 0,
+                "meshAttachmentSetsReused": 2,
+                "retention": "current-program-only",
+                "version": 1,
+                "workingBuffersReused": 4
+              },
+              "pixelTransferBytes": 0,
+              "programUpdates": 2,
+              "protocolVersion": 2,
+              "resourceImports": {
+                "binaryUploadBytes": 0,
+                "uploadBytes": 0,
+                "version": 1
+              },
+              "slots": 1,
+              "stateCheckpoints": {
+                "bytes": 0,
+                "count": 0,
+                "cpuReadbacks": 0,
+                "restores": 0,
+                "version": 1
+              },
+              "submitted": 2,
+              "workingImageBytes": 529232,
+              "stateContinuations": {
+                "version": 1,
+                "segments": 0,
+                "frames": 0,
+                "rollbacks": 0,
+                "pending": false,
+                "failed": false
+              },
+              "sourceOutput": {
+                "width": 256,
+                "height": 128,
+                "format": "rgba32float",
+                "alpha": "premultiplied",
+                "color": {
+                  "primaries": "rec709",
+                  "whitePoint": "D65",
+                  "transfer": "linear",
+                  "reference": "scene",
+                  "range": "full",
+                  "referenceWhiteNits": 100
+                }
+              }
+            }
+          },
+          {
+            "format": "rgba16float",
+            "instance": 0,
+            "frame": 100,
+            "hash": "6cd443180de9b32c419b5d9cf0f1cbce248c1b34ad44e48ec010b97fcac8157d",
+            "wallMs": 812.8745000000017,
+            "stats": {
+              "closed": false,
+              "frames": 1,
+              "backend": "native-wgpu",
+              "completion": "recorded-only",
+              "finish": {
+                "closed": false,
+                "frames": 1,
+                "operations": 0,
+                "retainedCopies": 0,
+                "plans": [],
+                "completion": "recorded-only"
+              },
+              "kind": "native-2d",
+              "last": {
+                "staticGeometryReused": false,
+                "geometrySeedBytes": 108060,
+                "matrixUploadBytes": 256,
+                "batches": 1,
+                "isolatedGroups": 0,
+                "resourceImports": 0,
+                "atlasWorkingBytes": 8496,
+                "logicalImageBytes": 524288,
+                "workingBytesPerPixel": 16,
+                "geometry": {
+                  "preparations": 3,
+                  "hits": 0,
+                  "entries": 3
+                },
+                "completion": "recorded-only"
+              },
+              "layout": {
+                "layouts": 0,
+                "hits": 0,
+                "textPreparations": 0,
+                "boxes": {},
+                "algorithm": "fixed flexily0.8.3 Node, no synthetic text measurer"
+              },
+              "tree": {
+                "version": 2,
+                "nodes": 4,
+                "descriptorBytes": 2316,
+                "cache": "Per-node geometry/layout/style/transform revisions; no frame-result cache"
+              },
+              "renderer": "Existing Native mesh/PixelScope, shared batched geometry/paint; no per-object Stage",
+              "defaultAssets": {
+                "closed": false,
+                "loadedKits": [
+                  "paths",
+                  "font",
+                  "itemizer"
+                ],
+                "fonts": [
+                  {
+                    "id": "default",
+                    "instance": {
+                      "source": {
+                        "resourceId": "pkg_d43437adef656aa53a5b05ad",
+                        "kind": "font",
+                        "sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+                        "bytes": 17772300
+                      },
+                      "faceIndex": 0,
+                      "variations": {
+                        "wght": 400
+                      },
+                      "normalizedCoordinates": [
+                        0.3900146484375
+                      ]
+                    }
+                  }
+                ],
+                "geometry": {
+                  "closed": false,
+                  "busy": false,
+                  "preparations": 2,
+                  "hits": 0,
+                  "cacheEntries": 2,
+                  "logicalCacheBytes": 353668,
+                  "maxCacheBytes": 33554432,
+                  "ownership": "borrowed providers; owned data cache",
+                  "physicalMemory": "unknown"
+                },
+                "execution": "Original PA WASM geometry + existing Native mesh rendering",
+                "ownership": "owns Kit/font clients and geometry cache; borrows R1 loader/GPU"
+              },
+              "globalAbortController": "undefined",
+              "globalAbortSignal": "undefined"
+            }
+          },
+          {
+            "format": "rgba16float",
+            "instance": 0,
+            "frame": 0,
+            "hash": "febc1e814d904fd6b2ad598e6ca481b570771c70dec21e91437597daaa027a50",
+            "wallMs": 37.822400000000926,
+            "stats": {
+              "closed": false,
+              "frames": 2,
+              "backend": "native-wgpu",
+              "completion": "recorded-only",
+              "finish": {
+                "closed": false,
+                "frames": 2,
+                "operations": 0,
+                "retainedCopies": 0,
+                "plans": [],
+                "completion": "recorded-only"
+              },
+              "kind": "native-2d",
+              "last": {
+                "staticGeometryReused": false,
+                "geometrySeedBytes": 108060,
+                "matrixUploadBytes": 256,
+                "batches": 1,
+                "isolatedGroups": 0,
+                "resourceImports": 0,
+                "atlasWorkingBytes": 8496,
+                "logicalImageBytes": 524288,
+                "workingBytesPerPixel": 16,
+                "geometry": {
+                  "preparations": 5,
+                  "hits": 1,
+                  "entries": 3
+                },
+                "completion": "recorded-only"
+              },
+              "layout": {
+                "layouts": 0,
+                "hits": 0,
+                "textPreparations": 0,
+                "boxes": {},
+                "algorithm": "fixed flexily0.8.3 Node, no synthetic text measurer"
+              },
+              "tree": {
+                "version": 2,
+                "nodes": 4,
+                "descriptorBytes": 2316,
+                "cache": "Per-node geometry/layout/style/transform revisions; no frame-result cache"
+              },
+              "renderer": "Existing Native mesh/PixelScope, shared batched geometry/paint; no per-object Stage",
+              "defaultAssets": {
+                "closed": false,
+                "loadedKits": [
+                  "paths",
+                  "font",
+                  "itemizer"
+                ],
+                "fonts": [
+                  {
+                    "id": "default",
+                    "instance": {
+                      "source": {
+                        "resourceId": "pkg_d43437adef656aa53a5b05ad",
+                        "kind": "font",
+                        "sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+                        "bytes": 17772300
+                      },
+                      "faceIndex": 0,
+                      "variations": {
+                        "wght": 400
+                      },
+                      "normalizedCoordinates": [
+                        0.3900146484375
+                      ]
+                    }
+                  }
+                ],
+                "geometry": {
+                  "closed": false,
+                  "busy": false,
+                  "preparations": 2,
+                  "hits": 2,
+                  "cacheEntries": 2,
+                  "logicalCacheBytes": 353668,
+                  "maxCacheBytes": 33554432,
+                  "ownership": "borrowed providers; owned data cache",
+                  "physicalMemory": "unknown"
+                },
+                "execution": "Original PA WASM geometry + existing Native mesh rendering",
+                "ownership": "owns Kit/font clients and geometry cache; borrows R1 loader/GPU"
+              },
+              "globalAbortController": "undefined",
+              "globalAbortSignal": "undefined"
+            }
+          },
+          {
+            "format": "rgba16float",
+            "instance": 0,
+            "frame": 12,
+            "hash": "bcf7d8eb40eb617c0c8a04c1d6bac1f8473b817795976dd107bfdd52832dcbdf",
+            "wallMs": 34.813099999999395,
+            "stats": {
+              "closed": false,
+              "frames": 3,
+              "backend": "native-wgpu",
+              "completion": "recorded-only",
+              "finish": {
+                "closed": false,
+                "frames": 3,
+                "operations": 0,
+                "retainedCopies": 0,
+                "plans": [],
+                "completion": "recorded-only"
+              },
+              "kind": "native-2d",
+              "last": {
+                "staticGeometryReused": false,
+                "geometrySeedBytes": 108060,
+                "matrixUploadBytes": 256,
+                "batches": 1,
+                "isolatedGroups": 0,
+                "resourceImports": 0,
+                "atlasWorkingBytes": 8496,
+                "logicalImageBytes": 524288,
+                "workingBytesPerPixel": 16,
+                "geometry": {
+                  "preparations": 7,
+                  "hits": 2,
+                  "entries": 3
+                },
+                "completion": "recorded-only"
+              },
+              "layout": {
+                "layouts": 0,
+                "hits": 0,
+                "textPreparations": 0,
+                "boxes": {},
+                "algorithm": "fixed flexily0.8.3 Node, no synthetic text measurer"
+              },
+              "tree": {
+                "version": 2,
+                "nodes": 4,
+                "descriptorBytes": 2316,
+                "cache": "Per-node geometry/layout/style/transform revisions; no frame-result cache"
+              },
+              "renderer": "Existing Native mesh/PixelScope, shared batched geometry/paint; no per-object Stage",
+              "defaultAssets": {
+                "closed": false,
+                "loadedKits": [
+                  "paths",
+                  "font",
+                  "itemizer"
+                ],
+                "fonts": [
+                  {
+                    "id": "default",
+                    "instance": {
+                      "source": {
+                        "resourceId": "pkg_d43437adef656aa53a5b05ad",
+                        "kind": "font",
+                        "sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+                        "bytes": 17772300
+                      },
+                      "faceIndex": 0,
+                      "variations": {
+                        "wght": 400
+                      },
+                      "normalizedCoordinates": [
+                        0.3900146484375
+                      ]
+                    }
+                  }
+                ],
+                "geometry": {
+                  "closed": false,
+                  "busy": false,
+                  "preparations": 2,
+                  "hits": 4,
+                  "cacheEntries": 2,
+                  "logicalCacheBytes": 353668,
+                  "maxCacheBytes": 33554432,
+                  "ownership": "borrowed providers; owned data cache",
+                  "physicalMemory": "unknown"
+                },
+                "execution": "Original PA WASM geometry + existing Native mesh rendering",
+                "ownership": "owns Kit/font clients and geometry cache; borrows R1 loader/GPU"
+              },
+              "globalAbortController": "undefined",
+              "globalAbortSignal": "undefined"
+            }
+          },
+          {
+            "format": "rgba16float",
+            "instance": 0,
+            "frame": 23,
+            "hash": "660e62b81bc1b363290e745729011831defdc17441758d5e8eda6ae4e846b3f6",
+            "wallMs": 31.560499999999593,
+            "stats": {
+              "closed": false,
+              "frames": 4,
+              "backend": "native-wgpu",
+              "completion": "recorded-only",
+              "finish": {
+                "closed": false,
+                "frames": 4,
+                "operations": 0,
+                "retainedCopies": 0,
+                "plans": [],
+                "completion": "recorded-only"
+              },
+              "kind": "native-2d",
+              "last": {
+                "staticGeometryReused": false,
+                "geometrySeedBytes": 108060,
+                "matrixUploadBytes": 256,
+                "batches": 1,
+                "isolatedGroups": 0,
+                "resourceImports": 0,
+                "atlasWorkingBytes": 8496,
+                "logicalImageBytes": 524288,
+                "workingBytesPerPixel": 16,
+                "geometry": {
+                  "preparations": 9,
+                  "hits": 3,
+                  "entries": 3
+                },
+                "completion": "recorded-only"
+              },
+              "layout": {
+                "layouts": 0,
+                "hits": 0,
+                "textPreparations": 0,
+                "boxes": {},
+                "algorithm": "fixed flexily0.8.3 Node, no synthetic text measurer"
+              },
+              "tree": {
+                "version": 2,
+                "nodes": 4,
+                "descriptorBytes": 2316,
+                "cache": "Per-node geometry/layout/style/transform revisions; no frame-result cache"
+              },
+              "renderer": "Existing Native mesh/PixelScope, shared batched geometry/paint; no per-object Stage",
+              "defaultAssets": {
+                "closed": false,
+                "loadedKits": [
+                  "paths",
+                  "font",
+                  "itemizer"
+                ],
+                "fonts": [
+                  {
+                    "id": "default",
+                    "instance": {
+                      "source": {
+                        "resourceId": "pkg_d43437adef656aa53a5b05ad",
+                        "kind": "font",
+                        "sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+                        "bytes": 17772300
+                      },
+                      "faceIndex": 0,
+                      "variations": {
+                        "wght": 400
+                      },
+                      "normalizedCoordinates": [
+                        0.3900146484375
+                      ]
+                    }
+                  }
+                ],
+                "geometry": {
+                  "closed": false,
+                  "busy": false,
+                  "preparations": 2,
+                  "hits": 6,
+                  "cacheEntries": 2,
+                  "logicalCacheBytes": 353668,
+                  "maxCacheBytes": 33554432,
+                  "ownership": "borrowed providers; owned data cache",
+                  "physicalMemory": "unknown"
+                },
+                "execution": "Original PA WASM geometry + existing Native mesh rendering",
+                "ownership": "owns Kit/font clients and geometry cache; borrows R1 loader/GPU"
+              },
+              "globalAbortController": "undefined",
+              "globalAbortSignal": "undefined"
+            }
+          },
+          {
+            "format": "rgba16float",
+            "instance": 0,
+            "frame": 100,
+            "hash": "6cd443180de9b32c419b5d9cf0f1cbce248c1b34ad44e48ec010b97fcac8157d",
+            "wallMs": 33.45179999999891,
+            "stats": {
+              "closed": false,
+              "frames": 5,
+              "backend": "native-wgpu",
+              "completion": "recorded-only",
+              "finish": {
+                "closed": false,
+                "frames": 5,
+                "operations": 0,
+                "retainedCopies": 0,
+                "plans": [],
+                "completion": "recorded-only"
+              },
+              "kind": "native-2d",
+              "last": {
+                "staticGeometryReused": false,
+                "geometrySeedBytes": 108060,
+                "matrixUploadBytes": 256,
+                "batches": 1,
+                "isolatedGroups": 0,
+                "resourceImports": 0,
+                "atlasWorkingBytes": 8496,
+                "logicalImageBytes": 524288,
+                "workingBytesPerPixel": 16,
+                "geometry": {
+                  "preparations": 11,
+                  "hits": 4,
+                  "entries": 3
+                },
+                "completion": "recorded-only"
+              },
+              "layout": {
+                "layouts": 0,
+                "hits": 0,
+                "textPreparations": 0,
+                "boxes": {},
+                "algorithm": "fixed flexily0.8.3 Node, no synthetic text measurer"
+              },
+              "tree": {
+                "version": 2,
+                "nodes": 4,
+                "descriptorBytes": 2316,
+                "cache": "Per-node geometry/layout/style/transform revisions; no frame-result cache"
+              },
+              "renderer": "Existing Native mesh/PixelScope, shared batched geometry/paint; no per-object Stage",
+              "defaultAssets": {
+                "closed": false,
+                "loadedKits": [
+                  "paths",
+                  "font",
+                  "itemizer"
+                ],
+                "fonts": [
+                  {
+                    "id": "default",
+                    "instance": {
+                      "source": {
+                        "resourceId": "pkg_d43437adef656aa53a5b05ad",
+                        "kind": "font",
+                        "sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+                        "bytes": 17772300
+                      },
+                      "faceIndex": 0,
+                      "variations": {
+                        "wght": 400
+                      },
+                      "normalizedCoordinates": [
+                        0.3900146484375
+                      ]
+                    }
+                  }
+                ],
+                "geometry": {
+                  "closed": false,
+                  "busy": false,
+                  "preparations": 2,
+                  "hits": 8,
+                  "cacheEntries": 2,
+                  "logicalCacheBytes": 353668,
+                  "maxCacheBytes": 33554432,
+                  "ownership": "borrowed providers; owned data cache",
+                  "physicalMemory": "unknown"
+                },
+                "execution": "Original PA WASM geometry + existing Native mesh rendering",
+                "ownership": "owns Kit/font clients and geometry cache; borrows R1 loader/GPU"
+              },
+              "globalAbortController": "undefined",
+              "globalAbortSignal": "undefined"
+            }
+          },
+          {
+            "format": "rgba16float",
+            "instance": 0,
+            "backend": {
+              "adapter": "AdapterInfo { name: \"NVIDIA GeForce RTX 5070 Laptop GPU\", vendor: 4318, device: 11608, device_type: DiscreteGpu, device_pci_bus_id: \"0000:01:00.0\", driver: \"NVIDIA\", driver_info: \"596.49\", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 32, transient_saves_memory: Some(false), limit_bucket: None }",
+              "allocatedDataBytes": 246408,
+              "allocatedImageBytes": 1053520,
+              "backend": "native-wgpu",
+              "blockingGpuWaits": 0,
+              "bufferExports": {
+                "bytes": 3179012,
+                "readbacks": 11,
+                "version": 1
+              },
+              "capabilities": {
+                "backend": "native-wgpu",
+                "capacityPolicy": "configured-metadata-and-device-budget",
+                "computeKernelAbis": [
+                  1
+                ],
+                "crossStageGpuHandles": false,
+                "execution": "recording",
+                "f16WorkingBytesPerPixel": 16,
+                "hardwareVerified": true,
+                "limits": {
+                  "maxBufferSize": 4294967295,
+                  "maxComputeInvocationsPerWorkgroup": 1024,
+                  "maxComputeWorkgroupSizeX": 1024,
+                  "maxComputeWorkgroupSizeY": 1024,
+                  "maxComputeWorkgroupSizeZ": 64,
+                  "maxComputeWorkgroupStorageSize": 49152,
+                  "maxComputeWorkgroupsPerDimension": 65535,
+                  "maxStorageBufferBindingSize": 2147483644,
+                  "maxStorageBuffersPerShaderStage": 524288,
+                  "maxUniformBufferBindingSize": 65536
+                },
+                "maxKernels": 268435456,
+                "maxPendingPasses": 268435456,
+                "nativeImages": {
+                  "admission": "device-and-session-budget",
+                  "maxTextureDimension2D": 32768,
+                  "version": 1
+                },
+                "nativeInference": {
+                  "imageContinuation": "same-frame-prefix-v1",
+                  "outputAliasing": "forbidden",
+                  "persistentOutput": "explicit-stateStep",
+                  "preallocatedOutputs": true,
+                  "stateContinuation": true,
+                  "version": 1
+                },
+                "nativeMesh": {
+                  "exactAdmission": "session-budget",
+                  "float32Blendable": true,
+                  "version": 1
+                },
+                "nativeRayQuery": {
+                  "available": true,
+                  "enabled": false,
+                  "experimental": true,
+                  "maxBlasPrimitives": 536870911,
+                  "maxTlasInstances": 16777215,
+                  "profile": "opaque-triangles-v1",
+                  "version": 1
+                },
+                "pixelKernelAbis": [
+                  1,
+                  2
+                ],
+                "profiling": "disabled",
+                "storageTypes": [
+                  "f32",
+                  "u32",
+                  "i32"
+                ],
+                "version": 1
+              },
+              "completed": 6,
+              "devicesCreated": 1,
+              "diagnosticBlockingWaits": 0,
+              "diagnosticReadbackBytes": 0,
+              "diagnosticReadbacks": 0,
+              "diagnosticsEnabled": false,
+              "export": {
+                "bytes": 0,
+                "cpuImageCopies": 0,
+                "enabled": false,
+                "framesWritten": 0,
+                "hardwareEncode": false,
+                "httpTransport": false,
+                "pngTransport": false
+              },
+              "externalImages": {
+                "available": true,
+                "enabled": true,
+                "reason": null,
+                "version": 1
+              },
+              "frameBindings": {
+                "allSlotsDrain": false,
+                "slotUpdates": 0,
+                "version": 1
+              },
+              "frameHashes": 0,
+              "hardwareOptixRayQuery": {
+                "accelerationPolicy": "rebuild sanitized opaque geometry per query; no refit or AS cache yet",
+                "adapterLuid": "0000000000016501",
+                "additionalD3D12Devices": 0,
+                "bridgeHostFenceWaitsPerRun": 0,
+                "completedRays": 0,
+                "cpuGeometryReadbacks": 0,
+                "cpuPixelReadbacks": 0,
+                "enabled": false,
+                "gpuBridgeCopyBytes": 0,
+                "knownSharedAsScratchAndPinnedBytes": 0,
+                "physicalPeakBytes": "unknown",
+                "profile": "optix-cuda-opaque-triangles-v1",
+                "residentQueries": 0,
+                "retiredQueries": 0,
+                "runtime": null,
+                "runtimeVerified": false,
+                "status": "not-probed",
+                "submittedRays": 0,
+                "version": 1
+              },
+              "hardwareRayQuery": {
+                "cachedSceneBuilds": 0,
+                "completedRays": 0,
+                "cpuGeometryReadbacks": 0,
+                "cpuPixelReadbacks": 0,
+                "driverReportedAsAndScratchBytes": 0,
+                "enabled": false,
+                "geometryBuilds": 0,
+                "physicalPeakBytes": "unknown",
+                "profile": "opaque-triangles-v1",
+                "refitImplemented": false,
+                "residentScenes": 0,
+                "retiredScenes": 0,
+                "runtimeVerified": false,
+                "submittedRays": 0,
+                "tlasBuilds": 0,
+                "version": 1
+              },
+              "hardwareVideo": {
+                "additionalD3D11Devices": 0,
+                "blockingGpuFenceWaits": 0,
+                "cpuPixelReadbacks": 0,
+                "cpuPixelUploads": 0,
+                "driverManagedDecodeBytes": "unknown",
+                "format": "rgba32float",
+                "loaded": false,
+                "requests": 0,
+                "residentSlots": 0,
+                "sources": 0,
+                "timestampPolicy": "ordinal + source-relative PTS verification",
+                "version": 1
+              },
+              "imageReadbacks": 0,
+              "inFlight": 0,
+              "inference": {
+                "adapterLuid": "0000000000016501",
+                "additionalD3D12Devices": 0,
+                "backendManagedMemoryBytes": "unknown",
+                "cpuPixelReadbacks": 0,
+                "cpuPixelUploads": 0,
+                "gpuResident": true,
+                "interopDevice": "same-adapter D3D12/DirectML",
+                "models": [],
+                "perRunBridgeHostFenceWaits": 0,
+                "profile": "ort-dml-resident-f32-v1",
+                "retiredModels": 0,
+                "runtime": null,
+                "runtimeInternalWaits": "unknown",
+                "runtimeVerified": false,
+                "runtimes": [],
+                "status": "not-probed",
+                "version": 1
+              },
+              "nativeEncoding": {
+                "backend": "native-d3d11-ocio-nvenc",
+                "completed": 0,
+                "compressedBytes": 0,
+                "cpuPixelReadbacks": 0,
+                "cpuPixelUploads": 0,
+                "enabled": false,
+                "encodedBytesCpuOnly": true,
+                "gpuColour": true,
+                "residentSlots": 0,
+                "submitted": 0,
+                "version": 1
+              },
+              "nativeModules": {
+                "additionalD3D11Devices": 0,
+                "blockingGpuFenceWaits": 0,
+                "calls": 0,
+                "contentProfile": "reviewed-local-only",
+                "inputGpuConversions": 0,
+                "instances": 0,
+                "loaded": false,
+                "nativeDevicesCreated": 0,
+                "outputGpuConversions": 0,
+                "productionPixelReadbacks": 0,
+                "runtime": null,
+                "runtimeFileHashes": 0,
+                "surfaceProfile": "explicit-sdr-srgb8",
+                "version": 1,
+                "webRenderCachePrecision": "bgra8"
+              },
+              "numericalValidationPasses": 0,
+              "peakSubmittedInFlight": 1,
+              "persistentState": {
+                "buffers": 0,
+                "cursors": {},
+                "version": 1
+              },
+              "pipelineCache": {
+                "computeAndMeshCreated": 10,
+                "computeAndMeshReused": 46,
+                "displayReuses": 0,
+                "meshAttachmentSetsReused": 10,
+                "retention": "current-program-only",
+                "version": 1,
+                "workingBuffersReused": 25
+              },
+              "pixelTransferBytes": 0,
+              "programUpdates": 6,
+              "protocolVersion": 2,
+              "resourceImports": {
+                "binaryUploadBytes": 0,
+                "uploadBytes": 0,
+                "version": 1
+              },
+              "slots": 1,
+              "stateCheckpoints": {
+                "bytes": 0,
+                "count": 0,
+                "cpuReadbacks": 0,
+                "restores": 0,
+                "version": 1
+              },
+              "submitted": 6,
+              "workingImageBytes": 1053520,
+              "stateContinuations": {
+                "version": 1,
+                "segments": 0,
+                "frames": 0,
+                "rollbacks": 0,
+                "pending": false,
+                "failed": false
+              },
+              "sourceOutput": {
+                "width": 256,
+                "height": 128,
+                "format": "rgba16float",
+                "alpha": "premultiplied",
+                "color": {
+                  "primaries": "rec709",
+                  "whitePoint": "D65",
+                  "transfer": "linear",
+                  "reference": "scene",
+                  "range": "full",
+                  "referenceWhiteNits": 100
+                }
+              }
+            }
+          },
+          {
+            "format": "rgba16float",
+            "instance": 1,
+            "frame": 100,
+            "hash": "6cd443180de9b32c419b5d9cf0f1cbce248c1b34ad44e48ec010b97fcac8157d",
+            "wallMs": 820.8556000000026,
+            "stats": {
+              "closed": false,
+              "frames": 1,
+              "backend": "native-wgpu",
+              "completion": "recorded-only",
+              "finish": {
+                "closed": false,
+                "frames": 1,
+                "operations": 0,
+                "retainedCopies": 0,
+                "plans": [],
+                "completion": "recorded-only"
+              },
+              "kind": "native-2d",
+              "last": {
+                "staticGeometryReused": false,
+                "geometrySeedBytes": 108060,
+                "matrixUploadBytes": 256,
+                "batches": 1,
+                "isolatedGroups": 0,
+                "resourceImports": 0,
+                "atlasWorkingBytes": 8496,
+                "logicalImageBytes": 524288,
+                "workingBytesPerPixel": 16,
+                "geometry": {
+                  "preparations": 3,
+                  "hits": 0,
+                  "entries": 3
+                },
+                "completion": "recorded-only"
+              },
+              "layout": {
+                "layouts": 0,
+                "hits": 0,
+                "textPreparations": 0,
+                "boxes": {},
+                "algorithm": "fixed flexily0.8.3 Node, no synthetic text measurer"
+              },
+              "tree": {
+                "version": 2,
+                "nodes": 4,
+                "descriptorBytes": 2316,
+                "cache": "Per-node geometry/layout/style/transform revisions; no frame-result cache"
+              },
+              "renderer": "Existing Native mesh/PixelScope, shared batched geometry/paint; no per-object Stage",
+              "defaultAssets": {
+                "closed": false,
+                "loadedKits": [
+                  "paths",
+                  "font",
+                  "itemizer"
+                ],
+                "fonts": [
+                  {
+                    "id": "default",
+                    "instance": {
+                      "source": {
+                        "resourceId": "pkg_d43437adef656aa53a5b05ad",
+                        "kind": "font",
+                        "sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+                        "bytes": 17772300
+                      },
+                      "faceIndex": 0,
+                      "variations": {
+                        "wght": 400
+                      },
+                      "normalizedCoordinates": [
+                        0.3900146484375
+                      ]
+                    }
+                  }
+                ],
+                "geometry": {
+                  "closed": false,
+                  "busy": false,
+                  "preparations": 2,
+                  "hits": 0,
+                  "cacheEntries": 2,
+                  "logicalCacheBytes": 353668,
+                  "maxCacheBytes": 33554432,
+                  "ownership": "borrowed providers; owned data cache",
+                  "physicalMemory": "unknown"
+                },
+                "execution": "Original PA WASM geometry + existing Native mesh rendering",
+                "ownership": "owns Kit/font clients and geometry cache; borrows R1 loader/GPU"
+              },
+              "globalAbortController": "undefined",
+              "globalAbortSignal": "undefined"
+            }
+          },
+          {
+            "format": "rgba16float",
+            "instance": 1,
+            "frame": 0,
+            "hash": "febc1e814d904fd6b2ad598e6ca481b570771c70dec21e91437597daaa027a50",
+            "wallMs": 34.82239999999729,
+            "stats": {
+              "closed": false,
+              "frames": 2,
+              "backend": "native-wgpu",
+              "completion": "recorded-only",
+              "finish": {
+                "closed": false,
+                "frames": 2,
+                "operations": 0,
+                "retainedCopies": 0,
+                "plans": [],
+                "completion": "recorded-only"
+              },
+              "kind": "native-2d",
+              "last": {
+                "staticGeometryReused": false,
+                "geometrySeedBytes": 108060,
+                "matrixUploadBytes": 256,
+                "batches": 1,
+                "isolatedGroups": 0,
+                "resourceImports": 0,
+                "atlasWorkingBytes": 8496,
+                "logicalImageBytes": 524288,
+                "workingBytesPerPixel": 16,
+                "geometry": {
+                  "preparations": 5,
+                  "hits": 1,
+                  "entries": 3
+                },
+                "completion": "recorded-only"
+              },
+              "layout": {
+                "layouts": 0,
+                "hits": 0,
+                "textPreparations": 0,
+                "boxes": {},
+                "algorithm": "fixed flexily0.8.3 Node, no synthetic text measurer"
+              },
+              "tree": {
+                "version": 2,
+                "nodes": 4,
+                "descriptorBytes": 2316,
+                "cache": "Per-node geometry/layout/style/transform revisions; no frame-result cache"
+              },
+              "renderer": "Existing Native mesh/PixelScope, shared batched geometry/paint; no per-object Stage",
+              "defaultAssets": {
+                "closed": false,
+                "loadedKits": [
+                  "paths",
+                  "font",
+                  "itemizer"
+                ],
+                "fonts": [
+                  {
+                    "id": "default",
+                    "instance": {
+                      "source": {
+                        "resourceId": "pkg_d43437adef656aa53a5b05ad",
+                        "kind": "font",
+                        "sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+                        "bytes": 17772300
+                      },
+                      "faceIndex": 0,
+                      "variations": {
+                        "wght": 400
+                      },
+                      "normalizedCoordinates": [
+                        0.3900146484375
+                      ]
+                    }
+                  }
+                ],
+                "geometry": {
+                  "closed": false,
+                  "busy": false,
+                  "preparations": 2,
+                  "hits": 2,
+                  "cacheEntries": 2,
+                  "logicalCacheBytes": 353668,
+                  "maxCacheBytes": 33554432,
+                  "ownership": "borrowed providers; owned data cache",
+                  "physicalMemory": "unknown"
+                },
+                "execution": "Original PA WASM geometry + existing Native mesh rendering",
+                "ownership": "owns Kit/font clients and geometry cache; borrows R1 loader/GPU"
+              },
+              "globalAbortController": "undefined",
+              "globalAbortSignal": "undefined"
+            }
+          },
+          {
+            "format": "rgba16float",
+            "instance": 1,
+            "backend": {
+              "adapter": "AdapterInfo { name: \"NVIDIA GeForce RTX 5070 Laptop GPU\", vendor: 4318, device: 11608, device_type: DiscreteGpu, device_pci_bus_id: \"0000:01:00.0\", driver: \"NVIDIA\", driver_info: \"596.49\", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 32, transient_saves_memory: Some(false), limit_bucket: None }",
+              "allocatedDataBytes": 246400,
+              "allocatedImageBytes": 1053520,
+              "backend": "native-wgpu",
+              "blockingGpuWaits": 0,
+              "bufferExports": {
+                "bytes": 1061888,
+                "readbacks": 4,
+                "version": 1
+              },
+              "capabilities": {
+                "backend": "native-wgpu",
+                "capacityPolicy": "configured-metadata-and-device-budget",
+                "computeKernelAbis": [
+                  1
+                ],
+                "crossStageGpuHandles": false,
+                "execution": "recording",
+                "f16WorkingBytesPerPixel": 16,
+                "hardwareVerified": true,
+                "limits": {
+                  "maxBufferSize": 4294967295,
+                  "maxComputeInvocationsPerWorkgroup": 1024,
+                  "maxComputeWorkgroupSizeX": 1024,
+                  "maxComputeWorkgroupSizeY": 1024,
+                  "maxComputeWorkgroupSizeZ": 64,
+                  "maxComputeWorkgroupStorageSize": 49152,
+                  "maxComputeWorkgroupsPerDimension": 65535,
+                  "maxStorageBufferBindingSize": 2147483644,
+                  "maxStorageBuffersPerShaderStage": 524288,
+                  "maxUniformBufferBindingSize": 65536
+                },
+                "maxKernels": 268435456,
+                "maxPendingPasses": 268435456,
+                "nativeImages": {
+                  "admission": "device-and-session-budget",
+                  "maxTextureDimension2D": 32768,
+                  "version": 1
+                },
+                "nativeInference": {
+                  "imageContinuation": "same-frame-prefix-v1",
+                  "outputAliasing": "forbidden",
+                  "persistentOutput": "explicit-stateStep",
+                  "preallocatedOutputs": true,
+                  "stateContinuation": true,
+                  "version": 1
+                },
+                "nativeMesh": {
+                  "exactAdmission": "session-budget",
+                  "float32Blendable": true,
+                  "version": 1
+                },
+                "nativeRayQuery": {
+                  "available": true,
+                  "enabled": false,
+                  "experimental": true,
+                  "maxBlasPrimitives": 536870911,
+                  "maxTlasInstances": 16777215,
+                  "profile": "opaque-triangles-v1",
+                  "version": 1
+                },
+                "pixelKernelAbis": [
+                  1,
+                  2
+                ],
+                "profiling": "disabled",
+                "storageTypes": [
+                  "f32",
+                  "u32",
+                  "i32"
+                ],
+                "version": 1
+              },
+              "completed": 2,
+              "devicesCreated": 1,
+              "diagnosticBlockingWaits": 0,
+              "diagnosticReadbackBytes": 0,
+              "diagnosticReadbacks": 0,
+              "diagnosticsEnabled": false,
+              "export": {
+                "bytes": 0,
+                "cpuImageCopies": 0,
+                "enabled": false,
+                "framesWritten": 0,
+                "hardwareEncode": false,
+                "httpTransport": false,
+                "pngTransport": false
+              },
+              "externalImages": {
+                "available": true,
+                "enabled": true,
+                "reason": null,
+                "version": 1
+              },
+              "frameBindings": {
+                "allSlotsDrain": false,
+                "slotUpdates": 0,
+                "version": 1
+              },
+              "frameHashes": 0,
+              "hardwareOptixRayQuery": {
+                "accelerationPolicy": "rebuild sanitized opaque geometry per query; no refit or AS cache yet",
+                "adapterLuid": "0000000000016501",
+                "additionalD3D12Devices": 0,
+                "bridgeHostFenceWaitsPerRun": 0,
+                "completedRays": 0,
+                "cpuGeometryReadbacks": 0,
+                "cpuPixelReadbacks": 0,
+                "enabled": false,
+                "gpuBridgeCopyBytes": 0,
+                "knownSharedAsScratchAndPinnedBytes": 0,
+                "physicalPeakBytes": "unknown",
+                "profile": "optix-cuda-opaque-triangles-v1",
+                "residentQueries": 0,
+                "retiredQueries": 0,
+                "runtime": null,
+                "runtimeVerified": false,
+                "status": "not-probed",
+                "submittedRays": 0,
+                "version": 1
+              },
+              "hardwareRayQuery": {
+                "cachedSceneBuilds": 0,
+                "completedRays": 0,
+                "cpuGeometryReadbacks": 0,
+                "cpuPixelReadbacks": 0,
+                "driverReportedAsAndScratchBytes": 0,
+                "enabled": false,
+                "geometryBuilds": 0,
+                "physicalPeakBytes": "unknown",
+                "profile": "opaque-triangles-v1",
+                "refitImplemented": false,
+                "residentScenes": 0,
+                "retiredScenes": 0,
+                "runtimeVerified": false,
+                "submittedRays": 0,
+                "tlasBuilds": 0,
+                "version": 1
+              },
+              "hardwareVideo": {
+                "additionalD3D11Devices": 0,
+                "blockingGpuFenceWaits": 0,
+                "cpuPixelReadbacks": 0,
+                "cpuPixelUploads": 0,
+                "driverManagedDecodeBytes": "unknown",
+                "format": "rgba32float",
+                "loaded": false,
+                "requests": 0,
+                "residentSlots": 0,
+                "sources": 0,
+                "timestampPolicy": "ordinal + source-relative PTS verification",
+                "version": 1
+              },
+              "imageReadbacks": 0,
+              "inFlight": 0,
+              "inference": {
+                "adapterLuid": "0000000000016501",
+                "additionalD3D12Devices": 0,
+                "backendManagedMemoryBytes": "unknown",
+                "cpuPixelReadbacks": 0,
+                "cpuPixelUploads": 0,
+                "gpuResident": true,
+                "interopDevice": "same-adapter D3D12/DirectML",
+                "models": [],
+                "perRunBridgeHostFenceWaits": 0,
+                "profile": "ort-dml-resident-f32-v1",
+                "retiredModels": 0,
+                "runtime": null,
+                "runtimeInternalWaits": "unknown",
+                "runtimeVerified": false,
+                "runtimes": [],
+                "status": "not-probed",
+                "version": 1
+              },
+              "nativeEncoding": {
+                "backend": "native-d3d11-ocio-nvenc",
+                "completed": 0,
+                "compressedBytes": 0,
+                "cpuPixelReadbacks": 0,
+                "cpuPixelUploads": 0,
+                "enabled": false,
+                "encodedBytesCpuOnly": true,
+                "gpuColour": true,
+                "residentSlots": 0,
+                "submitted": 0,
+                "version": 1
+              },
+              "nativeModules": {
+                "additionalD3D11Devices": 0,
+                "blockingGpuFenceWaits": 0,
+                "calls": 0,
+                "contentProfile": "reviewed-local-only",
+                "inputGpuConversions": 0,
+                "instances": 0,
+                "loaded": false,
+                "nativeDevicesCreated": 0,
+                "outputGpuConversions": 0,
+                "productionPixelReadbacks": 0,
+                "runtime": null,
+                "runtimeFileHashes": 0,
+                "surfaceProfile": "explicit-sdr-srgb8",
+                "version": 1,
+                "webRenderCachePrecision": "bgra8"
+              },
+              "numericalValidationPasses": 0,
+              "peakSubmittedInFlight": 1,
+              "persistentState": {
+                "buffers": 0,
+                "cursors": {},
+                "version": 1
+              },
+              "pipelineCache": {
+                "computeAndMeshCreated": 10,
+                "computeAndMeshReused": 10,
+                "displayReuses": 0,
+                "meshAttachmentSetsReused": 2,
+                "retention": "current-program-only",
+                "version": 1,
+                "workingBuffersReused": 5
+              },
+              "pixelTransferBytes": 0,
+              "programUpdates": 2,
+              "protocolVersion": 2,
+              "resourceImports": {
+                "binaryUploadBytes": 0,
+                "uploadBytes": 0,
+                "version": 1
+              },
+              "slots": 1,
+              "stateCheckpoints": {
+                "bytes": 0,
+                "count": 0,
+                "cpuReadbacks": 0,
+                "restores": 0,
+                "version": 1
+              },
+              "submitted": 2,
+              "workingImageBytes": 1053520,
+              "stateContinuations": {
+                "version": 1,
+                "segments": 0,
+                "frames": 0,
+                "rollbacks": 0,
+                "pending": false,
+                "failed": false
+              },
+              "sourceOutput": {
+                "width": 256,
+                "height": 128,
+                "format": "rgba16float",
+                "alpha": "premultiplied",
+                "color": {
+                  "primaries": "rec709",
+                  "whitePoint": "D65",
+                  "transfer": "linear",
+                  "reference": "scene",
+                  "range": "full",
+                  "referenceWhiteNits": 100
+                }
+              }
+            }
+          }
+        ],
+        "formatDifferences": {
+          "rgba": 0.00019532442092895508,
+          "alpha": 0.00019532442092895508,
+          "overBlack": 0.0001952648162841797,
+          "overWhite": 0.00021485239267349243
+        },
+        "gpuExecutionMs": null,
+        "physicalPeakMemory": "unknown"
+      },
+      "wallMs": 23939.4747
+    },
+    {
+      "name": "default WASM refusal and primitive-only no-WASM compatibility",
+      "ok": true,
+      "detail": {
+        "failure": {
+          "code": "E_PACKAGE_PERMISSION",
+          "message": "Default font/path assets require explicit --allow-wasm",
+          "details": "EngineError@frameweave-host.js:523:11\nerror2D2@frameweave-host.js:40522:11\nkernel102@frameweave-host.js:52719:55\nownedDefaultServices2D2/getPaths/paths<@frameweave-host.js:52744:26\ngetPaths@frameweave-host.js:52753:7\nbooleanPathsStream@frameweave-host.js:52790:21\nbooleanPathsStream@frameweave-host.js:52697:14\ncanonicalFilledFaces2@frameweave-host.js:45531:5\nnormalizePathFill2@frameweave-host.js:45706:12\npreparePathFillMesh2@frameweave-host.js:45722:5\nprepareNodeGeometry2@frameweave-host.js:45810:46\nget@frameweave-host.js:45878:27\npreparePool2@frameweave-host.js:45913:31\nscene2D3/frame2/<@frameweave-host.js:48055:145\nasync*withGpuResources3@frameweave-host.js:45601:22\nframe2@frameweave-host.js:48053:60\ncreationStage2/renderAt/task<@frameweave-host.js:47935:26\nrenderAt@frameweave-host.js:47949:9\nrenderAt@frameweave-host.js:48198:20\nrenderAt@frameweave-host.js:2166:38\nrenderAt@frameweave-host.js:80787:24\nnativeDispatcher/</<@frameweave-host.js:82087:158\n"
+        },
+        "plainPrimitiveSucceeded": true
+      },
+      "wallMs": 18121.4306
+    },
+    {
+      "name": "public creator PNG first middle final and complete one-second MP4",
+      "ok": true,
+      "detail": {
+        "video": "D:\\frameweave-worktrees\\agent-4\\modules\\native-2d\\validation\\fonts\\evidence\\fonts-20.mp4",
+        "frames": 24,
+        "seconds": 1,
+        "completeDecode": true,
+        "pngs": [
+          0,
+          12,
+          23
+        ],
+        "encoder": "libx264",
+        "scope": "Actual Native GPU; lossy H264 separate from float comparisons"
+      },
+      "wallMs": 45746.2739
+    },
+    {
+      "name": "carried public declarations, default text and scene Canvas API",
+      "ok": true,
+      "detail": {
+        "declarations": "D:\\frameweave-worktrees\\agent-4\\.frameweave\\native-2d\\font-package-19\\api.d.ts",
+        "positiveAndNegativeCalls": true,
+        "corePublicAliases": "same reviewed local SDK"
+      },
+      "wallMs": 2005.1123999999982
+    },
+    {
+      "name": "real scene Canvas default measureText fillText same services and pre-cancelled frame",
+      "ok": false,
+      "error": {
+        "code": "E_TYPECHECK",
+        "message": "D:\\frameweave-worktrees\\agent-4\\.frameweave\\native-2d\\font-project-font-package-19\\canvas-fonts.tsx:1:549 TS2722: Cannot invoke an object which is possibly 'undefined'. (3 errors)",
+        "stack": "EngineError: D:\\frameweave-worktrees\\agent-4\\.frameweave\\native-2d\\font-project-font-package-19\\canvas-fonts.tsx:1:549 TS2722: Cannot invoke an object which is possibly 'undefined'. (3 errors)\n    at typecheckProject (D:\\frameweave-worktrees\\agent-4\\src\\compiler\\typecheck.ts:41:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async buildProject (D:\\frameweave-worktrees\\agent-4\\src\\compiler\\build.ts:99:3)\n    at async <anonymous> (D:\\frameweave-worktrees\\agent-4\\modules\\native-2d\\validation\\fonts\\verify.ts:58:39)\n    at async check (D:\\frameweave-worktrees\\agent-4\\modules\\native-2d\\validation\\fonts\\verify.ts:8:203)\n    at async <anonymous> (D:\\frameweave-worktrees\\agent-4\\modules\\native-2d\\validation\\fonts\\verify.ts:56:1)",
+        "details": {
+          "diagnostics": [
+            {
+              "code": "E_TYPECHECK",
+              "severity": "error",
+              "message": "Cannot invoke an object which is possibly 'undefined'.",
+              "tsCode": 2722,
+              "file": "D:\\frameweave-worktrees\\agent-4\\.frameweave\\native-2d\\font-project-font-package-19\\canvas-fonts.tsx",
+              "line": 1,
+              "column": 549
+            },
+            {
+              "code": "E_TYPECHECK",
+              "severity": "error",
+              "message": "'init.gpu.imageToBuffer' is possibly 'undefined'.",
+              "tsCode": 18048,
+              "file": "D:\\frameweave-worktrees\\agent-4\\.frameweave\\native-2d\\font-project-font-package-19\\canvas-fonts.tsx",
+              "line": 1,
+              "column": 549
+            },
+            {
+              "code": "E_TYPECHECK",
+              "severity": "error",
+              "message": "Cannot invoke an object which is possibly 'undefined'.",
+              "tsCode": 2722,
+              "file": "D:\\frameweave-worktrees\\agent-4\\.frameweave\\native-2d\\font-project-font-package-19\\canvas-fonts.tsx",
+              "line": 1,
+              "column": 1057
+            }
+          ]
+        }
+      },
+      "wallMs": 2328.611600000004
+    },
+    {
+      "name": "verified package and portable font path project in empty private home",
+      "ok": false,
+      "error": {
+        "code": "ERR_ASSERTION",
+        "message": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- true\n",
+        "stack": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- true\n\n    at <anonymous> (D:\\frameweave-worktrees\\agent-4\\modules\\native-2d\\validation\\fonts\\verify.ts:62:103)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async check (D:\\frameweave-worktrees\\agent-4\\modules\\native-2d\\validation\\fonts\\verify.ts:8:203)\n    at async <anonymous> (D:\\frameweave-worktrees\\agent-4\\modules\\native-2d\\validation\\fonts\\verify.ts:61:1)"
+      },
+      "wallMs": 1988.626099999994
+    },
+    {
+      "name": "owned Native SpiderMonkey FFmpeg process cleanup",
+      "ok": true,
+      "detail": {
+        "initialProcesses": [],
+        "after": [],
+        "newProcesses": []
+      },
+      "wallMs": 342.1386000000057
+    }
+  ]
+}

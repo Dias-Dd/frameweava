@@ -1,0 +1,4 @@
+import{execFileSync}from'node:child_process';import{mkdir,writeFile}from'node:fs/promises';import{resolve,join}from'node:path';
+const root=resolve('.frameweave/mixed-av-seal/core');await mkdir(join(root,'tests'),{recursive:true});for(const name of ['audio-resources.test.ts','audio-adapter.test.ts','audio-ports.test.ts'])await writeFile(join(root,'tests',name),execFileSync('git',['show','cf214adb3c0453dcba6af828c8456363e682f31c:tests/'+name],{maxBuffer:2*1024**2}));
+const args=process.argv.includes('--types')?[resolve('node_modules/typescript/bin/tsc'),'--noEmit','-p',join(root,'tsconfig.json')]:['--import','tsx','--test','--test-concurrency=1',join(root,'tests/audio-resources.test.ts'),join(root,'tests/audio-adapter.test.ts'),join(root,'tests/audio-ports.test.ts')];
+execFileSync(process.execPath,args,{stdio:'inherit',windowsHide:true,timeout:120000});

@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "library": "3.4.4",
+  "width": 8,
+  "height": 4,
+  "samples": 48,
+  "files": [
+    {
+      "name": "none.exr",
+      "bytes": 4415,
+      "sha256": "086432cdf4b99964a80819a8567d0d367e1ff25fc319a09f17d1393d0c7543f6"
+    },
+    {
+      "name": "rle.exr",
+      "bytes": 4051,
+      "sha256": "18c8d01f159cf5a138b2066bd97eda58e074dac854d194e99fe8a3fa36761b11"
+    },
+    {
+      "name": "zips.exr",
+      "bytes": 2861,
+      "sha256": "60d91849322217e84fcb1896c1fa4a5fd27eee416058201e1a9ea154725a9aec"
+    }
+  ],
+  "channels": [
+    {
+      "name": "A",
+      "type": "half",
+      "file": "A.bits"
+    },
+    {
+      "name": "B",
+      "type": "float",
+      "file": "B.bits"
+    },
+    {
+      "name": "G",
+      "type": "float",
+      "file": "G.bits"
+    },
+    {
+      "name": "R",
+      "type": "half",
+      "file": "R.bits"
+    },
+    {
+      "name": "Z",
+      "type": "float",
+      "file": "Z.bits"
+    },
+    {
+      "name": "ZBack",
+      "type": "float",
+      "file": "ZBack.bits"
+    },
+    {
+      "name": "auxHalf",
+      "type": "half",
+      "file": "auxHalf.bits"
+    },
+    {
+      "name": "objectId",
+      "type": "uint",
+      "file": "objectId.bits"
+    }
+  ],
+  "dataWindow": [
+    -3,
+    5,
+    4,
+    8
+  ],
+  "displayWindow": [
+    -8,
+    -2,
+    20,
+    16
+  ]
+}

@@ -1,0 +1,52 @@
+TAP version 13
+# {"case":"persistent-video","stats":{"version":1,"backend":"ffmpeg-cpu","hardwareDecode":false,"gpuDirect":false,"opens":2,"decodedFrames":9,"seeks":1,"cacheHits":1}}
+# Subtest: declared video decodes all frames, seeks by PTS, rejects undeclared/tampered inputs, and renders in native Stage
+not ok 1 - declared video decodes all frames, seeks by PTS, rejects undeclared/tampered inputs, and renders in native Stage
+  ---
+  duration_ms: 9372.0157
+  type: 'test'
+  location: 'C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\tests\\native-media-delivery.test.ts:1:1776'
+  failureType: 'testCodeFailure'
+  error: |-
+    E_NATIVE_ENCODE: exit code: 0xffffffea: [h264_nvenc @ 000002657696f900] InitializeEncoder failed: invalid param (8): Frame Dimension less than the minimum supported value.
+    [vost#0:0/h264_nvenc @ 000002657696f480] Error while opening encoder - maybe incorrect parameters such as bit_rate, rate, width or height.
+    Error while filtering: Invalid argument
+    [out#0/mp4 @ 0000026576987a00] Nothing was written into output file, because at least one of its streams received no packets.
+    
+  code: 'E_NATIVE_ENCODE'
+  name: 'EngineError'
+  stack: |-
+    error (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\native-gpu\client.ts:36:43)
+    NativeGpuClient.receive (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\native-gpu\client.ts:83:81)
+    Socket.<anonymous> (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\native-gpu\client.ts:60:48)
+    Socket.emit (node:events:519:28)
+    addChunk (node:internal/streams/readable:561:12)
+    readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    Readable.push (node:internal/streams/readable:392:5)
+    Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+  ...
+# Subtest: native float final delivery preserves EXR and produces real 10-bit HEVC/AV1 HDR with metadata and AU-1 audio
+not ok 2 - native float final delivery preserves EXR and produces real 10-bit HEVC/AV1 HDR with metadata and AU-1 audio
+  ---
+  duration_ms: 9548.043
+  type: 'test'
+  location: 'C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\tests\\native-media-delivery.test.ts:4:1489'
+  failureType: 'testCodeFailure'
+  error: "Cannot read properties of undefined (reading 'side_data_list')"
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\tests\native-media-delivery.test.ts:80:31)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 0
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 20602.5692

@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "effectcraft": {
+    "repository": "https://github.com/storytold/effectcraft",
+    "commit": "861c51f8187bf56efc77cc7b60fc4a513d2b7198",
+    "upstreamPath": "crates/text/src/selectors.rs",
+    "localSource": "vendor/effectcraft/text-selectors.rs",
+    "originalSha256": "700bea361b8e9b105f043f094172eb753cc04703513edb924bb2f49b617bb63f",
+    "license": "MIT (upstream MIT/Apache-2.0 choice)",
+    "reuse": "Original Range equations/random permutation reused by shared legacy/lazy sampler; original Wiggly/hash3/selector-noise ported synchronously to TS BigInt/u64. No source renderer/model/UI/time system imported.",
+    "reasonForSyncAdapter": "Selectors execute per source unit/dimension in the existing Native Stage JS. A separate asynchronous Rust call for each coefficient would add an unnecessary bridge; unchanged native Rust provides an independent numerical oracle."
+  },
+  "unicode": {
+    "version": "16.0.0",
+    "license": "Unicode-3.0",
+    "sources": [
+      {
+        "path": "vendor/unicode-16/Blocks.txt",
+        "url": "https://www.unicode.org/Public/16.0.0/ucd/Blocks.txt",
+        "sha256": "f3907b395d410f1b97342292ca6bc83dd12eb4b205f2a0c48efdef99e517d7b0"
+      },
+      {
+        "path": "vendor/unicode-16/UnicodeData.txt",
+        "url": "https://www.unicode.org/Public/16.0.0/ucd/UnicodeData.txt",
+        "sha256": "ff58e5823bd095166564a006e47d111130813dcf8bf234ef79fa51a870edb48f"
+      },
+      {
+        "path": "vendor/unicode-16/LICENSE",
+        "url": "https://www.unicode.org/license.txt",
+        "sha256": "e7a93b009565cfce55919a381437ac4db883e9da2126fa28b91d12732bc53d96"
+      }
+    ],
+    "derived": {
+      "file": "src/text-controls/character-data.ts",
+      "sha256": "12fdb840e9da8402bf94f87df30536c967b7c8fa7314190bf8ae0d1ff5ec1d9b",
+      "groups": 632,
+      "intervals": 2449,
+      "scalars": 152308
+    },
+    "policy": "Group by pinned UCD block and general-category bucket; split decimal runs into ten-digit sets. Marks, separators, format controls and unassigned/private-use scalars do not substitute. Immutable lookup, no runtime ICU classification dependence. Explicit group policy, not an equivalence claim to an unpublished Adobe lookup."
+  },
+  "existing": "Signal/evaluate/sourceTimeContext, glyph/source mapping, HarfRust/Skrifa, Clipper2, Three pure transforms and Native renderer/owner are reused."
+}

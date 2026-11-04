@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "apiVersion": 1,
+  "id": "spatial-compute",
+  "version": "0.1.2",
+  "name": "Resident Spatial Compute",
+  "description": "15 GPU field/particle algorithms over the existing compute scope: advection, diffusion, projection, vorticity, Gray-Scott, wave, talus erosion, JFA, RK2, flocking, CIC and volume rendering.",
+  "tags": [
+    "gpu",
+    "compute",
+    "field",
+    "particles",
+    "boids",
+    "reaction-diffusion",
+    "wave",
+    "erosion",
+    "volume"
+  ],
+  "source": {
+    "kind": "local",
+    "authority": "frameweave.spatial"
+  },
+  "compatible": "0.1.0",
+  "platforms": [
+    "web"
+  ],
+  "capabilities": [
+    "webgpu"
+  ],
+  "permissions": {
+    "filesystem": false,
+    "network": false,
+    "process": false
+  },
+  "modules": {
+    "main": {
+      "format": "javascript",
+      "path": "./index.ts"
+    },
+    "bindings": {
+      "format": "javascript",
+      "path": "./bindings.ts"
+    }
+  },
+  "bindings": {
+    "schemaVersion": 1,
+    "module": "bindings",
+    "types": "./types/index.d.ts",
+    "initialize": "initialize",
+    "engine": "web",
+    "gpu": "required"
+  }
+}

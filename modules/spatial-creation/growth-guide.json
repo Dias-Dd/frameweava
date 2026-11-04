@@ -1,0 +1,385 @@
+{
+  "schemaVersion": 1,
+  "functions": [
+    {
+      "name": "growthToken",
+      "purpose": "Create a typed parametric grammar symbol",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1 calls; module-scope options are plain data",
+      "defaults": "nonempty symbol; finite params",
+      "inputs": "symbol:string, ...params:number[]",
+      "outputs": "GrowthToken",
+      "parameters": "Meters, seconds, degrees, normalized occupancy; existing Core Signals",
+      "time": "Existing FrameContext and Core FixedStepRunner; stateful physics local-time/frame contract",
+      "gpuRequired": false,
+      "example": "growthToken('F', .2)",
+      "dependencies": [
+        "fixed lindenmayer1.5.4 MIT",
+        "Core RNG/FixedStepRunner",
+        "Three quaternion/camera math MIT",
+        "Native C2/raster-v1"
+      ],
+      "limitations": "GROWTH.md; no extra permissions or CPU pixel fallback"
+    },
+    {
+      "name": "lsystemSpec",
+      "purpose": "Validate and own a reusable deterministic grammar",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1 calls; module-scope options are plain data",
+      "defaults": "seed1, 1e6symbols, 1e7work, 64MiB",
+      "inputs": "axiom, rules, seed, configurable budgets",
+      "outputs": "LSystemSpec",
+      "parameters": "Meters, seconds, degrees, normalized occupancy; existing Core Signals",
+      "time": "Existing FrameContext and Core FixedStepRunner; stateful physics local-time/frame contract",
+      "gpuRequired": false,
+      "example": "lsystemSpec({axiom:'A', rules:{A:'AB',B:'A'}})",
+      "dependencies": [
+        "fixed lindenmayer1.5.4 MIT",
+        "Core RNG/FixedStepRunner",
+        "Three quaternion/camera math MIT",
+        "Native C2/raster-v1"
+      ],
+      "limitations": "GROWTH.md; no extra permissions or CPU pixel fallback"
+    },
+    {
+      "name": "rewriteLSystem",
+      "purpose": "Expand parametric/context/stochastic productions with the real MIT library",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1 calls; module-scope options are plain data",
+      "defaults": "caller chooses generations; deterministic Core RNG",
+      "inputs": "LSystemSpec, nonnegative generations",
+      "outputs": "owned GrowthToken[]",
+      "parameters": "Meters, seconds, degrees, normalized occupancy; existing Core Signals",
+      "time": "Existing FrameContext and Core FixedStepRunner; stateful physics local-time/frame contract",
+      "gpuRequired": false,
+      "example": "rewriteLSystem(branchingLSystem(),4)",
+      "dependencies": [
+        "fixed lindenmayer1.5.4 MIT",
+        "Core RNG/FixedStepRunner",
+        "Three quaternion/camera math MIT",
+        "Native C2/raster-v1"
+      ],
+      "limitations": "GROWTH.md; no extra permissions or CPU pixel fallback"
+    },
+    {
+      "name": "branchingLSystem",
+      "purpose": "Provide a 3D branching plant grammar",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1 calls; module-scope options are plain data",
+      "defaults": "seed1; X branches4ways, F doubles",
+      "inputs": "{seed?}",
+      "outputs": "LSystemSpec",
+      "parameters": "Meters, seconds, degrees, normalized occupancy; existing Core Signals",
+      "time": "Existing FrameContext and Core FixedStepRunner; stateful physics local-time/frame contract",
+      "gpuRequired": false,
+      "example": "branchingLSystem({seed:17})",
+      "dependencies": [
+        "fixed lindenmayer1.5.4 MIT",
+        "Core RNG/FixedStepRunner",
+        "Three quaternion/camera math MIT",
+        "Native C2/raster-v1"
+      ],
+      "limitations": "GROWTH.md; no extra permissions or CPU pixel fallback"
+    },
+    {
+      "name": "turtleBranches",
+      "purpose": "Interpret a typed word as 3D branches, widths and leaf markers",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1 calls; module-scope options are plain data",
+      "defaults": "step.12m, speed1m/s, angle27deg, leaf.13m",
+      "inputs": "GrowthWord, TurtleOptions",
+      "outputs": "owned BranchState",
+      "parameters": "Meters, seconds, degrees, normalized occupancy; existing Core Signals",
+      "time": "Existing FrameContext and Core FixedStepRunner; stateful physics local-time/frame contract",
+      "gpuRequired": false,
+      "example": "turtleBranches('F[+F][-F]@')",
+      "dependencies": [
+        "fixed lindenmayer1.5.4 MIT",
+        "Core RNG/FixedStepRunner",
+        "Three quaternion/camera math MIT",
+        "Native C2/raster-v1"
+      ],
+      "limitations": "GROWTH.md; no extra permissions or CPU pixel fallback"
+    },
+    {
+      "name": "attractorCloud",
+      "purpose": "Sample deterministic volumetric attraction points",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1 calls; module-scope options are plain data",
+      "defaults": "600, center[0,1.8,0], radii[1,1.2,.7], ellipsoid, seed1",
+      "inputs": "count, center, radius, shape, seed, maxBytes",
+      "outputs": "owned Vec3[]",
+      "parameters": "Meters, seconds, degrees, normalized occupancy; existing Core Signals",
+      "time": "Existing FrameContext and Core FixedStepRunner; stateful physics local-time/frame contract",
+      "gpuRequired": false,
+      "example": "attractorCloud({count:280,seed:17})",
+      "dependencies": [
+        "fixed lindenmayer1.5.4 MIT",
+        "Core RNG/FixedStepRunner",
+        "Three quaternion/camera math MIT",
+        "Native C2/raster-v1"
+      ],
+      "limitations": "GROWTH.md; no extra permissions or CPU pixel fallback"
+    },
+    {
+      "name": "colonizationModel",
+      "purpose": "Validate and own controls and initial geometry for Runions growth",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1 calls; module-scope options are plain data",
+      "defaults": "speed1m/s, influence.6m, kill.09m, substeps2",
+      "inputs": "ColonizationOptions with attractors",
+      "outputs": "ColonizationOptions",
+      "parameters": "Meters, seconds, degrees, normalized occupancy; existing Core Signals",
+      "time": "Existing FrameContext and Core FixedStepRunner; stateful physics local-time/frame contract",
+      "gpuRequired": false,
+      "example": "colonizationModel({attractors:attractorCloud()})",
+      "dependencies": [
+        "fixed lindenmayer1.5.4 MIT",
+        "Core RNG/FixedStepRunner",
+        "Three quaternion/camera math MIT",
+        "Native C2/raster-v1"
+      ],
+      "limitations": "GROWTH.md; no extra permissions or CPU pixel fallback"
+    },
+    {
+      "name": "growthRadii",
+      "purpose": "Compute terminal-demand pipe radii",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1 calls; module-scope options are plain data",
+      "defaults": "tipRadius.009m, power2.5; explicit radii override",
+      "inputs": "BranchState, {tipRadius?,power?,maxBytes?}",
+      "outputs": "Float64Array per node",
+      "parameters": "Meters, seconds, degrees, normalized occupancy; existing Core Signals",
+      "time": "Existing FrameContext and Core FixedStepRunner; stateful physics local-time/frame contract",
+      "gpuRequired": false,
+      "example": "growthRadii(branches,{power:2})",
+      "dependencies": [
+        "fixed lindenmayer1.5.4 MIT",
+        "Core RNG/FixedStepRunner",
+        "Three quaternion/camera math MIT",
+        "Native C2/raster-v1"
+      ],
+      "limitations": "GROWTH.md; no extra permissions or CPU pixel fallback"
+    },
+    {
+      "name": "growthLeaves",
+      "purpose": "Generate deterministic leaves or preserve explicit turtle markers",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1 calls; module-scope options are plain data",
+      "defaults": "size.13m, probability.8, seed1, delay.05s, tipOnlytrue",
+      "inputs": "BranchState, GrowthLeafOptions",
+      "outputs": "owned BranchLeaf[]",
+      "parameters": "Meters, seconds, degrees, normalized occupancy; existing Core Signals",
+      "time": "Existing FrameContext and Core FixedStepRunner; stateful physics local-time/frame contract",
+      "gpuRequired": false,
+      "example": "growthLeaves(branches,{tipOnly:false,probability:.25})",
+      "dependencies": [
+        "fixed lindenmayer1.5.4 MIT",
+        "Core RNG/FixedStepRunner",
+        "Three quaternion/camera math MIT",
+        "Native C2/raster-v1"
+      ],
+      "limitations": "GROWTH.md; no extra permissions or CPU pixel fallback"
+    },
+    {
+      "name": "pruneBranches",
+      "purpose": "Remove explicit subtrees while preserving surviving IDs",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1 calls; module-scope options are plain data",
+      "defaults": "no implicit cuts; caller names existing distinct IDs",
+      "inputs": "BranchState, readonly node IDs",
+      "outputs": "owned BranchState",
+      "parameters": "Meters, seconds, degrees, normalized occupancy; existing Core Signals",
+      "time": "Existing FrameContext and Core FixedStepRunner; stateful physics local-time/frame contract",
+      "gpuRequired": false,
+      "example": "pruneBranches(branches,['n4'])",
+      "dependencies": [
+        "fixed lindenmayer1.5.4 MIT",
+        "Core RNG/FixedStepRunner",
+        "Three quaternion/camera math MIT",
+        "Native C2/raster-v1"
+      ],
+      "limitations": "GROWTH.md; no extra permissions or CPU pixel fallback"
+    },
+    {
+      "name": "createColonizationSimulation",
+      "purpose": "Create fixed-step growth with Core seek, checkpoints and restore",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1 calls; module-scope options are plain data",
+      "defaults": "24-step checkpoint interval,8checkpoints,1e4nodes,64MiB configurable",
+      "inputs": "ColonizationOptions",
+      "outputs": "simulation sample/snapshot/restore/reset/inspect/dispose",
+      "parameters": "Meters, seconds, degrees, normalized occupancy; existing Core Signals",
+      "time": "Existing FrameContext and Core FixedStepRunner; stateful physics local-time/frame contract",
+      "gpuRequired": false,
+      "example": "const sim=createColonizationSimulation({attractors}); sim.sample(context)",
+      "dependencies": [
+        "fixed lindenmayer1.5.4 MIT",
+        "Core RNG/FixedStepRunner",
+        "Three quaternion/camera math MIT",
+        "Native C2/raster-v1"
+      ],
+      "limitations": "GROWTH.md; no extra permissions or CPU pixel fallback"
+    },
+    {
+      "name": "planGrowth",
+      "purpose": "Plan complete GPU geometry/material without allocation or truncation",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1 calls; module-scope options are plain data",
+      "defaults": "sides8, material256tilecolumns, max256MiB configurable",
+      "inputs": "BranchState, GrowthGeometryOptions",
+      "outputs": "counts, atlas size, plannedBytes, unknown physicalPeakBytes",
+      "parameters": "Meters, seconds, degrees, normalized occupancy; existing Core Signals",
+      "time": "Existing FrameContext and Core FixedStepRunner; stateful physics local-time/frame contract",
+      "gpuRequired": false,
+      "example": "planGrowth(branches,{sides:12})",
+      "dependencies": [
+        "fixed lindenmayer1.5.4 MIT",
+        "Core RNG/FixedStepRunner",
+        "Three quaternion/camera math MIT",
+        "Native C2/raster-v1"
+      ],
+      "limitations": "GROWTH.md; no extra permissions or CPU pixel fallback"
+    },
+    {
+      "name": "growthMeshes",
+      "purpose": "Export complete capped tubes/leaves as legacy Graphics MeshData chunks",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1 calls; module-scope options are plain data",
+      "defaults": "existing16384vertex chunk max; no truncation",
+      "inputs": "BranchState, geometry/time/chunk options",
+      "outputs": "owned MeshData[]",
+      "parameters": "Meters, seconds, degrees, normalized occupancy; existing Core Signals",
+      "time": "Existing FrameContext and Core FixedStepRunner; stateful physics local-time/frame contract",
+      "gpuRequired": false,
+      "example": "growthMeshes(branches,{sides:8})",
+      "dependencies": [
+        "fixed lindenmayer1.5.4 MIT",
+        "Core RNG/FixedStepRunner",
+        "Three quaternion/camera math MIT",
+        "Native C2/raster-v1"
+      ],
+      "limitations": "GROWTH.md; no extra permissions or CPU pixel fallback"
+    },
+    {
+      "name": "growthSkeleton",
+      "purpose": "Export bind matrices and lineage weights for a chosen growth mesh",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1 calls; module-scope options are plain data",
+      "defaults": "existing256bone Graphics-v1 limit; full source lineage",
+      "inputs": "BranchState, MeshData",
+      "outputs": "validated SkeletonData",
+      "parameters": "Meters, seconds, degrees, normalized occupancy; existing Core Signals",
+      "time": "Existing FrameContext and Core FixedStepRunner; stateful physics local-time/frame contract",
+      "gpuRequired": false,
+      "example": "growthSkeleton(branches,meshes[0])",
+      "dependencies": [
+        "fixed lindenmayer1.5.4 MIT",
+        "Core RNG/FixedStepRunner",
+        "Three quaternion/camera math MIT",
+        "Native C2/raster-v1"
+      ],
+      "limitations": "GROWTH.md; no extra permissions or CPU pixel fallback"
+    },
+    {
+      "name": "recordGrowthGeometry",
+      "purpose": "Expand branch/leaf control rows into native GPU geometry",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1 calls; module-scope options are plain data",
+      "defaults": "display time=context.time; radiusScale1; GPUrequired",
+      "inputs": "CreationInit, BranchState, FrameContext, options",
+      "outputs": "owned position/normal/UV C2 fields; dispose()",
+      "parameters": "Meters, seconds, degrees, normalized occupancy; existing Core Signals",
+      "time": "Existing FrameContext and Core FixedStepRunner; stateful physics local-time/frame contract",
+      "gpuRequired": true,
+      "example": "const geometry=await recordGrowthGeometry(init,branches,context)",
+      "dependencies": [
+        "fixed lindenmayer1.5.4 MIT",
+        "Core RNG/FixedStepRunner",
+        "Three quaternion/camera math MIT",
+        "Native C2/raster-v1"
+      ],
+      "limitations": "GROWTH.md; no extra permissions or CPU pixel fallback"
+    },
+    {
+      "name": "createGrowthRenderer",
+      "purpose": "Shade and rasterize projected GPU branches and leaves",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1 calls; module-scope options are plain data",
+      "defaults": "F32 linear709 PM; two lights; camera/transform Signals",
+      "inputs": "CreationInit, GrowthRenderOptions",
+      "outputs": "render/inspect/dispose; render returns owned GpuImage",
+      "parameters": "Meters, seconds, degrees, normalized occupancy; existing Core Signals",
+      "time": "Existing FrameContext and Core FixedStepRunner; stateful physics local-time/frame contract",
+      "gpuRequired": true,
+      "example": "const renderer=await createGrowthRenderer(init); await renderer.render(branches,context)",
+      "dependencies": [
+        "fixed lindenmayer1.5.4 MIT",
+        "Core RNG/FixedStepRunner",
+        "Three quaternion/camera math MIT",
+        "Native C2/raster-v1"
+      ],
+      "limitations": "GROWTH.md; no extra permissions or CPU pixel fallback"
+    },
+    {
+      "name": "growthScene",
+      "purpose": "Display an existing branch asset with automatic temporary GPU lifecycle",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1 calls; module-scope options are plain data",
+      "defaults": "existing creation finish/post and camera/material controls",
+      "inputs": "CreationInit, GrowthSceneOptions with branches",
+      "outputs": "ordinary Native Stage instance",
+      "parameters": "Meters, seconds, degrees, normalized occupancy; existing Core Signals",
+      "time": "Existing FrameContext and Core FixedStepRunner; stateful physics local-time/frame contract",
+      "gpuRequired": true,
+      "example": "growthScene(init,{branches})",
+      "dependencies": [
+        "fixed lindenmayer1.5.4 MIT",
+        "Core RNG/FixedStepRunner",
+        "Three quaternion/camera math MIT",
+        "Native C2/raster-v1"
+      ],
+      "limitations": "GROWTH.md; no extra permissions or CPU pixel fallback"
+    },
+    {
+      "name": "lsystemScene",
+      "purpose": "Create an animated 3D plant directly from a reusable grammar",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1 calls; module-scope options are plain data",
+      "defaults": "default branching grammar, generations4, Turtle defaults",
+      "inputs": "CreationInit, LSystemSceneOptions",
+      "outputs": "ordinary Native Stage instance",
+      "parameters": "Meters, seconds, degrees, normalized occupancy; existing Core Signals",
+      "time": "Existing FrameContext and Core FixedStepRunner; stateful physics local-time/frame contract",
+      "gpuRequired": true,
+      "example": "lsystemScene(init,{generations:4})",
+      "dependencies": [
+        "fixed lindenmayer1.5.4 MIT",
+        "Core RNG/FixedStepRunner",
+        "Three quaternion/camera math MIT",
+        "Native C2/raster-v1"
+      ],
+      "limitations": "GROWTH.md; no extra permissions or CPU pixel fallback"
+    },
+    {
+      "name": "colonizationScene",
+      "purpose": "Create an animated attractor-grown plant without GPU boilerplate",
+      "signature": "api.d.ts",
+      "executionContext": "Initialized Native Stage for managed R1 calls; module-scope options are plain data",
+      "defaults": "600-point default cloud, Core fixed-step controls; caller camera/material",
+      "inputs": "CreationInit, ColonizationSceneOptions",
+      "outputs": "ordinary Native Stage instance",
+      "parameters": "Meters, seconds, degrees, normalized occupancy; existing Core Signals",
+      "time": "Existing FrameContext and Core FixedStepRunner; stateful physics local-time/frame contract",
+      "gpuRequired": true,
+      "example": "colonizationScene(init,{cloud:{count:280},leaves:{tipOnly:false}})",
+      "dependencies": [
+        "fixed lindenmayer1.5.4 MIT",
+        "Core RNG/FixedStepRunner",
+        "Three quaternion/camera math MIT",
+        "Native C2/raster-v1"
+      ],
+      "limitations": "GROWTH.md; no extra permissions or CPU pixel fallback"
+    }
+  ]
+}

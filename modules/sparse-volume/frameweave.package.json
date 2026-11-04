@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "apiVersion": 1,
+  "id": "sparse-volume",
+  "version": "0.1.0",
+  "name": "Sparse Scalar Volume",
+  "description": "Readonly NanoVDB Float raw-grid, indexed sparse GPU index/world nearest sampling; explicit class/units and no colour conversion. Candidate identity for Main review.",
+  "tags": [
+    "sparse",
+    "volume",
+    "nanovdb",
+    "gpu",
+    "native"
+  ],
+  "source": {
+    "kind": "local",
+    "authority": "frameweave.native-media"
+  },
+  "compatible": "0.1.0",
+  "platforms": [
+    "web"
+  ],
+  "capabilities": [
+    "native-gpu"
+  ],
+  "permissions": {
+    "filesystem": false,
+    "network": false,
+    "process": false
+  },
+  "entry": "main",
+  "modules": {
+    "main": {
+      "format": "javascript",
+      "path": "dist/bindings.mjs"
+    }
+  },
+  "bindings": {
+    "schemaVersion": 2,
+    "module": "main",
+    "types": "api.d.ts",
+    "engine": "native-gpu",
+    "initialize": "initialize",
+    "gpu": "required",
+    "gpuApi": "native-wgpu",
+    "gpuExports": [
+      "createVolume"
+    ]
+  }
+}

@@ -1,0 +1,98 @@
+// Generated from the existing P4 Schema v2.
+import {defineEffect,type ManifestParameters,type PluginManifestV2} from '@frameweave/engine/plugins';
+export const manifest={
+  "schemaVersion": 1,
+  "apiVersion": 1,
+  "parameterSchemaVersion": 2,
+  "id": "kit.bindgen-lyon",
+  "name": "kit.bindgen-lyon",
+  "version": "1.0.0",
+  "kind": "generator",
+  "engine": "web",
+  "compatible": "^0.1.0",
+  "entry": "./index.ts",
+  "description": "Lyon polygon tessellation through real wasm-bindgen data imports",
+  "parameters": {
+    "shape": {
+      "type": "object",
+      "default": {},
+      "properties": {
+        "coordinates": {
+          "type": "array",
+          "default": [
+            0,
+            0,
+            1,
+            0,
+            1,
+            0.5,
+            0.5,
+            0.5,
+            0.5,
+            1,
+            0,
+            1
+          ],
+          "items": {
+            "type": "number",
+            "minimum": -4,
+            "maximum": 4
+          },
+          "minItems": 6,
+          "maxItems": 256
+        },
+        "scale": {
+          "type": "number",
+          "default": 0.8,
+          "minimum": 0.1,
+          "maximum": 0.9
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "inputs": {},
+  "outputs": {
+    "image": "image"
+  },
+  "resources": {
+    "bindingBytes": {
+      "src": "./dist/binding.mjs",
+      "kind": "file"
+    },
+    "bytes": {
+      "src": "./dist/generated/module_bg.wasm",
+      "kind": "file"
+    },
+    "worker": {
+      "src": "./dist/worker.js",
+      "kind": "file"
+    },
+    "profile": {
+      "src": "./dist/import-profile.json",
+      "kind": "file"
+    },
+    "asset0": {
+      "src": "./dist/generated/module.d.ts",
+      "kind": "file"
+    },
+    "asset1": {
+      "src": "./dist/generated/module.js",
+      "kind": "file"
+    },
+    "asset2": {
+      "src": "./dist/generated/module_bg.wasm",
+      "kind": "file"
+    },
+    "asset3": {
+      "src": "./dist/generated/module_bg.wasm.d.ts",
+      "kind": "file"
+    },
+    "asset4": {
+      "src": "./dist/generated/snippets/fw_bindgen_module-0f213f43746e09ee/js/host.js",
+      "kind": "file"
+    }
+  }
+} as const satisfies PluginManifestV2;
+export type Parameters=ManifestParameters<typeof manifest>;
+export const use=defineEffect(manifest).use;

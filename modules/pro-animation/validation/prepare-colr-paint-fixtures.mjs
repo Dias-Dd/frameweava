@@ -1,0 +1,1 @@
+import {execFileSync} from 'node:child_process';import {resolve} from 'node:path';const root=resolve(import.meta.dirname,'../../..');console.log(execFileSync(resolve(root,'.frameweave/pa3-shaping/python/Scripts/python.exe'),['modules/pro-animation/validation/prepare-colr-paint-fixtures.py'],{cwd:root,windowsHide:true,encoding:'utf8'}));

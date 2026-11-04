@@ -1,0 +1,17 @@
+{"name":"project-4k60","frame":168,"kind":"scene","different":0,"maxError":0,"index":0,"actual":0.0006070539820939302,"expected":0.0006070539820939302}
+{"name":"project-4k60","frame":168,"kind":"display","different":0,"maxError":0,"index":0,"actual":0.007843137718737125,"expected":0.007843137718737125}
+{"name":"project-4k60","frame":169,"kind":"scene","different":0,"maxError":0,"index":0,"actual":0.0006070539820939302,"expected":0.0006070539820939302}
+{"name":"project-4k60","frame":169,"kind":"display","different":0,"maxError":0,"index":0,"actual":0.007843137718737125,"expected":0.007843137718737125}
+{"name":"project-4k60","frame":170,"kind":"scene","different":0,"maxError":0,"index":0,"actual":0.0006070539820939302,"expected":0.0006070539820939302}
+{"name":"project-4k60","frame":170,"kind":"display","different":0,"maxError":0,"index":0,"actual":0.007843137718737125,"expected":0.007843137718737125}
+{"name":"project-4k60","frame":171,"kind":"scene","different":0,"maxError":0,"index":0,"actual":0.0006070539820939302,"expected":0.0006070539820939302}
+{"name":"project-4k60","frame":171,"kind":"display","different":0,"maxError":0,"index":0,"actual":0.007843137718737125,"expected":0.007843137718737125}
+{"name":"project-servo-4k60","frame":168,"kind":"scene","different":12,"maxError":0.11721450090408325,"index":21830,"actual":0.8007352948188782,"expected":0.6835207939147949}
+{"name":"project-servo-4k60","frame":168,"kind":"display","different":12,"maxError":0.06137537956237793,"index":21830,"actual":0.9066997766494751,"expected":0.8453243970870972}
+{"name":"project-servo-4k60","frame":169,"kind":"scene","different":12,"maxError":0.11721450090408325,"index":21830,"actual":0.8007352948188782,"expected":0.6835207939147949}
+{"name":"project-servo-4k60","frame":169,"kind":"display","different":12,"maxError":0.06137537956237793,"index":21830,"actual":0.9066997766494751,"expected":0.8453243970870972}
+{"name":"project-servo-4k60","frame":170,"kind":"scene","different":12,"maxError":0.11721450090408325,"index":21830,"actual":0.8007352948188782,"expected":0.6835207939147949}
+{"name":"project-servo-4k60","frame":170,"kind":"display","different":12,"maxError":0.06137537956237793,"index":21830,"actual":0.9066997766494751,"expected":0.8453243970870972}
+{"name":"project-servo-4k60","frame":171,"kind":"scene","different":12,"maxError":0.11721450090408325,"index":21830,"actual":0.8007352948188782,"expected":0.6835207939147949}
+{"name":"project-servo-4k60","frame":171,"kind":"display","different":12,"maxError":0.06137537956237793,"index":21830,"actual":0.9066997766494751,"expected":0.8453243970870972}
+{"mode":"diagnosis","ok":true,"cases":2}

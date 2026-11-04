@@ -1,0 +1,54 @@
+{
+  "baseline": "31fae2e377ff174a8788f8c495deadc5d31ad957",
+  "dependencies": [
+    {
+      "project": "d3-shape",
+      "version": "3.2.0",
+      "commit": "8ec82658454750cfa29efb1e0ea514e3dd9b2297",
+      "license": "ISC",
+      "sourceInventory": "modules/pro-animation/vendor/d3-shape/SOURCE.json",
+      "inventorySha256": "96127b843aa5395971dc3918acbc20046946c793351a076da29dd4356ee5a776",
+      "sourceBytes": 61847,
+      "npmArchiveIntegrityChecked": true,
+      "licenseCrossCheckedAtFixedCommit": true,
+      "publishingSignaturesVerified": false,
+      "adaptations": [
+        {
+          "file": "src/path.js",
+          "reason": "Only bare module specifier redirected to the separately pinned local d3-path; algorithm bytes unchanged",
+          "originalSha256": "121bd97e99ead26d6bd84f20296c10040dc9caa9fceeca34d5ff917ef6e49065",
+          "localSha256": "200cbbf9fbf997734c0e079c860202235ff7ede8701f5696a6d536f8b3812c42"
+        }
+      ],
+      "newRuntimePermissions": false
+    },
+    {
+      "project": "d3-path",
+      "version": "3.1.0",
+      "commit": "58bce7a53df2b03f70092a9b00b78055c4ffee04",
+      "license": "ISC",
+      "sourceInventory": "modules/pro-animation/vendor/d3-path/SOURCE.json",
+      "inventorySha256": "11c5987321b9b16fa214a80fc68ce98d0a6f51c50ee39f1806a61af343e3a09a",
+      "sourceBytes": 4586,
+      "npmArchiveIntegrityChecked": true,
+      "licenseCrossCheckedAtFixedCommit": true,
+      "publishingSignaturesVerified": false,
+      "adaptations": [],
+      "newRuntimePermissions": false
+    }
+  ],
+  "earcut": "modules/pro-animation/vendor/earcut/SOURCE.json",
+  "existingClipperNotice": "modules/pro-animation/rust/pathops/licenses/CLIPPER2-NOTICE",
+  "existingClipperLock": "modules/pro-animation/rust/pathops/Cargo.lock",
+  "newPixelKernels": false,
+  "newRendererOrDevice": false,
+  "privateFixture": "Existing reviewed own-workspace Kit reads verify source/component SHA. Formal R1 factory/permission/distribution not claimed installed.",
+  "catalog": "Offline keyword search parametric path curve interpolation returned no matches",
+  "rejectedAlternative": "libtess1.2.2 SGI-B-2.0 investigated, not imported/vendored/installed; original constant-width solver sufficed",
+  "references": [
+    "https://d3js.org/d3-shape/curve",
+    "https://github.com/d3/d3-shape/tree/8ec82658454750cfa29efb1e0ea514e3dd9b2297",
+    "https://github.com/d3/d3-path/tree/58bce7a53df2b03f70092a9b00b78055c4ffee04"
+  ],
+  "scope": "Canonical curve adapters + real-arithmetic bounded circular cubic lowering + elementary parametric primitives. No Rust math translation or editor/time/graph/pixel execution import."
+}

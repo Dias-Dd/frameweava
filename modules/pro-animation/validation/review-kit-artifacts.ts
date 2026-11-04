@@ -1,0 +1,13 @@
+// Test/build ingress for fixed reviewed data artifacts. Does not activate a retired Web package.
+// The new private Native packet is validated, trusted and loaded by the ordinary R1 path separately.
+import assert from 'node:assert/strict';import {readFile,realpath} from 'node:fs/promises';import {resolve,relative,isAbsolute,join} from 'node:path';import {createHash} from 'node:crypto';
+const sha=(b:Uint8Array)=>createHash('sha256').update(b).digest('hex');
+export async function reviewedKitArtifacts(directory:string,sourceDirectory:string,descriptor:'frameweave.package.json'|'bundle.json'='frameweave.package.json'){
+ assert.ok(['frameweave.package.json','bundle.json'].includes(descriptor),'Fixed artifact descriptor required');
+ const kit=await realpath(directory),build=JSON.parse(await readFile(join(kit,'dist/build.json'),'utf8')),manifest=JSON.parse(await readFile(join(kit,descriptor),'utf8'));if(descriptor==='bundle.json'){assert.equal(manifest.version,1);assert.equal(manifest.kind,'reviewed-data-assets-not-an-installable-package');}assert.equal(build.binding,'wasm-bindgen-data-v1');assert.equal(build.generator,'wasm-bindgen 0.2.129');
+ for(const [name,expected]of Object.entries(build.inputs)as[string,string][]){let source:string|undefined;if(name.startsWith('rust/src/'))source=resolve(sourceDirectory,'src',name.slice('rust/src/'.length));else if(name==='rust/Cargo.toml'||name==='rust/Cargo.lock')source=resolve(sourceDirectory,name.slice(5));else if(name.startsWith('runtime/'))source=resolve(kit,name);if(source)assert.equal(sha(await readFile(source)),expected,'Reviewed build input differs: '+name);}
+ for(const [name,path]of Object.entries({binding:'dist/binding.mjs',bindingBytes:'dist/binding.mjs',bytes:'dist/generated/module_bg.wasm',profile:'dist/import-profile.json'})){assert.equal(manifest.modules[name]?.path.replace(/^.\//,''),path,'Fixed data artifact role changed: '+name);assert.equal(manifest.modules[name]?.format,name==='binding'?'javascript':'resource');}
+ const modules:Record<string,{format:'javascript'|'resource';path:string}>={};
+ for(const [name,value]of Object.entries(manifest.modules)as[string,any][]){if(['api','bindings','worker'].includes(name))continue;assert.ok(['javascript','resource'].includes(value.format));const path=value.path.replace(/^.\//,''),file=await realpath(resolve(kit,path)),rel=relative(kit,file);assert.ok(rel&&!rel.startsWith('..')&&!isAbsolute(rel));assert.equal(sha(await readFile(file)),build.outputs[path],'Unreviewed copied component '+name);modules[name]={format:value.format,path};}
+ const api=await readFile(join(kit,'generated/api.ts'));assert.equal(sha(api),build.outputs['generated/api.ts']);return {kit,build,modules};
+}

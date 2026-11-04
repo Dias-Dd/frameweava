@@ -1,0 +1,14 @@
+--- a/src/render/renderer.ts
++++ b/src/render/renderer.ts
+@@
+ import {nativeFrameCapacity} from '../../modules/native-gpu/memory.ts';
++import {nativeExtensionLayout} from '../../modules/native-gpu/extensions.ts';
+@@
+-    return JSON.stringify(p.bridge?[p.images,data,kernels,p.passes,p.bridge,p.imports]:[p.images,data,kernels,p.passes]);
++    return JSON.stringify([p.images,data,kernels,p.passes,p.bridge??null,nativeExtensionLayout(p)]);
+
+Reference integration points only; Renderer ownership remains with Main.
+Also cache persistent definitions like immutable definitions in the existing
+nativeResourceKeys map, and configure the owner's NativeBufferExporter before
+bootstrap / each admission. The public read method must serialize exports,
+await completion/drain, retain generation checks, and close the exporter.

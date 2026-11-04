@@ -1,0 +1,127 @@
+{
+  "version": 1,
+  "kind": "isolated-codec-proof-not-public-contract",
+  "python": "3.13.7",
+  "openexr": "3.4.4",
+  "numpy": "2.3.4",
+  "width": 4,
+  "height": 3,
+  "dataWindow": [
+    [
+      -5,
+      7
+    ],
+    [
+      -2,
+      9
+    ]
+  ],
+  "flatChannels": {
+    "beauty.R": "float16",
+    "beauty.G": "float32",
+    "beauty.B": "float32",
+    "beauty.A": "float16",
+    "Z": "float32",
+    "normal.X": "float32",
+    "motion.Y": "float16",
+    "objectId": "uint32"
+  },
+  "deep": {
+    "samples": 18,
+    "channels": {
+      "beauty.R": {
+        "dtype": "float16",
+        "role": "color"
+      },
+      "beauty.G": {
+        "dtype": "float32",
+        "role": "color"
+      },
+      "beauty.A": {
+        "dtype": "float16",
+        "role": "alpha"
+      },
+      "Z": {
+        "dtype": "float32",
+        "role": "depth"
+      },
+      "ZBack": {
+        "dtype": "float32",
+        "role": "depth"
+      },
+      "normal.X": {
+        "dtype": "float32",
+        "role": "vector"
+      },
+      "objectId": {
+        "dtype": "uint32",
+        "role": "id"
+      }
+    },
+    "order": "preserve-file-order",
+    "allValuesBitExact": true,
+    "emptyPixelsRetained": true,
+    "uint32IdsAbove2To24Retained": true
+  },
+  "negativeCases": [
+    "E_P1_EXR_OFFSETS",
+    "E_P1_EXR_SAMPLE_BUDGET",
+    "E_P1_EXR_SAMPLE_ORDER",
+    "E_P1_EXR_CHANNEL_LAYOUT"
+  ],
+  "files": {
+    "multichannel.exr": {
+      "bytes": 718,
+      "sha256": "13aac34e94545baca3a7e44d6659f3c402ef1df10d5aa7f3a54d8bb3a66caebe"
+    },
+    "deep.exr": {
+      "bytes": 949,
+      "sha256": "90289f4a6c1975ab018fd14a87ff49f20fbeb993fbeb80d970eda8af078e4e68"
+    },
+    "sample-counts.u32": {
+      "bytes": 48,
+      "sha256": "5208c38bea536435b2b2e58262e12598b095f42c3f9f851b5acc6c1af2ca599a"
+    },
+    "sample-offsets.u32": {
+      "bytes": 52,
+      "sha256": "719d13193c95a15a17aa5f0bddeb254c13045a8ebadfe8714e3cb4e94d5da181"
+    },
+    "beauty.R.float16": {
+      "bytes": 36,
+      "sha256": "c25fed5516cd9d6d3f38edac178af94255dd6f57a834410055e52e61010c5f99"
+    },
+    "beauty.G.float32": {
+      "bytes": 72,
+      "sha256": "c93d36cf315459eb5f20695f6cda2376148bdf1ceacf8ec8353fb1ad24418e25"
+    },
+    "beauty.A.float16": {
+      "bytes": 36,
+      "sha256": "721c77876fbb6502b1e805a0f6529bbb0f64359f0edf79441a60e9bbc8aec390"
+    },
+    "Z.float32": {
+      "bytes": 72,
+      "sha256": "eae30ddab061249e8d762679f7d54206ae6218661049e6d144835638c7a4cffa"
+    },
+    "ZBack.float32": {
+      "bytes": 72,
+      "sha256": "d07cf03ae9087193950a4978d0614d90f76b008ed492b21e401e31d26e97f294"
+    },
+    "normal.X.float32": {
+      "bytes": 72,
+      "sha256": "bc50277c118cce53cf099f2653b3f6a271782574e5545f95d199753e9a54d43b"
+    },
+    "objectId.uint32": {
+      "bytes": 72,
+      "sha256": "f061043b389c7b4b585fec6d56bf16b7fa80ccd018f9030c53d2fe898f075f12"
+    }
+  },
+  "elapsedMs": 20.723599998746067,
+  "notValidated": [
+    "untrusted-file memory preflight",
+    "GPU upload/dispatch",
+    "Stage integration",
+    "production Deep compositing",
+    "large-scene throughput",
+    "cross-platform"
+  ]
+}

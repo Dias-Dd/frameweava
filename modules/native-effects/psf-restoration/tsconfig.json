@@ -1,0 +1,1 @@
+{"extends":"../../../tsconfig.json","include":["./*.ts","../examples/psf-*.tsx","../../../tests/native-psf-restoration.test.ts"]}

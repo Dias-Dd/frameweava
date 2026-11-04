@@ -1,0 +1,74 @@
+{
+  "id": "wasm-bindgen-data-v1",
+  "revision": 1,
+  "generator": "0.2.129",
+  "entryClass": "Engine",
+  "methods": [
+    "calls",
+    "host_calls",
+    "tessellate"
+  ],
+  "imports": [
+    {
+      "module": "./module_bg.js",
+      "name": "__wbg___wbindgen_throw_41e9ee4f547fc59a",
+      "kind": "function"
+    },
+    {
+      "module": "./module_bg.js",
+      "name": "__wbindgen_generic_0000000000000001",
+      "kind": "function"
+    },
+    {
+      "module": "./module_bg.js",
+      "name": "__wbindgen_init_externref_table",
+      "kind": "function"
+    },
+    {
+      "module": "./snippets/fw_bindgen_module-0f213f43746e09ee/js/host.js",
+      "name": "report_count",
+      "kind": "function"
+    },
+    {
+      "module": "./snippets/fw_bindgen_module-0f213f43746e09ee/js/host.js",
+      "name": "report_measure",
+      "kind": "function"
+    }
+  ],
+  "resources": [
+    "bindingBytes",
+    "asset0",
+    "asset1",
+    "asset2",
+    "asset3",
+    "asset4"
+  ],
+  "review": {
+    "policySha256": "916d3da74e7d55e7c8b933cc7979b5d59c906ca90fb3014d8b2dfa6080c2b881",
+    "snippets": [
+      {
+        "path": "dist/generated/snippets/fw_bindgen_module-0f213f43746e09ee/js/host.js",
+        "source": "js/host.js",
+        "sha256": "f1f8d0d306c77de6798e20b3fed5d7fd2af69257b657c0cdb222c8998a3c8921",
+        "exports": [
+          "report_measure",
+          "report_count"
+        ]
+      }
+    ],
+    "intrinsics": {
+      "__wbg___wbindgen_throw_41e9ee4f547fc59a": {
+        "sha256": "9ab42997906ccabb1203eb398f0ff1cea8fe3b330d5f4b6a0a0d93dbd72e188d",
+        "body": "function (arg0, arg1) {\n    throw new Error(getStringFromWasm0(arg0, arg1));\n}"
+      },
+      "__wbindgen_generic_0000000000000001": {
+        "sha256": "a33944d2cadb13cbe51cf2d4877b7076aee26c581a269293b5ce3d88c44fd307",
+        "body": "function (arg0, arg1) {\n    const ret = getStringFromWasm0(arg0, arg1);\n    return ret;\n}"
+      },
+      "__wbindgen_init_externref_table": {
+        "sha256": "c071d5b1d8246e6ba3a7ee88cdd0965d08c9ee1887c07498732d87b46dd1c284",
+        "body": "function () {\n    const table = wasm.__wbindgen_externrefs;\n    const offset = table.grow(4);\n    table.set(0, undefined);\n    table.set(offset + 0, undefined);\n    table.set(offset + 1, null);\n    table.set(offset + 2, true);\n    table.set(offset + 3, false);\n}"
+      }
+    }
+  }
+}

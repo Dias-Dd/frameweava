@@ -1,0 +1,8 @@
+PA3-SHAPING-001 third-party attribution
+
+HarfRust 0.15.0 (MIT), published source commit 71d965130ea93905f81b8f03a03d7ecc794fbc47.
+Skrifa 0.49.0 (MIT OR Apache-2.0), published source commit 47a301615fd95acf0da9fb7dbcd0ea7c7df36943.
+The upstream Rust libraries are compiled unchanged. Frameweave adds a thin data-only WASM adapter; it does not port their algorithms to TypeScript. Preserve the accompanying original licenses and all transitive notices from the official Kit carrier.
+
+The exact source inventory, fixture OFL notices, test-only native references, and known variable-outline precision failures are recorded in docs/pro-animation/PA3_SHAPING_SOURCES.json.
+The Noto fonts remain unmodified OFL 1.1 validation fixtures with full notices in validation/shaping-scene/fonts. They are not silently downloaded at runtime.

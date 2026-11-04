@@ -1,0 +1,6 @@
+{"ok":true,"pts100ns":500000,"format":103,"width":320,"height":192,"array":24,"slice":0,"gpuSample":true}
+{"ok":true,"pts100ns":666666,"format":103,"width":320,"height":192,"array":24,"slice":3,"gpuSample":true}
+{"ok":true,"pts100ns":833333,"format":103,"width":320,"height":192,"array":24,"slice":2,"gpuSample":true}
+{"ok":true,"pts100ns":999999,"format":103,"width":320,"height":192,"array":24,"slice":4,"gpuSample":true}
+{"ok":true,"pts100ns":1166666,"format":103,"width":320,"height":192,"array":24,"slice":1,"gpuSample":true}
+{"ok":true,"pts100ns":1333333,"format":103,"width":320,"height":192,"array":24,"slice":5,"gpuSample":true}

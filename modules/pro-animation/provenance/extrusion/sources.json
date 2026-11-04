@@ -1,0 +1,37 @@
+{
+  "project": "Three.js",
+  "version": "0.186.1",
+  "commit": "9b4a2ac29c63ccb43fd51c5661f2f873ac2c39b8",
+  "license": "MIT",
+  "files": [
+    {
+      "file": "src/geometries/ExtrudeGeometry.js",
+      "sha256": "e9b7550aacea7dd6a68cf5dbd52975dfdb2fd5badddeabb4c8ddaa855681f723"
+    },
+    {
+      "file": "src/extras/ShapeUtils.js",
+      "sha256": "35906703cbb1c4162f5e2b4bb22bda9c8a9ed8ed43306bf9a71b15c4bcab00fe"
+    },
+    {
+      "file": "src/extras/Earcut.js",
+      "sha256": "16c3d0751246cb455d09429a3aa3efb0294564f340a8f525f1638f57d0fdbb13"
+    },
+    {
+      "file": "src/extras/lib/earcut.js",
+      "sha256": "1e1d25448661b04a034155fba7df43662a8f039e3ec33b1f7a1c16283d688d5a"
+    }
+  ],
+  "transitive": {
+    "project": "mapbox/earcut",
+    "version": "3.0.2",
+    "commit": "1b942f01f4093afe8f9ba729c3850b229f69eb12",
+    "tagObject": "d128042b4a6d63fc20e8bbd066132b3a77a1075d",
+    "file": "src/earcut.js",
+    "originalSha256": "83d5b59bc520601bb2dd7401a2f8382a008d8d95e0e6e0fe45759ae4fda1aa56",
+    "license": "ISC",
+    "licenseUrl": "https://github.com/mapbox/earcut/blob/1b942f01f4093afe8f9ba729c3850b229f69eb12/LICENSE",
+    "vendoringChanges": "Three adds only three leading comment lines; original remainder byte-identical",
+    "notice": "EARCUT-LICENSE-ISC"
+  },
+  "adaptation": "No upstream code edits: ordinary import of locked ExtrudeGeometry/Shape/Path. Existing Clipper2 canonical fill supplies flattened contours. Own thin MeshData and existing Native renderer adapters only."
+}

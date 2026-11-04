@@ -1,0 +1,24 @@
+PA3-INERTIA-001 — Motion exponential decay model adaptation
+
+Original: Motion, Copyright (c) 2024 Motion B.V., MIT (LICENSE.md verbatim).
+Fixed official source commit: 2f9f45e0d3b56ab3a9cf2f8b1a42336a6d4c762c
+File: packages/motion-dom/src/animation/generators/inertia.ts
+https://github.com/motiondivision/motion/blob/2f9f45e0d3b56ab3a9cf2f8b1a42336a6d4c762c/packages/motion-dom/src/animation/generators/inertia.ts
+SHA256: 297e345fb4364bc8e4d1143c030ce8880b263807391ffc151ada97d863782806
+
+Adaptation: modules/pro-animation/src/inertia.ts. Actual initial velocity in value
+units/second, tau in seconds; amplitude = velocity*tau; expm1 for small times.
+Analytic boundary crossing replaces the upstream generator's sampled/history
+event. Existing Frameweave Core Spring supplies both position and derivative.
+No Motion DOM, animation state, timeline, scheduler or spring implementation is
+copied/imported into production. No automatic rest snap or inferred duration.
+
+Test-only original code bundle: validation/inertia-reference/motion-reference.mjs
+from official immutable motion-dom14.9.0 and motion-utils14.7.0 tarballs, MIT;
+separate build/sha receipt and LICENSE-MOTION accompany that fixture. Package
+gitHead4823aafd45fe2fa9e6d1fcd0f58880ea498a7b32 was unavailable from official
+GitHub during this audit; it is NOT asserted equal to the source commit above.
+
+Main must include this attribution and original MIT license when incorporating
+inertia.ts in a new public R1 version. This directory deliberately does not
+change the historical 0.5.1 package vendor/ tree or its immutable identity.

@@ -1,0 +1,1 @@
+{"extends":"../../../tsconfig.json","include":["./*.ts","../examples/temporal-restoration-*.tsx","../../../tests/native-temporal-restoration.test.ts"],"exclude":["./vendor"]}

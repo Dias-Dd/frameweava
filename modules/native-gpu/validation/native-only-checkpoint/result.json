@@ -1,0 +1,2934 @@
+{
+  "version": 1,
+  "baseCommit": "f4fafbcc4a1d697e6d20a4eb56ff66499838bca5",
+  "branch": "agents/agent-1",
+  "scope": "Remove Chromium and executable Web Stage stack; retain Servo and SpiderMonkey. No Main/other-worktree edits or Git synchronization.",
+  "files": [
+    {
+      "status": "M",
+      "path": "AGENTS.md"
+    },
+    {
+      "status": "M",
+      "path": "README.md"
+    },
+    {
+      "status": "M",
+      "path": "artifacts/native-preview/final/Across-Machines.tsx"
+    },
+    {
+      "status": "M",
+      "path": "docs/CLI_DISTRIBUTION.md"
+    },
+    {
+      "status": "M",
+      "path": "docs/main-web-bridge-evidence/projects/capsule.tsx"
+    },
+    {
+      "status": "M",
+      "path": "docs/main-web-bridge-evidence/projects/flat.tsx"
+    },
+    {
+      "status": "M",
+      "path": "docs/main-web-bridge-evidence/projects/project.tsx"
+    },
+    {
+      "status": "D",
+      "path": "examples/export-demo/assets/OFL.txt"
+    },
+    {
+      "status": "D",
+      "path": "examples/export-demo/assets/crystal.glb"
+    },
+    {
+      "status": "D",
+      "path": "examples/export-demo/assets/space-copy.woff2"
+    },
+    {
+      "status": "D",
+      "path": "examples/export-demo/assets/space.woff2"
+    },
+    {
+      "status": "D",
+      "path": "examples/export-demo/frameweave.plugins.json"
+    },
+    {
+      "status": "D",
+      "path": "examples/export-demo/frameweave.plugins.lock.json"
+    },
+    {
+      "status": "D",
+      "path": "examples/export-demo/lib/edition.ts"
+    },
+    {
+      "status": "D",
+      "path": "examples/export-demo/project.tsx"
+    },
+    {
+      "status": "D",
+      "path": "examples/export-demo/stages/halo.glsl"
+    },
+    {
+      "status": "D",
+      "path": "examples/export-demo/stages/world.css"
+    },
+    {
+      "status": "D",
+      "path": "examples/export-demo/stages/world.ts"
+    },
+    {
+      "status": "D",
+      "path": "examples/future-motion/math.ts"
+    },
+    {
+      "status": "D",
+      "path": "examples/future-motion/native-ui.tsx"
+    },
+    {
+      "status": "D",
+      "path": "examples/future-motion/project.tsx"
+    },
+    {
+      "status": "D",
+      "path": "examples/future-motion/single-file.tsx"
+    },
+    {
+      "status": "D",
+      "path": "examples/future-motion/world.ts"
+    },
+    {
+      "status": "D",
+      "path": "examples/fw1-unified-layer/README.md"
+    },
+    {
+      "status": "D",
+      "path": "examples/fw1-unified-layer/media-stages.ts"
+    },
+    {
+      "status": "D",
+      "path": "examples/gpu-effects/project.tsx"
+    },
+    {
+      "status": "D",
+      "path": "examples/gpu-effects/source.ts"
+    },
+    {
+      "status": "D",
+      "path": "examples/gpu-effects/stage.ts"
+    },
+    {
+      "status": "D",
+      "path": "examples/gpu-image-effects/advanced.tsx"
+    },
+    {
+      "status": "D",
+      "path": "examples/gpu-image-effects/channels.tsx"
+    },
+    {
+      "status": "D",
+      "path": "examples/gpu-image-effects/compositing.tsx"
+    },
+    {
+      "status": "D",
+      "path": "examples/gpu-image-effects/operations.tsx"
+    },
+    {
+      "status": "D",
+      "path": "examples/gpu-image-effects/project.tsx"
+    },
+    {
+      "status": "D",
+      "path": "examples/gpu-pixel-pass/README.md"
+    },
+    {
+      "status": "D",
+      "path": "examples/gpu-pixel-pass/project.tsx"
+    },
+    {
+      "status": "D",
+      "path": "examples/gpu-pixel-pass/stage.ts"
+    },
+    {
+      "status": "D",
+      "path": "examples/gpu-resident/project.tsx"
+    },
+    {
+      "status": "D",
+      "path": "examples/inline-effects/project.tsx"
+    },
+    {
+      "status": "D",
+      "path": "examples/p4/advanced-mg/frameweave.plugins.json"
+    },
+    {
+      "status": "D",
+      "path": "examples/p4/advanced-mg/frameweave.plugins.lock.json"
+    },
+    {
+      "status": "D",
+      "path": "examples/p4/advanced-mg/project.tsx"
+    },
+    {
+      "status": "D",
+      "path": "examples/p4/first-project/frameweave.plugins.json"
+    },
+    {
+      "status": "D",
+      "path": "examples/p4/first-project/frameweave.plugins.lock.json"
+    },
+    {
+      "status": "D",
+      "path": "examples/p4/first-project/project.tsx"
+    },
+    {
+      "status": "D",
+      "path": "examples/p4/reuse-project/frameweave.plugins.json"
+    },
+    {
+      "status": "D",
+      "path": "examples/p4/reuse-project/frameweave.plugins.lock.json"
+    },
+    {
+      "status": "D",
+      "path": "examples/p4/reuse-project/project.tsx"
+    },
+    {
+      "status": "D",
+      "path": "examples/pro-animation/imports.tsx"
+    },
+    {
+      "status": "D",
+      "path": "examples/pro-animation/pa3-aim/stage.ts"
+    },
+    {
+      "status": "D",
+      "path": "examples/pro-animation/pa3-shapes/stage.ts"
+    },
+    {
+      "status": "D",
+      "path": "examples/pro-animation/pa3-shutter/stage.ts"
+    },
+    {
+      "status": "D",
+      "path": "examples/pro-animation/pa3-time/stage.ts"
+    },
+    {
+      "status": "D",
+      "path": "examples/pro-animation/shared-imports.tsx"
+    },
+    {
+      "status": "D",
+      "path": "examples/professional-media/gpu-benchmark.ts"
+    },
+    {
+      "status": "D",
+      "path": "examples/professional-media/stages.ts"
+    },
+    {
+      "status": "D",
+      "path": "examples/render-inspection/after.tsx"
+    },
+    {
+      "status": "D",
+      "path": "examples/render-inspection/before.tsx"
+    },
+    {
+      "status": "D",
+      "path": "examples/render-session/project.tsx"
+    },
+    {
+      "status": "D",
+      "path": "examples/rust-bindgen/bindings/host.mjs"
+    },
+    {
+      "status": "D",
+      "path": "examples/rust-bindgen/bindings/index.ts"
+    },
+    {
+      "status": "D",
+      "path": "examples/rust-bindgen/bindings/module.mjs"
+    },
+    {
+      "status": "D",
+      "path": "examples/rust-bindgen/lyon/host.mjs"
+    },
+    {
+      "status": "D",
+      "path": "examples/rust-bindgen/lyon/index.ts"
+    },
+    {
+      "status": "D",
+      "path": "examples/rust-bindgen/lyon/module.mjs"
+    },
+    {
+      "status": "D",
+      "path": "examples/rust-modules/rgba/index.ts"
+    },
+    {
+      "status": "D",
+      "path": "examples/rust-modules/statistics/index.ts"
+    },
+    {
+      "status": "D",
+      "path": "examples/shared-state/project.tsx"
+    },
+    {
+      "status": "D",
+      "path": "examples/shared-state/semantics.tsx"
+    },
+    {
+      "status": "D",
+      "path": "examples/shared-state/two-writers.tsx"
+    },
+    {
+      "status": "D",
+      "path": "examples/stage-orchestration/cross-engine.tsx"
+    },
+    {
+      "status": "D",
+      "path": "examples/stage-orchestration/project.tsx"
+    },
+    {
+      "status": "D",
+      "path": "examples/stage-orchestration/public.tsx"
+    },
+    {
+      "status": "D",
+      "path": "examples/structured-parameters/project.tsx"
+    },
+    {
+      "status": "D",
+      "path": "examples/wasm-grayscale/stage.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/deformable-effects/examples/aerodynamics/numeric.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/deformable-effects/examples/aerodynamics/scene.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/deformable-effects/examples/contacts-numeric.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/deformable-effects/examples/contacts-scene.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/deformable-effects/examples/dihedral-numeric.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/deformable-effects/examples/dihedral-scene.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/deformable-effects/examples/numeric.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/deformable-effects/examples/rod/numeric.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/deformable-effects/examples/rod/scene.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/deformable-effects/examples/scene.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/deformable-effects/examples/softbody-numeric.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/deformable-effects/examples/softbody-scene.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-effects/compute-capabilities.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-effects/compute-profiling.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-effects/compute-resources.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-effects/core.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-effects/examples/compute-stage.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-effects/examples/resident-accurate-stage.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-effects/examples/resident-module/api.d.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-effects/examples/resident-module/bindings.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-effects/examples/resident-module/public.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-effects/examples/resident-module/stage.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-effects/examples/resident-opaque-preview-stage.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-effects/examples/resident-preview-stage.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-effects/float-passes.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-effects/index.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-effects/pixel-display.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-effects/pixel-scope.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-effects/professional.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-effects/three-interop.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-effects/validation/browser-checks.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-effects/validation/comparison-stage.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-effects/validation/professional-benchmark.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-effects/validation/professional-stage.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/add.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-image-effects/api.d.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-image-effects/compositing.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/crossfade.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/exposure.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/flatten.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-image-effects/index.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/invert-matte.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/invert.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/modulate.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/multiply.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/nonlinear-blend.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/offset-rgb.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/over.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-image-effects/public.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/reframe.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/replace-matte.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/resident/api.d.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-image-effects/resident/blends/browser.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/resident/blends/example.tsx"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-image-effects/resident/creative/browser.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/resident/creative/example.tsx"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/resident/example.tsx"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-image-effects/resident/foundations/browser.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/resident/foundations/example.tsx"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/resident/index.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/resident/matte-example.tsx"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-image-effects/resident/processor.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/resident/scripts/build-package.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-image-effects/resident/validation/browser.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-image-effects/resident/validation/matte-browser.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-image-effects/runtime.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/screen.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/scripts/build-package.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/subtract-matte.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-image-effects/tile.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-image-effects/validation/add-browser.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-image-effects/validation/alpha-rgb-browser.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-image-effects/validation/blend-gap-browser.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-image-effects/validation/browser.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/validation/build-fixture.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-image-effects/validation/combine-gap-browser.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-image-effects/validation/crossfade-browser.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-image-effects/validation/exposure-browser.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-image-effects/validation/flatten-browser.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-image-effects/validation/invert-browser.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-image-effects/validation/invert-matte-browser.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/validation/managed-add-project.tsx"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/validation/managed-alpha-rgb-project.tsx"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/validation/managed-crossfade-project.tsx"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/validation/managed-exposure-project.tsx"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/validation/managed-flatten-project.tsx"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/validation/managed-invert-matte-project.tsx"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/validation/managed-invert-project.tsx"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/validation/managed-matte-project.tsx"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/validation/managed-merge-matte-project.tsx"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/validation/managed-modulate-project.tsx"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/validation/managed-multiply-project.tsx"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/validation/managed-offset-rgb-project.tsx"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/validation/managed-over-project.tsx"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/validation/managed-project.tsx"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/validation/managed-reframe-project.tsx"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/validation/managed-replace-matte-project.tsx"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/validation/managed-screen-project.tsx"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/validation/managed-subtract-matte-project.tsx"
+    },
+    {
+      "status": "M",
+      "path": "modules/gpu-image-effects/validation/managed-tile-project.tsx"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-image-effects/validation/matte-browser.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-image-effects/validation/merge-matte-browser.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-image-effects/validation/modulate-browser.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-image-effects/validation/multiply-browser.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-image-effects/validation/offset-rgb-browser.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-image-effects/validation/orientation-gap-browser.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-image-effects/validation/over-browser.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-image-effects/validation/over-publication-browser.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-image-effects/validation/reframe-browser.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-image-effects/validation/replace-matte-browser.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-image-effects/validation/screen-browser.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-image-effects/validation/subtract-matte-browser.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/gpu-image-effects/validation/tile-browser.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/graphics-contracts/experiments/marker-consumer.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/graphics-contracts/experiments/mask-consumer.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/graphics-contracts/experiments/track-reader-stage.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/graphics-contracts/experiments/vector-producer.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/graphics-contracts/index.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/graphics-contracts/path-mask.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/graphics-contracts/tests/distribution.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/mesh-deformation/examples/scene.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/mesh-deformation/examples/verify-stage.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/mesh-deformation/scripts/build-package.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/native-effects/README.md"
+    },
+    {
+      "status": "M",
+      "path": "modules/native-effects/api.d.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/native-effects/frameweave.package.json"
+    },
+    {
+      "status": "M",
+      "path": "modules/native-effects/public.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/native-effects/raster/web-baseline.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/native-effects/scripts/build-package.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/native-effects/spatial/web-reference.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/native-gpu/authoring.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/native-gpu/cli.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/native-gpu/client.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/native-gpu/examples/ball.tsx"
+    },
+    {
+      "status": "D",
+      "path": "modules/native-gpu/examples/web-compatibility.tsx"
+    },
+    {
+      "status": "M",
+      "path": "modules/native-gpu/logic-bootstrap.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/native-gpu/logic-host.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/native-gpu/memory.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/native-gpu/preview.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/native-gpu/service.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/native-gpu/src/gpu.rs"
+    },
+    {
+      "status": "M",
+      "path": "modules/native-gpu/src/main.rs"
+    },
+    {
+      "status": "M",
+      "path": "modules/native-gpu/src/protocol.rs"
+    },
+    {
+      "status": "M",
+      "path": "modules/native-gpu/validation/image-admission-checkpoint/wide.tsx"
+    },
+    {
+      "status": "M",
+      "path": "modules/native-gpu/validation/verify-image-admission.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/native-gpu/visual-boundary.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/native-gpu/web-bridge.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/pro-animation/scripts/build-catalog.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/pro-animation/src/coverage.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/pro-animation/src/effect.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/pro-animation/src/index.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/pro-animation/validation/bidi-scene/stage.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/pro-animation/validation/build-bidi.mjs"
+    },
+    {
+      "status": "D",
+      "path": "modules/pro-animation/validation/build-curve.mjs"
+    },
+    {
+      "status": "D",
+      "path": "modules/pro-animation/validation/build-dash.mjs"
+    },
+    {
+      "status": "D",
+      "path": "modules/pro-animation/validation/build-pathops.mjs"
+    },
+    {
+      "status": "D",
+      "path": "modules/pro-animation/validation/build-shaping.mjs"
+    },
+    {
+      "status": "D",
+      "path": "modules/pro-animation/validation/build-twist.mjs"
+    },
+    {
+      "status": "D",
+      "path": "modules/pro-animation/validation/build-zigzag.mjs"
+    },
+    {
+      "status": "D",
+      "path": "modules/pro-animation/validation/curve-scene/stage.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/pro-animation/validation/dash-scene/stage.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/pro-animation/validation/glyph-scene/stage.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/pro-animation/validation/inertia-scene/stage.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/pro-animation/validation/path-motion-scene/stage.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/pro-animation/validation/pathops-scene/stage.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/pro-animation/validation/shaping-scene/stage.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/pro-animation/validation/stroke-scene/stage.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/pro-animation/validation/twist-scene/stage.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/pro-animation/validation/zigzag-scene/stage.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/puppet-effects/examples/image-rig/image.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/puppet-effects/examples/image-rig/numeric.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/puppet-effects/examples/image-rig/puppet.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/puppet-effects/examples/image-rig/rig.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/puppet-effects/examples/native-character/oracle.tsx"
+    },
+    {
+      "status": "D",
+      "path": "modules/puppet-effects/examples/numeric.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/puppet-effects/examples/paint.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/puppet-effects/examples/puppet.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/puppet-effects/src/renderer.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/render-inspection/inspect.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/render-inspection/types.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/render-session/index.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/rigid-body-effects/examples/mesh/cpu-scene.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/rigid-body-effects/examples/mesh/scene.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/rigid-body-effects/examples/numeric.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/rigid-body-effects/examples/scene.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/servo/build.mjs"
+    },
+    {
+      "status": "M",
+      "path": "modules/servo/validation/verify-build.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/shared-state/node.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/skeletal-effects/examples/isosurface-numeric.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/skeletal-effects/examples/isosurface-scene.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/skeletal-effects/examples/lightning-numeric.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/skeletal-effects/examples/lightning-scene.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/skeletal-effects/examples/mesh-scene.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/skeletal-effects/examples/mesh-softbody-scene.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/skeletal-effects/examples/numeric.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/skeletal-effects/examples/scatter-numeric.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/skeletal-effects/examples/scatter-scene.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/skeletal-effects/examples/scene.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/skeletal-effects/examples/trail-numeric.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/skeletal-effects/examples/trail-scene.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/skeletal-effects/src/bindings.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/skeletal-effects/src/gpu-owner.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/skeletal-effects/src/index.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/skeletal-effects/src/instance-renderer.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/skeletal-effects/src/mesh-renderer.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/skeletal-effects/src/renderer.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/spatial-compute/examples/scene.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/spatial-compute/examples/verify-stage.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/spatial-compute/scripts/build-package.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/spatial-data-effects/examples/scene.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/spatial-data-effects/src/index.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/spatial-data-effects/src/renderer.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/spatial-effects/examples-noise/particles.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/spatial-effects/examples-noise/texture.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/spatial-effects/examples/image-emitter/image.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/spatial-effects/examples/image-emitter/numeric.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/spatial-effects/examples/image-emitter/particles.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/spatial-effects/examples/image-emitter/recipe.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/spatial-effects/examples/mesh-collision/numeric.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/spatial-effects/examples/mesh-collision/scene.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/spatial-effects/examples/native-creation/oracle.tsx"
+    },
+    {
+      "status": "D",
+      "path": "modules/spatial-effects/examples/scene.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/spatial-effects/examples/sprites/image.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/spatial-effects/examples/sprites/numeric.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/spatial-effects/examples/sprites/particles.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/spatial-effects/src/bindings.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/spatial-effects/src/index.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/spatial-effects/src/native-target.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/spatial-effects/src/noise-renderer.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/spatial-effects/src/renderer.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/spatial-fields/examples/depth-matte-ink.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/spatial-fields/examples/depth-matte-stage.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/spatial-fields/examples/scene.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/spatial-fields/examples/verify-depth-matte-stage.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/spatial-fields/examples/verify-stage.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/spatial-fields/index.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/spatial-fields/scripts/build-package.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/spatial-vfx/examples/scene.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/spatial-vfx/scripts/build-package.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/spidermonkey-host/README.md"
+    },
+    {
+      "status": "M",
+      "path": "modules/spidermonkey-host/THIRD_PARTY.md"
+    },
+    {
+      "status": "M",
+      "path": "modules/spidermonkey-host/examples/hooks.tsx"
+    },
+    {
+      "status": "M",
+      "path": "modules/spidermonkey-host/index.ts"
+    },
+    {
+      "status": "D",
+      "path": "modules/spidermonkey-host/integration/check-module-resource-types.mjs"
+    },
+    {
+      "status": "D",
+      "path": "modules/spidermonkey-host/integration/core-reference.patch"
+    },
+    {
+      "status": "D",
+      "path": "modules/spidermonkey-host/integration/make-module-resource-patch.mjs"
+    },
+    {
+      "status": "D",
+      "path": "modules/spidermonkey-host/integration/module-resource-hooks.mjs"
+    },
+    {
+      "status": "D",
+      "path": "modules/spidermonkey-host/integration/module-resource-source.mjs"
+    },
+    {
+      "status": "D",
+      "path": "modules/spidermonkey-host/integration/module-resources-core.patch"
+    },
+    {
+      "status": "D",
+      "path": "modules/spidermonkey-host/integration/reference-hooks.mjs"
+    },
+    {
+      "status": "D",
+      "path": "modules/spidermonkey-host/integration/register-module-resource-reference.mjs"
+    },
+    {
+      "status": "D",
+      "path": "modules/spidermonkey-host/integration/register-reference.mjs"
+    },
+    {
+      "status": "D",
+      "path": "modules/spidermonkey-host/package-lock.json"
+    },
+    {
+      "status": "M",
+      "path": "modules/spidermonkey-host/policy.ts"
+    },
+    {
+      "status": "M",
+      "path": "modules/spidermonkey-host/transport.ts"
+    },
+    {
+      "status": "M",
+      "path": "package-lock.json"
+    },
+    {
+      "status": "M",
+      "path": "package.json"
+    },
+    {
+      "status": "D",
+      "path": "plugins/builtin/cinematic-glow/effect.json"
+    },
+    {
+      "status": "D",
+      "path": "plugins/builtin/displacement/effect.json"
+    },
+    {
+      "status": "D",
+      "path": "plugins/builtin/displacement/index.ts"
+    },
+    {
+      "status": "D",
+      "path": "plugins/builtin/glow/effect.json"
+    },
+    {
+      "status": "D",
+      "path": "plugins/builtin/glow/index.ts"
+    },
+    {
+      "status": "D",
+      "path": "plugins/builtin/kinetic-type/effect.json"
+    },
+    {
+      "status": "D",
+      "path": "plugins/builtin/kinetic-type/index.ts"
+    },
+    {
+      "status": "D",
+      "path": "plugins/builtin/mix/effect.json"
+    },
+    {
+      "status": "D",
+      "path": "plugins/builtin/mix/index.ts"
+    },
+    {
+      "status": "D",
+      "path": "plugins/builtin/motion-blur/effect.json"
+    },
+    {
+      "status": "D",
+      "path": "plugins/builtin/motion-blur/index.ts"
+    },
+    {
+      "status": "D",
+      "path": "plugins/builtin/noise/effect.json"
+    },
+    {
+      "status": "D",
+      "path": "plugins/builtin/noise/index.ts"
+    },
+    {
+      "status": "D",
+      "path": "plugins/builtin/particles/effect.json"
+    },
+    {
+      "status": "D",
+      "path": "plugins/builtin/particles/index.ts"
+    },
+    {
+      "status": "D",
+      "path": "plugins/builtin/transform/effect.json"
+    },
+    {
+      "status": "D",
+      "path": "plugins/builtin/transform/index.ts"
+    },
+    {
+      "status": "D",
+      "path": "plugins/packages/orbit-grid/LICENSE"
+    },
+    {
+      "status": "D",
+      "path": "plugins/packages/orbit-grid/effect.json"
+    },
+    {
+      "status": "D",
+      "path": "plugins/packages/orbit-grid/frameweave.package.json"
+    },
+    {
+      "status": "D",
+      "path": "plugins/packages/orbit-grid/index.ts"
+    },
+    {
+      "status": "D",
+      "path": "plugins/packages/orbit-grid/layout.ts"
+    },
+    {
+      "status": "D",
+      "path": "plugins/packages/orbit-grid/orbit.wgsl"
+    },
+    {
+      "status": "D",
+      "path": "plugins/packages/orbit-grid/palette.json"
+    },
+    {
+      "status": "D",
+      "path": "plugins/packages/orbit-grid/phase.wasm"
+    },
+    {
+      "status": "D",
+      "path": "plugins/packages/orbit-grid/phase.wat"
+    },
+    {
+      "status": "D",
+      "path": "plugins/shared/energy-vortex/LICENSE"
+    },
+    {
+      "status": "D",
+      "path": "plugins/shared/energy-vortex/api.ts"
+    },
+    {
+      "status": "D",
+      "path": "plugins/shared/energy-vortex/effect.json"
+    },
+    {
+      "status": "D",
+      "path": "plugins/shared/energy-vortex/index.ts"
+    },
+    {
+      "status": "D",
+      "path": "prototypes/analysis-job-mvp/demo.ts"
+    },
+    {
+      "status": "D",
+      "path": "prototypes/analysis-job-mvp/face-session.ts"
+    },
+    {
+      "status": "D",
+      "path": "prototypes/analysis-job-mvp/job.ts"
+    },
+    {
+      "status": "D",
+      "path": "prototypes/analysis-job-mvp/prepare-assets.mjs"
+    },
+    {
+      "status": "D",
+      "path": "prototypes/analysis-job-mvp/run.ts"
+    },
+    {
+      "status": "D",
+      "path": "prototypes/analysis-job-mvp/tests/track.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "prototypes/analysis-job-mvp/verify-export.ts"
+    },
+    {
+      "status": "D",
+      "path": "prototypes/analysis-job-mvp/verify.ts"
+    },
+    {
+      "status": "D",
+      "path": "prototypes/analysis-job-mvp/web-stages.ts"
+    },
+    {
+      "status": "D",
+      "path": "prototypes/analysis-job-mvp/worker.ts"
+    },
+    {
+      "status": "M",
+      "path": "prototypes/performance-gpu-pixel-pass/installed-consumer/consumer.ts"
+    },
+    {
+      "status": "M",
+      "path": "prototypes/performance-gpu-pixel-pass/installed-consumer/node-import.mjs"
+    },
+    {
+      "status": "D",
+      "path": "scripts/benchmark-analysis-dx.ts"
+    },
+    {
+      "status": "D",
+      "path": "scripts/benchmark-preview.mjs"
+    },
+    {
+      "status": "M",
+      "path": "scripts/build-distribution.mjs"
+    },
+    {
+      "status": "D",
+      "path": "scripts/dx-1d/blackbox.mjs"
+    },
+    {
+      "status": "D",
+      "path": "scripts/dx-1d/installed-integration.mjs"
+    },
+    {
+      "status": "D",
+      "path": "scripts/performance/gpu-resident-preview.ts"
+    },
+    {
+      "status": "D",
+      "path": "scripts/performance/gpu-resident.ts"
+    },
+    {
+      "status": "D",
+      "path": "scripts/performance/png-identity.ts"
+    },
+    {
+      "status": "D",
+      "path": "scripts/performance/verify-native-presentation.mjs"
+    },
+    {
+      "status": "D",
+      "path": "scripts/performance/verify-png-identity-media.ts"
+    },
+    {
+      "status": "D",
+      "path": "scripts/probe-gpu-image-blend.ts"
+    },
+    {
+      "status": "D",
+      "path": "scripts/probe-mediapipe-dx.ts"
+    },
+    {
+      "status": "D",
+      "path": "scripts/summarize-gpu-effects.mjs"
+    },
+    {
+      "status": "D",
+      "path": "scripts/verify-au-1.ts"
+    },
+    {
+      "status": "D",
+      "path": "scripts/verify-audit-fixes.mjs"
+    },
+    {
+      "status": "D",
+      "path": "scripts/verify-cloth-aerodynamics.ts"
+    },
+    {
+      "status": "D",
+      "path": "scripts/verify-cosserat-rods.ts"
+    },
+    {
+      "status": "D",
+      "path": "scripts/verify-delivery.ts"
+    },
+    {
+      "status": "D",
+      "path": "scripts/verify-distribution.mjs"
+    },
+    {
+      "status": "D",
+      "path": "scripts/verify-final-gpu-images.ts"
+    },
+    {
+      "status": "D",
+      "path": "scripts/verify-gpu-effects.mjs"
+    },
+    {
+      "status": "D",
+      "path": "scripts/verify-gpu-image-effects.ts"
+    },
+    {
+      "status": "D",
+      "path": "scripts/verify-image-particles-seal.ts"
+    },
+    {
+      "status": "D",
+      "path": "scripts/verify-image-particles.ts"
+    },
+    {
+      "status": "M",
+      "path": "scripts/verify-installed-native-effects.mjs"
+    },
+    {
+      "status": "D",
+      "path": "scripts/verify-installed-native-gpu.mjs"
+    },
+    {
+      "status": "M",
+      "path": "scripts/verify-installed-native-images-v2.mjs"
+    },
+    {
+      "status": "D",
+      "path": "scripts/verify-installed-native-presentation.mjs"
+    },
+    {
+      "status": "D",
+      "path": "scripts/verify-main-fwau.ts"
+    },
+    {
+      "status": "D",
+      "path": "scripts/verify-main-gpu-compute.mjs"
+    },
+    {
+      "status": "D",
+      "path": "scripts/verify-main-gpu-display.mjs"
+    },
+    {
+      "status": "D",
+      "path": "scripts/verify-main-gpu-resident.mjs"
+    },
+    {
+      "status": "D",
+      "path": "scripts/verify-main-libraries-installed.mjs"
+    },
+    {
+      "status": "D",
+      "path": "scripts/verify-main-pa-installed.mjs"
+    },
+    {
+      "status": "D",
+      "path": "scripts/verify-main-pa1-installed.mjs"
+    },
+    {
+      "status": "D",
+      "path": "scripts/verify-main-pme-shared-installed.mjs"
+    },
+    {
+      "status": "D",
+      "path": "scripts/verify-main-pme-shared.ts"
+    },
+    {
+      "status": "D",
+      "path": "scripts/verify-main-png-identity.mjs"
+    },
+    {
+      "status": "D",
+      "path": "scripts/verify-main-resident-images.mjs"
+    },
+    {
+      "status": "D",
+      "path": "scripts/verify-main-spatial-compute.mjs"
+    },
+    {
+      "status": "D",
+      "path": "scripts/verify-main-spatial-vfx.mjs"
+    },
+    {
+      "status": "M",
+      "path": "scripts/verify-native-host-integration.ts"
+    },
+    {
+      "status": "D",
+      "path": "scripts/verify-p2.mjs"
+    },
+    {
+      "status": "D",
+      "path": "scripts/verify-p4.ts"
+    },
+    {
+      "status": "D",
+      "path": "scripts/verify-particle-mesh.ts"
+    },
+    {
+      "status": "D",
+      "path": "scripts/verify-professional-media.ts"
+    },
+    {
+      "status": "D",
+      "path": "scripts/verify-puppet-mesh.ts"
+    },
+    {
+      "status": "D",
+      "path": "scripts/verify-render-session.ts"
+    },
+    {
+      "status": "D",
+      "path": "scripts/verify-resident-colour.ts"
+    },
+    {
+      "status": "D",
+      "path": "scripts/verify-shared-state-package.mjs"
+    },
+    {
+      "status": "D",
+      "path": "scripts/verify-so1.ts"
+    },
+    {
+      "status": "M",
+      "path": "scripts/verify-spidermonkey-modules.ts"
+    },
+    {
+      "status": "M",
+      "path": "src/analysis-tools/capabilities.ts"
+    },
+    {
+      "status": "M",
+      "path": "src/analysis-tools/preview.ts"
+    },
+    {
+      "status": "M",
+      "path": "src/capabilities/service.ts"
+    },
+    {
+      "status": "M",
+      "path": "src/cli-entry.ts"
+    },
+    {
+      "status": "M",
+      "path": "src/cli.ts"
+    },
+    {
+      "status": "M",
+      "path": "src/compiler/build.ts"
+    },
+    {
+      "status": "M",
+      "path": "src/compiler/flatten.ts"
+    },
+    {
+      "status": "M",
+      "path": "src/compiler/typecheck-worker.mjs"
+    },
+    {
+      "status": "M",
+      "path": "src/core/authoring.ts"
+    },
+    {
+      "status": "M",
+      "path": "src/core/engine-inference.ts"
+    },
+    {
+      "status": "M",
+      "path": "src/core/graph.ts"
+    },
+    {
+      "status": "M",
+      "path": "src/core/native-source.ts"
+    },
+    {
+      "status": "M",
+      "path": "src/core/types.ts"
+    },
+    {
+      "status": "M",
+      "path": "src/media/stage.ts"
+    },
+    {
+      "status": "M",
+      "path": "src/node.ts"
+    },
+    {
+      "status": "M",
+      "path": "src/packages/flat-runtime.ts"
+    },
+    {
+      "status": "M",
+      "path": "src/packages/manifest.ts"
+    },
+    {
+      "status": "M",
+      "path": "src/packages/stage-bindings.ts"
+    },
+    {
+      "status": "M",
+      "path": "src/plugins/builtin.ts"
+    },
+    {
+      "status": "M",
+      "path": "src/plugins/compiler.ts"
+    },
+    {
+      "status": "M",
+      "path": "src/plugins/library.ts"
+    },
+    {
+      "status": "D",
+      "path": "src/plugins/native.ts"
+    },
+    {
+      "status": "D",
+      "path": "src/plugins/runtime.ts"
+    },
+    {
+      "status": "M",
+      "path": "src/plugins/sdk.ts"
+    },
+    {
+      "status": "D",
+      "path": "src/render/compositor.ts"
+    },
+    {
+      "status": "D",
+      "path": "src/render/gpu-policy.ts"
+    },
+    {
+      "status": "D",
+      "path": "src/render/presentation.ts"
+    },
+    {
+      "status": "M",
+      "path": "src/render/renderer.ts"
+    },
+    {
+      "status": "D",
+      "path": "src/render/server.ts"
+    },
+    {
+      "status": "D",
+      "path": "src/render/surface-vault.ts"
+    },
+    {
+      "status": "D",
+      "path": "src/render/web-adapter.ts"
+    },
+    {
+      "status": "M",
+      "path": "src/runtime/distribution.ts"
+    },
+    {
+      "status": "D",
+      "path": "src/web/api.ts"
+    },
+    {
+      "status": "D",
+      "path": "src/web/bootstrap.ts"
+    },
+    {
+      "status": "D",
+      "path": "src/web/capture-canvas.ts"
+    },
+    {
+      "status": "D",
+      "path": "src/web/clock.ts"
+    },
+    {
+      "status": "D",
+      "path": "src/web/declarative.ts"
+    },
+    {
+      "status": "D",
+      "path": "src/web/presentation-controls.ts"
+    },
+    {
+      "status": "D",
+      "path": "src/web/presentation-host.ts"
+    },
+    {
+      "status": "M",
+      "path": "src/workflow.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/agent3-integration.test.ts"
+    },
+    {
+      "status": "M",
+      "path": "tests/audit-fixes.test.ts"
+    },
+    {
+      "status": "M",
+      "path": "tests/compiler.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/compositor-identity.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/cosserat-worker.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/deformable-worker.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/embedded-code-resources.test.ts"
+    },
+    {
+      "status": "M",
+      "path": "tests/export-package-bytes.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/fixtures/background.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/fixtures/canvas-compositor-reference.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/fixtures/consumer.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/fixtures/determinism/composite.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/fixtures/determinism/three.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/fixtures/gpu-compute-extended-stage.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/fixtures/gpu-float-pass-stage.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/fixtures/gpu-pixel-display-stage.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/fixtures/gpu-pixel-scope-stage.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/fixtures/professional-gpu-blend-precision-stage.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/fixtures/spatial-compute-edge-stage.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/fixtures/spatial-vfx-image-stage.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/fixtures/spatial-vfx-numeric-stage.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/flat-preview.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-compute-tools.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-effects.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-float-pass-qualified-alpha.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-float-passes.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-add-gpu.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-add.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-alpha-rgb-gpu.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-alpha-rgb.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-combine-gap-gpu.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-crossfade-gpu.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-crossfade.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-effects-gpu.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-effects.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-exposure-gpu.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-exposure.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-flatten-gpu.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-flatten.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-invert-gpu.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-invert-matte-gpu.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-invert-matte.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-invert.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-matte-gpu.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-matte.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-merge-matte-gpu.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-merge-matte.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-modulate-gpu.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-modulate.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-multiply-gpu.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-multiply.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-offset-rgb-gpu.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-offset-rgb.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-over-gpu.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-over-publication-gpu.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-over.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-reframe-gpu.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-reframe.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-replace-matte-gpu.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-replace-matte.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-screen-gpu.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-screen.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-subtract-matte-gpu.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-subtract-matte.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-tile-gpu.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-image-tile.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-pixel-display.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-required-policy.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-resident-blends-gpu.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-resident-colour-gpu.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-resident-colour.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-resident-creative-gpu.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-resident-foundations-gpu.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/gpu-resident-matte-gpu.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/helpers/so1-host.ts"
+    },
+    {
+      "status": "M",
+      "path": "tests/library-export.test.ts"
+    },
+    {
+      "status": "M",
+      "path": "tests/main-fwau.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/main-pme-shared.test.ts"
+    },
+    {
+      "status": "M",
+      "path": "tests/main-stage-call.test.ts"
+    },
+    {
+      "status": "M",
+      "path": "tests/managed-flat.test.ts"
+    },
+    {
+      "status": "M",
+      "path": "tests/managed-import.test.ts"
+    },
+    {
+      "status": "M",
+      "path": "tests/managed-shorthand.test.ts"
+    },
+    {
+      "status": "M",
+      "path": "tests/native-gpu-audio.test.ts"
+    },
+    {
+      "status": "M",
+      "path": "tests/native-gpu-authoring.test.ts"
+    },
+    {
+      "status": "M",
+      "path": "tests/native-gpu-packages.test.ts"
+    },
+    {
+      "status": "M",
+      "path": "tests/native-gpu-production.test.ts"
+    },
+    {
+      "status": "M",
+      "path": "tests/native-gpu-security.test.ts"
+    },
+    {
+      "status": "M",
+      "path": "tests/native-gpu.test.ts"
+    },
+    {
+      "status": "M",
+      "path": "tests/native-resources.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/native-web-bridge-cancellation.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/native-web-bridge.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/native-web-prefix-cancellation.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/native-web-security.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/p2-polish.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/packages.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/particle-sprites-gpu.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/plugins.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/pme-perf.test.ts"
+    },
+    {
+      "status": "M",
+      "path": "tests/pme-preview.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/presentation.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/preview-performance.test.ts"
+    },
+    {
+      "status": "M",
+      "path": "tests/pro-animation-native-transitions-stage.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/pro-animation-pa3-bidi-stage.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/pro-animation-pa3-curve-stage.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/pro-animation-pa3-dash-stage.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/pro-animation-pa3-glyph-stage.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/pro-animation-pa3-inertia-stage.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/pro-animation-pa3-path-motion-stage.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/pro-animation-pa3-pathops-stage.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/pro-animation-pa3-shaping-stage.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/pro-animation-pa3-stroke-stage.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/pro-animation-pa3-twist-stage.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/pro-animation-pa3-zigzag-stage.test.ts"
+    },
+    {
+      "status": "M",
+      "path": "tests/pro-animation-professional.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/pro-animation-render.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/pro-animation-unit.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/professional-gpu-blend-precision.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/professional-gpu-profile.test.ts"
+    },
+    {
+      "status": "M",
+      "path": "tests/professional-media.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/puppet-effects-gpu.test.ts"
+    },
+    {
+      "status": "M",
+      "path": "tests/render-inspection-e2e.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/render-session.test.ts"
+    },
+    {
+      "status": "M",
+      "path": "tests/repl.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/rigid-body-worker.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/rigid-mesh-release.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/rigid-mesh-software.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/runtime.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/rust-wasm-kit.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/shared-state-coordinator.test.ts"
+    },
+    {
+      "status": "M",
+      "path": "tests/single-file.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/spatial-data-gpu.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/spatial-data-precision.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/spatial-data-scale.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/spatial-effects-gpu.test.ts"
+    },
+    {
+      "status": "M",
+      "path": "tests/spatial-effects.test.ts"
+    },
+    {
+      "status": "M",
+      "path": "tests/spidermonkey-host.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/stage-orchestration.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/wasm-bindgen-kit.test.ts"
+    },
+    {
+      "status": "D",
+      "path": "tests/wasm.test.ts"
+    },
+    {
+      "status": "M",
+      "path": "tools/rust-wasm-kit/kit.mjs"
+    },
+    {
+      "status": "D",
+      "path": "tools/rust-wasm-kit/recipes/rgba/demo/project.tsx"
+    },
+    {
+      "status": "D",
+      "path": "tools/rust-wasm-kit/recipes/rgba/index.ts"
+    },
+    {
+      "status": "D",
+      "path": "tools/rust-wasm-kit/recipes/statistics/demo/project.tsx"
+    },
+    {
+      "status": "D",
+      "path": "tools/rust-wasm-kit/recipes/statistics/index.ts"
+    },
+    {
+      "status": "A",
+      "path": "docs/NATIVE_ONLY_MIGRATION.md"
+    },
+    {
+      "status": "A",
+      "path": "tests/native-only-runtime.test.ts"
+    },
+    {
+      "status": "A",
+      "path": "src/runtime/execution-policy.ts"
+    },
+    {
+      "status": "A",
+      "path": "modules/servo/clock.ts"
+    },
+    {
+      "status": "A",
+      "path": "modules/gpu-effects/float-types.ts"
+    },
+    {
+      "status": "A",
+      "path": "modules/native-gpu/validation/verify-native-only-install.mjs"
+    },
+    {
+      "status": "A",
+      "path": "plugins/builtin/README.md"
+    }
+  ],
+  "sourceHashes": {
+    "artifacts/native-preview/final/Across-Machines.tsx": "35ead336d1e34da4e1fa0edb24af65c082896c6ba530f91cc30d8f73fdf9f9e8",
+    "docs/main-web-bridge-evidence/projects/capsule.tsx": "c2252b7b0dfd8340af497214d89cce5a46eda2186b018a96050a4dfaaaa1ae8f",
+    "docs/main-web-bridge-evidence/projects/flat.tsx": "67c5277060cc54c714b44a2c6915307c1cd9f81bfc311e0c1f5e90895ffa6070",
+    "docs/main-web-bridge-evidence/projects/project.tsx": "a7ddd44d835d282a524f27ceab949e06186ea2342a222e2d17c23f0253d4b59d",
+    "modules/gpu-effects/compute-capabilities.ts": "f54ff517d825b62a5000a6143d28220274d52b130745a166145822a6838edbbd",
+    "modules/gpu-effects/compute-profiling.ts": "12beef6be792aec4955644ede22080d43d089c6db6df0249ccfd26a9d14f1c02",
+    "modules/gpu-effects/float-types.ts": "ba4a1cbb6fe9f1e9d2156dfad83c7cfe657d653413eee9306065c8798a93d7f2",
+    "modules/gpu-effects/index.ts": "abae29431389a3b06b54b5e5a363bebe2d8d5afea2e133f088eaf362cbd733f9",
+    "modules/gpu-image-effects/add.ts": "5efde498744fe332443d0212ebe9f37509d1aff3a5904b7055d2446a8c26c3a2",
+    "modules/gpu-image-effects/crossfade.ts": "74bc467e92228570885f5d122e4db509a94da84338adc26fb8aedb043df6fadc",
+    "modules/gpu-image-effects/exposure.ts": "ded30bca82250e4831e6d9933c63e5e4a0b7277ad99b7a288ca777ef7a539285",
+    "modules/gpu-image-effects/flatten.ts": "3745733248478daa288d04437d9884c1da1af2a8e54c61c2fa4652a51849c571",
+    "modules/gpu-image-effects/invert-matte.ts": "a5903f23e605cfcaa95732e071bd139e09103d58332433efe43bbacc8cf4648c",
+    "modules/gpu-image-effects/invert.ts": "aeb231458c4d3f4293829895d534b1f9839bb1b614d5ce8d1e3b81cac5973bc7",
+    "modules/gpu-image-effects/modulate.ts": "1c4e4aa688d63b6ef52ad463c8e3d8b60b9476c89dbc1dd01731f39a3f2ddfd1",
+    "modules/gpu-image-effects/multiply.ts": "f7f10d8522639c8a39202cadf2ac4aa91691183a07a8f244caf056cb5bf5c771",
+    "modules/gpu-image-effects/nonlinear-blend.ts": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "modules/gpu-image-effects/offset-rgb.ts": "38feeb0459de11bcef67516b8aa5dc3a1cc558217fe36b7638c21d5e1d1f20d9",
+    "modules/gpu-image-effects/over.ts": "5076490880780953c99acb48d9ef79b78f576104ee8d58d67a67758cc660a964",
+    "modules/gpu-image-effects/reframe.ts": "b5b6a169782feedb558bdc91d217604950d71ad6409dbc5184d9405143f4df77",
+    "modules/gpu-image-effects/replace-matte.ts": "b7c69a39b714851c6e2a8b493d5989245a42a9a4e687babb3c6466922c2321c2",
+    "modules/gpu-image-effects/resident/api.d.ts": "b0199e5826cbca6c7ea9bcbdb7c45f54c73bbd94a145713783173971484a467e",
+    "modules/gpu-image-effects/resident/blends/example.tsx": "6b2ba1a85028b30d3629f6543a0c1012e5d556143d2e3f050ec42b3eadf9fe84",
+    "modules/gpu-image-effects/resident/creative/example.tsx": "22aa192f30470746789b69f60563dd0329a4b048455cfca8f35c234769ec7036",
+    "modules/gpu-image-effects/resident/example.tsx": "54ae9264e695013c582c56374f34511469a3d11c07fb81914bf4c9999b82d87c",
+    "modules/gpu-image-effects/resident/foundations/example.tsx": "857126953ccb481a368a308e421f7977fcbc7b13459a97f7bd691e500560797b",
+    "modules/gpu-image-effects/resident/index.ts": "14d2fe53ba766f2c95325cdd23bc2bf24113a22484c70e003b9918dfdd759b40",
+    "modules/gpu-image-effects/resident/matte-example.tsx": "9f27cc50d65208422c77523c8d6b5f0a6e66d6baec934ea7edea4cf944212323",
+    "modules/gpu-image-effects/resident/scripts/build-package.ts": "4b0bc3ac2ee06a8d8006163e551404ecc2a8aaefce4022abc0734337cad74fa2",
+    "modules/gpu-image-effects/screen.ts": "1c4d6e3f0ed901774f1535e5201849b47b54ad561315fe5120b22ce67c941202",
+    "modules/gpu-image-effects/scripts/build-package.ts": "7b02ae2454b3f9a5845f333e005b8864a4b48e3d10d4fb74b31ac8c37bd3659f",
+    "modules/gpu-image-effects/subtract-matte.ts": "c4ac13d7224936a8e8b06522d4d120b3b779e416b4b0730a9a4dd9d3c8a01b85",
+    "modules/gpu-image-effects/validation/build-fixture.ts": "3441961c3c3009427df79d7209071a54561cd7bcd69c1801750416c40057254d",
+    "modules/gpu-image-effects/validation/managed-add-project.tsx": "71e06adf92e278e3d79864904f37fb5343bcb169593f44ca8bb7caaedeaf792a",
+    "modules/gpu-image-effects/validation/managed-alpha-rgb-project.tsx": "4686410863d5bfc3ba1bb9d73c19d58335b7f381054d4e5fef6599546a3a894a",
+    "modules/gpu-image-effects/validation/managed-crossfade-project.tsx": "c1ec79b10850ff51e48c67b15ae005a6432f1c1b457ef4e986ed43f492519b86",
+    "modules/gpu-image-effects/validation/managed-exposure-project.tsx": "adbdfa1de213c3d5cade34cf0b74d8a9823d6075684110adbe1c897d7812b7d5",
+    "modules/gpu-image-effects/validation/managed-flatten-project.tsx": "cd5c9ef4ce984547c08487b848ef04cac32a938edd084bad01c6bed165cbbf6f",
+    "modules/gpu-image-effects/validation/managed-invert-matte-project.tsx": "c004d6763420c6115fc2b82ea3737926bf928b9a8d5430e028e323a8a6f65c9f",
+    "modules/gpu-image-effects/validation/managed-invert-project.tsx": "63513c54f47c28e81dc42dd931bcff6dadf2d32c5c51bbca4649c3ad3afee91f",
+    "modules/gpu-image-effects/validation/managed-matte-project.tsx": "e21f9f95fe59a6b5a056206824902486df3b045bcc360de7af21810154cdd219",
+    "modules/gpu-image-effects/validation/managed-merge-matte-project.tsx": "c77dec8aca6378c8b7fb11dd68f45bae0aec87c5b677c1b89c10c05bab76c4a1",
+    "modules/gpu-image-effects/validation/managed-modulate-project.tsx": "b5ab5cc925705d48a44331932799a867a4881c0cadb3ca8a853e6ff6fba63fdb",
+    "modules/gpu-image-effects/validation/managed-multiply-project.tsx": "5a052084c1cb60a38f2b78972ff6604f3a95a7c5ed92cdc26b8e4ad1d5d4f559",
+    "modules/gpu-image-effects/validation/managed-offset-rgb-project.tsx": "fe2dc212e696fcd88b5a89372fe188ec14c41d337883b0282803e4df106b099a",
+    "modules/gpu-image-effects/validation/managed-over-project.tsx": "097cefbc365848f4ba3c8605c2fe4c162ce3c4980afd9d912553dd06db3f0e53",
+    "modules/gpu-image-effects/validation/managed-project.tsx": "2ca431d0ffd4f66a6969a4f5ec8a6e5d74ee470b65b05dc57f9bc9aff16356a7",
+    "modules/gpu-image-effects/validation/managed-reframe-project.tsx": "b8d5cbacbd909af85a952b0bb8b572cc4669bddde762f9c09c93db0788cee8e0",
+    "modules/gpu-image-effects/validation/managed-replace-matte-project.tsx": "154418de725bd9040d9106caab91369ba77580670d9ab543a5f1646b93bafb4a",
+    "modules/gpu-image-effects/validation/managed-screen-project.tsx": "71bc727cf74a07d2939f79a27c16e6599d58b30ccf7269dd0d9fd636801c1f1c",
+    "modules/gpu-image-effects/validation/managed-subtract-matte-project.tsx": "2e36a4804f3835f5073bde3dd0525fd62b5953e3b83c1986817351bc97a892a1",
+    "modules/gpu-image-effects/validation/managed-tile-project.tsx": "a0f7f0be9d803af6281960fbba1468ead57436a97de5de78bba25eee51c940ff",
+    "modules/graphics-contracts/index.ts": "607233097c0f2e87ec801c49fcf833ca18400475151f85d412debed20136fd4d",
+    "modules/graphics-contracts/path-mask.ts": "0247d1824c75bc0217f286d5e3799b4207d08c78566ccf672a9ef41693bedab0",
+    "modules/graphics-contracts/tests/distribution.test.ts": "bbd10f16fd93fd56828f6e4c9ce930cabb8f2df78c2dbc053a5e1fb10176db87",
+    "modules/mesh-deformation/scripts/build-package.ts": "a08b3599242464b3552b115e9465ad365e80a4396b0418abc22be384ca08c4e9",
+    "modules/native-effects/api.d.ts": "0c0c7967691371e88eb7ba5925c7db550854999ae119b9e0a2bb62c51967eba6",
+    "modules/native-effects/frameweave.package.json": "cfbb72793e9e9421a6f8c11e7f2f5ca0712211f99c59f760f68178f8996c2f1e",
+    "modules/native-effects/public.ts": "5d35eff791b42d3be76e48999d8b050eb5689ea6d9fe3d54c4593f7eeddc7128",
+    "modules/native-effects/scripts/build-package.ts": "3641cac080a73fbd191fe006cc326232f7abbe86224f0effde8174e1f01a3b80",
+    "modules/native-gpu/authoring.ts": "ffe0b50df903af2a0d4cf83d1e5b97b465fb9b1c58148bdd401980a51895edde",
+    "modules/native-gpu/cli.ts": "4b7422a0b8fd2dae0be0e086a9aa1b4dbe3fc422103073ec53068534bff07d92",
+    "modules/native-gpu/client.ts": "bdd6ba7f1b2b8f4a93ee00e135cc67e78c20ded4e1a195bf4aebc1a5bd549ffa",
+    "modules/native-gpu/examples/ball.tsx": "2c415ce4f71ff5f2b6676c1e24647ec1dfaa422052b89c44fcc6d6976a3fbae6",
+    "modules/native-gpu/logic-bootstrap.ts": "1c12e066928e715503e3d4c833988cc833bfbdb660af9d9c2afd7b8cc8abd125",
+    "modules/native-gpu/logic-host.ts": "613924868bb60c01f3e9e0af9d6cef90b7c79476a77b13322ccc28fdfefa90b6",
+    "modules/native-gpu/memory.ts": "3c141ada55ea85dcbfe7bd2f1db757406e530bee810d8aef3722d0107b9cc5b5",
+    "modules/native-gpu/preview.ts": "2922f064807e15124e2d4d548ae601009830f61087365b6a96913acb3ebce616",
+    "modules/native-gpu/service.ts": "a781f72623df1250acbaf32981e07d2621d8894e88fcd3b38993699fa721c03a",
+    "modules/native-gpu/src/gpu.rs": "493a0cc221fab61205b885b803dfb15581184b28f3b5df48515f1c12bbb8b530",
+    "modules/native-gpu/src/main.rs": "af4367390206651afa0d6e5a7bcf957b877335bccaa4b2c377047f2154374ce3",
+    "modules/native-gpu/src/protocol.rs": "bf64db7cd683b6622bb5f4cfde7482577d65e7adb74eb3e0e5a02da63cca3ba8",
+    "modules/native-gpu/validation/image-admission-checkpoint/wide.tsx": "217df12e12888bc61c013e77f68791f34e925f84cc387bebce2d3de6b4bdea81",
+    "modules/native-gpu/validation/verify-image-admission.ts": "e9e9b5674c271160a0aa946f902b4adf07bf864f63d14580ecef94427346aebc",
+    "modules/native-gpu/validation/verify-native-only-install.mjs": "a1d7795da144640708ba4d44001670501a2faa779856ac9c423423139883749b",
+    "modules/pro-animation/scripts/build-catalog.ts": "6ae4c0896628c91231d920b95fe585ffcdac713517365aeebdd498654076f922",
+    "modules/pro-animation/src/coverage.ts": "aa42bbdb18797654055247850ed39dc4ed84cfc77161d05fe5bf41ff5f30d3e4",
+    "modules/pro-animation/src/index.ts": "6a072a93c0d9ac927d0959417cb3da84cae5dbcb6c74811934d14116079d8890",
+    "modules/puppet-effects/examples/native-character/oracle.tsx": "d4e0f652b95d675eb4c693bfcd71c8b04185a3f7314b31b1f9bb4eeb7b2da49d",
+    "modules/puppet-effects/src/renderer.ts": "bf7ddd7275b2972ea9514c61e7da91a652cd73fd0d8062cb4d758704adc646c7",
+    "modules/render-inspection/inspect.ts": "2aceb720666c8287baa07bf2a2b4688824c5518b26e6f7a296abcd79c59c8a78",
+    "modules/render-inspection/types.ts": "76e70e65e6582f55c29903c3b979da4ff153133788365aec1b1a9176e208261b",
+    "modules/render-session/index.ts": "7f6098dc5cee44a3540b458e69e2de97aaed90b1ea4d06ed31d62db388ce9cd2",
+    "modules/servo/build.mjs": "aed52e09744e6b2d36d3e1665a770cbdd75a6e4eda61c7b7bd5445ce709dce9b",
+    "modules/servo/clock.ts": "4e96b8b14f59225a9c0ab5963efc418798d1767184b3d19a36ea226d9fc270d2",
+    "modules/servo/validation/verify-build.ts": "06c0883ade4b4ec83d184eb62269710c2a63467361e33ca22dc4cebbb747273f",
+    "modules/shared-state/node.ts": "5a903f42294394ce7ca14f37ffebc3093432179c2b92ebd0af04266e223eb2a5",
+    "modules/skeletal-effects/src/bindings.ts": "fa4c9835beef708f2e01ffe64358fb6a95f01f3f1f677869a9085b930d0a59d2",
+    "modules/skeletal-effects/src/index.ts": "65124ac374bfeeb4244d02ab8e347b80fda9b8abeb7913ea6d48dc5858984c3a",
+    "modules/skeletal-effects/src/instance-renderer.ts": "755cb8fcb4525295f7a10d8a0e20ea58c1b05b95b1e1b4c461a2e8d39a1e72d9",
+    "modules/skeletal-effects/src/mesh-renderer.ts": "755cb8fcb4525295f7a10d8a0e20ea58c1b05b95b1e1b4c461a2e8d39a1e72d9",
+    "modules/skeletal-effects/src/renderer.ts": "c123fc416f7d28efea4e3a08c419c9c7b4e0c5da78288d9ccf6392db9f8c8e88",
+    "modules/spatial-compute/scripts/build-package.ts": "4dad16719f869b331f4397b1337b8cd552e2fbeaa796ab20a5a8b4f67bcc7b0f",
+    "modules/spatial-data-effects/src/index.ts": "cecdfdccccb4cae95f9f2a0265f4031c1d9ed4c1fa269d722b389a6777897775",
+    "modules/spatial-data-effects/src/renderer.ts": "755cb8fcb4525295f7a10d8a0e20ea58c1b05b95b1e1b4c461a2e8d39a1e72d9",
+    "modules/spatial-effects/examples-noise/particles.ts": "3ac6551126e7f703af6bdfc4e17b7ca431852b64d347495c1bd406128508f9dd",
+    "modules/spatial-effects/examples-noise/texture.ts": "18d1f91e16283c604973955be5cab83f709e15e5aadbc3579637d201adca8c98",
+    "modules/spatial-effects/examples/native-creation/oracle.tsx": "224b0dba893b1abc4343a3a6ee472aa55fb29c45e2aacb15301d46007fe8945d",
+    "modules/spatial-effects/src/index.ts": "88df7798d6612c091edf2bd6077a9bf79e8d446c056dc897d4d444b95050ebac",
+    "modules/spatial-effects/src/noise-renderer.ts": "15c085f41b5f00d66615737c652e0a539dbb27615fd5e089e557cd53b3519d55",
+    "modules/spatial-effects/src/renderer.ts": "a3d54f58138330f144902250ff7dd25af9bc748164c44a0a5a399b8a8f3c6025",
+    "modules/spatial-fields/index.ts": "7fd0206ba2f0103802f75bed228c0ad744f2e13291ff060d4505887819d853fd",
+    "modules/spatial-fields/scripts/build-package.ts": "f5e8cabc202a81febe62c644ad21aa211e9e34cfdb14757c1b70be7afcc0e02f",
+    "modules/spatial-vfx/scripts/build-package.ts": "99bc4f693a68081ca401218d40e1d4a79c405d04061d63bb1f50e72ef30297fd",
+    "modules/spidermonkey-host/examples/hooks.tsx": "3157078624280f98a3ac018d8197e1f6786acf2510e3d5e55a692ffd56f1b683",
+    "modules/spidermonkey-host/index.ts": "672ec1fe6bdde3ec47e4595e4afe8cd723034c13e8d49daafc156a12ecdce76e",
+    "modules/spidermonkey-host/policy.ts": "3e5d7c353ec1931bac51546fefea5ff59bd9fb126551b7a26267580247fd4f9d",
+    "modules/spidermonkey-host/transport.ts": "163a3bdbbef02523a5f1f8c2921f70cdbb285c65d17fc032fe24c863a1a2c39a",
+    "package-lock.json": "a399c14ea66a374c4fee2f5a1dd6340b1028061694824d89da0cf09a3f585e23",
+    "package.json": "43a451b9044b623dc1138a6ef25965c59c9e790cf1eb7a110d197173a66b843f",
+    "prototypes/performance-gpu-pixel-pass/installed-consumer/consumer.ts": "ca74ce1b88f296e8d1d2fa28f6327132cd47e41be556618abe916affe6516100",
+    "prototypes/performance-gpu-pixel-pass/installed-consumer/node-import.mjs": "c4fea4cdfeb3f75c442f9fc9869d8e8786b096efa6c90ca112745ced9bd65433",
+    "scripts/build-distribution.mjs": "7ae06510c5e98120efedf194af0b764cace8dcf364e4fea46d9d910241b0fd21",
+    "scripts/verify-installed-native-effects.mjs": "c0d5d278b0dfcd06045d213028267c6f33966d668152e8e3bbc17b10beec16b5",
+    "scripts/verify-installed-native-images-v2.mjs": "70f569cc7de191aefa764ceaa983d707d81e4e12104c9afa61116e5534d884f9",
+    "scripts/verify-native-host-integration.ts": "d0fdd2a5f70b34f931c14fafa4669422936619d69d82595c7c6e30d6cfbfe8eb",
+    "scripts/verify-spidermonkey-modules.ts": "f61fd2e07edf755b9a11eed608dc9ccf07694cca8b8e7bf0b0bffc5900d09357",
+    "src/analysis-tools/capabilities.ts": "227972706ba26a1399fc7774c2282f67809d1a5fddfd00bbebdf363dfbdc36df",
+    "src/analysis-tools/preview.ts": "9002a3d04e44a550bd14a6b22ec513d311b237ea9cb6a6801e16b6a6093d108a",
+    "src/capabilities/service.ts": "c3303a2aeeecebdaa1f299ab4f842c9e274b57c3e4c267b6a2e16f9e37834abd",
+    "src/cli-entry.ts": "a72ef8d945f9bbbef2609216eade2e28efe34b86026921b85496702234609e2a",
+    "src/cli.ts": "fa1c1eeb1297c67c2a7a4156c789de38c993bceebb239045fd7c24b1470dc1d5",
+    "src/compiler/build.ts": "5048876156fc960fa9416cb8acbd470de7ce5776278a9b5cf1cf940d886b1179",
+    "src/compiler/flatten.ts": "fb468bed5ec1f0ed94f88a77feaaff8a3845f788ef07e232ad64304659f55789",
+    "src/compiler/typecheck-worker.mjs": "de0654137b1e8616533b5fdcaef1dbfabc0dbef063a848360c1558e11763ec09",
+    "src/core/authoring.ts": "6e609d6912b7edca578c71ea47eb8c607ff56342f5cfd4a6ec7a611ca6a85381",
+    "src/core/engine-inference.ts": "d2e0688a129977afcc77389e4e9095e7bc8b8ab3057431a3d243a3ecd4a3f433",
+    "src/core/graph.ts": "e0ce08d756a2ea1edca5944c870cb00b4328c3fc7087e8de628f0a5ca8c08b0c",
+    "src/core/native-source.ts": "cf92b31afe31b4ba47e66d22b210d24bcb98a9b90770739208f8b2ebb258707e",
+    "src/core/types.ts": "2db9025403fee4c2ce82423248cb1bd55e2406df94799fc3218eb5636ea3e3b7",
+    "src/media/stage.ts": "a6d449e260b671ae07011b00d37e3b9d41f8d740937323a8a4028f451a52dee2",
+    "src/node.ts": "7d2ebe3c89ad36d01761b7b30055dacd95e501826293642e2db5cb4e7389e5a7",
+    "src/packages/flat-runtime.ts": "1abe238df55426b76b92a00981ddda5f9afb4b77d995854208836aa15ec6551b",
+    "src/packages/manifest.ts": "eb38ff9736095c36094a32286f721126694e6b88519651df5c3b261751965919",
+    "src/packages/stage-bindings.ts": "276060f15a89d4316326ea26afda3d0bcbeef28aa6b87cab070025fc87000ee4",
+    "src/plugins/builtin.ts": "cd6f848d5083319f833737dee5d23807444d570dc17f7fb849ee60c47879b5c7",
+    "src/plugins/compiler.ts": "6b48ecb4161ecae8413d7353edd72a727691f886e88e9603abd571783adb71d8",
+    "src/plugins/library.ts": "8ea9e72471c0518173999637bc9c2fd4016213e1a9dcb711d0f2693703c69596",
+    "src/plugins/sdk.ts": "b9c85d57073e120fda533831e2e0762f11483b698885c2668bdde54582fec921",
+    "src/render/renderer.ts": "50231c8fc0554a95b18ebe5dc0c74337ad48d3c461e4ec83642387b64283da10",
+    "src/runtime/distribution.ts": "3f371c810a9b280c39c2a0960aae3b945b26867bd6647ce4e04ee71b320b7336",
+    "src/runtime/execution-policy.ts": "ad72907231f334eef87ba9237e7d82751afff3290e7fe1ea77642074ee648883",
+    "src/workflow.ts": "3082cef7270e151a0b97206715e2efe2a15533b3b82a4b99255020356cbbc142",
+    "tests/audit-fixes.test.ts": "2d9658fddf96ba8e631f9aa8ed6abbbbe3fffc7b9bbf642fb561fa638707bbea",
+    "tests/compiler.test.ts": "5c276acada072606b7d056854dae6e98bfe5a1757d9743abeff2a2d09f65392e",
+    "tests/export-package-bytes.test.ts": "70ca6330be654e1ab3084cc3a5f2c58ea198c22f99e581111d0266db024662c7",
+    "tests/library-export.test.ts": "50f0b8dc79f3b4baffe4c7b6ccaccfdc534b0d5bb0352d7bed7c1ae7d96ee3ef",
+    "tests/main-fwau.test.ts": "f02310345e72ac8450e1fa35bf0c388734e36bc327bd8814431e8683557e2a7e",
+    "tests/main-stage-call.test.ts": "74afc5079f72bbca3f8276518c75a7a000c0779784f5d9ace7939e049c139317",
+    "tests/managed-flat.test.ts": "33734e7255a2f4c7f7f6a953b4abf8b7f2090ec8d1f2759ce4696035772417a8",
+    "tests/managed-import.test.ts": "1484a4103a53c7d288c9d37da3002a74525bfd497fff6e40bfc355a669b08856",
+    "tests/managed-shorthand.test.ts": "cc7e6026ff3465c3cfd228ab5c2776ccf0cdca0ea275853709040722dc40fb51",
+    "tests/native-gpu-audio.test.ts": "e719f85a8095783ab498ddb8cd0edf07f24eaf23915a5ff91b8607b33d82a081",
+    "tests/native-gpu-authoring.test.ts": "dbb1c1fa5658f73d32d482bf6a5de5770dd9567487d440ad7e3a31762d6f4e8a",
+    "tests/native-gpu-packages.test.ts": "76bf378c66c1b0dc8d10de980502ee5265eefaa1931e1b71a361ab782bd662a9",
+    "tests/native-gpu-production.test.ts": "9213f6e27b8c636566743bdc577f6cd54c7dffb94dccb50b3be8e81eb170b871",
+    "tests/native-gpu-security.test.ts": "7023ca614539b614d911f1ea8301bb855d649d798fbc764bc32da9891a9f2375",
+    "tests/native-gpu.test.ts": "da1195b06c3a07d4a2cc5ea8de551f8cfb44ef38a4bd40a6319048434d337b71",
+    "tests/native-only-runtime.test.ts": "01f2cf37af1d3ebd6c52c28b7004b6412b1f0eca130f537dea65a95d9afbf92d",
+    "tests/native-resources.test.ts": "bb0b1d79689daf21cad08a14cf67f617f1a5fa8fd6e599504509f3bc02e15e24",
+    "tests/pme-preview.test.ts": "fee034153edec64e63d926b25e2f551008103e7d50653af401714d9dcbe491b9",
+    "tests/pro-animation-native-transitions-stage.test.ts": "b995f7758700c3a4c04a4c19afca7edc45b91df04f4fadda60128ef04bf0fb3c",
+    "tests/pro-animation-professional.test.ts": "496c7e8d6b239c8702d9f9005719ac34bdd3cf73e5a467293bb6e9557e5adb32",
+    "tests/professional-media.test.ts": "d78eea3e4f8fbff87ee79f1891ae13f846aeaeb82e58e5db88cedbd46a23a6e3",
+    "tests/render-inspection-e2e.test.ts": "044e61047520e3ebaffa4301c5015db275eec8e9f0f1cbd95cd8860321621fc1",
+    "tests/repl.test.ts": "59c53950c5ca3a56625063b0b0d80903cb25241fb87bf0b0a002a06956c24ba6",
+    "tests/single-file.test.ts": "5f11e6a0d0f2d2d2fa24a6f5923cf9bb69c587d2a687fc5bdee1b9036933eb1d",
+    "tests/spatial-effects.test.ts": "045fbb2cf170804fbe1c7aacbd453c3ad79e50e088fb2b357a213d1e6896c66f",
+    "tests/spidermonkey-host.test.ts": "e6d8f532dac34708adea82b4fb1d3c7e200cad0fc64b5b734e99b8d194b436fc",
+    "tools/rust-wasm-kit/kit.mjs": "4d16aefea1eff0652f882aef3d75c5bc9d2867d53352c306dcaacfdbba750ece"
+  },
+  "nativePackage": "native-image-effects@0.5.0",
+  "validation": {
+    "typecheck": {
+      "ok": true,
+      "log": "web-removal-types-final-2.txt.gz"
+    },
+    "regression": {
+      "tests": 25,
+      "pass": 25,
+      "fail": 0,
+      "skipped": 0,
+      "durationMs": 42149.0202,
+      "log": "web-removal-regression-final.txt.gz",
+      "scope": "Native renderer, real JS/React, CPU reference/explicit buffer inputs, actual audio/PNG/EXR/video, borrow lifetime, Web refusal, SM codec. Later packaging-only fixes and final removed-analysis-preview/engine-alternative guards were checked separately; not presented as a single all-repository run."
+    },
+    "initialRegression": {
+      "pass": 24,
+      "fail": 1,
+      "reason": "Removed webBridge stats field still read by the resource test; assertion migrated to absence, numerical assertions retained."
+    },
+    "wasm": {
+      "ok": true,
+      "checks": 3,
+      "wallMs": 2581.5653,
+      "scope": "Real Rust solver WASM under SpiderMonkey, explicit authorization, sealed bytes, deny imports/network/Worker, repeated disposal; Native command recording only in this probe."
+    },
+    "servo": {
+      "ok": true,
+      "hdrOutside": [
+        2,
+        -0.25,
+        0.5,
+        1
+      ],
+      "probe": {
+        "width": 320,
+        "height": 180,
+        "fps": 24,
+        "duration": 0.5,
+        "frames": 12,
+        "decodable": true
+      },
+      "scope": "Native→Servo→Blur→Servo PNG/video; independent Servo SDR overlay on unclipped Native HDR EXR; explicit export materialization remains."
+    },
+    "installation": {
+      "ok": true,
+      "consumer": "C:\\Users\\ASUS\\Documents\\Codex\\fw-native-only-consumer-oqSJBA",
+      "commands": [
+        {
+          "name": "pack",
+          "ok": true,
+          "ms": 5309.7916000000005
+        },
+        {
+          "name": "install",
+          "ok": true,
+          "ms": 15411.850999999999
+        },
+        {
+          "name": "version",
+          "ok": true,
+          "ms": 1547.6237
+        },
+        {
+          "name": "doctor",
+          "ok": true,
+          "ms": 3353.595000000001
+        },
+        {
+          "name": "init",
+          "ok": true,
+          "ms": 2177.5699999999997
+        },
+        {
+          "name": "frame",
+          "ok": true,
+          "ms": 8535.105299999996
+        },
+        {
+          "name": "preview",
+          "ok": true,
+          "ms": 7206.4087
+        },
+        {
+          "name": "analysis-list",
+          "ok": true,
+          "ms": 1780.6263000000035
+        }
+      ],
+      "wallMs": 45452.2044,
+      "ffmpeg": {
+        "provisioning": "explicit private copy; npm postinstall not run",
+        "sha256": "04e1307997530f9cf2fe35cba2ca7e8875ca91da02f89d6c7243df819c94ad00"
+      },
+      "scope": "Actual npm tarball, offline private install, installed bin, version/doctor/init/PNG/3-frame headless preview/analyze list; installed binaries auto-located with explicit host overrides unset."
+    },
+    "failures": [
+      "First installed tarball correctly failed inventory verification: npm omits .npmrc; build collector now excludes this packaging configuration file from copying/sealing. Integrity verification remains enabled.",
+      "Second installation test accidentally supplied an empty FRAMEWEAVE_SPIDERMONKEY; exact same installation passed after removing that test environment override. Final tarball was rebuilt and explicitly reinstalled, then all recorded consumer commands passed."
+    ],
+    "postValidationChanges": "EOF whitespace and evidence only after final installed tarball validation; behavioral source was frozen before that build.",
+    "untested": [
+      "Full repository regression and six export modes",
+      "Linux/macOS",
+      "Interactive visible-window controls in this removal campaign",
+      "Public binary redistribution/license assembly",
+      "Arbitrary browser frameworks/WebGL/async DOM/WASM inside Servo"
+    ],
+    "campaign": {
+      "recordedMs": 403288.20947734383,
+      "limitMs": 420000,
+      "timingSources": "Recorded process/tool/log intervals above; tiny read-only ad hoc probes are not hardware performance measurements.",
+      "rows": [
+        {
+          "name": "types-1",
+          "ms": 9278.4937,
+          "basis": "tool wall time; includes tiny edit/setup overhead where batched"
+        },
+        {
+          "name": "types-2",
+          "ms": 9318.2835,
+          "basis": "tool wall time; includes tiny edit/setup overhead where batched"
+        },
+        {
+          "name": "types-3",
+          "ms": 7206.9169999999995,
+          "basis": "tool wall time; includes tiny edit/setup overhead where batched"
+        },
+        {
+          "name": "types-4",
+          "ms": 6899.4234,
+          "basis": "tool wall time; includes tiny edit/setup overhead where batched"
+        },
+        {
+          "name": "types-5",
+          "ms": 8062.601199999999,
+          "basis": "tool wall time; includes tiny edit/setup overhead where batched"
+        },
+        {
+          "name": "types-6",
+          "ms": 6484.0590999999995,
+          "basis": "tool wall time; includes tiny edit/setup overhead where batched"
+        },
+        {
+          "name": "types-7",
+          "ms": 6446.29,
+          "basis": "tool wall time; includes tiny edit/setup overhead where batched"
+        },
+        {
+          "name": "types-8",
+          "ms": 7028.6032000000005,
+          "basis": "tool wall time; includes tiny edit/setup overhead where batched"
+        },
+        {
+          "name": "types-9",
+          "ms": 7580.4888,
+          "basis": "tool wall time; includes tiny edit/setup overhead where batched"
+        },
+        {
+          "name": "types-final",
+          "ms": 6513.860000000001,
+          "basis": "tool wall time; includes tiny edit/setup overhead where batched"
+        },
+        {
+          "name": "types-final-2",
+          "ms": 6905.4535000000005,
+          "basis": "tool wall time; includes tiny edit/setup overhead where batched"
+        },
+        {
+          "name": "web-removal-cargo-check.txt",
+          "ms": 5515.44091796875,
+          "basis": "unique redirected log creation-to-last-write interval"
+        },
+        {
+          "name": "web-removal-cargo-check-2.txt",
+          "ms": 1580.45849609375,
+          "basis": "unique redirected log creation-to-last-write interval"
+        },
+        {
+          "name": "web-removal-release-build.txt",
+          "ms": 27194.776123046875,
+          "basis": "unique redirected log creation-to-last-write interval"
+        },
+        {
+          "name": "web-removal-debug-build.txt",
+          "ms": 5893.439208984375,
+          "basis": "unique redirected log creation-to-last-write interval"
+        },
+        {
+          "name": "web-removal-distribution-build.txt",
+          "ms": 11951.995849609375,
+          "basis": "unique redirected log creation-to-last-write interval"
+        },
+        {
+          "name": "web-removal-distribution-final.txt",
+          "ms": 8162.833251953125,
+          "basis": "unique redirected log creation-to-last-write interval"
+        },
+        {
+          "name": "web-removal-distribution-final-2.txt",
+          "ms": 8975.49658203125,
+          "basis": "unique redirected log creation-to-last-write interval"
+        },
+        {
+          "name": "web-removal-distribution-release.txt",
+          "ms": 9529.207275390625,
+          "basis": "unique redirected log creation-to-last-write interval"
+        },
+        {
+          "name": "web-removal-prune.txt",
+          "ms": 1807.2333984375,
+          "basis": "unique redirected log creation-to-last-write interval"
+        },
+        {
+          "name": "npm lock-only",
+          "ms": 1186.4082,
+          "basis": "tool wall time"
+        },
+        {
+          "name": "targeted",
+          "ms": 9751.7182,
+          "basis": "raw TAP execution duration"
+        },
+        {
+          "name": "regression",
+          "ms": 41804.0322,
+          "basis": "raw TAP execution duration"
+        },
+        {
+          "name": "regression-final",
+          "ms": 42149.0202,
+          "basis": "raw TAP execution duration"
+        },
+        {
+          "name": "installFailure1",
+          "ms": 21521.5483,
+          "basis": "raw consumer harness wall time; failures and resume counted"
+        },
+        {
+          "name": "installFailure2",
+          "ms": 36471.670699999995,
+          "basis": "raw consumer harness wall time; failures and resume counted"
+        },
+        {
+          "name": "installBeforeFinal",
+          "ms": 21522.453700000002,
+          "basis": "raw consumer harness wall time; failures and resume counted"
+        },
+        {
+          "name": "install",
+          "ms": 45452.2044,
+          "basis": "raw consumer harness wall time; failures and resume counted"
+        },
+        {
+          "name": "servo-media",
+          "ms": 18513.315673828125,
+          "basis": "unique redirected log interval, includes setup/compile/encode/decode"
+        },
+        {
+          "name": "wasm",
+          "ms": 2580.4834,
+          "basis": "raw harness wall time"
+        }
+      ]
+    },
+    "postTypesInlineCases": {
+      "ok": true,
+      "cases": [
+        "dual web/native requirements resolve Native",
+        "web-only requirement explicitly rejects"
+      ]
+    }
+  },
+  "compatibility": {
+    "legacyWeb": "Explicit E_WEB_REMOVED, no implicit conversion to Servo or Node",
+    "locks": "No existing project/SDK/trust locks silently refreshed",
+    "native": "Shader algorithms, Surface/TVG/media/audio semantics and GPU owner retained",
+    "templates": "Old browser Rust/WASM init retired; underlying ABI/build/license sources and Native solver WASM retained",
+    "face": "Chromium face adapter unavailable; brightness/C3 remain"
+  },
+  "safety": {
+    "servo": "Existing trusted-local SDR profile, network/CSP and native provenance unchanged",
+    "spidermonkey": "Existing AppContainer, verified resources, default-deny WASM and deadline preserved",
+    "gpu": "Web-specific image readback command/PNG bridge removed; explicit media/data export and diagnostic build gate retained"
+  },
+  "baselineUntrackedPreserved": [
+    "outputs/",
+    "work/",
+    "prototypes/performance-*"
+  ]
+}

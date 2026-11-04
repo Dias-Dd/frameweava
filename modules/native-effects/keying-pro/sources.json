@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "upstream": {
+    "project": "EffectCraft",
+    "commit": "ec7ced1f0515f0b6f376dbcc297f1c441f452d6e",
+    "license": "MIT",
+    "provenance": "modules/native-effects/keying/sources.json",
+    "qualifiedKeyingSourceCommit": "a419897c86c6d85818d4c43cbca7b15a157f4f08"
+  },
+  "newImplementation": "Native control compositions and screened edge-weighted Dirichlet equations; no proprietary binary or model copied",
+  "reuse": [
+    {
+      "file": "modules/native-effects/keying/kernels.ts",
+      "sha256": "02f6685e4b628bdc4c9272f005a6dca69b035ec35b2babef2bc97d53719a5315"
+    },
+    {
+      "file": "modules/native-effects/keying/runtime.ts",
+      "sha256": "6aaf272b7ca0cd9ecf88a7893434b15fea7ce70f19fc74525f40f26ba8d846bc"
+    },
+    {
+      "file": "modules/native-effects/keying/reference.ts",
+      "sha256": "54b50081f78acf1cb9315dd024b38864da0e416db356577846717743b864034f"
+    },
+    {
+      "file": "modules/gpu-image-effects/resident/foundations/filters.ts",
+      "sha256": "09c4360ede287a3dcdce955628ea3b2ef80f8adeda8decb693d9c69605a1ea56"
+    },
+    {
+      "file": "modules/gpu-image-effects/resident/foundations/reference.ts",
+      "sha256": "e8cb00a74dfa675df276f6291838be839ef0df90dcef4d5d44d8aee89825ed1e"
+    },
+    {
+      "file": "modules/native-effects/images.ts",
+      "sha256": "eca249ab56935eeec5b21ae8160354fde55bd60e0d387983142ca376a4ceb1e6"
+    }
+  ],
+  "inferenceDependency": {
+    "sourceCommit": "bd188034faf758dab2a1eec7198993323240fd7e",
+    "evidenceCommit": "d59123d2a206bd599bd2af7e75965558b82f0582",
+    "availableInThisBaseline": false,
+    "status": "Frozen Agent-1 Native API confirmed; no neural Roto model qualified in this checkpoint; no workspace synchronization performed"
+  }
+}

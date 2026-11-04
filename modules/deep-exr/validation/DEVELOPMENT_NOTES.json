@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "finiteUserScope": "Finish VDB and Deep EXR, then stop",
+  "developmentFailures": [
+    "Initial CMake reconfiguration found its own uninstalled ImathConfig; fixed by forcing the pinned internal dependency targets, without touching upstream sources",
+    "Python scalar np.float32 metadata unsupported by binding; used actual Python float to preserve EXR FLOAT metadata",
+    "Initial IO type-check and JSON tuple cast failed; added a validating Deep source data helper rather than bypassing the compiler",
+    "Restore CLI initially omitted mandatory local catalog; corrected to explicit copied catalog, not a new cache/restore mechanism",
+    "First performance harness accidentally passed resource field to Core-only layout validator; fixed harness conversion, workload unchanged",
+    "Visual inspection found an authored video Stage logical-size mismatch producing black frames; fixed explicit Stage width/height and added visible-content assertion"
+  ],
+  "unchangedAssertions": "No prior tests or numerical tolerance relaxed",
+  "remaining": [
+    "NanoVDB Float raw only, not a generic OpenVDB .vdb/container converter",
+    "Deep GPU surface points only; no volumetric depth-interval/holdout or cross-image depth-interleaving compositor",
+    "Deep tiled mip/ripmap and opaque/double metadata writeback need explicit future adapters",
+    "Only Windows/NVIDIA measured; full installed-engine/catalog/six-mode acceptance remains Main-owned"
+  ]
+}

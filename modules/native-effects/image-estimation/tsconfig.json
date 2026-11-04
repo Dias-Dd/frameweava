@@ -1,0 +1,1 @@
+{"extends":"../../../tsconfig.json","include":["./*.ts","../examples/image-estimation*.tsx"],"exclude":["./vendor"]}

@@ -1,0 +1,10 @@
+import{mkdirSync,readFileSync,writeFileSync,existsSync}from'node:fs';
+import{resolve}from'node:path';import{spawnSync}from'node:child_process';
+const root=resolve('.'),dir=resolve('.frameweave/inference-outputs');mkdirSync(dir,{recursive:true});
+const[name,...args]=process.argv.slice(2),file=dir+'/campaign.json';
+const record=existsSync(file)?JSON.parse(readFileSync(file,'utf8')):{version:1,baseCommit:'8ea45f637f895d7ffbbd6153a8dcb6ad858cfe0c',seconds:0,commands:[]};
+if(!name||!args.length||record.seconds>=420)throw Error('Named command and remaining campaign budget required');
+const start=performance.now();const run=spawnSync(process.execPath,args,{cwd:root,encoding:'utf8',windowsHide:true,env:{...process.env,FRAMEWEAVE_INFERENCE_RUNTIME:root+'/.frameweave/inference/runtime',FRAMEWEAVE_HOME:root+'/.frameweave/user-home',FRAMEWEAVE_SPIDERMONKEY:root+'/.frameweave/spidermonkey-target/debug/frameweave-spidermonkey-host.exe',FRAMEWEAVE_MEDIA_RUNTIME:root+'/.frameweave/native-media/runtime',FRAMEWEAVE_MEDIA_PYTHON:root+'/.frameweave/pme-python/Scripts/python.exe',FRAMEWEAVE_FFPROBE:process.env.FRAMEWEAVE_FFPROBE??'C:/Users/ASUS/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-9.0.2-full_build/bin/ffprobe.exe'},timeout:Math.floor((419-record.seconds)*1000),maxBuffer:32*1024**2});
+const seconds=(performance.now()-start)/1000,log=name+'-'+record.commands.length+'.txt';
+writeFileSync(dir+'/'+log,(run.stdout??'')+(run.stderr??'')+(run.error?'\n'+run.error:''));record.seconds+=seconds;record.commands.push({name,args,sourceCommit:spawnSync('git',['rev-parse','HEAD'],{encoding:'utf8',windowsHide:true}).stdout.trim(),seconds,exitCode:run.status??1,log});writeFileSync(file,JSON.stringify(record,null,2)+'\n');
+process.stdout.write((run.stdout??'')+(run.stderr??''));console.error(JSON.stringify({campaignSeconds:record.seconds,exitCode:run.status,log}));process.exitCode=run.status??1;

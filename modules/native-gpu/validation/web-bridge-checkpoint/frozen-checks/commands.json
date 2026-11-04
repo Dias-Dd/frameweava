@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "sourceCommit": "500cc27d5fcfeb3f1a19bc99f1408457e9468603",
+  "platform": "win32",
+  "node": "v22.19.0",
+  "wallMs": 126575.1828,
+  "results": [
+    {
+      "name": "types",
+      "args": [
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "--pretty",
+        "false"
+      ],
+      "code": 0,
+      "timedOut": false,
+      "wallMs": 8914.330600000001
+    },
+    {
+      "name": "stages-and-native-regressions",
+      "args": [
+        "--import",
+        "tsx",
+        "--test",
+        "--test-concurrency=1",
+        "tests/native-web-bridge.test.ts",
+        "tests/native-gpu-v2.test.ts",
+        "tests/native-gpu-production.test.ts",
+        "tests/native-gpu-composite.test.ts",
+        "tests/native-gpu-export.test.ts",
+        "tests/native-gpu-security.test.ts",
+        "tests/native-gpu-audio.test.ts",
+        "tests/native-gpu-authoring.test.ts",
+        "tests/native-gpu-cancellation.test.ts"
+      ],
+      "code": 0,
+      "timedOut": false,
+      "wallMs": 117660.2453
+    }
+  ],
+  "ok": true,
+  "scope": "Named Stage bridge and native regressions only; no whole-repository or independent-install claim."
+}

@@ -1,0 +1,51 @@
+#[path="../../modules/native-gpu/src/external_windows.rs"]mod external;
+use external::{Result,ownership,general,wait,signal};
+use std::{mem::{MaybeUninit,ManuallyDrop},time::{Instant,Duration}};
+#[repr(C)]struct Lease{version:u32,width:u32,height:u32,profile:u32,input:usize,output:usize,fence:usize,id:u64,initial:u64}
+type Open=unsafe extern "C" fn(u64,*const u8,usize,*mut Lease)->u64;
+type Render=unsafe extern "C" fn(u64,*const u8,usize,*const u8,usize,u64,u64)->i32;
+type Error=unsafe extern "C" fn(*mut u8,usize)->usize;
+type Close=unsafe extern "C" fn(u64)->i32;
+type Shutdown=unsafe extern "C" fn()->i32;
+type Stats=unsafe extern "C" fn(*mut u8,usize)->usize;
+struct ShutdownGuard(Shutdown);
+impl Drop for ShutdownGuard{fn drop(&mut self){unsafe{(self.0)();}}}
+fn check(value:i32,error:Error)->Result<()>{if value<0{let mut b=[0u8;8192];let n=unsafe{error(b.as_mut_ptr(),b.len())};return Err(String::from_utf8_lossy(&b[..n]).into_owned().into());}Ok(())}
+fn main(){if let Err(error)=pollster::block_on(run()){eprintln!("{error}");std::process::exit(1);}}
+async fn run()->Result<()>{unsafe{
+ let instance=wgpu::Instance::new(wgpu::InstanceDescriptor{backends:wgpu::Backends::VULKAN,..wgpu::InstanceDescriptor::new_without_display_handle()});
+ let adapter=instance.request_adapter(&wgpu::RequestAdapterOptions{power_preference:wgpu::PowerPreference::HighPerformance,..Default::default()}).await?;println!("adapter={:?}",adapter.get_info());let(device,queue,luid)=external::open_device(&adapter).await?;
+ let file=std::fs::canonicalize(std::env::var("FRAMEWEAVE_SERVO_DLL").unwrap_or_else(|_|".frameweave/servo-runtime/frameweave_servo.dll".into()))?;
+ // Keep the DLL loaded until process exit, including failed assertions. Servo
+ // owns background threads: an error must not unload their executable code.
+ let lib:libloading::Library=libloading::os::windows::Library::load_with_flags(file,0x100|0x800)?.into();
+ let lib=ManuallyDrop::new(lib);
+ let open:Open=*lib.get(b"fw_servo_open")?;let render:Render=*lib.get(b"fw_servo_render")?;let error:Error=*lib.get(b"fw_servo_error")?;let close:Close=*lib.get(b"fw_servo_close")?;let shutdown:Shutdown=*lib.get(b"fw_servo_shutdown")?;let stats:Stats=*lib.get(b"fw_servo_stats")?;
+ let _shutdown=ShutdownGuard(shutdown);
+ let config=serde_json::json!({"version":1,"profile":"sdr-srgb8","width":64,"height":32,"html":"<img style='position:absolute;inset:0;width:100%;height:100%' src='{{frameweave.input}}'><div id='marker' style='position:absolute;left:0;top:0;width:16px;height:100%;background:red'></div>","javascript":"window.frameweaveRender=(c,p)=>{document.getElementById('marker').style.backgroundColor=c.frame%2?'rgb(0,255,0)':'rgb(255,0,0)';}","input":true,"namespace":"a".repeat(64),"timeoutMs":3000,"clockScript":std::fs::read_to_string(".frameweave/servo-import/clock.js")?,"seed":1}).to_string();
+ let start=Instant::now();let mut lease=MaybeUninit::<Lease>::uninit();let id=open(luid,config.as_ptr(),config.len(),lease.as_mut_ptr());if id==0{check(-1,error)?;}let lease=lease.assume_init();assert_eq!(lease.version,1);println!("initialized_ms={:.3}",start.elapsed().as_secs_f64()*1000.);
+ let input=external::import_bgra8(&device,lease.input,64,32)?;let output=external::import_bgra8(&device,lease.output,64,32)?;let fence=external::import_fence(&device,lease.fence)?;
+ let bytes=64*32*16;let source=device.create_buffer(&wgpu::BufferDescriptor{label:Some("native F32 source"),size:bytes,usage:wgpu::BufferUsages::STORAGE|wgpu::BufferUsages::COPY_SRC,mapped_at_creation:false});
+ let float=device.create_buffer(&wgpu::BufferDescriptor{label:Some("native F32 output"),size:bytes,usage:wgpu::BufferUsages::STORAGE|wgpu::BufferUsages::COPY_SRC,mapped_at_creation:false});
+ let uniform=device.create_buffer(&wgpu::BufferDescriptor{label:None,size:16,usage:wgpu::BufferUsages::UNIFORM|wgpu::BufferUsages::COPY_DST,mapped_at_creation:false});let mut dimensions=vec![];for n in [64u32,32,0,0]{dimensions.extend_from_slice(&n.to_le_bytes());}queue.write_buffer(&uniform,0,&dimensions);
+ let generator=device.create_shader_module(wgpu::ShaderModuleDescriptor{label:None,source:wgpu::ShaderSource::Wgsl("@group(0) @binding(0) var<storage,read_write> image:array<vec4f>; @compute @workgroup_size(64) fn main(@builtin(global_invocation_id) p:vec3u){if p.x<2048u{image[p.x]=vec4f(2.,-.25,.5,1.);}}".into())});
+ let source_pipeline=device.create_compute_pipeline(&wgpu::ComputePipelineDescriptor{label:None,layout:None,module:&generator,entry_point:Some("main"),compilation_options:Default::default(),cache:None});let source_group=device.create_bind_group(&wgpu::BindGroupDescriptor{label:None,layout:&source_pipeline.get_bind_group_layout(0),entries:&[wgpu::BindGroupEntry{binding:0,resource:source.as_entire_binding()}]});
+ let encode=device.create_shader_module(wgpu::ShaderModuleDescriptor{label:None,source:wgpu::ShaderSource::Wgsl(include_str!("../../modules/servo/native/interop.wgsl").into())});
+ let encode_pipeline=device.create_render_pipeline(&wgpu::RenderPipelineDescriptor{label:None,layout:None,vertex:wgpu::VertexState{module:&encode,entry_point:Some("vertex"),compilation_options:Default::default(),buffers:&[]},primitive:Default::default(),depth_stencil:None,multisample:Default::default(),fragment:Some(wgpu::FragmentState{module:&encode,entry_point:Some("to_servo"),compilation_options:Default::default(),targets:&[Some(wgpu::ColorTargetState{format:wgpu::TextureFormat::Bgra8Unorm,blend:None,write_mask:wgpu::ColorWrites::ALL})]}),multiview_mask:None,cache:None});
+ let encode_group=device.create_bind_group(&wgpu::BindGroupDescriptor{label:None,layout:&encode_pipeline.get_bind_group_layout(0),entries:&[wgpu::BindGroupEntry{binding:0,resource:source.as_entire_binding()},wgpu::BindGroupEntry{binding:1,resource:uniform.as_entire_binding()}]});
+ let decode=device.create_shader_module(wgpu::ShaderModuleDescriptor{label:None,source:wgpu::ShaderSource::Wgsl(include_str!("../../modules/servo/native/from-servo.wgsl").into())});let decode_pipeline=device.create_compute_pipeline(&wgpu::ComputePipelineDescriptor{label:None,layout:None,module:&decode,entry_point:Some("from_servo"),compilation_options:Default::default(),cache:None});let output_view=output.create_view(&Default::default());
+ let decode_group=device.create_bind_group(&wgpu::BindGroupDescriptor{label:None,layout:&decode_pipeline.get_bind_group_layout(0),entries:&[wgpu::BindGroupEntry{binding:0,resource:wgpu::BindingResource::TextureView(&output_view)},wgpu::BindGroupEntry{binding:1,resource:float.as_entire_binding()},wgpu::BindGroupEntry{binding:2,resource:uniform.as_entire_binding()}]});
+ let frames=[0,3,0];let snapshot=device.create_buffer(&wgpu::BufferDescriptor{label:Some("diagnostic snapshots"),size:bytes*4,usage:wgpu::BufferUsages::COPY_DST|wgpu::BufferUsages::MAP_READ,mapped_at_creation:false});
+ wait(&queue,fence,lease.initial);let mut times=vec![];
+ for (n,frame) in frames.into_iter().enumerate(){let start=Instant::now();let mut commands=device.create_command_encoder(&Default::default());{let mut pass=commands.begin_compute_pass(&Default::default());pass.set_pipeline(&source_pipeline);pass.set_bind_group(0,&source_group,&[]);pass.dispatch_workgroups(32,1,1);}
+ let input_view=input.create_view(&Default::default());{let mut pass=commands.begin_render_pass(&wgpu::RenderPassDescriptor{color_attachments:&[Some(wgpu::RenderPassColorAttachment{view:&input_view,depth_slice:None,resolve_target:None,ops:wgpu::Operations{load:wgpu::LoadOp::Clear(wgpu::Color::TRANSPARENT),store:wgpu::StoreOp::Store}})],..Default::default()});pass.set_pipeline(&encode_pipeline);pass.set_bind_group(0,&encode_group,&[]);pass.draw(0..3,0..1);}
+ general(&mut commands,&input);let before=ownership(&device,&input,true);let after=ownership(&device,&input,false);let input_value=2+n as u64*2;let output_value=input_value+1;signal(&queue,fence,input_value);queue.submit([before,commands.finish(),after]);
+ let context=serde_json::json!({"frame":frame,"globalFrame":frame,"time":frame as f64/60.}).to_string();let params=b"{}";check(render(id,context.as_ptr(),context.len(),params.as_ptr(),params.len(),input_value,output_value),error)?;
+ let mut commands=device.create_command_encoder(&Default::default());{let mut pass=commands.begin_compute_pass(&Default::default());pass.set_pipeline(&decode_pipeline);pass.set_bind_group(0,&decode_group,&[]);pass.dispatch_workgroups(8,4,1);}
+ commands.copy_buffer_to_buffer(&float,0,&snapshot,n as u64*bytes,bytes);if n==2{commands.copy_buffer_to_buffer(&source,0,&snapshot,3*bytes,bytes);}general(&mut commands,&output);let before=ownership(&device,&output,true);let after=ownership(&device,&output,false);wait(&queue,fence,output_value);queue.submit([before,commands.finish(),after]);times.push(start.elapsed().as_secs_f64()*1000.);
+ }
+ let(tx,rx)=std::sync::mpsc::channel();snapshot.slice(..).map_async(wgpu::MapMode::Read,move|r|{let _=tx.send(r);});let deadline=Instant::now();loop{device.poll(wgpu::PollType::Poll)?;if let Ok(result)=rx.try_recv(){result?;break;}if deadline.elapsed()>Duration::from_secs(15){return Err("native/Servo GPU completion timeout".into());}std::thread::sleep(Duration::from_millis(1));}
+ let values=snapshot.slice(..).get_mapped_range()?;let pixel=|frame:usize,x:usize|{let offset=frame*bytes as usize+(16*64+x)*16;let mut p=[0.;4];for c in 0..4{p[c]=f32::from_le_bytes(values[offset+c*4..offset+c*4+4].try_into().unwrap());}p};
+ println!("frame0 left={:?} right={:?}; frame3 left={:?}; source={:?}; enqueue_ms={times:?}",pixel(0,8),pixel(0,48),pixel(1,8),pixel(3,48));assert_eq!(pixel(0,8),[1.,0.,0.,1.]);assert_eq!(pixel(1,8),[0.,1.,0.,1.]);assert_eq!(pixel(3,48),[2.,-0.25,0.5,1.]);assert_eq!(&values[..bytes as usize],&values[2*bytes as usize..3*bytes as usize]);drop(values);snapshot.unmap();
+ let mut report=vec![0u8;32768];let len=stats(report.as_mut_ptr(),report.len());println!("servo_stats={}",String::from_utf8_lossy(&report[..len]));drop(decode_group);drop(output_view);drop(input);drop(output);device.poll(wgpu::PollType::wait_indefinitely())?;external::destroy_fence(&device,fence);check(close(id),error)?;check(shutdown(),error)?;println!("real Servo/Vulkan F32 GPU chain PASS; one final diagnostic mapping; frame0/3/0 exact");Ok(())
+}}

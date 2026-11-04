@@ -1,0 +1,2 @@
+import {Composition,Stage,Layer,ref} from '@frameweave/engine';import {temporalStage} from '../temporal-restoration/stage.ts';export {temporalStage};
+export default <Composition width={13} height={9} fps={{num:30000,den:1001}} durationInFrames={240} seed={0} background="transparent"><Stage id="temporal" factory={temporalStage} props={{reference:true}}/><Layer source={ref('temporal')}/></Composition>;

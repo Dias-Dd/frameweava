@@ -1,0 +1,1426 @@
+{
+  "version": 1,
+  "source": "https://helpx.adobe.com/after-effects/desktop/apply-effects-and-animation-presets/effects-and-animation-presets/effect-list.html",
+  "sourceUpdated": "2026-05-13",
+  "retrievedOn": "2026-11-03",
+  "intake": "Complete canonical page table rows retrieved through web reader. Direct HTTP request was denied; no claim of an original-HTML byte hash.",
+  "effects": [
+    {
+      "category": "Audio",
+      "name": "Backwards",
+      "sourceLine": 739
+    },
+    {
+      "category": "Audio",
+      "name": "Bass & Treble",
+      "sourceLine": 740
+    },
+    {
+      "category": "Audio",
+      "name": "Delay",
+      "sourceLine": 741
+    },
+    {
+      "category": "Audio",
+      "name": "Flange & Chorus",
+      "sourceLine": 742
+    },
+    {
+      "category": "Audio",
+      "name": "High-Low Pass",
+      "sourceLine": 743
+    },
+    {
+      "category": "Audio",
+      "name": "Modulator",
+      "sourceLine": 744
+    },
+    {
+      "category": "Audio",
+      "name": "Parametric EQ",
+      "sourceLine": 745
+    },
+    {
+      "category": "Audio",
+      "name": "Reverb",
+      "sourceLine": 746
+    },
+    {
+      "category": "Audio",
+      "name": "Stereo Mixer",
+      "sourceLine": 747
+    },
+    {
+      "category": "Audio",
+      "name": "Tone",
+      "sourceLine": 748
+    },
+    {
+      "category": "Blur & Sharpen",
+      "name": "Bilateral Blur",
+      "sourceLine": 751
+    },
+    {
+      "category": "Blur & Sharpen",
+      "name": "Camera Lens Blur",
+      "sourceLine": 752
+    },
+    {
+      "category": "Blur & Sharpen",
+      "name": "Camera-Shake Deblur",
+      "sourceLine": 753
+    },
+    {
+      "category": "Blur & Sharpen",
+      "name": "CC Cross Blur",
+      "sourceLine": 754
+    },
+    {
+      "category": "Blur & Sharpen",
+      "name": "CC Radial Blur",
+      "sourceLine": 755
+    },
+    {
+      "category": "Blur & Sharpen",
+      "name": "CC Radial Fast Blur",
+      "sourceLine": 756
+    },
+    {
+      "category": "Blur & Sharpen",
+      "name": "CC Vector Blur",
+      "sourceLine": 757
+    },
+    {
+      "category": "Blur & Sharpen",
+      "name": "Channel Blur",
+      "sourceLine": 758
+    },
+    {
+      "category": "Blur & Sharpen",
+      "name": "Compound Blur",
+      "sourceLine": 759
+    },
+    {
+      "category": "Blur & Sharpen",
+      "name": "Directional Blur",
+      "sourceLine": 760
+    },
+    {
+      "category": "Blur & Sharpen",
+      "name": "Fast Box Blur",
+      "sourceLine": 761
+    },
+    {
+      "category": "Blur & Sharpen",
+      "name": "Gaussian Blur",
+      "sourceLine": 762
+    },
+    {
+      "category": "Blur & Sharpen",
+      "name": "Radial Blur",
+      "sourceLine": 763
+    },
+    {
+      "category": "Blur & Sharpen",
+      "name": "Sharpen",
+      "sourceLine": 764
+    },
+    {
+      "category": "Blur & Sharpen",
+      "name": "Smart Blur",
+      "sourceLine": 765
+    },
+    {
+      "category": "Blur & Sharpen",
+      "name": "Unsharp Mask",
+      "sourceLine": 766
+    },
+    {
+      "category": "Boris FX Mocha",
+      "name": "Mocha AE",
+      "sourceLine": 769
+    },
+    {
+      "category": "Channel",
+      "name": "Arithmetic",
+      "sourceLine": 772
+    },
+    {
+      "category": "Channel",
+      "name": "Blend",
+      "sourceLine": 773
+    },
+    {
+      "category": "Channel",
+      "name": "Calculations",
+      "sourceLine": 774
+    },
+    {
+      "category": "Channel",
+      "name": "CC Composite",
+      "sourceLine": 775
+    },
+    {
+      "category": "Channel",
+      "name": "Channel Combiner",
+      "sourceLine": 776
+    },
+    {
+      "category": "Channel",
+      "name": "Compound Arithmetic",
+      "sourceLine": 777
+    },
+    {
+      "category": "Channel",
+      "name": "Invert",
+      "sourceLine": 778
+    },
+    {
+      "category": "Channel",
+      "name": "Minimax",
+      "sourceLine": 779
+    },
+    {
+      "category": "Channel",
+      "name": "Remove Color Matting",
+      "sourceLine": 780
+    },
+    {
+      "category": "Channel",
+      "name": "Set Channels",
+      "sourceLine": 781
+    },
+    {
+      "category": "Channel",
+      "name": "Set Matte",
+      "sourceLine": 782
+    },
+    {
+      "category": "Channel",
+      "name": "Shift Channels",
+      "sourceLine": 783
+    },
+    {
+      "category": "Channel",
+      "name": "Solid Composite",
+      "sourceLine": 784
+    },
+    {
+      "category": "CINEMA 4D",
+      "name": "CINEWARE",
+      "sourceLine": 787
+    },
+    {
+      "category": "Color Correction",
+      "name": "Auto Color",
+      "sourceLine": 790
+    },
+    {
+      "category": "Color Correction",
+      "name": "Auto Contrast",
+      "sourceLine": 791
+    },
+    {
+      "category": "Color Correction",
+      "name": "Auto Levels",
+      "sourceLine": 792
+    },
+    {
+      "category": "Color Correction",
+      "name": "Black & White",
+      "sourceLine": 793
+    },
+    {
+      "category": "Color Correction",
+      "name": "Brightness & Contrast",
+      "sourceLine": 794
+    },
+    {
+      "category": "Color Correction",
+      "name": "Broadcast Colors",
+      "sourceLine": 795
+    },
+    {
+      "category": "Color Correction",
+      "name": "CC Color Neutralizer",
+      "sourceLine": 796
+    },
+    {
+      "category": "Color Correction",
+      "name": "CC Color Offset",
+      "sourceLine": 797
+    },
+    {
+      "category": "Color Correction",
+      "name": "CC Kernel",
+      "sourceLine": 798
+    },
+    {
+      "category": "Color Correction",
+      "name": "CC Toner",
+      "sourceLine": 799
+    },
+    {
+      "category": "Color Correction",
+      "name": "Change Color",
+      "sourceLine": 800
+    },
+    {
+      "category": "Color Correction",
+      "name": "Change to Color",
+      "sourceLine": 801
+    },
+    {
+      "category": "Color Correction",
+      "name": "Channel Mixer",
+      "sourceLine": 802
+    },
+    {
+      "category": "Color Correction",
+      "name": "Color Balance",
+      "sourceLine": 803
+    },
+    {
+      "category": "Color Correction",
+      "name": "Color Balance (HLS)",
+      "sourceLine": 804
+    },
+    {
+      "category": "Color Correction",
+      "name": "Color Link",
+      "sourceLine": 805
+    },
+    {
+      "category": "Color Correction",
+      "name": "Color Stabilizer",
+      "sourceLine": 806
+    },
+    {
+      "category": "Color Correction",
+      "name": "Colorama",
+      "sourceLine": 807
+    },
+    {
+      "category": "Color Correction",
+      "name": "Curves",
+      "sourceLine": 808
+    },
+    {
+      "category": "Color Correction",
+      "name": "Equalize",
+      "sourceLine": 809
+    },
+    {
+      "category": "Color Correction",
+      "name": "Exposure",
+      "sourceLine": 810
+    },
+    {
+      "category": "Color Correction",
+      "name": "Gamma/Pedestal/Gain",
+      "sourceLine": 811
+    },
+    {
+      "category": "Color Correction",
+      "name": "Hue/Saturation",
+      "sourceLine": 812
+    },
+    {
+      "category": "Color Correction",
+      "name": "Leave Color",
+      "sourceLine": 813
+    },
+    {
+      "category": "Color Correction",
+      "name": "Levels",
+      "sourceLine": 814
+    },
+    {
+      "category": "Color Correction",
+      "name": "Levels (Individual Controls)",
+      "sourceLine": 815
+    },
+    {
+      "category": "Color Correction",
+      "name": "Lumetri Color",
+      "sourceLine": 816
+    },
+    {
+      "category": "Color Correction",
+      "name": "Photo Filter",
+      "sourceLine": 817
+    },
+    {
+      "category": "Color Correction",
+      "name": "PS Arbitrary Map",
+      "sourceLine": 818
+    },
+    {
+      "category": "Color Correction",
+      "name": "Selective Color",
+      "sourceLine": 819
+    },
+    {
+      "category": "Color Correction",
+      "name": "Shadow/Highlight",
+      "sourceLine": 820
+    },
+    {
+      "category": "Color Correction",
+      "name": "Tint",
+      "sourceLine": 821
+    },
+    {
+      "category": "Color Correction",
+      "name": "Tritone",
+      "sourceLine": 822
+    },
+    {
+      "category": "Color Correction",
+      "name": "Vibrance",
+      "sourceLine": 823
+    },
+    {
+      "category": "Color Correction",
+      "name": "Video Limiter",
+      "sourceLine": 824
+    },
+    {
+      "category": "Distort",
+      "name": "Bezier Warp",
+      "sourceLine": 827
+    },
+    {
+      "category": "Distort",
+      "name": "Bulge",
+      "sourceLine": 828
+    },
+    {
+      "category": "Distort",
+      "name": "CC Bend It",
+      "sourceLine": 829
+    },
+    {
+      "category": "Distort",
+      "name": "CC Bender",
+      "sourceLine": 830
+    },
+    {
+      "category": "Distort",
+      "name": "CC Blobbylize",
+      "sourceLine": 831
+    },
+    {
+      "category": "Distort",
+      "name": "CC Flo Motion",
+      "sourceLine": 832
+    },
+    {
+      "category": "Distort",
+      "name": "CC Griddler",
+      "sourceLine": 833
+    },
+    {
+      "category": "Distort",
+      "name": "CC Lens",
+      "sourceLine": 834
+    },
+    {
+      "category": "Distort",
+      "name": "CC Page Turn",
+      "sourceLine": 835
+    },
+    {
+      "category": "Distort",
+      "name": "CC Power Pin",
+      "sourceLine": 836
+    },
+    {
+      "category": "Distort",
+      "name": "CC Ripple Pulse",
+      "sourceLine": 837
+    },
+    {
+      "category": "Distort",
+      "name": "CC Slant",
+      "sourceLine": 841
+    },
+    {
+      "category": "Distort",
+      "name": "CC Smear",
+      "sourceLine": 845
+    },
+    {
+      "category": "Distort",
+      "name": "CC Split",
+      "sourceLine": 849
+    },
+    {
+      "category": "Distort",
+      "name": "CC Split 2",
+      "sourceLine": 853
+    },
+    {
+      "category": "Distort",
+      "name": "CC Tiler",
+      "sourceLine": 857
+    },
+    {
+      "category": "Distort",
+      "name": "Corner Pin",
+      "sourceLine": 861
+    },
+    {
+      "category": "Distort",
+      "name": "Detail-preserving Upscale",
+      "sourceLine": 864
+    },
+    {
+      "category": "Distort",
+      "name": "Displacement Map",
+      "sourceLine": 867
+    },
+    {
+      "category": "Distort",
+      "name": "Liquify",
+      "sourceLine": 870
+    },
+    {
+      "category": "Distort",
+      "name": "Magnify",
+      "sourceLine": 873
+    },
+    {
+      "category": "Distort",
+      "name": "Mesh Warp",
+      "sourceLine": 876
+    },
+    {
+      "category": "Distort",
+      "name": "Mirror",
+      "sourceLine": 879
+    },
+    {
+      "category": "Distort",
+      "name": "Offset",
+      "sourceLine": 883
+    },
+    {
+      "category": "Distort",
+      "name": "Optics Compensation",
+      "sourceLine": 887
+    },
+    {
+      "category": "Distort",
+      "name": "Polar Coordinates",
+      "sourceLine": 890
+    },
+    {
+      "category": "Distort",
+      "name": "Reshape",
+      "sourceLine": 894
+    },
+    {
+      "category": "Distort",
+      "name": "Ripple",
+      "sourceLine": 897
+    },
+    {
+      "category": "Distort",
+      "name": "Rolling Shutter Repair",
+      "sourceLine": 901
+    },
+    {
+      "category": "Distort",
+      "name": "Smear",
+      "sourceLine": 904
+    },
+    {
+      "category": "Distort",
+      "name": "Spherize",
+      "sourceLine": 907
+    },
+    {
+      "category": "Distort",
+      "name": "Transform",
+      "sourceLine": 910
+    },
+    {
+      "category": "Distort",
+      "name": "Turbulent Displace",
+      "sourceLine": 914
+    },
+    {
+      "category": "Distort",
+      "name": "Twirl",
+      "sourceLine": 917
+    },
+    {
+      "category": "Distort",
+      "name": "Warp",
+      "sourceLine": 921
+    },
+    {
+      "category": "Distort",
+      "name": "Warp Stabilizer",
+      "sourceLine": 924
+    },
+    {
+      "category": "Distort",
+      "name": "Wave Warp",
+      "sourceLine": 927
+    },
+    {
+      "category": "Expression Controls",
+      "name": "3D Point Control",
+      "sourceLine": 932
+    },
+    {
+      "category": "Expression Controls",
+      "name": "Angle Control",
+      "sourceLine": 933
+    },
+    {
+      "category": "Expression Controls",
+      "name": "Checkbox Control",
+      "sourceLine": 934
+    },
+    {
+      "category": "Expression Controls",
+      "name": "Color Control",
+      "sourceLine": 935
+    },
+    {
+      "category": "Expression Controls",
+      "name": "Dropdown Menu Control",
+      "sourceLine": 936
+    },
+    {
+      "category": "Expression Controls",
+      "name": "Layer Control",
+      "sourceLine": 937
+    },
+    {
+      "category": "Expression Controls",
+      "name": "Point Control",
+      "sourceLine": 938
+    },
+    {
+      "category": "Expression Controls",
+      "name": "Slider Control",
+      "sourceLine": 939
+    },
+    {
+      "category": "Generate",
+      "name": "4-Color Gradient",
+      "sourceLine": 941
+    },
+    {
+      "category": "Generate",
+      "name": "Advanced Lightning",
+      "sourceLine": 944
+    },
+    {
+      "category": "Generate",
+      "name": "Audio Spectrum",
+      "sourceLine": 946
+    },
+    {
+      "category": "Generate",
+      "name": "Audio Waveform",
+      "sourceLine": 949
+    },
+    {
+      "category": "Generate",
+      "name": "Beam",
+      "sourceLine": 952
+    },
+    {
+      "category": "Generate",
+      "name": "CC Glue Gun",
+      "sourceLine": 955
+    },
+    {
+      "category": "Generate",
+      "name": "CC Light Burst 2.5",
+      "sourceLine": 959
+    },
+    {
+      "category": "Generate",
+      "name": "CC Light Rays",
+      "sourceLine": 963
+    },
+    {
+      "category": "Generate",
+      "name": "CC Light Sweep",
+      "sourceLine": 967
+    },
+    {
+      "category": "Generate",
+      "name": "CC Threads",
+      "sourceLine": 971
+    },
+    {
+      "category": "Generate",
+      "name": "Cell Pattern",
+      "sourceLine": 975
+    },
+    {
+      "category": "Generate",
+      "name": "Checkerboard",
+      "sourceLine": 978
+    },
+    {
+      "category": "Generate",
+      "name": "Circle",
+      "sourceLine": 981
+    },
+    {
+      "category": "Generate",
+      "name": "Ellipse",
+      "sourceLine": 984
+    },
+    {
+      "category": "Generate",
+      "name": "Eyedropper Fill",
+      "sourceLine": 987
+    },
+    {
+      "category": "Generate",
+      "name": "Fill",
+      "sourceLine": 990
+    },
+    {
+      "category": "Generate",
+      "name": "Fractal",
+      "sourceLine": 995
+    },
+    {
+      "category": "Generate",
+      "name": "Gradient Ramp",
+      "sourceLine": 998
+    },
+    {
+      "category": "Generate",
+      "name": "Grid",
+      "sourceLine": 1002
+    },
+    {
+      "category": "Generate",
+      "name": "Lens Flare",
+      "sourceLine": 1004
+    },
+    {
+      "category": "Generate",
+      "name": "Paint Bucket",
+      "sourceLine": 1006
+    },
+    {
+      "category": "Generate",
+      "name": "Radio Waves",
+      "sourceLine": 1009
+    },
+    {
+      "category": "Generate",
+      "name": "Scribble",
+      "sourceLine": 1011
+    },
+    {
+      "category": "Generate",
+      "name": "Stroke",
+      "sourceLine": 1013
+    },
+    {
+      "category": "Generate",
+      "name": "Vegas",
+      "sourceLine": 1016
+    },
+    {
+      "category": "Generate",
+      "name": "Write-on",
+      "sourceLine": 1018
+    },
+    {
+      "category": "Immersive Video",
+      "name": "VR Blur",
+      "sourceLine": 1022
+    },
+    {
+      "category": "Immersive Video",
+      "name": "VR Chromatic Aberrations",
+      "sourceLine": 1026
+    },
+    {
+      "category": "Immersive Video",
+      "name": "VR Color Gradients",
+      "sourceLine": 1030
+    },
+    {
+      "category": "Immersive Video",
+      "name": "VR Converter",
+      "sourceLine": 1034
+    },
+    {
+      "category": "Immersive Video",
+      "name": "VR De-Noise",
+      "sourceLine": 1038
+    },
+    {
+      "category": "Immersive Video",
+      "name": "VR Digital Glitch",
+      "sourceLine": 1042
+    },
+    {
+      "category": "Immersive Video",
+      "name": "VR Fractal Noise",
+      "sourceLine": 1046
+    },
+    {
+      "category": "Immersive Video",
+      "name": "VR Glow",
+      "sourceLine": 1050
+    },
+    {
+      "category": "Immersive Video",
+      "name": "VR Plane to Sphere",
+      "sourceLine": 1054
+    },
+    {
+      "category": "Immersive Video",
+      "name": "VR Rotate Sphere",
+      "sourceLine": 1058
+    },
+    {
+      "category": "Immersive Video",
+      "name": "VR Sharpen",
+      "sourceLine": 1062
+    },
+    {
+      "category": "Immersive Video",
+      "name": "VR Sphere to Plane",
+      "sourceLine": 1066
+    },
+    {
+      "category": "Keying",
+      "name": "Advanced Spill Suppressor",
+      "sourceLine": 1071
+    },
+    {
+      "category": "Keying",
+      "name": "CC Simple Wire Removal",
+      "sourceLine": 1074
+    },
+    {
+      "category": "Keying",
+      "name": "Color Difference Key",
+      "sourceLine": 1078
+    },
+    {
+      "category": "Keying",
+      "name": "Color Range",
+      "sourceLine": 1081
+    },
+    {
+      "category": "Keying",
+      "name": "Difference Matte",
+      "sourceLine": 1083
+    },
+    {
+      "category": "Keying",
+      "name": "Extract",
+      "sourceLine": 1087
+    },
+    {
+      "category": "Keying",
+      "name": "Inner/Outer Key",
+      "sourceLine": 1090
+    },
+    {
+      "category": "Keying",
+      "name": "Key Cleaner",
+      "sourceLine": 1093
+    },
+    {
+      "category": "Keying",
+      "name": "Keylight (1.2)",
+      "sourceLine": 1096
+    },
+    {
+      "category": "Keying",
+      "name": "Linear Color Key",
+      "sourceLine": 1099
+    },
+    {
+      "category": "Matte",
+      "name": "Matte Choker",
+      "sourceLine": 1103
+    },
+    {
+      "category": "Matte",
+      "name": "Mocha shape",
+      "sourceLine": 1107
+    },
+    {
+      "category": "Matte",
+      "name": "Refine Hard Matte",
+      "sourceLine": 1110
+    },
+    {
+      "category": "Matte",
+      "name": "Refine Soft Matte",
+      "sourceLine": 1113
+    },
+    {
+      "category": "Matte",
+      "name": "Simple Choker",
+      "sourceLine": 1116
+    },
+    {
+      "category": "Noise & Grain",
+      "name": "Add Grain",
+      "sourceLine": 1120
+    },
+    {
+      "category": "Noise & Grain",
+      "name": "Dust & Scratches",
+      "sourceLine": 1123
+    },
+    {
+      "category": "Noise & Grain",
+      "name": "Fractal Noise",
+      "sourceLine": 1125
+    },
+    {
+      "category": "Noise & Grain",
+      "name": "Match Grain",
+      "sourceLine": 1130
+    },
+    {
+      "category": "Noise & Grain",
+      "name": "Median",
+      "sourceLine": 1134
+    },
+    {
+      "category": "Noise & Grain",
+      "name": "Median (Legacy)",
+      "sourceLine": 1137
+    },
+    {
+      "category": "Noise & Grain",
+      "name": "Noise",
+      "sourceLine": 1140
+    },
+    {
+      "category": "Noise & Grain",
+      "name": "Noise Alpha",
+      "sourceLine": 1144
+    },
+    {
+      "category": "Noise & Grain",
+      "name": "Noise HLS",
+      "sourceLine": 1147
+    },
+    {
+      "category": "Noise & Grain",
+      "name": "Noise HLS Auto",
+      "sourceLine": 1150
+    },
+    {
+      "category": "Noise & Grain",
+      "name": "Remove Grain",
+      "sourceLine": 1153
+    },
+    {
+      "category": "Noise & Grain",
+      "name": "Turbulent Noise",
+      "sourceLine": 1156
+    },
+    {
+      "category": "Obsolete",
+      "name": "Basic 3D",
+      "sourceLine": 1161
+    },
+    {
+      "category": "Obsolete",
+      "name": "Basic Text",
+      "sourceLine": 1163
+    },
+    {
+      "category": "Obsolete",
+      "name": "Color Key",
+      "sourceLine": 1165
+    },
+    {
+      "category": "Obsolete",
+      "name": "Gaussian Blur (Legacy)",
+      "sourceLine": 1169
+    },
+    {
+      "category": "Obsolete",
+      "name": "Lightning",
+      "sourceLine": 1172
+    },
+    {
+      "category": "Obsolete",
+      "name": "Luma Key",
+      "sourceLine": 1174
+    },
+    {
+      "category": "Obsolete",
+      "name": "Path Text",
+      "sourceLine": 1177
+    },
+    {
+      "category": "Obsolete",
+      "name": "Reduce Interlace Flicker",
+      "sourceLine": 1179
+    },
+    {
+      "category": "Obsolete",
+      "name": "Spill Suppressor",
+      "sourceLine": 1182
+    },
+    {
+      "category": "Perspective",
+      "name": "3D Camera Tracker",
+      "sourceLine": 1186
+    },
+    {
+      "category": "Perspective",
+      "name": "3D Glasses",
+      "sourceLine": 1189
+    },
+    {
+      "category": "Perspective",
+      "name": "Bevel Alpha",
+      "sourceLine": 1192
+    },
+    {
+      "category": "Perspective",
+      "name": "Bevel Edges",
+      "sourceLine": 1195
+    },
+    {
+      "category": "Perspective",
+      "name": "CC Cylinder",
+      "sourceLine": 1198
+    },
+    {
+      "category": "Perspective",
+      "name": "CC Environment",
+      "sourceLine": 1202
+    },
+    {
+      "category": "Perspective",
+      "name": "CC Sphere",
+      "sourceLine": 1206
+    },
+    {
+      "category": "Perspective",
+      "name": "CC Spotlight",
+      "sourceLine": 1210
+    },
+    {
+      "category": "Perspective",
+      "name": "Drop Shadow",
+      "sourceLine": 1214
+    },
+    {
+      "category": "Perspective",
+      "name": "Radial Shadow",
+      "sourceLine": 1219
+    },
+    {
+      "category": "Simulation",
+      "name": "Card Dance",
+      "sourceLine": 1223
+    },
+    {
+      "category": "Simulation",
+      "name": "Caustics",
+      "sourceLine": 1225
+    },
+    {
+      "category": "Simulation",
+      "name": "CC Ball Action",
+      "sourceLine": 1227
+    },
+    {
+      "category": "Simulation",
+      "name": "CC Bubbles",
+      "sourceLine": 1231
+    },
+    {
+      "category": "Simulation",
+      "name": "CC Drizzle",
+      "sourceLine": 1235
+    },
+    {
+      "category": "Simulation",
+      "name": "CC Hair",
+      "sourceLine": 1239
+    },
+    {
+      "category": "Simulation",
+      "name": "CC Mr. Mercury",
+      "sourceLine": 1243
+    },
+    {
+      "category": "Simulation",
+      "name": "CC Particle Systems Ⅱ",
+      "sourceLine": 1247
+    },
+    {
+      "category": "Simulation",
+      "name": "CC Particle World",
+      "sourceLine": 1251
+    },
+    {
+      "category": "Simulation",
+      "name": "CC Pixel Polly",
+      "sourceLine": 1255
+    },
+    {
+      "category": "Simulation",
+      "name": "CC Rainfall",
+      "sourceLine": 1259
+    },
+    {
+      "category": "Simulation",
+      "name": "CC Scatterize",
+      "sourceLine": 1263
+    },
+    {
+      "category": "Simulation",
+      "name": "CC Snowfall",
+      "sourceLine": 1267
+    },
+    {
+      "category": "Simulation",
+      "name": "CC Star Burst",
+      "sourceLine": 1271
+    },
+    {
+      "category": "Simulation",
+      "name": "Foam",
+      "sourceLine": 1275
+    },
+    {
+      "category": "Simulation",
+      "name": "Particle Playground",
+      "sourceLine": 1277
+    },
+    {
+      "category": "Simulation",
+      "name": "Shatter",
+      "sourceLine": 1279
+    },
+    {
+      "category": "Simulation",
+      "name": "Wave World",
+      "sourceLine": 1281
+    },
+    {
+      "category": "Stylize",
+      "name": "Brush Strokes",
+      "sourceLine": 1284
+    },
+    {
+      "category": "Stylize",
+      "name": "Cartoon",
+      "sourceLine": 1287
+    },
+    {
+      "category": "Stylize",
+      "name": "CC Block Load",
+      "sourceLine": 1289
+    },
+    {
+      "category": "Stylize",
+      "name": "CC Burn Flim",
+      "sourceLine": 1292
+    },
+    {
+      "category": "Stylize",
+      "name": "CC Glass",
+      "sourceLine": 1295
+    },
+    {
+      "category": "Stylize",
+      "name": "CC HexTile",
+      "sourceLine": 1298
+    },
+    {
+      "category": "Stylize",
+      "name": "CC Kaleida",
+      "sourceLine": 1301
+    },
+    {
+      "category": "Stylize",
+      "name": "CC Mr. Smoothie",
+      "sourceLine": 1304
+    },
+    {
+      "category": "Stylize",
+      "name": "CC Plastic",
+      "sourceLine": 1307
+    },
+    {
+      "category": "Stylize",
+      "name": "CC RepeTile",
+      "sourceLine": 1310
+    },
+    {
+      "category": "Stylize",
+      "name": "CC Threshold",
+      "sourceLine": 1313
+    },
+    {
+      "category": "Stylize",
+      "name": "CC Threshold RGB",
+      "sourceLine": 1316
+    },
+    {
+      "category": "Stylize",
+      "name": "CC Vignette",
+      "sourceLine": 1319
+    },
+    {
+      "category": "Stylize",
+      "name": "Color Emboss",
+      "sourceLine": 1322
+    },
+    {
+      "category": "Stylize",
+      "name": "Emboss",
+      "sourceLine": 1324
+    },
+    {
+      "category": "Stylize",
+      "name": "Find Edges",
+      "sourceLine": 1326
+    },
+    {
+      "category": "Stylize",
+      "name": "Glow",
+      "sourceLine": 1329
+    },
+    {
+      "category": "Stylize",
+      "name": "Mosaic",
+      "sourceLine": 1333
+    },
+    {
+      "category": "Stylize",
+      "name": "Motion Tile",
+      "sourceLine": 1336
+    },
+    {
+      "category": "Stylize",
+      "name": "Posterize",
+      "sourceLine": 1338
+    },
+    {
+      "category": "Stylize",
+      "name": "Roughen Edges",
+      "sourceLine": 1341
+    },
+    {
+      "category": "Stylize",
+      "name": "Scatter",
+      "sourceLine": 1346
+    },
+    {
+      "category": "Stylize",
+      "name": "Strobe Light",
+      "sourceLine": 1350
+    },
+    {
+      "category": "Stylize",
+      "name": "Texturize",
+      "sourceLine": 1353
+    },
+    {
+      "category": "Stylize",
+      "name": "Threshold",
+      "sourceLine": 1356
+    },
+    {
+      "category": "Text",
+      "name": "Numbers",
+      "sourceLine": 1360
+    },
+    {
+      "category": "Text",
+      "name": "Timecode",
+      "sourceLine": 1361
+    },
+    {
+      "category": "Time",
+      "name": "CC Force Motion Blur",
+      "sourceLine": 1363
+    },
+    {
+      "category": "Time",
+      "name": "CC Wide Time",
+      "sourceLine": 1364
+    },
+    {
+      "category": "Time",
+      "name": "Echo",
+      "sourceLine": 1365
+    },
+    {
+      "category": "Time",
+      "name": "Pixel Motion Blur",
+      "sourceLine": 1366
+    },
+    {
+      "category": "Time",
+      "name": "Posterize Time",
+      "sourceLine": 1367
+    },
+    {
+      "category": "Time",
+      "name": "Time Difference",
+      "sourceLine": 1368
+    },
+    {
+      "category": "Time",
+      "name": "Time Displacement",
+      "sourceLine": 1369
+    },
+    {
+      "category": "Time",
+      "name": "Timewarp",
+      "sourceLine": 1370
+    },
+    {
+      "category": "Transition",
+      "name": "Block Dissolve",
+      "sourceLine": 1372
+    },
+    {
+      "category": "Transition",
+      "name": "Card Wipe",
+      "sourceLine": 1376
+    },
+    {
+      "category": "Transition",
+      "name": "CC Glass Wipe",
+      "sourceLine": 1378
+    },
+    {
+      "category": "Transition",
+      "name": "CC Grid Wipe",
+      "sourceLine": 1382
+    },
+    {
+      "category": "Transition",
+      "name": "CC Image Wipe",
+      "sourceLine": 1385
+    },
+    {
+      "category": "Transition",
+      "name": "CC Jaws",
+      "sourceLine": 1389
+    },
+    {
+      "category": "Transition",
+      "name": "CC Light Wipe",
+      "sourceLine": 1393
+    },
+    {
+      "category": "Transition",
+      "name": "CC Line Sweep",
+      "sourceLine": 1397
+    },
+    {
+      "category": "Transition",
+      "name": "CC Radial ScaleWipe",
+      "sourceLine": 1401
+    },
+    {
+      "category": "Transition",
+      "name": "CC Scale Wipe",
+      "sourceLine": 1405
+    },
+    {
+      "category": "Transition",
+      "name": "CC Twister",
+      "sourceLine": 1409
+    },
+    {
+      "category": "Transition",
+      "name": "CC WarpoMatic",
+      "sourceLine": 1413
+    },
+    {
+      "category": "Transition",
+      "name": "Gradient Wipe",
+      "sourceLine": 1417
+    },
+    {
+      "category": "Transition",
+      "name": "Iris Wipe",
+      "sourceLine": 1420
+    },
+    {
+      "category": "Transition",
+      "name": "Linear Wipe",
+      "sourceLine": 1423
+    },
+    {
+      "category": "Transition",
+      "name": "Radial Wipe",
+      "sourceLine": 1428
+    },
+    {
+      "category": "Transition",
+      "name": "Venetian Blinds",
+      "sourceLine": 1432
+    },
+    {
+      "category": "Utility",
+      "name": "Apply Color LUT",
+      "sourceLine": 1438
+    },
+    {
+      "category": "Utility",
+      "name": "CC Overbrights",
+      "sourceLine": 1441
+    },
+    {
+      "category": "Utility",
+      "name": "Cineon Converter",
+      "sourceLine": 1445
+    },
+    {
+      "category": "Utility",
+      "name": "Color Profile Converter",
+      "sourceLine": 1448
+    },
+    {
+      "category": "Utility",
+      "name": "Grow Bounds",
+      "sourceLine": 1451
+    },
+    {
+      "category": "Utility",
+      "name": "HDR Compander",
+      "sourceLine": 1455
+    },
+    {
+      "category": "Utility",
+      "name": "HDR Highlight Compression",
+      "sourceLine": 1458
+    }
+  ],
+  "catalogCorrections": [
+    {
+      "date": "2026-11-03",
+      "sourceLines": "1021–1069",
+      "reason": "Immersive Video is the category cell; VR Blur is the first effect. Earlier text extraction mislabeled it as an effect and carried Generate into subsequent VR rows."
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+import {Composition,Stage,Layer,Resource,ref,keyframes} from '@frameweave/engine';import {imageStage,videoRotoModel,trackVideoRoto,compose,exposure,offsetRGB} from '../index.ts';
+import bundle from './assets/sam2-bundle.json';import {photo,seedMask} from '../sam2-fixture.ts';
+const model=videoRotoModel(bundle);
+export const subject=imageStage(compose(trackVideoRoto(model,[photo,photo,photo],{frame:f=>f.context!.frame,seedMask,softness:keyframes([{frame:0,value:.1},{frame:2,value:.2}]),segmentFrames:1}),exposure(1),offsetRGB({offset:[-.1,-.1,-.1]})),{source:photo});
+export default <Composition width={614} height={410} fps={24} durationInFrames={3} background="transparent"><Resource id="video-roto-vision" src="./.generated-video-roto-v10/vision.onnx" kind="file"/><Resource id="video-roto-seed" src="./.generated-video-roto-v10/seed.onnx" kind="file"/><Resource id="video-roto-track" src="./.generated-video-roto-v10/track.onnx" kind="file"/><Resource id="photo" src="./.generated-video-roto-v10/photo.f32" kind="file"/><Stage id="subject" factory={subject}/><Layer source={ref('subject')}/></Composition>;

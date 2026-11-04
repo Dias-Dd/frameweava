@@ -1,0 +1,13 @@
+import type {AlphaMode} from '../../../src/media/surface.ts';
+import type {GeometryVariant} from './variants.ts';
+import {resizeOracle,remapOracle,quantize} from './reference.ts';
+const mod=(x:number,n:number)=>((x%n)+n)%n,clamp=(x:number)=>Math.max(0,Math.min(1,x));
+function noise(i:number){let h=Math.imul(i,0x8da6b343)^Math.imul(0x5eed,0xd8163841)^Math.imul(19,0xcb1ab31f);h^=h>>>13;h=Math.imul(h,0x5bd1e995);h^=h>>>15;return (h&0xffffff)/16777216*2-1;}
+export function variantReference(v:GeometryVariant,input:Float32Array,w:number,h:number,alpha:AlphaMode,half:boolean){const cx=w/2,cy=h/2;if(v.kind==='resize')return resizeOracle(input,w,h,v.width,v.height,v.method,v.boundary,alpha,half);if(v.kind==='empty-brushes')return quantize(Float32Array.from(input,(p,j)=>alpha==='straight'&&j%4!==3?p*input[j-j%4+3]:p),half);if(v.kind==='degenerate-mesh')return new Float32Array(input.length);
+ if(v.kind==='wave')return remapOracle(input,w,h,(x,y)=>{const t=x/v.wavelength+v.phase/360,ph=mod(t,1),halfCircle=(u:number)=>Math.sqrt(Math.max(0,1-(2*u-1)**2));let shape=0;switch(v.shape){case 'sine':shape=Math.sin(ph*Math.PI*2);break;case 'square':shape=ph<.5?1:-1;break;case 'triangle':shape=1-4*Math.abs(ph-.5);break;case 'sawtooth':shape=2*ph-1;break;case 'circle':shape=ph<.5?halfCircle(ph*2):-halfCircle(ph*2-1);break;case 'semicircle':shape=2*halfCircle(mod(ph*2,1))-1;break;case 'uncircle':shape=1-2*halfCircle(mod(ph*2,1));break;case 'noise':shape=noise(Math.floor(t*2));break;case 'smooth-noise':{const u=t*2,i=Math.floor(u),f=u-i,s=f*f*(3-2*f);shape=noise(i)*(1-s)+noise(i+1)*s;}}
+ const u=clamp((x-.5)/Math.max(1,w-1)),vv=clamp((y-.5)/Math.max(1,h-1)),horizontal=Math.min(vv,1-vv)*2,vertical=Math.min(u,1-u)*2,pin=v.pin==='all'?Math.min(horizontal,vertical):v.pin==='center'?Math.min(Math.hypot(u-.5,vv-.5)*2,1):v.pin==='left'?u:v.pin==='top'?vv:v.pin==='right'?1-u:v.pin==='bottom'?1-vv:v.pin==='horizontal'?horizontal:v.pin==='vertical'?vertical:1;return [x,y-shape*.375*pin];},'transparent',alpha,half);
+ if(v.kind==='polar')return remapOracle(input,w,h,(x,y)=>{const a=x/w*Math.PI*2,r=(h-y)/h*Math.min(cx,cy);return [cx+r*Math.sin(a),cy-r*Math.cos(a)];},'clamp',alpha,half);
+ if(v.kind==='optics')return remapOracle(input,w,h,(x,y)=>{const dx=x-cx,dy=y-cy,r=Math.hypot(dx,dy),angle=20*Math.PI/180,f=cx/Math.tan(angle);if(r===0)return [x,y];const k=Math.atan(r/f)/angle*cx/r;return [cx+dx*k,cy+dy*k];},'clamp',alpha,half);
+ if(v.kind==='tiler')return remapOracle(input,w,h,(x,y)=>[cx+(x-cx)/.7,cy+(y-cy)/1.4],'mirror',alpha,half);
+ return remapOracle(input,w,h,(x,y)=>[Math.floor(x-.5+1.5+.5)+.5,Math.floor(y-.5-.5+.5)+.5],'mirror',alpha,half);
+}

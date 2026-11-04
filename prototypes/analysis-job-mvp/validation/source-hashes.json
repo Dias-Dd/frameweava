@@ -1,0 +1,131 @@
+{
+  "repo": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-2",
+  "commit": "f98d70504642c35573d364bf734d436c03c9ab1d",
+  "files": [
+    {
+      "id": "E1",
+      "path": "src/core/types.ts",
+      "sha256": "cf15f67fc537dcb5692f6d4760837e1df8fd9c0777ab7d1277057f647b4bda5a"
+    },
+    {
+      "id": "E2",
+      "path": "src/core/time.ts",
+      "sha256": "b1d9e8a3be47adee369daea66273bc10feac51ae08968c90ca939756a14006aa"
+    },
+    {
+      "id": "E3",
+      "path": "src/core/animation.ts",
+      "sha256": "46d208a844d6455fd0905a1606cab51c8800ac10e08cfe7766b3c12dab9d26d0"
+    },
+    {
+      "id": "E4",
+      "path": "src/render/renderer.ts",
+      "sha256": "36af2d0fa40176ba2cb38cc787ba11eedbdeaac3ffec4a956ea6d549c94dd404"
+    },
+    {
+      "id": "E5",
+      "path": "src/render/cache.ts",
+      "sha256": "17743f3453608335a519be29078b9e9d6cae5807e41207b7d5df82bbf0437801"
+    },
+    {
+      "id": "E6",
+      "path": "src/compiler/build.ts",
+      "sha256": "b165001a0fba3ac668adf0c7e9574e4c96f6c84327b31383fb1494df7620ef5f"
+    },
+    {
+      "id": "E7",
+      "path": "src/compiler/typecheck.ts",
+      "sha256": "7562662b6df3fc400d619cf2178cfa05d5a598aeb3b8ce1029e7a8d46c7d7fbe"
+    },
+    {
+      "id": "E8",
+      "path": "src/plugins/search.ts",
+      "sha256": "52f3b4b4ecd7f212dea35ba27b8aaab82708c828ec412d4fd0e4b3d308bc95a4"
+    },
+    {
+      "id": "E9",
+      "path": "src/encoding/ffmpeg.ts",
+      "sha256": "682858b4e10363d5c433601e247063620490247dfdf21d8ddecb79e1648ed863"
+    },
+    {
+      "id": "E10",
+      "path": "src/plugins/sdk.ts",
+      "sha256": "52242c0a3dda8f046f6a98e3fc30ef5e68c6d2657b3fbdafd03c62eb098fbe4c"
+    },
+    {
+      "id": "E11",
+      "path": "src/plugins/schema.ts",
+      "sha256": "86e8259496201f6afb14a7a22b1044e582d3d64a290f4648003462be3b9275b3"
+    },
+    {
+      "id": "E12",
+      "path": "src/plugins/registry.ts",
+      "sha256": "314dc27fda68241b2ad723bb099046ff8fa2c53c5fd1294bd52e83b2ea210d3f"
+    },
+    {
+      "id": "E13",
+      "path": "src/render/server.ts",
+      "sha256": "8f8d40ee1edf447fd9e543441b64d325b00f62b83da49760963b67de9428d1d9"
+    },
+    {
+      "id": "E14",
+      "path": "src/web/clock.ts",
+      "sha256": "4e96b8b14f59225a9c0ab5963efc418798d1767184b3d19a36ea226d9fc270d2"
+    },
+    {
+      "id": "E15",
+      "path": "src/render/web-adapter.ts",
+      "sha256": "3ea3b7792f2df4149219417bc51380cd233319ae0ad810ed90697b218235917e"
+    },
+    {
+      "id": "E16",
+      "path": "src/plugins/runtime.ts",
+      "sha256": "77c12c8bbe8128a92d67b3d8482149708125ef01c43ee38c8f6626f3668e0a0d"
+    },
+    {
+      "id": "P1",
+      "path": "prototypes/analysis-job-mvp/job.ts",
+      "sha256": "456063cc3867c5be17bf33c3a0572652e112492cc8f611a35f70f739998258f7"
+    },
+    {
+      "id": "P2",
+      "path": "prototypes/analysis-job-mvp/worker.ts",
+      "sha256": "d0f0c3229da7b6d26e4c4dbc5980638c8bc0375fb0cf8f16875f1a6843683994"
+    },
+    {
+      "id": "P3",
+      "path": "prototypes/analysis-job-mvp/decode.ts",
+      "sha256": "1ed670a33fe9b45f926749b384741b529887580a6e3878b868b5e39e8068a8c9"
+    },
+    {
+      "id": "P4",
+      "path": "prototypes/analysis-job-mvp/face-session.ts",
+      "sha256": "d8d0000b300dec7c7527abab2e079fdfd06af571096714b71edb5a1eb4d654c4"
+    },
+    {
+      "id": "P5",
+      "path": "prototypes/analysis-job-mvp/track.ts",
+      "sha256": "91866d104670d199b3268c3a5e715a75db3fa0d5c25592bb5779bb0f0ffcc228"
+    },
+    {
+      "id": "P6",
+      "path": "prototypes/analysis-job-mvp/web-stages.ts",
+      "sha256": "7e96ac5754b53406a35488f00372956e626cbd5b5b9d4bcb64e76d1eb52b7d83"
+    },
+    {
+      "id": "P7",
+      "path": "prototypes/analysis-job-mvp/demo.ts",
+      "sha256": "8602385966b2d31b3ce153efc4de5e5392cf30ab49c0ec2e4a26f52f103cbe8f"
+    },
+    {
+      "id": "P8",
+      "path": "prototypes/analysis-job-mvp/verify.ts",
+      "sha256": "9ae1f86434c98eabe11eb87e18e84aeeb395171bc2fc190cf1bea623aa3957a0"
+    },
+    {
+      "id": "P9",
+      "path": "prototypes/analysis-job-mvp/tests/track.test.ts",
+      "sha256": "37b5acbea4de2258f77f2ab3f0fb2929d4d3c4b6b40b6734273b5377f8b1951d"
+    }
+  ]
+}

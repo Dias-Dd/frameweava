@@ -1,0 +1,41 @@
+{
+  "repository": "https://github.com/storytold/effectcraft",
+  "commit": "ec7ced1f0515f0b6f376dbcc297f1c441f452d6e",
+  "license": "MIT",
+  "files": [
+    {
+      "file": "LICENSE-MIT",
+      "bytes": 1103,
+      "sha256": "7b6db9a363688683feacdf9b528f059637f2e5d2edbacd8720fc9b26781c9abe"
+    },
+    {
+      "file": "crates/gpu/src/shaders/fx_key.wgsl",
+      "bytes": 30752,
+      "sha256": "fe152b08682de203f4f6f6298afccc60f243d3c86064a0f71c0a73969b1ea8ec"
+    },
+    {
+      "file": "crates/gpu/src/fx_key.rs",
+      "bytes": 27111,
+      "sha256": "23319f4fc7e667a53a404b11f6b21ad4c08774d434ff83d718a37226327d8964"
+    },
+    {
+      "file": "crates/effects/src/keying.rs",
+      "bytes": 38213,
+      "sha256": "9907fd352d4e4ebb53ce25a72e065cfba73e8d7fb4f57a472ff614bae3d54aff"
+    },
+    {
+      "file": "crates/effects/src/matte.rs",
+      "bytes": 21776,
+      "sha256": "21d2cbca7a1340467dc2aaf75681fdb6a0b6b8e6fbbd78d860598b64cf22b859"
+    }
+  ],
+  "reusedLocal": "Native geometry compensated scalar arithmetic and sampler frozen at 6115d7f783554d6addb9aab1bbce9f54d81252e1; existing professional morphology/colour and raster source-over",
+  "adaptations": [
+    "Real fx_key point/range/screen/spill/cleaner equations and guided-matte parameter preparation",
+    "Working scene-linear RGB instead of upstream display RGB clipping; exact-positive-alpha division and zero-alpha emission policy",
+    "Guided moments and coefficients are typed non-colour buffers; bounded signed luminance guide for HDR",
+    "Local separable exact Euclidean distance transform, finite-canvas exterior and validity plane",
+    "Local exact rank-select coverage median without fixed neighbourhood arrays; reuse original morphology",
+    "No external editor, GPU owner or Rust runtime is added"
+  ]
+}

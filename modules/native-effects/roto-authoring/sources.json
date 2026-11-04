@@ -1,0 +1,69 @@
+{
+  "effectcraft": {
+    "repository": "https://github.com/storytold/effectcraft",
+    "commit": "ec7ced1f0515f0b6f376dbcc297f1c441f452d6e",
+    "license": "MIT (dual-license choice)",
+    "files": [
+      {
+        "file": "vendor/effectcraft/paint.rs",
+        "sha256": "1eee4096801dcd7a655f4297311ac6c48dc145e4e623ccc374c04cd1534d7ddb"
+      },
+      {
+        "file": "vendor/effectcraft/roto.rs",
+        "sha256": "1be36330c927bfb8526ef4fe7b668df6cf01fd259d090e0975d1e98f815b27e4"
+      },
+      {
+        "file": "vendor/effectcraft/LICENSE-MIT",
+        "sha256": "7b6db9a363688683feacdf9b528f059637f2e5d2edbacd8720fc9b26781c9abe"
+      }
+    ]
+  },
+  "model": {
+    "repository": "https://huggingface.co/Xenova/slimsam-77-uniform",
+    "revision": "5850ab45f587c112167512ffef949107115e26a0",
+    "license": "Apache-2.0",
+    "profile": "slimsam-77-uniform-f32-points-v1",
+    "files": {
+      "vision_encoder.onnx": {
+        "bytes": 23276014,
+        "sha256": "9f8433273a6750b587779baa0cf5508111001bf7e7acfcf585d370139fd366d0"
+      },
+      "prompt_encoder_mask_decoder.onnx": {
+        "bytes": 16557892,
+        "sha256": "f4514391764fbd56e08e119060d874ecd7d52994bfb1968af159e12d4943b5bb"
+      }
+    },
+    "adaptation": "Freeze positive batch/point dimensions, add exact F32-label to Int64 Cast; retain every learned operator/weight and original output. Point capacity is part of derived immutable model identity.",
+    "runtime": "Qualified isolated frozen bd188034 SDK/owner with reviewed d59123d2 DirectML runtime; current branch Core does not include inference",
+    "qualified": true,
+    "qualification": "See docs/native-roto-authoring-evidence; not arbitrary model/device or public package qualification"
+  },
+  "derived": [
+    {
+      "source": "vision_encoder.onnx",
+      "sourceSha256": "9f8433273a6750b587779baa0cf5508111001bf7e7acfcf585d370139fd366d0",
+      "derived": "encoder.onnx",
+      "sha256": "37368c5c17e8f9083f81c126f27d776c34a1bc853f483db723deb13ee5bba65d",
+      "bytes": 23275984
+    },
+    {
+      "source": "prompt_encoder_mask_decoder.onnx",
+      "sourceSha256": "f4514391764fbd56e08e119060d874ecd7d52994bfb1968af159e12d4943b5bb",
+      "derived": "decoder.onnx",
+      "sha256": "5fe383aba42e6d9fcc595b28b5ec627fa0a8558fb78c023b2646ffeea7f0faf4",
+      "bytes": 16557853
+    }
+  ],
+  "qa": {
+    "url": "https://huggingface.co/datasets/Xenova/transformers.js-docs/resolve/542437c29cc5273cfd29e25c77696f2b349badd7/corgi.jpg",
+    "sha256": "385413e29523ac6b777f8f23bcf72696119f9bfa364792036fc008700a1f6811",
+    "bytes": 309486,
+    "purpose": "Official SlimSAM demo internal QA image; raw image not shipped with library",
+    "license": "Individual photograph license not confirmed; not library redistribution evidence"
+  },
+  "adaptation": {
+    "brush": "Pinned paint.rs arclength dabs, elliptic tips, flow/opacity; Native PM/HDR, pressure, clone/heal and GPU sequential reservoirs",
+    "contour": "New GPU marching squares with asymptotic decision and canonical shared edge arithmetic; explicit existing PathData adapter",
+    "roto": "Pinned roto.rs motivation; trained SlimSAM inference through existing reviewed Native inference, conservative flow prompt propagation; no learned video memory claim"
+  }
+}

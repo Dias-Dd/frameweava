@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "sourceCommits": [
+    "500cc27d5fcfeb3f1a19bc99f1408457e9468603",
+    "2e1bc549ed9fd29c41b28ec0e5d2384b19ccaa49",
+    "6efb41da79f3ecb3f880f6c671974739c255fb58"
+  ],
+  "baseCommit": "24ca456eadcfb4a7b42da51f8af9c94b73608136",
+  "createdUtc": "2026-11-01T00:48:26.389Z",
+  "validation": {
+    "frozenSource": "500cc27d5fcfeb3f1a19bc99f1408457e9468603",
+    "namedTests": {
+      "pass": 34,
+      "fail": 0,
+      "raw": "frozen-checks/stages-and-native-regressions.stdout.txt"
+    },
+    "typecheck": {
+      "name": "types",
+      "args": [
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "--pretty",
+        "false"
+      ],
+      "code": 0,
+      "timedOut": false,
+      "wallMs": 8914.330600000001
+    },
+    "cohortWallMs": 126575.1828,
+    "followups": [
+      {
+        "sourceCommit": "2e1bc549ed9fd29c41b28ec0e5d2384b19ccaa49",
+        "change": "Clear cached frame PNGs on close",
+        "test": "cleanup.stdout.txt",
+        "pass": 1
+      },
+      {
+        "sourceCommit": "6efb41da79f3ecb3f880f6c671974739c255fb58",
+        "change": "Truthful mixed preview transport/role metadata",
+        "validation": "Real CLI window 3 frames, final typecheck, exit 0; window-final.stdout.json / types-final.*"
+      }
+    ],
+    "initialFailure": {
+      "raw": "initial-checks/stages-and-native-regressions.stdout.txt",
+      "pass": 33,
+      "fail": 1,
+      "reason": "Negative encoder test incorrectly required rejection before pipe handoff. Correct contract also awaits encoder close/finalization. Detailed NVENC error remains mandatory; test and final frozen cohort pass."
+    },
+    "visualInspection": "compatibility.png inspected; separate native HDR branch and PNG boundary branch render side by side; MP4 fully decoded in the production test."
+  },
+  "performance": {
+    "workload": "Unchanged frozen 12-effect workload /1, F32 scene-linear Rec.709 PM, 32 raymarch steps, same seed/frame sequence",
+    "hardware": "Windows x64, RTX 5070 Laptop Vulkan 596.49, Intel Core Ultra 9 275HX, Silent power plan",
+    "method": "40 distinct new frames, Node -> isolated JS -> GPU completed, headless; warmed driver shader cache. No physical scanout or encoding in timings. Separate runs rather than a randomized simultaneous A/B; do not attribute lower times to the bridge.",
+    "cases": [
+      {
+        "resolution": [
+          1920,
+          1080
+        ],
+        "baselineCommit": "97052db3cce109842d4c4cf624903132ced92f3b",
+        "measuredCommit": "500cc27d5fcfeb3f1a19bc99f1408457e9468603",
+        "beforeNewFrameMs": {
+          "count": 40,
+          "min": 10.133300000000418,
+          "median": 12.57380000000012,
+          "p95": 14.563799999999901,
+          "max": 170.91569999999956
+        },
+        "afterNewFrameMs": {
+          "count": 40,
+          "min": 9.754899999999907,
+          "median": 11.12079999999969,
+          "p95": 13.160300000000461,
+          "max": 163.69770000000062
+        },
+        "boundary": {
+          "enabled": false,
+          "explicitReadbackWaits": 0,
+          "readbackBytes": 0,
+          "readbacks": 0,
+          "uploadBytes": 0,
+          "version": 1
+        },
+        "format": {
+          "width": 1920,
+          "height": 1080,
+          "format": "rgba32float",
+          "alpha": "premultiplied",
+          "color": {
+            "primaries": "rec709",
+            "whitePoint": "D65",
+            "transfer": "linear",
+            "reference": "scene",
+            "range": "full",
+            "referenceWhiteNits": 100
+          }
+        },
+        "readbacks": 0,
+        "transferBytes": 0,
+        "allocatedImageBytes": 298598400,
+        "physicalPeakGpuBytes": null
+      },
+      {
+        "resolution": [
+          3840,
+          2160
+        ],
+        "baselineCommit": "97052db3cce109842d4c4cf624903132ced92f3b",
+        "measuredCommit": "500cc27d5fcfeb3f1a19bc99f1408457e9468603",
+        "beforeNewFrameMs": {
+          "count": 40,
+          "min": 24.93409999999949,
+          "median": 28.642899999999827,
+          "p95": 32.748099999999795,
+          "max": 193.1310999999996
+        },
+        "afterNewFrameMs": {
+          "count": 40,
+          "min": 24.145000000000437,
+          "median": 25.795900000000074,
+          "p95": 27.271099999999933,
+          "max": 158.11199999999917
+        },
+        "boundary": {
+          "enabled": false,
+          "explicitReadbackWaits": 0,
+          "readbackBytes": 0,
+          "readbacks": 0,
+          "uploadBytes": 0,
+          "version": 1
+        },
+        "format": {
+          "width": 3840,
+          "height": 2160,
+          "format": "rgba32float",
+          "alpha": "premultiplied",
+          "color": {
+            "primaries": "rec709",
+            "whitePoint": "D65",
+            "transfer": "linear",
+            "reference": "scene",
+            "range": "full",
+            "referenceWhiteNits": 100
+          }
+        },
+        "readbacks": 0,
+        "transferBytes": 0,
+        "allocatedImageBytes": 796262400,
+        "physicalPeakGpuBytes": null
+      }
+    ],
+    "conclusion": "No regression observed in these runs. Native-only boundary lease disabled, zero boundary readback/upload, no image transfer. Occasional >150 ms outliers remain; no stable 120 FPS or general 10 ms claim. Followups touch disposal and preview metadata, not the measured native-only frame path."
+  },
+  "contract": {
+    "web": "Explicit engine web only; PNG sRGB8 images and ordinary typed JSON ports",
+    "native": "F16/F32 only; native implementations on owned device, no browser visual context",
+    "mixed": "Existing DAG order, serial frames; native published images preserved exactly as F32 working bytes across boundaries, only Web copies quantized; same window/encoder/device owner",
+    "security": "Existing CSP/opaque origin/WASM/P4-R1 policies retained; no paths or native handles exposed to Web",
+    "binary": "Private native protocol 2 with boundary extension 1; rebuild required; old binaries reject unknown fields",
+    "name": "Frameweave Forge, engine identifiers unchanged"
+  },
+  "notVerified": [
+    "Whole repository regression and all six export modes",
+    "Independent installed package on this worktree; Main prior fixes deliberately not synchronized",
+    "Linux, macOS, DX12, physical display latency",
+    "Long videos, device-loss/OS hard-kill cleanup and broad third-party Web libraries",
+    "Exact native ACES2/HDR codec migration, native video importer, persistent mutable GPU state, native shared-state/SO-1 remain previous checkpoint scope"
+  ],
+  "files": {
+    "pngSha256": "cdd0db42c5697bbfdda1b069648e25a13d5a5edb49485a8be401211a747b87fa",
+    "mp4Sha256": "a63d5593ed7d7871f173da8de7b8417babfa9af7b48e27fd02074dfcc988d8c2"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "baseCommit": "631d50cb3ff18b00d55777fe3b7bed724588bb3d",
+  "inputHashes": {
+    "modules/native-gpu/src/encode.rs": "592b7724fe90fda8e8d6c84611b909ce8df4fa85492070885f825d3ac42eac9b",
+    "modules/native-gpu/src/gpu.rs": "aeb79ffb8d5973c9819528ca12645f6eb1453932f55b4bb68912ac4ab09ac06c",
+    "tests/native-gpu-large-export.test.ts": "407a0ce24b57973dc578e5f680d62f2766ea8427a5f710d3935fb1fb312382c3"
+  },
+  "change": "Two-dimensional final-output packing; linear word order unchanged; no public protocol, shader numerical scan, trust, Surface or Stage semantic changes.",
+  "commands": [
+    {
+      "command": "node modules/native-gpu/build.mjs",
+      "exitCode": 0,
+      "scope": "debug MSVC offline build; see exact receipt"
+    },
+    {
+      "command": "node node_modules/typescript/bin/tsc --noEmit --pretty false",
+      "exitCode": 0,
+      "wallMs": null
+    },
+    {
+      "command": "cargo test --locked --offline --manifest-path modules/native-gpu/Cargo.toml pack_dispatch_covers_sdr_and_large_float_frames",
+      "exitCode": 0,
+      "passed": 1
+    },
+    {
+      "command": "node --import tsx --test --test-concurrency=1 tests/native-gpu-large-export.test.ts tests/native-gpu-export.test.ts",
+      "exitCode": 0,
+      "passed": 6,
+      "skipped": 0,
+      "wallMs": 8001.0301
+    }
+  ],
+  "numeric": {
+    "full1080pComponents": 8294400,
+    "full4kComponents": 33177600,
+    "mismatches": 0,
+    "negativeRGB": true,
+    "HDR": true,
+    "alpha": true,
+    "planeOrder": "GBRA",
+    "comparison": "All decoded F32 components exact, binary-fraction spatial fixture"
+  },
+  "limitations": [
+    "Windows RTX 5070 Laptop Vulkan only; Linux/macOS untested",
+    "Correctness run, not isolated performance comparison; Servo compilation and small probe overlapped",
+    "Full repository, installed distribution and six exports are Main integration scope",
+    "Actual large EXRs remain in worktree artifacts/native-large-export; test recreates them"
+  ],
+  "sourceCommit": "a48f589f1195f464519ea479dc4a87dd1ad86dd0"
+}

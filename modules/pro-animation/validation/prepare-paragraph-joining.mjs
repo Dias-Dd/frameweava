@@ -1,0 +1,5 @@
+import {readFile,writeFile} from 'node:fs/promises';import {createHash} from 'node:crypto';
+const input=await readFile(new URL('../provenance/paragraph-composition/DerivedJoiningType-16.0.0.txt',import.meta.url));
+if(createHash('sha256').update(input).digest('hex')!=='6bd08b97da66b70ccfdab105a352de2984e02625239ec5695422c99b33d854f0')throw Error('Pinned joining data changed');
+const rows=[];for(const line of input.toString('utf8').split('\n')){const m=/^([0-9A-F]+)(?:\.\.([0-9A-F]+))?\s*;\s*([CDLRTU])\b/.exec(line);if(m)rows.push([parseInt(m[1],16),parseInt(m[2]??m[1],16),'UCDLRT'.indexOf(m[3])]);}rows.sort((a,b)=>a[0]-b[0]);for(let i=1;i<rows.length;i++)if(rows[i][0]<=rows[i-1][1])throw Error('Overlapping joining data');
+await writeFile(new URL('../src/paragraph-composition/joining-data.ts',import.meta.url),'// SPDX-License-Identifier: Unicode-3.0\n// Generated from pinned original UCD16 DerivedJoiningType; default U.\nexport const joiningRanges:readonly number[] = Object.freeze('+JSON.stringify(rows.flat())+');\n');console.log(JSON.stringify({unicode:'16.0.0',ranges:rows.length}));

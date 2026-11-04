@@ -1,0 +1,1 @@
+{"extends":"../../../tsconfig.json","include":["../src/typography/**/*.ts","../../../tests/pro-animation-typography*.test.ts"],"exclude":["../../../node_modules"]}

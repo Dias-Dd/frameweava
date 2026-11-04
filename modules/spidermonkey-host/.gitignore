@@ -1,0 +1,2 @@
+# This opt-in integration checkpoint retains its small raw test/failure logs.
+!validation/**/*.log

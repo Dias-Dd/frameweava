@@ -1,0 +1,22 @@
+// SPDX-License-Identifier: Apache-2.0
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {execFileSync} from 'node:child_process';
+import {fileURLToPath} from 'node:url';
+import {resolve} from 'node:path';
+import {build} from 'esbuild';
+const root=fileURLToPath(new URL('../',import.meta.url)),compiler=process.env.RUSTC??'rustc';
+await import('./prepare-arap.mjs');
+await import('./prepare-mesher.mjs');
+const version=execFileSync(compiler,['--version'],{encoding:'utf8',windowsHide:true}).trim();if(version.split(' ')[1]!=='1.99.1')throw Error('Review the compiler and std notices before changing Rust1.99.1');
+await mkdir(resolve(root,'dist'),{recursive:true});
+const flags=['--edition=2021','--crate-type=cdylib','--target=wasm32-unknown-unknown','-C','opt-level=s','-C','panic=abort','-C','strip=symbols','-C','debuginfo=0','--remap-path-prefix',`${root}=.`];
+const extra=[];if(process.env.FRAMEWEAVE_RUST_SYSROOT)extra.push('--sysroot',resolve(process.env.FRAMEWEAVE_RUST_SYSROOT));if(process.env.FRAMEWEAVE_RUST_LINKER)extra.push('-C',`linker=${resolve(process.env.FRAMEWEAVE_RUST_LINKER)}`);
+execFileSync(compiler,[...flags,...extra,'rust/src/lib.rs','-o','dist/module.wasm'],{cwd:root,windowsHide:true,timeout:90000});
+const worker=await build({absWorkingDir:root,entryPoints:['runtime/worker.ts'],bundle:true,write:false,platform:'browser',format:'iife',target:'es2022',minify:true,legalComments:'inline'});await writeFile(resolve(root,'dist/worker.js'),worker.outputFiles[0].contents);
+const bytes=await readFile(resolve(root,'dist/module.wasm')),compiled=await WebAssembly.compile(bytes);if(WebAssembly.Module.imports(compiled).length)throw Error('bytes-v1 must retain empty host imports');
+const hash=b=>createHash('sha256').update(b).digest('hex'),inputs={};
+for(const file of ['rust/src/lib.rs','rust/src/algorithm.rs','rust/src/arap.rs','rust/src/mesh-kernel.rs','rust/src/meshing.rs','runtime/session.mjs','runtime/session.d.mts','runtime/worker.ts','runtime/client.ts','scripts/build-solver.mjs','scripts/prepare-arap.mjs','scripts/prepare-mesher.mjs','vendor/effectcraft/mesh.rs','vendor/effectcraft/mesh-tests.rs','vendor/effectcraft/SOURCE.json','licenses/rust-std/source.json'])inputs[file]=hash(await readFile(resolve(root,file)));
+const outputs={'dist/module.wasm':hash(bytes),'dist/worker.js':hash(worker.outputFiles[0].contents)};
+const record={binding:'bytes-v1',compiler:version,compilerSha256:hash(await readFile(compiler)),target:'wasm32-unknown-unknown',flags:flags.map(x=>x===`${root}=.`?'<module>=.':x),inputs,outputs,bytes:bytes.length,hostImports:WebAssembly.Module.imports(compiled),adaptation:'ARAP arithmetic/order unchanged with residual/counters. Mesh EDT/Delaunay kernels retain arithmetic, adapted to all contours, configurable budgets and checked constraint recovery. No external crates or runtime downloads.'};
+await writeFile(resolve(root,'dist/build.json'),JSON.stringify(record,null,2));console.log(JSON.stringify(record,null,2));

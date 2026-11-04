@@ -1,0 +1,2 @@
+    Checking frameweave-native-gpu v0.1.0 (Q:\modules\native-gpu)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.02s

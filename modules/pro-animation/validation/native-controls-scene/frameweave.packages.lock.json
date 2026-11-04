@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "apiVersion": 1,
+  "platform": "web",
+  "requirements": {
+    "native-image-effects": "0.3.0"
+  },
+  "roots": {
+    "native-image-effects": "native-image-effects@0.3.0"
+  },
+  "packages": {
+    "native-image-effects@0.3.0": {
+      "integrity": "sha256-686bb3fbc815d08e16bb6e710f5a7720627c3efc8cdd4e86be0071af83b9f5ca",
+      "source": {
+        "kind": "local",
+        "authority": "frameweave.gpu-images"
+      },
+      "modules": {
+        "bindings": "sha256-feee077a8bd0042f0fce707cf531c2d8bd7dcf8598caae20b324dba6fe64d314",
+        "main": "sha256-9985c510390a7a0e62c0bdb5cb87e850b054e689cc1e7868ee49cdaca59294b0"
+      },
+      "dependencies": {}
+    }
+  }
+}

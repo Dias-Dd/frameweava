@@ -1,0 +1,23 @@
+{
+  "repository": "https://github.com/storytold/effectcraft",
+  "commit": "ec7ced1f0515f0b6f376dbcc297f1c441f452d6e",
+  "license": "MIT",
+  "reuse": "Original Flo knot, Slant, Smear, Split, Pulse, Scatter and Rust page-turn equations adapted to existing Pixel/Data ABI. Compensated sampling, exact positive coverage and HDR/negative RGB semantics are explicit extensions. Other primitives reuse previously qualified Gaussian, EDT, matrix solver and data contracts; no proprietary AE parity claim.",
+  "files": [
+    {
+      "path": "modules/native-effects/closure-images/vendor/effectcraft/fx_stylize.wgsl",
+      "bytes": 34469,
+      "sha256": "4a055788a4c76cb3a796ac545e48c47d3700e79a95f98ee972186e9be77c97d9"
+    },
+    {
+      "path": "modules/native-effects/closure-images/vendor/effectcraft/distort2.rs",
+      "bytes": 53703,
+      "sha256": "b3473ac8e15021ac993deb1e8de072be87b4e409521307f09d6e4eab5a58a9dc"
+    },
+    {
+      "path": "modules/native-effects/closure-images/vendor/effectcraft/LICENSE-MIT",
+      "bytes": 1103,
+      "sha256": "7b6db9a363688683feacdf9b528f059637f2e5d2edbacd8720fc9b26781c9abe"
+    }
+  ]
+}

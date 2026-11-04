@@ -1,0 +1,22 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import{NativeRecordingScope}from'../modules/native-gpu/scope.ts';import type{InferenceSource}from'../modules/inference/types.ts';
+import{linear709}from'../src/media/surface.ts';
+const tensor=(name:string)=>({name,dtype:'float32' as const,shape:[4],layout:'linear' as const});
+const source:InferenceSource={version:1,id:'test/into',model:{resource:'model',bytes:128,sha256:'a'.repeat(64)},inputs:[tensor('x')],outputs:[tensor('a'),tensor('b')],execution:{provider:'directml',allowCpuFallback:false,precision:'float32',temporal:'stateless'}};
+test('preallocated inference outputs borrow exact buffers without growing the packet; default still allocates',async()=>{
+ const s=new NativeRecordingScope(),g=s.api,m=await g.createInference(source),x=await g.createBuffer({type:'f32',length:4},new Float32Array(4)),a=await g.createStateBuffer({type:'f32',length:4},undefined,{version:1,id:'a'}),b=await g.createStateBuffer({type:'f32',length:4},undefined,{version:1,id:'b'});s.sealInitialization();s.beginFrame();
+ const before=s.packet(false).data.length;for(let n=0;n<300;n++){const out=await g.runInference(m,{x},{outputs:{a,b}});assert.equal(out.a,a);assert.equal(out.b,b);}const packet=s.packet(false);assert.equal(packet.data.length,before);assert.equal(packet.passes.length,300);assert.ok(packet.passes.every(p=>p.buffers?.join(',')==='0,1,2'));
+ const fresh=await g.runInference(m,{x});assert.notEqual(fresh.a,a);assert.notEqual(fresh.a,fresh.b);assert.equal(s.packet(false).data.length,before+2);await g.dispose();
+});
+test('output admission rejects names, shape, read-only, foreign/released buffers, aliasing, unknown options and abort atomically',async()=>{
+ const s=new NativeRecordingScope(),g=s.api,m=await g.createInference(source),x=await g.createBuffer({type:'f32',length:4}),immutable=await g.createBuffer({type:'f32',length:4}),foreign=new NativeRecordingScope(),f=await foreign.api.createBuffer({type:'f32',length:4});s.sealInitialization();s.beginFrame();
+ const a=await g.createBuffer({type:'f32',length:4}),b=await g.createBuffer({type:'f32',length:4}),short=await g.createBuffer({type:'f32',length:3}),integer=await g.createBuffer({type:'u32',length:4}),released=await g.createBuffer({type:'f32',length:4});await g.releaseBuffer(released);
+ const k=await g.compile({abiVersion:1,id:'test/readonly',version:'1.0.0',inputCount:0,parameterWords:0,code:'fn pixel(p:vec2u)->vec4f{return vec4f(1.);}'}),image=await g.run(k,[],{output:{width:1,height:1,format:'rgba32float',alpha:'premultiplied',color:linear709}}),view=await g.imageToBuffer!(image,{version:1}),count=s.packet(false).data.length,passes=s.packet(false).passes.length;
+ for(const outputs of[{}, {a}, {a,b,extra:a}, {a:x,b}, {a,b:a}, {a:immutable,b}, {a:view,b}, {a:short,b}, {a:integer,b}, {a:f,b}, {a:released,b}])await assert.rejects(g.runInference(m,{x},{outputs:outputs as any}));
+ await assert.rejects(g.runInference(m,{x},{outputs:{a,b},surprise:true}as any),{code:'E_INFERENCE_OPTIONS'});const abort=new AbortController();abort.abort();await assert.rejects(g.runInference(m,{x},{outputs:{a,b},signal:abort.signal}),{code:'E_RENDER_CANCELLED'});
+ assert.equal(s.packet(false).data.length,count);assert.equal(s.packet(false).passes.length,passes);const result=await g.runInference(m,{x},{outputs:{a,b}});assert.equal(result.a,a);assert.equal(result.b,b);await g.dispose();await foreign.api.dispose();
+});
+test('same-frame flush forwards model/image-capable packets and clears only the submitted commands',async()=>{
+ const packets:any[]=[],s=new NativeRecordingScope(undefined,async p=>{packets.push(p);}),g=s.api,m=await g.createInference({...source,outputs:[tensor('a')]}),x=await g.createStateBuffer({type:'f32',length:4},new Float32Array(4),{version:1,id:'x'}),a=await g.createStateBuffer({type:'f32',length:4},undefined,{version:1,id:'a'});s.sealInitialization();s.beginFrame();await g.stateStep([x,a],{version:1,epoch:0,step:0,reset:true});await g.runInference(m,{x},{outputs:{a}});assert.equal(g.stats().stateSegmentEligible,true);await g.flushState({version:1});assert.equal(g.stats().pendingPasses,0);assert.equal(packets[0].passes[1].inference,0);assert.equal(packets[0].inferences.length,1);assert.equal(packets[0].data.length,2);
+ await g.runInference(m,{x});assert.equal(g.stats().stateSegmentEligible,true);await g.flushState({version:1});assert.equal(packets[1].data.length,3);assert.equal(packets[1].inferences.length,1);assert.equal(g.stats().pendingPasses,0);await g.dispose();
+});

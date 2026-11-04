@@ -1,0 +1,36 @@
+Resident colour/keying chain
+
+Portions of the curve Hermite evaluator and basic spill subtraction are adapted
+from EffectCraft, Copyright (c) 2026 ArtCraft Team and the EffectCraft contributors.
+Pinned commit: ec7ced1f0515f0b6f376dbcc297f1c441f452d6e
+Repository: https://github.com/storytold/effectcraft
+Selected license: MIT (included as LICENSE.effectcraft).
+The exact upstream files/hashes and adaptation boundaries are in sources.json.
+
+Frameweave's existing compensated Float32 Pair arithmetic and Gaussian plan are
+reused without introducing another device owner, Renderer or execution engine.
+Levels, Channel Mix, normalized Unsharp, linear Cb/Cr-distance Key and smooth
+Luma Key use the stated equations; they do not claim full EffectCraft/AE parity.
+The Matte extension also adapts the min/max/axis selection from fx_color.wgsl,
+util.rs morph_frac's full-2D fractional blend, and the normalized Matte Choker
+ramp from fx_key.wgsl. Its three-sample interval decomposition and finite-canvas
+contract are documented in MATTE.md. No full upstream choker/refiner is claimed.
+No Rust binary, external framework or third-party runtime dependency is added.
+
+The creative candidate adapts selected EffectCraft pointwise Tint/linear
+Brightness-Contrast, Color Balance, six-hue Black & White, Tritone, hash_noise,
+Sobel, CC Vignette and relief shading fragments at that same pinned commit.
+Its HDR/PM/working-luma bridge and native centre-sampled Pixelate differ from
+upstream display-clipped/thresholded variants. Exact originals, hashes, license
+and per-fragment scope are under creative/vendor and creative/sources.json.
+
+The blend candidate reuses ten separable equations and hard_light/blend_pixel
+from that same archived common.wgsl. Its native-PM bridge, F32 opacity boundary,
+signed HDR extension and zero-coverage emission policy are in blends/README.md;
+blends/sources.json pins the exact original and the selected MIT license.
+
+The foundations closure adapts additional blur sampling, threshold/posterize,
+min/max, colour-selection masks and deterministic noise fragments from the same
+MIT archive. foundations/sources.json records each extraction boundary; the
+native continuous median, typed statistics/CDF, small convolution presets and
+signed/HDR parameter extensions are documented in foundations/README.md.

@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "sourceCommit": "36e1b4b1dd3156e43139e51bbfa59f8ced8bec5b",
+  "sourceDirty": "M modules/native-gpu/authoring.ts\n M modules/native-gpu/logic-host.ts\n M modules/native-gpu/memory.ts\n M modules/native-gpu/mesh-shader.ts\n M modules/native-gpu/program.ts\n M modules/native-gpu/resource-images.ts\n M modules/native-gpu/scope.ts\n M modules/native-gpu/src/gpu.rs\n M modules/native-gpu/src/mesh_transparency.rs\n M modules/native-gpu/src/protocol.rs\n M modules/native-gpu/validation/tsconfig.json\n?? modules/native-gpu/examples/dynamic-image-admission.tsx\n?? modules/native-gpu/image-info.ts\n?? modules/native-gpu/validation/validate-image-admission.mjs\n?? modules/native-gpu/validation/verify-image-admission.ts",
+  "inputHashes": {
+    "Cargo.toml": "66e704a8491df2d1b5d3b73296d945f737f47e746588cc773d32c8de966a5c60",
+    "Cargo.lock": "bbb4452948f4bd7558a89755ce3e241e2313ac80cecc47e22b0f60641eaa0584",
+    "src/main.rs": "0fc41a9138fe1f39e030fb31f66103adb2067b8cbc786c8a401bd49f598a549a",
+    "src/gpu.rs": "cd521350faeec1de327069c09d1b0e768e21622ee6730d6d9111eee7707cc004",
+    "src/protocol.rs": "ad76155ef6383756a61659c57687b277494766f38eeac59e0b93dadc20e902ef",
+    "src/encode.rs": "592b7724fe90fda8e8d6c84611b909ce8df4fa85492070885f825d3ac42eac9b",
+    "src/external_windows.rs": "a936cffc7a1cee56d4a6b2e678452f3b7eb0a569e5022c00af8c62094a75ed9f",
+    "src/native_module.rs": "d3d1e950bd5875ff96a7867573b7c97a503469e062380e59494d2ea589ce6b83",
+    "src/native_module_windows.rs": "f9d06f5a5b820351d6e33b76af0f039adddfb1436ea769f983ee8f4653f80c1f",
+    "src/mesh_transparency.rs": "e3bfb864a3bd9c9c7f7192b24fc912b948ab6ab05960de33aa6f6904dd5af037",
+    "src/half.wgsl": "361008ae3ae0cb56fdabda5771243812d60be2983b3916f37ef1c484bc5895c8",
+    "../servo/native/interop.wgsl": "fbc40453f42f705c1eeca5f6f423909ac82d2ce43b49046bdf949d055c033c47",
+    "../servo/native/from-servo.wgsl": "0b58e7af9f6a0bd91c3f1afbc45d864cbff8fae8b8fc43528ff9507bf4c9276d",
+    "build.mjs": "39e8ba2edc54dcfa84da1130461b3ac691843f3d2e96c1c500c7a1a58120598c"
+  },
+  "profile": "debug",
+  "features": [
+    "diagnostics"
+  ],
+  "offline": true,
+  "locked": true,
+  "wallMs": 3004.933,
+  "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.1\nLLVM version: 23.1.1",
+  "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+  "flags": {
+    "RUSTFLAGS": null,
+    "CARGO_ENCODED_RUSTFLAGS": null,
+    "CARGO_BUILD_TARGET": null
+  },
+  "executable": {
+    "file": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\.frameweave\\native-target\\debug\\frameweave-native-gpu.exe",
+    "bytes": 16420352,
+    "sha256": "3d26798ac6cbf0868b0b03570f8753dac0aafd63f40e5ef0042357ec0ecfe1a5"
+  }
+}

@@ -1,0 +1,2 @@
+Frameweave authored spatial-field mathematics and integration: Apache-2.0.
+Reuses the existing spatial-data-effects geometry capture unchanged, with fixed native Three0.186.1 (MIT). See vendor/three/SOURCE.json, included Three license and UPSTREAM.json. No external renderer/editor/runtime, GPL or proprietary algorithm source copied. WGSL reflect/refract follow the W3C standard builtins, not a copied third-party implementation.

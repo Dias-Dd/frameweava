@@ -1,0 +1,15 @@
+{
+  "pixelF32Scaled": 0.000003,
+  "pixelF16Scaled": 0.0006,
+  "dataF32Scaled": 0.000003,
+  "scale": "abs(actual-reference)/max(1,abs(reference)); unchanged established gates",
+  "reference": "Existing independent F64 fit, dense full-matrix temporal normal/solve, local weighted observations/Jacobi, matrix/grid composition, Newton mapping, exhaustive rectangle search and bilinear source sampling",
+  "quality": {
+    "smoothPathAccelerationEnergyRatioMaximum": 0.5,
+    "lockedPathMaximumVariation": 0.000003,
+    "cropInvalidContributors": 0,
+    "noMissingObservationInterpolation": true
+  },
+  "map": {"newtonIterations":12,"residualPixels":0.00001,"minimumJacobianDeterminant":0.0000000009313225746154785},
+  "crop": "Largest axis-aligned aspect-preserving rectangle on the integer primary-axis sample grid, deterministic nearest-center tie; source coverage holes do not redefine geometric validity"
+}

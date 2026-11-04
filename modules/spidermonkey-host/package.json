@@ -1,0 +1,15 @@
+{
+  "name": "@frameweave/spidermonkey-host-adapter",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "Apache-2.0 AND MPL-2.0",
+  "dependencies": {
+    "@frameweave/engine": "file:../..",
+    "@types/react-reconciler": "0.33.0",
+    "react-reconciler": "0.34.0"
+  },
+  "peerDependencies": {
+    "react": "19.3.1"
+  }
+}

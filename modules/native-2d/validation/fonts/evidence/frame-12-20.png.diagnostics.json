@@ -1,0 +1,306 @@
+{
+  "version": 1,
+  "ok": true,
+  "backend": "native-wgpu",
+  "output": "D:\\frameweave-worktrees\\agent-4\\modules\\native-2d\\validation\\fonts\\evidence\\frame-12-20.png",
+  "frames": 1,
+  "startFrame": 12,
+  "endFrame": 13,
+  "encoder": "png",
+  "encoderVersion": "ffmpeg version 6.1.1-essentials_build-www.gyan.dev Copyright (c) 2000-2023 the FFmpeg developers",
+  "audio": null,
+  "timings": {
+    "compileMs": 6037.5023,
+    "compilation": "included-or-explicit-cached-build",
+    "initMs": 2964.2722000000003,
+    "framePipelineMs": 25.38970000000154,
+    "encoderFinishMs": 74.79799999999886,
+    "totalMs": 9151.7627
+  },
+  "scheduling": {
+    "version": 1,
+    "mode": "throughput",
+    "capacity": 1,
+    "concurrency": 1,
+    "completedFrames": 1,
+    "samples": [
+      {
+        "concurrency": 1,
+        "frames": 1,
+        "wallMs": 25.248999999999796,
+        "fps": 39.6055289318392,
+        "next": 1
+      }
+    ]
+  },
+  "stats": {
+    "adapter": "AdapterInfo { name: \"NVIDIA GeForce RTX 5070 Laptop GPU\", vendor: 4318, device: 11608, device_type: DiscreteGpu, device_pci_bus_id: \"0000:01:00.0\", driver: \"NVIDIA\", driver_info: \"596.49\", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 32, transient_saves_memory: Some(false), limit_bucket: None }",
+    "allocatedDataBytes": 1079960,
+    "allocatedImageBytes": 17446256,
+    "backend": "native-wgpu",
+    "blockingGpuWaits": 0,
+    "bufferExports": {
+      "bytes": 0,
+      "readbacks": 0,
+      "version": 1
+    },
+    "capabilities": {
+      "backend": "native-wgpu",
+      "capacityPolicy": "configured-metadata-and-device-budget",
+      "computeKernelAbis": [
+        1
+      ],
+      "crossStageGpuHandles": false,
+      "execution": "recording",
+      "f16WorkingBytesPerPixel": 16,
+      "hardwareVerified": true,
+      "limits": {
+        "maxBufferSize": 4294967295,
+        "maxComputeInvocationsPerWorkgroup": 1024,
+        "maxComputeWorkgroupSizeX": 1024,
+        "maxComputeWorkgroupSizeY": 1024,
+        "maxComputeWorkgroupSizeZ": 64,
+        "maxComputeWorkgroupStorageSize": 49152,
+        "maxComputeWorkgroupsPerDimension": 65535,
+        "maxStorageBufferBindingSize": 2147483644,
+        "maxStorageBuffersPerShaderStage": 524288,
+        "maxUniformBufferBindingSize": 65536
+      },
+      "maxKernels": 1073741824,
+      "maxPendingPasses": 1073741824,
+      "nativeImages": {
+        "admission": "device-and-session-budget",
+        "maxTextureDimension2D": 32768,
+        "version": 1
+      },
+      "nativeInference": {
+        "imageContinuation": "same-frame-prefix-v1",
+        "outputAliasing": "forbidden",
+        "persistentOutput": "explicit-stateStep",
+        "preallocatedOutputs": true,
+        "stateContinuation": true,
+        "version": 1
+      },
+      "nativeMesh": {
+        "exactAdmission": "session-budget",
+        "float32Blendable": true,
+        "version": 1
+      },
+      "nativeRayQuery": {
+        "available": true,
+        "enabled": false,
+        "experimental": true,
+        "maxBlasPrimitives": 536870911,
+        "maxTlasInstances": 16777215,
+        "profile": "opaque-triangles-v1",
+        "version": 1
+      },
+      "pixelKernelAbis": [
+        1,
+        2
+      ],
+      "profiling": "disabled",
+      "storageTypes": [
+        "f32",
+        "u32",
+        "i32"
+      ],
+      "version": 1
+    },
+    "completed": 1,
+    "devicesCreated": 1,
+    "diagnosticBlockingWaits": 0,
+    "diagnosticReadbackBytes": 0,
+    "diagnosticReadbacks": 0,
+    "diagnosticsEnabled": false,
+    "export": {
+      "bytes": 921600,
+      "cpuImageCopies": 0,
+      "enabled": true,
+      "framesWritten": 1,
+      "hardwareEncode": false,
+      "httpTransport": false,
+      "pngTransport": false
+    },
+    "externalImages": {
+      "available": true,
+      "enabled": true,
+      "reason": null,
+      "version": 1
+    },
+    "frameBindings": {
+      "allSlotsDrain": false,
+      "slotUpdates": 0,
+      "version": 1
+    },
+    "frameHashes": 0,
+    "hardwareOptixRayQuery": {
+      "accelerationPolicy": "rebuild sanitized opaque geometry per query; no refit or AS cache yet",
+      "adapterLuid": "0000000000016501",
+      "additionalD3D12Devices": 0,
+      "bridgeHostFenceWaitsPerRun": 0,
+      "completedRays": 0,
+      "cpuGeometryReadbacks": 0,
+      "cpuPixelReadbacks": 0,
+      "enabled": false,
+      "gpuBridgeCopyBytes": 0,
+      "knownSharedAsScratchAndPinnedBytes": 0,
+      "physicalPeakBytes": "unknown",
+      "profile": "optix-cuda-opaque-triangles-v1",
+      "residentQueries": 0,
+      "retiredQueries": 0,
+      "runtime": null,
+      "runtimeVerified": false,
+      "status": "not-probed",
+      "submittedRays": 0,
+      "version": 1
+    },
+    "hardwareRayQuery": {
+      "cachedSceneBuilds": 0,
+      "completedRays": 0,
+      "cpuGeometryReadbacks": 0,
+      "cpuPixelReadbacks": 0,
+      "driverReportedAsAndScratchBytes": 0,
+      "enabled": false,
+      "geometryBuilds": 0,
+      "physicalPeakBytes": "unknown",
+      "profile": "opaque-triangles-v1",
+      "refitImplemented": false,
+      "residentScenes": 0,
+      "retiredScenes": 0,
+      "runtimeVerified": false,
+      "submittedRays": 0,
+      "tlasBuilds": 0,
+      "version": 1
+    },
+    "hardwareVideo": {
+      "additionalD3D11Devices": 0,
+      "blockingGpuFenceWaits": 0,
+      "cpuPixelReadbacks": 0,
+      "cpuPixelUploads": 0,
+      "driverManagedDecodeBytes": "unknown",
+      "format": "rgba32float",
+      "loaded": false,
+      "requests": 0,
+      "residentSlots": 0,
+      "sources": 0,
+      "timestampPolicy": "ordinal + source-relative PTS verification",
+      "version": 1
+    },
+    "imageReadbacks": 1,
+    "inFlight": 0,
+    "inference": {
+      "adapterLuid": "0000000000016501",
+      "additionalD3D12Devices": 0,
+      "backendManagedMemoryBytes": "unknown",
+      "cpuPixelReadbacks": 0,
+      "cpuPixelUploads": 0,
+      "gpuResident": true,
+      "interopDevice": "same-adapter D3D12/DirectML",
+      "models": [],
+      "perRunBridgeHostFenceWaits": 0,
+      "profile": "ort-dml-resident-f32-v1",
+      "retiredModels": 0,
+      "runtime": null,
+      "runtimeInternalWaits": "unknown",
+      "runtimeVerified": false,
+      "runtimes": [],
+      "status": "not-probed",
+      "version": 1
+    },
+    "nativeEncoding": {
+      "backend": "native-d3d11-ocio-nvenc",
+      "completed": 0,
+      "compressedBytes": 0,
+      "cpuPixelReadbacks": 0,
+      "cpuPixelUploads": 0,
+      "enabled": false,
+      "encodedBytesCpuOnly": true,
+      "gpuColour": true,
+      "residentSlots": 0,
+      "submitted": 0,
+      "version": 1
+    },
+    "nativeModules": {
+      "additionalD3D11Devices": 0,
+      "blockingGpuFenceWaits": 0,
+      "calls": 0,
+      "contentProfile": "reviewed-local-only",
+      "inputGpuConversions": 0,
+      "instances": 0,
+      "loaded": false,
+      "nativeDevicesCreated": 0,
+      "outputGpuConversions": 0,
+      "productionPixelReadbacks": 0,
+      "runtime": null,
+      "runtimeFileHashes": 0,
+      "surfaceProfile": "explicit-sdr-srgb8",
+      "version": 1,
+      "webRenderCachePrecision": "bgra8"
+    },
+    "numericalValidationPasses": 0,
+    "peakSubmittedInFlight": 1,
+    "persistentState": {
+      "buffers": 0,
+      "cursors": {},
+      "version": 1
+    },
+    "pipelineCache": {
+      "computeAndMeshCreated": 16,
+      "computeAndMeshReused": 1,
+      "displayReuses": 0,
+      "meshAttachmentSetsReused": 0,
+      "retention": "current-program-only",
+      "version": 1,
+      "workingBuffersReused": 0
+    },
+    "pixelTransferBytes": 921600,
+    "programUpdates": 1,
+    "protocolVersion": 2,
+    "resourceImports": {
+      "binaryUploadBytes": 0,
+      "uploadBytes": 0,
+      "version": 1
+    },
+    "slots": 1,
+    "stateCheckpoints": {
+      "bytes": 0,
+      "count": 0,
+      "cpuReadbacks": 0,
+      "restores": 0,
+      "version": 1
+    },
+    "submitted": 1,
+    "workingImageBytes": 24819392,
+    "stateContinuations": {
+      "version": 1,
+      "segments": 0,
+      "frames": 0,
+      "rollbacks": 0,
+      "pending": false,
+      "failed": false
+    },
+    "sourceOutput": {
+      "width": 640,
+      "height": 360,
+      "format": "rgba32float",
+      "alpha": "premultiplied",
+      "color": {
+        "primaries": "rec709",
+        "whitePoint": "D65",
+        "transfer": "linear",
+        "reference": "scene",
+        "range": "full",
+        "referenceWhiteNits": 100
+      }
+    }
+  },
+  "transfer": {
+    "previewReadback": false,
+    "exportMaterialization": true,
+    "format": "rgba",
+    "route": "native GPU → asynchronous packed buffer → FFmpeg stdin",
+    "zeroCopyEncode": false
+  },
+  "diagnostics": []
+}

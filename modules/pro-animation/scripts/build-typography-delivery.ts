@@ -1,0 +1,22 @@
+import ts from 'typescript';
+import {build} from 'esbuild';
+import {readFile,writeFile,mkdir,mkdtemp,cp,readdir} from 'node:fs/promises';
+import {resolve,join,dirname,relative} from 'node:path';
+import {createHash} from 'node:crypto';
+import {runtimePin} from '../../../src/compiler/runtime-lock.ts';
+const root=resolve(import.meta.dirname,'../../..'),base=join(root,'.frameweave/typography-deliveries');await mkdir(base,{recursive:true});
+const out=await mkdtemp(join(base,'sdk-')),file=join(out,'lib-modules/pro-animation/typography-node.js');
+await build({absWorkingDir:root,entryPoints:[join(root,'modules/pro-animation/typography-node.ts')],outfile:file,bundle:true,format:'esm',platform:'node',target:'node22',packages:'external',legalComments:'inline',logLevel:'silent'});
+await mkdir(join(out,'modules/pro-animation'),{recursive:true});await cp(join(root,'modules/pro-animation/typography-kits'),join(out,'modules/pro-animation/typography-kits'),{recursive:true});await cp(join(root,'modules/pro-animation/typography-kit-lock.json'),join(out,'modules/pro-animation/typography-kit-lock.json'));
+const options:ts.CompilerOptions={target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext,moduleResolution:ts.ModuleResolutionKind.Bundler,strict:true,skipLibCheck:true,allowImportingTsExtensions:true,declaration:true,emitDeclarationOnly:true,outDir:join(out,'types'),rootDir:root,types:['node'],typeRoots:[join(root,'node_modules/@types')],lib:['lib.es2022.d.ts','lib.dom.d.ts']};
+const host=ts.createCompilerHost(options),program=ts.createProgram([join(root,'modules/pro-animation/typography-node.ts')],options,host),errors=ts.getPreEmitDiagnostics(program).filter(d=>d.category===ts.DiagnosticCategory.Error);
+if(errors.length)throw Error(ts.formatDiagnostics(errors,{getCurrentDirectory:()=>root,getCanonicalFileName:f=>f,getNewLine:()=> '\n'}));
+host.writeFile=(file,text)=>{throw Error('Unexpected asynchronous declaration write '+file);};
+const declarations=new Map<string,string>();program.emit(undefined,(file,text)=>declarations.set(file,text));
+for(const source of program.getSourceFiles())if(source.isDeclarationFile&&!source.fileName.includes('node_modules')&&relative(root,source.fileName)&&!relative(root,source.fileName).startsWith('..'))declarations.set(join(out,'types',relative(root,source.fileName)),source.text);
+for(const [file,text]of declarations){await mkdir(dirname(file),{recursive:true});await writeFile(file,text.replace(/\.ts(['"])/g,'.js$1'));}
+await cp(join(root,'licenses/APACHE-2.0.txt'),join(out,'LICENSE'));
+await writeFile(join(out,'package.json'),JSON.stringify({name:'@frameweave/typography-preparation',version:'0.1.1',private:true,type:'module',license:'Apache-2.0',engines:{node:'>=22'},files:['lib-modules','modules','types','LICENSE','delivery.json'],exports:{'.':{types:'./types/modules/pro-animation/typography-node.d.ts',import:'./lib-modules/pro-animation/typography-node.js'}},description:'Frozen Node preparation SDK delivery from Frameweave; no engine CLI or Renderer; not a replacement for the engine package'},null,2)+'\n');
+const files:Record<string,string>={};async function inventory(dir:string){for(const e of await readdir(dir,{withFileTypes:true})){const p=join(dir,e.name);if(e.isDirectory())await inventory(p);else files[relative(out,p).replaceAll('\\','/')]=createHash('sha256').update(await readFile(p)).digest('hex');}}await inventory(out);
+await writeFile(join(out,'delivery.json'),JSON.stringify({schemaVersion:1,kind:'frozen-sdk-entry-delivery',officialEntry:'@frameweave/engine/typography/node',standalonePreparationEntry:'@frameweave/typography-preparation',runtimePin,files,limitations:['Node preparation only; not the complete engine npm release','Original font algorithms and Kit resources; explicit WASM authorization required']},null,2)+'\n');
+const result={out,entry:file,types:join(out,'types/modules/pro-animation/typography-node.d.ts'),runtimePin};await mkdir(join(root,'artifacts/main-typography-provider'),{recursive:true});await writeFile(join(root,'artifacts/main-typography-provider/delivery.json'),JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));

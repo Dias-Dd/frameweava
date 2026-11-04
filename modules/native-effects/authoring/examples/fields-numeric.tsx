@@ -1,0 +1,2 @@
+import {Composition,Stage,Layer,Resource,ref} from '@frameweave/engine';import {fieldNumeric} from '../field-stage.ts';export {fieldNumeric};
+export default <Composition width={17} height={13} fps={24} durationInFrames={200} background="transparent"><Resource id="auxiliary" src="./assets/auxiliary.f32" kind="file"/><Stage id="fields" factory={fieldNumeric}/><Layer source={ref('fields')}/></Composition>;

@@ -1,0 +1,22 @@
+{
+  "baseline": "af91a99e508195d4e6473cc23889e53d46ba8e4f",
+  "sourceHashes": {
+    "modules/pro-animation/src/property-keyframes/index.ts": "2f8b20fb750f29a68fefadc7b847dd98de07fe89c461d1d2a6d35a8549d330d9",
+    "src/core/animation.ts": "46d208a844d6455fd0905a1606cab51c8800ac10e08cfe7766b3c12dab9d26d0",
+    "src/core/time.ts": "b1d9e8a3be47adee369daea66273bc10feac51ae08968c90ca939756a14006aa",
+    "modules/pro-animation/src/keyframe-control/index.ts": "fb5d85cb8323789a1050f0b7bf78037e62d9cb3eb910609dc0cc58a6a26e4774",
+    "modules/pro-animation/src/time-controls.ts": "e689e0e9c333c310af5da239e6593e4c0cecee111622d8459992e32751b7be0a",
+    "modules/pro-animation/src/motion-control/sampling.ts": "88c9d595081b102834bcfae1a3482ddc5d7a473d3efccb3cfda2e2848b89f894",
+    "modules/pro-animation/src/extrusion/native.ts": "fbc65144fdf1754cb731eb5e98096963e7e40e02ab08fdb2593568a382049d98",
+    "modules/pro-animation/provenance/keyframe-control/SOURCE.json": "e9e73428bf7376be8dc7f756949654c75d0b4bb4c31c0ad90aed43b5b4be25be",
+    "modules/pro-animation/provenance/extrusion/sources.json": "896aa4f74669f06a8e46fed438fd8f6a4bd15401cff87c75577ff28238ced0ea"
+  },
+  "adaptation": "Own value codecs/typed views only. Existing scalar Core/keyframe-control algorithms and existing Native graphics consumers called directly; no new third-party source copy/dependency.",
+  "existingLicenseInventories": [
+    "modules/pro-animation/provenance/keyframe-control/SOURCE.json",
+    "modules/pro-animation/provenance/extrusion/sources.json",
+    "modules/pro-animation/rust/pathops/licenses"
+  ],
+  "newRuntimeDependencies": [],
+  "coreChanged": false
+}

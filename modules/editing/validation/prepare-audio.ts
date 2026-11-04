@@ -1,0 +1,4 @@
+import {writeFile} from 'node:fs/promises';
+import {audioBlock} from '../../../src/audio/block.ts';import {encodeWav} from '../../../src/audio/wav.ts';
+for(const [name,layout,values]of [['sound','mono',Float32Array.from({length:48000},(_,n)=>.2*Math.sin(2*Math.PI*440*n/48000))],['music','stereo',Float32Array.from({length:96000},(_,n)=>.08*Math.sin(2*Math.PI*(n%2?330:220)*Math.floor(n/2)/48000))]]as const){const block=audioBlock(values,{sampleRate:48000,layout}),wav=encodeWav(block,{format:'float32',quantization:{clip:'reject',dither:{kind:'none'}}});for(const directory of ['examples','validation'])await writeFile('modules/editing/'+directory+'/'+name+'.wav',wav.bytes);}
+console.log(JSON.stringify({prepared:['examples/sound.wav','examples/music.wav'],sampleCount:48000,sampleRate:48000,seconds:1,source:'deterministic F32 sine; actual WAV, no mock PCM'}));

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "parent": "ada1cbef83bd87a8c8a4ce146a4f0a98de74b112",
+  "round": "Additional3/4 continuation, same text-control campaign and budget",
+  "license": "Existing Apache-2.0 adapter; original reviewed Unicode/HarfRust/Skrifa/Clipper2/Earcut and OFL font sources unchanged",
+  "reuse": [
+    "Original paragraph-context UAX9, itemizer and HarfRust font APIs; explicit blank-space shaping policy for Tab only",
+    "Existing canonical TextLayoutData/PathData, fonts, units and provenance retained",
+    "Existing contextual wrapper measures the same tabbed line advances",
+    "Existing Native paragraph/glyph coverage/mesh/Glow/Layer; no new renderer/device/permission"
+  ],
+  "newThirdPartyDependencies": [],
+  "newUpstreamCode": false,
+  "files": {
+    "modules/pro-animation/src/text-layout/tabs.ts": "a2ec3d17b82cf022475a916d61d0fa6f4a78a8b03e25ff73a716ded31a7e0f15",
+    "modules/pro-animation/src/bidi-line.ts": "3e82e5e609d97ad4e0bf97a35e90d30396e5f2eeec33eae0764075c7094e18bd",
+    "modules/pro-animation/src/bidi-text.ts": "5ac9abe1dda219fec06333a23ed0c991a7cca3fa02808a79c62f57fb0ce3411f",
+    "modules/pro-animation/src/text-layout/layout.ts": "c028c3db1e72f0f36a97b70e15b3487e1fc1da808804fc2bf4fa8fbc982c9264"
+  },
+  "limitations": [
+    "Horizontal physical tabs only; no tab leader glyph generation or locale-guessed decimal format",
+    "Decimal inside an inseparable cluster rejects rather than inventing coordinate",
+    "Source font must produce independent verified no-ink space glyph for tab placeholder",
+    "Later authored geometry transforms are not pixel measurements of stored tab planning records",
+    "No new shaping service in Native VM or formal R1 factory identity/permissions; Main owns release and L3"
+  ]
+}

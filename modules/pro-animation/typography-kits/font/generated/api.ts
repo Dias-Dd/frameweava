@@ -1,0 +1,7 @@
+// Generated from the existing pinned Kit method adapter, no new host/protocol.
+import type {Engine} from '../dist/generated/module.js';
+import type {ModuleLoader} from '@frameweave/engine/plugins';
+import {createClient,type Options,type Client} from '../runtime/client.ts';
+type Public=Pick<Engine,"append_font"|"begin_font"|"color_glyph_paint"|"color_palette"|"finish_font"|"font_axes"|"font_bitmap_strikes"|"font_color_profile"|"font_embedded_bytes"|"font_embedded_metadata"|"font_metrics"|"glyph_metrics"|"map_codepoints"|"map_variants"|"normalized_coords"|"outline_glyph"|"read_glyphs"|"read_outline"|"reset_results"|"resolve_location"|"set_variations"|"shape_run_context"|"shape_run">;
+export type Api={[K in keyof Public]:Public[K] extends (...args:infer A)=>infer R?(...args:A)=>Promise<R>:never}&Pick<Client,'dispose'|'diagnostics'>;
+export async function createEngineApi(load:ModuleLoader,options:Options={}):Promise<Api>{const client=await createClient(load,options);return Object.assign(Object.fromEntries(["append_font","begin_font","color_glyph_paint","color_palette","finish_font","font_axes","font_bitmap_strikes","font_color_profile","font_embedded_bytes","font_embedded_metadata","font_metrics","glyph_metrics","map_codepoints","map_variants","normalized_coords","outline_glyph","read_glyphs","read_outline","reset_results","resolve_location","set_variations","shape_run_context","shape_run"].map(name=>[name,(...args:unknown[])=>client.invoke(name,args)])),{dispose:()=>client.dispose(),diagnostics:()=>client.diagnostics()})as Api;}

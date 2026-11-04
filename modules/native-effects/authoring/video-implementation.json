@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "baseline": "6171156d0adbac8acf4944733d1336196d4dd10d",
+  "objective": "Ordinary declared video source and explicit multi-frame observations using existing decoder/PTS and GPU effects",
+  "implementationStartedAt": "2026-11-03T23:44:53.188502+00:00",
+  "status": "verified_source_candidate_not_published",
+  "evidence": "docs/native-image-video-authoring-evidence",
+  "unitTests": 5,
+  "numericComparisons": 30,
+  "validationMeasuredMs": 42184.0311,
+  "validationAccountedMs": 47184.0311,
+  "limits": [
+    "Source candidate only; immutable package/public bindings, installation and portable qualification Main-owned",
+    "Explicit existing CPU media decoding; all subsequent pixel effects Native GPU-only. Hardware decoder forwarding has no new execution qualification",
+    "Only tagged limited-range Rec709 SDR VFR input fixture qualified here. PQ/HLG/alpha video and other codecs/platforms not requalified",
+    "Original Host decoder resizes with bilinear. For professional resampling import known dimensions and use GPU resize",
+    "Fractional Stage frames need explicit rational source position; missing samples are unchanged original observations, not interpolated or replaced",
+    "No auto upstream Stage sampling, new resource owner, model registry, decoder, clock, ABI, trust/lock/permission change",
+    "Neural default3slot ORT cleanup failure from617 remains outside this scope; passing non-inference video does not repair it"
+  ]
+}

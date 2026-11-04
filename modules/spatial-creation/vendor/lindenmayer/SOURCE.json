@@ -1,0 +1,27 @@
+{
+  "package": "lindenmayer",
+  "version": "1.5.4",
+  "repository": "https://github.com/nylki/lindenmayer",
+  "commit": "64b321b8c4a7d610db59c19256b1dca6e945fbeb",
+  "license": "MIT",
+  "archive": {
+    "shasum": "e2854fedfecaaa07c40e8b25cc4481add37a79fd",
+    "tarball": "https://registry.npmjs.org/lindenmayer/-/lindenmayer-1.5.4.tgz",
+    "fileCount": 6,
+    "integrity": "sha512-tmuD/ZGO25AptY1WBlsAyp4JrFtmAa3utm9HBiPYTQdHqaW3Oaq0CkxN5KeGxlAeGjwbxwxwZijvS1DDZ7cWMQ==",
+    "signatures": [
+      {
+        "sig": "MEUCIBSosYZZzAw97V+U1Y6ZJwo3Mjg56C1tnFByb1OXLcAbAiEAqe0RXVZCVRHOMbzRsXYVrruYx3Gamf01UTxa7UOzUng=",
+        "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+      }
+    ],
+    "unpackedSize": 80689,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJe4+ABCRA9TVsSAnZWagAAMiEP/3qW9GnpTRRHelJhq3b8\nQFz7k0anvPx3c4pCiVawrxSsXIGXwq04Y+bj4VILcF/YyANx46nIcQ6C/X6L\nIaBPEodBs9Ar47En8lRRHM7rj5IEYdP9bl3AnqwI41uOZmnXK0KXT5ndXT50\nHxgW0gM6BjH8VBmFTWlrUGQ0iyDRAOdkHJbyAnuYmgKhiRxg9nkdApxn3l5x\nNIlGR0qfLHO34xk370Iyl8qZhWBq4D61G3HBLf3nlJ5NXrzdu8WkgWuuS/Ft\njNq82RGo5FmgBA2yhLkv92GkbnLb99ZkXjiuo+MCqQTLmcWzr9tMXNjFcKhs\n/XAMyvhXq2+YXXwY+UGDvDfJPmpplBkWNVdBAHMqeg7uvA3rjPcUcaQ28RgA\nl39vy6hkv/z7g5nK7O3jbCcNL/x5Q4+ZzkzwikjQZE1pFgb+60qgs7ASkD50\n3bvgCsLigOK5PWs7TVw+zTY5slRs8VPENH+vDs5CPG8/B3qXa9k5/WL4Ki6C\n08cgCg4KiMCwVqNn8mKH0K8wrXorJu9tZ9x6D/rqO3tpJv+YlSqwrqRv5KDE\njZXkmWgvowyj5JoZUpZTjVnhYY3Cqy8ZnfI/0LYWfYqVXIkoegPIz6I/ZNRv\n734t2jlXtZ0aEM4iqRsQYlriyQ6YfuqU0O7ZPn1OHXKX9fW8yQkNg2Dbgi9j\nbJet\r\n=2bJ5\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "files": {
+    "original.js": "96ee12327dfb534f597aec28a631c0f1d65968c71f61934c6e58f4992dcbe0fe",
+    "runtime.mjs": "3578066e9abad9bb01622489409afbfd35214f7037ee3855a5201f1e5ead0652",
+    "LICENSE": "58a081ce899367ad8f634054843beee0f2cd99242400faff9402174384618bee"
+  },
+  "adaptation": "One append-spread expression replaced with element loop to remove JS argument-count ceiling. No stochastic Math.random path is used; typed wrapper installs explicit Core-RNG function successors. No external parser/eval, DOM or second simulation runner."
+}

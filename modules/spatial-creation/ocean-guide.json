@@ -1,0 +1,447 @@
+{
+  "schemaVersion": 1,
+  "functions": [
+    {
+      "name": "oceanSpectrum",
+      "purpose": "Set reproducible 2D Phillips power spectrum, wind and finite water depth",
+      "signature": "api.d.ts",
+      "defaults": {
+        "wind": [
+          8,
+          3
+        ],
+        "amplitude": 0.002,
+        "cutoff": 0.1,
+        "opposition": 0.2,
+        "gravity": 9.81,
+        "depth": 100,
+        "seed": 1
+      },
+      "inputs": "Explicit admitted CreationInit where GPU required; otherwise typed numbers/options",
+      "outputs": "Owned CPU plan/options or owned simulation/renderer/Stage; record fields borrowed, rendered images owned",
+      "parameters": "See OCEAN.md for units, boundaries and defaults",
+      "time": "Core Signal / FrameContext only",
+      "gpuRequired": false,
+      "example": "ocean.tsx",
+      "dependencies": [
+        "existing Core NativeReplay",
+        "Native C2 and mesh-v1",
+        "Three camera math MIT",
+        "fixed WebTide selected math MIT"
+      ],
+      "limits": "Radix2 axes; dense finite patch; explicit CFL; OCEAN.md",
+      "units": "meter, second, m2/s momentum per unit width, rad/s PSD query; RGBA working-linear Rec709 PM (OCEAN.md)",
+      "bounds": "Positive finite extents/depth, nonnegative physical gains, explicit configurable byte/work budgets, radix2 axes and actual device limits; qualified SWE CFL<=.45",
+      "returnsOwnership": "owned CPU values/options; owned simulation/renderer; borrowed record fields; owned render image, according to API type"
+    },
+    {
+      "name": "oceanDispersion",
+      "purpose": "Gravity-wave angular frequency from wavenumber and depth",
+      "signature": "api.d.ts",
+      "defaults": {
+        "depth": 100,
+        "gravity": 9.81
+      },
+      "inputs": "Explicit admitted CreationInit where GPU required; otherwise typed numbers/options",
+      "outputs": "Owned CPU plan/options or owned simulation/renderer/Stage; record fields borrowed, rendered images owned",
+      "parameters": "See OCEAN.md for units, boundaries and defaults",
+      "time": "Core Signal / FrameContext only",
+      "gpuRequired": false,
+      "example": "ocean.tsx",
+      "dependencies": [
+        "existing Core NativeReplay",
+        "Native C2 and mesh-v1",
+        "Three camera math MIT",
+        "fixed WebTide selected math MIT"
+      ],
+      "limits": "Radix2 axes; dense finite patch; explicit CFL; OCEAN.md",
+      "units": "meter, second, m2/s momentum per unit width, rad/s PSD query; RGBA working-linear Rec709 PM (OCEAN.md)",
+      "bounds": "Positive finite extents/depth, nonnegative physical gains, explicit configurable byte/work budgets, radix2 axes and actual device limits; qualified SWE CFL<=.45",
+      "returnsOwnership": "owned CPU values/options; owned simulation/renderer; borrowed record fields; owned render image, according to API type"
+    },
+    {
+      "name": "phillipsSpectrum",
+      "purpose": "Directional 2D k-space Phillips density query",
+      "signature": "api.d.ts",
+      "defaults": {},
+      "inputs": "Explicit admitted CreationInit where GPU required; otherwise typed numbers/options",
+      "outputs": "Owned CPU plan/options or owned simulation/renderer/Stage; record fields borrowed, rendered images owned",
+      "parameters": "See OCEAN.md for units, boundaries and defaults",
+      "time": "Core Signal / FrameContext only",
+      "gpuRequired": false,
+      "example": "ocean.tsx",
+      "dependencies": [
+        "existing Core NativeReplay",
+        "Native C2 and mesh-v1",
+        "Three camera math MIT",
+        "fixed WebTide selected math MIT"
+      ],
+      "limits": "Radix2 axes; dense finite patch; explicit CFL; OCEAN.md",
+      "units": "meter, second, m2/s momentum per unit width, rad/s PSD query; RGBA working-linear Rec709 PM (OCEAN.md)",
+      "bounds": "Positive finite extents/depth, nonnegative physical gains, explicit configurable byte/work budgets, radix2 axes and actual device limits; qualified SWE CFL<=.45",
+      "returnsOwnership": "owned CPU values/options; owned simulation/renderer; borrowed record fields; owned render image, according to API type"
+    },
+    {
+      "name": "jonswapSpectrum",
+      "purpose": "Angular-frequency JONSWAP PSD query (not an automatic FFT profile)",
+      "signature": "api.d.ts",
+      "defaults": {
+        "peak": 0.8,
+        "gamma": 3.3,
+        "alpha": 0.0081,
+        "gravity": 9.81
+      },
+      "inputs": "Explicit admitted CreationInit where GPU required; otherwise typed numbers/options",
+      "outputs": "Owned CPU plan/options or owned simulation/renderer/Stage; record fields borrowed, rendered images owned",
+      "parameters": "See OCEAN.md for units, boundaries and defaults",
+      "time": "Core Signal / FrameContext only",
+      "gpuRequired": false,
+      "example": "ocean.tsx",
+      "dependencies": [
+        "existing Core NativeReplay",
+        "Native C2 and mesh-v1",
+        "Three camera math MIT",
+        "fixed WebTide selected math MIT"
+      ],
+      "limits": "Radix2 axes; dense finite patch; explicit CFL; OCEAN.md",
+      "units": "meter, second, m2/s momentum per unit width, rad/s PSD query; RGBA working-linear Rec709 PM (OCEAN.md)",
+      "bounds": "Positive finite extents/depth, nonnegative physical gains, explicit configurable byte/work budgets, radix2 axes and actual device limits; qualified SWE CFL<=.45",
+      "returnsOwnership": "owned CPU values/options; owned simulation/renderer; borrowed record fields; owned render image, according to API type"
+    },
+    {
+      "name": "oceanSeed",
+      "purpose": "Core RNG Gaussian coefficient pairs, dimension-normalized for inverse FFT",
+      "signature": "api.d.ts",
+      "defaults": {},
+      "inputs": "Explicit admitted CreationInit where GPU required; otherwise typed numbers/options",
+      "outputs": "Owned CPU plan/options or owned simulation/renderer/Stage; record fields borrowed, rendered images owned",
+      "parameters": "See OCEAN.md for units, boundaries and defaults",
+      "time": "Core Signal / FrameContext only",
+      "gpuRequired": false,
+      "example": "ocean.tsx",
+      "dependencies": [
+        "existing Core NativeReplay",
+        "Native C2 and mesh-v1",
+        "Three camera math MIT",
+        "fixed WebTide selected math MIT"
+      ],
+      "limits": "Radix2 axes; dense finite patch; explicit CFL; OCEAN.md",
+      "units": "meter, second, m2/s momentum per unit width, rad/s PSD query; RGBA working-linear Rec709 PM (OCEAN.md)",
+      "bounds": "Positive finite extents/depth, nonnegative physical gains, explicit configurable byte/work budgets, radix2 axes and actual device limits; qualified SWE CFL<=.45",
+      "returnsOwnership": "owned CPU values/options; owned simulation/renderer; borrowed record fields; owned render image, according to API type"
+    },
+    {
+      "name": "oceanFoam",
+      "purpose": "Set advected historical whitecap/shore-foam source and decay controls",
+      "signature": "api.d.ts",
+      "defaults": {
+        "gain": 4,
+        "decay": 0.6,
+        "threshold": 0.7,
+        "compression": 1,
+        "breaking": 0.4
+      },
+      "inputs": "Explicit admitted CreationInit where GPU required; otherwise typed numbers/options",
+      "outputs": "Owned CPU plan/options or owned simulation/renderer/Stage; record fields borrowed, rendered images owned",
+      "parameters": "See OCEAN.md for units, boundaries and defaults",
+      "time": "Core Signal / FrameContext only",
+      "gpuRequired": false,
+      "example": "ocean.tsx",
+      "dependencies": [
+        "existing Core NativeReplay",
+        "Native C2 and mesh-v1",
+        "Three camera math MIT",
+        "fixed WebTide selected math MIT"
+      ],
+      "limits": "Radix2 axes; dense finite patch; explicit CFL; OCEAN.md",
+      "units": "meter, second, m2/s momentum per unit width, rad/s PSD query; RGBA working-linear Rec709 PM (OCEAN.md)",
+      "bounds": "Positive finite extents/depth, nonnegative physical gains, explicit configurable byte/work budgets, radix2 axes and actual device limits; qualified SWE CFL<=.45",
+      "returnsOwnership": "owned CPU values/options; owned simulation/renderer; borrowed record fields; owned render image, according to API type"
+    },
+    {
+      "name": "oceanShore",
+      "purpose": "Set nonlinear shallow water, cell-centered bathymetry and boundary",
+      "signature": "api.d.ts",
+      "defaults": {
+        "depth": 1,
+        "slope": [
+          0.15,
+          0
+        ],
+        "seaLevel": 0,
+        "friction": 0.05,
+        "dryTolerance": 1e-05,
+        "left": "spectrum"
+      },
+      "inputs": "Explicit admitted CreationInit where GPU required; otherwise typed numbers/options",
+      "outputs": "Owned CPU plan/options or owned simulation/renderer/Stage; record fields borrowed, rendered images owned",
+      "parameters": "See OCEAN.md for units, boundaries and defaults",
+      "time": "Core Signal / FrameContext only",
+      "gpuRequired": false,
+      "example": "ocean.tsx",
+      "dependencies": [
+        "existing Core NativeReplay",
+        "Native C2 and mesh-v1",
+        "Three camera math MIT",
+        "fixed WebTide selected math MIT"
+      ],
+      "limits": "Radix2 axes; dense finite patch; explicit CFL; OCEAN.md",
+      "units": "meter, second, m2/s momentum per unit width, rad/s PSD query; RGBA working-linear Rec709 PM (OCEAN.md)",
+      "bounds": "Positive finite extents/depth, nonnegative physical gains, explicit configurable byte/work budgets, radix2 axes and actual device limits; qualified SWE CFL<=.45",
+      "returnsOwnership": "owned CPU values/options; owned simulation/renderer; borrowed record fields; owned render image, according to API type"
+    },
+    {
+      "name": "oceanObstacle",
+      "purpose": "Kinematic moving elevated ellipse/box bathymetry",
+      "signature": "api.d.ts",
+      "defaults": {
+        "center": [
+          0,
+          0
+        ],
+        "radius": [
+          0.5,
+          0.5
+        ],
+        "height": 1.5,
+        "shape": "ellipse"
+      },
+      "inputs": "Explicit admitted CreationInit where GPU required; otherwise typed numbers/options",
+      "outputs": "Owned CPU plan/options or owned simulation/renderer/Stage; record fields borrowed, rendered images owned",
+      "parameters": "See OCEAN.md for units, boundaries and defaults",
+      "time": "Core Signal / FrameContext only",
+      "gpuRequired": false,
+      "example": "ocean.tsx",
+      "dependencies": [
+        "existing Core NativeReplay",
+        "Native C2 and mesh-v1",
+        "Three camera math MIT",
+        "fixed WebTide selected math MIT"
+      ],
+      "limits": "Radix2 axes; dense finite patch; explicit CFL; OCEAN.md",
+      "units": "meter, second, m2/s momentum per unit width, rad/s PSD query; RGBA working-linear Rec709 PM (OCEAN.md)",
+      "bounds": "Positive finite extents/depth, nonnegative physical gains, explicit configurable byte/work budgets, radix2 axes and actual device limits; qualified SWE CFL<=.45",
+      "returnsOwnership": "owned CPU values/options; owned simulation/renderer; borrowed record fields; owned render image, according to API type"
+    },
+    {
+      "name": "oceanWake",
+      "purpose": "Gaussian time-window volume source and acceleration wake",
+      "signature": "api.d.ts",
+      "defaults": {
+        "center": [
+          0,
+          0
+        ],
+        "radius": [
+          0.3,
+          0.3
+        ],
+        "rate": 0,
+        "acceleration": [
+          0,
+          0
+        ],
+        "start": 0
+      },
+      "inputs": "Explicit admitted CreationInit where GPU required; otherwise typed numbers/options",
+      "outputs": "Owned CPU plan/options or owned simulation/renderer/Stage; record fields borrowed, rendered images owned",
+      "parameters": "See OCEAN.md for units, boundaries and defaults",
+      "time": "Core Signal / FrameContext only",
+      "gpuRequired": false,
+      "example": "ocean.tsx",
+      "dependencies": [
+        "existing Core NativeReplay",
+        "Native C2 and mesh-v1",
+        "Three camera math MIT",
+        "fixed WebTide selected math MIT"
+      ],
+      "limits": "Radix2 axes; dense finite patch; explicit CFL; OCEAN.md",
+      "units": "meter, second, m2/s momentum per unit width, rad/s PSD query; RGBA working-linear Rec709 PM (OCEAN.md)",
+      "bounds": "Positive finite extents/depth, nonnegative physical gains, explicit configurable byte/work budgets, radix2 axes and actual device limits; qualified SWE CFL<=.45",
+      "returnsOwnership": "owned CPU values/options; owned simulation/renderer; borrowed record fields; owned render image, according to API type"
+    },
+    {
+      "name": "shallowCfl",
+      "purpose": "Actual gravity/flow two-axis Courant-number query",
+      "signature": "api.d.ts",
+      "defaults": {},
+      "inputs": "Explicit admitted CreationInit where GPU required; otherwise typed numbers/options",
+      "outputs": "Owned CPU plan/options or owned simulation/renderer/Stage; record fields borrowed, rendered images owned",
+      "parameters": "See OCEAN.md for units, boundaries and defaults",
+      "time": "Core Signal / FrameContext only",
+      "gpuRequired": false,
+      "example": "ocean.tsx",
+      "dependencies": [
+        "existing Core NativeReplay",
+        "Native C2 and mesh-v1",
+        "Three camera math MIT",
+        "fixed WebTide selected math MIT"
+      ],
+      "limits": "Radix2 axes; dense finite patch; explicit CFL; OCEAN.md",
+      "units": "meter, second, m2/s momentum per unit width, rad/s PSD query; RGBA working-linear Rec709 PM (OCEAN.md)",
+      "bounds": "Positive finite extents/depth, nonnegative physical gains, explicit configurable byte/work budgets, radix2 axes and actual device limits; qualified SWE CFL<=.45",
+      "returnsOwnership": "owned CPU values/options; owned simulation/renderer; borrowed record fields; owned render image, according to API type"
+    },
+    {
+      "name": "planOcean",
+      "purpose": "Complete grid/topology data allocation and replay plan before GPU admission",
+      "signature": "api.d.ts",
+      "defaults": {
+        "dimensions": [
+          64,
+          64
+        ],
+        "size": [
+          24,
+          24
+        ],
+        "maxBytes": 268435456,
+        "maxWork": 400000000000
+      },
+      "inputs": "Explicit admitted CreationInit where GPU required; otherwise typed numbers/options",
+      "outputs": "Owned CPU plan/options or owned simulation/renderer/Stage; record fields borrowed, rendered images owned",
+      "parameters": "See OCEAN.md for units, boundaries and defaults",
+      "time": "Core Signal / FrameContext only",
+      "gpuRequired": false,
+      "example": "ocean.tsx",
+      "dependencies": [
+        "existing Core NativeReplay",
+        "Native C2 and mesh-v1",
+        "Three camera math MIT",
+        "fixed WebTide selected math MIT"
+      ],
+      "limits": "Radix2 axes; dense finite patch; explicit CFL; OCEAN.md",
+      "units": "meter, second, m2/s momentum per unit width, rad/s PSD query; RGBA working-linear Rec709 PM (OCEAN.md)",
+      "bounds": "Positive finite extents/depth, nonnegative physical gains, explicit configurable byte/work budgets, radix2 axes and actual device limits; qualified SWE CFL<=.45",
+      "returnsOwnership": "owned CPU values/options; owned simulation/renderer; borrowed record fields; owned render image, according to API type"
+    },
+    {
+      "name": "createOceanSimulation",
+      "purpose": "Own resident six-channel FFT, nonlinear coast and historical foam using Core replay",
+      "signature": "api.d.ts",
+      "defaults": {
+        "substeps": 4,
+        "strength": 1,
+        "choppiness": 1,
+        "detail": 0.1
+      },
+      "inputs": "Explicit admitted CreationInit where GPU required; otherwise typed numbers/options",
+      "outputs": "Owned CPU plan/options or owned simulation/renderer/Stage; record fields borrowed, rendered images owned",
+      "parameters": "See OCEAN.md for units, boundaries and defaults",
+      "time": "Core Signal / FrameContext only",
+      "gpuRequired": true,
+      "example": "ocean.tsx",
+      "dependencies": [
+        "existing Core NativeReplay",
+        "Native C2 and mesh-v1",
+        "Three camera math MIT",
+        "fixed WebTide selected math MIT"
+      ],
+      "limits": "Radix2 axes; dense finite patch; explicit CFL; OCEAN.md",
+      "units": "meter, second, m2/s momentum per unit width, rad/s PSD query; RGBA working-linear Rec709 PM (OCEAN.md)",
+      "bounds": "Positive finite extents/depth, nonnegative physical gains, explicit configurable byte/work budgets, radix2 axes and actual device limits; qualified SWE CFL<=.45",
+      "returnsOwnership": "owned CPU values/options; owned simulation/renderer; borrowed record fields; owned render image, according to API type"
+    },
+    {
+      "name": "oceanScene",
+      "purpose": "Direct finite 3D ocean scene with automatic GPU resource lifetime",
+      "signature": "api.d.ts",
+      "defaults": {},
+      "inputs": "Explicit admitted CreationInit where GPU required; otherwise typed numbers/options",
+      "outputs": "Owned CPU plan/options or owned simulation/renderer/Stage; record fields borrowed, rendered images owned",
+      "parameters": "See OCEAN.md for units, boundaries and defaults",
+      "time": "Core Signal / FrameContext only",
+      "gpuRequired": true,
+      "example": "ocean.tsx",
+      "dependencies": [
+        "existing Core NativeReplay",
+        "Native C2 and mesh-v1",
+        "Three camera math MIT",
+        "fixed WebTide selected math MIT"
+      ],
+      "limits": "Radix2 axes; dense finite patch; explicit CFL; OCEAN.md",
+      "units": "meter, second, m2/s momentum per unit width, rad/s PSD query; RGBA working-linear Rec709 PM (OCEAN.md)",
+      "bounds": "Positive finite extents/depth, nonnegative physical gains, explicit configurable byte/work budgets, radix2 axes and actual device limits; qualified SWE CFL<=.45",
+      "returnsOwnership": "owned CPU values/options; owned simulation/renderer; borrowed record fields; owned render image, according to API type"
+    },
+    {
+      "name": "shoreScene",
+      "purpose": "Direct interactive coast, waves and foam with automatic resource lifetime",
+      "signature": "api.d.ts",
+      "defaults": {},
+      "inputs": "Explicit admitted CreationInit where GPU required; otherwise typed numbers/options",
+      "outputs": "Owned CPU plan/options or owned simulation/renderer/Stage; record fields borrowed, rendered images owned",
+      "parameters": "See OCEAN.md for units, boundaries and defaults",
+      "time": "Core Signal / FrameContext only",
+      "gpuRequired": true,
+      "example": "ocean.tsx",
+      "dependencies": [
+        "existing Core NativeReplay",
+        "Native C2 and mesh-v1",
+        "Three camera math MIT",
+        "fixed WebTide selected math MIT"
+      ],
+      "limits": "Radix2 axes; dense finite patch; explicit CFL; OCEAN.md",
+      "units": "meter, second, m2/s momentum per unit width, rad/s PSD query; RGBA working-linear Rec709 PM (OCEAN.md)",
+      "bounds": "Positive finite extents/depth, nonnegative physical gains, explicit configurable byte/work budgets, radix2 axes and actual device limits; qualified SWE CFL<=.45",
+      "returnsOwnership": "owned CPU values/options; owned simulation/renderer; borrowed record fields; owned render image, according to API type"
+    },
+    {
+      "name": "createOceanRenderer",
+      "purpose": "Reuse Native raster-v1 and topology/UVs for real camera-projected water mesh",
+      "signature": "api.d.ts",
+      "defaults": {
+        "opacity": 1,
+        "wetEdge": 0.05,
+        "color": [
+          0.015,
+          0.18,
+          0.28
+        ],
+        "foamColor": [
+          1.4,
+          1.45,
+          1.5
+        ]
+      },
+      "inputs": "Explicit admitted CreationInit where GPU required; otherwise typed numbers/options",
+      "outputs": "Owned CPU plan/options or owned simulation/renderer/Stage; record fields borrowed, rendered images owned",
+      "parameters": "See OCEAN.md for units, boundaries and defaults",
+      "time": "Core Signal / FrameContext only",
+      "gpuRequired": true,
+      "example": "ocean.tsx",
+      "dependencies": [
+        "existing Core NativeReplay",
+        "Native C2 and mesh-v1",
+        "Three camera math MIT",
+        "fixed WebTide selected math MIT"
+      ],
+      "limits": "Radix2 axes; dense finite patch; explicit CFL; OCEAN.md",
+      "units": "meter, second, m2/s momentum per unit width, rad/s PSD query; RGBA working-linear Rec709 PM (OCEAN.md)",
+      "bounds": "Positive finite extents/depth, nonnegative physical gains, explicit configurable byte/work budgets, radix2 axes and actual device limits; qualified SWE CFL<=.45",
+      "returnsOwnership": "owned CPU values/options; owned simulation/renderer; borrowed record fields; owned render image, according to API type"
+    },
+    {
+      "name": "renderOceanSurface",
+      "purpose": "One-shot owned water image; repeated work uses renderer/Scene",
+      "signature": "api.d.ts",
+      "defaults": {},
+      "inputs": "Explicit admitted CreationInit where GPU required; otherwise typed numbers/options",
+      "outputs": "Owned CPU plan/options or owned simulation/renderer/Stage; record fields borrowed, rendered images owned",
+      "parameters": "See OCEAN.md for units, boundaries and defaults",
+      "time": "Core Signal / FrameContext only",
+      "gpuRequired": true,
+      "example": "ocean.tsx",
+      "dependencies": [
+        "existing Core NativeReplay",
+        "Native C2 and mesh-v1",
+        "Three camera math MIT",
+        "fixed WebTide selected math MIT"
+      ],
+      "limits": "Radix2 axes; dense finite patch; explicit CFL; OCEAN.md",
+      "units": "meter, second, m2/s momentum per unit width, rad/s PSD query; RGBA working-linear Rec709 PM (OCEAN.md)",
+      "bounds": "Positive finite extents/depth, nonnegative physical gains, explicit configurable byte/work budgets, radix2 axes and actual device limits; qualified SWE CFL<=.45",
+      "returnsOwnership": "owned CPU values/options; owned simulation/renderer; borrowed record fields; owned render image, according to API type"
+    }
+  ]
+}

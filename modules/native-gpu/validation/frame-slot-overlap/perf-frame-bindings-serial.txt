@@ -1,0 +1,29 @@
+C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\native-gpu\client.ts:36
+const error=(code:string,message:string)=>new EngineError(code,message);
+                                          ^
+
+
+EngineError: E_NATIVE_DEVICE: Validation Error
+
+Caused by:
+  In a CommandEncoder, label = 'frameweave/native-frame'
+    In a dispatch command, indirect:false
+      The BindGroupLayout with '' label of current set BindGroup with 'frameweave/native-resident' label at index 0 is not compatible with the corresponding BindGroupLayout with '' label of ComputePipeline with 'fw_main' label
+        Exclusive pipelines don't match: expected ComputePipeline with 'fw_main' label, got ComputePipeline with 'fw_main' label
+
+    at error (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\native-gpu\client.ts:36:43)
+    at NativeGpuClient.receive (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\native-gpu\client.ts:83:81)
+    at Socket.<anonymous> (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\native-gpu\client.ts:60:48)
+    at Socket.emit (node:events:519:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23) {
+  code: 'E_NATIVE_DEVICE',
+  stageId: undefined,
+  frame: undefined,
+  hint: undefined,
+  details: undefined
+}
+
+Node.js v22.19.0

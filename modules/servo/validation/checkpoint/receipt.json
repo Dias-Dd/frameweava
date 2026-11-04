@@ -1,0 +1,1068 @@
+{
+  "version": 1,
+  "sourceCommit": "fcd452093a83cb002f5eaaef4d684ad411344a79",
+  "sourceHashes": {
+    "modules/native-gpu/.gitignore": "306fd52e74fca6746e12acc750f232de15e71da917756a1270d74c91f5eb7368",
+    "modules/native-gpu/Cargo.lock": "bac179c8329d77482e2565d104218d93c3a875d39dcc45effca056b639e22b3f",
+    "modules/native-gpu/Cargo.toml": "1229a81bedbe58fd9b940a67c0ffd23c5310465cc16992f9b19811c21e7f7975",
+    "modules/native-gpu/README.md": "bf5def548468d58c51862dcfe8bd25e878f21a4db7a3297ac9d9bc054cdc2393",
+    "modules/native-gpu/authoring.ts": "3f1fb7234e78714104f10fde437680ccd5025b961690074bb79c058c655d40d5",
+    "modules/native-gpu/benchmark.ts": "96285a04a190c797d349911a7ec018c8f4a535b7977bdc44722dcdcd05e9b0ac",
+    "modules/native-gpu/bootstrap-program.ts": "a91cc4c3755d1008b39fb937da551418e024873654a8d1cb0cf800833baa78d4",
+    "modules/native-gpu/borrow.ts": "a8796d68ea9379b611f0153ecd42088e3b97ad822901e7f0835acc7f98f41aeb",
+    "modules/native-gpu/build.mjs": "022eecad17a5627d466a57ca23ec123958ec30e40269e06b2c2b06394213ac68",
+    "modules/native-gpu/cli.ts": "10a895e829ca379cdb07059c536681d8cd9e46cbf7fd277f3250890024d3b8bf",
+    "modules/native-gpu/client.ts": "5f62fa94297cbb974aba27f69b427098e991965dd692c2c7a6f878749d4ee9d5",
+    "modules/native-gpu/composite.ts": "3f1a04e730d801e9de247baf4733053fe0dcf08dfaca81dcb488a67b49864707",
+    "modules/native-gpu/display.ts": "eadf9cb468687c2cbc2827fdfdb6c36c87da74b1676d31a2ae7313da8b1e9b02",
+    "modules/native-gpu/examples/advanced.tsx": "c24260892b3d1880b4bb7f87e236814da0c0ba8e0fa15140c2d03e8f8112a82a",
+    "modules/native-gpu/examples/ball.tsx": "286679da8f6ecaa7c153442390dd37dad9c69564c5d21d4286df85a8dc83baf4",
+    "modules/native-gpu/examples/preview.ts": "b0c1846c55050e2244ea7449857ebb068c7ae286c9080169c0715db95c208a0c",
+    "modules/native-gpu/examples/two-stage.tsx": "2897a13b415c73784a65eb683e39c021da03fed3a816fbe5e1f4d408d0b28b18",
+    "modules/native-gpu/examples/web-compatibility.tsx": "b461c6f17b9c4aa818a51b248c15cb852d996514f85eb07b8027b6434ce99b4f",
+    "modules/native-gpu/executable.ts": "d469b647b8dd5b5b8ecb77436119ddfd37a3a1b01789fe73bc400bb2f138dc38",
+    "modules/native-gpu/logic-bootstrap.ts": "302efb4690180976a4d95332308a89b10fbf3fa15a8da6ef7ff442b02372d58e",
+    "modules/native-gpu/logic-host.ts": "414f76972aae0738e05854f5ea13f99a534d43d37eca0fed241c12fb55ef5821",
+    "modules/native-gpu/memory.ts": "db7314bad9ed336a6ab27e15f91db381c169915c59ec0a0372d8595ddf9026e4",
+    "modules/native-gpu/mesh-shader.ts": "1d50e3586a4e99d2c69bcfa547fdafaf905fe422825fe380bd355acfc952a705",
+    "modules/native-gpu/module.ts": "293a5827321a52c9bc0aaa5567265c3e7eda384a0a2e7e509f701851ffcfe981",
+    "modules/native-gpu/preview.ts": "34af16382e7be1b4847c27a28632a5900003b1e0ac8b2ca14f28a621286c4b8b",
+    "modules/native-gpu/program.ts": "292036adda49c6afd731cc37620f29963ba69ee7be7f2f81797a2a94f1e5ab91",
+    "modules/native-gpu/provenance.ts": "adfbb9577f0c0b889592efa326a2a996873c9e8876432c4388f890ece1a4007b",
+    "modules/native-gpu/react.tsx": "1ecbfe73bc2118c44347db20b13ed190824e84976c31f900c8b3956066a2c1b1",
+    "modules/native-gpu/scheduler.ts": "59b01afc75de1a06c6e471f19b2cedf367d6d0200f642b8fd2d585b0c170ffd9",
+    "modules/native-gpu/scope.ts": "85cf3dcc0a0160aba20941c13d3842be6965a27534398072e5e7155e9bbd3214",
+    "modules/native-gpu/service.ts": "d360a33c8cdc24ee764f30bce01016906092a4927faeb65756288104dbeb85cd",
+    "modules/native-gpu/src/encode.rs": "592b7724fe90fda8e8d6c84611b909ce8df4fa85492070885f825d3ac42eac9b",
+    "modules/native-gpu/src/external_windows.rs": "7cd70d6be50cb1026f099f96bba476c6321a783d1d6be871bdf09204e4a68fd2",
+    "modules/native-gpu/src/gpu.rs": "afb73ee8ab96fb6748a7bfd9e850af7aeeaadd1b7db7d6b74062b50e16301069",
+    "modules/native-gpu/src/main.rs": "e565c8c08b3997810d0c3fe475a5d1a398bc0b5d47e2bfdbc8470f387176c0c5",
+    "modules/native-gpu/src/native_module.rs": "f1d68dd07adfe4f8df6a7de01ced34d1e2e761ab5fac4c45e9b516da43ed667b",
+    "modules/native-gpu/src/native_module_windows.rs": "f9d06f5a5b820351d6e33b76af0f039adddfb1436ea769f983ee8f4653f80c1f",
+    "modules/native-gpu/src/protocol.rs": "568935673ce00d5f8e23179ad92fe8deb2cf80d66ad0c948a96af57597b78886",
+    "modules/native-gpu/validation/checkpoint-v2/advanced-1080.mp4": "52f1b9cf332fd4835e3a15c4cd82b84f36fb6f9cd8208e78650d1189d75c2c96",
+    "modules/native-gpu/validation/checkpoint-v2/advanced-decode.json": "dd83389eab8ed168f05d0675fee24364d62ed608e4b19a80b2ba6c6fd3f6e9e7",
+    "modules/native-gpu/validation/checkpoint-v2/advanced-export.json": "75cef26ae8ddbcd201be5847c441299e4d0910fd09dd88198e01f8bcff1ff2d7",
+    "modules/native-gpu/validation/checkpoint-v2/advanced-frame30.png": "05c2246cf719b433e6b567967886b9aaa78046192b005bff4a538bd7a705ef45",
+    "modules/native-gpu/validation/checkpoint-v2/ball-cli.json": "93777c3cd252739d090a32287a604daca2d5eff8e3c9d0b25f17375c0b5f8d91",
+    "modules/native-gpu/validation/checkpoint-v2/ball.png": "fb192c6eccb027ad14b13c839f78d0b5ceb1f8358c814c6ceaa374ead7b8b6c7",
+    "modules/native-gpu/validation/checkpoint-v2/changed-files.txt": "c535a8f78c1bf1ae1a76728b83f11b8b085cf1d45fe98e7130338de4c41292ec",
+    "modules/native-gpu/validation/checkpoint-v2/checkpoint.json": "32ac7ab77ce411d085003bc79be899731f8a18bc6d251d9c58f3ae2c9cdf691f",
+    "modules/native-gpu/validation/checkpoint-v2/checks/commands.json": "99e23c9d4b1208e6c508983c5092e515a305a4d519a08ee757cea15939a0d7ce",
+    "modules/native-gpu/validation/checkpoint-v2/checks/deformable-wasm.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "modules/native-gpu/validation/checkpoint-v2/checks/deformable-wasm.stdout.txt": "84414770a09bc0d5465a992a80d239fbacb4eb17066aef33ed562a91a24aa2ed",
+    "modules/native-gpu/validation/checkpoint-v2/checks/deformable-worker.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "modules/native-gpu/validation/checkpoint-v2/checks/deformable-worker.stdout.txt": "1e0407a89a82f2c3eed9ba60fc0cb098f6a619affd8240bee082ab7e863f8f9d",
+    "modules/native-gpu/validation/checkpoint-v2/checks/native.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "modules/native-gpu/validation/checkpoint-v2/checks/native.stdout.txt": "83ef5af354a0c0d979539c9e775ac7df628d1e7528821480d69d2953f88a3844",
+    "modules/native-gpu/validation/checkpoint-v2/checks/post-output-metadata-audio.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "modules/native-gpu/validation/checkpoint-v2/checks/post-output-metadata-audio.stdout.txt": "d9bde7f69ca4d7fcfc51870ba94dbdb339ee2442f44ab290083230bceed976b8",
+    "modules/native-gpu/validation/checkpoint-v2/checks/post-output-metadata-typecheck.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "modules/native-gpu/validation/checkpoint-v2/checks/post-output-metadata-typecheck.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "modules/native-gpu/validation/checkpoint-v2/checks/typecheck.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "modules/native-gpu/validation/checkpoint-v2/checks/typecheck.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "modules/native-gpu/validation/checkpoint-v2/frozen-1080.json": "a2b75c9d1764098fbb55e41f902fe6aa72821fa2fe202bc76ffd31ee60b39965",
+    "modules/native-gpu/validation/checkpoint-v2/frozen-4k.json": "fb605f13ede53f99ac68d86653795180fbbe6cd10a93210d12027f40545e1ed2",
+    "modules/native-gpu/validation/checkpoint-v2/native-debug-build.json": "b9d4ae5ea409473703a86e6433ad2bb542df84f081d613b6983492e05ca11500",
+    "modules/native-gpu/validation/checkpoint-v2/native-release-build.json": "c34ff275bbdabda833e7b58656323fba502fbeaa58199090ed8839120fd1fd8f",
+    "modules/native-gpu/validation/checkpoint-v2/native.exr": "846edbf20c750b79b0c67808ed615c36d6e10f3a538df94ac518ff94c91e9d1b",
+    "modules/native-gpu/validation/checkpoint-v2/rigid-rebuild.stderr.txt": "fb0b1eaf8e06490676a3e0b59de6be2515ec6cf15253e69fd8e3112c74d4938b",
+    "modules/native-gpu/validation/checkpoint-v2/window-cli.json": "aed48c3a762deb476398da9e7aafc85fb808a090cdb53e7370361ff3c6cbce7b",
+    "modules/native-gpu/validation/checkpoint-v2/with-audio.mp4": "a469f6d935942b34b908f18722c6b1b7292ba8577eb1bf6ba63113fa3cd11a0b",
+    "modules/native-gpu/validation/checkpoint-v2/worker-rebuild.json": "4323d2e3854f0d15c3761742ee441989f0f591e3cfa86e217f4ead96a4faca15",
+    "modules/native-gpu/validation/export-pack-checkpoint/1080p.json": "c73fcb56acc3c755c6e6a4a55c5569cd39b61ca064b443238c48fd89f2e8f87b",
+    "modules/native-gpu/validation/export-pack-checkpoint/4k.json": "bbca397f81116c754f16c7c8bebaafb8d680e3126f1a3959cbdf0df4eb17ac44",
+    "modules/native-gpu/validation/export-pack-checkpoint/build.stdout.txt": "71557c4b03304d811b5d0d467ad54b3fdd9722aeaaa59be33794c56df21921ef",
+    "modules/native-gpu/validation/export-pack-checkpoint/native-build.json": "015d46dd43093c251f5bb644cb0559977d3c6f4f17041b57ce487b63b9e930f4",
+    "modules/native-gpu/validation/export-pack-checkpoint/result.json": "f50700042658422276eda99e093f969b7d1cb2582f949b683c9cec1ce695d9cc",
+    "modules/native-gpu/validation/export-pack-checkpoint/rust-tests.stdout.txt": "e2d974cfc5b3bb815d8ea9a87704f4264f49a0c196c55eea3fb9730eba402d1e",
+    "modules/native-gpu/validation/export-pack-checkpoint/tests.stdout.txt": "b85d7e9958133bcc5518fd66e2c55bf3686af312c2d5f380924ccdfb87aa70ec",
+    "modules/native-gpu/validation/export-pack-checkpoint/types.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "modules/native-gpu/validation/verify-v2.mjs": "adb2418a373c2f557ae9fbff5660f0231c0dcdbedd543c86c60de481d6aaa388",
+    "modules/native-gpu/validation/verify-web-bridge.mjs": "859d4d75173e25e30d7331ba3c66556b779273af46e4859d50b9fc1613f16b25",
+    "modules/native-gpu/validation/verify-web-cancellation.mjs": "0369bcde788502e9be0b1711ec12467a74a5eb5c4716ea83ba9069f7024e8317",
+    "modules/native-gpu/validation/web-bridge-checkpoint/changed-files.txt": "1a6b3b2888e6170b9f67ccce639ce07b7b32047abc74d8675d91c9b38729717b",
+    "modules/native-gpu/validation/web-bridge-checkpoint/checkpoint.json": "461a6fe47d3bb51ef4133cd0b6f4ebcccfd6fd5f9061892041c7ef43ea83ea81",
+    "modules/native-gpu/validation/web-bridge-checkpoint/cleanup.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "modules/native-gpu/validation/web-bridge-checkpoint/cleanup.stdout.txt": "05da645695f366399673649e509e3931f8d39c41091f16dc807678b52be66320",
+    "modules/native-gpu/validation/web-bridge-checkpoint/compatibility.mp4": "a63d5593ed7d7871f173da8de7b8417babfa9af7b48e27fd02074dfcc988d8c2",
+    "modules/native-gpu/validation/web-bridge-checkpoint/compatibility.mp4.diagnostics.json": "2e28b48f9d53e3f16bed2dbb2415579292db26d65d4ed3bd9b22c9543cae008a",
+    "modules/native-gpu/validation/web-bridge-checkpoint/compatibility.png": "cdd0db42c5697bbfdda1b069648e25a13d5a5edb49485a8be401211a747b87fa",
+    "modules/native-gpu/validation/web-bridge-checkpoint/compatibility.png.diagnostics.json": "860de1df3e5923a566efce98d6d9ee32135bbbd5de7bd5b275f5b3b6ee4e2351",
+    "modules/native-gpu/validation/web-bridge-checkpoint/frozen-checks/commands.json": "9e1a892e49a08f91efb340a325abb705d9f8416002554c6815320eb7f01da54d",
+    "modules/native-gpu/validation/web-bridge-checkpoint/frozen-checks/source.diff.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "modules/native-gpu/validation/web-bridge-checkpoint/frozen-checks/stages-and-native-regressions.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "modules/native-gpu/validation/web-bridge-checkpoint/frozen-checks/stages-and-native-regressions.stdout.txt": "bdc46e2c9ff88105b07720378ab2688e753de97a8b7bbadcad2b4dfd57c8a1f1",
+    "modules/native-gpu/validation/web-bridge-checkpoint/frozen-checks/types.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "modules/native-gpu/validation/web-bridge-checkpoint/frozen-checks/types.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "modules/native-gpu/validation/web-bridge-checkpoint/initial-checks/commands.json": "8eb4a6f3bc50d81a63633312a7e788c231669e21ab76ef034c883b79c35adfd6",
+    "modules/native-gpu/validation/web-bridge-checkpoint/initial-checks/source.diff.txt.gz": "3a62ef3fc2aa0839f205ffda6afad53f054fc153acd5d0803a91c506dea74bcc",
+    "modules/native-gpu/validation/web-bridge-checkpoint/initial-checks/stages-and-native-regressions.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "modules/native-gpu/validation/web-bridge-checkpoint/initial-checks/stages-and-native-regressions.stdout.txt": "3d7d95e31c02cd03fb52fbab3839efe586d345076ea4fc640be5a37ad67a4656",
+    "modules/native-gpu/validation/web-bridge-checkpoint/initial-checks/types.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "modules/native-gpu/validation/web-bridge-checkpoint/initial-checks/types.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "modules/native-gpu/validation/web-bridge-checkpoint/native-debug-build.json": "0953738971a99a24ede99c525acba9b39eb50d0500b55cbb1f364eb348449d8a",
+    "modules/native-gpu/validation/web-bridge-checkpoint/native-release-build.json": "b7aa41e05b1062ce3b9a20b16f4467884bde5a9a85d246c908dc743d564ca8f5",
+    "modules/native-gpu/validation/web-bridge-checkpoint/no-web-1080.json": "4d5de9b195d3fed62b06f044d03fac9d4666821ca1fc09c4739aff397f8b9280",
+    "modules/native-gpu/validation/web-bridge-checkpoint/no-web-4k.json": "cedae528f8db65ff712a91fecacc06ea1c93a7870e35980835febbb7c4165751",
+    "modules/native-gpu/validation/web-bridge-checkpoint/types-final.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "modules/native-gpu/validation/web-bridge-checkpoint/types-final.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "modules/native-gpu/validation/web-bridge-checkpoint/window-final.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "modules/native-gpu/validation/web-bridge-checkpoint/window-final.stdout.json": "857a8d0118a63369dd8b538ce74231f73c60d934824bc93bed5f465240fa57d0",
+    "modules/native-gpu/validation/web-cancellation-checkpoint/after/cancellation-and-bridge.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "modules/native-gpu/validation/web-cancellation-checkpoint/after/cancellation-and-bridge.stdout.txt.gz": "ba18046fea233a5c54e9081d2368182a314d549f165db4225142d1232a79d773",
+    "modules/native-gpu/validation/web-cancellation-checkpoint/after/commands.json": "c173b09e60cb446b0b02b67105bf7be3a953519611349f71e3873feb28818023",
+    "modules/native-gpu/validation/web-cancellation-checkpoint/after/source.diff.gz": "40d811bdc4dde7499dc42cda21c29e6135da80c48d6e12bcfb0204cdfe4c86d3",
+    "modules/native-gpu/validation/web-cancellation-checkpoint/after/types.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "modules/native-gpu/validation/web-cancellation-checkpoint/after/types.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "modules/native-gpu/validation/web-cancellation-checkpoint/before/commands.json": "437eb7163205f9462e2e572cfc6f5a6fb94f61062770beb567f92fac649905d1",
+    "modules/native-gpu/validation/web-cancellation-checkpoint/before/counterexample.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "modules/native-gpu/validation/web-cancellation-checkpoint/before/counterexample.stdout.txt.gz": "1908d988e206b738a64c4143fe1327341be74d6f0d01ef330744728f629eb1c3",
+    "modules/native-gpu/validation/web-cancellation-checkpoint/before/source.diff.gz": "9e72928e7a01615b4cf090daa617b4ca9d68531748f887f323f695eb4ca3ef63",
+    "modules/native-gpu/validation/web-cancellation-checkpoint/final/cancellation-and-bridge.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "modules/native-gpu/validation/web-cancellation-checkpoint/final/cancellation-and-bridge.stdout.txt": "ca9b690bdc5d8bd58ce3b7e85fb33053d7d950700e6a099b92c67a10ab7d3dc6",
+    "modules/native-gpu/validation/web-cancellation-checkpoint/final/commands.json": "2d524825705aaa8002e60dcdad8a30384a2452842f26ac34b957edc64526e51e",
+    "modules/native-gpu/validation/web-cancellation-checkpoint/final/source.diff.gz": "40d811bdc4dde7499dc42cda21c29e6135da80c48d6e12bcfb0204cdfe4c86d3",
+    "modules/native-gpu/validation/web-cancellation-checkpoint/final/types.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "modules/native-gpu/validation/web-cancellation-checkpoint/final/types.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "modules/native-gpu/validation/web-cancellation-checkpoint/result.json": "ef434ebcd191bfece04cb7b5b510d641933a881ebca4d4851a6b8b8854159d2f",
+    "modules/native-gpu/visual-boundary.ts": "9b961e2277d1c6be297fe88d48a27abdd65599eb17f96a8e1264e70731153486",
+    "modules/native-gpu/web-bridge.ts": "4e15153b6f388c2126534feb7f20c608560a95f1a78752fabcd8cc9c7d021f69",
+    "modules/servo/README.md": "0d9879f56dc456eee057c5ada4e8bad2f85183b215e876ecaed48cc1f108508d",
+    "modules/servo/THIRD_PARTY_NOTICES.md": "3d98bb02d9071d419a1795b163855cfde83edd48750891a974a3f8404b71494b",
+    "modules/servo/build.mjs": "7284b960b325a84d2c82b260f1bf5dba88f217cf4385bb8a92f991f909c72080",
+    "modules/servo/examples/chain.tsx": "b0b7e3a6eb14ef49ebabc4e3ede110249cd6d423a718648ff94b7a3b1687efcf",
+    "modules/servo/examples/hdr-overlay.tsx": "13fe3fe1e1e555dcbd5ac817cd1edaabc86847234fd4dfd0b7ac9ea0879179a4",
+    "modules/servo/index.ts": "14c31abeb8aa8955643c57a578e29ae979b6e0fdcf552efcf1cbba635b63e1da",
+    "modules/servo/native/Cargo.lock": "3b3e3f1eaa2ad7a3c19219258b8ab2d158a7f09c4decfce40af4131514af7e15",
+    "modules/servo/native/LICENSE-MPL-2.0": "3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04",
+    "modules/servo/native/bridge.cpp": "b23161c77ea410127dd6c6f1aba99b7966aabee58cac56e5c60efb03090b6d26",
+    "modules/servo/native/from-servo.wgsl": "0b58e7af9f6a0bd91c3f1afbc45d864cbff8fae8b8fc43528ff9507bf4c9276d",
+    "modules/servo/native/interop.wgsl": "fbc40453f42f705c1eeca5f6f423909ac82d2ce43b49046bdf949d055c033c47",
+    "modules/servo/native/lib.rs": "a177c98b486108de789bcae0f0ac596639cfa007881b57f08a9c7cc48799b176",
+    "modules/servo/native/patches/servo-gpu-frame-v1.patch": "f64449ea61a9e953bab6a4ede3f80d67a5c40f7265ef235e73d7d83c972502fb",
+    "modules/servo/native/update-patch.mjs": "3ac9bae2cabe3072461b7452d3f500183d198c32fa09a1e446ddf743542658d7",
+    "modules/servo/native/upstream.json": "33d6ed831c82b444a1f2689e66589dc960c77f422266e47e71b0e036219577d8",
+    "modules/servo/tsconfig.json": "cf5b1d03a009c89b30c78486ff9087bb11f6db8d614cf22cb0987628e90d050d",
+    "modules/servo/validation/benchmark.ts": "7fb99e4a02fd1069646fa09914afc5b3330700cb45810a58d2627f29fabb33c6",
+    "modules/servo/validation/freeze.mjs": "5d43b12dcf63b2a6d6d117ecf8b23eb808bd994ded2fa70cd426fd2de3a1f4b4",
+    "modules/servo/validation/validate.mjs": "53e71fd91a267f7ccac01d722df22e7a6f733b698b3b403425a1c6f6949a2bdf",
+    "modules/servo/validation/verify-admission.ts": "6c1b7890487d432828a98e541d42b97da54405392b6b221e0189b243483bd31a",
+    "modules/servo/validation/verify-build.ts": "929ae9791396e7c40e6052375c59b52049abcf17f6021bbbbfb66bcc8494e24f",
+    "modules/servo/validation/verify-features.ts": "1c48cfc7ccf92a6eb11def2f37374fb6fb3c5be452e55c1411775118ffa14ceb",
+    "modules/servo/validation/verify-lifecycle.ts": "45ccc6e519ee8ce5e0d786fceb6f553c1ccad155f073c17fca17a4882132e7df",
+    "modules/servo/validation/verify-media.ts": "eabc148764b56aa0ea745a8d2ec7cdd181ff164b9fe4824aa1540a7bb3f9a37e",
+    "modules/servo/validation/verify-native.ts": "2e2209eb13989f112e4ddeca68b04c1fefe84c2328a13e2029af44699edb8b24",
+    "modules/servo/validation/verify-project.ts": "46f3c2140b6ea273115cde16a61ed77dff3535f989a15976db15f51dc32c0231",
+    "prototypes/servo-gpu-interop/Cargo.lock": "709e1759e88ee09f1309a7e9a4c773d1f2c7b8ba072afd05bbc9c277a183f2ab",
+    "prototypes/servo-gpu-interop/Cargo.toml": "8479a412a1099bef1f4d83c25ed0d2299f13e5c75a4752be9d3d202301f7e41a",
+    "prototypes/servo-gpu-interop/d3d11_probe.cpp": "e20658f8dff1ba8fc666a60e16453e6085bd40d619619178fa907d27edf6697e",
+    "prototypes/servo-gpu-interop/probe.rs": "f5812d5b46180fc37a0aec6a239cb8291b8a4011018d3c5f438da1d30c21d9d9",
+    "prototypes/servo-gpu-interop/servo.rs": "6ce61e923088752afcb18e0380d3faec06f596953c4815e9686a3b7ba35bc785",
+    "tests/native-module.test.ts": "afad5cd800e3e8e43a0a1d2337f0ed89589219f5af29c3f80ed5a3c427a2caeb"
+  },
+  "evidence": [
+    {
+      "file": "development-logs/admission.log.txt",
+      "bytes": 4669,
+      "sha256": "4bdce7d64a3e34841c5e693091a79fd25a9fde4321ad47db9ec251dc986f4cc1"
+    },
+    {
+      "file": "development-logs/build-final.log.txt",
+      "bytes": 117878,
+      "sha256": "d0c411e20e18df5af9cb032d367fd14dd4c16e84249bd1f68ff4dea91f6b5ad9"
+    },
+    {
+      "file": "development-logs/build-frame-barrier.log.txt",
+      "bytes": 117878,
+      "sha256": "fd25cd13a220f0359f5fbbea7cce3c80ae47d4c683059485592c2f8136552f51"
+    },
+    {
+      "file": "development-logs/canvas-block.log.txt",
+      "bytes": 2747,
+      "sha256": "873935d45f4eca0d72d5be407492a4b7e59e955b22a9275f210fe68fc251b78f"
+    },
+    {
+      "file": "development-logs/canvas-frame-barrier.log.txt",
+      "bytes": 694,
+      "sha256": "99b402c5fc3393f2e9f8618b178e57e1815f4b995fdf158737e2482db536b401"
+    },
+    {
+      "file": "development-logs/core-debug-final.log.txt",
+      "bytes": 437,
+      "sha256": "84da170d395b7891d40ca39fc5e2df057b3884f2742ff209394e7f8761a74ebe"
+    },
+    {
+      "file": "development-logs/core-release-final.log.txt",
+      "bytes": 429,
+      "sha256": "b831ba64d57a13452d56bb2bc93c8d2525a97666d19c7d0cdeef182a2f78fa4d"
+    },
+    {
+      "file": "development-logs/css-debug.log.txt",
+      "bytes": 934,
+      "sha256": "4b763f22d5c4e59bb2df62a9a271484ec8b692a1cf242ee49deaaf2ac86c11e6"
+    },
+    {
+      "file": "development-logs/css-retain-revision.log.txt",
+      "bytes": 113,
+      "sha256": "33fb91924cf89c7f687463158d1fa3263edc6c042909d98157a2e2ac972134af"
+    },
+    {
+      "file": "development-logs/css-reviewed-revision.log.txt",
+      "bytes": 113,
+      "sha256": "1c58b6b968981dc110095245b57445fe6a74e18c563eec705bdeb6be4a7811e6"
+    },
+    {
+      "file": "development-logs/css-rewind-before-failure.log.txt",
+      "bytes": 14045,
+      "sha256": "10cce75d4ed243c10c546b8748189558965d67390264b6e986630a4d254ddb3b"
+    },
+    {
+      "file": "development-logs/css-samples.log.txt",
+      "bytes": 769,
+      "sha256": "81ca8904fd34cc7c996234612fc411de8275cd3ca8c9d3e56d9589bd9c77faa3"
+    },
+    {
+      "file": "development-logs/css-trace-revision.log.txt",
+      "bytes": 113,
+      "sha256": "58b672f2e6f2a24671af9045a75d3749be0110812db8b8eef982f645094daee5"
+    },
+    {
+      "file": "development-logs/css-trace.log.txt",
+      "bytes": 2006,
+      "sha256": "f917db0aa3f436edadd78486255c819451557c3da4af1612c04025c9a85518b3"
+    },
+    {
+      "file": "development-logs/d3d11-probe-build.log.txt",
+      "bytes": 917,
+      "sha256": "8f792ce8575979e08257c4853ba6208a1920c0577f1540e793d6ac46711731d3"
+    },
+    {
+      "file": "development-logs/export-pack-rust-tests.log.txt",
+      "bytes": 570,
+      "sha256": "e2d974cfc5b3bb815d8ea9a87704f4264f49a0c196c55eea3fb9730eba402d1e"
+    },
+    {
+      "file": "development-logs/export-pack-tests.log.txt",
+      "bytes": 1550,
+      "sha256": "b85d7e9958133bcc5518fd66e2c55bf3686af312c2d5f380924ccdfb87aa70ec"
+    },
+    {
+      "file": "development-logs/export-pack-typecheck.log.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "development-logs/feature-csp-frozen.log.txt",
+      "bytes": 2258,
+      "sha256": "fe8af6c257ddd2408ce129607ea0729ddb56f96528e527a63583555aef0f14ca"
+    },
+    {
+      "file": "development-logs/feature-csp.log.txt",
+      "bytes": 1340,
+      "sha256": "9456bfd4a5d2b7e86cf1a96ea04f6a6926c364fca0d50f5b14f04c9a6c95699f"
+    },
+    {
+      "file": "development-logs/features-after-seek.log.txt",
+      "bytes": 4547,
+      "sha256": "6171f8a838e5b1a8aa0d3fda943c1a5574f0afa742dea78c5d1deaffafac13fa"
+    },
+    {
+      "file": "development-logs/features-dirty-after.log.txt",
+      "bytes": 582,
+      "sha256": "38eb64c836f387ecc47888647d503ef721965eb2efbd6cb8f249d133583f6c5f"
+    },
+    {
+      "file": "development-logs/features-full-seek.log.txt",
+      "bytes": 582,
+      "sha256": "38eb64c836f387ecc47888647d503ef721965eb2efbd6cb8f249d133583f6c5f"
+    },
+    {
+      "file": "development-logs/features-retained.log.txt",
+      "bytes": 7648,
+      "sha256": "506b2ec89dce23c4ecf93d56cf66c29aecec1adf29c49f7f2bd3692e9024604a"
+    },
+    {
+      "file": "development-logs/features.log.txt",
+      "bytes": 14045,
+      "sha256": "10cce75d4ed243c10c546b8748189558965d67390264b6e986630a4d254ddb3b"
+    },
+    {
+      "file": "development-logs/final-campaign.log.txt",
+      "bytes": 1339,
+      "sha256": "649eb9c63c26d2b3ee6fd4186f235063bdcd377959f38f4e6c206bdd176df877"
+    },
+    {
+      "file": "development-logs/final-v2-campaign.log.txt",
+      "bytes": 1367,
+      "sha256": "b9ba761a3d84c9760e79424dded1bd6b71e6162da532f9c37bdf513b469d9233"
+    },
+    {
+      "file": "development-logs/final-v3-campaign.log.txt",
+      "bytes": 1707,
+      "sha256": "3a7cb7054b98aa1c540ef83ca778dd7fe44fdf59bf966a8cb8da0a69a65a4e23"
+    },
+    {
+      "file": "development-logs/final-v4-campaign.log.txt",
+      "bytes": 2386,
+      "sha256": "d08d4669e6edbb3f4bd34a9682e731524ef16b06bf2d4dca41bac317d2f98e1d"
+    },
+    {
+      "file": "development-logs/final-v5-campaign.log.txt",
+      "bytes": 3695,
+      "sha256": "10b26a3846e15ddd33fee940d81021d8042ea42468abd025a1c4f3271521e4e8"
+    },
+    {
+      "file": "development-logs/kit-build.log.txt",
+      "bytes": 119918,
+      "sha256": "436ec14cf8a0365bd7b72884ed1c68ddb980e0a9e585bf659e74688fe29e681f"
+    },
+    {
+      "file": "development-logs/kit-css-dirty-build.log.txt",
+      "bytes": 118060,
+      "sha256": "adb8e428f6659dc0f1bdd1c2d98e64745a4d81d25b4380483b0b237ddf80d8ae"
+    },
+    {
+      "file": "development-logs/kit-css-retain-build.log.txt",
+      "bytes": 120056,
+      "sha256": "c7c8e5ffd1dde43a3e8abc08664387b2ef0a738dedf31d2805fbcf533bad083f"
+    },
+    {
+      "file": "development-logs/kit-css-seek-build.log.txt",
+      "bytes": 119990,
+      "sha256": "68760e76a15d85a44688ca20e62a3781044a49fa1b1ff6238a3be4842074a9b9"
+    },
+    {
+      "file": "development-logs/kit-css-trace-build.log.txt",
+      "bytes": 118067,
+      "sha256": "e04f30510a14b04beb5f799dea608196149f20129ba32de38c65550bf93468c8"
+    },
+    {
+      "file": "development-logs/kit-prepare.log.txt",
+      "bytes": 208,
+      "sha256": "420ee78fc6e340063d0c2afd807635236a3a12a48fe743c22cacde3a320728a0"
+    },
+    {
+      "file": "development-logs/kit-rebuild.log.txt",
+      "bytes": 119911,
+      "sha256": "8855475918121f0a87d2b9415ce9a212ccbd9ebbbdf1a3a24025f071ddaf179a"
+    },
+    {
+      "file": "development-logs/lifecycle-deadline.log.txt",
+      "bytes": 4933,
+      "sha256": "a3b3565ad925c7bca5943f0f266650ed66673dd8ce7c71f189d4ffff35fb6b18"
+    },
+    {
+      "file": "development-logs/module-bridge-build.log.txt",
+      "bytes": 961,
+      "sha256": "8d91d7771be35fd501dacbf46d316cd97aabd346d29ac0e99fb2a710aad0e493"
+    },
+    {
+      "file": "development-logs/module-native-build.log.txt",
+      "bytes": 115436,
+      "sha256": "04255278c45c5d30dddc2e779686a18b01b0604caae999341424d6fc3f16f5d6"
+    },
+    {
+      "file": "development-logs/module-rebuild-animation.log.txt",
+      "bytes": 7443,
+      "sha256": "1b10d25e93ad7dc0931b2e1587ed279464b0f54daa87d015389199b29dc6f461"
+    },
+    {
+      "file": "development-logs/module-rebuild-cleanup.log.txt",
+      "bytes": 7493,
+      "sha256": "8abd0f4a943751253a59b71dc4b4d3461b83d25c40f220f01696614a3b31736a"
+    },
+    {
+      "file": "development-logs/module-rebuild-percent.log.txt",
+      "bytes": 7446,
+      "sha256": "18c1b0e7fa2520a44a50b1ec87351de30c0595a6ee984a052e6b2c5f476789db"
+    },
+    {
+      "file": "development-logs/module-rebuild-readiness.log.txt",
+      "bytes": 7441,
+      "sha256": "484d0b4f0be65f1fd1d4819dcff52a1e1617d42267119c5f7351c56c36563759"
+    },
+    {
+      "file": "development-logs/module-rebuild-timeline.log.txt",
+      "bytes": 7451,
+      "sha256": "2000678c631c7369d63bf25d81a184023ddd1971388f618ec9af9c36eb08fb98"
+    },
+    {
+      "file": "development-logs/module-regression.log.txt",
+      "bytes": 2561,
+      "sha256": "4cbd23e41a24f9f195bc6ce25cce1ab57a1b11e9f17d556ec706eaa3bebd6018"
+    },
+    {
+      "file": "development-logs/module-types-2.log.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "development-logs/module-types-3.log.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "development-logs/module-types-final-candidate.log.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "development-logs/module-types.log.txt",
+      "bytes": 202,
+      "sha256": "0494850bea43b41a370263551f33c030cc2ae720bd5c2b4854ff4d9f4ea40a4c"
+    },
+    {
+      "file": "development-logs/module-unit-tests.log.txt",
+      "bytes": 1470,
+      "sha256": "c1a95e386306d2ddc1a5aec24482f0d461d9a6ad7fc2eea56f90c658ddc73395"
+    },
+    {
+      "file": "development-logs/native-export-pack-build.log.txt",
+      "bytes": 1715,
+      "sha256": "71557c4b03304d811b5d0d467ad54b3fdd9722aeaaa59be33794c56df21921ef"
+    },
+    {
+      "file": "development-logs/native-module-build-2.log.txt",
+      "bytes": 436,
+      "sha256": "bc080f19c241fc03182191d8408e009b8e5871263867dffeac2f0835090f6dfc"
+    },
+    {
+      "file": "development-logs/native-module-build-3.log.txt",
+      "bytes": 436,
+      "sha256": "4d40e923f56c7d1d00e82ef4b37c249a7c44be4326707d83ed2170d7e1748d18"
+    },
+    {
+      "file": "development-logs/native-module-build.log.txt",
+      "bytes": 693,
+      "sha256": "4c5f947aa901d34b7cb56da4e6e7b0e889fb8723f44e0f020a7cdf208ab6734c"
+    },
+    {
+      "file": "development-logs/native-module-check.log.txt",
+      "bytes": 4559,
+      "sha256": "9ad9d2a68d70da751d642916f1020c4106256a391eaa9ce760aad7fd6b412710"
+    },
+    {
+      "file": "development-logs/native-module-locked-check.log.txt",
+      "bytes": 258,
+      "sha256": "40f1b5d13a6074cb3e3afd226d59bfc5513f480b03a19fb35b0dd9707c84c4c0"
+    },
+    {
+      "file": "development-logs/native-module-release.log.txt",
+      "bytes": 3664,
+      "sha256": "e49b44b66ad794522c5189fe5d58d00eba88430a3ea39389613936dff027ca86"
+    },
+    {
+      "file": "development-logs/performance.log.txt",
+      "bytes": 555,
+      "sha256": "6738434a71027bc85879bfc6511cd23df3d10d8c9bef30c9079a30d2f16a4c19"
+    },
+    {
+      "file": "development-logs/real-media.log.txt",
+      "bytes": 11500,
+      "sha256": "c490fb944d44ee707940e3d5e7ab24e602ff29979fc3adfde0da93c75265e8d4"
+    },
+    {
+      "file": "development-logs/real-tsx.log.txt",
+      "bytes": 2728,
+      "sha256": "442f059d91f6caf391837513616beb6d4dabe0f8d70dad9e6066fe004ecae8a0"
+    },
+    {
+      "file": "development-logs/servo-css-lock.log.txt",
+      "bytes": 1475,
+      "sha256": "f5dc506f9bfe69739caae94707a13ef8edef36c0e6a686ba875034f17f04b23f"
+    },
+    {
+      "file": "development-logs/servo-vulkan-module-animation.log.txt",
+      "bytes": 969,
+      "sha256": "8f33c8a11ae2ad7dc9d067b599f92827942b3d06386cdc30b6e07f8e3939902a"
+    },
+    {
+      "file": "development-logs/servo-vulkan-module-document.log.txt",
+      "bytes": 1441,
+      "sha256": "8d48a0bde652d4cc2b8681702abe79a88d2694de8b7f77414706ac4ffe357cfa"
+    },
+    {
+      "file": "development-logs/servo-vulkan-module-nt.log.txt",
+      "bytes": 1380,
+      "sha256": "1baa5d3274bbb8914a86fe9e4e37d975704f7cc75e17929858f82ea2093daf9c"
+    },
+    {
+      "file": "development-logs/servo-vulkan-module-timeline.log.txt",
+      "bytes": 2560,
+      "sha256": "4a3584c278de2e546b480517421c731a2fd8da243e51ab35082579697cdbf2ff"
+    },
+    {
+      "file": "development-logs/servo-vulkan-module.log.txt",
+      "bytes": 1170,
+      "sha256": "dda12bc4ea77286e911844dc07b09e2f5a4b500becb3633d6c48ccbd9d25da30"
+    },
+    {
+      "file": "development-logs/two-servo-cleanup.log.txt",
+      "bytes": 2269,
+      "sha256": "d7490966368ebac7eb9ebac34436652d7d2f7d669e3869100eb4b34120e9bc83"
+    },
+    {
+      "file": "development-logs/two-servo-native-readiness.log.txt",
+      "bytes": 2270,
+      "sha256": "4439ad9e49d79f1c03b19c837c566cd1ad523b79d812fc513bdd3ee061ff0a41"
+    },
+    {
+      "file": "development-logs/two-servo-native.log.txt",
+      "bytes": 728,
+      "sha256": "a4d0419d60d75e1c523eb4409846be6fba9752e362ddecc603447093e1e4a3a7"
+    },
+    {
+      "file": "development-logs/two-servo-svg-first-failure.log.txt",
+      "bytes": 728,
+      "sha256": "a4d0419d60d75e1c523eb4409846be6fba9752e362ddecc603447093e1e4a3a7"
+    },
+    {
+      "file": "development-logs/two-servo-svg-namespace-failure.log.txt",
+      "bytes": 728,
+      "sha256": "a4d0419d60d75e1c523eb4409846be6fba9752e362ddecc603447093e1e4a3a7"
+    },
+    {
+      "file": "development-logs/upstream-owned-build.log.txt",
+      "bytes": 136915,
+      "sha256": "21aba20ba46206d381fee4bb9bd1e3283a5727b4b4156243b996802e80c12048"
+    },
+    {
+      "file": "development-logs/upstream-reproduction.log.txt",
+      "bytes": 5015,
+      "sha256": "876ac9c8aec911dab613c2d1e3e0088d1afaa87f8d199929217da70dda0832eb"
+    },
+    {
+      "file": "development-logs/vulkan-d3d11-interop-final.log.txt",
+      "bytes": 892,
+      "sha256": "027c027fd470944e76ecbf38f1facd23a972ff11f337b1b9ca20fa4446848012"
+    },
+    {
+      "file": "development-logs/vulkan-d3d11-interop.log.txt",
+      "bytes": 1153,
+      "sha256": "8cd8557586790b02c785518bc83089bf967b622228871ab2baff8ff121d644a0"
+    },
+    {
+      "file": "final/admission.json",
+      "bytes": 7214,
+      "sha256": "4cbca2c5343f8920a42cc534722b9df2fee766908dcaebb1f2019f9977c76d6b"
+    },
+    {
+      "file": "final/admission.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final/admission.stdout.txt",
+      "bytes": 4766,
+      "sha256": "604710dfa6cb0ac4a30393be126db7c0059f816e7d84a74ed9daee02aab87ac4"
+    },
+    {
+      "file": "final/build-check.json",
+      "bytes": 13910,
+      "sha256": "9a9e0eeef925de27f2fa2c1bd6a03275ef530c368007d6fc373bc1c7930c4c95"
+    },
+    {
+      "file": "final/build-inputs.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final/build-inputs.stdout.txt",
+      "bytes": 320,
+      "sha256": "18b926d144ff019a482a5de0b706182ba9609b322fbe08c9d9d5cbf0f5f0cad0"
+    },
+    {
+      "file": "final/campaign.json",
+      "bytes": 2165,
+      "sha256": "54cc77494b078550a3d1b8ce7e09aa238208ab4fe20ed251c2fecd047be1662e"
+    },
+    {
+      "file": "final/features.json",
+      "bytes": 11856,
+      "sha256": "c9dbcc9e6561116405389a4a64409ce3ada2207b584e651ef8858ce3dc884cd0"
+    },
+    {
+      "file": "final/lifecycle.stderr.txt",
+      "bytes": 2329,
+      "sha256": "594554882d5f3b89b2798990123607f50a2967003013df5887d43198586932c5"
+    },
+    {
+      "file": "final/lifecycle.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final/media-result.json",
+      "bytes": 17221,
+      "sha256": "d2852111eba30aedd16904cfd30e0dc16eb2a34c6818bd057e30d91e65355976"
+    },
+    {
+      "file": "final/native-two-servo.json",
+      "bytes": 3118,
+      "sha256": "dc8318bf2cb63a2c41962b70c9390425f4f90997a2fe3d4d18f8134b96e06cde"
+    },
+    {
+      "file": "final/real-tsx.json",
+      "bytes": 3634,
+      "sha256": "f59a16f373d6e78435fe93b25e644b9380cece0033a651b245af7242b4395a9a"
+    },
+    {
+      "file": "final/types.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final/types.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final-v2/admission.json",
+      "bytes": 7214,
+      "sha256": "4cbca2c5343f8920a42cc534722b9df2fee766908dcaebb1f2019f9977c76d6b"
+    },
+    {
+      "file": "final-v2/admission.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final-v2/admission.stdout.txt",
+      "bytes": 4766,
+      "sha256": "604710dfa6cb0ac4a30393be126db7c0059f816e7d84a74ed9daee02aab87ac4"
+    },
+    {
+      "file": "final-v2/build-check.json",
+      "bytes": 13910,
+      "sha256": "9a9e0eeef925de27f2fa2c1bd6a03275ef530c368007d6fc373bc1c7930c4c95"
+    },
+    {
+      "file": "final-v2/build-inputs.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final-v2/build-inputs.stdout.txt",
+      "bytes": 320,
+      "sha256": "18b926d144ff019a482a5de0b706182ba9609b322fbe08c9d9d5cbf0f5f0cad0"
+    },
+    {
+      "file": "final-v2/campaign.json",
+      "bytes": 2194,
+      "sha256": "db9e7d3859e0a6dfde71f7343de4a681e12c76c04bf1abc7283a8e846b50620c"
+    },
+    {
+      "file": "final-v2/features.json",
+      "bytes": 11856,
+      "sha256": "c9dbcc9e6561116405389a4a64409ce3ada2207b584e651ef8858ce3dc884cd0"
+    },
+    {
+      "file": "final-v2/lifecycle.stderr.txt",
+      "bytes": 1531,
+      "sha256": "104bab594dc167c5afff1bc7da017f3f8a0be71f767b974ac115b6c074d887b0"
+    },
+    {
+      "file": "final-v2/lifecycle.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final-v2/media-result.json",
+      "bytes": 17221,
+      "sha256": "d2852111eba30aedd16904cfd30e0dc16eb2a34c6818bd057e30d91e65355976"
+    },
+    {
+      "file": "final-v2/native-two-servo.json",
+      "bytes": 3118,
+      "sha256": "dc8318bf2cb63a2c41962b70c9390425f4f90997a2fe3d4d18f8134b96e06cde"
+    },
+    {
+      "file": "final-v2/real-tsx.json",
+      "bytes": 3634,
+      "sha256": "f59a16f373d6e78435fe93b25e644b9380cece0033a651b245af7242b4395a9a"
+    },
+    {
+      "file": "final-v2/types.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final-v2/types.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final-v3/admission.json",
+      "bytes": 7214,
+      "sha256": "4cbca2c5343f8920a42cc534722b9df2fee766908dcaebb1f2019f9977c76d6b"
+    },
+    {
+      "file": "final-v3/admission.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final-v3/admission.stdout.txt",
+      "bytes": 4766,
+      "sha256": "604710dfa6cb0ac4a30393be126db7c0059f816e7d84a74ed9daee02aab87ac4"
+    },
+    {
+      "file": "final-v3/build-check.json",
+      "bytes": 13910,
+      "sha256": "9a9e0eeef925de27f2fa2c1bd6a03275ef530c368007d6fc373bc1c7930c4c95"
+    },
+    {
+      "file": "final-v3/build-inputs.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final-v3/build-inputs.stdout.txt",
+      "bytes": 320,
+      "sha256": "18b926d144ff019a482a5de0b706182ba9609b322fbe08c9d9d5cbf0f5f0cad0"
+    },
+    {
+      "file": "final-v3/campaign.json",
+      "bytes": 2659,
+      "sha256": "cd9f486c1f6e38679b42396b079112a2029b91cc6786dd6f1466bfbb78b6d429"
+    },
+    {
+      "file": "final-v3/features.json",
+      "bytes": 11856,
+      "sha256": "c9dbcc9e6561116405389a4a64409ce3ada2207b584e651ef8858ce3dc884cd0"
+    },
+    {
+      "file": "final-v3/lifecycle.stderr.txt",
+      "bytes": 934,
+      "sha256": "4b763f22d5c4e59bb2df62a9a271484ec8b692a1cf242ee49deaaf2ac86c11e6"
+    },
+    {
+      "file": "final-v3/lifecycle.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final-v3/media-result.json",
+      "bytes": 17221,
+      "sha256": "d2852111eba30aedd16904cfd30e0dc16eb2a34c6818bd057e30d91e65355976"
+    },
+    {
+      "file": "final-v3/module-types.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final-v3/module-types.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final-v3/native-two-servo.json",
+      "bytes": 3118,
+      "sha256": "dc8318bf2cb63a2c41962b70c9390425f4f90997a2fe3d4d18f8134b96e06cde"
+    },
+    {
+      "file": "final-v3/real-tsx.json",
+      "bytes": 3634,
+      "sha256": "f59a16f373d6e78435fe93b25e644b9380cece0033a651b245af7242b4395a9a"
+    },
+    {
+      "file": "final-v3/types.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final-v3/types.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final-v4/admission.json",
+      "bytes": 7214,
+      "sha256": "4cbca2c5343f8920a42cc534722b9df2fee766908dcaebb1f2019f9977c76d6b"
+    },
+    {
+      "file": "final-v4/admission.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final-v4/admission.stdout.txt",
+      "bytes": 4766,
+      "sha256": "604710dfa6cb0ac4a30393be126db7c0059f816e7d84a74ed9daee02aab87ac4"
+    },
+    {
+      "file": "final-v4/build-check.json",
+      "bytes": 13910,
+      "sha256": "9a9e0eeef925de27f2fa2c1bd6a03275ef530c368007d6fc373bc1c7930c4c95"
+    },
+    {
+      "file": "final-v4/build-inputs.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final-v4/build-inputs.stdout.txt",
+      "bytes": 320,
+      "sha256": "18b926d144ff019a482a5de0b706182ba9609b322fbe08c9d9d5cbf0f5f0cad0"
+    },
+    {
+      "file": "final-v4/campaign.json",
+      "bytes": 3546,
+      "sha256": "63a6cb443eb9ebd4473b0c5d0f7532a7b5bb4aec51b9517d5bdf5b3f7600e276"
+    },
+    {
+      "file": "final-v4/features.json",
+      "bytes": 11856,
+      "sha256": "c9dbcc9e6561116405389a4a64409ce3ada2207b584e651ef8858ce3dc884cd0"
+    },
+    {
+      "file": "final-v4/features.stderr.txt",
+      "bytes": 934,
+      "sha256": "4b763f22d5c4e59bb2df62a9a271484ec8b692a1cf242ee49deaaf2ac86c11e6"
+    },
+    {
+      "file": "final-v4/features.stdout.txt",
+      "bytes": 528,
+      "sha256": "2f4dec771313ba8d0c9bc7ef1d1d1451ae3a4541097fff6d8b582c9451180dfa"
+    },
+    {
+      "file": "final-v4/lifecycle.json",
+      "bytes": 4116,
+      "sha256": "bb9294a48bacfb9685aedac94b51664d3d31d8587256e05fcd5617cb767ac807"
+    },
+    {
+      "file": "final-v4/lifecycle.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final-v4/lifecycle.stdout.txt",
+      "bytes": 4846,
+      "sha256": "7a4eda5f54a3b6f3e5a68d4304220b638dfd780decfcafb3c33ff8ddca96b28e"
+    },
+    {
+      "file": "final-v4/media-result.json",
+      "bytes": 17221,
+      "sha256": "d2852111eba30aedd16904cfd30e0dc16eb2a34c6818bd057e30d91e65355976"
+    },
+    {
+      "file": "final-v4/module-types.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final-v4/module-types.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final-v4/native-two-servo.json",
+      "bytes": 8929,
+      "sha256": "f8ef37ed66d49c4fa75f8a86a8b13cf3cc2f0d57f4d203373628e20a4ade08e1"
+    },
+    {
+      "file": "final-v4/native.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final-v4/native.stdout.txt",
+      "bytes": 5354,
+      "sha256": "d5b086557c0672e725540e08274efd35d68131ddbe6b1e15f6f494512a55c2cd"
+    },
+    {
+      "file": "final-v4/real-tsx.json",
+      "bytes": 3634,
+      "sha256": "f59a16f373d6e78435fe93b25e644b9380cece0033a651b245af7242b4395a9a"
+    },
+    {
+      "file": "final-v4/types.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final-v4/types.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final-v5/admission.json",
+      "bytes": 7214,
+      "sha256": "4cbca2c5343f8920a42cc534722b9df2fee766908dcaebb1f2019f9977c76d6b"
+    },
+    {
+      "file": "final-v5/admission.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final-v5/admission.stdout.txt",
+      "bytes": 4766,
+      "sha256": "604710dfa6cb0ac4a30393be126db7c0059f816e7d84a74ed9daee02aab87ac4"
+    },
+    {
+      "file": "final-v5/build-check.json",
+      "bytes": 13910,
+      "sha256": "b62fcf47e9659eef7c05d510dbfe90c7568209896765e043ea0d643504be86b8"
+    },
+    {
+      "file": "final-v5/build-inputs.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final-v5/build-inputs.stdout.txt",
+      "bytes": 320,
+      "sha256": "18b926d144ff019a482a5de0b706182ba9609b322fbe08c9d9d5cbf0f5f0cad0"
+    },
+    {
+      "file": "final-v5/campaign.json",
+      "bytes": 5268,
+      "sha256": "3f64747ee34949d338da650351f6c5478ff34ca6ba533716194fc3b940e6f33f"
+    },
+    {
+      "file": "final-v5/features.json",
+      "bytes": 18717,
+      "sha256": "bbebc4c1fab44cf93a5ae6abe9ca1e4bcc1db107baf72c94856f13753cbab440"
+    },
+    {
+      "file": "final-v5/features.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final-v5/features.stdout.txt",
+      "bytes": 11757,
+      "sha256": "4cce7fe2fb87b7dfddc87e535b124852ccdb4a4f1c10e07800c28930ba9b095c"
+    },
+    {
+      "file": "final-v5/lifecycle.json",
+      "bytes": 4123,
+      "sha256": "b858eb8f0c419be83186f7b8baf66f90d0329ca6b5560ad10564b0e6857ec6df"
+    },
+    {
+      "file": "final-v5/lifecycle.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final-v5/lifecycle.stdout.txt",
+      "bytes": 4860,
+      "sha256": "691602246ee3eadfc9a68e4e4367c9373f14214fa511ed2141a44626fa21fca7"
+    },
+    {
+      "file": "final-v5/media-result.json",
+      "bytes": 28298,
+      "sha256": "f92427b0cf40e8690ad9238ac17ba4db4c29901b73fde21e0cda2100147fe70e"
+    },
+    {
+      "file": "final-v5/media.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final-v5/media.stdout.txt",
+      "bytes": 16864,
+      "sha256": "ea7726d4ae15d543e42774ad42b8331fb86b454684ab55ee5f0db3eeaeb074db"
+    },
+    {
+      "file": "final-v5/module-types.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final-v5/module-types.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final-v5/native-regression.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final-v5/native-regression.stdout.txt",
+      "bytes": 9829,
+      "sha256": "58ef4918ef42a2a5a213f4a27278eeae2323f37bd336c286e183919bba11a5bd"
+    },
+    {
+      "file": "final-v5/native-two-servo.json",
+      "bytes": 8914,
+      "sha256": "fb1b2f37440fd8c0b7917bf8df30e34d140dc19a5a3a956dc06a400160125b85"
+    },
+    {
+      "file": "final-v5/native.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final-v5/native.stdout.txt",
+      "bytes": 5339,
+      "sha256": "1958ac442568b891c338f608e34f50400b73b0538189a5bad503bac10e7f9120"
+    },
+    {
+      "file": "final-v5/project.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final-v5/project.stdout.txt",
+      "bytes": 5821,
+      "sha256": "4bee97632ccb8dd2c7a47f72d5f2cf18b1090d6a44af6c201594d1eed2b53cbf"
+    },
+    {
+      "file": "final-v5/real-tsx.json",
+      "bytes": 9453,
+      "sha256": "87cc4f782fad181b6fa82be2ed4d890470e7ed2c29678c0cac49d3b396681837"
+    },
+    {
+      "file": "final-v5/types.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "final-v5/types.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "performance.json",
+      "bytes": 31768,
+      "sha256": "090db09775a0f359072def121dd50de440ccdb0b0bfc3a3abd5014bb04b7d9ee"
+    },
+    {
+      "file": "performance.log.txt",
+      "bytes": 555,
+      "sha256": "6738434a71027bc85879bfc6511cd23df3d10d8c9bef30c9079a30d2f16a4c19"
+    },
+    {
+      "file": "media/chain.png",
+      "bytes": 37104,
+      "sha256": "a102852fbea8e50c3c2ada87c14fc0f1dee18f8b0ba8984ea6bfb036721b13e8"
+    },
+    {
+      "file": "media/hdr-overlay.exr",
+      "bytes": 924859,
+      "sha256": "2f637a96cd2c3a74bfd0603ec603b22e8f3a68b9b026d259f3e3c30c33ed3095"
+    },
+    {
+      "file": "media/chain.mp4",
+      "bytes": 14681,
+      "sha256": "698209508af6fe177cf76104a8997b4c99675f3b1cdbd5a9ed926b4afac4e215"
+    }
+  ],
+  "finalCampaign": "final-v5/campaign.json",
+  "earlierCampaignsAreNotPassing": true,
+  "scope": "Windows/Vulkan reviewed-local SDR Servo native module; separate debug diagnostics and production media/benchmark",
+  "unverified": [
+    "Public native-binary redistribution/provenance and full dependency notices",
+    "OS sandbox qualification for untrusted HTML/JS",
+    "Installed R1/CLI/Capsule wiring for optional Servo DLLs (Main integration)",
+    "Canvas GPU input, arbitrary WebGL, CSS transitions/animation event state, arbitrary history-dependent frameworks",
+    "Linux/macOS and other GPU adapters",
+    "Physical peak memory and 10ms preview/scanout target"
+  ],
+  "buildNote": "Binaries were built from working-tree inputs before source commit; exact input hashes bind them to this frozen source, rather than claiming a clean-commit build."
+}

@@ -1,0 +1,13 @@
+Keyframe control adapters: Frameweave, Apache-2.0.
+Original Core keyframes/easing/time and existing motion/integration/Native GPU
+implementations remain unchanged. No new dependency, shader, owner or timeline.
+
+Existing cubicPoint originates from EffectCraft crates/path/src/interp.rs,
+commit861c51f8187bf56efc77cc7b60fc4a513d2b7198 (MIT selected from dual license).
+Copyright (c)2026 ArtCraft Team and contributors. The existing adapted function is
+called unchanged, not retranslated here. Preserve vendor/effectcraft original
+MIT license/notices and PA2-SOURCES.json when distributing this source chain.
+
+Adobe expression reference is behavior documentation only; no proprietary source,
+AE object model, assets or trademarks copied. No private AE compatibility claim.
+Main owns formal R1 exports/version/lock/permission and complete distribution L3.

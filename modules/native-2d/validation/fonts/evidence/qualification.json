@@ -1,0 +1,151 @@
+{
+  "status": "frozen native-2d-only checkpoint",
+  "baseline": "ad827bf385fa09fa27c6ff26839b90708f4c58f4",
+  "branch": "agents/agent-4",
+  "candidate": {
+    "version": "0.4.6",
+    "path": ".frameweave/native-2d/font-package-19",
+    "files": [
+      {
+        "path": "frameweave.package.json",
+        "sha256": "ab99f0e70d847702ada8b1b6c001a60bf73ddd2755bf415d14f255c0a7da1689"
+      },
+      {
+        "path": "public.js",
+        "sha256": "ec35bdbfd9d706efb27cfac737aa301330f1a89f8ec14b9b1065cf6e3f6d8f43"
+      },
+      {
+        "path": "bindings.js",
+        "sha256": "d1cc83f92aac36a7411e875734aad98d11933c5832ee36c2efdd2e1c3a5e7201"
+      },
+      {
+        "path": "api.d.ts",
+        "sha256": "3f19550e1a9536b7245e69cbdc8059e1d56895dac8a5ed413ed8f96080b5e219"
+      },
+      {
+        "path": "runtime/SOURCE.json",
+        "sha256": "8bb98e8ba61144594b2e2f08141ef008b65893bad490bdc8f26bd7afd9cf5a45"
+      }
+    ],
+    "guide": "Final source guide corrects historical pending fields after runtime validation; package0.4.6 carries the earlier guide. Main must rebuild formal package and review SDK pin; runtime implementation unchanged."
+  },
+  "validation": {
+    "unitPassed": 43,
+    "typesExit": 0,
+    "consumerTypesPassed": true,
+    "cumulativeWallMs": 419528.0402999999,
+    "budgetMs": 420000,
+    "includesFailedAttempts": true,
+    "finalRuntimePassed": true,
+    "rawData": "results-20.json / rgba32float-20.f32.gz / rgba16float-20.f32.gz",
+    "differences": {
+      "rgba": 0.00019532442092895508,
+      "alpha": 0.00019532442092895508,
+      "overBlack": 0.0001952648162841797,
+      "overWhite": 0.00021485239267349243
+    },
+    "canvas": {
+      "passed": true,
+      "source": "results-21.json"
+    },
+    "media": {
+      "passed": true,
+      "video": "D:\\frameweave-worktrees\\agent-4\\modules\\native-2d\\validation\\fonts\\evidence\\fonts-20.mp4",
+      "frames": 24,
+      "seconds": 1,
+      "completeDecode": true,
+      "pngs": [
+        0,
+        12,
+        23
+      ],
+      "encoder": "libx264",
+      "scope": "Actual Native GPU; lossy H264 separate from float comparisons"
+    },
+    "cancellation": "Real provider abort rejects without candidate cache publication; pre-aborted defaults call no loader; pre-submit cancellation; idempotent disposal",
+    "processCleanup": "Attempt20 measured no residual Native/SpiderMonkey/FFmpeg; after attempt21 timeout operational inventory found no owned processes",
+    "portable": "NOT VERIFIED: attempt20 asserted the wrong verify envelope; attempt21 export/render exhausted the remaining cumulative deadline. No completed PNG comparison. Hidden original source restored.",
+    "controlledFailures": "Attempt20 Canvas fixture omitted optional native method/dispose assertions; corrected Canvas passed21. Earlier failed attempts retained."
+  },
+  "sources": [
+    "Original pro-animation algorithms and fixed public typography-preparation0.1.1 assets",
+    "Noto Sans SC OFL-1.1 fixed google/fonts6c1dbe27 source",
+    "abort-controller3.0.0 MIT and event-target-shim5.0.1 MIT pinned receipts"
+  ],
+  "unchanged": [
+    "Core",
+    "GPU owner/private protocol",
+    "pro-animation authoring implementation",
+    "P4/WASM/trust policies",
+    "SDK pins/locks"
+  ],
+  "notSupported": [
+    "SVG text",
+    "vertical/color/bitmap fonts",
+    "implicit OS/network fallback",
+    "wrapped tracking without explicit PA reflow policy",
+    "default curveFactory/morph providers"
+  ],
+  "nativeHashes": {
+    "native": "efdb9d77fb8243c4cb1bc5c13a3bc23e93d88949f9b6164f676b54333541c3a1",
+    "spiderMonkey": "85bd3e4b7bc799b7ef6469d72b9d2ceb556872952b2509306e0b0c36fa560e50"
+  },
+  "sourceFiles": [
+    {
+      "path": "typography-services.ts",
+      "sha256": "1fd5e1443af053834bc3911c10ff2601f8781e48cbfe8e43f451489636aa7eec"
+    },
+    {
+      "path": "default-services.ts",
+      "sha256": "1912a26c16fbc91ba5e2d9473dc244a0f4f973d68a3d05b2a8988e24e946b1b6"
+    },
+    {
+      "path": "cancellation.mjs",
+      "sha256": "84c6da6f5d2b31ea03abf94b336ca7b59611b79c6bc3de94eb86aadb3f5b8e97"
+    },
+    {
+      "path": "bindings.ts",
+      "sha256": "5194611cecca4a8a54655cc864906a39c35df8e0183009fca1a9e4f5ade442cb"
+    },
+    {
+      "path": "scene.ts",
+      "sha256": "2eb50415329e0d390e565e36105bfd77f3beebd12264e623022caf639e1cef80"
+    },
+    {
+      "path": "canvas.ts",
+      "sha256": "e48c0ce085f61ac407e84bae6572747f689b33e9ff40575dee599a6ae12575cb"
+    },
+    {
+      "path": "geometry.ts",
+      "sha256": "b462ce80838496a7bf290465fc507a2f3e2c583d85d56c4b0e8470317d426143"
+    },
+    {
+      "path": "model.ts",
+      "sha256": "b4d04824dc8edcf23e28cc3478e9d7d5e46cd83bf7c935f400058de6ed350d11"
+    },
+    {
+      "path": "types.ts",
+      "sha256": "35865328029d89416eac2529452f9c5435f29cfbfb73ee483331cb4c52df9425"
+    },
+    {
+      "path": "index.ts",
+      "sha256": "71c36e763aa629275c01a700e8725b1078edae78c98ff78d3f2636cf21aa6206"
+    },
+    {
+      "path": "scripts/build.ts",
+      "sha256": "114b73db4bf36d6ec5ffbceba4889174b54da371bdb62d9ddf163e5860e6217e"
+    },
+    {
+      "path": "scripts/runtime-assets.ts",
+      "sha256": "3241a537b63b4e214669d02db805e042f643d7d0211b7305145c0d4abeb19050"
+    },
+    {
+      "path": "guide.json",
+      "sha256": "ea869c7b3cc78fb17b14c7e097dbb9f578c67af7a09de21d4de451e78eb14117"
+    },
+    {
+      "path": "README.md",
+      "sha256": "4a8d80f8fb754ba758a1b82aa8b9838ae82951bbbac9af13147e1b149add8c27"
+    }
+  ]
+}

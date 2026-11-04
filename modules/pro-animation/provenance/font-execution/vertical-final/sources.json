@@ -1,0 +1,61 @@
+{
+  "sourceHashes": {
+    "modules/pro-animation/src/font-execution/vertical/run.ts": "19222bec935dc04c7fa43f68c284e8ee1ba56febd28f7da72636c5f52668ae23",
+    "modules/pro-animation/src/font-execution/vertical/layout.ts": "785971f2b627e488e82f4ef593515de183daad02cbc02380f1f97fe2fb5468a2",
+    "modules/pro-animation/src/font-execution/vertical/tabs.ts": "e8ba68dae56e78159db00ce4bfc692e20e3bd8ea418b24ce65f44b88ae845946",
+    "modules/pro-animation/src/font-execution/vertical/inline.ts": "117461432cf1d33330e8941729f552901ae9cf8bd4d97a10229c5e9caf02a20d",
+    "modules/pro-animation/src/font-execution/vertical/native.ts": "9d9576663a2479a6aa2afdb588ebea33d0b10d98fb15f2b7a3d8ac83f518f6c4",
+    "modules/pro-animation/src/font-execution/embedded.ts": "8425a4b297837fcf98cb0bf6d39b412f40a34e6d703df616d2b7dbee4e98fef2",
+    "modules/pro-animation/src/font-execution/colr/native.ts": "59d3a5e0a14548d9154f0f0423f2618742cf1de6e9f39a5b91f9503d99d21920",
+    "modules/pro-animation/src/text-layout/queries.ts": "6148592c0a9ff048229c70eaa98b164837ec3b94be95a99d8b3b286fd3f2e9a8"
+  },
+  "newRuntimeDependencies": [],
+  "coreModified": false,
+  "wrapperLicense": "Apache-2.0; existing Three matrix math MIT; existing Unicode data Unicode-3.0",
+  "reused": [
+    "Existing HarfRust0.15.0/Skrifa0.49.0 via unchanged original corrected profile1 font-color-execution Kit; complete pinned crate checksums and original notices in rust Cargo.lock and final package/licenses/font",
+    "Existing Unicode16 itemizer/breaks/orientation data and original placeLineTabs solver",
+    "Existing tight outlineBounds geometry, Native glyph/mesh renderer, sealed font-glyph-v1 importer, GPU Over, COLR gradient/composite and native matte kernels"
+  ],
+  "originalAlgorithmSources": [
+    "modules/pro-animation/provenance/font-execution/sources.json",
+    "modules/pro-animation/provenance/font-execution/embedded-consumer.json",
+    "modules/pro-animation/provenance/font-execution/colr-paint",
+    "modules/pro-animation/provenance/font-execution/vertical"
+  ],
+  "tateTsumeSpecification": {
+    "url": "https://helpx.adobe.com/after-effects/desktop/add-text/formatting-characters-and-paragraphs/formatting-characters-character-panel.html",
+    "reviewed": "2026-11-03",
+    "implementation": "Original thin coordinate/spacing adapter from public descriptive controls; no Adobe source, assets, private parameters or code copied"
+  },
+  "fixtures": {
+    "builder": "fontTools4.68.0 installed development tool, MIT; no runtime dependency and no fontTools code copied",
+    "generator": "modules/pro-animation/validation/prepare-vertical-final-fonts.py",
+    "originalArtwork": "Original Apache-2.0 authored PNG/outlines from retained OpenType fixture",
+    "proof": {
+      "origin": "Original test artwork and outlines, Apache-2.0",
+      "sourceFontSha256": "8941cb19118cb2d73a415d0ac2e0b3cfa0ed7ff2be210741f320c939b855199f",
+      "fixtures": {
+        "cbdt.ttf": "f74aea37a61449ff2cab93007f2c012a69736bd41e3a4ac787ebcea52c3cbc16",
+        "ebdt.ttf": "347ca5f2cb499ca390e081f428d176ce593cce90a979dfcc5bd06dda49dd8464"
+      }
+    }
+  },
+  "finalKits": [
+    {
+      "prefix": "font",
+      "source": "modules/pro-animation/rust/font-color-execution",
+      "wasm": "fe332547eed84839c3493a8ba42c4c50e0ae5ee8ed110dab3ac7678697c7a0f4"
+    },
+    {
+      "prefix": "text",
+      "source": "modules/pro-animation/rust/text-lines",
+      "wasm": "b892eaa757695a30bb1bc1e0077870d2ae02f8a2c049b71209696d9f9ec4fac9"
+    },
+    {
+      "prefix": "path",
+      "source": "modules/pro-animation/rust/pathops",
+      "wasm": "1310e22908acec65f26b7b2f55e9ad652d8de17587d2b9e453b0b39319cf350f"
+    }
+  ]
+}

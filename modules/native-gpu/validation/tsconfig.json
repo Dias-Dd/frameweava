@@ -1,0 +1,4 @@
+{
+  "extends": "../../../tsconfig.json",
+  "include": ["*.ts", "../examples/interfaces-v1.tsx", "../examples/color-texture-v1.tsx", "../examples/mesh-transparency-v1.tsx", "../examples/dynamic-image-admission.tsx"]
+}

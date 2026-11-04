@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "baseline": "0303cb9a8045dea5a72578740574b709177e9354",
+  "objective": "Original SlimSAM model/session/prompt/refine convenience entry, independent of optional imageStage",
+  "implementationStartedAt": "2026-11-03T14:16:11.973790+00:00",
+  "clock": "Conservative 15 minutes between first neural source edit (2026-11-03T14:16:11Z) and final pre-pause fixture edit (14:31:26Z). Overnight pause and resumed implementation excluded, not treated as work time.",
+  "status": "verified_source_candidate_with_core_cleanup_limitation",
+  "implementationMsLowerBound": 900000,
+  "unitTests": 6,
+  "numericComparisons": 10,
+  "evidence": "docs/native-image-neural-authoring-evidence",
+  "validationMeasuredMs": 91868.3613,
+  "validationAccountedMs": 96868.3613,
+  "limitations": [
+    "Formal new immutable package/public binding, installation and portable export (Main-owned)",
+    "Default multi-slot MP4 cleanup stability; exact race reported to Main",
+    "Other GPU vendors/platforms or inference providers",
+    "No fresh trained-model CPU oracle requalification; algorithms/thresholds unchanged, this campaign compares wrappers with original kernels",
+    "No long-sequence SAM2, automatic upstream temporal source, model installation/download or trust changes",
+    "Private QA input/model binaries not redistributed; reproducibility needs explicitly provided sealed files and reviewed runtime"
+  ],
+  "coreGap": {
+    "renderer": "src/render/renderer.ts:480 starts nativeLogic.close before awaiting nativeClient.close at483",
+    "resources": "modules/native-gpu/logic-host.ts:200 calls resourceImages.close; resource-images.ts:112 unlinks leased .onnx files",
+    "required": "Split Stage logic disposal from final Resource-file retirement and wait for accepted Native/ORT work to release model mappings. No swallowing EBUSY. Main/Agent-1 ownership."
+  }
+}

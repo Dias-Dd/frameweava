@@ -1,0 +1,27 @@
+Typography preparation and Native GPU integration
+Frameweave adapters: Apache-2.0.
+
+HarfRust0.15.0 / MIT / 71d965130ea93905f81b8f03a03d7ecc794fbc47.
+Skrifa0.49.0 / MIT OR Apache-2.0 / 47a301615fd95acf0da9fb7dbcd0ea7c7df36943.
+Existing Cargo.lock and full source/license inventories remain authoritative.
+Original metadata provider, cmap/UVS, font/glyph metrics and AVAR algorithms are
+compiled unchanged in Rust/WASM. No mature parser/shaper algorithm was ported
+to TypeScript. The own original shaper adapter is pinned byte-for-byte and
+extended by local typed data transport, not a parallel runtime/registry.
+
+Original Unicode16 contextual itemizer, Clipper2/BSL-1.0, Earcut/ISC and Native
+owner/shaders/Glow/Layer retain existing licences and source evidence.
+Four actual Noto fixtures retain original fixed identities/OFL1.1 licences.
+No Adobe source/assets are imported.
+
+FontTools4.68.0/MIT is an independent TEST-ONLY reference, already installed in
+the own isolated shaping Python environment. Preserve its original wheel
+identity and prior notices; it is not added to runtime/package dependencies.
+No new model/font downloads, root npm dependencies, locks, SDK pins or
+WASM permissions were changed. Main owns formal R1 identity/exports/L3.
+
+Post-layout adjustments use small independent CPU Float64 affine/spacing
+calculations over canonical TextLayoutData. Pulling in another editor's
+document/timeline/renderer or a complete paragraph model would cost more than
+these adapters. Actual pixels are produced exclusively by existing admitted
+Native GPU F16/F32; no CPU/Canvas8/browser fallback or new GPU owner is created.

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "files": [{
+    "file": "vendor/nvEncodeAPI.h",
+    "upstream": "https://github.com/FFmpeg/nv-codec-headers",
+    "tag": "n13.0.19.0",
+    "url": "https://raw.githubusercontent.com/FFmpeg/nv-codec-headers/n13.0.19.0/include/ffnvcodec/nvEncodeAPI.h",
+    "sha256": "4fe4094541ef0f8a13249d97a8692dc5f835a6e9dd42eeadb3e2f7321d54dc7e",
+    "license": "MIT; notice retained in header",
+    "role": "C declarations only; native system NVENC driver is not distributed"
+  }]
+}

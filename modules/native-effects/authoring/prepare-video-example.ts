@@ -1,0 +1,4 @@
+import {mkdir,writeFile} from 'node:fs/promises';import {resolve,join} from 'node:path';import {execFile} from 'node:child_process';import {promisify} from 'node:util';import {ffmpegPath} from '../../../src/encoding/ffmpeg.ts';
+const dir=resolve('modules/native-effects/authoring/examples/.generated-video');await mkdir(dir);const file=join(dir,'clip.mp4');
+await promisify(execFile)(ffmpegPath(),['-v','error','-n','-f','lavfi','-i','testsrc2=size=320x180:rate=24','-frames:v','8','-vf','setpts=(N+floor(N/2))/(24*TB)','-fps_mode','vfr','-enc_time_base','1:24','-c:v','libx264','-bf','2','-pix_fmt','yuv420p','-color_primaries','bt709','-color_trc','bt709','-colorspace','bt709','-color_range','tv','-chroma_sample_location','left',file],{windowsHide:true});
+await writeFile(join(process.env.FRAMEWEAVE_AUTHORING_RUN!,'result.json'),JSON.stringify({ok:true,file,policy:'Real eight-frame VFR tagged Rec709 fixture from explicit FFmpeg lavfi, no external download'},null,2)+'\n');

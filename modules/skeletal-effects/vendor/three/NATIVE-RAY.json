@@ -1,0 +1,9 @@
+{
+  "version": "0.186.1",
+  "license": "MIT",
+  "source": "https://github.com/mrdoob/three.js/blob/r186/src/math/Ray.js",
+  "installedPackage": "three@0.186.1",
+  "file": "src--math--Ray.js",
+  "sha256": "4c88adbbefe35fefdeef8f971ce90220d44fa1699c39fc17d1c584a0c012b648",
+  "adaptation": "intersectTriangle dominant-axis shear and signed edge functions ported to F32 WGSL; strict nearest selection; single-scatter GGX independently authored, not exact MeshStandardMaterial shader"
+}

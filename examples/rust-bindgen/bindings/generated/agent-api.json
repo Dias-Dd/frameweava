@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "profile": "wasm-bindgen-data-v1",
+  "entryClass": "Engine",
+  "functions": [
+    {
+      "name": "calls",
+      "signature": "calls(): number;",
+      "documentation": ""
+    },
+    {
+      "name": "host_calls",
+      "signature": "host_calls(): number;",
+      "documentation": ""
+    },
+    {
+      "name": "normalize",
+      "signature": "normalize(label: string, values: Float64Array): string;",
+      "documentation": "Up to 512 UTF-8 bytes and 1..128 nonnegative finite values. JS normalizes the label."
+    },
+    {
+      "name": "scale",
+      "signature": "scale(values: Float64Array, factor: number): Float64Array;",
+      "documentation": "Scales at most 128 finite f64 values, factor in [0,4]."
+    }
+  ],
+  "parameters": {
+    "settings": {
+      "type": "object",
+      "default": {},
+      "properties": {
+        "label": {
+          "type": "string",
+          "default": "Frameweave",
+          "maxLength": 128
+        },
+        "samples": {
+          "type": "array",
+          "default": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "items": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "minItems": 1,
+          "maxItems": 128
+        },
+        "factor": {
+          "type": "number",
+          "default": 1,
+          "minimum": 0,
+          "maximum": 4
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "parameterSchemaVersion": 2,
+  "errors": [
+    "E_BINDGEN_CALL",
+    "E_BINDGEN_DISPOSED",
+    "E_BINDGEN_IMPORTS",
+    "E_PACKAGE_INTEGRITY"
+  ],
+  "environment": {
+    "webStage": true,
+    "worker": true,
+    "allowWasmRequired": true,
+    "host": "reviewed data-only callbacks"
+  },
+  "p4Reference": "kit.bindgen-bindings@1.0.0"
+}

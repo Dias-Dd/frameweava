@@ -1,0 +1,30 @@
+import {keyframes} from '../../../src/core/animation.ts';
+import type {GpuPixelImage} from '../../gpu-effects/pixel-types.ts';
+import type {GpuDataBuffer} from '../../gpu-effects/compute-types.ts';
+import type {NativeClosureFilters,OcioDefinition} from './types.ts';
+export const amount=keyframes([{frame:0,value:.65},{frame:239,value:.95}]);
+export async function callClosure(name:string,f:NativeClosureFilters,s:GpuPixelImage,d:GpuPixelImage,motion:GpuDataBuffer,processors:readonly OcioDefinition[]){const o={amount};switch(name){
+ case 'crossBlur':return f.crossBlur(s,{...o,radius:.6});
+ case 'fastRadialBlur':return f.fastRadialBlur(s,{...o,length:.2,samples:5});
+ case 'vectorBlur':return f.vectorBlur(s,motion,{...o,samples:5});
+ case 'motionDeblur':return f.motionDeblur(s,{...o,psf:{width:3,height:1,weights:[.25,.5,.25]},iterations:3,step:.7,regularization:.02});
+ case 'channelCalculations':return f.channelCalculations(s,d,{...o,source:'luma',reference:'blue',operator:'subtract'});
+ case 'channelCombine':return f.channelDecode(await f.channelCombine(s,{model:'yiq'}));
+ case 'channelDecode':return f.channelDecode(await f.channelCombine(s,{model:'hsl'}));
+ case 'colorNeutralize':return f.colorNeutralize(s,o);
+ case 'colorOffsetCycle':return f.colorOffsetCycle(s,o);
+ case 'colorama':return f.colorama(s,{...o,colors:[[-.2,.1,1.2],[1.5,-.1,.2],[.1,1.1,-.3]],phase:.1,cycles:1.2});
+ case 'colorMatch':return f.colorMatch(s,d,o);
+ case 'colorStabilize':return f.colorStabilize(s,d,o);
+ case 'matchGrain':return f.matchGrain(s,d,{...o,radius:.6});
+ case 'noiseAlpha':return f.noiseAlpha(s,{...o,animated:true});
+ case 'noiseHls':return f.noiseHls(s,{...o,animated:true});
+ case 'lightBurst':return f.lightBurst(s,{...o,samples:5,length:.3,intensity:.2});
+ case 'lightSweep':return f.lightSweep(s,{...o,width:2,intensity:.5});
+ case 'eyedropperFill':return f.eyedropperFill(s,o);
+ case 'ocioColorSpaceTransform':return f.ocioColorSpaceTransform(s,processors[0],o);
+ case 'ocioDisplayTransform':throw Error('Display returns typed GPU data; use explicit data consumer, never a scene Surface');
+ case 'ocioFileTransform':return f.ocioFileTransform(s,processors[2],o);
+ case 'ocioLookTransform':return f.ocioLookTransform(s,processors[3],o);
+ default:throw Error('Unknown fixture '+name);
+}}

@@ -1,0 +1,25 @@
+// Post-processing only: archives observed CLI/test output; never substitutes for acceptance.
+import {mkdir,readFile,readdir,writeFile,copyFile} from 'node:fs/promises';
+import {join,resolve} from 'node:path';
+import {gzipSync} from 'node:zlib';
+import {createHash} from 'node:crypto';
+import {execFileSync} from 'node:child_process';
+import assert from 'node:assert/strict';
+const root=resolve('.'),evidence=join(root,'artifacts/dx-1d'),target=join(root,'docs/dx-1d-validation');await mkdir(target,{recursive:true});
+const read=async file=>JSON.parse(await readFile(join(evidence,file),'utf8'));
+const acceptance=await read('blackbox-baseline-final/acceptance.json'),install=JSON.parse(await readFile(join(root,'.frameweave/dx-1d-installed/installation-audit.json'),'utf8')),lifecycle=await read('lifecycle/lifecycle.json'),startup=await read('repl-process-audit.json');
+const raw={};for(const directory of ['blackbox-baseline-final','blackbox-baseline-2','blackbox-baseline'])for(const name of await readdir(join(evidence,directory)))if(name.endsWith('.json'))raw[directory+'/'+name]=await read(directory+'/'+name);
+for(const name of ['repl-tests.tap','repl-tests-final.tap','repl-tests-complete.tap','related-tests.tap','repl-expressions.log','repl-project.log','typecheck.log','analysis-dependencies.log','assets.log','hello-frame.json','hello-board.json','hello-video.json','hello-probe.json'])raw[name]=await readFile(join(evidence,name),'utf8');
+raw['independent-decode/decode-validation.json']=await read('independent-decode/decode-validation.json');
+const count=text=>Object.fromEntries(['tests','pass','fail','skipped'].map(k=>[k,Number(text.match(new RegExp(`^# ${k} (\\d+)$`,'m'))?.[1]??NaN)]));
+const tests={relatedFirst:count(raw['related-tests.tap']),replFinal:count(raw['repl-tests-complete.tap'])};assert.equal(tests.replFinal.pass,4);assert.equal(tests.replFinal.fail,0);assert.equal(acceptance.commands.length,37);assert.equal(acceptance.normalExitBrowserAudit.remaining.length,0);assert.ok(lifecycle.records.every(r=>r.cleanupVerified));assert.equal(startup.browserCount,0);
+const git=(...args)=>execFileSync('git',args,{encoding:'utf8',cwd:root,windowsHide:true}).trim();
+const files=['modules/repl/index.ts','modules/repl/session.ts','tests/repl.test.ts','scripts/dx-1d/blackbox.mjs','scripts/dx-1d/processes.mjs','scripts/dx-1d/preview-lifecycle.mjs','scripts/dx-1d/install-consumer.mjs','scripts/dx-1d/repl-process-audit.mjs'];
+const hashes=Object.fromEntries(await Promise.all(files.map(async f=>[f,createHash('sha256').update(await readFile(join(root,f))).digest('hex')])));
+const commands=acceptance.commands.map(c=>raw['blackbox-baseline-final/'+c.id+'.json']);const inspection=commands.find(c=>c.args[0]==='inspect'&&c.args[1].endsWith('scene.tsx')&&c.result.policy);
+const sample=await read('blackbox-baseline-final/track-sample.json'),hello=await read('hello-probe.json');
+const summary={date:'2026-10-29',timezone:'Asia/Shanghai',baseline:git('rev-parse','HEAD'),branch:git('branch','--show-current'),originalTrackedFilesChanged:git('diff','--name-only'),node:process.version,platform:process.platform,sdkIntegrity:inspection.result.policy.environment.sdkIntegrity,sourceHashes:hashes,tests,installation:{installationSucceeded:install.installationSucceeded,publicBin:install.package.bin,private:install.package.private,developerPreviewReady:install.developerPreviewReady},baselineAcceptance:acceptance,lifecycle,startup,track:{type:sample.artifactType,samples:sample.totalMatches,valid:sample.records.filter(r=>r.result.valid).length},hello,developerPreviewDecision:'NOT ACCEPTED for independent installation: no public bin, installed-runtime workflow unverified, expected-error stdout inconsistencies; source CLI functional paths and optional REPL validated separately.'};
+await writeFile(join(target,'summary.json'),JSON.stringify(summary,null,2));await writeFile(join(target,'raw-evidence.json.gz'),gzipSync(JSON.stringify({summary,install,raw,lifecycle,startup}),{level:9}));
+for(const [source,name]of [['hello-board.png','hello-storyboard.png'],['hello.png','hello.png'],['hello.mp4','hello.mp4'],['blackbox-baseline-final/project/scene.mp4','consumer-scene.mp4'],['blackbox-baseline-final/project/storyboard.png','consumer-storyboard.png'],['repl-expressions.log','repl-expressions.txt'],['repl-project.log','repl-project.txt']])await copyFile(join(evidence,source),join(target,name));
+for(const name of ['decoded-01.png','decoded-02.png','decoded-03.png'])await copyFile(join(evidence,'independent-decode',name),join(target,name));
+console.log(JSON.stringify({target,tests,commands:acceptance.commands.length,track:summary.track,installedReady:false}));

@@ -1,0 +1,182 @@
+{
+  "status": "candidate API resource, not a new discovery protocol",
+  "package": "spatial-liquid-candidate@0.1.5",
+  "declaration": "api.d.ts",
+  "defaults": {
+    "material": {
+      "density": 1000,
+      "spacing": 0.12,
+      "support": 0.24,
+      "iterations": 4,
+      "relaxation": 1e-06,
+      "viscosity": 0.03,
+      "vorticity": 0,
+      "surfaceTension": 0
+    },
+    "substeps": 2,
+    "dimensions": [
+      48,
+      48,
+      32
+    ],
+    "format": "rgba32float",
+    "isoDensity": 0.5,
+    "stepScale": 0.65,
+    "maxBytes": 268435456,
+    "maxWork": 100000000000,
+    "maxSamples": 1000000000
+  },
+  "time": "Original Core FrameContext, Signal, seededRandom, FixedStepRunner and NativeReplay/flushState",
+  "dependencies": [
+    "original Native GPU owner/recorder",
+    "Three0.186.1 camera math",
+    "PBD2.2.0 MIT selected math",
+    "SPlisHSPlasH pinned MIT selected math"
+  ],
+  "functions": [
+    {
+      "name": "liquidScene",
+      "purpose": "Complete Native PBF liquid shot",
+      "input": "CreationInit, LiquidSceneOptions",
+      "output": "CreationStage with owned linear PM F16/F32 images",
+      "parameters": "TypeScript api.d.ts is authoritative",
+      "example": "liquid.tsx",
+      "limitations": "LIQUID.md"
+    },
+    {
+      "name": "createLiquidSimulation",
+      "purpose": "Retained resident GPU liquid state",
+      "input": "CreationInit, LiquidOptions",
+      "output": "record(FrameContext) -> borrowed LiquidFrame",
+      "parameters": "TypeScript api.d.ts is authoritative",
+      "example": "liquid.tsx",
+      "limitations": "LIQUID.md"
+    },
+    {
+      "name": "reconstructLiquidField",
+      "purpose": "Actual 3D SPH density reconstruction",
+      "input": "CreationInit, LiquidFrame, dimensions/budgets",
+      "output": "owned F32 kg/m3 GpuDataBuffer",
+      "parameters": "TypeScript api.d.ts is authoritative",
+      "example": "liquid.tsx",
+      "limitations": "LIQUID.md"
+    },
+    {
+      "name": "renderLiquidSurface",
+      "purpose": "Isosurface normals, Beer attenuation and Fresnel, optional refractive input",
+      "input": "CreationInit, LiquidField, FrameContext, options, inputs",
+      "output": "owned linear PM F16/F32 image",
+      "parameters": "TypeScript api.d.ts is authoritative",
+      "example": "liquid.tsx",
+      "limitations": "LIQUID.md"
+    },
+    {
+      "name": "liquidMaterial",
+      "purpose": "PBF, XSPH, vorticity and Akinci controls",
+      "input": "LiquidMaterial",
+      "output": "owned normalized typed material",
+      "parameters": "TypeScript api.d.ts is authoritative",
+      "example": "liquid.tsx",
+      "limitations": "LIQUID.md"
+    },
+    {
+      "name": "liquidBox",
+      "purpose": "Uniform cubic liquid seed volume",
+      "input": "center,size,spacing,velocity,birth,budget",
+      "output": "LiquidParticle[]",
+      "parameters": "TypeScript api.d.ts is authoritative",
+      "example": "liquid.tsx",
+      "limitations": "LIQUID.md"
+    },
+    {
+      "name": "liquidSphere",
+      "purpose": "Spherical liquid seed volume",
+      "input": "center,radius,spacing,velocity,birth,budget",
+      "output": "LiquidParticle[]",
+      "parameters": "TypeScript api.d.ts is authoritative",
+      "example": "liquid.tsx",
+      "limitations": "LIQUID.md"
+    },
+    {
+      "name": "liquidEmitter",
+      "purpose": "Seeded explicit birth schedule with original Core RNG",
+      "input": "count,rate,start,position,velocity,spread,seed,budget",
+      "output": "LiquidParticle[]",
+      "parameters": "TypeScript api.d.ts is authoritative",
+      "example": "liquid.tsx",
+      "limitations": "LIQUID.md"
+    },
+    {
+      "name": "liquidPlane",
+      "purpose": "Moving one-way plane contact",
+      "input": "unit normal, Signal offset, friction,restitution",
+      "output": "LiquidObstacle",
+      "parameters": "TypeScript api.d.ts is authoritative",
+      "example": "liquid.tsx",
+      "limitations": "LIQUID.md"
+    },
+    {
+      "name": "liquidSphereObstacle",
+      "purpose": "Moving swept sphere contact",
+      "input": "Signal center,radius,friction,restitution",
+      "output": "LiquidObstacle",
+      "parameters": "TypeScript api.d.ts is authoritative",
+      "example": "liquid.tsx",
+      "limitations": "LIQUID.md"
+    },
+    {
+      "name": "liquidBoxObstacle",
+      "purpose": "Moving swept axis-aligned box contact",
+      "input": "Signal center,size,friction,restitution",
+      "output": "LiquidObstacle",
+      "parameters": "TypeScript api.d.ts is authoritative",
+      "example": "liquid.tsx",
+      "limitations": "LIQUID.md"
+    },
+    {
+      "name": "planLiquid",
+      "purpose": "Pre-allocation source and byte admission",
+      "input": "LiquidOptions",
+      "output": "owned immutable plan and plannedBytes",
+      "parameters": "TypeScript api.d.ts is authoritative",
+      "example": "liquid.tsx",
+      "limitations": "LIQUID.md"
+    },
+    {
+      "name": "liquidKernel",
+      "purpose": "Fixed cubic SPH value query",
+      "input": "distance,support",
+      "output": "number in inverse cubic meters",
+      "parameters": "TypeScript api.d.ts is authoritative",
+      "example": "liquid.tsx",
+      "limitations": "LIQUID.md"
+    },
+    {
+      "name": "liquidKernelGradient",
+      "purpose": "Cubic SPH gradient query",
+      "input": "delta,support",
+      "output": "Vec3",
+      "parameters": "TypeScript api.d.ts is authoritative",
+      "example": "liquid.tsx",
+      "limitations": "LIQUID.md"
+    },
+    {
+      "name": "liquidDensity",
+      "purpose": "Uniform-mass initial density query",
+      "input": "positions,point,material",
+      "output": "number kg/m3",
+      "parameters": "TypeScript api.d.ts is authoritative",
+      "example": "liquid.tsx",
+      "limitations": "LIQUID.md"
+    },
+    {
+      "name": "liquidCohesion",
+      "purpose": "Published continuous Akinci kernel query",
+      "input": "distance,support",
+      "output": "signed number",
+      "parameters": "TypeScript api.d.ts is authoritative",
+      "example": "liquid.tsx",
+      "limitations": "LIQUID.md"
+    }
+  ]
+}

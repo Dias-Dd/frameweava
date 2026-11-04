@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "baseline": "bcece1b6df6ea3f2f0f2b947382a9fe0bf9d45b1",
+  "implementationStartedAt": "2026-11-03T12:02:46.430783+00:00",
+  "implementationClock": "Conservative lower bound: latest runtime implementation edit before writing cases/workflows; earlier audit/design not included",
+  "scope": "New advanced image authoring and auxiliary source preparation, not a reset of completed first authoring campaign or paused spherical work",
+  "status": "verified_source_candidate_not_published",
+  "newEffectConstructors": 94,
+  "existingOperatorRegressions": [
+    "over",
+    "applyMatte"
+  ],
+  "gpuRgbaComparisons": 198,
+  "unitTests": 14,
+  "validationMs": 98855.1099,
+  "implementationMsBeforeFirstTest": 275266,
+  "evidence": "docs/native-image-advanced-evidence",
+  "device": "NVIDIA GeForce RTX 5070 Laptop GPU / Vulkan / NVIDIA 596.49",
+  "formalPackage": "not published; Main pure-authoring-entry integration pending",
+  "limits": [
+    "No depth-resource or temporal observation convenience API yet",
+    "PSF weights are recipe-local, prepared per invocation",
+    "Primary source evaluation and auxiliary input cache are separate",
+    "Source-backed only: installed R1 / portable entry needs Main qualification",
+    "AMD/Apple/other OS not tested",
+    "Prior transient import NaN report and spherical WIP unchanged"
+  ]
+}

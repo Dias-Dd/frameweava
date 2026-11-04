@@ -1,0 +1,1 @@
+{"extends":"../../../tsconfig.json","include":["../src/path-authoring/**/*.ts","../validation/path-authoring-scene/cases.ts","../../../tests/pro-animation-path-authoring*.test.ts"],"exclude":["../../../node_modules"]}

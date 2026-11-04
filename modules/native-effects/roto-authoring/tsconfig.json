@@ -1,0 +1,1 @@
+{"extends":"../../../tsconfig.json","include":["./*.ts"],"exclude":["./vendor","./neural.ts","./index.neural.ts","./neural-stage.ts","./index.ts"]}

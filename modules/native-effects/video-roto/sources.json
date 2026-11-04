@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "profile": "sam2.1-hiera-base-plus-video-memory-f32",
+  "status": "source-adaptation-in-progress-not-runtime-qualified",
+  "base": {
+    "repository": "https://huggingface.co/facebook/sam2.1-hiera-base-plus",
+    "revision": "b7320756a13354e7530a63935656d35b2f91a290",
+    "license": "Apache-2.0",
+    "file": "model.safetensors",
+    "bytes": 323476296,
+    "sha256": "2012733a0de5d03efd1bba550a2847c4551be9ef2e0d497c83074df66189f780"
+  },
+  "configuration": {
+    "repository": "https://huggingface.co/facebook/sam2.1-hiera-base-plus",
+    "revision": "b7320756a13354e7530a63935656d35b2f91a290",
+    "license": "Apache-2.0",
+    "file": "config.json",
+    "bytes": 5705,
+    "sha256": "8e24a93b6a40d4dad86eaec383ce7b4044f37ec6360136460f5ff2ce55f87390"
+  },
+  "reviewedExports": [
+    {
+      "repository": "https://huggingface.co/PRVSM01/sam2.1-memory-attention-dynamic-ONNX",
+      "revision": "d990a28b90988ff26cc592b67c9685bee9220a5d",
+      "license": "Apache-2.0 per model card, inherited Meta weights",
+      "file": "memory_attention_dynamic.onnx",
+      "bytes": 33282360,
+      "sha256": "3c0d437444025869c03c24b7aea16ea74de26d55abe3e4a59c4bae3469370559"
+    },
+    {
+      "repository": "https://huggingface.co/PRVSM01/sam2.1-memory-attention-dynamic-ONNX",
+      "revision": "d990a28b90988ff26cc592b67c9685bee9220a5d",
+      "license": "Apache-2.0 per model card, inherited Meta weights",
+      "file": "prompt_encoder_mask_decoder_video_raw.onnx",
+      "bytes": 17525863,
+      "sha256": "c676e31631065b16ea0ab6fe2175bfaac77a193ff1174af217534e0ba3a31ffe"
+    }
+  ],
+  "referenceOnly": {
+    "repository": "https://huggingface.co/s-tornqvist/sam2-hiera-base-plus-video-ONNX",
+    "revision": "28f13495e5d49f83b552774440075b5421a3d34f",
+    "license": "Export repository has no explicit model-card license; do not redistribute its conversion or treat it as an approved dependency",
+    "reason": "Manifest establishes original component names; fixed seven-frame/64-pointer trace is unsuitable for a partially filled bank without an explicit attention mask"
+  },
+  "constraints": [
+    "No model downloads or unreviewed Python/Node code at render time",
+    "No pickle checkpoint loading; source data only at exact revision and verified byte length/hash",
+    "Models require successful current Native hardware execution receipts before runtimeVerified can be asserted",
+    "Model context is explicit input/output GPU data; stateless inference ABI does not imply stateless video semantics",
+    "Any conversion must retain learned weights and record exact graph/IO changes and new content identity"
+  ]
+}

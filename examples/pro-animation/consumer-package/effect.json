@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "apiVersion": 1,
+  "id": "pro-animation.consumer",
+  "name": "Pro Animation editable consumer",
+  "version": "0.6.0",
+  "kind": "generator",
+  "engine": "web",
+  "compatible": "0.1.0",
+  "description": "Six verified functions: text reveal, trim paths, morph, deterministic wiggle, glow and displacement. Limited PA-0 scope, not AE compatibility.",
+  "tags": [
+    "animation",
+    "text",
+    "vector",
+    "wiggle",
+    "glow",
+    "displacement"
+  ],
+  "entry": "./index.js",
+  "parameters": {
+    "progress": {
+      "type": "number",
+      "default": 1,
+      "minimum": 0,
+      "maximum": 1
+    }
+  },
+  "inputs": {},
+  "outputs": {
+    "image": "image"
+  },
+  "dependencies": {
+    "fw.glow": "1.0.0",
+    "fw.displacement": "1.0.0"
+  },
+  "examples": [
+    "plugin('pro-animation.consumer@0.6.0',{progress:0.5})"
+  ]
+}

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="400" viewBox="0 0 320 400">
+ <defs>
+  <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#5ee4c1"/><stop offset="1" stop-color="#159c96"/></linearGradient>
+  <linearGradient id="pot" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f7c784"/><stop offset="1" stop-color="#bd734c"/></linearGradient>
+ </defs>
+ <!-- Original editable paper-cut artwork; no external assets/fonts. -->
+ <path d="M159 320 C164 252 143 207 163 143 C172 112 171 91 166 64" fill="none" stroke="#74cbb5" stroke-width="8" stroke-linecap="round"/>
+ <path d="M159 273 C115 269 85 245 84 212 C120 205 158 224 159 273Z" fill="url(#leaf)"/>
+ <path d="M157 242 C192 236 222 209 220 176 C184 174 157 197 157 242Z" fill="url(#leaf)"/>
+ <path d="M157 192 C121 186 97 164 99 136 C131 136 156 155 157 192Z" fill="url(#leaf)"/>
+ <path d="M166 157 C197 150 216 130 211 104 C184 108 166 127 166 157Z" fill="url(#leaf)"/>
+ <path d="M167 119 C141 104 134 80 145 60 C167 73 177 95 167 119Z" fill="#87e0bd"/>
+ <g fill="#f48a6b"><ellipse cx="167" cy="50" rx="18" ry="26"/><ellipse cx="145" cy="65" rx="25" ry="16" transform="rotate(30 145 65)"/><ellipse cx="188" cy="65" rx="25" ry="16" transform="rotate(-30 188 65)"/><ellipse cx="154" cy="83" rx="17" ry="22" transform="rotate(35 154 83)"/><ellipse cx="180" cy="83" rx="17" ry="22" transform="rotate(-35 180 83)"/></g>
+ <circle cx="167" cy="69" r="13" fill="#ffe1a6"/><circle cx="163" cy="66" r="3" fill="#fff3d4"/>
+ <path d="M118 312 L202 312 L190 369 Q160 383 130 369Z" fill="url(#pot)"/>
+ <rect x="112" y="305" width="96" height="17" rx="7" fill="#efbc82"/>
+ <path d="M143 334 L146 361 M161 335 V365 M179 334 L176 361" stroke="#9a634b" stroke-width="3" opacity=".45" stroke-linecap="round"/>
+ <path d="M103 151 C117 160 129 173 142 179 M94 224 C111 235 125 250 144 258 M176 216 L209 188 M178 140 L203 115" fill="none" stroke="#bcf4d8" stroke-width="2" opacity=".65"/>
+</svg>

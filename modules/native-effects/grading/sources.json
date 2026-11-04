@@ -1,0 +1,33 @@
+{
+  "repository": "https://github.com/storytold/effectcraft",
+  "commit": "ec7ced1f0515f0b6f376dbcc297f1c441f452d6e",
+  "license": "MIT",
+  "files": [
+    {
+      "file": "LICENSE-MIT",
+      "bytes": 1103,
+      "sha256": "7b6db9a363688683feacdf9b528f059637f2e5d2edbacd8720fc9b26781c9abe"
+    },
+    {
+      "file": "crates/gpu/src/shaders/fx_lut.wgsl",
+      "bytes": 18842,
+      "sha256": "5ea0b7ade1dfdf4c23efc13ea1cda6cd8fa2f9d220c7db486d0e8ef7224effaf"
+    },
+    {
+      "file": "crates/gpu/src/fx_lut.rs",
+      "bytes": 7337,
+      "sha256": "286212b03f9644109240e9a71f81144d44e05f3d68f88c5dc70a59cb13eaf898"
+    },
+    {
+      "file": "crates/effects/src/ocio.rs",
+      "bytes": 2972,
+      "sha256": "91aa703002ea4f087cb381785b78c54d778d17d0835428c3bc6108cefdd9ff16"
+    }
+  ],
+  "adaptations": [
+    "LUT table index, trilinear and six tetrahedra from fx_lut.wgsl; explicit domain extension instead of implicit clamp; compensated weights",
+    "CDL forward/reverse no-clamp negative power bypass from EffectCraft ocio equations",
+    "Existing Frameweave Native color conversion, Pixel/Data ABI and recipe lifecycle",
+    "Local artist grading equations and explicit opponent-space curve controls; no external OCIO runtime or configuration interpreter"
+  ]
+}

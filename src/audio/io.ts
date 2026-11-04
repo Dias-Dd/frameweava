@@ -1,0 +1,20 @@
+import {execFile} from 'node:child_process';
+import {promisify} from 'node:util';
+import {readFile,stat,writeFile,mkdir} from 'node:fs/promises';
+import {resolve,dirname,extname} from 'node:path';
+import {ffmpegPath} from '../encoding/ffmpeg.ts';
+import {EngineError} from '../core/errors.ts';
+import {audioBlock,assertSampleRate,channelLayout,audioFail,integer,fields,type AudioSampleRate,type AudioBlockV1} from './block.ts';
+import {encodeWav,inspectWav,type WavFormat,type Quantization} from './wav.ts';
+const exec=promisify(execFile);
+function ioError(e:unknown,path:string):never {if(e instanceof EngineError)throw e;throw new EngineError('E_AUDIO_IO',`Audio file I/O failed: ${(e as Error).message}`,{details:{path,systemCode:(e as NodeJS.ErrnoException).code}});}
+/** Host I/O, never injected into Audio Stage realms. Caller selects a trusted declared input file. */
+export async function readWavFile(file:string){const path=resolve(file);try{if((await stat(path)).size>64*1024*1024)audioFail('E_AUDIO_RESOURCE','WAV input exceeds 64 MiB; use explicitly bounded external decoding');const bytes=new Uint8Array(await readFile(path));return {bytes,info:inspectWav(bytes)};}catch(e){ioError(e,path);}}
+export async function writeWavFile(file:string,block:AudioBlockV1,options:{format:WavFormat;quantization:Quantization}){const encoded=encodeWav(block,options),path=resolve(file);try{await mkdir(dirname(path),{recursive:true});await writeFile(path,encoded.bytes,{flag:'wx'});return {output:path,sampleRate:block.sampleRate,sampleCount:block.sampleCount,layout:block.channelLayout.name,format:options.format,overloads:encoded.overloads,lossy:false};}catch(e){ioError(e,path);}}
+export async function decodeAudioFile(file:string,options:{sampleRate:AudioSampleRate;layout:'mono'|'stereo';maxSamples?:number;timeoutMs?:number;signal?:AbortSignal;ffmpeg?:string}):Promise<{block:AudioBlockV1;conversion:{requestedSampleRate:AudioSampleRate;requestedLayout:'mono'|'stereo';decoder:'ffmpeg';input:string}}> {
+  fields(options,['sampleRate','layout','maxSamples','timeoutMs','signal','ffmpeg'],'decode');assertSampleRate(options.sampleRate);if(options.layout!=='mono'&&options.layout!=='stereo')audioFail('E_AUDIO_LAYOUT','Bounded decoder v1 requires mono/stereo');if(options.timeoutMs!==undefined)integer(options.timeoutMs,'decode.timeoutMs',1,300000);if(options.signal?.aborted)throw new EngineError('E_RENDER_CANCELLED','Audio decoding cancelled');const channels=channelLayout(options.layout).channels.length,max=options.maxSamples??262144;integer(max,'decode.maxSamples',1,262144);const path=resolve(file),demuxers:Record<string,string>={'.wav':'wav','.mp3':'mp3','.flac':'flac','.m4a':'mov','.aac':'aac','.ogg':'ogg','.opus':'ogg'},demuxer=demuxers[extname(path).toLowerCase()];if(!demuxer)audioFail('E_AUDIO_INPUT_FORMAT','Supported bounded decoding: WAV, MP3, FLAC, AAC/M4A, Ogg/Opus');try{await stat(path);}catch(e){ioError(e,path);}
+  try{const {stdout}=await exec(options.ffmpeg??ffmpegPath(),['-hide_banner','-loglevel','error','-nostdin','-protocol_whitelist','file,pipe','-f',demuxer,'-i',path,'-map','0:a:0','-vn','-ar',String(options.sampleRate),'-ac',String(channels),'-t',String((max+1)/options.sampleRate),'-f','f32le','pipe:1'],{encoding:'buffer',windowsHide:true,timeout:options.timeoutMs??30000,maxBuffer:(max+1)*channels*4+1024,signal:options.signal});
+    if(stdout.length%(channels*4)||stdout.length/(channels*4)>max)audioFail('E_AUDIO_BUDGET','Decoded input exceeds the explicit sample budget; request a bounded source asset');const count=stdout.length/4,values=new Float32Array(count);for(let i=0;i<count;i++)values[i]=stdout.readFloatLE(i*4);
+    return {block:audioBlock(values,{sampleRate:options.sampleRate,layout:options.layout}),conversion:{requestedSampleRate:options.sampleRate,requestedLayout:options.layout,decoder:'ffmpeg',input:path}};
+  }catch(e){if(e instanceof EngineError)throw e;if(options.signal?.aborted)throw new EngineError('E_RENDER_CANCELLED','Audio decoding cancelled');throw new EngineError('E_AUDIO_DECODE',`Bounded FFmpeg decode failed: ${(e as Error).message}`);}
+}

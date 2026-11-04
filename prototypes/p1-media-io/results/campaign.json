@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "sameCampaign": true,
+  "priorEvidenceCommit": "b1c909ef7070e136c5221946f99c4f13b26ab710",
+  "priorAccountedSeconds": 308.88483060000004,
+  "commands": [
+    {
+      "command": "OpenEXR first roundtrip, input dictionary alias failure",
+      "seconds": 0.2359124,
+      "exit": 1,
+      "log": "exr-first-failure.log"
+    },
+    {
+      "command": "OpenEXR codec roundtrip and four rejection cases",
+      "seconds": 0.2732791,
+      "exit": 0,
+      "log": "exr.log"
+    },
+    {
+      "command": "NanoVDB MSVC first compile, namespace error",
+      "seconds": 2.6660729,
+      "exit": 2,
+      "log": "nanovdb-build-first-failure.log"
+    },
+    {
+      "command": "NanoVDB compile/run, SDF comparison and checksum tamper",
+      "seconds": 4.5699767,
+      "exit": 0,
+      "log": "nanovdb.log"
+    },
+    {
+      "command": "Pinned source preparation and reproducible build script",
+      "seconds": 6.9974543,
+      "exit": 0,
+      "log": "nanovdb-reproduce.log"
+    },
+    {
+      "command": "Final OpenEXR roundtrip, scoped deterministic result manifest",
+      "seconds": 0.2399562,
+      "exit": 0,
+      "log": "exr-final.log"
+    }
+  ],
+  "additionalInspectionAndCollectionAllowanceSeconds": 2,
+  "cumulativeAccountedSeconds": 325.86748220000004,
+  "exclusiveLimitSeconds": 420,
+  "engineCodeChanged": false,
+  "publicContractImplemented": false,
+  "notes": [
+    "Only trusted generated fixtures, no production untrusted parser or GPU-volume claim",
+    "P1 validation budget not reset on Main boundary notification",
+    "No TypeScript/Rust engine code changed, previous engine test evidence retained under its original source commit"
+  ]
+}

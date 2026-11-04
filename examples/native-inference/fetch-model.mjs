@@ -1,0 +1,9 @@
+// Verify the bundled weight and prepare the development-test cache. Rendering never downloads models.
+import {mkdir,readFile,writeFile} from 'node:fs/promises';import {createHash} from 'node:crypto';import {fileURLToPath} from 'node:url';import {dirname,resolve,join} from 'node:path';
+const here=dirname(fileURLToPath(import.meta.url)),root=resolve(here,'../..'),sha256='85f36ff88cc504a24af5e0602148bc56a8aa09a58eca8c0da2756f3e8186035e',length=240078,url='https://huggingface.co/onnxmodelzoo/super-resolution-10/resolve/395472c4b6b92f788357237983d83fd913cfe7e3/super-resolution-10.onnx';
+const hash=b=>createHash('sha256').update(b).digest('hex');let bytes;
+try{bytes=await readFile(join(here,'model/super-resolution-10.onnx'));}catch(e){if(e.code!=='ENOENT')throw e;}
+if(bytes&&(bytes.length!==length||hash(bytes)!==sha256))throw Error('E_INFERENCE_MODEL_INTEGRITY: existing fixture changed; inspect it before replacing');
+if(!bytes){const response=await fetch(url,{signal:AbortSignal.timeout(30000)});if(!response.ok||!response.body)throw Error('Model fetch failed: '+response.status);const chunks=[];let n=0;for await(const c of response.body){n+=c.length;if(n>length)throw Error('Model download exceeds pinned length');chunks.push(c);}bytes=Buffer.concat(chunks);if(bytes.length!==length||hash(bytes)!==sha256)throw Error('E_INFERENCE_MODEL_INTEGRITY: downloaded model differs from pin');}
+for(const dir of [join(here,'model'),join(root,'.frameweave/inference/model')]){await mkdir(dir,{recursive:true});await writeFile(join(dir,'super-resolution-10.onnx'),bytes);}
+console.log(JSON.stringify({version:1,url,sha256,bytes:length,license:'Apache-2.0',modelCard:'https://huggingface.co/onnxmodelzoo/super-resolution-10',scope:'SDR luminance super-resolution test; not full-color/HDR enhancement'}));

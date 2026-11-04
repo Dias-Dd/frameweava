@@ -1,0 +1,77 @@
+{
+  "baseline": "edeec53657efa5660af7c002d541675d78094042",
+  "branch": "agents/agent-4",
+  "invariants": {
+    "src/compiler/build.ts": {
+      "unchanged": true,
+      "sha256": "64c70c512209e30deb141acbdcd61021adcd52623c55cdc50f5f7f0749aa65e8"
+    },
+    "src/compiler/evaluate.mjs": {
+      "unchanged": true,
+      "sha256": "daf3cf686963fbab375127c8455a4b6bd16a6209032f2d049f926b63d8044bc4"
+    },
+    "src/render/renderer.ts": {
+      "unchanged": true,
+      "sha256": "60a8f5947242c8c00cd68bf2fb496c39a140013e4ab2712123b1b971325a3e90"
+    },
+    "modules/native-gpu/scope.ts": {
+      "unchanged": true,
+      "sha256": "d7f1919fd475d7ff130d535111520365163a2a960c25133a055c829dc81e298d"
+    },
+    "modules/native-gpu/client.ts": {
+      "unchanged": true,
+      "sha256": "0ab5b20cc0c17578b0f3036a00ccbf6323bd54786eccf8178d7cdaeecf56a05c"
+    },
+    "package.json": {
+      "unchanged": true,
+      "sha256": "2b57b1c01e182c13d75416d0b2c1f7c4f5c25628636623be86f35b4fac481909"
+    },
+    "package-lock.json": {
+      "unchanged": true,
+      "sha256": "e17cfced33db946687a95945d105969dfb1d1e8693fa71ca9e8e0fdf4e853b3c"
+    },
+    "NativeLogicHost.record body": {
+      "unchanged": true
+    }
+  },
+  "editableFiles": {
+    "modules/spidermonkey-host/.gitignore": "1f257c350d92de77d9f04e7b18810b9e631074e9788df4c38658d305b64a7930",
+    "modules/spidermonkey-host/.npmrc": "8f4aa6035022827cf1031320fbb5ba8f1d300952e3f873b269aeeb712dea201d",
+    "modules/spidermonkey-host/bootstrap.ts": "4ec0349964162ca9eee591c087d1ba6db75f39c66021395ae8684d6720b84fe4",
+    "modules/spidermonkey-host/build.mjs": "8d24e2014a70c579d2d2019682f56eef13a4a18c9581220a5a5a1db9fa2adf43",
+    "modules/spidermonkey-host/Cargo.lock": "e24bb58f0921f1923b56c9e067902c123a7be09d24234c6e8409f7ee0bc36ce7",
+    "modules/spidermonkey-host/Cargo.toml": "e36c0e995c91d791d85763afb9ac8fb44da59a1b13da032b87f13014f750039a",
+    "modules/spidermonkey-host/codec.ts": "d34389cc8cf96d0c671a8ac3f0ae3b1f66d22bc74dfe77d4c292aa490e48164f",
+    "modules/spidermonkey-host/examples/hooks.tsx": "46e639493f3a3b97ebf07a483ee0a7271560bdeb05e9a6c638d24b74beb9317f",
+    "modules/spidermonkey-host/index.ts": "41e970e64ddccd58a511e789988e47444826827443ce2ad39957a5b92091e898",
+    "modules/spidermonkey-host/integration/core-reference.patch": "2fb60ce204283d755a16952dce6fb4e481283ada6e78c2e7f9ca5d978666e0ea",
+    "modules/spidermonkey-host/integration/reference-hooks.mjs": "5dae0fb5a7f5a4c6c85b35df43a46085e88c44ac27d74fcd9648be082e52eb10",
+    "modules/spidermonkey-host/integration/register-reference.mjs": "7f622269c9f42a203901597e4877acaf3fd1a9cd8fdd46845b2f42630c3b7753",
+    "modules/spidermonkey-host/licenses/Apache-2.0.txt": "a7d00bfd54525bc694b6e32f64c7ebcf5e6b7ae3657be5cc12767bce74654a47",
+    "modules/spidermonkey-host/licenses/MPL-2.0.txt": "e147f11fd8c5b7d151db93eabbb02ddb8b481082047008062025afd1ff7e2a27",
+    "modules/spidermonkey-host/licenses/React-MIT.txt": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "modules/spidermonkey-host/manifest-common.mjs": "5adc796d5a3a1f2a8e0c9f8906902014e7831062cdf5589031a5f2ced677eed3",
+    "modules/spidermonkey-host/manifest.ts": "c61fdc443c8d3b1135cce9a45f743c6c25d997ebb02fb4607e703ed0b79ec214",
+    "modules/spidermonkey-host/package-lock.json": "efc3934ddad8fd4891143455ee18231b850754dca10d4fde5b1f19865ad2ed8a",
+    "modules/spidermonkey-host/package.json": "72221c6850d4e1a6df557da5f1730993a9b47ca89be41c61a5f19a0fdd8f7bd4",
+    "modules/spidermonkey-host/policy.ts": "8513ab1ee3306c19d2f8004145249e37e8248c69ff0a5655a72c33c9c2067b79",
+    "modules/spidermonkey-host/react-renderer.ts": "34e555d4d85ec9e13660a26a1ddccf87ef0e9667ebe1724514ede033a155b67a",
+    "modules/spidermonkey-host/README.md": "28493d6779cd1fdf6c2a457ccc3feb1593f46986703f00d0441ad2a93a835ec9",
+    "modules/spidermonkey-host/runtime.ts": "66e66582128142a55851179aa268f9a6950db03a5c2696df6a35e8d47816da99",
+    "modules/spidermonkey-host/src/engine.rs": "709b2535cfb80dcae35d2fb43cf60ea46bbf9828f7dcdaefcbf0fe7241adad3e",
+    "modules/spidermonkey-host/src/main.rs": "98755a3d8a9dcedd77e1728d58c5fd97cd84a47522655c6edbd36f7fc914ef08",
+    "modules/spidermonkey-host/src/sandbox.rs": "59ae105711d9386c55a926c74e3b0b66c74f254f90f9e77c0b55b1e778e76a56",
+    "modules/spidermonkey-host/THIRD_PARTY.md": "3dacfe3fb809dfd987bc6acc7e37fc03bb4ce9960c204e32e14cf135addb4601",
+    "modules/spidermonkey-host/transport.ts": "3ebf23e5702d1c4dcf9cea72ac388d458c927c3c3be1db4b22913169846c8be2",
+    "modules/spidermonkey-host/tsconfig.json": "76e278a5111bbc146fe2420abab4a295c71c4d104c5480e33f85b054d6dda01a",
+    "modules/spidermonkey-host/UPSTREAM.json": "e148a64225adb2e18ff3b33702f6eb0d74cf6ebf642c5a8843430011ba6293ae",
+    "modules/native-gpu/logic-bootstrap.ts": "0aadfa6449aca3b016d0c511dd2f15e916c6567febf3bf9c542711907caeddf2",
+    "modules/native-gpu/logic-host.ts": "16687ec85edbde179760fcc48fe08429e31c7a79054820e4d763f314e8c24a47",
+    "modules/native-gpu/react.tsx": "f08cbe1278523cd044a1e8e3e5cdc7e282d0c8143522d8093e99ce4c07612091",
+    "tests/spidermonkey-host.test.ts": "32843f5c16af61fb5688e2578ce58b9bb649029e52381f369c4c42a522255ae2",
+    "modules/spidermonkey-host/validation/run.ts": "998b2539e94564f7603604ca02a01358444824b96630a598900f426725c4d316",
+    "modules/spidermonkey-host/validation/compatibility.ts": "c37f4ecca4e232ccd1b5d33902f1a677e76ed37ac346a1dcf5c80195a147fa73",
+    "modules/spidermonkey-host/validation/audit.mjs": "1e6a042d13f7e0b8165afd28abb410478492e26d64bbe206eee0406fb57e576b"
+  },
+  "frozenBeforeCommit": true
+}

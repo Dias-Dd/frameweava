@@ -1,0 +1,272 @@
+{
+  "version": 1,
+  "scope": "Isolation probe of cumulative pass prefixes, actual 4K F32 frame168 with no window/display, 2 warmups + 3 measured identical-work samples per prefix; NOT new-frame throughput or GPU timestamp",
+  "rows": [
+    {
+      "passes": 1,
+      "kind": "pixel",
+      "shader": "fn pixel(p:vec2u)->vec4f {\n  let size=vec2f(outputSize()); let uv=(vec2f(p)+.5)/size;\n  let t=paramF32(0u); let variant=paramF32(1u);\n  let q=(uv-.5)*vec2f(size",
+      "medianMs": 1.9486999999990076,
+      "times": [
+        1.6530000000002474,
+        1.9486999999990076,
+        2.0023999999993976
+      ]
+    },
+    {
+      "passes": 2,
+      "kind": "pixel",
+      "shader": "fn pixel(p:vec2u)->vec4f {\n  let size=vec2f(outputSize()); let uv=(vec2f(p)+.5)/size;\n  let t=paramF32(0u); let variant=paramF32(1u);\n  let q=(uv-.5)*vec2f(size",
+      "medianMs": 2.1442000000006374,
+      "times": [
+        2.1121000000002823,
+        2.1442000000006374,
+        2.1878000000015163
+      ]
+    },
+    {
+      "passes": 3,
+      "kind": "compute",
+      "shader": "",
+      "medianMs": 1.985500000000684,
+      "times": [
+        1.9817000000002736,
+        1.985500000000684,
+        2.0080999999991036
+      ]
+    },
+    {
+      "passes": 4,
+      "kind": "compute",
+      "shader": "",
+      "medianMs": 1.98989999999867,
+      "times": [
+        1.974899999999252,
+        1.98989999999867,
+        2.8998999999985244
+      ]
+    },
+    {
+      "passes": 5,
+      "kind": "mesh",
+      "draw": 24,
+      "shader": "",
+      "medianMs": 2.042699999999968,
+      "times": [
+        1.9861999999993714,
+        2.042699999999968,
+        2.9387000000006083
+      ]
+    },
+    {
+      "passes": 6,
+      "kind": "pixel",
+      "shader": "fn pixel(p:vec2u)->vec4f{\n var v=read0(vec2i(p));let a=v.a;\n if(paramU32(1u)!=0u&&a==0.){v=vec4f(0.);}\n let associationMode=paramU32(0u);\n if(associationMode==1",
+      "medianMs": 2.8906999999999243,
+      "times": [
+        2.479400000000169,
+        2.8906999999999243,
+        3.136000000000422
+      ]
+    },
+    {
+      "passes": 7,
+      "kind": "pixel",
+      "shader": "fn pixel(p:vec2u)->vec4f{\n var v=read0(vec2i(p));let a=v.a;\n if(paramU32(1u)!=0u&&a==0.){v=vec4f(0.);}\n let associationMode=paramU32(0u);\n if(associationMode==1",
+      "medianMs": 3.967800000000352,
+      "times": [
+        3.9495999999999185,
+        3.967800000000352,
+        4.044899999998961
+      ]
+    },
+    {
+      "passes": 8,
+      "kind": "pixel",
+      "shader": "fn pixel(p:vec2u)->vec4f{let opacity=scalar(1u);let s=multiply(pair(read0(vec2i(p))),opacity);let b=pair(read1(vec2i(p)));let mode=paramU32(0u);\n // CPU source-",
+      "medianMs": 4.107800000001589,
+      "times": [
+        3.8016999999999825,
+        4.107800000001589,
+        5.512300000000323
+      ]
+    },
+    {
+      "passes": 9,
+      "kind": "pixel",
+      "shader": "fn pixel(p:vec2u)->vec4f{\n var color=read0(vec2i(p));\n let tile=(p.y/paramU32(0u))*paramU32(1u)+p.x/paramU32(0u);let start=data1(tile*2u);let count=data1(tile*2",
+      "medianMs": 5.992599999999584,
+      "times": [
+        5.687199999998484,
+        5.992599999999584,
+        6.104999999999563
+      ]
+    },
+    {
+      "passes": 10,
+      "kind": "pixel",
+      "shader": "fn pixel(p:vec2u)->vec4f{let v=input(vec2i(p),false);if(paramF32(0u)==0.&&paramF32(1u)==1.){return v;}let bias=multiply(subtract(scalar(paramF32(0u)),scalar(par",
+      "medianMs": 6.03899999999885,
+      "times": [
+        5.634400000000824,
+        6.03899999999885,
+        7.511000000000422
+      ]
+    },
+    {
+      "passes": 11,
+      "kind": "pixel",
+      "shader": "fn pixel(p:vec2u)->vec4f{let v=input(vec2i(p),false);let dims=vec2f(size0());let radius=multiply(scalar(paramF32(2u)),scalar(min(dims.x,dims.y)));let dx=divide(",
+      "medianMs": 7.073400000001129,
+      "times": [
+        7.0033000000003085,
+        7.073400000001129,
+        8.033299999999144
+      ]
+    },
+    {
+      "passes": 12,
+      "kind": "pixel",
+      "shader": "fn pixel(p:vec2u)->vec4f{let v=read0(vec2i(p));return vec4f(select(select(v.rgb*v.a,v.rgb,alpha0()==0u),vec3f(0.),v.a==0.),v.a);}\n @compute @workgroup_size(8,8)",
+      "medianMs": 7.484000000000378,
+      "times": [
+        7.483700000000681,
+        7.484000000000378,
+        8.106999999999971
+      ]
+    },
+    {
+      "passes": 13,
+      "kind": "pixel",
+      "shader": "fn pixel(p:vec2u)->vec4f{let v=read0(vec2i(p));if(v.a==0.){return vec4f(0.);}\n var y=weighted(vec4f(v.r),vec2f(paramF32(2u),paramF32(3u)));y=add(y,weighted(vec4",
+      "medianMs": 8.53820000000087,
+      "times": [
+        8.039300000000367,
+        8.53820000000087,
+        10.93710000000101
+      ]
+    },
+    {
+      "passes": 14,
+      "kind": "pixel",
+      "shader": "fn pixel(p:vec2u)->vec4f{return gaussian(p);}\n @compute @workgroup_size(8,8) fn fw_main(@builtin(global_invocation_id) id:vec3u){\n  let d=outputSize();if(id.x>=",
+      "medianMs": 22.8716000000004,
+      "times": [
+        22.39799999999923,
+        22.8716000000004,
+        23.870899999999892
+      ]
+    },
+    {
+      "passes": 15,
+      "kind": "pixel",
+      "shader": "fn pixel(p:vec2u)->vec4f{return gaussian(p);}\n @compute @workgroup_size(8,8) fn fw_main(@builtin(global_invocation_id) id:vec3u){\n  let d=outputSize();if(id.x>=",
+      "medianMs": 37.265299999999115,
+      "times": [
+        36.76380000000063,
+        37.265299999999115,
+        37.52109999999993
+      ]
+    },
+    {
+      "passes": 16,
+      "kind": "pixel",
+      "shader": "fn pixel(p:vec2u)->vec4f{let source=read0(vec2i(p));let bloom=read1(vec2i(p));let intensity=scalar(0u);let rgb=rounded(add(pair(source),multiply(pair(bloom),int",
+      "medianMs": 37.998099999998885,
+      "times": [
+        37.89950000000135,
+        37.998099999998885,
+        39.264900000000125
+      ]
+    },
+    {
+      "passes": 17,
+      "kind": "pixel",
+      "shader": "fn pixel(p:vec2u)->vec4f{\n var v=read0(vec2i(p));let a=v.a;\n if(paramU32(1u)!=0u&&a==0.){v=vec4f(0.);}\n let associationMode=paramU32(0u);\n if(associationMode==1",
+      "medianMs": 40.54919999999947,
+      "times": [
+        40.40650000000096,
+        40.54919999999947,
+        40.8687000000009
+      ]
+    },
+    {
+      "passes": 18,
+      "kind": "compute",
+      "shader": "",
+      "medianMs": 40.97830000000067,
+      "times": [
+        40.60199999999895,
+        40.97830000000067,
+        41.03219999999965
+      ]
+    },
+    {
+      "passes": 19,
+      "kind": "compute",
+      "shader": "",
+      "medianMs": 40.281199999999444,
+      "times": [
+        39.59490000000005,
+        40.281199999999444,
+        40.53099999999904
+      ]
+    },
+    {
+      "passes": 20,
+      "kind": "pixel",
+      "shader": "fn pixel(p:vec2u)->vec4f{\n let interior=vec2u(paramU32(16u),paramU32(17u));let block=p/(interior+2u);let rows=paramU32(5u);let back=block.y>=rows;let cell=vec2u",
+      "medianMs": 39.91029999999955,
+      "times": [
+        39.75140000000101,
+        39.91029999999955,
+        40.895800000000236
+      ]
+    },
+    {
+      "passes": 21,
+      "kind": "mesh",
+      "draw": 72,
+      "shader": "",
+      "medianMs": 46.61160000000018,
+      "times": [
+        46.21780000000035,
+        46.61160000000018,
+        49.075299999998606
+      ]
+    },
+    {
+      "passes": 22,
+      "kind": "pixel",
+      "shader": "fn pixel(p:vec2u)->vec4f{return vec4f(paramF32(0u),paramF32(1u),paramF32(2u),paramF32(3u));}\n @compute @workgroup_size(8,8) fn fw_main(@builtin(global_invocatio",
+      "medianMs": 47.643299999999726,
+      "times": [
+        46.64420000000064,
+        47.643299999999726,
+        48.336999999999534
+      ]
+    },
+    {
+      "passes": 23,
+      "kind": "pixel",
+      "shader": "fn pixel(p:vec2u)->vec4f{return vec4f(paramF32(0u),paramF32(1u),paramF32(2u),paramF32(3u));}\n @compute @workgroup_size(8,8) fn fw_main(@builtin(global_invocatio",
+      "medianMs": 47.606400000000576,
+      "times": [
+        47.26749999999993,
+        47.606400000000576,
+        47.66060000000107
+      ]
+    },
+    {
+      "passes": 24,
+      "kind": "raster",
+      "shader": "",
+      "medianMs": 48.97700000000077,
+      "times": [
+        48.033799999999246,
+        48.97700000000077,
+        50.38839999999982
+      ]
+    }
+  ]
+}

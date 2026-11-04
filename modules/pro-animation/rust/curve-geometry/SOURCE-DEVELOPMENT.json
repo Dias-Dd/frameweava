@@ -1,0 +1,7 @@
+{
+  "sourceParent": "7b3ae1a62cd0a174c60c05dd81295ee5450f7c20",
+  "originalSource": "modules/pro-animation/rust/curve-metrics/src/lib.rs",
+  "originalSha256": "2ed8bbc29adf863b95522b5b44ef4cd7e2210e404bc5a4419b6139e9a5fc9d85",
+  "adaptation": "Only owned result Vec field, constructor initialization/reset appended to original Frameweave transport. Original kurbo/source sampling logic unchanged. This is not a second Curve Reader/runtime.",
+  "status": "Unbuilt development source, no verification claimed"
+}

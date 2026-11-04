@@ -1,0 +1,53 @@
+TAP version 13
+# Subtest: owned expired images, buffers and modules are forgotten after the first release error
+not ok 1 - owned expired images, buffers and modules are forgotten after the first release error
+  ---
+  duration_ms: 5.3791
+  type: 'test'
+  location: 'C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\tests\\native-borrow-lifetime.test.ts:1:1017'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      Comparison {
+    +   code: 'E_NATIVE_SCOPE'
+    -   code: 'E_NATIVE_RESOURCE_OWNER'
+      }
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    code: 'E_NATIVE_RESOURCE_OWNER'
+  actual:
+  error: 'Foreign, released or stale native image'
+  stack: |-
+    fail (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\native-gpu\scope.ts:20:43)
+    NativeRecordingScope.image (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\native-gpu\scope.ts:113:95)
+    Object.release (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\native-gpu\scope.ts:58:26)
+    Object.owner.release (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\tests\native-borrow-lifetime.test.ts:18:50)
+    Proxy.<anonymous> (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\native-gpu\borrow.ts:16:56)
+    TestContext.<anonymous> (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\tests\native-borrow-lifetime.test.ts:23:90)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  operator: 'rejects'
+  stack: |-
+    async TestContext.<anonymous> (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\tests\native-borrow-lifetime.test.ts:23:67)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: foreign releases never reach the owner; other errors retain ownership and propagate unchanged
+ok 2 - foreign releases never reach the owner; other errors retain ownership and propagate unchanged
+  ---
+  duration_ms: 3.375
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 1
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 306.3956

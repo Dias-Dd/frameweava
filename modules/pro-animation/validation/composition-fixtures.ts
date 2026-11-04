@@ -1,0 +1,12 @@
+import type {BidiFont} from '../src/bidi-line.ts';import type {FrameContext} from '../../../src/core/types.ts';
+import type {ParagraphCompositionOptions} from '../src/paragraph-composition/compose.ts';
+import {kashidaOpportunities,shapeKashidaRun} from '../src/paragraph-composition/kashida.ts';
+export async function compositionCases(fonts:Readonly<Record<string,BidiFont>>,c:Pick<FrameContext,'time'|'frame'>,captions:{latin?:string;cjk?:string;arabic?:string}={}){
+ const variable=(font:BidiFont):BidiFont=>({shapeRun:(text,p)=>font.shapeRun(text,{...p,variations:{wght:400+c.frame*75}})}),latin=variable(fonts.notosans),jp=variable(fonts.notosansjp),arabic=variable(fonts.notonaskharabic),arabicText=captions.arabic??'سلام بكم',size=36+c.time;
+ const opts={script:'Arab',direction:'rtl' as const,fontSize:size,language:'ar',x:0,baseline:0},plain=await arabic.shapeRun(arabicText,opts),legal=kashidaOpportunities(plain),counts=new Map<number,number>();if(!legal.length)throw Error('Real font fixture lacks legal Arabic joining boundaries');for(let n=0;n<2;n++){const at=legal[n%legal.length];counts.set(at,(counts.get(at)??0)+1);}const extended=await shapeKashidaRun(arabic,arabicText,opts,[...counts].map(([at,count])=>({at,count}))),width=extended.layout.glyphs.reduce((s,g)=>s+g.advanceX,0);
+ const cases:{name:string;font:string;text:string;options:Omit<ParagraphCompositionOptions,'font'|'itemizer'>;ink:readonly[number,number,number,number]}[]=[
+  {name:'latin',font:'notosans',text:captions.latin??'Frameweave balances clear professional text.',ink:[3,-.15,.7,.7],options:{fontForRun:()=>latin,width:300+10*c.time,fontSize:24+2*c.time,x:20,baseline:38,lineHeight:34,language:'en',spacing:{word:{min:.6,preferred:1,max:2},letterEm:{min:-.05,preferred:0,max:.12},glyphScale:{min:.95,preferred:1,max:1.05}}}},
+  {name:'cjk',font:'notosansjp',text:captions.cjk??'「日本語」の句読点、文字間隔。',ink:[-.3,2,1,.55],options:{fontForRun:()=>jp,width:300+10*c.time,fontSize:26+c.time,x:20,baseline:175,lineHeight:38,language:'ja',minimumLastLineFill:.35,overflow:'allow',spacing:{cjkEm:{min:0,preferred:0,max:.4},cjk:{compressPunctuation:true,hangingEndEm:.25}}}},
+  {name:'arabic',font:'notonaskharabic',text:arabicText,ink:[.4,.7,4,.75],options:{fontForRun:()=>arabic,width,fontSize:size,x:20,baseline:335,language:'ar',baseDirection:'rtl',justifyLastLine:true,arabic:{kashidaCounts:[0,2]},overflow:'error',spacing:{word:{min:1,preferred:1,max:1},glyphScale:{min:1,preferred:1,max:1},letterEm:{min:0,preferred:0,max:0}}}},
+ ];return cases;
+}

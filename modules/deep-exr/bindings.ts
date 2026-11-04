@@ -1,0 +1,2 @@
+import{createGpuDeepImage,deepImageSource,type DeepImageSource,type GpuDeepImage}from'./index.ts';import type{NativeGpuScope}from'../native-gpu/authoring.ts';
+export function initialize(init:{gpu:NativeGpuScope}){const instances=new Set<GpuDeepImage>();return{exports:{deepImageSource,async createDeep(source:DeepImageSource){const image=await createGpuDeepImage(init.gpu,source);instances.add(image);return image;}},async dispose(){for(const image of instances)await image.dispose();instances.clear();}};}

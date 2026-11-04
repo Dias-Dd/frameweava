@@ -1,0 +1,10 @@
+import {EngineError} from '../../../src/core/errors.ts';
+import type {FrameContext} from '../../../src/core/types.ts';
+import {controls} from '../grading/control.ts';
+import type {StyleOutput} from './types.ts';
+export const split=(v:number)=>{const h=Math.fround(v);return [h,Math.fround(v-h)];};
+export function fail(effect:string,path:string,expected:string):never{throw new EngineError('E_NATIVE_STYLE_PARAMETER',`${effect}.${path}: expected ${expected}`,{details:{effect,path,expected}});}
+function checked<T>(fn:()=>T):T{try{return fn();}catch(error){const e=error as {code?:string;message:string;details?:unknown};if(e.code==='E_NATIVE_GRADE_PARAMETER')throw new EngineError('E_NATIVE_STYLE_PARAMETER',e.message,{details:e.details});throw error;}}
+export function parameters(effect:string,context?:FrameContext,outer?:AbortSignal){const c=controls(effect,context,outer);return {active:c.active,scalar:(...a:Parameters<typeof c.scalar>)=>checked(()=>c.scalar(...a)),triple:(...a:Parameters<typeof c.triple>)=>checked(()=>c.triple(...a)),fields:(o:StyleOutput,extra:readonly string[])=>{if(!o||typeof o!=='object'||Array.isArray(o))fail(effect,'options','typed options object');for(const key of Object.keys(o))if(!['format','workingColor','amount','signal',...extra].includes(key))fail(effect,key,'a documented option');if(o.format!==undefined&&!['rgba16float','rgba32float'].includes(o.format))fail(effect,'format','rgba16float | rgba32float');if(o.signal!==undefined&&(typeof AbortSignal==='undefined'||!(o.signal instanceof AbortSignal)))fail(effect,'signal','host-supported AbortSignal; Renderer cancellation is also supported');c.active(o.signal);}};}
+export function integer(v:number,name:string,path:string,min=1,max=0x3fffffff){if(!Number.isSafeInteger(v)||v<min||v>max)fail(name,path,`integer in [${min},${max}]`);return v;}
+export function hash(x:number,y:number,seed:number){let h=Math.imul(x,0x8da6b343)^Math.imul(y,0xd8163841)^Math.imul(seed,0xcb1ab31f);h^=h>>>13;h=Math.imul(h,0x5bd1e995);h^=h>>>15;return (h&0xffffff)/16777216;}

@@ -1,0 +1,145 @@
+{
+  "version": 1,
+  "baseCommit": "9c6f3d39637e6c241c43d5674fdeb83136f9b8e0",
+  "started": "2026-11-01T09:30:29.074Z",
+  "environment": {
+    "platform": "win32",
+    "node": "v22.19.0"
+  },
+  "steps": [
+    {
+      "name": "debug-build",
+      "args": [
+        "modules/native-gpu/build.mjs",
+        "--diagnostics"
+      ],
+      "status": 0,
+      "error": null,
+      "ms": 699.6881,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "d335f934204b7e26b77c5995825d011560957b66fc71bf8b1c206862131aba3e"
+    },
+    {
+      "name": "release-build",
+      "args": [
+        "modules/native-gpu/build.mjs",
+        "--release"
+      ],
+      "status": 0,
+      "error": null,
+      "ms": 28522.767900000003,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "349eec546da03f8e877af65a214c57e9c61652a8797cbc87701c25ce3318378e"
+    },
+    {
+      "name": "types",
+      "args": [
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "status": 0,
+      "error": null,
+      "ms": 10801.2896,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "validation-types",
+      "args": [
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "-p",
+        "modules/native-gpu/validation/tsconfig.json"
+      ],
+      "status": 0,
+      "error": null,
+      "ms": 2227.4321000000054,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "targeted",
+      "args": [
+        "--import",
+        "tsx",
+        "--test",
+        "--test-concurrency=1",
+        "tests/native-color-texture.test.ts",
+        "tests/native-gpu-v2.test.ts",
+        "tests/native-gpu-composite.test.ts",
+        "tests/native-state.test.ts",
+        "tests/native-image-data.test.ts",
+        "tests/native-gpu-production.test.ts",
+        "tests/native-gpu-security.test.ts",
+        "tests/native-gpu-cancellation.test.ts"
+      ],
+      "status": 1,
+      "error": null,
+      "ms": 31921.0107,
+      "stdoutSha256": "199edf90bb6af4a1bc392fbe5c9062a0cd4e82d1491887df8049d1b9cc75afae",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "resumed-types",
+      "args": [
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "status": 0,
+      "error": null,
+      "ms": 9636.0922,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "resumed-validation-types",
+      "args": [
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "-p",
+        "modules/native-gpu/validation/tsconfig.json"
+      ],
+      "status": 0,
+      "error": null,
+      "ms": 2330.2788999999993,
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "resumed-targeted",
+      "args": [
+        "--import",
+        "tsx",
+        "--test",
+        "--test-concurrency=1",
+        "tests/native-color-texture.test.ts",
+        "tests/native-gpu-v2.test.ts",
+        "tests/native-gpu-composite.test.ts",
+        "tests/native-state.test.ts",
+        "tests/native-image-data.test.ts",
+        "tests/native-gpu-production.test.ts",
+        "tests/native-gpu-security.test.ts",
+        "tests/native-gpu-cancellation.test.ts"
+      ],
+      "status": 0,
+      "error": null,
+      "ms": 34418.5668,
+      "stdoutSha256": "9ee91557ef0660ead549df9803d5fa7fc8ec3b3e665229e3dbc40649578883fa",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "resumed-tsx-media",
+      "args": [
+        "--import",
+        "tsx",
+        "modules/native-gpu/validation/verify-color-texture.ts"
+      ],
+      "status": 0,
+      "error": null,
+      "ms": 17731.256,
+      "stdoutSha256": "8f3328ff35255b56e60ac4a5fcec4b9f6cd488fe768a88fcabdb2711830f697e",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "ms": 138288.38230000003
+}

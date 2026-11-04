@@ -1,0 +1,21 @@
+{
+  "repository": "https://github.com/guillaumeblanc/ozz-animation",
+  "tag": "0.17.0",
+  "revision": "744eb9d99f606eda849acb0b1204f7a3dc20bca1",
+  "license": "MIT",
+  "scope": "Selected two-bone pole-plane, soft reach and joint rotation mathematics for reviewed Three CPU control adaptation; no complete engine or sample renderer compiled",
+  "files": {
+    "LICENSE-MIT.md": {
+      "source": "LICENSE.md",
+      "sha256": "3ddd93e9888fe70b9d61675ceb1c4278a579dc67171678f015de114efe815852"
+    },
+    "ik_two_bone_job.cc": {
+      "source": "src/animation/runtime/ik_two_bone_job.cc",
+      "sha256": "c528e016951e507589c661fa8a03b9d478022a0c63fc710bb0e6c6851888ccaa"
+    },
+    "ik_two_bone_job.h": {
+      "source": "include/ozz/animation/runtime/ik_two_bone_job.h",
+      "sha256": "14e50614e56b4e433cb0ab0c767e575693f513d410f5a1ec43f40c866850c999"
+    }
+  }
+}

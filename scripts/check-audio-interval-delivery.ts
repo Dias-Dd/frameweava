@@ -1,0 +1,20 @@
+import {execFile} from 'node:child_process';
+import {promisify} from 'node:util';
+import {mkdir,mkdtemp,readFile,writeFile,stat} from 'node:fs/promises';
+import {resolve,join} from 'node:path';
+import {createHash} from 'node:crypto';
+import {runtimePin} from '../src/compiler/runtime-lock.ts';
+import {ffmpegPath} from '../src/encoding/ffmpeg.ts';
+const exec=promisify(execFile),root=resolve(import.meta.dirname,'..'),out=join(root,'artifacts/main-audio-intervals');await mkdir(out,{recursive:true});
+const dir=await mkdtemp(join(out,'delivery-')),output=join(dir,'clip.wav'),source=join(root,'examples/audio-intervals/source.wav');
+try{await stat(source);}catch(e){if((e as NodeJS.ErrnoException).code!=='ENOENT')throw e;await exec(process.execPath,['--import','tsx','examples/audio-intervals/prepare.ts'],{cwd:root,windowsHide:true,timeout:15000});}
+const cli=await exec(process.execPath,['--import','tsx','src/cli.ts','create','examples/audio-intervals/project.tsx','--output',output,'--json'],{cwd:root,windowsHide:true,timeout:40000,maxBuffer:1024**2});await writeFile(join(dir,'cli.json'),cli.stdout);
+const envelope=JSON.parse(cli.stdout);if(envelope.ok===false)throw Error('Formal CLI rejected the example');
+const probe=await exec(process.env.FRAMEWEAVE_FFPROBE!,['-v','error','-show_entries','stream=codec_name,sample_rate,channels,duration_ts,time_base','-of','json',output],{windowsHide:true,timeout:5000});
+const metadata=JSON.parse(probe.stdout),stream=metadata.streams[0];if(stream.codec_name!=='pcm_f32le'||stream.sample_rate!=='48000'||stream.channels!==2||Number(stream.duration_ts)!==48048)throw Error('CLI WAV metadata/sample endpoint mismatch');
+const raw=await exec(ffmpegPath(),['-v','error','-nostdin','-i',output,'-f','f32le','pipe:1'],{windowsHide:true,encoding:'buffer',maxBuffer:1024**2,timeout:5000});if(raw.stdout.length!==48048*8)throw Error('Decoded CLI WAV length mismatch');
+let error=0;for(let i=0;i<48048;i++)for(let c=0;c<2;c++){const original=Math.fround(Math.sin(((60*48000+i)/48000)*2*Math.PI*(c?330:220))*.2),expected=Math.fround(original*.7);error=Math.max(error,Math.abs(raw.stdout.readFloatLE((i*2+c)*4)-expected));}if(error!==0)throw Error(`CLI sample error ${error}`);
+const head=(await exec('git',['rev-parse','HEAD'],{cwd:root,windowsHide:true})).stdout.trim(),changed=(await exec('git',['diff','fd5c6bf0',head,'--name-only'],{cwd:root,windowsHide:true})).stdout.trim().split(/\r?\n/);
+if(changed.some(p=>/(?:packages|plugins)\.lock\.json$/.test(p)))throw Error('Unexpected historical lock mutation');
+await writeFile(join(out,'delivery.json'),JSON.stringify({sourceCommit:head,runtimePin,output,metadata,decodedBytes:raw.stdout.length,maxSampleError:error,sha256:createHash('sha256').update(await readFile(output)).digest('hex'),historicalLocksChanged:false,fullNpmReleaseTested:false},null,2)+'\n');
+console.log(JSON.stringify({output,sourceCommit:head,samples:48048,maxSampleError:error,runtimePin}));

@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "apiVersion": 1,
+  "id": "spatial-vfx",
+  "version": "0.2.0",
+  "name": "Resident Spatial VFX",
+  "description": "15 authored spatial GPU render functions over existing Stage-local PixelScope; fractals, procedural volumes, atmosphere, caustics, orbital trails and lensing.",
+  "tags": [
+    "spatial",
+    "gpu",
+    "fractal",
+    "volume",
+    "atmosphere",
+    "caustics",
+    "stars",
+    "orbits",
+    "lensing"
+  ],
+  "source": {
+    "kind": "local",
+    "authority": "frameweave.spatial"
+  },
+  "compatible": "0.1.0",
+  "platforms": [
+    "web"
+  ],
+  "capabilities": [
+    "webgpu"
+  ],
+  "permissions": {
+    "filesystem": false,
+    "network": false,
+    "process": false
+  },
+  "modules": {
+    "main": {
+      "format": "javascript",
+      "path": "./index.ts"
+    },
+    "bindings": {
+      "format": "javascript",
+      "path": "./bindings.ts"
+    }
+  },
+  "bindings": {
+    "schemaVersion": 1,
+    "module": "bindings",
+    "types": "./types/index.d.ts",
+    "initialize": "initialize",
+    "engine": "web",
+    "gpu": "required"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "sourceCommit": "97052db3cce109842d4c4cf624903132ced92f3b",
+  "createdUtc": "2026-10-31T15:12:32.040Z",
+  "environment": {
+    "platform": "Windows x64",
+    "gpu": "RTX 5070 Laptop",
+    "backend": "Vulkan",
+    "driver": "596.49",
+    "cpu": "Intel Core Ultra 9 275HX",
+    "powerPlan": "Silent",
+    "node": "v22.19.0",
+    "osShaderCache": "Warm from prior trials; not cleared. New Node/browser/native process per benchmark.",
+    "gpuPhysicalPeakBytes": null
+  },
+  "validation": [
+    {
+      "log": "checks/commands.json",
+      "scope": "38 native/GPU contract tests + typecheck + 2 unaffected-runtime Worker checks. Pre-commit working tree; original sourceCommit/commands retained.",
+      "totalMs": 135398.1839
+    },
+    {
+      "log": "checks/post-output-metadata-audio.stdout.txt",
+      "scope": "Post-campaign readonly sourceOutput metadata addition and assertion: typecheck and real audio/video encode/decode rerun; exit 0. No aggregate whole-suite claim."
+    }
+  ],
+  "performance": {
+    "samplesPerResolution": 40,
+    "definition": "Node request through isolated JS recording to native GPU completed; distinct frames, no image readback, headless, not physical preview scanout.",
+    "coldStart": "Compile ~4s + device/browser ~1.1s; raw first frames and driver-cache state retained.",
+    "notAbiComparison": true
+  },
+  "encoding": {
+    "frames": 60,
+    "width": 1920,
+    "height": 1080,
+    "framePipelineMs": 968.5003,
+    "encoderFinishMs": 355.9699,
+    "totalWithCompileMs": 6609.9264,
+    "zeroCopy": false,
+    "fullDecode": true
+  },
+  "media": {
+    "advanced-1080.mp4": {
+      "bytes": 1201810,
+      "sha256": "52f1b9cf332fd4835e3a15c4cd82b84f36fb6f9cd8208e78650d1189d75c2c96"
+    },
+    "advanced-frame30.png": {
+      "bytes": 727688,
+      "sha256": "05c2246cf719b433e6b567967886b9aaa78046192b005bff4a538bd7a705ef45"
+    },
+    "with-audio.mp4": {
+      "bytes": 13305,
+      "sha256": "a469f6d935942b34b908f18722c6b1b7292ba8577eb1bf6ba63113fa3cd11a0b"
+    },
+    "native.exr": {
+      "bytes": 924859,
+      "sha256": "846edbf20c750b79b0c67808ed615c36d6e10f3a538df94ac518ff94c91e9d1b"
+    },
+    "ball.png": {
+      "bytes": 3692,
+      "sha256": "fb192c6eccb027ad14b13c839f78d0b5ceb1f8358c814c6ceaa374ead7b8b6c7"
+    }
+  },
+  "failuresAndLimits": [
+    "Initial new test fixture errors (invalid JSON-shaped ColorEncoding, metadata packet fields, per-case HDR assertion, TimeMapping typing) were corrected without loosening numerical tolerance; original app tool transcript retains failures. Final named test logs are separate batches.",
+    "Initial NVENC fixture below supported minimum failed correctly; video fixture uses real 320x180.",
+    "Initial project-external WASM resource was correctly rejected; security fixture now copies the tracked real Rust binary into its declared project.",
+    "Deformable linker first invoked wasm-ld with rustc -flavor and failed; explicit rust-lld retry produced byte-identical runtime artifacts.",
+    "Distribution attempts stopped at actual Worker seal gates; rigid-body private Cargo offline cache lacks postcard. No seal bypass, dependency downloads, rigid version edit or installation acceptance claim.",
+    "No exact native ACES2/HDR10/HLG/ProRes/DNxHR delivery, native decoded-video/image importer, persistent mutable GPU frame state, native live audio, common shared-state/SO-1 execution adapter, CPU/multi-output Stage ports or complete old effect-library migration.",
+    "Only capsule/flat named-binding export tested here, not all six export modes. Existing Web preview tests obsolete by intentional removal. No whole-repo regression, independent install, Linux/macOS/DX12 or physical 120Hz scanout acceptance."
+  ]
+}

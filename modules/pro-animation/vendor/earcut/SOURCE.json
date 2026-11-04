@@ -1,0 +1,30 @@
+{
+  "project": "Mapbox Earcut",
+  "repository": "https://github.com/mapbox/earcut",
+  "version": "3.2.4",
+  "commit": "9e70986eb94054c621c926888dd05bc26bffb902",
+  "license": "ISC",
+  "runtimeDependencies": [],
+  "artifacts": [
+    {
+      "upstream": "src/earcut.js",
+      "local": "earcut.js",
+      "bytes": 43137,
+      "sha256": "04f5b4ddfad1b4133f1a633a4b66f8df8023e7a7d163a50cde46ec719fbfe5ca"
+    },
+    {
+      "upstream": "LICENSE",
+      "local": "LICENSE",
+      "bytes": 738,
+      "sha256": "0b348fff56384b43dbb37593906904e56d0f9deb51eae590d4dc6d427fbf1808"
+    },
+    {
+      "upstream": "package.json",
+      "local": "package.upstream.json",
+      "bytes": 1069,
+      "sha256": "c48653ade72118ac2dd1c05bdfe4608e6ad9ae19b4b1c218b62af3fb272c81e4"
+    }
+  ],
+  "adaptation": "Verbatim original runtime JS. Local earcut.d.ts is a Frameweave type-only declaration; the upstream tag did not contain its generated src/earcut.d.ts (initial fetch returned404). package.upstream.json preserves the original bytes and is not an installed package identity.",
+  "reason": "Reuse mature hole-aware triangulation without importing Three/editor/renderer; Clipper2 supplies canonical solid faces before triangulation."
+}

@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "upstreams": [
+    {
+      "license": "MIT",
+      "repository": "https://github.com/pixijs/filters",
+      "commit": "e9d1ca987864f121680bb0d7e9612c05b37748de",
+      "reuse": "Altered DotFilter sinusoidal rotated pattern and CrossHatch density bands. No Pixi host/device or SDR clipping; actual linear working luma, explicit Alpha and compensated Float32 are adapted."
+    },
+    {
+      "license": "MIT",
+      "repository": "https://github.com/storytold/effectcraft",
+      "commit": "ec7ced1f0515f0b6f376dbcc297f1c441f452d6e",
+      "reuse": "Altered fxs_brush cell direction/jitter/control-table, clamped bilinear stroke integration and associated-RGBA surface blend. Explicit subset, not full original UI parity."
+    }
+  ],
+  "local": "Compute area statistics, adaptive variance decision, Voronoi/sample styles, histogram oil paint, ink/relief/solar/palette equations are local. Existing Gaussian, Sobel, scene-linear color and arithmetic helpers are reused.",
+  "files": [
+    {
+      "sha256": "4a055788a4c76cb3a796ac545e48c47d3700e79a95f98ee972186e9be77c97d9",
+      "path": "modules/native-effects/stylize/vendor/effectcraft/fx_stylize.wgsl"
+    },
+    {
+      "sha256": "7b6db9a363688683feacdf9b528f059637f2e5d2edbacd8720fc9b26781c9abe",
+      "path": "modules/native-effects/stylize/vendor/effectcraft/LICENSE-MIT"
+    },
+    {
+      "sha256": "4b154132d667b670dac059cd38af516144c57c7da8b091ba77f6ae7c7ef91d19",
+      "path": "modules/native-effects/stylize/vendor/pixi-filters/crosshatch.wgsl"
+    },
+    {
+      "sha256": "06394116c2e4882968d012af7513fc670e60294da7e4f7d735a5d1a94ac6f81d",
+      "path": "modules/native-effects/stylize/vendor/pixi-filters/dot.wgsl"
+    },
+    {
+      "sha256": "d554721b2cd409d9bc075d743bb34f960e05ba55de1818a62fa60caf21ca6188",
+      "path": "modules/native-effects/stylize/vendor/pixi-filters/LICENSE"
+    }
+  ]
+}

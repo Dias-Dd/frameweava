@@ -1,0 +1,16 @@
+import {spawnSync} from 'node:child_process';
+import {readFileSync,writeFileSync,mkdirSync,readdirSync} from 'node:fs';
+import {join,resolve,dirname} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {createHash} from 'node:crypto';
+const root=resolve(dirname(fileURLToPath(import.meta.url)),'../..'),module=join(root,'modules/spidermonkey-host');
+const sha=b=>createHash('sha256').update(b).digest('hex'),upstream=JSON.parse(readFileSync(join(module,'UPSTREAM.json')));
+const archive=process.env.MOZJS_ARCHIVE??upstream.prebuilt.path;
+if(sha(readFileSync(archive))!==upstream.prebuilt.sha256)throw Error('Unreviewed SpiderMonkey static archive');
+const release=process.argv.includes('--release'),target=join(root,'.frameweave/spidermonkey-target');mkdirSync(target,{recursive:true});
+const start=performance.now(),cargo=process.env.CARGO??join(process.env.USERPROFILE,'.cargo/bin/cargo.exe');
+const result=spawnSync(cargo,['build','--locked','--offline','--manifest-path',join(module,'Cargo.toml'),...release?['--release']:[]],{cwd:root,env:{...process.env,MOZJS_ARCHIVE:archive,CARGO_TARGET_DIR:target},windowsHide:true,encoding:'utf8',maxBuffer:8e6});
+process.stdout.write(result.stdout??'');process.stderr.write(result.stderr??'');if(result.status!==0)process.exit(result.status??1);
+const directory=join(target,release?'release':'debug'),exe=join(directory,'frameweave-spidermonkey-host.exe'),inputs={};
+for(const name of ['Cargo.toml','Cargo.lock','build.mjs','UPSTREAM.json',...readdirSync(join(module,'src')).map(n=>'src/'+n)])inputs[name]=sha(readFileSync(join(module,name)));
+writeFileSync(join(directory,'spidermonkey-build.json'),JSON.stringify({version:1,budgetProfile:'caller-bytes-v1',engine:'spidermonkey',profile:release?'release':'debug',executable:{sha256:sha(readFileSync(exe))},inputs,archiveSha256:upstream.prebuilt.sha256,wallMs:performance.now()-start},null,2)+'\n');

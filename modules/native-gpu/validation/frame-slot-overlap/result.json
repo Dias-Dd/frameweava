@@ -1,0 +1,404 @@
+{
+  "version": 1,
+  "sourceBase": "273d7c62a8ceaa9b8820c421d6ef1f96bd1bd61e",
+  "sourceHashes": {
+    "modules/native-gpu/client.ts": "c6be06d3faeb57e8c0238bfee17fad5a1680cf7b5414342043d36fef0d197765",
+    "modules/native-gpu/scheduler.ts": "9de97ff5fa601e72eded2021f978e70be06493889b6b13578419d38e91eddf92",
+    "modules/native-gpu/src/gpu.rs": "677b71c19642235d7452014f6788f0047c5b0c3e1b90e7b07e5ca6946d3ce4b2",
+    "modules/native-gpu/src/main.rs": "b6b5879ce72a4f017a08540508ac3bb302d432ee7165e2364678cf942bb89d52",
+    "modules/native-gpu/src/protocol.rs": "2cf5fc0e777136bbf9ca76772dd5af353f41306a803ce2ed91a07a604823ee17",
+    "src/render/renderer.ts": "11f245b7dc8299e164922720ad8c029b9b8c07a89b2bce89047b3ac592de1fc0",
+    "scripts/profile-effects-tour.ts": "ebdeda62f542838591b0f9083c0f201cb2a29e88f0580c4817fcdc79ef9d6fd8",
+    "scripts/profile-effects-preview.ts": "8072cbbcd2bf8fddd364e46da3af462558e0c84081d313160f7a86231ed142af",
+    "tests/native-frame-bindings.test.ts": "8404d7a0e3234398cd2038d14201391377e8aa48491f3488e940ab47e172e1d2",
+    "tests/native-gpu-v2.test.ts": "a85eca5cbf30155728781e675d913254062c92c258a3c7a53aec42e13068a932"
+  },
+  "acceptance": "User explicitly accepted sustained GPU saturation on these actual workloads as goal completion; not a 60FPS or all-library throughput claim.",
+  "hardware": {
+    "adapter": "NVIDIA RTX 5070 Laptop GPU",
+    "driver": "596.49",
+    "os": "Windows",
+    "backend": "Vulkan",
+    "powerPolicy": "unchanged",
+    "foreignNativeProcesses": "none observed immediately before continuous run; no exclusive-system guarantee",
+    "sampling": "NVML driver-averaged utilization, sampled every 200ms; steady interval excludes startup/teardown; not shader ALU occupancy"
+  },
+  "continuous": [
+    {
+      "name": "project-4k60",
+      "warmNewFrameCount": 230,
+      "completionFps": 16.12333083569561,
+      "queuedLatencyMedianMs": 117.36839999999938,
+      "queuedLatencyP95Ms": 146.27549999999974,
+      "gpuSampleCount": 63,
+      "gpuMean": 99.04761904761905,
+      "gpuMedian": 99,
+      "gpuP05": 99,
+      "gpuP95": 99,
+      "clockMeanMHz": 2593.7619047619046,
+      "powerMeanW": 79.2490476190476,
+      "systemVramSampledMaxMiB": 6405,
+      "stats": {
+        "adapter": "AdapterInfo { name: \"NVIDIA GeForce RTX 5070 Laptop GPU\", vendor: 4318, device: 11608, device_type: DiscreteGpu, device_pci_bus_id: \"0000:01:00.0\", driver: \"NVIDIA\", driver_info: \"596.49\", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 32, transient_saves_memory: Some(false), limit_bucket: None }",
+        "allocatedDataBytes": 1026612,
+        "allocatedImageBytes": 2392662528,
+        "backend": "native-wgpu",
+        "blockingGpuWaits": 0,
+        "bufferExports": {
+          "bytes": 0,
+          "readbacks": 0,
+          "version": 1
+        },
+        "capabilities": {
+          "backend": "native-wgpu",
+          "computeKernelAbis": [
+            1
+          ],
+          "crossStageGpuHandles": false,
+          "execution": "recording",
+          "f16WorkingBytesPerPixel": 16,
+          "hardwareVerified": true,
+          "limits": {
+            "maxBufferSize": 4294967295,
+            "maxComputeInvocationsPerWorkgroup": 1024,
+            "maxComputeWorkgroupSizeX": 1024,
+            "maxComputeWorkgroupSizeY": 1024,
+            "maxComputeWorkgroupSizeZ": 64,
+            "maxComputeWorkgroupStorageSize": 49152,
+            "maxComputeWorkgroupsPerDimension": 65535,
+            "maxStorageBufferBindingSize": 2147483644,
+            "maxStorageBuffersPerShaderStage": 524288,
+            "maxUniformBufferBindingSize": 65536
+          },
+          "maxKernels": 256,
+          "maxPendingPasses": 1024,
+          "nativeImages": {
+            "admission": "device-and-session-budget",
+            "maxTextureDimension2D": 32768,
+            "version": 1
+          },
+          "nativeMesh": {
+            "exactAdmission": "session-budget",
+            "float32Blendable": true,
+            "version": 1
+          },
+          "pixelKernelAbis": [
+            1,
+            2
+          ],
+          "profiling": "disabled",
+          "storageTypes": [
+            "f32",
+            "u32",
+            "i32"
+          ],
+          "version": 1
+        },
+        "completed": 241,
+        "devicesCreated": 1,
+        "diagnosticBlockingWaits": 0,
+        "diagnosticReadbackBytes": 0,
+        "diagnosticReadbacks": 0,
+        "diagnosticsEnabled": false,
+        "export": {
+          "bytes": 0,
+          "cpuImageCopies": 0,
+          "enabled": false,
+          "framesWritten": 0,
+          "hardwareEncode": false,
+          "httpTransport": false,
+          "pngTransport": false
+        },
+        "externalImages": {
+          "available": true,
+          "enabled": true,
+          "reason": null,
+          "version": 1
+        },
+        "frameBindings": {
+          "allSlotsDrain": false,
+          "slotUpdates": 239,
+          "version": 1
+        },
+        "frameHashes": 0,
+        "imageReadbacks": 0,
+        "inFlight": 0,
+        "nativeModules": {
+          "additionalD3D11Devices": 0,
+          "blockingGpuFenceWaits": 0,
+          "calls": 0,
+          "contentProfile": "reviewed-local-only",
+          "inputGpuConversions": 0,
+          "instances": 0,
+          "loaded": false,
+          "nativeDevicesCreated": 0,
+          "outputGpuConversions": 0,
+          "productionPixelReadbacks": 0,
+          "runtime": null,
+          "runtimeFileHashes": 0,
+          "surfaceProfile": "explicit-sdr-srgb8",
+          "version": 1,
+          "webRenderCachePrecision": "bgra8"
+        },
+        "numericalValidationPasses": 0,
+        "peakSubmittedInFlight": 2,
+        "persistentState": {
+          "buffers": 0,
+          "cursors": {},
+          "version": 1
+        },
+        "pipelineCache": {
+          "computeAndMeshCreated": 27,
+          "computeAndMeshReused": 6215,
+          "displayReuses": 239,
+          "meshAttachmentSetsReused": 478,
+          "retention": "current-program-only",
+          "version": 1,
+          "workingBuffersReused": 1196
+        },
+        "pixelTransferBytes": 0,
+        "programUpdates": 1,
+        "protocolVersion": 2,
+        "resourceImports": {
+          "uploadBytes": 0,
+          "version": 1
+        },
+        "slots": 3,
+        "submitted": 241,
+        "workingImageBytes": 8364630528,
+        "sourceOutput": {
+          "width": 3840,
+          "height": 2160,
+          "format": "rgba32float",
+          "alpha": "premultiplied",
+          "color": {
+            "primaries": "rec709",
+            "whitePoint": "D65",
+            "transfer": "linear",
+            "reference": "scene",
+            "range": "full",
+            "referenceWhiteNits": 100
+          }
+        }
+      }
+    },
+    {
+      "name": "project-servo-4k60",
+      "warmNewFrameCount": 230,
+      "completionFps": 16.013016162706396,
+      "queuedLatencyMedianMs": 119.08540000000357,
+      "queuedLatencyP95Ms": 134.95030000000406,
+      "gpuSampleCount": 64,
+      "gpuMean": 99.03125,
+      "gpuMedian": 99,
+      "gpuP05": 99,
+      "gpuP95": 99,
+      "clockMeanMHz": 2569.625,
+      "powerMeanW": 80.0365625,
+      "systemVramSampledMaxMiB": 7096,
+      "stats": {
+        "adapter": "AdapterInfo { name: \"NVIDIA GeForce RTX 5070 Laptop GPU\", vendor: 4318, device: 11608, device_type: DiscreteGpu, device_pci_bus_id: \"0000:01:00.0\", driver: \"NVIDIA\", driver_info: \"596.49\", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 32, transient_saves_memory: Some(false), limit_bucket: None }",
+        "allocatedDataBytes": 1026612,
+        "allocatedImageBytes": 2392662528,
+        "backend": "native-wgpu",
+        "blockingGpuWaits": 0,
+        "bufferExports": {
+          "bytes": 0,
+          "readbacks": 0,
+          "version": 1
+        },
+        "capabilities": {
+          "backend": "native-wgpu",
+          "computeKernelAbis": [
+            1
+          ],
+          "crossStageGpuHandles": false,
+          "execution": "recording",
+          "f16WorkingBytesPerPixel": 16,
+          "hardwareVerified": true,
+          "limits": {
+            "maxBufferSize": 4294967295,
+            "maxComputeInvocationsPerWorkgroup": 1024,
+            "maxComputeWorkgroupSizeX": 1024,
+            "maxComputeWorkgroupSizeY": 1024,
+            "maxComputeWorkgroupSizeZ": 64,
+            "maxComputeWorkgroupStorageSize": 49152,
+            "maxComputeWorkgroupsPerDimension": 65535,
+            "maxStorageBufferBindingSize": 2147483644,
+            "maxStorageBuffersPerShaderStage": 524288,
+            "maxUniformBufferBindingSize": 65536
+          },
+          "maxKernels": 256,
+          "maxPendingPasses": 1024,
+          "nativeImages": {
+            "admission": "device-and-session-budget",
+            "maxTextureDimension2D": 32768,
+            "version": 1
+          },
+          "nativeMesh": {
+            "exactAdmission": "session-budget",
+            "float32Blendable": true,
+            "version": 1
+          },
+          "pixelKernelAbis": [
+            1,
+            2
+          ],
+          "profiling": "disabled",
+          "storageTypes": [
+            "f32",
+            "u32",
+            "i32"
+          ],
+          "version": 1
+        },
+        "completed": 241,
+        "devicesCreated": 1,
+        "diagnosticBlockingWaits": 0,
+        "diagnosticReadbackBytes": 0,
+        "diagnosticReadbacks": 0,
+        "diagnosticsEnabled": false,
+        "export": {
+          "bytes": 0,
+          "cpuImageCopies": 0,
+          "enabled": false,
+          "framesWritten": 0,
+          "hardwareEncode": false,
+          "httpTransport": false,
+          "pngTransport": false
+        },
+        "externalImages": {
+          "available": true,
+          "enabled": true,
+          "reason": null,
+          "version": 1
+        },
+        "frameBindings": {
+          "allSlotsDrain": false,
+          "slotUpdates": 239,
+          "version": 1
+        },
+        "frameHashes": 0,
+        "imageReadbacks": 0,
+        "inFlight": 0,
+        "nativeModules": {
+          "additionalD3D11Devices": 2,
+          "blockingGpuFenceWaits": 0,
+          "calls": 241,
+          "contentProfile": "reviewed-local-only",
+          "inputGpuConversions": 0,
+          "instances": 3,
+          "loaded": true,
+          "nativeDevicesCreated": 0,
+          "outputGpuConversions": 241,
+          "productionPixelReadbacks": 0,
+          "runtime": {
+            "frames": 241,
+            "instances": 3,
+            "logicalBridgeResources": 844437815033859,
+            "networkBlocked": 0,
+            "renderingContextReadbackAttempts": 0,
+            "telemetry": {
+              "display_list_received_count": 245,
+              "image_cache_cpu_bytes": 0,
+              "image_cache_gpu_hits": 0,
+              "last_lock_us": 0,
+              "last_locked_gl_textures": [],
+              "last_unlock_us": 0,
+              "last_wr_render_us": 202.7,
+              "last_wr_update_us": 0.5,
+              "lock_call_count": 0,
+              "release_call_count": 0,
+              "total_lock_us": 0,
+              "total_unlock_us": 0,
+              "unlock_call_count": 0
+            },
+            "version": 1
+          },
+          "runtimeFileHashes": 5,
+          "surfaceProfile": "explicit-sdr-srgb8",
+          "version": 1,
+          "webRenderCachePrecision": "bgra8"
+        },
+        "numericalValidationPasses": 0,
+        "peakSubmittedInFlight": 2,
+        "persistentState": {
+          "buffers": 0,
+          "cursors": {},
+          "version": 1
+        },
+        "pipelineCache": {
+          "computeAndMeshCreated": 28,
+          "computeAndMeshReused": 6454,
+          "displayReuses": 239,
+          "meshAttachmentSetsReused": 478,
+          "retention": "current-program-only",
+          "version": 1,
+          "workingBuffersReused": 1196
+        },
+        "pixelTransferBytes": 0,
+        "programUpdates": 1,
+        "protocolVersion": 2,
+        "resourceImports": {
+          "uploadBytes": 0,
+          "version": 1
+        },
+        "slots": 3,
+        "submitted": 241,
+        "workingImageBytes": 9160892928,
+        "sourceOutput": {
+          "width": 3840,
+          "height": 2160,
+          "format": "rgba32float",
+          "alpha": "premultiplied",
+          "color": {
+            "primaries": "rec709",
+            "whitePoint": "D65",
+            "transfer": "linear",
+            "reference": "scene",
+            "range": "full",
+            "referenceWhiteNits": 100
+          }
+        }
+      }
+    }
+  ],
+  "checks": {
+    "finalTypecheck": "passed",
+    "finalTargetedBatch": {
+      "files": [
+        "tests/native-frame-bindings.test.ts",
+        "tests/native-gpu-v2.test.ts"
+      ],
+      "passed": 9,
+      "failed": 0
+    },
+    "earlierRegression": "7 passed before duplicate-pipeline identity correction; not combined with final test count",
+    "numeric": "Two scenes, four evolving frames each, scene/display Float32 exactly equal to forced full-plan control in same live instance; single-slot numeric control and separate three-slot isolation tests",
+    "export": "Six real H264 NVENC frames, all decoded, nonblank, six distinct frame hashes (test-only); two actual PNGs visually checked",
+    "productionCounters": "Preview imageReadbacks=0, pixelTransferBytes=0, frameHashes=0, numericalValidationPasses=0",
+    "validationCampaignSecondsApprox": 413,
+    "limitSeconds": 420,
+    "scopeNotRun": [
+      "whole-repository regression",
+      "independent install",
+      "Linux/macOS",
+      "HDR10/HLG/EXR encode campaign",
+      "six project export modes",
+      "all possible effect combinations"
+    ]
+  },
+  "semantics": {
+    "frameBindingsVersion": 1,
+    "ownership": "existing owner; only completed slot may change; no shader/resource/module/permission changes",
+    "mutableInputs": "all existing non-immutable, non-persistent, non-image CPU seeds plus bounded logical lengths",
+    "passes": "same admitted selectors/order/layout; current header, group counts and draw count only",
+    "preflight": "whole batch validated before any frame submission; exact candidate session budget and existing device/resource checks",
+    "fallback": "structural/capacity/module/immutable changes use old full reconfigure; persistent state or published data buffers remain on original path; plain submit restores admitted defaults",
+    "compatibility": "old requests retain defaults; new private fields are explicitly rejected by old binaries, requiring matching rebuilt native executable",
+    "memory": "original shared immutable buffers/pipelines retained; per-slot mutable allocation and output ownership stay isolated"
+  },
+  "latency": "No isolated serial-latency speedup claim: current serial samples are ~97–99ms, versus ~89–92ms at previous checkpoint; continuous preview keeps GPU busy with two slots and has ~117–119ms queued median latency. Continuous FPS is not compared to the previous serial test as an A/B speedup.",
+  "remaining": "GPU busy does not establish peak ALU occupancy or 60FPS. Existing cross-process Servo text-edge raster reproducibility limitation remains; same-instance control passed.",
+  "discardedExperiments": "Shared-cache Gaussian, partial parallel sums and conditional depth clears did not yield a reliable end-to-end gain. Algorithms and their experimental source changes were reverted; probes/raw failures retained under .frameweave and evidence files."
+}

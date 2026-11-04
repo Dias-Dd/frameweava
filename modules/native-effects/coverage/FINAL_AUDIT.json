@@ -1,0 +1,110 @@
+{
+  "version": 1,
+  "status": "not_complete",
+  "scope": "Original Agent-3 full professional image/filter/optics/color/channel/matte/keying/compositing objective, with standing ownership/exclusions preserved",
+  "sourceSnapshot": "c7e217a77f5f7b8391e90f011107efb457efa1af plus experimental spherical source; see frozen receipt",
+  "findings": {
+    "officialRows": 282,
+    "agent3Rows": 212,
+    "withSourceNavigationCandidates": 207,
+    "withoutSourceNavigationCandidates": 5,
+    "declaredCallableRecords": 884,
+    "declaredOptionFields": 4461,
+    "countsAreNotFunctionalCoverage": true
+  },
+  "unmatched": [
+    {
+      "category": "Generate",
+      "name": "CC Glue Gun",
+      "status": "No named candidate found in this audit; exact behavior and potential compositions remain to be inspected, not an asserted total engine limitation"
+    },
+    {
+      "category": "Obsolete",
+      "name": "Reduce Interlace Flicker",
+      "status": "No named candidate found in this audit; exact behavior and potential compositions remain to be inspected, not an asserted total engine limitation"
+    },
+    {
+      "category": "Perspective",
+      "name": "CC Environment",
+      "status": "No named candidate found in this audit; exact behavior and potential compositions remain to be inspected, not an asserted total engine limitation"
+    },
+    {
+      "category": "Perspective",
+      "name": "CC Spotlight",
+      "status": "No named candidate found in this audit; exact behavior and potential compositions remain to be inspected, not an asserted total engine limitation"
+    },
+    {
+      "category": "Utility",
+      "name": "HDR Compander",
+      "status": "No named candidate found in this audit; exact behavior and potential compositions remain to be inspected, not an asserted total engine limitation"
+    }
+  ],
+  "publicIntegration": {
+    "file": "PUBLIC_INTEGRATION.json",
+    "unpublishedInCurrentSnapshot": [
+      "createNativeStabilizationEffects",
+      "createNativePsfRestorationEffects",
+      "createNativeVideoRotoEffects",
+      "parseVideoRotoBundle"
+    ],
+    "status": "Main-owned proposal; no catalog/version/pin/lock/trust edits applied"
+  },
+  "verifiedPrivateCheckpoints": [
+    {
+      "scope": "Stabilization maxZoom strength search, centre-scale preservation, fixed crop, actual temporal donors",
+      "commit": "930ffa5c688e815b0e7433c04b4ed4260e8f9d42",
+      "evidence": "docs/native-stabilization-borders-evidence",
+      "claim": "240 GPU/F64 comparisons, actual F32/F16, PNG/F32 EXR/decoded MP4, actual1080p/4K, cleanup; not all official AE control parity"
+    },
+    {
+      "scope": "Bounded51-observation learned video segmentation with exact reusable outputs and same-frame cuts",
+      "commit": "a1bd8ffda97d52666234d64d866ec6aa134c50db",
+      "evidence": "docs/native-video-roto-long-evidence",
+      "claim": "Exact segmented/uncut and old short hashes, original Torch long memory/decoder gates, real abort/error cleanup, F32 procedural media; no new F16 long-run qualification"
+    }
+  ],
+  "requiredBefore100Percent": [
+    "Review each in-scope official behavior/control against actual implementation and qualified evidence; signature/index match is insufficient",
+    "Implement and qualify remaining required functionality, including qualifying spherical image behavior if retained by the full AE image scope",
+    "Main-owned new immutable package/SDK entry integration, installed Native bindings and portable qualification",
+    "Resolve/qualify original transient image-import repeat input change in the integrated Core, rather than claiming the immutable-init QA isolation repairs it"
+  ],
+  "acceptedDeviation": "Only the explicitly accepted frozen ACES2 approximately3.4e-6 discrepancy; original failed gate retained, no blanket color-error waiver",
+  "ownershipBasis": {
+    "image": "Agent-3: image filters, optics, color, channels, textures, masks, mattes, keying and pixel compositing.",
+    "time": "Standing user allocation: Agent-2 owns text, paths, time and animation semantics. Existing Native time/motion/transitions are indexed read-only; not reimplemented or counted as Agent-3 delivery.",
+    "spatial": "Standing user allocation: Agent-4 owns particles, physics, Puppet, spatial simulation/geometry and scene rendering.",
+    "publication": "Main owns public entry, immutable package identity, SDK pin and distribution."
+  },
+  "experimentalSpherical": {
+    "module": "modules/native-effects/spherical",
+    "status": "not_qualified_as_a_whole",
+    "implementedNames": 12,
+    "completedNumericCases": 48,
+    "passingOperations": [
+      "vrBlur",
+      "vrGlow",
+      "vrChromaticAberrations",
+      "vrColorGradients",
+      "vrFractalNoise"
+    ],
+    "failedNumericOperations": [
+      "vrDenoise(random)",
+      "vrDenoise(salt-pepper)",
+      "vrSharpen"
+    ],
+    "timedOut": [
+      "vrDigitalGlitch",
+      "whole-family frame"
+    ],
+    "unreachedGpuAcceptance": [
+      "vrRotateSphere",
+      "vrConverter",
+      "vrPlaneToSphere",
+      "vrSphereToPlane"
+    ],
+    "mediaAndPerformance": "Not run; no acceptance claim",
+    "evidence": "docs/native-spherical-evidence",
+    "equivalence": "Neither source counts nor this partial numerical suite establish full official behavior/control equivalence"
+  }
+}

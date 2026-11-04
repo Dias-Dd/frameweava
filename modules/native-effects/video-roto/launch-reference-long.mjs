@@ -1,0 +1,3 @@
+import {readFile} from 'node:fs/promises';import {resolve,join} from 'node:path';import {spawnSync} from 'node:child_process';
+const ledger=JSON.parse(await readFile('artifacts/native-effects/video-roto-long/campaign.json','utf8')),gpu=ledger.commands.filter(v=>v.phase==='gpu').at(-1);if(gpu?.exitCode!==0)throw Error('No qualified long GPU inputs');
+const result=spawnSync('python',['modules/native-effects/video-roto/reference-long.py','--source','.frameweave/source-intake/sam2-memory','--run',gpu.directory,'--output',join(resolve(process.env.FRAMEWEAVE_VIDEO_ROTO_RUN),'result.json')],{windowsHide:true,stdio:'inherit'});process.exitCode=result.status??1;

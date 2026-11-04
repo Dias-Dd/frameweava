@@ -1,0 +1,296 @@
+{
+  "objects": [
+    {
+      "mesh": {
+        "schema": "frameweave.mesh",
+        "version": 1,
+        "id": "front",
+        "coordinates": {
+          "spaceId": "aov.world",
+          "unit": "meter",
+          "origin": "local",
+          "x": "right",
+          "y": "up",
+          "z": "toward-viewer",
+          "handedness": "right"
+        },
+        "topology": "triangles",
+        "vertexIds": [
+          "v0",
+          "v1",
+          "v2",
+          "v3"
+        ],
+        "restPositions": [
+          [
+            -0.7,
+            -0.7,
+            1
+          ],
+          [
+            0.7,
+            -0.7,
+            1
+          ],
+          [
+            0.7,
+            0.7,
+            1
+          ],
+          [
+            -0.7,
+            0.7,
+            1
+          ]
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          0,
+          2,
+          3
+        ],
+        "uv": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "uvOrigin": "top-left"
+      },
+      "name": "glass",
+      "id": 4275878552,
+      "material": {
+        "name": "glass-material",
+        "id": 4294967294,
+        "color": [
+          -0.2,
+          2,
+          0.1
+        ],
+        "opacity": {
+          "$keyframes": [
+            {
+              "frame": 0,
+              "value": 0.5
+            },
+            {
+              "frame": 12,
+              "value": 0
+            },
+            {
+              "frame": 23,
+              "value": 0.5
+            }
+          ]
+        }
+      },
+      "normals": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "mesh": {
+        "schema": "frameweave.mesh",
+        "version": 1,
+        "id": "back",
+        "coordinates": {
+          "spaceId": "aov.world",
+          "unit": "meter",
+          "origin": "local",
+          "x": "right",
+          "y": "up",
+          "z": "toward-viewer",
+          "handedness": "right"
+        },
+        "topology": "triangles",
+        "vertexIds": [
+          "v0",
+          "v1",
+          "v2",
+          "v3"
+        ],
+        "restPositions": [
+          [
+            -0.8,
+            -0.8,
+            0
+          ],
+          [
+            0.8,
+            -0.8,
+            0
+          ],
+          [
+            0.8,
+            0.8,
+            0
+          ],
+          [
+            -0.8,
+            0.8,
+            0
+          ]
+        ],
+        "indices": [
+          0,
+          1,
+          2,
+          0,
+          2,
+          3
+        ],
+        "uv": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "uvOrigin": "top-left"
+      },
+      "name": "back",
+      "id": 2147483649,
+      "material": {
+        "name": "back-material",
+        "id": 16777217,
+        "color": [
+          0.1,
+          0.2,
+          3
+        ],
+        "opacity": 0.6
+      }
+    },
+    {
+      "mesh": {
+        "schema": "frameweave.mesh",
+        "version": 1,
+        "id": "triangle",
+        "coordinates": {
+          "spaceId": "aov.world",
+          "unit": "meter",
+          "origin": "local",
+          "x": "right",
+          "y": "up",
+          "z": "toward-viewer",
+          "handedness": "right"
+        },
+        "topology": "triangles",
+        "vertexIds": [
+          "v0",
+          "v1",
+          "v2"
+        ],
+        "restPositions": [
+          [
+            -0.9,
+            0.2,
+            2
+          ],
+          [
+            -0.2,
+            0.2,
+            2
+          ],
+          [
+            -0.55,
+            0.9,
+            2
+          ]
+        ],
+        "indices": [
+          0,
+          1,
+          2
+        ],
+        "uv": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            0.5,
+            0
+          ]
+        ],
+        "uvOrigin": "top-left"
+      },
+      "name": "mädchen",
+      "id": 4294967293,
+      "material": {
+        "name": "third-material",
+        "id": 4000000001,
+        "color": [
+          3,
+          0.05,
+          0.3
+        ],
+        "opacity": 0.25
+      }
+    }
+  ],
+  "camera": {
+    "projection": "orthographic",
+    "position": [
+      0,
+      0,
+      5
+    ],
+    "target": [
+      0,
+      0,
+      0
+    ],
+    "viewHeight": 2,
+    "near": 0.1,
+    "far": 20
+  }
+}

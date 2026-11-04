@@ -1,0 +1,1 @@
+{"extends":"../../../tsconfig.json","include":["./*.ts","../examples/stabilization-*.tsx","../../../tests/native-stabilization.test.ts","../../../tests/native-stabilization-borders.test.ts"],"exclude":["./vendor"]}

@@ -1,0 +1,17 @@
+C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\native-gpu\composite.ts:20
+ for(const i of outputs.values())if(JSON.stringify(program.images[i].color)!==JSON.stringify(color))throw new EngineError('E_NATIVE_COLOR','Native composition requires explicit common working color');
+                                                                                                          ^
+
+
+EngineError: Native composition requires explicit common working color
+    at appendNativeComposite (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\native-gpu\composite.ts:20:107)
+    at NativeLogicHost.record (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\native-gpu\logic-host.ts:97:16)
+    at async <anonymous> (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\src\render\renderer.ts:218:41) {
+  code: 'E_NATIVE_COLOR',
+  stageId: undefined,
+  frame: undefined,
+  hint: undefined,
+  details: undefined
+}
+
+Node.js v22.19.0

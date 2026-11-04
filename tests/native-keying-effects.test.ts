@@ -1,0 +1,24 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {keyframes} from '../src/core/animation.ts';
+import type {FrameContext} from '../src/core/types.ts';
+import {keyingParameters} from '../modules/native-effects/keying/parameters.ts';
+import {nativeKeyingNames,createNativeKeyingEffects} from '../modules/native-effects/keying/filters.ts';
+import {distanceOracle,keyingReference} from '../modules/native-effects/keying/reference.ts';
+import {validatePixelKernel} from '../modules/gpu-effects/pixel-shader.ts';
+import {computeSource} from '../modules/gpu-effects/compute-contract.ts';
+import * as pixels from '../modules/native-effects/keying/kernels.ts';
+import * as compute from '../modules/native-effects/keying/compute.ts';
+
+test('24 distinct operations include one typed distance field and 23 images',()=>{assert.equal(nativeKeyingNames.length,24);assert.equal(new Set(nativeKeyingNames).size,24);assert.equal(nativeKeyingNames.filter(n=>n!=='matteDistance').length,23);});
+test('all actual Pixel and Compute sources use the existing sealed contracts',()=>{for(const k of Object.values(pixels))if(typeof k==='object')assert.equal(validatePixelKernel(k).id,k.id);for(const k of Object.values(compute))assert.equal(computeSource(k).id,k.id);});
+test('invalid controls fail with function, path and unit',()=>{const p=keyingParameters('screenKey');for(const v of [NaN,Infinity,-Infinity,1e40,2**-149,-1])assert.throws(()=>p.number(v,1,'gain','ratio',0),e=>{const value=e as {code:string;details:{effect:string;path:string;unit:string}};assert.equal(value.code,'E_NATIVE_KEY_PARAMETER');assert.deepEqual([value.details.effect,value.details.path,value.details.unit],['screenKey','gain','ratio']);return true;});assert.equal(p.number(0,1,'gain','ratio',0),0);assert.equal(p.number(2**-126,1,'gain','ratio',0),2**-126);});
+test('unknown fields, enums and wrong signal types fail explicitly',()=>{const p=keyingParameters('refineMatte');assert.throws(()=>p.fields({extra:1} as never,[]),{code:'E_NATIVE_KEY_PARAMETER'});assert.throws(()=>p.fields({signal:1} as never,[]),{code:'E_NATIVE_KEY_PARAMETER'});assert.throws(()=>p.choice('bad' as never,'soft',['soft','hard'],'mode'),{code:'E_NATIVE_KEY_PARAMETER'});assert.throws(()=>p.flag(1 as never,true,'flag'),{code:'E_NATIVE_KEY_PARAMETER'});});
+test('leaf curves use existing deterministic FrameContext evaluation in any order',()=>{const curve=keyframes([{frame:0,value:.2},{frame:30,value:.8}]);for(const frame of [30,0,15,0]){const context:FrameContext={frame,globalFrame:frame,time:frame/24,globalTime:frame/24,dt:1/24,progress:frame/30,fps:{num:24,den:1},durationInFrames:31,seed:1};assert.ok(Math.abs(keyingParameters('screenKey',context).number(curve,0,'gain','ratio')-(.2+.6*frame/30))<1e-12);}assert.throws(()=>keyingParameters('screenKey').number(curve,0,'gain','ratio'),{code:'E_NATIVE_KEY_PARAMETER'});});
+test('cancellation is checked before any recording and no device is fabricated',()=>{assert.throws(()=>keyingParameters('key',undefined,AbortSignal.abort()).active(),{code:'E_RENDER_CANCELLED'});assert.throws(()=>createNativeKeyingEffects({gpu:undefined as never}),{code:'E_NATIVE_EFFECTS_DEVICE'});});
+test('signed pixel distance has explicit empty validity and finite canvas exterior',()=>{const p=new Float32Array(3*3*4);assert.deepEqual([...distanceOracle(p,3,3)],Array(18).fill(0));p[4*4+3]=1;const d=distanceOracle(p,3,3);assert.equal(d[8],.5);assert.equal(d[2],-.5);assert.ok(Math.abs(d[0]+Math.SQRT2-.5)<1e-7);assert.ok([...d].filter((_,i)=>i%2===1).every(v=>v===1));p.fill(1);const full=distanceOracle(p,3,3);assert.equal(full[8],1.5);assert.equal(full[0],.5);});
+test('exact median removes an isolated coverage outlier, not HDR color filtering',()=>{const p=new Float32Array(3*3*4);p.set([4,-2,1,1],16);const result=keyingReference('matteMedian',p,p,p,p,3,3,1,'premultiplied');assert.ok(result.every(v=>v===0));});
+test('keying preserves PM zero-alpha radiance and signed HDR',()=>{const p=Float32Array.of(.25,-.125,.5,0,4,-2,.5,1);for(const name of ['colorKey','advancedSpillSuppressor','screenKey'] as const){const out=keyingReference(name,p,p,p,p,2,1,0,'premultiplied');assert.deepEqual([...out.slice(0,4)],[.25,-.125,.5,0]);assert.ok(out[4]>1);assert.ok(out[5]<0);}});
+test('pinned reused files retain exact bytes, source hashes and MIT license',async()=>{const s=JSON.parse(await readFile('modules/native-effects/keying/sources.json','utf8')) as {license:string;commit:string;files:{file:string;sha256:string;bytes:number}[]};assert.equal(s.license,'MIT');assert.equal(s.commit,'ec7ced1f0515f0b6f376dbcc297f1c441f452d6e');for(const f of s.files){const b=await readFile('modules/native-effects/keying/vendor/effectcraft/'+f.file);assert.equal(b.length,f.bytes);assert.equal(createHash('sha256').update(b).digest('hex'),f.sha256);}});

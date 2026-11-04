@@ -1,0 +1,1 @@
+{"extends":"../../tsconfig.json","include":["src","scripts","validation"],"exclude":["dist","examples","vendor"]}

@@ -1,0 +1,118 @@
+{
+  "schema": "frameweave.path",
+  "version": 1,
+  "id": "vector.panel",
+  "coordinates": {
+    "spaceId": "demo.canvas",
+    "unit": "px",
+    "origin": "top-left",
+    "x": "right",
+    "y": "down",
+    "width": 128,
+    "height": 96
+  },
+  "fillRule": "evenodd",
+  "commands": [
+    {
+      "op": "M",
+      "point": {
+        "id": "outer.a",
+        "x": 8,
+        "y": 32
+      }
+    },
+    {
+      "op": "Q",
+      "control": {
+        "id": "outer.q",
+        "x": 8,
+        "y": 8
+      },
+      "point": {
+        "id": "outer.b",
+        "x": 32,
+        "y": 8
+      }
+    },
+    {
+      "op": "L",
+      "point": {
+        "id": "outer.c",
+        "x": 96,
+        "y": 8
+      }
+    },
+    {
+      "op": "C",
+      "control1": {
+        "id": "outer.c1",
+        "x": 120,
+        "y": 8
+      },
+      "control2": {
+        "id": "outer.c2",
+        "x": 120,
+        "y": 8
+      },
+      "point": {
+        "id": "outer.d",
+        "x": 120,
+        "y": 32
+      }
+    },
+    {
+      "op": "L",
+      "point": {
+        "id": "outer.e",
+        "x": 120,
+        "y": 88
+      }
+    },
+    {
+      "op": "L",
+      "point": {
+        "id": "outer.f",
+        "x": 8,
+        "y": 88
+      }
+    },
+    {
+      "op": "Z"
+    },
+    {
+      "op": "M",
+      "point": {
+        "id": "inner.a",
+        "x": 40,
+        "y": 32
+      }
+    },
+    {
+      "op": "L",
+      "point": {
+        "id": "inner.b",
+        "x": 88,
+        "y": 32
+      }
+    },
+    {
+      "op": "L",
+      "point": {
+        "id": "inner.c",
+        "x": 88,
+        "y": 64
+      }
+    },
+    {
+      "op": "L",
+      "point": {
+        "id": "inner.d",
+        "x": 40,
+        "y": 64
+      }
+    },
+    {
+      "op": "Z"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+// Pure canonical queries, runnable unchanged in Node and the real Native Stage.
+import * as q from '../../src/text-layout/queries.ts';
+export function querySnapshot(index:q.ParagraphIndex,frame:number){
+ const n=index.source.layout.text.length,range={start:Math.min(3+frame,n),end:Math.min(20+frame,n)},at=index.carets[Math.min(frame*2,index.carets.length-1)],first=index.source.lines[0],glyph=index.source.layout.glyphs.findIndex(g=>g.lineId===first.id);
+ return {metrics:q.paragraphMetrics(index),ink:q.paragraphInkBounds(index),lineInk:q.lineInkBounds(index,first.id),glyphInk:q.glyphInkBounds(index,glyph),advance:q.lineAdvanceBox(index,first.id),rangeInk:q.rangeInkBounds(index,range),glyphs:q.glyphsInRange(index,range),clusters:q.clustersInRange(index,range),lines:q.linesInRange(index,range),runs:q.runsInRange(index,range),paragraph:q.paragraphAtIndex(index,at.index),line:q.lineAtIndex(index,at.index),cluster:q.clusterAtIndex(index,at.index),word:q.wordAtIndex(index,at.index),caret:q.caretAtIndex(index,at.index,{lineId:at.lineId,affinity:at.affinity}),hit:q.hitTestParagraph(index,[at.x,at.baseline-8]),selection:q.selectionRects(index,range),right:q.moveCaretVisual(index,at,1),down:q.moveCaretVertical(index,at,1)};
+}

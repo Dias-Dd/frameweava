@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "entry": "D:\\frameweave-worktrees\\agent-4\\.frameweave\\native-2d\\font-portable-21\\fonts.tsx",
+  "layout": "source-tree",
+  "runtime": {
+    "schemaVersion": 1,
+    "runtime": {
+      "apiVersion": 1,
+      "engineVersion": "0.1.0",
+      "integrity": "7edc53bedfff15e625a9e117b1e666053c7ebea283d0bd2bec75edbc8a82026b"
+    },
+    "packages": {}
+  },
+  "selfContained": true,
+  "sources": "preserve",
+  "modules": "copy",
+  "assets": "copy",
+  "files": 449,
+  "privatePlugins": [],
+  "officialPackages": {},
+  "uniqueEmbeddedAssets": 0,
+  "embeddedAssetReferences": 0,
+  "embeddedBytes": 0,
+  "externalFiles": [],
+  "warnings": [],
+  "verification": "NOT_YET_RENDERED: use frame/render and compare outputs in an isolated instance"
+}

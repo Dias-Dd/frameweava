@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "baseline": "b263fbf27574a5001382913b2db27bff39128bf0",
+  "sourceFiles": [
+    {
+      "path": "modules/pro-animation/rust/font-metadata/Cargo.lock",
+      "sha256": "bbcfe7de3e53f171bbd20bbaf1b5d9ed60feef313e7146b7845673fa9d625c62"
+    },
+    {
+      "path": "modules/pro-animation/rust/font-metadata/Cargo.toml",
+      "sha256": "866af138b04c0a208a23385d41dbde3c81d81c614d8acd333f75bd34bb1eb0de"
+    },
+    {
+      "path": "modules/pro-animation/rust/font-metadata/src/lib.rs",
+      "sha256": "f7f1fa567f72f0a115b69959eefc45abfce64c96c0960a75e851e2282996609b"
+    },
+    {
+      "path": "modules/pro-animation/rust/font-metadata/src/original-shaper.rs",
+      "sha256": "1e91f9463230a2f19814a18ba5f7c50a65a4a19ad95ff6559edcb787face3930"
+    },
+    {
+      "path": "modules/pro-animation/src/typography/fonts.ts",
+      "sha256": "8fe6fc90465e68720952814f56312f3399f774985becc5cc4c16167c15535814"
+    },
+    {
+      "path": "modules/pro-animation/src/typography/index.ts",
+      "sha256": "3406b63d28b2fab947dabf1a1e8fcd3d2c786d8817e7f4a950c0df90744808c7"
+    },
+    {
+      "path": "modules/pro-animation/src/typography/layout.ts",
+      "sha256": "38f9314f4c2240a4eb881a9ef5c56da8eefbd1dacfec170f40797277eaafb9dd"
+    }
+  ],
+  "originalShaperSha256": "1e91f9463230a2f19814a18ba5f7c50a65a4a19ad95ff6559edcb787face3930",
+  "copiedAdapterSha256": "1e91f9463230a2f19814a18ba5f7c50a65a4a19ad95ff6559edcb787face3930",
+  "unchangedCargoLock": true,
+  "upstream": [
+    {
+      "name": "harfrust",
+      "version": "0.15.0",
+      "commit": "71d965130ea93905f81b8f03a03d7ecc794fbc47",
+      "license": "MIT"
+    },
+    {
+      "name": "skrifa",
+      "version": "0.49.0",
+      "commit": "47a301615fd95acf0da9fb7dbcd0ea7c7df36943",
+      "license": "MIT OR Apache-2.0"
+    }
+  ],
+  "existingSourceInventories": [
+    "docs/pro-animation/PA3_SHAPING_SOURCES.json",
+    "modules/pro-animation/rust/shaping/licenses/SHAPING-NOTICE",
+    "modules/pro-animation/provenance/text-layout/sources.json",
+    "modules/pro-animation/vendor/earcut/SOURCE.json",
+    "modules/pro-animation/rust/pathops/licenses/CLIPPER2-NOTICE"
+  ],
+  "exactCalls": [
+    "MetadataProvider::{metrics,glyph_metrics,axes,charmap}",
+    "Charmap::{map,map_variant}",
+    "GlyphMetrics::{advance_width,left_side_bearing,bounds}",
+    "AxisCollection::location -> original read-fonts fvar.user_to_normalized/AVAR",
+    "Existing original HarfRust Engine shape_run and Skrifa outline_glyph"
+  ],
+  "newRuntimeDependencies": [],
+  "newCorePermissions": false,
+  "ownership": "One original shaper/Kit client per Inspector; returned fixed immutable instance; no font registry/parallel AnalysisTask/Renderer/timeline",
+  "testOnlyReference": {
+    "name": "fonttools",
+    "version": "4.68.0",
+    "license": "MIT",
+    "wheelSha256": "d76f8fdcb6936f5e1045a0c9dd721a4bf11112e60d1e243bfa1d39f06a8b3104",
+    "reusedOwnEnvironment": ".frameweave/pa3-shaping/python",
+    "newRuntimeDependency": false
+  },
+  "reuseDecision": "Original upstream font/Unicode/geometry algorithms stay Rust/WASM. Small post-layout affine/space/column adapters use existing canonical data directly; importing a foreign document/paragraph renderer would cost more than these independent operations. No EffectCraft/Adobe code added."
+}

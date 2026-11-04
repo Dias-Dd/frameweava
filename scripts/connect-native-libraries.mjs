@@ -1,0 +1,25 @@
+// Build-time public entry generation from the frozen source modules. No algorithms.
+import ts from 'typescript';
+import {readdir,writeFile,mkdir,readFile} from 'node:fs/promises';
+import {resolve,join,relative} from 'node:path';
+const root=resolve('.'),pa=join(root,'modules/pro-animation'),images=join(root,'modules/native-effects');
+const folders=async(base,exclude)=>{const result=[];for(const e of await readdir(base,{withFileTypes:true}))if(e.isDirectory()&&!exclude.includes(e.name))try{await readFile(join(base,e.name,'index.ts'));result.push(join(base,e.name,'index.ts'));}catch{}return result.sort();};
+const flags=new Map();for(let i=2;i<process.argv.length;i+=2){if(!['--animation-version','--image-version'].includes(process.argv[i])||!process.argv[i+1])throw Error('Specify explicit new --animation-version and --image-version');flags.set(process.argv[i],process.argv[i+1]);}
+const animationManifest=JSON.parse(await readFile(join(pa,'native-sdk/frameweave.package.json'),'utf8')),imageManifest=JSON.parse(await readFile(join(images,'frameweave.package.json'),'utf8'));
+for(const [flag,manifest]of [['--animation-version',animationManifest],['--image-version',imageManifest]]){const v=flags.get(flag);if(!v||!/^\d+\.\d+\.\d+$/.test(v)||v===manifest.version)throw Error('Choose a reviewed fresh immutable version for '+manifest.id);}
+const groups=[{id:'animation',entries:await folders(join(pa,'src'),[]),out:join(pa,'native-sdk/public.ts')},{id:'images',entries:await folders(images,['examples','scripts','validation','tests','coverage','vendor','spherical']),out:join(images,'domains.ts')}];groups[0].entries.push(join(pa,'src/native-time/managed.ts'),...['font-shaping','text-itemizer','path-operations'].map(n=>join(pa,'src',n+'.ts')));
+const program=ts.createProgram(groups.flatMap(g=>g.entries),{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext,moduleResolution:ts.ModuleResolutionKind.Bundler,allowImportingTsExtensions:true,skipLibCheck:true}),checker=program.getTypeChecker(),reports={};
+for(const group of groups){const previous=await readFile(group.out,'utf8'),ast=ts.createSourceFile(group.out,previous,ts.ScriptTarget.Latest,true),types=ast.statements.filter(n=>ts.isExportDeclaration(n)&&n.isTypeOnly).map(n=>n.getText(ast));const seen=new Map(),names=[],lines=['// Generated from frozen modules by scripts/connect-native-libraries.mjs.',...types];
+ for(const entry of group.entries){const source=program.getSourceFile(entry),symbol=source&&checker.getSymbolAtLocation(source);if(!symbol)throw Error('Missing library source '+entry);const rows=[];
+  for(const exp of checker.getExportsOfModule(symbol)){const target=exp.flags&ts.SymbolFlags.Alias?checker.getAliasedSymbol(exp):exp;if(!target.valueDeclaration||!checker.getTypeOfSymbolAtLocation(target,target.valueDeclaration).getCallSignatures().length)continue;
+   const name=exp.name,identity=target.valueDeclaration.getSourceFile().fileName+':'+target.valueDeclaration.pos;if(seen.get(name)===identity)continue;let alias=name;if(seen.has(name))alias=entry.split(/[\\/]/).at(-2).replace(/-([a-z])/g,(_,c)=>c.toUpperCase())+name[0].toUpperCase()+name.slice(1);if(seen.has(alias))throw Error('Public function alias collision '+alias);seen.set(alias,identity);rows.push(alias===name?name:name+' as '+alias);names.push(alias);
+  }if(rows.length){let path=relative(resolve(group.out,'..'),entry).replaceAll('\\','/');if(!path.startsWith('.'))path='./'+path;lines.push(`export {${rows.join(',')}} from ${JSON.stringify(path)};`);}
+ }await mkdir(resolve(group.out,'..'),{recursive:true});await writeFile(group.out,lines.join('\n')+'\n');reports[group.id]={names,count:names.length,sources:group.entries.map(p=>relative(root,p).replaceAll('\\','/'))};
+}
+await writeFile(join(pa,'native-sdk/api.d.ts'),`export * from './public.ts';\n`);
+animationManifest.version=flags.get('--animation-version');animationManifest.bindings.gpuExports=reports.animation.names;
+await writeFile(join(pa,'native-sdk/frameweave.package.json'),JSON.stringify(animationManifest,null,2)+'\n');
+await writeFile(join(pa,'native-sdk/exports.json'),JSON.stringify(reports.animation,null,2)+'\n');await writeFile(join(images,'domain-exports.json'),JSON.stringify(reports.images,null,2)+'\n');
+const manifest=imageManifest;manifest.version=flags.get('--image-version');manifest.description='Native professional image domains, stabilization, PSF restoration and typed video segmentation. Spherical WIP is source-only and excluded from the public entry.';manifest.bindings.gpuExports=[...new Set([...manifest.bindings.gpuExports,...reports.images.names])];await writeFile(join(images,'frameweave.package.json'),JSON.stringify(manifest,null,2)+'\n');
+for(const file of ['public.ts','api.d.ts']){const p=join(images,file),text=await readFile(p,'utf8');if(!text.includes("export * from './domains.ts'"))await writeFile(p,text+"\nexport * from './domains.ts';\n");}
+console.log(JSON.stringify(Object.fromEntries(Object.entries(reports).map(([k,v])=>[k,{functions:v.count}]))));

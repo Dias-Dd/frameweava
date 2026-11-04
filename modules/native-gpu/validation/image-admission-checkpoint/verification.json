@@ -1,0 +1,142 @@
+{
+  "version": 1,
+  "baseCommit": "36e1b4b1dd3156e43139e51bbfa59f8ced8bec5b",
+  "mainDependencies": {
+    "graph": "f02155a7aef95bb1bd33c67395242098eeb7a619",
+    "cpuColor": "Main supplied cpu-linear-emission-reference.patch; applied unchanged, paired with GPU zero-alpha branch removal"
+  },
+  "finalChecks": {
+    "targeted": {
+      "tests": 46,
+      "passed": 46,
+      "failed": 0,
+      "skipped": 0
+    },
+    "cpuColorSelection": {
+      "tests": 3,
+      "passed": 3,
+      "otherFileTestsNotSelected": 5
+    },
+    "typechecks": 2
+  },
+  "scriptValidationMs": 309599.4341,
+  "sourceHashes": {
+    "modules/gpu-effects/compute-capabilities.ts": "097d8789bb2fcd894cfaf453479a35b4fcbb8eba937690519804a8e1afc40b5c",
+    "modules/gpu-effects/pixel-shader.ts": "878d3e26edadfefb3ca208fc447fc8aef1ce98f77b1494cec99890e3d88135bb",
+    "modules/native-gpu/COLOR_TEXTURE_V1.md": "e3661dc9350f20d1f8dcb0f9499151c2be6bba22afd593ae84cc52290d1804d3",
+    "modules/native-gpu/DATA_INTERFACES_V1.md": "908eee400313eeafb6639fc19403e100cb350b54530e06d8c972993de426f513",
+    "modules/native-gpu/MESH_RASTER_V1.md": "b4b1e81bcabb3f7b269d8f313c906fba5ebee1591b0a15047da6bdaed67ccfbf",
+    "modules/native-gpu/README.md": "f98f9f0e2106818f7bacaf37ee0f2ee666f5c0efad868b2996df669f2f4e9506",
+    "modules/native-gpu/authoring.ts": "0b6345c98f4a7149d0a57d57cbaace12614bc723008276f25653fdc70eb19243",
+    "modules/native-gpu/color.ts": "5bfb6f052672f4a6530d32341aff0f38ecf427400aa1768412ff600a3f6205ee",
+    "modules/native-gpu/logic-host.ts": "cc752f064093ec9b8203a5e89465ee59bc4fdd7319e061ea8d807f73f414d893",
+    "modules/native-gpu/memory.ts": "4d5507d5b16f2272bd828452459584251302d2128b007c29754e4c9fb966571d",
+    "modules/native-gpu/mesh-shader.ts": "4283a9079b6236f4334f18e0af28fe05d11d89db86d8dcffae2bcd8bbc193753",
+    "modules/native-gpu/program.ts": "16cc12c5eb51ef0a432e0ee6f6e183c4a2f85197d04582524f44c979b924f292",
+    "modules/native-gpu/resource-images.ts": "acdbc965ff6820b3996447c7bed411ad828cd740beed6dfd6b2ce521b8a2c245",
+    "modules/native-gpu/scope.ts": "06b1b4937ffd0790cd14bfefcfd788a9aeb9c668bb7e839fda9ce6603cc1d909",
+    "modules/native-gpu/src/gpu.rs": "cd521350faeec1de327069c09d1b0e768e21622ee6730d6d9111eee7707cc004",
+    "modules/native-gpu/src/mesh_transparency.rs": "e3bfb864a3bd9c9c7f7192b24fc912b948ab6ab05960de33aa6f6904dd5af037",
+    "modules/native-gpu/src/protocol.rs": "ad76155ef6383756a61659c57687b277494766f38eeac59e0b93dadc20e902ef",
+    "modules/native-gpu/validation/tsconfig.json": "e90e99c289c61440ae13421f70e227c983948e36066a0027a03219ffd0cb4ffc",
+    "src/core/graph.ts": "1f6d2c79035f029940e2c71878bac18e97896306779757d62c25e90db3f55836",
+    "src/media/color.ts": "9433cb1362addfd64eeb8a9beeb78a14747c68f6d788fbfb9f240152d8fb2b9e",
+    "tests/native-color-texture.test.ts": "4ce8e7246cba533380f299d4928dc81eb1b0194095f6f1a5f12d0cf6f626f2c4",
+    "tests/native-mesh-transparency.test.ts": "06d8d3e26bdae57758600548f059a45facba9dc98d50a691eb8ef8df03360441",
+    "modules/native-gpu/IMAGE_ADMISSION.md": "6ac7b4e4edee927a0a484ec1a9626d2ed97e8c9dfb7a45a023ce213988855c5b",
+    "modules/native-gpu/examples/dynamic-image-admission.tsx": "5f17c2aa8f9424a9211c7d83fb0c6d862d0b01225e35f58c4261220fec9aee23",
+    "modules/native-gpu/image-info.ts": "b900fe868027e979193bf7ec225d79457ee62634e3adf6184abc0d8988eab998",
+    "modules/native-gpu/validation/validate-image-admission.mjs": "aa942cf39377a53c3ed94916211b45ee5b29bcc4143b93541378feb3c47dcfc8",
+    "modules/native-gpu/validation/verify-image-admission.ts": "e90bed87e5cf382ebfe17251b4f445c9af46a5fd9ffed7af305c8b4e04b71ebb",
+    "tests/native-graph-dimensions.test.ts": "8395103c4da04ed7bd5465ff653bb269f21ffffbdff2f50d428c5d36cdfc4dda",
+    "tests/native-image-admission.test.ts": "c0f7c391ebd798667102fce56a64bf24e96550687272f1ed39cb71778f27be69"
+  },
+  "largeImage": {
+    "dimensions": [
+      4097,
+      4097
+    ],
+    "formats": [
+      "rgba16float",
+      "rgba32float"
+    ],
+    "workingBytes": 268566544,
+    "cornersExact": true,
+    "productionReadbacks": 0
+  },
+  "wide": {
+    "dimensions": [
+      32769,
+      1
+    ],
+    "first": [
+      0,
+      -1,
+      4,
+      0.5
+    ],
+    "last": [
+      4096,
+      -1,
+      4,
+      0.5
+    ],
+    "publicBufferExport": true,
+    "png": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\artifacts\\native-admission\\media\\wide.png",
+    "pngSha256": "7f39476ce86475216f133f35f44970a655ad99582c54f7cd8f680f5b99e27c77",
+    "productionImageReadbacks": 0
+  },
+  "proxy": {
+    "dimensions": [
+      320,
+      180
+    ],
+    "sourceDimensions": [
+      4097,
+      4097
+    ],
+    "exrMaxError": 0,
+    "frames": [
+      0,
+      3,
+      0
+    ],
+    "exactRepeat": true,
+    "video": {
+      "width": 320,
+      "height": 180,
+      "fps": 24,
+      "duration": 0.17,
+      "frames": 4,
+      "decodable": true
+    },
+    "files": {
+      "png": {
+        "path": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\artifacts\\native-admission\\media\\proxy.png",
+        "sha256": "802b6d7561198c70d89a4e3c4f714a40c0babf9a771185c0cf85dfc13ca1a258"
+      },
+      "exr": {
+        "path": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\artifacts\\native-admission\\media\\proxy.exr",
+        "sha256": "2f594ad0bbadb5e3dbf410af8eac5f9ce2597e98549b634e0b8a12fb21613561"
+      },
+      "mp4": {
+        "path": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\artifacts\\native-admission\\media\\proxy.mp4",
+        "sha256": "459cf5f3bf8275182246bb2380497d027182527c84ab3e83d874f333df48dc40"
+      }
+    }
+  },
+  "nativeExecutable": {
+    "file": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\.frameweave\\native-target\\release\\frameweave-native-gpu.exe",
+    "bytes": 7874048,
+    "sha256": "3554912fc60de0756bf96ce946f56f93d3d104e9fc9c1a4391942438290af0b7"
+  },
+  "nativeInputs": 14,
+  "limits": "actual hardware, positive safe operator byte budget, U32 addressing, bounded control protocol and execution deadline; independent Web/resource/decoder/Servo policies retained",
+  "knownUnverified": [
+    "whole-repository regression",
+    "new package install and all portable export modes",
+    "other hardware/platforms",
+    "arbitrary larger workloads",
+    "full-resolution 4097-square media delivery: this round exports an explicit 320x180 proxy"
+  ]
+}

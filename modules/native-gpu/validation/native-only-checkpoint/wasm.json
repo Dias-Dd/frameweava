@@ -1,0 +1,988 @@
+{
+  "scope": "Real SpiderMonkey/WASM and Native recording via integrated Core ModuleLoader; no installed npm or GPU execution claim",
+  "wallMs": 2580.4834,
+  "wasm": [
+    {
+      "ref": "puppet",
+      "file": "modules/puppet-effects/dist/module.wasm",
+      "bytes": 156114,
+      "integrity": "sha256-6465cdbb4b30f8c1a3fee3934808e0cbd3ab84c716034d74db97ff0131964b12"
+    },
+    {
+      "ref": "rigid",
+      "file": "modules/rigid-body-effects/dist/module.wasm",
+      "bytes": 2929675,
+      "integrity": "sha256-31440f0ac1e070c74cacc72af5fd929d00161ae817c79ad99a1e86b48b893654"
+    },
+    {
+      "ref": "deform",
+      "file": "modules/deformable-effects/dist/module.wasm",
+      "bytes": 112417,
+      "integrity": "sha256-5ee59753d57af84fe291f17ae13e6300c890f4d469224e5b6ba691156a03150f"
+    }
+  ],
+  "rows": [
+    {
+      "name": "default WASM denial and unchanged JS namespace path",
+      "ok": true,
+      "evidence": {
+        "js": 42,
+        "errors": {
+          "undeclared": "E_PACKAGE_MODULE",
+          "dependency": "E_PACKAGE_MODULE",
+          "format": "E_PACKAGE_MODULE",
+          "wasm": "E_PACKAGE_PERMISSION",
+          "solver": "E_WASM_PERMISSION"
+        },
+        "wasm": "undefined",
+        "fetch": "undefined",
+        "worker": "undefined",
+        "disposed": false
+      }
+    },
+    {
+      "name": "real five WASM constructors in isolated SpiderMonkey 0",
+      "ok": true,
+      "frames": [
+        {
+          "frame": 100,
+          "hash": "4d82694823d3989a7df1761551f63b20954767479ac1d204664534a6a2ff3771",
+          "pose": [
+            [
+              -0.8,
+              -1,
+              0
+            ],
+            [
+              0.19999999999999996,
+              -1,
+              0
+            ],
+            [
+              1.2,
+              -1,
+              0
+            ],
+            [
+              -0.8,
+              0,
+              0
+            ],
+            [
+              0.19999999999999996,
+              0,
+              0
+            ],
+            [
+              1.2,
+              0,
+              0
+            ],
+            [
+              -0.8,
+              1,
+              0
+            ],
+            [
+              0.19999999999999996,
+              1,
+              0
+            ],
+            [
+              1.2,
+              1,
+              0
+            ]
+          ],
+          "body": {
+            "frame": 100,
+            "time": 4.166666666666667,
+            "step": 400,
+            "fps": {
+              "num": 24,
+              "den": 1
+            },
+            "seed": 51,
+            "bodies": [
+              {
+                "id": "ball",
+                "position": [
+                  0,
+                  -76.83268229166562,
+                  0
+                ],
+                "rotation": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "linearVelocity": [
+                  0,
+                  -41.66666666666726,
+                  0
+                ],
+                "angularVelocity": [
+                  0,
+                  0,
+                  0
+                ],
+                "sleeping": false,
+                "mass": 0.03351032163829113
+              }
+            ],
+            "contacts": []
+          },
+          "cloth": {
+            "frame": 100,
+            "time": 4.166666666666667,
+            "fps": {
+              "num": 24,
+              "den": 1
+            },
+            "maxVolumeResidual": 0,
+            "invertedTetrahedra": 0,
+            "collapsedTetrahedra": 0,
+            "step": 400,
+            "seed": 1,
+            "positions": [
+              [
+                0,
+                -83.36914062496629,
+                0
+              ]
+            ],
+            "velocities": [
+              [
+                0,
+                -40.874999999953616,
+                0
+              ]
+            ],
+            "multipliers": [],
+            "maxDistanceResidual": 0,
+            "maxBendResidual": 0,
+            "contacts": [],
+            "maxPenetration": 0,
+            "maxNormalVelocityResidual": 0
+          },
+          "recordedGpuPasses": 2
+        },
+        {
+          "frame": 0,
+          "hash": "1e93aa8645e7a41e695ad003640f6d5d18a21b6ea86213e841b1a7db5fc136df",
+          "pose": [
+            [
+              -1,
+              -1,
+              0
+            ],
+            [
+              0,
+              -1,
+              0
+            ],
+            [
+              1,
+              -1,
+              0
+            ],
+            [
+              -1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              -1,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              1,
+              1,
+              0
+            ]
+          ],
+          "body": {
+            "frame": 0,
+            "time": 0,
+            "step": 0,
+            "fps": {
+              "num": 24,
+              "den": 1
+            },
+            "seed": 51,
+            "bodies": [
+              {
+                "id": "ball",
+                "position": [
+                  0,
+                  10,
+                  0
+                ],
+                "rotation": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "linearVelocity": [
+                  0,
+                  0,
+                  0
+                ],
+                "angularVelocity": [
+                  0,
+                  0,
+                  0
+                ],
+                "sleeping": false,
+                "mass": 0.03351032163829113
+              }
+            ],
+            "contacts": []
+          },
+          "cloth": {
+            "frame": 0,
+            "time": 0,
+            "fps": {
+              "num": 24,
+              "den": 1
+            },
+            "maxVolumeResidual": 0,
+            "invertedTetrahedra": 0,
+            "collapsedTetrahedra": 0,
+            "step": 0,
+            "seed": 1,
+            "positions": [
+              [
+                0,
+                2,
+                0
+              ]
+            ],
+            "velocities": [
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "multipliers": [],
+            "maxDistanceResidual": 0,
+            "maxBendResidual": 0,
+            "contacts": [],
+            "maxPenetration": 0,
+            "maxNormalVelocityResidual": 0
+          },
+          "recordedGpuPasses": 2
+        },
+        {
+          "frame": 100,
+          "hash": "4d82694823d3989a7df1761551f63b20954767479ac1d204664534a6a2ff3771",
+          "pose": [
+            [
+              -0.8,
+              -1,
+              0
+            ],
+            [
+              0.19999999999999996,
+              -1,
+              0
+            ],
+            [
+              1.2,
+              -1,
+              0
+            ],
+            [
+              -0.8,
+              0,
+              0
+            ],
+            [
+              0.19999999999999996,
+              0,
+              0
+            ],
+            [
+              1.2,
+              0,
+              0
+            ],
+            [
+              -0.8,
+              1,
+              0
+            ],
+            [
+              0.19999999999999996,
+              1,
+              0
+            ],
+            [
+              1.2,
+              1,
+              0
+            ]
+          ],
+          "body": {
+            "frame": 100,
+            "time": 4.166666666666667,
+            "step": 400,
+            "fps": {
+              "num": 24,
+              "den": 1
+            },
+            "seed": 51,
+            "bodies": [
+              {
+                "id": "ball",
+                "position": [
+                  0,
+                  -76.83268229166562,
+                  0
+                ],
+                "rotation": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "linearVelocity": [
+                  0,
+                  -41.66666666666726,
+                  0
+                ],
+                "angularVelocity": [
+                  0,
+                  0,
+                  0
+                ],
+                "sleeping": false,
+                "mass": 0.03351032163829113
+              }
+            ],
+            "contacts": []
+          },
+          "cloth": {
+            "frame": 100,
+            "time": 4.166666666666667,
+            "fps": {
+              "num": 24,
+              "den": 1
+            },
+            "maxVolumeResidual": 0,
+            "invertedTetrahedra": 0,
+            "collapsedTetrahedra": 0,
+            "step": 400,
+            "seed": 1,
+            "positions": [
+              [
+                0,
+                -83.36914062496629,
+                0
+              ]
+            ],
+            "velocities": [
+              [
+                0,
+                -40.874999999953616,
+                0
+              ]
+            ],
+            "multipliers": [],
+            "maxDistanceResidual": 0,
+            "maxBendResidual": 0,
+            "contacts": [],
+            "maxPenetration": 0,
+            "maxNormalVelocityResidual": 0
+          },
+          "recordedGpuPasses": 2
+        },
+        {
+          "frame": 24,
+          "hash": "2a71902a9612c950ab7a03d48a4ffd54689d4fab00cd2fac5b9260d9ae6ba589",
+          "pose": [
+            [
+              -0.952,
+              -1,
+              0
+            ],
+            [
+              0.04800000000000004,
+              -1,
+              0
+            ],
+            [
+              1.048,
+              -1,
+              0
+            ],
+            [
+              -0.952,
+              0,
+              0
+            ],
+            [
+              0.04800000000000004,
+              0,
+              0
+            ],
+            [
+              1.048,
+              0,
+              0
+            ],
+            [
+              -0.952,
+              1,
+              0
+            ],
+            [
+              0.04800000000000004,
+              1,
+              0
+            ],
+            [
+              1.048,
+              1,
+              0
+            ]
+          ],
+          "body": {
+            "frame": 24,
+            "time": 1,
+            "step": 96,
+            "fps": {
+              "num": 24,
+              "den": 1
+            },
+            "seed": 51,
+            "bodies": [
+              {
+                "id": "ball",
+                "position": [
+                  0,
+                  4.99348958333335,
+                  0
+                ],
+                "rotation": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "linearVelocity": [
+                  0,
+                  -10.000000000000018,
+                  0
+                ],
+                "angularVelocity": [
+                  0,
+                  0,
+                  0
+                ],
+                "sleeping": false,
+                "mass": 0.03351032163829113
+              }
+            ],
+            "contacts": []
+          },
+          "cloth": {
+            "frame": 24,
+            "time": 1,
+            "fps": {
+              "num": 24,
+              "den": 1
+            },
+            "maxVolumeResidual": 0,
+            "invertedTetrahedra": 0,
+            "collapsedTetrahedra": 0,
+            "step": 96,
+            "seed": 1,
+            "positions": [
+              [
+                0,
+                -2.9560937499997735,
+                0
+              ]
+            ],
+            "velocities": [
+              [
+                0,
+                -9.809999999999818,
+                0
+              ]
+            ],
+            "multipliers": [],
+            "maxDistanceResidual": 0,
+            "maxBendResidual": 0,
+            "contacts": [],
+            "maxPenetration": 0,
+            "maxNormalVelocityResidual": 0
+          },
+          "recordedGpuPasses": 2
+        },
+        {
+          "frame": 100,
+          "hash": "4d82694823d3989a7df1761551f63b20954767479ac1d204664534a6a2ff3771",
+          "pose": [
+            [
+              -0.8,
+              -1,
+              0
+            ],
+            [
+              0.19999999999999996,
+              -1,
+              0
+            ],
+            [
+              1.2,
+              -1,
+              0
+            ],
+            [
+              -0.8,
+              0,
+              0
+            ],
+            [
+              0.19999999999999996,
+              0,
+              0
+            ],
+            [
+              1.2,
+              0,
+              0
+            ],
+            [
+              -0.8,
+              1,
+              0
+            ],
+            [
+              0.19999999999999996,
+              1,
+              0
+            ],
+            [
+              1.2,
+              1,
+              0
+            ]
+          ],
+          "body": {
+            "frame": 100,
+            "time": 4.166666666666667,
+            "step": 400,
+            "fps": {
+              "num": 24,
+              "den": 1
+            },
+            "seed": 51,
+            "bodies": [
+              {
+                "id": "ball",
+                "position": [
+                  0,
+                  -76.83268229166562,
+                  0
+                ],
+                "rotation": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "linearVelocity": [
+                  0,
+                  -41.66666666666726,
+                  0
+                ],
+                "angularVelocity": [
+                  0,
+                  0,
+                  0
+                ],
+                "sleeping": false,
+                "mass": 0.03351032163829113
+              }
+            ],
+            "contacts": []
+          },
+          "cloth": {
+            "frame": 100,
+            "time": 4.166666666666667,
+            "fps": {
+              "num": 24,
+              "den": 1
+            },
+            "maxVolumeResidual": 0,
+            "invertedTetrahedra": 0,
+            "collapsedTetrahedra": 0,
+            "step": 400,
+            "seed": 1,
+            "positions": [
+              [
+                0,
+                -83.36914062496629,
+                0
+              ]
+            ],
+            "velocities": [
+              [
+                0,
+                -40.874999999953616,
+                0
+              ]
+            ],
+            "multipliers": [],
+            "maxDistanceResidual": 0,
+            "maxBendResidual": 0,
+            "contacts": [],
+            "maxPenetration": 0,
+            "maxNormalVelocityResidual": 0
+          },
+          "recordedGpuPasses": 2
+        }
+      ],
+      "host": {
+        "engine": "spidermonkey",
+        "pid": 101516,
+        "closed": false,
+        "requests": 13,
+        "bytesIn": 43439,
+        "bytesOut": 4037716,
+        "binaryReplies": true,
+        "stderr": "frameweave-spidermonkey sandbox=appcontainer network_capabilities=0 child_pid=63060\n"
+      },
+      "mesher": {
+        "area": 36,
+        "components": 1
+      },
+      "sweep": {
+        "time": 0.450000000000021,
+        "point": [
+          4.583989354767226e-8,
+          8.326672684688674e-17,
+          4.583989354767226e-8
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "penetration": 0,
+        "colliderId": "floor-shape",
+        "bodyId": "floor",
+        "restitution": 0,
+        "friction": 0.5
+      }
+    },
+    {
+      "name": "real five WASM constructors in isolated SpiderMonkey 1",
+      "ok": true,
+      "frames": [
+        {
+          "frame": 100,
+          "hash": "4d82694823d3989a7df1761551f63b20954767479ac1d204664534a6a2ff3771",
+          "pose": [
+            [
+              -0.8,
+              -1,
+              0
+            ],
+            [
+              0.19999999999999996,
+              -1,
+              0
+            ],
+            [
+              1.2,
+              -1,
+              0
+            ],
+            [
+              -0.8,
+              0,
+              0
+            ],
+            [
+              0.19999999999999996,
+              0,
+              0
+            ],
+            [
+              1.2,
+              0,
+              0
+            ],
+            [
+              -0.8,
+              1,
+              0
+            ],
+            [
+              0.19999999999999996,
+              1,
+              0
+            ],
+            [
+              1.2,
+              1,
+              0
+            ]
+          ],
+          "body": {
+            "frame": 100,
+            "time": 4.166666666666667,
+            "step": 400,
+            "fps": {
+              "num": 24,
+              "den": 1
+            },
+            "seed": 51,
+            "bodies": [
+              {
+                "id": "ball",
+                "position": [
+                  0,
+                  -76.83268229166562,
+                  0
+                ],
+                "rotation": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "linearVelocity": [
+                  0,
+                  -41.66666666666726,
+                  0
+                ],
+                "angularVelocity": [
+                  0,
+                  0,
+                  0
+                ],
+                "sleeping": false,
+                "mass": 0.03351032163829113
+              }
+            ],
+            "contacts": []
+          },
+          "cloth": {
+            "frame": 100,
+            "time": 4.166666666666667,
+            "fps": {
+              "num": 24,
+              "den": 1
+            },
+            "maxVolumeResidual": 0,
+            "invertedTetrahedra": 0,
+            "collapsedTetrahedra": 0,
+            "step": 400,
+            "seed": 1,
+            "positions": [
+              [
+                0,
+                -83.36914062496629,
+                0
+              ]
+            ],
+            "velocities": [
+              [
+                0,
+                -40.874999999953616,
+                0
+              ]
+            ],
+            "multipliers": [],
+            "maxDistanceResidual": 0,
+            "maxBendResidual": 0,
+            "contacts": [],
+            "maxPenetration": 0,
+            "maxNormalVelocityResidual": 0
+          },
+          "recordedGpuPasses": 2
+        },
+        {
+          "frame": 0,
+          "hash": "1e93aa8645e7a41e695ad003640f6d5d18a21b6ea86213e841b1a7db5fc136df",
+          "pose": [
+            [
+              -1,
+              -1,
+              0
+            ],
+            [
+              0,
+              -1,
+              0
+            ],
+            [
+              1,
+              -1,
+              0
+            ],
+            [
+              -1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              -1,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              1,
+              1,
+              0
+            ]
+          ],
+          "body": {
+            "frame": 0,
+            "time": 0,
+            "step": 0,
+            "fps": {
+              "num": 24,
+              "den": 1
+            },
+            "seed": 51,
+            "bodies": [
+              {
+                "id": "ball",
+                "position": [
+                  0,
+                  10,
+                  0
+                ],
+                "rotation": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "linearVelocity": [
+                  0,
+                  0,
+                  0
+                ],
+                "angularVelocity": [
+                  0,
+                  0,
+                  0
+                ],
+                "sleeping": false,
+                "mass": 0.03351032163829113
+              }
+            ],
+            "contacts": []
+          },
+          "cloth": {
+            "frame": 0,
+            "time": 0,
+            "fps": {
+              "num": 24,
+              "den": 1
+            },
+            "maxVolumeResidual": 0,
+            "invertedTetrahedra": 0,
+            "collapsedTetrahedra": 0,
+            "step": 0,
+            "seed": 1,
+            "positions": [
+              [
+                0,
+                2,
+                0
+              ]
+            ],
+            "velocities": [
+              [
+                0,
+                0,
+                0
+              ]
+            ],
+            "multipliers": [],
+            "maxDistanceResidual": 0,
+            "maxBendResidual": 0,
+            "contacts": [],
+            "maxPenetration": 0,
+            "maxNormalVelocityResidual": 0
+          },
+          "recordedGpuPasses": 2
+        }
+      ],
+      "host": {
+        "engine": "spidermonkey",
+        "pid": 20424,
+        "closed": false,
+        "requests": 7,
+        "bytesIn": 23060,
+        "bytesOut": 4036444,
+        "binaryReplies": true,
+        "stderr": "frameweave-spidermonkey sandbox=appcontainer network_capabilities=0 child_pid=102048\n"
+      },
+      "mesher": {
+        "area": 36,
+        "components": 1
+      },
+      "sweep": {
+        "time": 0.450000000000021,
+        "point": [
+          4.583989354767226e-8,
+          8.326672684688674e-17,
+          4.583989354767226e-8
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "penetration": 0,
+        "colliderId": "floor-shape",
+        "bodyId": "floor",
+        "restitution": 0,
+        "friction": 0.5
+      }
+    }
+  ]
+}

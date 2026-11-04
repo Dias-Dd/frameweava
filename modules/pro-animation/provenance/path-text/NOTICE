@@ -1,0 +1,15 @@
+Professional path-text controls and Native chain
+Frameweave original local adapters/math: Apache-2.0.
+No third-party numerical algorithm is newly translated to TypeScript.
+Original font shaping, curve metrics/evaluation, geometry and GPU rendering
+remain their existing unmodified licensed implementations; SOURCE.json records
+fixed identities and the actual reuse boundaries.
+
+EffectCraft noise import reuses src/noise.ts (MIT selected); retain original
+vendor/effectcraft/NOTICE, LICENSE-MIT/APACHE and source attribution.
+HarfRust0.15/MIT, Skrifa0.49/MIT OR Apache-2.0, kurbo0.13.1/MIT OR Apache-2.0
+retain existing Rust licences and full transitive official Kit inventories.
+Unicode16 data and original bidi/UAX14 dependencies retain their licences.
+Clipper2 BSL-1.0, Earcut ISC and Noto validation OFL1.1 notices stay required.
+No new root dependency/lock, permission or package identity is added.
+No Adobe code/assets, OS font lookup, download or foreign timeline/renderer.

@@ -1,0 +1,467 @@
+{
+  "version": 1,
+  "baseCommit": "e3c88d8d153912b61ace670b050a784115a7d39b",
+  "sourceHashes": {
+    "modules/gpu-effects/examples/resident-preview-kernels.ts": "57e4a458e436e1c8aabc8505ba70ea45e504efccd2e01e1b20554c0ac03803a6",
+    "modules/native-gpu/build.mjs": "ba13b19f821cc8ae9b0b66e0d9ed9cc3d92eb610702cec2d1563e0776831e208",
+    "modules/native-gpu/cli.ts": "d856dded74d32ba17c008fd938055cab8600d544d8629fb2be9fedec48dea621",
+    "modules/native-gpu/client.ts": "126246aaf49e15ebe2ab603a514187efb4722643a8dc2e2b2c251bec861000a6",
+    "modules/native-gpu/examples/two-stage.tsx": "2897a13b415c73784a65eb683e39c021da03fed3a816fbe5e1f4d408d0b28b18",
+    "modules/native-gpu/logic-host.ts": "f58d20eef2abc26e06cb13693fa635e8dc5355a0c4840581b722efca3276b07e",
+    "modules/native-gpu/media-export.ts": "c22fb58d72ef6eb62de1ae80c8a08ebd776eac07c85cafa549f0a08316c195bc",
+    "modules/native-gpu/memory.ts": "0b729246430b268860f71a8488da1a36fa918f7fca67002f2e050be43aac9be9",
+    "modules/native-gpu/native-media/bridge.cpp": "c2432b8884cea16e3a58e94774d54177afca45df4eae94ece4fe33bf423d2e45",
+    "modules/native-gpu/native-media/bridge.h": "96540e669b84723cdbed36e4f25d985c16e7f55580e186b0a34ad3c65800b7a2",
+    "modules/native-gpu/native-media/build.mjs": "1036e4f47f720b6e08ae15cb61816033fc8f18dab37809810e219baec875826c",
+    "modules/native-gpu/native-media/encoder.h": "08ebf8552e5d2c096852703522f1bb7a82870e7d4002135d037969d91b11ff14",
+    "modules/native-gpu/native-media/file-stream.h": "25b64b52fb5b64885ad0d3da395269da9b0b58f3d3efd6405e5d15c3eec938f7",
+    "modules/native-gpu/native-media/ocio_shader.py": "3ccfd209dd521fe421f1f543144fa1648a869d894343971c511821a2d3c49a6e",
+    "modules/native-gpu/native-media/upstream.json": "454a930dd12d1af85c567dca18d0119aaab6ad63a82979c650b28121c6cf914f",
+    "modules/native-gpu/native-media/vendor/nvEncodeAPI.h": "4fe4094541ef0f8a13249d97a8692dc5f835a6e9dd42eeadb3e2f7321d54dc7e",
+    "modules/native-gpu/native-media/video.hlsl": "05b1b240b1ef197c663665e2b324b330039cb62db4e0fdd2df33e5095c885040",
+    "modules/native-gpu/resource-images.ts": "743c93d316461da6a1e701a36f9a6dfb0e5a9c4ad646ba30c5fa53abce042865",
+    "modules/native-gpu/resources.ts": "e5e23dd68902f18b9043e962fdadb062006cdf3d9dda3271708500eaf917f5ad",
+    "modules/native-gpu/scope.ts": "33c4f9369d0a3a528ffec4c72fc66dc87b1d714965ec0f2d00021737b384c84d",
+    "modules/native-gpu/service.ts": "c4b95f07294a16be4ec2562866e3e7405407095f2e5f4015b71cb60e5b3aff0d",
+    "modules/native-gpu/src/external_windows.rs": "2d336e748b66c06ca52aa955dcd9efb3246bb32bdd91927e6df6eb6bb8464fcc",
+    "modules/native-gpu/src/gpu.rs": "490e21f0e988e3be5c229bbce034e99884f62bfa3ad1c6e68d736d33d6e3a045",
+    "modules/native-gpu/src/main.rs": "05a4e60a8d295c7166ee931068ec2e041a8c483e626317fcdaa7d4c91443a505",
+    "modules/native-gpu/src/native_encode_windows.rs": "7e332e765d69547debc83fca5a58b8f3b9f01362fe7fe7310e455af699e9b3b8",
+    "modules/native-gpu/src/native_video.rs": "c48c8adf7ee0c672fc97cd78af4719a630854f8eeed3358349b6ef24257aba58",
+    "modules/native-gpu/src/native_video_windows.rs": "5879f525c1c18bc7a4603250d950f4f392c484ef57ba6fa2990a2f441f4f29f7",
+    "modules/native-gpu/src/protocol.rs": "880377fe24d582295524154d6e9b2f68457b0d7f232282bd6cee518e70d9326b",
+    "modules/native-gpu/validation/hardware-media/benchmark.ts": "75187c0e4b5da31d147dc43572d28975a2d399a4b22f3256559e766b0fb94ad2",
+    "modules/native-gpu/validation/hardware-media/collect.mjs": "6e57e4ef057b7c029dc5f92e0de892daf3697b3011db1ff44e3014f7991b94a9",
+    "modules/native-gpu/video-container.ts": "51ac122347440fe6e0766e865a72d3b1f8958afaf1c3eb64e7d3d0857ce60576",
+    "modules/native-gpu/video-decoder.ts": "001092b5e6b48b1b3a25a67f554842381e255bfce6daca1bbd6928d5e79210ef",
+    "src/media/encoding.ts": "9c3b4c826bd0d145f2b6a7bb6817231b1e727c4447c6388eb6d7cd62f62f3132",
+    "src/media/input.ts": "de6ce18bffbbd8bef75a5bf5829647692fadb24b1b0cb000f680cf738e258135",
+    "src/render/renderer.ts": "eb9170a10e94e788bb54ab7a1f7e9d0a81b9a27df9464708ddb7753144ce0ea2",
+    "tests/native-media-gpu-delivery.test.ts": "c14210a94da36646c1d2e8826cf131850085bec4a79b8157feb220969b109dc1",
+    "tests/native-media-gpu.test.ts": "6270de52dd4275af7813b2583c60b328f702964255867845b7c411673e7af25f",
+    "tests/native-media-integrity.test.ts": "3748f4423dd400e97a8543393b143e5d04688720c4e68b5978673cc2e56b967d",
+    "tests/native-video-hardware.test.ts": "b9e6d769bce22adc182f95d1b3bdd6934f966acacbf18ffe2c7f57c11dd6e1ed"
+  },
+  "evidence": [
+    {
+      "file": "raw/benchmark-2.log",
+      "bytes": 849,
+      "sha256": "aa10e5d624392fda1434d20c55661323a1a2f672a16ce506d753adb44447ee37"
+    },
+    {
+      "file": "raw/benchmark-final.log",
+      "bytes": 496,
+      "sha256": "38666e6253f639b7cf176b1e1847e47b2cfdb740600ad33807af850f6797dc00"
+    },
+    {
+      "file": "raw/benchmark.log",
+      "bytes": 1706,
+      "sha256": "813fe0ad4861b60217eaae1a1b38ba701d176d31a736693f9fb6ef976b1c546a"
+    },
+    {
+      "file": "raw/build-probe-2.log",
+      "bytes": 400,
+      "sha256": "fd3fb67e3687cbf85b575edcddccda99f5aea8b64d2438d5a5639787734b8b49"
+    },
+    {
+      "file": "raw/build-probe.log",
+      "bytes": 447,
+      "sha256": "f877bda8ceb67d8cae2ab6b4cdba52122edb9cef6ba817aa54746ae0abca7da4"
+    },
+    {
+      "file": "raw/build-runtime-2.log",
+      "bytes": 596,
+      "sha256": "38c61a8713d4a0488f5573c5cefc99fe0e315ef58ca1b70de71a86219d01f920"
+    },
+    {
+      "file": "raw/build-runtime-3.log",
+      "bytes": 596,
+      "sha256": "32b5aef6048c0b513177aa059dbe91b9c19f3811293c2a80af07f464a4e70f01"
+    },
+    {
+      "file": "raw/build-runtime-4.log",
+      "bytes": 596,
+      "sha256": "7963c62d0b496a632024cec4aec676459d857038500d5493a80cd4db139c8b37"
+    },
+    {
+      "file": "raw/build-runtime-5.log",
+      "bytes": 587,
+      "sha256": "e1a16e4acc77f679440b47f90e9377ab5d9b468faeaea6252b9964ad1f7d88e5"
+    },
+    {
+      "file": "raw/build-runtime-6.log",
+      "bytes": 587,
+      "sha256": "62530cf7640f5b6e751c9b7dde7814ad764510d3fb9d5fcbc285eecfd70ab972"
+    },
+    {
+      "file": "raw/build-runtime-7.log",
+      "bytes": 587,
+      "sha256": "4ad179c1f91eb37cdc148f95903d49e6d663166c00493132b9de75bdb4082be4"
+    },
+    {
+      "file": "raw/build-runtime-8.log",
+      "bytes": 587,
+      "sha256": "dfa601dcd1868a3bc6d7a0f0d73e1cdaee11e44b3df9c63c1b79581518099bf3"
+    },
+    {
+      "file": "raw/build-runtime-diagnostic-2.log",
+      "bytes": 587,
+      "sha256": "e6f4df1b91969b7997055a5731d1a8c17a45089ccc09af292c262eb46afb2baf"
+    },
+    {
+      "file": "raw/build-runtime-diagnostic-3.log",
+      "bytes": 586,
+      "sha256": "b4c05238eee3a73d328b617f512dd5cfb7233106715a27bd35611505435f5956"
+    },
+    {
+      "file": "raw/build-runtime-diagnostic-4.log",
+      "bytes": 596,
+      "sha256": "3ed7d171e998b244e93d7bcf5561e77f3f869b68d3f9a9ad4888910f59938c03"
+    },
+    {
+      "file": "raw/build-runtime-diagnostic.log",
+      "bytes": 596,
+      "sha256": "8764c2412b2d62c89db9a2592ff844cf3aef2ac8297faf09d3996812715bbbf6"
+    },
+    {
+      "file": "raw/build-runtime-final.log",
+      "bytes": 587,
+      "sha256": "df691bd382570a92a76f811e768a1f16289d070e12100ea483f0d2bbff762bd5"
+    },
+    {
+      "file": "raw/build-runtime-production-1.log",
+      "bytes": 587,
+      "sha256": "f5f80e10ce6141389611a8957224c56b07fa9f9aaae00f7976d8387e37c70325"
+    },
+    {
+      "file": "raw/build-runtime-production-2.log",
+      "bytes": 587,
+      "sha256": "a3ed86d3553c9fe96552fcb2ef35c394f9fbdd9d12f9014ff9c01f4e2ac9ad70"
+    },
+    {
+      "file": "raw/build-runtime.log",
+      "bytes": 587,
+      "sha256": "d6e6ec2ada9f5975536bb3d15813ab10f71d617d747ecfad21ccef516ebb072c"
+    },
+    {
+      "file": "raw/build-rust-1.log",
+      "bytes": 436,
+      "sha256": "02e16a6c1ced34042d0a2f8b0b3a29c9edf836dda1a6e5845b9f42faa4623cea"
+    },
+    {
+      "file": "raw/build-rust-5.log",
+      "bytes": 436,
+      "sha256": "6a2c72ad68fc35d975a176304ad5f849e53b902ed6d9bed3d09bddf4bc3d4235"
+    },
+    {
+      "file": "raw/build-rust-7.log",
+      "bytes": 436,
+      "sha256": "206284a363ba49ca189f5f216aed61de600f028aa15d29dddcf6a0c5c2d24f2f"
+    },
+    {
+      "file": "raw/build-rust-diagnostic-2.log",
+      "bytes": 436,
+      "sha256": "33939161818656033acc17ea49c593c2eeb4e2c1b334035739ba0dc49abf4355"
+    },
+    {
+      "file": "raw/build-rust-error-cleanup.log",
+      "bytes": 436,
+      "sha256": "c02da09f768056c69a1fa972d65df5cb435406b96484e32c1d5c16730a80b5bd"
+    },
+    {
+      "file": "raw/build-rust-final.log",
+      "bytes": 436,
+      "sha256": "f61dfa58eaefe0fd2269046b2e4930d0919f6294c485e83ec2c494d7c0044413"
+    },
+    {
+      "file": "raw/build-rust-production-1.log",
+      "bytes": 436,
+      "sha256": "4c76ebb1eb314bb1cd938c0cdeb0ea4da27e30780ef5e741a0e00f6b6a0c4ce3"
+    },
+    {
+      "file": "raw/build-rust-production-2.log",
+      "bytes": 436,
+      "sha256": "b3f36c26d2ac2e64a28ec5bd65583595fa4953c0997aeab73efacc5bc9b4a96e"
+    },
+    {
+      "file": "raw/colour-tests-1.log",
+      "bytes": 1585,
+      "sha256": "6c1923591a54a1bf1d04f0ccc21803964dc5bd3b1aa768da47802a259d681c26"
+    },
+    {
+      "file": "raw/colour-tests-2.log",
+      "bytes": 3056,
+      "sha256": "a8c47ffc01547142f69790a0b7f138d46a0e0bdceae4e46b453e344148c4cb22"
+    },
+    {
+      "file": "raw/colour-tests-3.log",
+      "bytes": 2082,
+      "sha256": "a1b1b83afd0b8367f3b846820f2f4e901097a8adaf071fda55accea84080e8d9"
+    },
+    {
+      "file": "raw/colour-tests-4.log",
+      "bytes": 2075,
+      "sha256": "815acffdd24e75ad3f7ea29430e75c10f6fca9672129887340a5e620ccbfb5ee"
+    },
+    {
+      "file": "raw/colour-tests-5.log",
+      "bytes": 2075,
+      "sha256": "215613fce3148ec17d853fca18ae3d7a89a76dcb6ea25f79ff4a9aa3506c52d9"
+    },
+    {
+      "file": "raw/colour-tests-6.log",
+      "bytes": 1869,
+      "sha256": "63918e873d7af567ea198f5fb1bc06f60ac532d6fa81a4b3eba724dc072a2cc4"
+    },
+    {
+      "file": "raw/colour-tests-7.log",
+      "bytes": 1909,
+      "sha256": "1ec23d66df6a6538c3329dbbb58b34d289727b33c8286c5abc1761ad24d561ff"
+    },
+    {
+      "file": "raw/colour-tests-8.log",
+      "bytes": 8464,
+      "sha256": "d1f2ae7fcf50091114907c72d35be4b5ff5a0696eda1c71fce6fdba3711dccf9"
+    },
+    {
+      "file": "raw/colour-tests-9.log",
+      "bytes": 7741,
+      "sha256": "c0889172e56b1a97fc6f1cfcafb76266e6ac95a76a8bbcd6c8e43a31c2addffe"
+    },
+    {
+      "file": "raw/combined-tests-1.log",
+      "bytes": 16225,
+      "sha256": "41ad62bcdfbe3f03b7d080c6d6697add90d98f621c237eebfa8f26b176e95655"
+    },
+    {
+      "file": "raw/combined-tests-2.log",
+      "bytes": 17762,
+      "sha256": "548bb8885d05a360bdd86fe9d90d3378365e83f2da1440a958d19f4386a94386"
+    },
+    {
+      "file": "raw/delivery-tests-1.log",
+      "bytes": 890,
+      "sha256": "1eca05890c43079d9b33d60c05441b1d3bdecf915bf1da5c42c678b3c4547fc5"
+    },
+    {
+      "file": "raw/diagnostic-final.log",
+      "bytes": 15926,
+      "sha256": "063f11c38c0afb883145b93efcb64bee8e11a2da2e2e63826620feb9da25297f"
+    },
+    {
+      "file": "raw/formats-tests-2.log",
+      "bytes": 408,
+      "sha256": "d0bf41c568a41f1f3c79aaebf3e2deb8db3da48337e172e478807fdceab9d42d"
+    },
+    {
+      "file": "raw/production-final.log",
+      "bytes": 18531,
+      "sha256": "c91558db963df7732a2182646b1a316c6d8d6c5a4199a43f007d5f1f4e9eece2"
+    },
+    {
+      "file": "raw/profile-final.log",
+      "bytes": 371,
+      "sha256": "b85f3f6e561859a3b1e86aa9da427f24377b68119654e0ecdd848a7e84c1a2ec"
+    },
+    {
+      "file": "raw/rust-check-1.log",
+      "bytes": 1030,
+      "sha256": "ad75a5ab56bc81c2903668d401e5fa5ae81e87fcbf497ad8e5bc924836733a5a"
+    },
+    {
+      "file": "raw/rust-check-2.log",
+      "bytes": 140,
+      "sha256": "5003f7e99793c2f1e59e84a44a049e53db70b9e80dc86b546d8dd2d337258bda"
+    },
+    {
+      "file": "raw/rust-check-3.log",
+      "bytes": 3026,
+      "sha256": "c9c4ec59583cb457cc43a74dcf382b3ea6311cd8f8ef3b9b23a676f7d67f12dc"
+    },
+    {
+      "file": "raw/rust-check-4.log",
+      "bytes": 1494,
+      "sha256": "97886d6e4292a6ee6cd37cbb8748254a3380b07b41df437103e5b66d2283a5a1"
+    },
+    {
+      "file": "raw/rust-check-5.log",
+      "bytes": 140,
+      "sha256": "de8d0d23a0d50349725a6a0680ed74a9d91055ac6962b1c00b01c450b5df4c15"
+    },
+    {
+      "file": "raw/typecheck-3.log",
+      "bytes": 58,
+      "sha256": "c55dec9480150669c6219825252f61d73854b27653d4e03f983e1fa65b89811f"
+    },
+    {
+      "file": "raw/typecheck-final-2.log",
+      "bytes": 58,
+      "sha256": "c55dec9480150669c6219825252f61d73854b27653d4e03f983e1fa65b89811f"
+    },
+    {
+      "file": "raw/typecheck-final-3.log",
+      "bytes": 58,
+      "sha256": "c55dec9480150669c6219825252f61d73854b27653d4e03f983e1fa65b89811f"
+    },
+    {
+      "file": "raw/typecheck-final.log",
+      "bytes": 1067,
+      "sha256": "375d345453fc717b26c01f1c2fec0654908512e2b2d6f1afc015805683a23773"
+    },
+    {
+      "file": "raw/types-1.log",
+      "bytes": 58,
+      "sha256": "c55dec9480150669c6219825252f61d73854b27653d4e03f983e1fa65b89811f"
+    },
+    {
+      "file": "raw/types-2.log",
+      "bytes": 58,
+      "sha256": "c55dec9480150669c6219825252f61d73854b27653d4e03f983e1fa65b89811f"
+    },
+    {
+      "file": "raw/video-tests-1.log",
+      "bytes": 1840,
+      "sha256": "f52ac6c6eb6653bfca8cc10d46fb40b3e507d84f89bc025e60c3482d6650a4cb"
+    },
+    {
+      "file": "raw/video-tests-2.log",
+      "bytes": 7452,
+      "sha256": "06946c8857cdd92995ef890f943661f68866e0566007e00f8fd10cd3908abe61"
+    },
+    {
+      "file": "reference-and-exploratory.json",
+      "bytes": 79727,
+      "sha256": "51a5dc6b5facf0335bcb56864021833e5e87c6e2606d101bedd411e6a8b9aa0d"
+    },
+    {
+      "file": "gpu-candidate.json",
+      "bytes": 18196,
+      "sha256": "9d12aca9915e3b4d81839f055f7b5850ddb6756047bd86b2cb3a38dad744ef68"
+    },
+    {
+      "file": "smoke-final.json",
+      "bytes": 7081,
+      "sha256": "62a2f7f41d1faee8cd1f6ecb3c617267998366733bec3bdf2eab09d138b1f224"
+    },
+    {
+      "file": "native-build.json",
+      "bytes": 3362,
+      "sha256": "0fbced0635c275824f5af974e7ba3bfb6311c5bc756dc3ce3115fa1d60f2f82e"
+    },
+    {
+      "file": "media-runtime.json",
+      "bytes": 943,
+      "sha256": "8d5fc9135203e2a28fddc13ea2c45e16895954f07f533c891fc5e2b4e9dc4332"
+    },
+    {
+      "file": "media/reference-linear.exr",
+      "bytes": 6744,
+      "sha256": "eb631d1b19ca98ca989d4b567449f27c760849d7c4275ae26e57e9c7489a44e4"
+    },
+    {
+      "file": "media/hevc_nvenc.mp4",
+      "bytes": 3985,
+      "sha256": "6ae2f68c8465193652d4f1e3981fb98a1b8286667d5f6b392a1cae85ff53fb3a"
+    },
+    {
+      "file": "media/av1_nvenc.mp4",
+      "bytes": 3971,
+      "sha256": "d6ae1b49c88837e9d00a66530b8d41fb62e823f46a3dbce170b9d1299b3f2a97"
+    },
+    {
+      "file": "media/hlg.mov",
+      "bytes": 11253,
+      "sha256": "8bafa68573b108b1509554b04619003f9071b623d9786a45acd652ba58f277ed"
+    },
+    {
+      "file": "media/hevc_nvenc.png",
+      "bytes": 704,
+      "sha256": "84db37b0d423f9e31c4d96cf798b7f945fd9746028a2835bc254339cf743cae8"
+    },
+    {
+      "file": "media/hevc_nvenc-result.json",
+      "bytes": 8003,
+      "sha256": "8af8399996050e6b3d7b51901c5cce0cfa83984aaba9c8b33c1084c8a91c6094"
+    },
+    {
+      "file": "media/av1_nvenc-result.json",
+      "bytes": 7998,
+      "sha256": "27a9aad00573b0a899bc497eb7dbe74388566ad0982fae3d857c0418f4a81c85"
+    },
+    {
+      "file": "media/settings.json",
+      "bytes": 724,
+      "sha256": "f47ab4de9173ce83cc4e5fcd7ec40023f0e27401f0f021fa8b21ab4f930d318f"
+    },
+    {
+      "file": "media/project.tsx",
+      "bytes": 1062,
+      "sha256": "65a9bc1be0a3206697d128506ee93f40a11b171004d5eead50396e660d976df0"
+    },
+    {
+      "file": "colour/hevc_nvenc.json",
+      "bytes": 5337,
+      "sha256": "399b543ab34210423f88d924151e2acfc117feeec2dc12e0ca459c7745818df5"
+    },
+    {
+      "file": "colour/av1_nvenc.json",
+      "bytes": 5337,
+      "sha256": "9f52957d40ee92da09858c167786a855682777e5b73cae4ed786454d7bfa6349"
+    },
+    {
+      "file": "video/result.json",
+      "bytes": 4893,
+      "sha256": "4dad3ce985af515d054ca8d6afb352fe916e8bff0ba8ed3cb5c259cc0b4c1438"
+    },
+    {
+      "file": "video/hdr-result.json",
+      "bytes": 4890,
+      "sha256": "94183672143445d76f06c2a1c762979814cb9734adcfd33e0163f882b04f1d73"
+    },
+    {
+      "file": "video/vfr-result.json",
+      "bytes": 4890,
+      "sha256": "02ebb74f88ddb6a3bb32df4359471139cef804ea4cf62730c458fecf8a1b6e25"
+    },
+    {
+      "file": "media/two-stage-4k-hdr.mp4",
+      "bytes": 1343828,
+      "sha256": "88c4f4407a1bb0e54a6e5b1864ba99797c5f675f30c444008129c9dbc9fc794d"
+    },
+    {
+      "file": "media/two-stage-4k-display.png",
+      "bytes": 985756,
+      "sha256": "c887dd77631a418b70a03aa32bcb50b4a6f4c239358436c203685876c675182a"
+    }
+  ],
+  "comparison": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "frames": 6,
+      "referenceWallMs": 10699.612200000001,
+      "gpuWallMs": 1511.6605999999997,
+      "speedup": 7.078051911917267,
+      "gpuFramePipelineMs": 282.40439999999944,
+      "gpuMeanPipelineFrameMs": 47.06739999999991
+    },
+    {
+      "width": 3840,
+      "height": 2160,
+      "frames": 4,
+      "referenceWallMs": 24277.844599999997,
+      "gpuWallMs": 1609.5616,
+      "speedup": 15.083513796551804,
+      "gpuFramePipelineMs": 308.78100000000086,
+      "gpuMeanPipelineFrameMs": 77.19525000000021
+    }
+  ],
+  "validation": {
+    "budgetSeconds": 420,
+    "conservativeAccountedSeconds": 416,
+    "stopped": true,
+    "scope": "Batches are separate. No all-suite pass is claimed. Diagnostic matrix predates the VBR-only codec change; production batch is after it. Final changes add an OCIO view admission guard and owner poison on post-submit failure; types/profile guard and final production CLI smoke were executed after those deltas."
+  },
+  "measurementScope": "Short cold-owner exports; same two-stage TSX/new frames/resolutions/ACES2/matte/HEVC P4 VBR CQ12. Reference is the unchanged reference backend from the earlier batch. Initial GPU CONSTQP rows in reference-and-exploratory.json are superseded and not used. Candidate GPU VBR was remeasured separately. No P95, memory or warm steady-state latency claim.",
+  "validatedSourceCommit": "8d556d49102fa29487509b5b5471363cc50eda90"
+}

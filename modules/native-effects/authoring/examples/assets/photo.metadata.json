@@ -1,0 +1,39 @@
+{
+  "kind": "prepared-float-image",
+  "schemaVersion": 1,
+  "path": "./photo.f32",
+  "width": 160,
+  "height": 90,
+  "color": {
+    "primaries": "rec709",
+    "whitePoint": "D65",
+    "transfer": "linear",
+    "reference": "scene",
+    "range": "full",
+    "referenceWhiteNits": 100
+  },
+  "alpha": "premultiplied",
+  "format": "rgba32float",
+  "native": {
+    "width": 160,
+    "height": 90,
+    "color": {
+      "primaries": "rec709",
+      "whitePoint": "D65",
+      "transfer": "linear",
+      "reference": "scene",
+      "range": "full",
+      "referenceWhiteNits": 100
+    },
+    "alpha": "premultiplied",
+    "format": "rgba32float"
+  },
+  "layout": "row-major-rgba-f32le",
+  "byteLength": 230400,
+  "sha256": "380326d2e7505b97d2535b0b64a8ef0ac5175324b07e425102832949fa880640",
+  "source": {
+    "path": "./input.png",
+    "sha256": "115efd6b88d2105bf49db7d0c8b0908ccfbf9168e5151ca426abe325132aae5a",
+    "decode": "icc-sdr"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "repository": "https://github.com/storytold/effectcraft",
+  "commit": "ec7ced1f0515f0b6f376dbcc297f1c441f452d6e",
+  "selectedLicense": "MIT",
+  "externalCodeAdapted": true,
+  "runtimeDependenciesAdded": [],
+  "sources": [
+    {
+      "path": "crates/gpu/src/shaders/kernels.wgsl",
+      "sha256": "426656075ec524d6c80e82442e09361f36fc73e0cd915f8a7382cffb424ce9c3",
+      "bytes": 37016,
+      "adaptation": "curve_exact Hermite structure and coefficient-table layout; public parameter-word ABI, PCHIP slopes, compensated sums/extrapolation, no LUT approximation or external bindings"
+    },
+    {
+      "path": "crates/gpu/src/shaders/fx_key.wgsl",
+      "sha256": "fe152b08682de203f4f6f6298afccc60f243d3c86064a0f71c0a73969b1ea8ec",
+      "bytes": 30752,
+      "adaptation": "Basic selected-channel spill subtraction and normalized Matte Choker coverage ramp; native PM homogeneous form/public parameter ABI, no advanced spill/screen-key parity"
+    },
+    {
+      "path": "LICENSE-MIT",
+      "sha256": "7b6db9a363688683feacdf9b528f059637f2e5d2edbacd8720fc9b26781c9abe",
+      "bytes": 1103,
+      "local": "LICENSE.effectcraft"
+    },
+    {
+      "path": "crates/gpu/src/shaders/fx_color.wgsl",
+      "sha256": "a98b63fd8b8e0581951b86f779f7488c0eeafdd2023373e6208643345ce22c81",
+      "bytes": 26992,
+      "adaptation": "fxc_morph min/max/axis selection and full 2D fractional blend; adapted to public source ABI with three-sample interval composition, explicit finite boundaries"
+    },
+    {
+      "path": "crates/effects/src/util.rs",
+      "sha256": "777f70ad2f50fe718717f0ac9a5f6bf8b272f72cb9d1ad0e25f8c1d40c68a923",
+      "bytes": 30756,
+      "adaptation": "morph_plane / morph_frac square-window/fractional semantics; no Rust binary or rayon dependency"
+    },
+    {
+      "path": "crates/effects/src/matte.rs",
+      "sha256": "21d2cbca7a1340467dc2aaf75681fdb6a0b6b8e6fbbd78d860598b64cf22b859",
+      "bytes": 21776,
+      "adaptation": "Matte Choker coverage ramp and compositional design, not full refinement or padded image parity"
+    }
+  ],
+  "nativeEquations": [
+    "signed scene-linear Levels",
+    "3x3 plus Alpha-scaled-offset Channel Mix",
+    "covered-colour normalized Gaussian Unsharp",
+    "working-linear Cb/Cr-distance smooth Chroma Key",
+    "working-space luminance smooth Luma Key",
+    "finite-canvas grayscale morphology with ternary interval decomposition",
+    "canonical Alpha coverage extraction/levels",
+    "coverage multiplication of native PM radiance"
+  ],
+  "existingFrameweaveReuse": {
+    "publicApi": "GpuPixelScope / withGpuResources / createGpuEffectChain",
+    "arithmeticSource": "modules/gpu-effects/float-pass-shaders.ts",
+    "arithmeticSourceSha256": "929e2c17817220e8b3f758b8e66a0aab86cec6d4cd00ee4c67276d2dd20892ee"
+  },
+  "scope": "Source provenance, not a runtime certificate. Validation uses actual checkout SDK, no owner overlay."
+}

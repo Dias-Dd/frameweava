@@ -1,0 +1,5 @@
+{
+ "extends":"../../../tsconfig.json",
+ "include":["../src/native-time/managed.ts","../../../tests/pro-animation-native-time-managed.test.ts"],
+ "exclude":["../../../node_modules"]
+}

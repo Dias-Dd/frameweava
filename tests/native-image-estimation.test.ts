@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {plannedEstimationNames} from '../modules/native-effects/image-estimation/types.ts';
+import {compareSeconds,differenceSeconds,exactSeconds} from '../modules/native-effects/image-estimation/time.ts';
+import {fitOracle,warpFlowOracle,consistencyOracle,grainOracle} from '../modules/native-effects/image-estimation/reference.ts';
+test('23 distinct domain entries, no duplicate aliases',()=>assert.equal(new Set(plannedEstimationNames).size,23));
+test('integer rational seconds preserve long-project sub-sample differences',()=>{const a={num:9000000000000001,den:1000},b={num:9000000000000000,den:1000};assert.equal(compareSeconds(a,b),1);assert.equal(differenceSeconds(a,b),.001);assert.throws(()=>exactSeconds({num:0,den:0},'time'),{code:'E_NATIVE_FILTER_PARAMETER'});});
+test('global models recover a known translation independently',()=>{const w=12,h=8,m=Float32Array.from({length:w*h*3},(_,j)=>j%3===0?.5:j%3===1?-.25:.9);for(const kind of ['translation','similarity','affine','homography'] as const){const result=fitOracle(m,w,h,kind);assert.equal(result.quality[0],1);assert.ok(Math.abs(result.matrix[2]-.5*2/w)<1e-12);assert.ok(Math.abs(result.matrix[5]+.25*2/h)<1e-12);}});
+test('missing observations preserve pixels and never become confident',()=>{const p=Float32Array.of(2,-.5,.2,.5),m=new Float32Array(3);assert.deepEqual(warpFlowOracle(p,m,1,1),p);assert.deepEqual(consistencyOracle(m,m,1,1),m);});
+test('rank deficient motion is explicitly invalid, not regularized into success',()=>{const r=fitOracle(new Float32Array(24),4,2,'homography');assert.equal(r.quality[0],0);assert.deepEqual(r.matrix,[1,0,0,0,1,0,0,0,1]);});
+test('constant opaque plate has zero residual covariance and spectrum',()=>{const p=Float32Array.from({length:8*6*4},(_,j)=>[4,-1,.25,1][j%4]),r=grainOracle(p,8,6);assert.ok(r.spectrum.every(v=>v===0));assert.ok(r.covariance.every(v=>v===0));});

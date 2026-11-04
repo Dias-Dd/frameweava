@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@frameweave/engine": ["../../src/index.ts"],
+      "@frameweave/engine/jsx-runtime": ["../../src/jsx-runtime.ts"],
+      "@frameweave/engine/jsx-dev-runtime": ["../../src/jsx-runtime.ts"]
+    }
+  },
+  "include": ["./**/*.ts", "./**/*.tsx"],
+  "exclude": ["../../node_modules"]
+}

@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "repository": "https://github.com/storytold/effectcraft",
+  "commit": "ec7ced1f0515f0b6f376dbcc297f1c441f452d6e",
+  "license": "MIT",
+  "licenseArchive": "../creative/vendor/LICENSE-MIT",
+  "sources": [
+    {
+      "path": "crates/gpu/src/shaders/kernels.wgsl",
+      "archive": "../creative/vendor/kernels.wgsl",
+      "bytes": 37016,
+      "sha256": "426656075ec524d6c80e82442e09361f36fc73e0cd915f8a7382cffb424ce9c3",
+      "scope": "rectangular/directional sampling and per-channel Exposure preparation"
+    },
+    {
+      "path": "crates/gpu/src/shaders/common.wgsl",
+      "archive": "../creative/vendor/common.wgsl",
+      "bytes": 15692,
+      "sha256": "4244140eba68055a0f1edcd6d0b1d7eee5a244e01c19f3ab0491f8e078702fff",
+      "scope": "bilinear sampling and exact uint32 hash_noise"
+    },
+    {
+      "path": "crates/gpu/src/shaders/fx_noise.wgsl",
+      "archive": "../creative/vendor/fx_noise.wgsl",
+      "bytes": 26250,
+      "sha256": "2953bf052bd8a92054d8c49653d3691467bb5faba1710300a784ba487ffae2b7",
+      "scope": "morphology, Gaussian/range weighted Bilateral and hard Smart Blur shapes; Sobel stencil"
+    },
+    {
+      "path": "crates/gpu/src/shaders/fx_stylize.wgsl",
+      "archive": "../creative/vendor/fx_stylize.wgsl",
+      "bytes": 34469,
+      "sha256": "4a055788a4c76cb3a796ac545e48c47d3700e79a95f98ee972186e9be77c97d9",
+      "scope": "Posterize/Threshold/Threshold RGB and gradient-related interpolation shapes"
+    },
+    {
+      "path": "crates/gpu/src/shaders/fx_color.wgsl",
+      "archive": "../creative/vendor/fx_color.wgsl",
+      "bytes": 26992,
+      "sha256": "a98b63fd8b8e0581951b86f779f7488c0eeafdd2023373e6208643345ce22c81",
+      "scope": "Selective Color masks, hue sectors and colour-control shapes"
+    }
+  ],
+  "adaptation": "Thin public PixelScope adapters. Native compensated/HDR extensions, continuous radix median, canonical small convolution presets/Bayer ranks and typed 32-lane statistics/CDF are explicitly documented; not an AE numerical/parameter parity claim.",
+  "runtimeDependenciesAdded": [],
+  "formalRelease": "Main-owned next release candidate; no official manifest or old pin update"
+}

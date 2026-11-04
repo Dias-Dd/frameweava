@@ -1,0 +1,30 @@
+{
+  "ok": false,
+  "consumer": "C:\\Users\\ASUS\\Documents\\Codex\\fw-native-only-consumer-5BGDWu",
+  "rows": [
+    {
+      "name": "pack",
+      "ok": true,
+      "ms": 4910.7317
+    },
+    {
+      "name": "install",
+      "ok": true,
+      "ms": 15910.8247
+    },
+    {
+      "name": "version",
+      "ok": false,
+      "ms": 599.702699999998,
+      "error": {
+        "code": 1,
+        "message": "Command failed: C:\\Program Files\\nodejs\\node.exe C:\\Users\\ASUS\\Documents\\Codex\\fw-native-only-consumer-5BGDWu\\node_modules\\@frameweave\\engine\\bin\\frameweave.mjs --version --json\n{\n  \"ok\": false,\n  \"diagnostics\": [\n    {\n      \"code\": \"E_DISTRIBUTION_INTEGRITY\",\n      \"severity\": \"error\",\n      \"message\": \"Missing release file: lib-modules/spidermonkey-host/.npmrc\"\n    }\n  ]\n}\n"
+      }
+    }
+  ],
+  "wallMs": 21521.5483,
+  "error": {
+    "code": 1,
+    "message": "Command failed: C:\\Program Files\\nodejs\\node.exe C:\\Users\\ASUS\\Documents\\Codex\\fw-native-only-consumer-5BGDWu\\node_modules\\@frameweave\\engine\\bin\\frameweave.mjs --version --json\n{\n  \"ok\": false,\n  \"diagnostics\": [\n    {\n      \"code\": \"E_DISTRIBUTION_INTEGRITY\",\n      \"severity\": \"error\",\n      \"message\": \"Missing release file: lib-modules/spidermonkey-host/.npmrc\"\n    }\n  ]\n}\n"
+  }
+}

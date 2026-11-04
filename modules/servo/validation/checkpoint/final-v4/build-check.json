@@ -1,0 +1,254 @@
+{
+  "version": 1,
+  "ok": true,
+  "patchFiles": 13,
+  "patchSha256": "f64449ea61a9e953bab6a4ede3f80d67a5c40f7265ef235e73d7d83c972502fb",
+  "servoBuild": {
+    "version": 1,
+    "ok": true,
+    "wallMs": 46106.5911,
+    "runtime": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\.frameweave\\servo-kit\\bundles\\a5d6f8833dbbc530d402d02803ceec6145c821e142a850907b3223d0a5ba1d3a",
+    "stagingRuntime": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\.frameweave\\servo-kit\\runtime",
+    "upstream": {
+      "version": 1,
+      "servo": {
+        "version": "0.7.0",
+        "commit": "aac43a3f31a259f04a574f5ec4e959c943ad7cc7",
+        "license": "MPL-2.0"
+      },
+      "webrender": {
+        "commit": "d399b904fdce7bab553fb6514204790155a7fb07",
+        "license": "MPL-2.0"
+      },
+      "patch": {
+        "file": "patches/servo-gpu-frame-v1.patch",
+        "sha256": "f64449ea61a9e953bab6a4ede3f80d67a5c40f7265ef235e73d7d83c972502fb",
+        "changed": [
+          {
+            "file": "servo-paint-api-0.7.0/lib.rs",
+            "upstreamSha256": "687fb1697c4bba22be9378b75d8e4efe935c0c5e6deda0a314eef77b8a0c9e4f",
+            "patchedSha256": "8b69ce585960332b616f214a10c399513becd40e8ac5b0ef3f2d8235081edc6d"
+          },
+          {
+            "file": "servo-net-0.7.0/image_cache.rs",
+            "upstreamSha256": "18c5dd4b571e8a2de01dec47e4b9cadb6f60ce45db299d7efd752ea741edf8d1",
+            "patchedSha256": "a9daeb0fe8d6cb71794bc8c4e5c3ec0f4260838cd32f995592463677b8cf2ad5"
+          },
+          {
+            "file": "servo-paint-0.7.0/painter.rs",
+            "upstreamSha256": "61b519e437db89eabf630d47c1d90ae3c9860275bfbe492df6baf57927d83850",
+            "patchedSha256": "5075405ffa93cc44ffcde03819f88987ce5180c22edaf01b77edde334ff659d9"
+          },
+          {
+            "file": "servo-paint-0.7.0/webrender_external_images.rs",
+            "upstreamSha256": "c8a4f53aa7767ab6ad0d50d905f708b2104221ecdf6ee6f545de9b0c4570d9dc",
+            "patchedSha256": "3256fdbbbcd739978da39796f6d9ead31ee0064e20a09ff15334e82e4c445cd7"
+          },
+          {
+            "file": "servo-paint-0.7.0/paint.rs",
+            "upstreamSha256": "3ff7785ccebc98d53040f22f7906705a2ec83501c3bf0886895bf347ef6c949a",
+            "patchedSha256": "5b520871105cb61997d5d47f9c67168b09204f5e281fd71e87fbc041fd869cd2"
+          },
+          {
+            "file": "servo-paint-0.7.0/screenshot.rs",
+            "upstreamSha256": "7075c4894337ca6c866323b403ff9d856bfda62b4b7d5b34d37e6de6b8d0a838",
+            "patchedSha256": "87707bf3d134a5952c5f973112c2e08d08f57b3a74d8da59e7a956a0b7a73ab3"
+          },
+          {
+            "file": "servo-0.7.0/webview.rs",
+            "upstreamSha256": "ab37f1503585706e5275d78ddd1f11b76a6c5bed0a1a3b11c03507fa1f117a8a",
+            "patchedSha256": "87e9a014ad4b965eb45258d35aab085f4739012acea8156421a557984d28ac42"
+          },
+          {
+            "file": "servo-script-0.7.0/event_loop/script_thread.rs",
+            "upstreamSha256": "ee6a861fd8416f174e425a0ae3d0d049074015fe4cbdb7fd581fc400bf51f162",
+            "patchedSha256": "7375e57f710ee941b8ce1ec897e3fa168498d992c17b6212ff7d3282719c549a"
+          },
+          {
+            "file": "mozjs_sys-153.3.0-1/build.rs",
+            "upstreamSha256": "0a8f6896548f0e79649730aefe5d0ec7818c7083c7f0eac427b359f5df228f4f",
+            "patchedSha256": "31299c70892cdb41be615a1dfccb4623a9601d935a3a1679508812f10d0358d2"
+          },
+          {
+            "file": "stylo-0.22.0/servo/animation.rs",
+            "upstreamSha256": "b6b649ec4e6214dbe046b88a040cb028a6c825e0569670b1cb497b506860ccfb",
+            "patchedSha256": "7a1b712edc49cc8f69e85344e22fc93bece7a41b4014e7e5b8c694d582179ada"
+          },
+          {
+            "file": "servo-script-0.7.0/dom/document/animation_manager.rs",
+            "upstreamSha256": "9422844165a9c03900ce675904216e29b0b666a369f95b14b353502ae279f037",
+            "patchedSha256": "9e357b40f8493fe56e917f3032db30f5c66684d27f61d0633965ef74d61f109f"
+          },
+          {
+            "file": "servo-script-0.7.0/dom/document/document.rs",
+            "upstreamSha256": "01f12b46c59a4a5be54a42a12f9fd35bd68a33efc42dcb619cb672064203ca05",
+            "patchedSha256": "76d09a7d7c5e2a85f0694188f1ba7972283636498491f9954cf542aabe809ce8"
+          },
+          {
+            "file": "stylo-0.22.0/matching.rs",
+            "upstreamSha256": "edc2ae3f1beabe77769bf19349556e53a3561968a40515365a7b8afc97ce8294",
+            "patchedSha256": "5d7672d1bf8ad60aa0da842514039ac400a257910853ff32b2e10b620194d523"
+          }
+        ]
+      },
+      "localDevelopmentInputs": {
+        "angle": [
+          {
+            "file": "libEGL.dll",
+            "bytes": 102400,
+            "sha256": "66d9dd3527aec0b27314bd65936c7fa51e4d074ed370634a76060207adc35c8c",
+            "redistributionQualified": false
+          },
+          {
+            "file": "libGLESv2.dll",
+            "bytes": 5855232,
+            "sha256": "24673b2028afd664c053398e583edb0f8a3885b2e6c90714e99e7980f32e28f8",
+            "redistributionQualified": false
+          }
+        ],
+        "mozjs": {
+          "bytes": 90437476,
+          "sha256": "caccf6ca6fd0c05c6d02fbee1b353e131ed88a5cef088a644287f49547c7126e",
+          "note": "Copied user-supplied static link inputs. Not independently source-built or redistribution-qualified."
+        }
+      },
+      "registryCrates": [
+        "servo-0.7.0",
+        "servo-paint-0.7.0",
+        "servo-paint-api-0.7.0",
+        "servo-net-0.7.0",
+        "servo-net-traits-0.7.0",
+        "servo-pixels-0.7.0",
+        "servo-script-0.7.0",
+        "servo-layout-0.7.0",
+        "webrender-0.70.1",
+        "webrender_api-0.70.0",
+        "surfman-0.14.0",
+        "mozjs_sys-153.3.0-1",
+        "stylo-0.22.0"
+      ],
+      "stylo": {
+        "version": "0.22.0",
+        "license": "MPL-2.0",
+        "vcs": {
+          "git": {
+            "sha1": "34d25f741765a0bdb894f8271852e633299352d8"
+          },
+          "path_in_vcs": "style"
+        }
+      }
+    },
+    "inputHashes": {
+      "lib.rs": "9b062138a9f792289ffa681cc68c3cd4cb2ebfd699043c7868e20735441f0e77",
+      "bridge.cpp": "b23161c77ea410127dd6c6f1aba99b7966aabee58cac56e5c60efb03090b6d26",
+      "interop.wgsl": "fbc40453f42f705c1eeca5f6f423909ac82d2ce43b49046bdf949d055c033c47",
+      "from-servo.wgsl": "0b58e7af9f6a0bd91c3f1afbc45d864cbff8fae8b8fc43528ff9507bf4c9276d",
+      "upstream.json": "33d6ed831c82b444a1f2689e66589dc960c77f422266e47e71b0e036219577d8",
+      "patches/servo-gpu-frame-v1.patch": "f64449ea61a9e953bab6a4ede3f80d67a5c40f7265ef235e73d7d83c972502fb"
+    },
+    "files": {
+      "frameweave_servo.dll": "1f47982c85b755dbe6d56aff8fdb4cac1915aedee4c1e2f44e6eb30bd469c06f",
+      "frameweave_servo_bridge.dll": "e6617bc67c4b83830cd6e34e6e5c64784ef54798091836d0c0c1052f77054a93",
+      "libEGL.dll": "66d9dd3527aec0b27314bd65936c7fa51e4d074ed370634a76060207adc35c8c",
+      "libGLESv2.dll": "24673b2028afd664c053398e583edb0f8a3885b2e6c90714e99e7980f32e28f8",
+      "clock.js": "21eaa5b9553c6d9fa0f091aacdb89478991a47cb1546ad0e9b1353ec4a0b3458"
+    },
+    "localDevelopmentOnly": true,
+    "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.1\nLLVM version: 23.1.1\n"
+  },
+  "runtimeReceipt": {
+    "version": 1,
+    "abi": 1,
+    "trusted_local": true,
+    "files": {
+      "frameweave_servo.dll": "1f47982c85b755dbe6d56aff8fdb4cac1915aedee4c1e2f44e6eb30bd469c06f",
+      "frameweave_servo_bridge.dll": "e6617bc67c4b83830cd6e34e6e5c64784ef54798091836d0c0c1052f77054a93",
+      "libEGL.dll": "66d9dd3527aec0b27314bd65936c7fa51e4d074ed370634a76060207adc35c8c",
+      "libGLESv2.dll": "24673b2028afd664c053398e583edb0f8a3885b2e6c90714e99e7980f32e28f8",
+      "clock.js": "21eaa5b9553c6d9fa0f091aacdb89478991a47cb1546ad0e9b1353ec4a0b3458"
+    }
+  },
+  "runtimeSizes": {
+    "frameweave_servo.dll": 206437376,
+    "frameweave_servo_bridge.dll": 201216,
+    "libEGL.dll": 102400,
+    "libGLESv2.dll": 5855232,
+    "clock.js": 1906
+  },
+  "native": [
+    {
+      "version": 1,
+      "sourceCommit": "6ea0b93590c7038cf01c8154fd5b7f194aae297d",
+      "sourceDirty": "M modules/native-gpu/Cargo.lock\n M modules/native-gpu/Cargo.toml\n M modules/native-gpu/authoring.ts\n M modules/native-gpu/borrow.ts\n M modules/native-gpu/build.mjs\n M modules/native-gpu/client.ts\n M modules/native-gpu/logic-host.ts\n M modules/native-gpu/memory.ts\n M modules/native-gpu/scope.ts\n M modules/native-gpu/src/gpu.rs\n M modules/native-gpu/src/main.rs\n M modules/native-gpu/src/protocol.rs\n?? modules/native-gpu/module.ts\n?? modules/native-gpu/src/external_windows.rs\n?? modules/native-gpu/src/native_module.rs\n?? modules/native-gpu/src/native_module_windows.rs",
+      "inputHashes": {
+        "Cargo.toml": "1229a81bedbe58fd9b940a67c0ffd23c5310465cc16992f9b19811c21e7f7975",
+        "Cargo.lock": "bac179c8329d77482e2565d104218d93c3a875d39dcc45effca056b639e22b3f",
+        "src/main.rs": "e565c8c08b3997810d0c3fe475a5d1a398bc0b5d47e2bfdbc8470f387176c0c5",
+        "src/gpu.rs": "afb73ee8ab96fb6748a7bfd9e850af7aeeaadd1b7db7d6b74062b50e16301069",
+        "src/protocol.rs": "568935673ce00d5f8e23179ad92fe8deb2cf80d66ad0c948a96af57597b78886",
+        "src/encode.rs": "592b7724fe90fda8e8d6c84611b909ce8df4fa85492070885f825d3ac42eac9b",
+        "src/external_windows.rs": "7cd70d6be50cb1026f099f96bba476c6321a783d1d6be871bdf09204e4a68fd2",
+        "src/native_module.rs": "f1d68dd07adfe4f8df6a7de01ced34d1e2e761ab5fac4c45e9b516da43ed667b",
+        "src/native_module_windows.rs": "f9d06f5a5b820351d6e33b76af0f039adddfb1436ea769f983ee8f4653f80c1f",
+        "../servo/native/interop.wgsl": "fbc40453f42f705c1eeca5f6f423909ac82d2ce43b49046bdf949d055c033c47",
+        "../servo/native/from-servo.wgsl": "0b58e7af9f6a0bd91c3f1afbc45d864cbff8fae8b8fc43528ff9507bf4c9276d",
+        "build.mjs": "022eecad17a5627d466a57ca23ec123958ec30e40269e06b2c2b06394213ac68"
+      },
+      "profile": "debug",
+      "features": [
+        "diagnostics"
+      ],
+      "offline": true,
+      "locked": true,
+      "wallMs": 15005.540200000001,
+      "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.1\nLLVM version: 23.1.1",
+      "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+      "flags": {
+        "RUSTFLAGS": null,
+        "CARGO_ENCODED_RUSTFLAGS": null,
+        "CARGO_BUILD_TARGET": null
+      },
+      "executable": {
+        "file": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\.frameweave\\native-target\\debug\\frameweave-native-gpu.exe",
+        "bytes": 16088064,
+        "sha256": "1bfbb5e54b95c55d86027900f361e75ffb645b8cace0de46793e00e2ede55c20"
+      }
+    },
+    {
+      "version": 1,
+      "sourceCommit": "6ea0b93590c7038cf01c8154fd5b7f194aae297d",
+      "sourceDirty": "M modules/native-gpu/Cargo.lock\n M modules/native-gpu/Cargo.toml\n M modules/native-gpu/authoring.ts\n M modules/native-gpu/borrow.ts\n M modules/native-gpu/build.mjs\n M modules/native-gpu/client.ts\n M modules/native-gpu/logic-host.ts\n M modules/native-gpu/memory.ts\n M modules/native-gpu/scope.ts\n M modules/native-gpu/src/gpu.rs\n M modules/native-gpu/src/main.rs\n M modules/native-gpu/src/protocol.rs\n?? modules/native-gpu/module.ts\n?? modules/native-gpu/src/external_windows.rs\n?? modules/native-gpu/src/native_module.rs\n?? modules/native-gpu/src/native_module_windows.rs",
+      "inputHashes": {
+        "Cargo.toml": "1229a81bedbe58fd9b940a67c0ffd23c5310465cc16992f9b19811c21e7f7975",
+        "Cargo.lock": "bac179c8329d77482e2565d104218d93c3a875d39dcc45effca056b639e22b3f",
+        "src/main.rs": "e565c8c08b3997810d0c3fe475a5d1a398bc0b5d47e2bfdbc8470f387176c0c5",
+        "src/gpu.rs": "afb73ee8ab96fb6748a7bfd9e850af7aeeaadd1b7db7d6b74062b50e16301069",
+        "src/protocol.rs": "568935673ce00d5f8e23179ad92fe8deb2cf80d66ad0c948a96af57597b78886",
+        "src/encode.rs": "592b7724fe90fda8e8d6c84611b909ce8df4fa85492070885f825d3ac42eac9b",
+        "src/external_windows.rs": "7cd70d6be50cb1026f099f96bba476c6321a783d1d6be871bdf09204e4a68fd2",
+        "src/native_module.rs": "f1d68dd07adfe4f8df6a7de01ced34d1e2e761ab5fac4c45e9b516da43ed667b",
+        "src/native_module_windows.rs": "f9d06f5a5b820351d6e33b76af0f039adddfb1436ea769f983ee8f4653f80c1f",
+        "../servo/native/interop.wgsl": "fbc40453f42f705c1eeca5f6f423909ac82d2ce43b49046bdf949d055c033c47",
+        "../servo/native/from-servo.wgsl": "0b58e7af9f6a0bd91c3f1afbc45d864cbff8fae8b8fc43528ff9507bf4c9276d",
+        "build.mjs": "022eecad17a5627d466a57ca23ec123958ec30e40269e06b2c2b06394213ac68"
+      },
+      "profile": "release",
+      "features": [],
+      "offline": true,
+      "locked": true,
+      "wallMs": 29362.9866,
+      "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: x86_64-pc-windows-msvc\nrelease: 1.99.1\nLLVM version: 23.1.1",
+      "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+      "flags": {
+        "RUSTFLAGS": null,
+        "CARGO_ENCODED_RUSTFLAGS": null,
+        "CARGO_BUILD_TARGET": null
+      },
+      "executable": {
+        "file": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\.frameweave\\native-target\\release\\frameweave-native-gpu.exe",
+        "bytes": 7707136,
+        "sha256": "1bb18900e6bde325c3979db98d00966ec0e919336df3e1d32fabf5d0020b0461"
+      }
+    }
+  ]
+}

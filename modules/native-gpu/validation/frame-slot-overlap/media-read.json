@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "decodedFrames": 6,
+  "decodedWidth": 320,
+  "decodedHeight": 180,
+  "distinctDecodedFrames": 6,
+  "sha256": [
+    "156974665350f538592b9ab5c7d6ff1b27c53c72d9bd2a30b939c3fc5b70a7a7",
+    "fe0de8d014f717cac9ad726ec455bd7eed51f54a134dd71f721f92f0f343eb07",
+    "18b9242bc652cc2376285ca3641f45cd084ef8f227339234ab4be894f131a141",
+    "cd662f5a22611a3795909665da8885824879bdf679afbf250f1d9986b4a21f45",
+    "ffec73242a82c3d5fedabe9693b1f02afcc9a6d427dc3edaa6fcb6c2643e597f",
+    "e8fa49b2ebe91168273d5f1f05d38c1bf3e86ee8998da4ecd5b6d2a963d39316"
+  ],
+  "scope": "Explicit export verification only; no frame hashes or readback on preview path"
+}

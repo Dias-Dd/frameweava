@@ -1,0 +1,38 @@
+{
+  "ok": true,
+  "rows": [
+    {
+      "name": "fresh immutable R1 candidate install with reviewed default assets",
+      "ok": true,
+      "detail": {
+        "installed": [
+          "native-2d-candidate@0.4.1"
+        ],
+        "roots": {
+          "native-2d-candidate": "native-2d-candidate@0.4.1"
+        },
+        "lockfile": "D:\\frameweave-worktrees\\agent-4\\.frameweave\\native-2d\\font-project\\frameweave.packages.lock.json"
+      },
+      "wallMs": 3028.0302
+    },
+    {
+      "name": "actual host standard facilities and primitive-only lazy compatibility",
+      "ok": true,
+      "detail": {
+        "AbortController": "undefined",
+        "AbortSignal": "undefined",
+        "EventTarget": "undefined",
+        "Intl": "object",
+        "Segmenter": "function",
+        "TextEncoder": "function",
+        "TextDecoder": "function",
+        "WebAssembly": "undefined",
+        "crypto": "object",
+        "subtle": "object",
+        "FinalizationRegistry": "function",
+        "WeakRef": "function"
+      },
+      "wallMs": 8967.1004
+    }
+  ]
+}

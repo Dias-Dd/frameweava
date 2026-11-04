@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "baseCommit": "7d6ea4cc20527fb1d1e2351f66834b2e59b6148c",
+  "steps": [
+    {
+      "name": "types",
+      "args": [
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "status": 0,
+      "ms": 8700.9478
+    },
+    {
+      "name": "targeted",
+      "args": [
+        "--import",
+        "tsx",
+        "--test",
+        "--test-concurrency=1",
+        "tests/native-borrow-lifetime.test.ts",
+        "tests/native-module.test.ts"
+      ],
+      "status": 0,
+      "ms": 682.4648000000016
+    }
+  ],
+  "ms": 9383.412600000001,
+  "sourceHashes": {
+    "modules/native-gpu/borrow.ts": "0524a527142ce31f0a6448414d084e89ca06b89d3e4318e7226e282cdb54e3ff",
+    "tests/native-borrow-lifetime.test.ts": "3adeb16af63e7a0d5499cbaf74a7139b6689789d50177e9d5fe0c6fda98b9422"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "pbd": {
+    "repository": "https://github.com/InteractiveComputerGraphics/PositionBasedDynamics",
+    "tag": "2.2.0",
+    "revision": "aa62c44f0d43956452e1f960a40333ec2d6d3ea5",
+    "commitDate": "2022-12-13T16:43:11Z",
+    "license": "MIT",
+    "files": {
+      "CMakeLists.txt": "902bb6caee4257ba5a1d33493175e8b95770b22ba7736fd7848c6c54e7f552e4",
+      "Common-Common.h": "f8e31d1f067a6d15aed61cdfc61794f52a93a08adc22a0c27f3320262dde6737",
+      "LICENSE": "825d46292692c501a88ddd745cddf69e2198b8354f44ae1f192627d79bad2ae7",
+      "PositionBasedDynamics-MathFunctions.cpp": "dbe0f1d0f70814e77197406b2fb40ea2cc06cdc8f91ba11238ab74de489663d9",
+      "PositionBasedDynamics-MathFunctions.h": "c7e28a2fe6591bf182cbb146fc8dc816def616b99ed6382f7b44fba9f184df90",
+      "PositionBasedDynamics-XPBD.cpp": "f12429a1754029d6bce69e2e39d5132c2fea69a20f041ae072ec5287b68953f7",
+      "PositionBasedDynamics-XPBD.h": "71bbab9c1c5e7d9c97aff65e0cc918793beed1a15bf17c9a617718af6533ca09",
+      "PositionBasedDynamics-PositionBasedDynamics.cpp": "9eab9c633258bb58bab99f9ed979da0ac9eb1499d86829b7637d28650eb84a52",
+      "PositionBasedDynamics-PositionBasedDynamics.h": "09c29a70fc046709242b2cd15696ab22df2d57c30bc31d0320cf349c4b08fb45",
+      "PositionBasedDynamics-PositionBasedElasticRods.cpp": "2e0fca926ff386445cc9252b4f651904d3f60e8567143db963b6383a5ac46751",
+      "PositionBasedDynamics-PositionBasedElasticRods.h": "9303cb7323817867d36a62bb650745744f86ef7f8406262690cabae01f3f0c96",
+      "PositionBasedDynamics-TimeIntegration.cpp": "62c48db3ab27cead080faaac5fe225d8e1b618b2fb455769fc3a7a36e756af0a",
+      "PositionBasedDynamics-TimeIntegration.h": "d9c96a951b5722a954a8435d70a4e94fdb869c08ebcb4b01834158c23467b03c",
+      "Simulation-Constraints.cpp": "9f6f8f78651c4cc3b263de0588000ac2c71375d7a44860bad599c8da53a1fab0",
+      "Simulation-LineModel.cpp": "52e3d8be4b3e4199e07dfac96aa7ac5bad1e9e6e6af84d0cd450428db43875ef"
+    },
+    "scope": "Reference/archive sources, no full engine/Eigen/GUI compiled. Rust adaptation of distance and isometric bending scalar mathematics; selected unmodified C++ functions used by an independent reference with documented scalar linear-algebra shim. Signed-angle XPBD adapts the fixed ordinary PBD dihedral gradients; two additional original source files archived, no full engine/Eigen compiled. Optional Cosserat PBD stretch/shear and bend/twist kernels and first-order orientation integration adapted from the same fixed MIT release. Original rods, time-integration and call-site files archived for audit, not a full engine/Eigen build."
+  },
+  "parry": {
+    "crate": "parry3d-f64",
+    "version": "0.31.1",
+    "license": "Apache-2.0",
+    "authority": "crates.io release archive; same reviewed dependency used by pinned Rapier0.36.1",
+    "licenseReceipt": "modules/rigid-body-effects/licenses/registry/parry3d-f64-0.31.1/source.json"
+  },
+  "reused": [
+    "Existing C1 bytes-v1 shim/session, with no new host imports",
+    "Existing PBD Rust XPBD and signed-dihedral functions compiled directly from their reviewed source",
+    "PBD contact weights with bounded inequality multipliers and Coulomb impulses",
+    "Parry closest segments, with scale-relative collinearity qualification; triangle full-boundary minimization adapts PBD outside regions"
+  ],
+  "files": {
+    "parry-closest-segments.rs": "b9be1a0ea29887f867174497406a914ca7b1f023391493d5ad8863cb8a23d759",
+    "PBD-constraints.cpp": "9eab9c633258bb58bab99f9ed979da0ac9eb1499d86829b7637d28650eb84a52",
+    "PBD-LICENSE-MIT": "825d46292692c501a88ddd745cddf69e2198b8354f44ae1f192627d79bad2ae7",
+    "Parry-LICENSE-APACHE": "ceacfa4d7fa67df64ab09a56fe248c50a3bfc9bc00374d69bd74ad763b14b89c"
+  }
+}

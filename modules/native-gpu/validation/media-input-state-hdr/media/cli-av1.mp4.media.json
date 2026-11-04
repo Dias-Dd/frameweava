@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "frames": 1,
+  "options": {
+    "preset": "hdr10",
+    "outputColor": {
+      "primaries": "rec2020",
+      "whitePoint": "D65",
+      "transfer": "pq",
+      "reference": "display",
+      "range": "full",
+      "referenceWhiteNits": 100,
+      "peakNits": 1000
+    },
+    "conversion": {
+      "kind": "colorimetric",
+      "clip": false
+    },
+    "alpha": {
+      "mode": "flatten",
+      "matte": [
+        0,
+        0,
+        0
+      ]
+    },
+    "hdr10": {
+      "masteringDisplay": {
+        "red": [
+          0.708,
+          0.292
+        ],
+        "green": [
+          0.17,
+          0.797
+        ],
+        "blue": [
+          0.131,
+          0.046
+        ],
+        "white": [
+          0.3127,
+          0.329
+        ],
+        "minNits": 0.005,
+        "maxNits": 1000
+      },
+      "maxCLL": 1000,
+      "maxFALL": 400
+    },
+    "encoder": "av1_nvenc",
+    "audio": {
+      "path": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\artifacts\\native-media-delivery\\hdr-rHGkAn\\.frameweave-audio-9c02c6d6af9369a6b3cbcc59.f32",
+      "sampleRate": 48000,
+      "channels": 2,
+      "channelLayout": "stereo",
+      "format": "f32le",
+      "startSample": 0
+    },
+    "fps": {
+      "num": 60,
+      "den": 1
+    },
+    "width": 320,
+    "height": 180
+  },
+  "args": [
+    "-hide_banner",
+    "-loglevel",
+    "error",
+    "-n",
+    "-threads",
+    "2",
+    "-f",
+    "rawvideo",
+    "-pixel_format",
+    "gbrpf32le",
+    "-video_size",
+    "320x180",
+    "-framerate",
+    "60/1",
+    "-i",
+    "pipe:0",
+    "-vf",
+    "zscale=matrixin=gbr:matrix=2020_ncl:primariesin=2020:primaries=2020:transferin=smpte2084:transfer=smpte2084:rangein=full:range=limited,format=yuv420p10le,format=p010le",
+    "-c:v",
+    "av1_nvenc",
+    "-preset",
+    "p4",
+    "-rc",
+    "vbr",
+    "-cq",
+    "12",
+    "-b:v",
+    "0",
+    "-pix_fmt",
+    "p010le",
+    "-color_primaries",
+    "bt2020",
+    "-color_trc",
+    "smpte2084",
+    "-colorspace",
+    "bt2020nc",
+    "-color_range",
+    "tv",
+    "-bf",
+    "0",
+    "-f",
+    "ivf",
+    "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\artifacts\\native-media-delivery\\hdr-rHGkAn\\cli-av1.mp4.encoded-1851e2a79569ddc1c1b261a7.ivf"
+  ],
+  "conversions": [
+    {
+      "frame": 0,
+      "clippedSamples": 0
+    }
+  ],
+  "clippedTotal": 0,
+  "frameRecordsTruncated": false,
+  "timings": [
+    {
+      "frame": 0,
+      "phase": "output-transform-and-code-range",
+      "durationMs": 62.460399999999936
+    },
+    {
+      "frame": 0,
+      "phase": "pack-and-alpha-color-adapter",
+      "durationMs": 9.082999999999629
+    },
+    {
+      "frame": 0,
+      "phase": "stdin-write-and-backpressure",
+      "durationMs": 1.1730999999999767
+    }
+  ],
+  "finalDrainMs": 277.65629999999965
+}

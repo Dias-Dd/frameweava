@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "baseline": "e541ce6e09ff80b9f11c8e5e84f82376e782e5b1",
+  "reuse": [
+    {
+      "repository": "https://github.com/storytold/effectcraft",
+      "commit": "ec7ced1f0515f0b6f376dbcc297f1c441f452d6e",
+      "file": "crates/effects/src/transition.rs",
+      "archive": "effectcraft/transition.rs",
+      "license": "MIT",
+      "shaSource": "sources.json",
+      "adaptation": "Polygon ray-edge radius and deterministic block coverage equations; WGSL adapter only. Original renderer/camera implementation not imported."
+    },
+    {
+      "repository": "https://github.com/storytold/effectcraft",
+      "commit": "ec7ced1f0515f0b6f376dbcc297f1c441f452d6e",
+      "file": "crates/effects/src/transition2.rs",
+      "archive": "effectcraft/transition2.rs",
+      "license": "MIT",
+      "shaSource": "sources.json",
+      "adaptation": "Existing explicit-map contrast/local reactor equations. Upstream Auto Softness shortcut is not advertised as adaptive sampling; Frameweave uses its existing shutter/Signal contracts."
+    },
+    {
+      "repository": "local Frameweave reviewed Git object",
+      "commit": "22370b15287262ead71c92601aeed77c0e62f3fc",
+      "file": "modules/native-effects/pa/kernels.ts",
+      "sha256": "b6a59d6c73787c9090b292c7058f4774e930da1179b62492533480b359831ba2",
+      "license": "Apache-2.0",
+      "adaptation": "Unmodified frozen Gaussian, now integrated on Main. Numerical fixture imports this existing kernel directly after SHA verification. Actual Stage uses formally installed processPa, not an alternative production filter library."
+    }
+  ],
+  "specificationReferences": [
+    "https://helpx.adobe.com/after-effects/desktop/apply-effects-and-animation-presets/list-of-effects/transition-effects.html",
+    "https://cycorefx.com/downloads/cfx_hd_std/CycoreFX%20HD%201.8.9%20Manual.pdf"
+  ],
+  "specificationNotice": "Proprietary documentation consulted for control categories only. No proprietary implementation, asset, manual or pixel oracle is redistributed. Independent GPU equations do not establish AE pixel parity.",
+  "newIndependentCode": "Apache-2.0: native orchestration, scalar parameter/time mapping, two-source reactor definitions, explicit mask placement, independent numerical references and validation tooling.",
+  "dependencies": "Existing Frameweave native GPU owner, Pixel ABI, compensated Pair, resource arena, Signal/evaluate, shutterSamples, gamutMatrix and professional media input/output. No new runtime dependency or package manager. ICC fixture provisioning uses the existing pinned project media requirements.",
+  "postSyncBaseline": "d15807425bce2acc060180533ef44b074b45ef25",
+  "formalSharedDependency": {
+    "id": "native-image-effects",
+    "version": "0.3.0",
+    "integrity": "sha256-686bb3fbc815d08e16bb6e710f5a7720627c3efc8cdd4e86be0071af83b9f5ca",
+    "mainCommit": "c91c1f56a5ae1a7ead939318815861fab9815b00",
+    "license": "Apache-2.0",
+    "entry": "processPa",
+    "ownership": "One explicit GPU identity publish transfers retained recipe-result lifetime into the caller scope; no CPU copy/readback."
+  }
+}

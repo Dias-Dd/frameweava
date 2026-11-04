@@ -1,0 +1,9 @@
+[package]
+name = "frameweave-glsl-library-to-wgsl"
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+publish = false
+
+[dependencies]
+naga = { version = "=30.0.1", default-features = false, features = ["glsl-in", "wgsl-in", "wgsl-out"] }

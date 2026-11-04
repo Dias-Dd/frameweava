@@ -1,0 +1,4 @@
+import {readFile,writeFile} from 'node:fs/promises';import {resolve,join} from 'node:path';import {inspectEmbeddedOnnx} from '../../inference/onnx.ts';
+const rows:object[]=[];
+for(const version of ['v11','v10'])for(const role of ['vision','seed','track']){const path=resolve('.frameweave/roto-models/sam2-memory-f32-'+version,role+'.onnx'),bytes=await readFile(path);try{rows.push({version,role,path,admitted:true,inspection:inspectEmbeddedOnnx(bytes,{maxBytes:bytes.length})});}catch(error){rows.push({version,role,path,admitted:false,error:String(error),code:error instanceof Error&&'code'in error?error.code:undefined});}}
+await writeFile(join(process.env.FRAMEWEAVE_AUTHORING_RUN!,'result.json'),JSON.stringify({rows,scope:'Read-only original Core model-admission inspection, no model bytes, hashes, policy or trust changed'},null,2)+'\n');

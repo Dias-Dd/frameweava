@@ -1,0 +1,2232 @@
+{
+  "version": 1,
+  "compileMs": 2020.2826,
+  "environment": {
+    "commit": "e3c88d8d153912b61ace670b050a784115a7d39b",
+    "dirty": true,
+    "node": "v22.19.0",
+    "os": "win32 10.0.26300",
+    "cpu": "Intel(R) Core(TM) Ultra 9 275HX",
+    "systemMemory": 33676390400
+  },
+  "scope": "one cold owner/export per case, shader/decoder/filesystem caches are not flushed; identical new frame range, no repeat frame cache; P95 and peak memory not measured; 2 requested slots on GPU route; reference uses its existing serial policy",
+  "results": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "frames": 6,
+      "backend": "reference",
+      "wallMs": 10699.612200000001,
+      "exportAverageMsPerFrame": 1783.2687000000003,
+      "exportFps": 0.5607679874603305,
+      "result": {
+        "version": 1,
+        "ok": true,
+        "backend": "native-wgpu",
+        "output": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\artifacts\\native-hardware-media\\ab-1793583613288\\1920-reference.mp4",
+        "frames": 6,
+        "audio": null,
+        "accuracy": "PME reference output transform",
+        "previewTransform": false,
+        "timings": {
+          "compileMs": 0,
+          "totalMs": 10632.2686
+        },
+        "transfer": {
+          "previewReadback": false,
+          "exportMaterialization": true,
+          "format": "rgba32float",
+          "route": "native Surface → explicit F32 final-delivery lease → PME colour transform → encoder"
+        },
+        "stats": {
+          "adapter": "AdapterInfo { name: \"NVIDIA GeForce RTX 5070 Laptop GPU\", vendor: 4318, device: 11608, device_type: DiscreteGpu, device_pci_bus_id: \"0000:01:00.0\", driver: \"NVIDIA\", driver_info: \"596.49\", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 32, transient_saves_memory: Some(false), limit_bucket: None }",
+          "allocatedDataBytes": 0,
+          "allocatedImageBytes": 66355200,
+          "backend": "native-wgpu",
+          "blockingGpuWaits": 0,
+          "bufferExports": {
+            "bytes": 199065600,
+            "readbacks": 6,
+            "version": 1
+          },
+          "capabilities": {
+            "backend": "native-wgpu",
+            "computeKernelAbis": [
+              1
+            ],
+            "crossStageGpuHandles": false,
+            "execution": "recording",
+            "f16WorkingBytesPerPixel": 16,
+            "hardwareVerified": true,
+            "limits": {
+              "maxBufferSize": 4294967295,
+              "maxComputeInvocationsPerWorkgroup": 1024,
+              "maxComputeWorkgroupSizeX": 1024,
+              "maxComputeWorkgroupSizeY": 1024,
+              "maxComputeWorkgroupSizeZ": 64,
+              "maxComputeWorkgroupStorageSize": 49152,
+              "maxComputeWorkgroupsPerDimension": 65535,
+              "maxStorageBufferBindingSize": 2147483644,
+              "maxStorageBuffersPerShaderStage": 524288,
+              "maxUniformBufferBindingSize": 65536
+            },
+            "maxKernels": 256,
+            "maxPendingPasses": 1024,
+            "nativeImages": {
+              "admission": "device-and-session-budget",
+              "maxTextureDimension2D": 32768,
+              "version": 1
+            },
+            "nativeMesh": {
+              "exactAdmission": "session-budget",
+              "float32Blendable": true,
+              "version": 1
+            },
+            "pixelKernelAbis": [
+              1,
+              2
+            ],
+            "profiling": "disabled",
+            "storageTypes": [
+              "f32",
+              "u32",
+              "i32"
+            ],
+            "version": 1
+          },
+          "completed": 6,
+          "devicesCreated": 1,
+          "diagnosticBlockingWaits": 0,
+          "diagnosticReadbackBytes": 0,
+          "diagnosticReadbacks": 0,
+          "diagnosticsEnabled": false,
+          "export": {
+            "bytes": 0,
+            "cpuImageCopies": 0,
+            "enabled": false,
+            "framesWritten": 0,
+            "hardwareEncode": false,
+            "httpTransport": false,
+            "pngTransport": false
+          },
+          "externalImages": {
+            "available": true,
+            "enabled": true,
+            "reason": null,
+            "version": 1
+          },
+          "frameBindings": {
+            "allSlotsDrain": false,
+            "slotUpdates": 0,
+            "version": 1
+          },
+          "frameHashes": 0,
+          "hardwareVideo": {
+            "additionalD3D11Devices": 0,
+            "blockingGpuFenceWaits": 0,
+            "cpuPixelReadbacks": 0,
+            "cpuPixelUploads": 0,
+            "driverManagedDecodeBytes": "unknown",
+            "format": "rgba32float",
+            "loaded": false,
+            "requests": 0,
+            "residentSlots": 0,
+            "sources": 0,
+            "timestampPolicy": "ordinal + source-relative PTS verification",
+            "version": 1
+          },
+          "imageReadbacks": 0,
+          "inFlight": 0,
+          "nativeEncoding": {
+            "backend": "native-d3d11-ocio-nvenc",
+            "completed": 0,
+            "compressedBytes": 0,
+            "cpuPixelReadbacks": 0,
+            "cpuPixelUploads": 0,
+            "enabled": false,
+            "encodedBytesCpuOnly": true,
+            "gpuColour": true,
+            "residentSlots": 0,
+            "submitted": 0,
+            "version": 1
+          },
+          "nativeModules": {
+            "additionalD3D11Devices": 0,
+            "blockingGpuFenceWaits": 0,
+            "calls": 0,
+            "contentProfile": "reviewed-local-only",
+            "inputGpuConversions": 0,
+            "instances": 0,
+            "loaded": false,
+            "nativeDevicesCreated": 0,
+            "outputGpuConversions": 0,
+            "productionPixelReadbacks": 0,
+            "runtime": null,
+            "runtimeFileHashes": 0,
+            "surfaceProfile": "explicit-sdr-srgb8",
+            "version": 1,
+            "webRenderCachePrecision": "bgra8"
+          },
+          "numericalValidationPasses": 0,
+          "peakSubmittedInFlight": 1,
+          "persistentState": {
+            "buffers": 0,
+            "cursors": {},
+            "version": 1
+          },
+          "pipelineCache": {
+            "computeAndMeshCreated": 4,
+            "computeAndMeshReused": 1,
+            "displayReuses": 0,
+            "meshAttachmentSetsReused": 0,
+            "retention": "current-program-only",
+            "version": 1,
+            "workingBuffersReused": 0
+          },
+          "pixelTransferBytes": 0,
+          "programUpdates": 1,
+          "protocolVersion": 2,
+          "resourceImports": {
+            "uploadBytes": 0,
+            "version": 1
+          },
+          "slots": 1,
+          "stateCheckpoints": {
+            "bytes": 0,
+            "count": 0,
+            "cpuReadbacks": 0,
+            "restores": 0,
+            "version": 1
+          },
+          "submitted": 6,
+          "workingImageBytes": 66355200,
+          "sourceOutput": {
+            "width": 1920,
+            "height": 1080,
+            "format": "rgba16float",
+            "alpha": "premultiplied",
+            "color": {
+              "primaries": "acescg",
+              "whitePoint": "D60",
+              "transfer": "linear",
+              "reference": "scene",
+              "range": "full",
+              "referenceWhiteNits": 100
+            }
+          }
+        },
+        "report": {
+          "schemaVersion": 1,
+          "frames": 6,
+          "options": {
+            "preset": "hdr10",
+            "encoder": "hevc_nvenc",
+            "outputColor": {
+              "primaries": "rec2020",
+              "whitePoint": "D65",
+              "transfer": "pq",
+              "reference": "display",
+              "range": "full",
+              "referenceWhiteNits": 100,
+              "peakNits": 1000
+            },
+            "conversion": {
+              "kind": "ocio",
+              "clip": true,
+              "transform": {
+                "source": "ACEScg",
+                "display": "Rec.2100-PQ - Display",
+                "view": "ACES 2.0 - HDR 1000 nits (Rec.2020)"
+              }
+            },
+            "alpha": {
+              "mode": "flatten",
+              "matte": [
+                0,
+                0,
+                0
+              ]
+            },
+            "hdr10": {
+              "masteringDisplay": {
+                "red": [
+                  0.708,
+                  0.292
+                ],
+                "green": [
+                  0.17,
+                  0.797
+                ],
+                "blue": [
+                  0.131,
+                  0.046
+                ],
+                "white": [
+                  0.3127,
+                  0.329
+                ],
+                "minNits": 0.005,
+                "maxNits": 1000
+              },
+              "maxCLL": 1000,
+              "maxFALL": 400
+            },
+            "fps": {
+              "num": 120,
+              "den": 1
+            },
+            "width": 1920,
+            "height": 1080
+          },
+          "args": [
+            "-hide_banner",
+            "-loglevel",
+            "error",
+            "-n",
+            "-threads",
+            "2",
+            "-f",
+            "rawvideo",
+            "-pixel_format",
+            "gbrpf32le",
+            "-video_size",
+            "1920x1080",
+            "-framerate",
+            "120/1",
+            "-i",
+            "pipe:0",
+            "-an",
+            "-vf",
+            "zscale=matrixin=gbr:matrix=2020_ncl:primariesin=2020:primaries=2020:transferin=smpte2084:transfer=smpte2084:rangein=full:range=limited,format=yuv420p10le,format=p010le",
+            "-c:v",
+            "hevc_nvenc",
+            "-preset",
+            "p4",
+            "-rc",
+            "vbr",
+            "-cq",
+            "12",
+            "-b:v",
+            "0",
+            "-pix_fmt",
+            "p010le",
+            "-color_primaries",
+            "bt2020",
+            "-color_trc",
+            "smpte2084",
+            "-colorspace",
+            "bt2020nc",
+            "-color_range",
+            "tv",
+            "-bf",
+            "0",
+            "-f",
+            "hevc",
+            "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\artifacts\\native-hardware-media\\ab-1793583613288\\1920-reference.mp4.encoded-eb82f2fcfeb711b27a411978.hevc"
+          ],
+          "conversions": [
+            {
+              "frame": 0,
+              "clippedSamples": 0,
+              "ocio": {
+                "version": "2.5.2",
+                "config": "cg-config-v4.0.0_aces-v2.0_ocio-v2.5",
+                "configSha256": "24ec81841048fc5db160a7bad882263246183385c5d49d0e86e11464917ead15",
+                "spaces": [
+                  "sRGB - Display",
+                  "Gamma 2.2 Rec.709 - Display",
+                  "Display P3 - Display",
+                  "Display P3 HDR - Display",
+                  "P3-D65 - Display",
+                  "Rec.1886 Rec.709 - Display",
+                  "Rec.2100-PQ - Display",
+                  "ST2084-P3-D65 - Display",
+                  "ACES2065-1",
+                  "ACEScc",
+                  "ACEScct",
+                  "ACEScg",
+                  "sRGB Encoded Rec.709 (sRGB)",
+                  "Gamma 1.8 Encoded Rec.709",
+                  "Gamma 2.2 Encoded Rec.709",
+                  "Gamma 2.4 Encoded Rec.709",
+                  "sRGB Encoded P3-D65",
+                  "Gamma 2.2 Encoded AdobeRGB",
+                  "sRGB Encoded AP1",
+                  "Gamma 2.2 Encoded AP1",
+                  "Linear AdobeRGB",
+                  "Linear P3-D65",
+                  "Linear Rec.2020",
+                  "Linear Rec.709 (sRGB)",
+                  "Raw"
+                ],
+                "displays": {
+                  "sRGB - Display": [
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Display P3 - Display": [
+                    "ACES 2.0 - SDR 100 nits (P3 D65)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Display P3 HDR - Display": [
+                    "ACES 2.0 - HDR 1000 nits (P3 D65)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Gamma 2.2 Rec.709 - Display": [
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "P3-D65 - Display": [
+                    "ACES 2.0 - SDR 100 nits (P3 D65)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Rec.1886 Rec.709 - Display": [
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Rec.2100-PQ - Display": [
+                    "ACES 2.0 - HDR 1000 nits (P3 D65)",
+                    "ACES 2.0 - HDR 1000 nits (Rec.2020)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "ST2084-P3-D65 - Display": [
+                    "ACES 2.0 - HDR 1000 nits (P3 D65)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ]
+                },
+                "processorCacheID": "a818c2d009e7f71897ef3461d8319e1d"
+              }
+            },
+            {
+              "frame": 1,
+              "clippedSamples": 0,
+              "ocio": {
+                "version": "2.5.2",
+                "config": "cg-config-v4.0.0_aces-v2.0_ocio-v2.5",
+                "configSha256": "24ec81841048fc5db160a7bad882263246183385c5d49d0e86e11464917ead15",
+                "spaces": [
+                  "sRGB - Display",
+                  "Gamma 2.2 Rec.709 - Display",
+                  "Display P3 - Display",
+                  "Display P3 HDR - Display",
+                  "P3-D65 - Display",
+                  "Rec.1886 Rec.709 - Display",
+                  "Rec.2100-PQ - Display",
+                  "ST2084-P3-D65 - Display",
+                  "ACES2065-1",
+                  "ACEScc",
+                  "ACEScct",
+                  "ACEScg",
+                  "sRGB Encoded Rec.709 (sRGB)",
+                  "Gamma 1.8 Encoded Rec.709",
+                  "Gamma 2.2 Encoded Rec.709",
+                  "Gamma 2.4 Encoded Rec.709",
+                  "sRGB Encoded P3-D65",
+                  "Gamma 2.2 Encoded AdobeRGB",
+                  "sRGB Encoded AP1",
+                  "Gamma 2.2 Encoded AP1",
+                  "Linear AdobeRGB",
+                  "Linear P3-D65",
+                  "Linear Rec.2020",
+                  "Linear Rec.709 (sRGB)",
+                  "Raw"
+                ],
+                "displays": {
+                  "sRGB - Display": [
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Display P3 - Display": [
+                    "ACES 2.0 - SDR 100 nits (P3 D65)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Display P3 HDR - Display": [
+                    "ACES 2.0 - HDR 1000 nits (P3 D65)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Gamma 2.2 Rec.709 - Display": [
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "P3-D65 - Display": [
+                    "ACES 2.0 - SDR 100 nits (P3 D65)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Rec.1886 Rec.709 - Display": [
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Rec.2100-PQ - Display": [
+                    "ACES 2.0 - HDR 1000 nits (P3 D65)",
+                    "ACES 2.0 - HDR 1000 nits (Rec.2020)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "ST2084-P3-D65 - Display": [
+                    "ACES 2.0 - HDR 1000 nits (P3 D65)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ]
+                },
+                "processorCacheID": "a818c2d009e7f71897ef3461d8319e1d"
+              }
+            },
+            {
+              "frame": 2,
+              "clippedSamples": 0,
+              "ocio": {
+                "version": "2.5.2",
+                "config": "cg-config-v4.0.0_aces-v2.0_ocio-v2.5",
+                "configSha256": "24ec81841048fc5db160a7bad882263246183385c5d49d0e86e11464917ead15",
+                "spaces": [
+                  "sRGB - Display",
+                  "Gamma 2.2 Rec.709 - Display",
+                  "Display P3 - Display",
+                  "Display P3 HDR - Display",
+                  "P3-D65 - Display",
+                  "Rec.1886 Rec.709 - Display",
+                  "Rec.2100-PQ - Display",
+                  "ST2084-P3-D65 - Display",
+                  "ACES2065-1",
+                  "ACEScc",
+                  "ACEScct",
+                  "ACEScg",
+                  "sRGB Encoded Rec.709 (sRGB)",
+                  "Gamma 1.8 Encoded Rec.709",
+                  "Gamma 2.2 Encoded Rec.709",
+                  "Gamma 2.4 Encoded Rec.709",
+                  "sRGB Encoded P3-D65",
+                  "Gamma 2.2 Encoded AdobeRGB",
+                  "sRGB Encoded AP1",
+                  "Gamma 2.2 Encoded AP1",
+                  "Linear AdobeRGB",
+                  "Linear P3-D65",
+                  "Linear Rec.2020",
+                  "Linear Rec.709 (sRGB)",
+                  "Raw"
+                ],
+                "displays": {
+                  "sRGB - Display": [
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Display P3 - Display": [
+                    "ACES 2.0 - SDR 100 nits (P3 D65)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Display P3 HDR - Display": [
+                    "ACES 2.0 - HDR 1000 nits (P3 D65)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Gamma 2.2 Rec.709 - Display": [
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "P3-D65 - Display": [
+                    "ACES 2.0 - SDR 100 nits (P3 D65)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Rec.1886 Rec.709 - Display": [
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Rec.2100-PQ - Display": [
+                    "ACES 2.0 - HDR 1000 nits (P3 D65)",
+                    "ACES 2.0 - HDR 1000 nits (Rec.2020)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "ST2084-P3-D65 - Display": [
+                    "ACES 2.0 - HDR 1000 nits (P3 D65)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ]
+                },
+                "processorCacheID": "a818c2d009e7f71897ef3461d8319e1d"
+              }
+            },
+            {
+              "frame": 3,
+              "clippedSamples": 0,
+              "ocio": {
+                "version": "2.5.2",
+                "config": "cg-config-v4.0.0_aces-v2.0_ocio-v2.5",
+                "configSha256": "24ec81841048fc5db160a7bad882263246183385c5d49d0e86e11464917ead15",
+                "spaces": [
+                  "sRGB - Display",
+                  "Gamma 2.2 Rec.709 - Display",
+                  "Display P3 - Display",
+                  "Display P3 HDR - Display",
+                  "P3-D65 - Display",
+                  "Rec.1886 Rec.709 - Display",
+                  "Rec.2100-PQ - Display",
+                  "ST2084-P3-D65 - Display",
+                  "ACES2065-1",
+                  "ACEScc",
+                  "ACEScct",
+                  "ACEScg",
+                  "sRGB Encoded Rec.709 (sRGB)",
+                  "Gamma 1.8 Encoded Rec.709",
+                  "Gamma 2.2 Encoded Rec.709",
+                  "Gamma 2.4 Encoded Rec.709",
+                  "sRGB Encoded P3-D65",
+                  "Gamma 2.2 Encoded AdobeRGB",
+                  "sRGB Encoded AP1",
+                  "Gamma 2.2 Encoded AP1",
+                  "Linear AdobeRGB",
+                  "Linear P3-D65",
+                  "Linear Rec.2020",
+                  "Linear Rec.709 (sRGB)",
+                  "Raw"
+                ],
+                "displays": {
+                  "sRGB - Display": [
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Display P3 - Display": [
+                    "ACES 2.0 - SDR 100 nits (P3 D65)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Display P3 HDR - Display": [
+                    "ACES 2.0 - HDR 1000 nits (P3 D65)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Gamma 2.2 Rec.709 - Display": [
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "P3-D65 - Display": [
+                    "ACES 2.0 - SDR 100 nits (P3 D65)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Rec.1886 Rec.709 - Display": [
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Rec.2100-PQ - Display": [
+                    "ACES 2.0 - HDR 1000 nits (P3 D65)",
+                    "ACES 2.0 - HDR 1000 nits (Rec.2020)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "ST2084-P3-D65 - Display": [
+                    "ACES 2.0 - HDR 1000 nits (P3 D65)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ]
+                },
+                "processorCacheID": "a818c2d009e7f71897ef3461d8319e1d"
+              }
+            },
+            {
+              "frame": 4,
+              "clippedSamples": 0,
+              "ocio": {
+                "version": "2.5.2",
+                "config": "cg-config-v4.0.0_aces-v2.0_ocio-v2.5",
+                "configSha256": "24ec81841048fc5db160a7bad882263246183385c5d49d0e86e11464917ead15",
+                "spaces": [
+                  "sRGB - Display",
+                  "Gamma 2.2 Rec.709 - Display",
+                  "Display P3 - Display",
+                  "Display P3 HDR - Display",
+                  "P3-D65 - Display",
+                  "Rec.1886 Rec.709 - Display",
+                  "Rec.2100-PQ - Display",
+                  "ST2084-P3-D65 - Display",
+                  "ACES2065-1",
+                  "ACEScc",
+                  "ACEScct",
+                  "ACEScg",
+                  "sRGB Encoded Rec.709 (sRGB)",
+                  "Gamma 1.8 Encoded Rec.709",
+                  "Gamma 2.2 Encoded Rec.709",
+                  "Gamma 2.4 Encoded Rec.709",
+                  "sRGB Encoded P3-D65",
+                  "Gamma 2.2 Encoded AdobeRGB",
+                  "sRGB Encoded AP1",
+                  "Gamma 2.2 Encoded AP1",
+                  "Linear AdobeRGB",
+                  "Linear P3-D65",
+                  "Linear Rec.2020",
+                  "Linear Rec.709 (sRGB)",
+                  "Raw"
+                ],
+                "displays": {
+                  "sRGB - Display": [
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Display P3 - Display": [
+                    "ACES 2.0 - SDR 100 nits (P3 D65)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Display P3 HDR - Display": [
+                    "ACES 2.0 - HDR 1000 nits (P3 D65)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Gamma 2.2 Rec.709 - Display": [
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "P3-D65 - Display": [
+                    "ACES 2.0 - SDR 100 nits (P3 D65)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Rec.1886 Rec.709 - Display": [
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Rec.2100-PQ - Display": [
+                    "ACES 2.0 - HDR 1000 nits (P3 D65)",
+                    "ACES 2.0 - HDR 1000 nits (Rec.2020)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "ST2084-P3-D65 - Display": [
+                    "ACES 2.0 - HDR 1000 nits (P3 D65)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ]
+                },
+                "processorCacheID": "a818c2d009e7f71897ef3461d8319e1d"
+              }
+            },
+            {
+              "frame": 5,
+              "clippedSamples": 0,
+              "ocio": {
+                "version": "2.5.2",
+                "config": "cg-config-v4.0.0_aces-v2.0_ocio-v2.5",
+                "configSha256": "24ec81841048fc5db160a7bad882263246183385c5d49d0e86e11464917ead15",
+                "spaces": [
+                  "sRGB - Display",
+                  "Gamma 2.2 Rec.709 - Display",
+                  "Display P3 - Display",
+                  "Display P3 HDR - Display",
+                  "P3-D65 - Display",
+                  "Rec.1886 Rec.709 - Display",
+                  "Rec.2100-PQ - Display",
+                  "ST2084-P3-D65 - Display",
+                  "ACES2065-1",
+                  "ACEScc",
+                  "ACEScct",
+                  "ACEScg",
+                  "sRGB Encoded Rec.709 (sRGB)",
+                  "Gamma 1.8 Encoded Rec.709",
+                  "Gamma 2.2 Encoded Rec.709",
+                  "Gamma 2.4 Encoded Rec.709",
+                  "sRGB Encoded P3-D65",
+                  "Gamma 2.2 Encoded AdobeRGB",
+                  "sRGB Encoded AP1",
+                  "Gamma 2.2 Encoded AP1",
+                  "Linear AdobeRGB",
+                  "Linear P3-D65",
+                  "Linear Rec.2020",
+                  "Linear Rec.709 (sRGB)",
+                  "Raw"
+                ],
+                "displays": {
+                  "sRGB - Display": [
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Display P3 - Display": [
+                    "ACES 2.0 - SDR 100 nits (P3 D65)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Display P3 HDR - Display": [
+                    "ACES 2.0 - HDR 1000 nits (P3 D65)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Gamma 2.2 Rec.709 - Display": [
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "P3-D65 - Display": [
+                    "ACES 2.0 - SDR 100 nits (P3 D65)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Rec.1886 Rec.709 - Display": [
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Rec.2100-PQ - Display": [
+                    "ACES 2.0 - HDR 1000 nits (P3 D65)",
+                    "ACES 2.0 - HDR 1000 nits (Rec.2020)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "ST2084-P3-D65 - Display": [
+                    "ACES 2.0 - HDR 1000 nits (P3 D65)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ]
+                },
+                "processorCacheID": "a818c2d009e7f71897ef3461d8319e1d"
+              }
+            }
+          ],
+          "clippedTotal": 0,
+          "frameRecordsTruncated": false,
+          "timings": [
+            {
+              "frame": 0,
+              "phase": "output-transform-and-code-range",
+              "durationMs": 1441.7129999999997
+            },
+            {
+              "frame": 0,
+              "phase": "pack-and-alpha-color-adapter",
+              "durationMs": 124.48990000000049
+            },
+            {
+              "frame": 0,
+              "phase": "stdin-write-and-backpressure",
+              "durationMs": 9.536099999999351
+            },
+            {
+              "frame": 1,
+              "phase": "output-transform-and-code-range",
+              "durationMs": 1184.5821000000005
+            },
+            {
+              "frame": 1,
+              "phase": "pack-and-alpha-color-adapter",
+              "durationMs": 125.36509999999998
+            },
+            {
+              "frame": 1,
+              "phase": "stdin-write-and-backpressure",
+              "durationMs": 4.059999999999491
+            },
+            {
+              "frame": 2,
+              "phase": "output-transform-and-code-range",
+              "durationMs": 1144.8140000000003
+            },
+            {
+              "frame": 2,
+              "phase": "pack-and-alpha-color-adapter",
+              "durationMs": 115.8099000000002
+            },
+            {
+              "frame": 2,
+              "phase": "stdin-write-and-backpressure",
+              "durationMs": 2.9161000000003696
+            },
+            {
+              "frame": 3,
+              "phase": "output-transform-and-code-range",
+              "durationMs": 1141.8235999999997
+            },
+            {
+              "frame": 3,
+              "phase": "pack-and-alpha-color-adapter",
+              "durationMs": 121.08790000000045
+            },
+            {
+              "frame": 3,
+              "phase": "stdin-write-and-backpressure",
+              "durationMs": 4.090699999998833
+            },
+            {
+              "frame": 4,
+              "phase": "output-transform-and-code-range",
+              "durationMs": 1127.4066000000003
+            },
+            {
+              "frame": 4,
+              "phase": "pack-and-alpha-color-adapter",
+              "durationMs": 115.50799999999981
+            },
+            {
+              "frame": 4,
+              "phase": "stdin-write-and-backpressure",
+              "durationMs": 3.8883999999998196
+            },
+            {
+              "frame": 5,
+              "phase": "output-transform-and-code-range",
+              "durationMs": 1139.8443000000007
+            },
+            {
+              "frame": 5,
+              "phase": "pack-and-alpha-color-adapter",
+              "durationMs": 118.03859999999986
+            },
+            {
+              "frame": 5,
+              "phase": "stdin-write-and-backpressure",
+              "durationMs": 3.6696999999985565
+            }
+          ],
+          "finalDrainMs": 163.29420000000027
+        }
+      }
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "frames": 6,
+      "backend": "gpu",
+      "wallMs": 1541.8765999999996,
+      "exportAverageMsPerFrame": 256.97943333333325,
+      "exportFps": 3.8913619935603156,
+      "result": {
+        "version": 1,
+        "ok": true,
+        "backend": "native-wgpu",
+        "output": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\artifacts\\native-hardware-media\\ab-1793583613288\\1920-gpu.mp4",
+        "frames": 6,
+        "startFrame": 0,
+        "endFrame": 6,
+        "encoder": "hevc_nvenc",
+        "encoderVersion": "ffmpeg version 6.1.1-essentials_build-www.gyan.dev Copyright (c) 2000-2023 the FFmpeg developers",
+        "audio": null,
+        "timings": {
+          "compileMs": 0,
+          "compilation": "included-or-explicit-cached-build",
+          "initMs": 636.2474999999995,
+          "framePipelineMs": 267.35779999999977,
+          "encoderFinishMs": 85.70889999999963,
+          "totalMs": 1540.3922000000002
+        },
+        "scheduling": {
+          "version": 1,
+          "mode": "throughput",
+          "capacity": 2,
+          "concurrency": 2,
+          "completedFrames": 6,
+          "samples": [
+            {
+              "concurrency": 2,
+              "frames": 2,
+              "wallMs": 250.64830000000075,
+              "fps": 7.979308058343081,
+              "next": 2
+            },
+            {
+              "concurrency": 2,
+              "frames": 2,
+              "wallMs": 8.326700000001438,
+              "fps": 240.19119218894096,
+              "next": 2
+            },
+            {
+              "concurrency": 2,
+              "frames": 2,
+              "wallMs": 8.163199999999051,
+              "fps": 245.0019600157086,
+              "next": 2
+            }
+          ]
+        },
+        "stats": {
+          "adapter": "AdapterInfo { name: \"NVIDIA GeForce RTX 5070 Laptop GPU\", vendor: 4318, device: 11608, device_type: DiscreteGpu, device_pci_bus_id: \"0000:01:00.0\", driver: \"NVIDIA\", driver_info: \"596.49\", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 32, transient_saves_memory: Some(false), limit_bucket: None }",
+          "allocatedDataBytes": 0,
+          "allocatedImageBytes": 132710400,
+          "backend": "native-wgpu",
+          "blockingGpuWaits": 0,
+          "bufferExports": {
+            "bytes": 0,
+            "readbacks": 0,
+            "version": 1
+          },
+          "capabilities": {
+            "backend": "native-wgpu",
+            "computeKernelAbis": [
+              1
+            ],
+            "crossStageGpuHandles": false,
+            "execution": "recording",
+            "f16WorkingBytesPerPixel": 16,
+            "hardwareVerified": true,
+            "limits": {
+              "maxBufferSize": 4294967295,
+              "maxComputeInvocationsPerWorkgroup": 1024,
+              "maxComputeWorkgroupSizeX": 1024,
+              "maxComputeWorkgroupSizeY": 1024,
+              "maxComputeWorkgroupSizeZ": 64,
+              "maxComputeWorkgroupStorageSize": 49152,
+              "maxComputeWorkgroupsPerDimension": 65535,
+              "maxStorageBufferBindingSize": 2147483644,
+              "maxStorageBuffersPerShaderStage": 524288,
+              "maxUniformBufferBindingSize": 65536
+            },
+            "maxKernels": 256,
+            "maxPendingPasses": 1024,
+            "nativeImages": {
+              "admission": "device-and-session-budget",
+              "maxTextureDimension2D": 32768,
+              "version": 1
+            },
+            "nativeMesh": {
+              "exactAdmission": "session-budget",
+              "float32Blendable": true,
+              "version": 1
+            },
+            "pixelKernelAbis": [
+              1,
+              2
+            ],
+            "profiling": "disabled",
+            "storageTypes": [
+              "f32",
+              "u32",
+              "i32"
+            ],
+            "version": 1
+          },
+          "completed": 6,
+          "devicesCreated": 1,
+          "diagnosticBlockingWaits": 0,
+          "diagnosticReadbackBytes": 0,
+          "diagnosticReadbacks": 0,
+          "diagnosticsEnabled": false,
+          "export": {
+            "bytes": 0,
+            "cpuImageCopies": 0,
+            "enabled": true,
+            "framesWritten": 6,
+            "hardwareEncode": true,
+            "httpTransport": false,
+            "pngTransport": false
+          },
+          "externalImages": {
+            "available": true,
+            "enabled": true,
+            "reason": null,
+            "version": 1
+          },
+          "frameBindings": {
+            "allSlotsDrain": false,
+            "slotUpdates": 0,
+            "version": 1
+          },
+          "frameHashes": 0,
+          "hardwareVideo": {
+            "additionalD3D11Devices": 1,
+            "blockingGpuFenceWaits": 0,
+            "cpuPixelReadbacks": 0,
+            "cpuPixelUploads": 0,
+            "driverManagedDecodeBytes": "unknown",
+            "format": "rgba32float",
+            "loaded": true,
+            "requests": 0,
+            "residentSlots": 0,
+            "sources": 0,
+            "timestampPolicy": "ordinal + source-relative PTS verification",
+            "version": 1
+          },
+          "imageReadbacks": 0,
+          "inFlight": 0,
+          "nativeEncoding": {
+            "backend": "native-d3d11-ocio-nvenc",
+            "completed": 6,
+            "compressedBytes": 2517000,
+            "cpuPixelReadbacks": 0,
+            "cpuPixelUploads": 0,
+            "enabled": true,
+            "encodedBytesCpuOnly": true,
+            "gpuColour": true,
+            "residentSlots": 2,
+            "submitted": 6,
+            "version": 1
+          },
+          "nativeModules": {
+            "additionalD3D11Devices": 0,
+            "blockingGpuFenceWaits": 0,
+            "calls": 0,
+            "contentProfile": "reviewed-local-only",
+            "inputGpuConversions": 0,
+            "instances": 0,
+            "loaded": false,
+            "nativeDevicesCreated": 0,
+            "outputGpuConversions": 0,
+            "productionPixelReadbacks": 0,
+            "runtime": null,
+            "runtimeFileHashes": 0,
+            "surfaceProfile": "explicit-sdr-srgb8",
+            "version": 1,
+            "webRenderCachePrecision": "bgra8"
+          },
+          "numericalValidationPasses": 0,
+          "peakSubmittedInFlight": 2,
+          "persistentState": {
+            "buffers": 0,
+            "cursors": {},
+            "version": 1
+          },
+          "pipelineCache": {
+            "computeAndMeshCreated": 4,
+            "computeAndMeshReused": 1,
+            "displayReuses": 0,
+            "meshAttachmentSetsReused": 0,
+            "retention": "current-program-only",
+            "version": 1,
+            "workingBuffersReused": 0
+          },
+          "pixelTransferBytes": 0,
+          "programUpdates": 1,
+          "protocolVersion": 2,
+          "resourceImports": {
+            "uploadBytes": 0,
+            "version": 1
+          },
+          "slots": 2,
+          "stateCheckpoints": {
+            "bytes": 0,
+            "count": 0,
+            "cpuReadbacks": 0,
+            "restores": 0,
+            "version": 1
+          },
+          "submitted": 6,
+          "workingImageBytes": 132710400,
+          "sourceOutput": {
+            "width": 1920,
+            "height": 1080,
+            "format": "rgba16float",
+            "alpha": "premultiplied",
+            "color": {
+              "primaries": "acescg",
+              "whitePoint": "D60",
+              "transfer": "linear",
+              "reference": "scene",
+              "range": "full",
+              "referenceWhiteNits": 100
+            }
+          }
+        },
+        "transfer": {
+          "previewReadback": false,
+          "exportMaterialization": false,
+          "format": "p010le",
+          "route": "resident F32 → GPU colour + P010 → registered NVENC GPU resource → compressed bytes only",
+          "zeroCopyEncode": false,
+          "gpuResidentEncode": true,
+          "cpuPixelRoundTrip": false,
+          "provenance": {
+            "ocioVersion": "2.5.2",
+            "shaderAdaptation": "float32-atan2-v1",
+            "config": "cg-config-v4.0.0_aces-v2.0_ocio-v2.5",
+            "configSha256": "24ec81841048fc5db160a7bad882263246183385c5d49d0e86e11464917ead15",
+            "processorCacheID": "a818c2d009e7f71897ef3461d8319e1d",
+            "gpuProcessorCacheID": "GPU Processor: oFlags 263995331 ops :  <RangeOp forward [0, 4096, 0, 4096] > <MatrixOffsetOp forward 5e5f70e3febbf9c618f6c420807aa16d > <FixedFunctionOp ACES_OutputTransform20 (Forward) 1000 0.708 0.292 0.17 0.797 0.131 0.046 0.3127 0.329> <RangeOp forward [0, 10, 0, 10] > <Lut1D 065740e044bbbcb532b3c9f7a37a572e forward linear half domain none>"
+          }
+        },
+        "diagnostics": []
+      }
+    },
+    {
+      "width": 3840,
+      "height": 2160,
+      "frames": 4,
+      "backend": "reference",
+      "wallMs": 24277.844599999997,
+      "exportAverageMsPerFrame": 6069.461149999999,
+      "exportFps": 0.16475927191658524,
+      "result": {
+        "version": 1,
+        "ok": true,
+        "backend": "native-wgpu",
+        "output": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\artifacts\\native-hardware-media\\ab-1793583613288\\3840-reference.mp4",
+        "frames": 4,
+        "audio": null,
+        "accuracy": "PME reference output transform",
+        "previewTransform": false,
+        "timings": {
+          "compileMs": 0,
+          "totalMs": 24220.2453
+        },
+        "transfer": {
+          "previewReadback": false,
+          "exportMaterialization": true,
+          "format": "rgba32float",
+          "route": "native Surface → explicit F32 final-delivery lease → PME colour transform → encoder"
+        },
+        "stats": {
+          "adapter": "AdapterInfo { name: \"NVIDIA GeForce RTX 5070 Laptop GPU\", vendor: 4318, device: 11608, device_type: DiscreteGpu, device_pci_bus_id: \"0000:01:00.0\", driver: \"NVIDIA\", driver_info: \"596.49\", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 32, transient_saves_memory: Some(false), limit_bucket: None }",
+          "allocatedDataBytes": 0,
+          "allocatedImageBytes": 265420800,
+          "backend": "native-wgpu",
+          "blockingGpuWaits": 0,
+          "bufferExports": {
+            "bytes": 530841600,
+            "readbacks": 4,
+            "version": 1
+          },
+          "capabilities": {
+            "backend": "native-wgpu",
+            "computeKernelAbis": [
+              1
+            ],
+            "crossStageGpuHandles": false,
+            "execution": "recording",
+            "f16WorkingBytesPerPixel": 16,
+            "hardwareVerified": true,
+            "limits": {
+              "maxBufferSize": 4294967295,
+              "maxComputeInvocationsPerWorkgroup": 1024,
+              "maxComputeWorkgroupSizeX": 1024,
+              "maxComputeWorkgroupSizeY": 1024,
+              "maxComputeWorkgroupSizeZ": 64,
+              "maxComputeWorkgroupStorageSize": 49152,
+              "maxComputeWorkgroupsPerDimension": 65535,
+              "maxStorageBufferBindingSize": 2147483644,
+              "maxStorageBuffersPerShaderStage": 524288,
+              "maxUniformBufferBindingSize": 65536
+            },
+            "maxKernels": 256,
+            "maxPendingPasses": 1024,
+            "nativeImages": {
+              "admission": "device-and-session-budget",
+              "maxTextureDimension2D": 32768,
+              "version": 1
+            },
+            "nativeMesh": {
+              "exactAdmission": "session-budget",
+              "float32Blendable": true,
+              "version": 1
+            },
+            "pixelKernelAbis": [
+              1,
+              2
+            ],
+            "profiling": "disabled",
+            "storageTypes": [
+              "f32",
+              "u32",
+              "i32"
+            ],
+            "version": 1
+          },
+          "completed": 4,
+          "devicesCreated": 1,
+          "diagnosticBlockingWaits": 0,
+          "diagnosticReadbackBytes": 0,
+          "diagnosticReadbacks": 0,
+          "diagnosticsEnabled": false,
+          "export": {
+            "bytes": 0,
+            "cpuImageCopies": 0,
+            "enabled": false,
+            "framesWritten": 0,
+            "hardwareEncode": false,
+            "httpTransport": false,
+            "pngTransport": false
+          },
+          "externalImages": {
+            "available": true,
+            "enabled": true,
+            "reason": null,
+            "version": 1
+          },
+          "frameBindings": {
+            "allSlotsDrain": false,
+            "slotUpdates": 0,
+            "version": 1
+          },
+          "frameHashes": 0,
+          "hardwareVideo": {
+            "additionalD3D11Devices": 0,
+            "blockingGpuFenceWaits": 0,
+            "cpuPixelReadbacks": 0,
+            "cpuPixelUploads": 0,
+            "driverManagedDecodeBytes": "unknown",
+            "format": "rgba32float",
+            "loaded": false,
+            "requests": 0,
+            "residentSlots": 0,
+            "sources": 0,
+            "timestampPolicy": "ordinal + source-relative PTS verification",
+            "version": 1
+          },
+          "imageReadbacks": 0,
+          "inFlight": 0,
+          "nativeEncoding": {
+            "backend": "native-d3d11-ocio-nvenc",
+            "completed": 0,
+            "compressedBytes": 0,
+            "cpuPixelReadbacks": 0,
+            "cpuPixelUploads": 0,
+            "enabled": false,
+            "encodedBytesCpuOnly": true,
+            "gpuColour": true,
+            "residentSlots": 0,
+            "submitted": 0,
+            "version": 1
+          },
+          "nativeModules": {
+            "additionalD3D11Devices": 0,
+            "blockingGpuFenceWaits": 0,
+            "calls": 0,
+            "contentProfile": "reviewed-local-only",
+            "inputGpuConversions": 0,
+            "instances": 0,
+            "loaded": false,
+            "nativeDevicesCreated": 0,
+            "outputGpuConversions": 0,
+            "productionPixelReadbacks": 0,
+            "runtime": null,
+            "runtimeFileHashes": 0,
+            "surfaceProfile": "explicit-sdr-srgb8",
+            "version": 1,
+            "webRenderCachePrecision": "bgra8"
+          },
+          "numericalValidationPasses": 0,
+          "peakSubmittedInFlight": 1,
+          "persistentState": {
+            "buffers": 0,
+            "cursors": {},
+            "version": 1
+          },
+          "pipelineCache": {
+            "computeAndMeshCreated": 4,
+            "computeAndMeshReused": 1,
+            "displayReuses": 0,
+            "meshAttachmentSetsReused": 0,
+            "retention": "current-program-only",
+            "version": 1,
+            "workingBuffersReused": 0
+          },
+          "pixelTransferBytes": 0,
+          "programUpdates": 1,
+          "protocolVersion": 2,
+          "resourceImports": {
+            "uploadBytes": 0,
+            "version": 1
+          },
+          "slots": 1,
+          "stateCheckpoints": {
+            "bytes": 0,
+            "count": 0,
+            "cpuReadbacks": 0,
+            "restores": 0,
+            "version": 1
+          },
+          "submitted": 4,
+          "workingImageBytes": 265420800,
+          "sourceOutput": {
+            "width": 3840,
+            "height": 2160,
+            "format": "rgba16float",
+            "alpha": "premultiplied",
+            "color": {
+              "primaries": "acescg",
+              "whitePoint": "D60",
+              "transfer": "linear",
+              "reference": "scene",
+              "range": "full",
+              "referenceWhiteNits": 100
+            }
+          }
+        },
+        "report": {
+          "schemaVersion": 1,
+          "frames": 4,
+          "options": {
+            "preset": "hdr10",
+            "encoder": "hevc_nvenc",
+            "outputColor": {
+              "primaries": "rec2020",
+              "whitePoint": "D65",
+              "transfer": "pq",
+              "reference": "display",
+              "range": "full",
+              "referenceWhiteNits": 100,
+              "peakNits": 1000
+            },
+            "conversion": {
+              "kind": "ocio",
+              "clip": true,
+              "transform": {
+                "source": "ACEScg",
+                "display": "Rec.2100-PQ - Display",
+                "view": "ACES 2.0 - HDR 1000 nits (Rec.2020)"
+              }
+            },
+            "alpha": {
+              "mode": "flatten",
+              "matte": [
+                0,
+                0,
+                0
+              ]
+            },
+            "hdr10": {
+              "masteringDisplay": {
+                "red": [
+                  0.708,
+                  0.292
+                ],
+                "green": [
+                  0.17,
+                  0.797
+                ],
+                "blue": [
+                  0.131,
+                  0.046
+                ],
+                "white": [
+                  0.3127,
+                  0.329
+                ],
+                "minNits": 0.005,
+                "maxNits": 1000
+              },
+              "maxCLL": 1000,
+              "maxFALL": 400
+            },
+            "fps": {
+              "num": 120,
+              "den": 1
+            },
+            "width": 3840,
+            "height": 2160
+          },
+          "args": [
+            "-hide_banner",
+            "-loglevel",
+            "error",
+            "-n",
+            "-threads",
+            "2",
+            "-f",
+            "rawvideo",
+            "-pixel_format",
+            "gbrpf32le",
+            "-video_size",
+            "3840x2160",
+            "-framerate",
+            "120/1",
+            "-i",
+            "pipe:0",
+            "-an",
+            "-vf",
+            "zscale=matrixin=gbr:matrix=2020_ncl:primariesin=2020:primaries=2020:transferin=smpte2084:transfer=smpte2084:rangein=full:range=limited,format=yuv420p10le,format=p010le",
+            "-c:v",
+            "hevc_nvenc",
+            "-preset",
+            "p4",
+            "-rc",
+            "vbr",
+            "-cq",
+            "12",
+            "-b:v",
+            "0",
+            "-pix_fmt",
+            "p010le",
+            "-color_primaries",
+            "bt2020",
+            "-color_trc",
+            "smpte2084",
+            "-colorspace",
+            "bt2020nc",
+            "-color_range",
+            "tv",
+            "-bf",
+            "0",
+            "-f",
+            "hevc",
+            "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\artifacts\\native-hardware-media\\ab-1793583613288\\3840-reference.mp4.encoded-cd2cca82f88198a097a1a942.hevc"
+          ],
+          "conversions": [
+            {
+              "frame": 0,
+              "clippedSamples": 0,
+              "ocio": {
+                "version": "2.5.2",
+                "config": "cg-config-v4.0.0_aces-v2.0_ocio-v2.5",
+                "configSha256": "24ec81841048fc5db160a7bad882263246183385c5d49d0e86e11464917ead15",
+                "spaces": [
+                  "sRGB - Display",
+                  "Gamma 2.2 Rec.709 - Display",
+                  "Display P3 - Display",
+                  "Display P3 HDR - Display",
+                  "P3-D65 - Display",
+                  "Rec.1886 Rec.709 - Display",
+                  "Rec.2100-PQ - Display",
+                  "ST2084-P3-D65 - Display",
+                  "ACES2065-1",
+                  "ACEScc",
+                  "ACEScct",
+                  "ACEScg",
+                  "sRGB Encoded Rec.709 (sRGB)",
+                  "Gamma 1.8 Encoded Rec.709",
+                  "Gamma 2.2 Encoded Rec.709",
+                  "Gamma 2.4 Encoded Rec.709",
+                  "sRGB Encoded P3-D65",
+                  "Gamma 2.2 Encoded AdobeRGB",
+                  "sRGB Encoded AP1",
+                  "Gamma 2.2 Encoded AP1",
+                  "Linear AdobeRGB",
+                  "Linear P3-D65",
+                  "Linear Rec.2020",
+                  "Linear Rec.709 (sRGB)",
+                  "Raw"
+                ],
+                "displays": {
+                  "sRGB - Display": [
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Display P3 - Display": [
+                    "ACES 2.0 - SDR 100 nits (P3 D65)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Display P3 HDR - Display": [
+                    "ACES 2.0 - HDR 1000 nits (P3 D65)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Gamma 2.2 Rec.709 - Display": [
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "P3-D65 - Display": [
+                    "ACES 2.0 - SDR 100 nits (P3 D65)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Rec.1886 Rec.709 - Display": [
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Rec.2100-PQ - Display": [
+                    "ACES 2.0 - HDR 1000 nits (P3 D65)",
+                    "ACES 2.0 - HDR 1000 nits (Rec.2020)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "ST2084-P3-D65 - Display": [
+                    "ACES 2.0 - HDR 1000 nits (P3 D65)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ]
+                },
+                "processorCacheID": "a818c2d009e7f71897ef3461d8319e1d"
+              }
+            },
+            {
+              "frame": 1,
+              "clippedSamples": 0,
+              "ocio": {
+                "version": "2.5.2",
+                "config": "cg-config-v4.0.0_aces-v2.0_ocio-v2.5",
+                "configSha256": "24ec81841048fc5db160a7bad882263246183385c5d49d0e86e11464917ead15",
+                "spaces": [
+                  "sRGB - Display",
+                  "Gamma 2.2 Rec.709 - Display",
+                  "Display P3 - Display",
+                  "Display P3 HDR - Display",
+                  "P3-D65 - Display",
+                  "Rec.1886 Rec.709 - Display",
+                  "Rec.2100-PQ - Display",
+                  "ST2084-P3-D65 - Display",
+                  "ACES2065-1",
+                  "ACEScc",
+                  "ACEScct",
+                  "ACEScg",
+                  "sRGB Encoded Rec.709 (sRGB)",
+                  "Gamma 1.8 Encoded Rec.709",
+                  "Gamma 2.2 Encoded Rec.709",
+                  "Gamma 2.4 Encoded Rec.709",
+                  "sRGB Encoded P3-D65",
+                  "Gamma 2.2 Encoded AdobeRGB",
+                  "sRGB Encoded AP1",
+                  "Gamma 2.2 Encoded AP1",
+                  "Linear AdobeRGB",
+                  "Linear P3-D65",
+                  "Linear Rec.2020",
+                  "Linear Rec.709 (sRGB)",
+                  "Raw"
+                ],
+                "displays": {
+                  "sRGB - Display": [
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Display P3 - Display": [
+                    "ACES 2.0 - SDR 100 nits (P3 D65)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Display P3 HDR - Display": [
+                    "ACES 2.0 - HDR 1000 nits (P3 D65)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Gamma 2.2 Rec.709 - Display": [
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "P3-D65 - Display": [
+                    "ACES 2.0 - SDR 100 nits (P3 D65)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Rec.1886 Rec.709 - Display": [
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Rec.2100-PQ - Display": [
+                    "ACES 2.0 - HDR 1000 nits (P3 D65)",
+                    "ACES 2.0 - HDR 1000 nits (Rec.2020)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "ST2084-P3-D65 - Display": [
+                    "ACES 2.0 - HDR 1000 nits (P3 D65)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ]
+                },
+                "processorCacheID": "a818c2d009e7f71897ef3461d8319e1d"
+              }
+            },
+            {
+              "frame": 2,
+              "clippedSamples": 0,
+              "ocio": {
+                "version": "2.5.2",
+                "config": "cg-config-v4.0.0_aces-v2.0_ocio-v2.5",
+                "configSha256": "24ec81841048fc5db160a7bad882263246183385c5d49d0e86e11464917ead15",
+                "spaces": [
+                  "sRGB - Display",
+                  "Gamma 2.2 Rec.709 - Display",
+                  "Display P3 - Display",
+                  "Display P3 HDR - Display",
+                  "P3-D65 - Display",
+                  "Rec.1886 Rec.709 - Display",
+                  "Rec.2100-PQ - Display",
+                  "ST2084-P3-D65 - Display",
+                  "ACES2065-1",
+                  "ACEScc",
+                  "ACEScct",
+                  "ACEScg",
+                  "sRGB Encoded Rec.709 (sRGB)",
+                  "Gamma 1.8 Encoded Rec.709",
+                  "Gamma 2.2 Encoded Rec.709",
+                  "Gamma 2.4 Encoded Rec.709",
+                  "sRGB Encoded P3-D65",
+                  "Gamma 2.2 Encoded AdobeRGB",
+                  "sRGB Encoded AP1",
+                  "Gamma 2.2 Encoded AP1",
+                  "Linear AdobeRGB",
+                  "Linear P3-D65",
+                  "Linear Rec.2020",
+                  "Linear Rec.709 (sRGB)",
+                  "Raw"
+                ],
+                "displays": {
+                  "sRGB - Display": [
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Display P3 - Display": [
+                    "ACES 2.0 - SDR 100 nits (P3 D65)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Display P3 HDR - Display": [
+                    "ACES 2.0 - HDR 1000 nits (P3 D65)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Gamma 2.2 Rec.709 - Display": [
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "P3-D65 - Display": [
+                    "ACES 2.0 - SDR 100 nits (P3 D65)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Rec.1886 Rec.709 - Display": [
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Rec.2100-PQ - Display": [
+                    "ACES 2.0 - HDR 1000 nits (P3 D65)",
+                    "ACES 2.0 - HDR 1000 nits (Rec.2020)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "ST2084-P3-D65 - Display": [
+                    "ACES 2.0 - HDR 1000 nits (P3 D65)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ]
+                },
+                "processorCacheID": "a818c2d009e7f71897ef3461d8319e1d"
+              }
+            },
+            {
+              "frame": 3,
+              "clippedSamples": 0,
+              "ocio": {
+                "version": "2.5.2",
+                "config": "cg-config-v4.0.0_aces-v2.0_ocio-v2.5",
+                "configSha256": "24ec81841048fc5db160a7bad882263246183385c5d49d0e86e11464917ead15",
+                "spaces": [
+                  "sRGB - Display",
+                  "Gamma 2.2 Rec.709 - Display",
+                  "Display P3 - Display",
+                  "Display P3 HDR - Display",
+                  "P3-D65 - Display",
+                  "Rec.1886 Rec.709 - Display",
+                  "Rec.2100-PQ - Display",
+                  "ST2084-P3-D65 - Display",
+                  "ACES2065-1",
+                  "ACEScc",
+                  "ACEScct",
+                  "ACEScg",
+                  "sRGB Encoded Rec.709 (sRGB)",
+                  "Gamma 1.8 Encoded Rec.709",
+                  "Gamma 2.2 Encoded Rec.709",
+                  "Gamma 2.4 Encoded Rec.709",
+                  "sRGB Encoded P3-D65",
+                  "Gamma 2.2 Encoded AdobeRGB",
+                  "sRGB Encoded AP1",
+                  "Gamma 2.2 Encoded AP1",
+                  "Linear AdobeRGB",
+                  "Linear P3-D65",
+                  "Linear Rec.2020",
+                  "Linear Rec.709 (sRGB)",
+                  "Raw"
+                ],
+                "displays": {
+                  "sRGB - Display": [
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Display P3 - Display": [
+                    "ACES 2.0 - SDR 100 nits (P3 D65)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Display P3 HDR - Display": [
+                    "ACES 2.0 - HDR 1000 nits (P3 D65)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Gamma 2.2 Rec.709 - Display": [
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "P3-D65 - Display": [
+                    "ACES 2.0 - SDR 100 nits (P3 D65)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Rec.1886 Rec.709 - Display": [
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "Rec.2100-PQ - Display": [
+                    "ACES 2.0 - HDR 1000 nits (P3 D65)",
+                    "ACES 2.0 - HDR 1000 nits (Rec.2020)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ],
+                  "ST2084-P3-D65 - Display": [
+                    "ACES 2.0 - HDR 1000 nits (P3 D65)",
+                    "ACES 2.0 - SDR 100 nits (Rec.709)",
+                    "Un-tone-mapped",
+                    "Video (colorimetric)",
+                    "Raw"
+                  ]
+                },
+                "processorCacheID": "a818c2d009e7f71897ef3461d8319e1d"
+              }
+            }
+          ],
+          "clippedTotal": 0,
+          "frameRecordsTruncated": false,
+          "timings": [
+            {
+              "frame": 0,
+              "phase": "output-transform-and-code-range",
+              "durationMs": 4826.578799999999
+            },
+            {
+              "frame": 0,
+              "phase": "pack-and-alpha-color-adapter",
+              "durationMs": 462.5637000000024
+            },
+            {
+              "frame": 0,
+              "phase": "stdin-write-and-backpressure",
+              "durationMs": 54.14010000000053
+            },
+            {
+              "frame": 1,
+              "phase": "output-transform-and-code-range",
+              "durationMs": 4464.4884999999995
+            },
+            {
+              "frame": 1,
+              "phase": "pack-and-alpha-color-adapter",
+              "durationMs": 461.10919999999896
+            },
+            {
+              "frame": 1,
+              "phase": "stdin-write-and-backpressure",
+              "durationMs": 62.175200000001496
+            },
+            {
+              "frame": 2,
+              "phase": "output-transform-and-code-range",
+              "durationMs": 4415.8297999999995
+            },
+            {
+              "frame": 2,
+              "phase": "pack-and-alpha-color-adapter",
+              "durationMs": 445.85310000000027
+            },
+            {
+              "frame": 2,
+              "phase": "stdin-write-and-backpressure",
+              "durationMs": 62.14630000000034
+            },
+            {
+              "frame": 3,
+              "phase": "output-transform-and-code-range",
+              "durationMs": 4536.785299999996
+            },
+            {
+              "frame": 3,
+              "phase": "pack-and-alpha-color-adapter",
+              "durationMs": 438.1967000000004
+            },
+            {
+              "frame": 3,
+              "phase": "stdin-write-and-backpressure",
+              "durationMs": 64.11450000000332
+            }
+          ],
+          "finalDrainMs": 298.79359999999724
+        }
+      }
+    },
+    {
+      "width": 3840,
+      "height": 2160,
+      "frames": 4,
+      "backend": "gpu",
+      "wallMs": 1929.1973999999973,
+      "exportAverageMsPerFrame": 482.2993499999993,
+      "exportFps": 2.0734010941544945,
+      "result": {
+        "version": 1,
+        "ok": true,
+        "backend": "native-wgpu",
+        "output": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\artifacts\\native-hardware-media\\ab-1793583613288\\3840-gpu.mp4",
+        "frames": 4,
+        "startFrame": 0,
+        "endFrame": 4,
+        "encoder": "hevc_nvenc",
+        "encoderVersion": "ffmpeg version 6.1.1-essentials_build-www.gyan.dev Copyright (c) 2000-2023 the FFmpeg developers",
+        "audio": null,
+        "timings": {
+          "compileMs": 0,
+          "compilation": "included-or-explicit-cached-build",
+          "initMs": 643.9479999999967,
+          "framePipelineMs": 316.90899999999965,
+          "encoderFinishMs": 95.6533999999956,
+          "totalMs": 1926.6529999999984
+        },
+        "scheduling": {
+          "version": 1,
+          "mode": "throughput",
+          "capacity": 2,
+          "concurrency": 2,
+          "completedFrames": 4,
+          "samples": [
+            {
+              "concurrency": 2,
+              "frames": 2,
+              "wallMs": 289.9498999999996,
+              "fps": 6.8977433687682,
+              "next": 2
+            },
+            {
+              "concurrency": 2,
+              "frames": 2,
+              "wallMs": 26.676299999999173,
+              "fps": 74.97291603408502,
+              "next": 2
+            }
+          ]
+        },
+        "stats": {
+          "adapter": "AdapterInfo { name: \"NVIDIA GeForce RTX 5070 Laptop GPU\", vendor: 4318, device: 11608, device_type: DiscreteGpu, device_pci_bus_id: \"0000:01:00.0\", driver: \"NVIDIA\", driver_info: \"596.49\", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 32, transient_saves_memory: Some(false), limit_bucket: None }",
+          "allocatedDataBytes": 0,
+          "allocatedImageBytes": 530841600,
+          "backend": "native-wgpu",
+          "blockingGpuWaits": 0,
+          "bufferExports": {
+            "bytes": 0,
+            "readbacks": 0,
+            "version": 1
+          },
+          "capabilities": {
+            "backend": "native-wgpu",
+            "computeKernelAbis": [
+              1
+            ],
+            "crossStageGpuHandles": false,
+            "execution": "recording",
+            "f16WorkingBytesPerPixel": 16,
+            "hardwareVerified": true,
+            "limits": {
+              "maxBufferSize": 4294967295,
+              "maxComputeInvocationsPerWorkgroup": 1024,
+              "maxComputeWorkgroupSizeX": 1024,
+              "maxComputeWorkgroupSizeY": 1024,
+              "maxComputeWorkgroupSizeZ": 64,
+              "maxComputeWorkgroupStorageSize": 49152,
+              "maxComputeWorkgroupsPerDimension": 65535,
+              "maxStorageBufferBindingSize": 2147483644,
+              "maxStorageBuffersPerShaderStage": 524288,
+              "maxUniformBufferBindingSize": 65536
+            },
+            "maxKernels": 256,
+            "maxPendingPasses": 1024,
+            "nativeImages": {
+              "admission": "device-and-session-budget",
+              "maxTextureDimension2D": 32768,
+              "version": 1
+            },
+            "nativeMesh": {
+              "exactAdmission": "session-budget",
+              "float32Blendable": true,
+              "version": 1
+            },
+            "pixelKernelAbis": [
+              1,
+              2
+            ],
+            "profiling": "disabled",
+            "storageTypes": [
+              "f32",
+              "u32",
+              "i32"
+            ],
+            "version": 1
+          },
+          "completed": 4,
+          "devicesCreated": 1,
+          "diagnosticBlockingWaits": 0,
+          "diagnosticReadbackBytes": 0,
+          "diagnosticReadbacks": 0,
+          "diagnosticsEnabled": false,
+          "export": {
+            "bytes": 0,
+            "cpuImageCopies": 0,
+            "enabled": true,
+            "framesWritten": 4,
+            "hardwareEncode": true,
+            "httpTransport": false,
+            "pngTransport": false
+          },
+          "externalImages": {
+            "available": true,
+            "enabled": true,
+            "reason": null,
+            "version": 1
+          },
+          "frameBindings": {
+            "allSlotsDrain": false,
+            "slotUpdates": 0,
+            "version": 1
+          },
+          "frameHashes": 0,
+          "hardwareVideo": {
+            "additionalD3D11Devices": 1,
+            "blockingGpuFenceWaits": 0,
+            "cpuPixelReadbacks": 0,
+            "cpuPixelUploads": 0,
+            "driverManagedDecodeBytes": "unknown",
+            "format": "rgba32float",
+            "loaded": true,
+            "requests": 0,
+            "residentSlots": 0,
+            "sources": 0,
+            "timestampPolicy": "ordinal + source-relative PTS verification",
+            "version": 1
+          },
+          "imageReadbacks": 0,
+          "inFlight": 0,
+          "nativeEncoding": {
+            "backend": "native-d3d11-ocio-nvenc",
+            "completed": 4,
+            "compressedBytes": 8666612,
+            "cpuPixelReadbacks": 0,
+            "cpuPixelUploads": 0,
+            "enabled": true,
+            "encodedBytesCpuOnly": true,
+            "gpuColour": true,
+            "residentSlots": 2,
+            "submitted": 4,
+            "version": 1
+          },
+          "nativeModules": {
+            "additionalD3D11Devices": 0,
+            "blockingGpuFenceWaits": 0,
+            "calls": 0,
+            "contentProfile": "reviewed-local-only",
+            "inputGpuConversions": 0,
+            "instances": 0,
+            "loaded": false,
+            "nativeDevicesCreated": 0,
+            "outputGpuConversions": 0,
+            "productionPixelReadbacks": 0,
+            "runtime": null,
+            "runtimeFileHashes": 0,
+            "surfaceProfile": "explicit-sdr-srgb8",
+            "version": 1,
+            "webRenderCachePrecision": "bgra8"
+          },
+          "numericalValidationPasses": 0,
+          "peakSubmittedInFlight": 2,
+          "persistentState": {
+            "buffers": 0,
+            "cursors": {},
+            "version": 1
+          },
+          "pipelineCache": {
+            "computeAndMeshCreated": 4,
+            "computeAndMeshReused": 1,
+            "displayReuses": 0,
+            "meshAttachmentSetsReused": 0,
+            "retention": "current-program-only",
+            "version": 1,
+            "workingBuffersReused": 0
+          },
+          "pixelTransferBytes": 0,
+          "programUpdates": 1,
+          "protocolVersion": 2,
+          "resourceImports": {
+            "uploadBytes": 0,
+            "version": 1
+          },
+          "slots": 2,
+          "stateCheckpoints": {
+            "bytes": 0,
+            "count": 0,
+            "cpuReadbacks": 0,
+            "restores": 0,
+            "version": 1
+          },
+          "submitted": 4,
+          "workingImageBytes": 530841600,
+          "sourceOutput": {
+            "width": 3840,
+            "height": 2160,
+            "format": "rgba16float",
+            "alpha": "premultiplied",
+            "color": {
+              "primaries": "acescg",
+              "whitePoint": "D60",
+              "transfer": "linear",
+              "reference": "scene",
+              "range": "full",
+              "referenceWhiteNits": 100
+            }
+          }
+        },
+        "transfer": {
+          "previewReadback": false,
+          "exportMaterialization": false,
+          "format": "p010le",
+          "route": "resident F32 → GPU colour + P010 → registered NVENC GPU resource → compressed bytes only",
+          "zeroCopyEncode": false,
+          "gpuResidentEncode": true,
+          "cpuPixelRoundTrip": false,
+          "provenance": {
+            "ocioVersion": "2.5.2",
+            "shaderAdaptation": "float32-atan2-v1",
+            "config": "cg-config-v4.0.0_aces-v2.0_ocio-v2.5",
+            "configSha256": "24ec81841048fc5db160a7bad882263246183385c5d49d0e86e11464917ead15",
+            "processorCacheID": "a818c2d009e7f71897ef3461d8319e1d",
+            "gpuProcessorCacheID": "GPU Processor: oFlags 263995331 ops :  <RangeOp forward [0, 4096, 0, 4096] > <MatrixOffsetOp forward 5e5f70e3febbf9c618f6c420807aa16d > <FixedFunctionOp ACES_OutputTransform20 (Forward) 1000 0.708 0.292 0.17 0.797 0.131 0.046 0.3127 0.329> <RangeOp forward [0, 10, 0, 10] > <Lut1D 065740e044bbbcb532b3c9f7a37a572e forward linear half domain none>"
+          }
+        },
+        "diagnostics": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "effectcraft": {
+    "repository": "https://github.com/storytold/effectcraft",
+    "commit": "ec7ced1f0515f0b6f376dbcc297f1c441f452d6e",
+    "license": "MIT (dual-license choice)",
+    "files": [
+      {
+        "file": "vendor/EffectCraft-stabilize.rs",
+        "sha256": "a8a6eaf64fada94d3c85338e7c0314840c70eddc5b6f301b2a76fcbebc5017b2"
+      },
+      {
+        "file": "vendor/EffectCraft-LICENSE-MIT",
+        "sha256": "7b6db9a363688683feacdf9b528f059637f2e5d2edbacd8720fc9b26781c9abe"
+      }
+    ]
+  },
+  "reuse": {
+    "implementation": "Existing Frameweave Native dense LK, forward/backward consistency, IRLS model fits, compensated arithmetic, image sampler, resource lifecycle and rational time. Original upstream stabilization source is retained for provenance/design comparison; new banded temporal least squares and local-grid solver are not claimed verbatim Rust ports.",
+    "cost": "Upstream CPU Analyzer/plan ties sparse features, camtrack/subspace and Rust serialization together. Reusing current GPU fields and small Compute kernels avoids a second host and pixel/model round trips. No external rendering framework or new GPU owner is added.",
+    "allocationChange": "Existing own image-estimation opticalFlow now ping-pongs two fields per pyramid level; same kernels/order/F32 publications; affected legacy GPU/F64 regression included.",
+    "catalog": "Read-only effects search stabilization --mode keyword in own FRAMEWEAVE_HOME returned [] before qualification; no external package installed."
+  }
+}

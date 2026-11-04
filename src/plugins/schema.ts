@@ -1,0 +1,74 @@
+import {EngineError} from '../core/errors.ts';
+import type {PluginManifest,Parameter,PluginUse} from './sdk.ts';
+import {validateV2Definitions,v2Parameters} from './parameters-v2.ts';
+export const PLUGIN_KINDS=['function','generator','modifier','image-effect','composite-effect','preset'];
+export const PORTS=['image','number','string','boolean','json'];
+const own=(o:object,k:string)=>Object.hasOwn(o,k);
+export const plain=(v:unknown):v is Record<string,unknown>=>!!v&&typeof v==='object'&&!Array.isArray(v)&&[Object.prototype,null].includes(Object.getPrototypeOf(v));
+export function fail(code:string,message:string):never{throw new EngineError(code,message);}
+export function version(v:string):number[]{if(!/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/.test(v))fail('E_PLUGIN_VERSION',`Expected stable major.minor.patch version, got ${v}`);const parts=v.split('.').map(Number);if(!parts.every(Number.isSafeInteger))fail('E_PLUGIN_VERSION','Version components must be safe integers');return parts;}
+export function satisfies(actual:string,range:string):boolean {
+  const mode=range[0],target=range.startsWith('>=')?range.slice(2):['^','~'].includes(mode)?range.slice(1):range,a=version(actual),b=version(target);
+  const compare=(x:number[],y:number[])=>x[0]-y[0]||x[1]-y[1]||x[2]-y[2];
+  if(range.startsWith('>='))return compare(a,b)>=0;
+  if(mode!=='^'&&mode!=='~')return compare(a,b)===0;
+  const upper=mode==='~'?[b[0],b[1]+1,0]:b[0]?[b[0]+1,0,0]:b[1]?[0,b[1]+1,0]:[0,0,b[2]+1];
+  return compare(a,b)>=0&&compare(a,upper)<0;
+}
+export function fields(value:unknown,allowed:string[],where:string):asserts value is Record<string,unknown>{if(!plain(value))fail('E_PLUGIN_SCHEMA',`${where} must be an object`);for(const k of Object.keys(value))if(!allowed.includes(k))fail('E_PLUGIN_SCHEMA',`${where}: unknown field ${k}`);}
+export function parseRef(ref:string):{id:string;version:string}{const match=/^([a-z][a-z0-9.-]*)@(\d+\.\d+\.\d+)$/.exec(ref);if(!match)fail('E_PLUGIN_VERSION',`Use an exact id@major.minor.patch reference: ${ref}`);version(match[2]);return {id:match[1],version:match[2]};}
+export function assertParameterProtocol(manifest:{parameterSchemaVersion?:unknown},supported:1|2=2):void {
+  const revision=manifest.parameterSchemaVersion===undefined?1:manifest.parameterSchemaVersion;
+  if(revision!==1&&revision!==2||typeof revision!=='number'||revision>supported)fail('E_PLUGIN_PARAMETER_SCHEMA',`Unsupported parameterSchemaVersion ${String(revision)}; loader supports through ${supported}`);
+}
+export function parameters(manifest:PluginManifest,values:Record<string,unknown>={},partial=false):Record<string,any>{
+  assertParameterProtocol(manifest);if(manifest.parameterSchemaVersion===2)return v2Parameters(manifest,values,'resolved');
+  if(!plain(values))fail('E_PLUGIN_PARAM',`${manifest.id} parameters must be an object`);
+  const out:Record<string,any>={};
+  for(const key of Object.keys(values))if(!own(manifest.parameters,key))fail('E_PLUGIN_PARAM',`${manifest.id}: unknown parameter ${key}`);
+  for(const [key,s] of Object.entries(manifest.parameters)){
+    if(!own(values,key)&&partial)continue;
+    if(!own(values,key)&&s.required)fail('E_PLUGIN_PARAM',`${manifest.id}.${key}: required parameter is missing`);
+    const v=own(values,key)?values[key]:s.default;
+    if(typeof v!==s.type||v===null||typeof v==='number'&&(!Number.isFinite(v)||s.integer&&!Number.isInteger(v)||s.minimum!==undefined&&v<s.minimum||s.maximum!==undefined&&v>s.maximum)||s.enum&&!s.enum.includes(v as any))fail('E_PLUGIN_PARAM',`${manifest.id}.${key}: invalid ${s.type} value ${String(v)}`);
+    out[key]=v;
+  }
+  return out;
+}
+export function validateUse(value:unknown):asserts value is PluginUse {
+  fields(value,['plugin','params','as','inputs'],'pipeline step');if(typeof value.plugin!=='string')fail('E_PLUGIN_SCHEMA','Missing plugin reference');parseRef(value.plugin);
+  if(value.params!==undefined&&!plain(value.params))fail('E_PLUGIN_SCHEMA','params must be an object');
+  if(value.as!==undefined&&(typeof value.as!=='string'||!/^[A-Za-z][\w-]*$/.test(value.as)))fail('E_PLUGIN_SCHEMA','Invalid step alias');
+  if(value.inputs!==undefined){if(!plain(value.inputs))fail('E_PLUGIN_SCHEMA','inputs must be an object');for(const v of Object.values(value.inputs))if(typeof v!=='string'||!/^([A-Za-z][\w-]*)\.([A-Za-z][\w-]*)$/.test(v))fail('E_PLUGIN_SCHEMA','Input reference must be stepAlias.port');}
+}
+export function validateManifest(value:unknown):asserts value is PluginManifest {
+  fields(value,['schemaVersion','id','name','version','kind','engine','description','tags','entry','apiVersion','compatible','parameters','inputs','outputs','dependencies','resources','examples','pipeline','temporal','parameterSchemaVersion'],'manifest');
+  assertParameterProtocol(value);
+  if(value.schemaVersion!==1||value.apiVersion!==1)fail('E_PLUGIN_SCHEMA','Unsupported plugin schema/API version');
+  for(const key of ['id','name','version','kind','engine','description','compatible'])if(typeof value[key]!=='string'||!value[key])fail('E_PLUGIN_SCHEMA',`Missing nonempty ${key}`);
+  if(!/^[a-z][a-z0-9.-]*$/.test(value.id as string))fail('E_PLUGIN_SCHEMA','Invalid plugin ID');
+  version(value.version as string);satisfies('0.1.0',value.compatible as string);
+  if(!PLUGIN_KINDS.includes(value.kind as string))fail('E_PLUGIN_SCHEMA','Unknown plugin kind');
+  if(value.temporal!==undefined&&(value.temporal!=='resample-prefix'||value.kind!=='image-effect'))fail('E_PLUGIN_SCHEMA','Invalid temporal requirement');
+  for(const key of ['tags','examples'])if(value[key]!==undefined&&(!Array.isArray(value[key])||!(value[key] as unknown[]).every(x=>typeof x==='string')))fail('E_PLUGIN_SCHEMA',`${key} must contain strings`);
+  for(const key of ['inputs','outputs']){if(!plain(value[key]))fail('E_PLUGIN_SCHEMA',`${key} must be a port map`);for(const [name,type]of Object.entries(value[key] as object))if(!/^[A-Za-z]\w*$/.test(name)||!PORTS.includes(type))fail('E_PLUGIN_SCHEMA',`Invalid ${key} port ${name}`);}
+  if(!plain(value.parameters))fail('E_PLUGIN_SCHEMA','Missing parameter schemas');
+  if(value.parameterSchemaVersion===2)validateV2Definitions(value.parameters);
+  else {
+  for(const [name,raw]of Object.entries(value.parameters as object)){
+    if(!/^[A-Za-z]\w*$/.test(name))fail('E_PLUGIN_SCHEMA','Invalid parameter name');
+    fields(raw,['type','default','required','minimum','maximum','integer','enum'],`parameter ${name}`);
+    if(raw.required!==undefined&&typeof raw.required!=='boolean')fail('E_PLUGIN_SCHEMA',`Invalid required flag: ${name}`);
+    if(!['number','string','boolean'].includes(raw.type as string)||(raw.required===true?own(raw,'default'):!own(raw,'default')))fail('E_PLUGIN_SCHEMA',`Parameter ${name} needs either a default or required:true without a default`);
+    for(const key of ['minimum','maximum'])if(raw[key]!==undefined&&(typeof raw[key]!=='number'||!Number.isFinite(raw[key])||raw.type!=='number'))fail('E_PLUGIN_SCHEMA',`Invalid ${key}`);
+    if(raw.minimum!==undefined&&raw.maximum!==undefined&&Number(raw.minimum)>Number(raw.maximum))fail('E_PLUGIN_SCHEMA','Inverted parameter range');
+    if(raw.integer!==undefined&&(typeof raw.integer!=='boolean'||raw.type!=='number'))fail('E_PLUGIN_SCHEMA','Invalid integer constraint');
+    if(raw.enum!==undefined&&(!Array.isArray(raw.enum)||!raw.enum.length||!raw.enum.every(x=>typeof x===raw.type)))fail('E_PLUGIN_SCHEMA','Invalid enum');
+  }
+  parameters(value as unknown as PluginManifest,Object.fromEntries(Object.entries(value.parameters as Record<string,Parameter>).filter(([,p])=>own(p,'default')).map(([key,p])=>[key,p.default])),true);
+  }
+  if(value.dependencies!==undefined){if(!plain(value.dependencies))fail('E_PLUGIN_SCHEMA','Invalid dependencies');for(const [id,range]of Object.entries(value.dependencies)) {if(!/^[a-z][a-z0-9.-]*$/.test(id)||typeof range!=='string')fail('E_PLUGIN_SCHEMA','Invalid dependency');satisfies('0.1.0',range);}}
+  if(value.resources!==undefined){if(!plain(value.resources))fail('E_PLUGIN_SCHEMA','Invalid resources');for(const [id,r]of Object.entries(value.resources)){fields(r,['src','kind'],'resource');if(!/^[A-Za-z]\w*$/.test(id)||typeof r.src!=='string'||!['image','font','model','file'].includes(r.kind as string))fail('E_PLUGIN_SCHEMA','Invalid resource');}}
+  if(value.kind==='preset'){if(value.entry!==undefined||!Array.isArray(value.pipeline)||!value.pipeline.length)fail('E_PLUGIN_SCHEMA','Preset requires a nonempty pipeline, without entry');value.pipeline.forEach(validateUse);}
+  else if(typeof value.entry!=='string'||!value.entry||value.pipeline!==undefined)fail('E_PLUGIN_SCHEMA','Executable plugin requires entry, without preset pipeline');
+}

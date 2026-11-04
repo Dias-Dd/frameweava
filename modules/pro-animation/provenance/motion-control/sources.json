@@ -1,0 +1,49 @@
+{
+  "baseline": "49b9832cd9d5a3d2be9d9001d1d0fb6578c9999d",
+  "repositoryLicense": "Apache-2.0",
+  "directReusedSources": [
+    {
+      "path": "src/core/animation.ts",
+      "sha256": "46d208a844d6455fd0905a1606cab51c8800ac10e08cfe7766b3c12dab9d26d0"
+    },
+    {
+      "path": "src/media/compositor-geometry.ts",
+      "sha256": "38f058e2a43ccf31124fea904216f776857505d8741c3a1eb38b4d2007d42a17"
+    },
+    {
+      "path": "modules/pro-animation/src/aim-2d.ts",
+      "sha256": "486d8d4329dfea6f9096836dca431c6575eef7fa9ab6b8316bf5fd76c53de831"
+    },
+    {
+      "path": "modules/pro-animation/src/inertia.ts",
+      "sha256": "c436bd44c4ea39be4ad0d3b9951757d0ee05f475d57085d1ccb345fd6b2ffab8"
+    },
+    {
+      "path": "modules/pro-animation/src/geometry.ts",
+      "sha256": "63753098a6caade398045d6aa0968e11e43fec2ea0c0b14a28222ffd108352fe"
+    }
+  ],
+  "upstream": [
+    {
+      "project": "EffectCraft",
+      "commit": "861c51f8187bf56efc77cc7b60fc4a513d2b7198",
+      "file": "crates/path/src/interp.rs",
+      "sha256": "07d929d3cbe2d62982de5b1043a386020e859e1be97dd457cd8c1fdda146f362",
+      "license": "MIT selected",
+      "archive": "modules/pro-animation/vendor/effectcraft/path-interp.rs",
+      "notice": "modules/pro-animation/vendor/effectcraft/NOTICE"
+    },
+    {
+      "project": "Motion",
+      "commit": "2f9f45e0d3b56ab3a9cf2f8b1a42336a6d4c762c",
+      "file": "packages/motion-dom/src/animation/generators/inertia.ts",
+      "sha256": "297e345fb4364bc8e4d1143c030ce8880b263807391ffc151ada97d863782806",
+      "license": "MIT",
+      "notice": "modules/pro-animation/attribution/motion/NOTICE"
+    }
+  ],
+  "newDependencies": [],
+  "adaptation": "No additional third-party algorithm is copied or translated. Thin 2D composition calls current Core springs, audited Motion inertia, existing EffectCraft-derived cubic geometry/Aim/Layer conventions. Original small closed-form point projections and stable interception avoid importing a stateful rig/physics/effect host.",
+  "reference": "https://helpx.adobe.com/after-effects/desktop/work-with-expressions/expression-language-reference/expression-language-reference.html",
+  "aeParityClaim": false
+}

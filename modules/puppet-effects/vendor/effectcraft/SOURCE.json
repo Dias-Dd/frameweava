@@ -1,0 +1,56 @@
+{
+  "repository": "https://github.com/storytold/effectcraft",
+  "commit": "861c51f8187bf56efc77cc7b60fc4a513d2b7198",
+  "selectedLicense": "MIT",
+  "scope": "Standalone std-only ARAP and alpha-mesh numerical source, selected MIT. No UI, renderer, fonts, app runtime or external crates.",
+  "files": [
+    {
+      "local": "arap.rs",
+      "upstream": "crates/effects/src/puppet/arap.rs",
+      "bytes": 11969,
+      "sha256": "a22043550530a172939a26363116d50118df8df4469e53f404769a5eda4169fd"
+    },
+    {
+      "local": "Cargo.toml",
+      "upstream": "Cargo.toml",
+      "bytes": 12280,
+      "sha256": "ac554bace1806254a37ce8d36221bb768941e85ac2f00257e82215337ae6bdab"
+    },
+    {
+      "local": "LICENSE-MIT",
+      "upstream": "LICENSE-MIT",
+      "bytes": 1103,
+      "sha256": "7b6db9a363688683feacdf9b528f059637f2e5d2edbacd8720fc9b26781c9abe"
+    },
+    {
+      "local": "LICENSE-APACHE",
+      "upstream": "LICENSE-APACHE",
+      "bytes": 10174,
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+    },
+    {
+      "local": "NOTICE",
+      "upstream": "NOTICE",
+      "bytes": 16583,
+      "sha256": "c7ecb79db5a35e749c037773c9867d07f6ff598edce3d72bd443b4d00f24e0be"
+    },
+    {
+      "local": "ATTRIBUTION.md",
+      "upstream": "ATTRIBUTION.md",
+      "bytes": 17388,
+      "sha256": "75c6a201b63cb36c270bdc85b73356ef39b0c65617847722fe0aa717736e1eed"
+    },
+    {
+      "local": "mesh.rs",
+      "upstream": "crates/effects/src/puppet/mesh.rs",
+      "bytes": 22424,
+      "sha256": "6b50886629a78ebde4873bb6815e02305f5e4bf1290f817fc54835036a0205f7"
+    },
+    {
+      "local": "mesh-tests.rs",
+      "upstream": "crates/effects/src/puppet/tests.rs",
+      "bytes": 12810,
+      "sha256": "fbec9e8ff7727253dd154cb889b46d0de0c5156bc1ed58a4ff5f4e2293ce37ec"
+    }
+  ]
+}

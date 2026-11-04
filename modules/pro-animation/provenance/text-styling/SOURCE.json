@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "parent": "61c51672e90e70f840625cb8231183d343053365",
+  "license": "Existing repository Apache-2.0; retained shaped font/geometry notices apply to unchanged fixtures",
+  "reuse": [
+    "Original guarded coverage shader with only per-unit ink buffer access adapted",
+    "Original affine multiplication, glyphTranslate/glyphRotate, selector contract and Signal/keyframe evaluator",
+    "Unchanged real font/path preparation with its recorded sources, licenses and integrity"
+  ],
+  "newThirdPartyDependencies": [],
+  "implementationChoice": "Per-unit control/palette transport needs no external editor or Rust runtime; adapting existing native coverage is smaller than importing an unrelated text renderer. No new upstream algorithm copied.",
+  "referenceOnly": [
+    {
+      "title": "Adobe official Animating text",
+      "url": "https://helpx.adobe.com/after-effects/desktop/animating-text/text-animation/animating-text.html",
+      "use": "Feature vocabulary only; no source, code, assets or parameter equivalence copied"
+    }
+  ],
+  "files": {
+    "modules/pro-animation/src/text-animation/native.ts": "62faaa9647b387733863794c697f42ada2a7499470b4d407dcc49c1a0054747a",
+    "modules/pro-animation/src/text-styling/ink.ts": "34a7e3c2efad5bf0e7febc75d77f76569d8a4ee0a5a1ecfcc2e43acc17ad4e23",
+    "modules/pro-animation/src/text-styling/controls.ts": "4344e093a3e2517732c4324121154b1953a5939272be53ba5bfb4afc5e28f404",
+    "modules/pro-animation/src/text-styling/selectors.ts": "e38809a700602ea281923039aff641d74f8c9eba64ddd416a69528659320d3b6",
+    "modules/native-effects/pa/kernels.ts": "b6a59d6c73787c9090b292c7058f4774e930da1179b62492533480b359831ba2",
+    "modules/pro-animation/validation/native-text-scene/prepared.ts": "6327c4b1ff0a7e45cf54f53a398eb951dccb742af93631cde9e279d13b4f162a"
+  }
+}

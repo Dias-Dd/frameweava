@@ -1,0 +1,7 @@
+import {linear709} from '../../../src/media/surface.ts';
+import {floatImageResource,type ImageSource} from './index.ts';
+// Verbatim Frameweave Apache-2.0 QA authored-mask shader from video-roto/stage.ts.
+const seedShader={abiVersion:1 as const,id:'fixture/video-roto/authored-mask',version:'1.0.0',inputCount:0,parameterWords:0,code:`fn pixel(p:vec2u)->vec4f{let q=(vec2f(p)+.5)*vec2f(614.,410.)/vec2f(outputSize());let points=array<vec2f,22>(vec2f(241,219),vec2f(266,202),vec2f(279,191),vec2f(286,161),vec2f(294,187),vec2f(306,167),vec2f(317,199),vec2f(337,203),vec2f(376,207),vec2f(409,215),vec2f(473,207),vec2f(504,220),vec2f(519,243),vec2f(535,286),vec2f(517,290),vec2f(490,268),vec2f(464,274),vec2f(421,285),vec2f(356,282),vec2f(291,286),vec2f(263,278),vec2f(283,247));var inside=false;var j=21u;for(var i=0u;i<22u;i++){let a=points[i];let b=points[j];if((a.y>q.y)!=(b.y>q.y)){if(q.x<(b.x-a.x)*(q.y-a.y)/(b.y-a.y)+a.x){inside=!inside;}}j=i;}return vec4f(0.,0.,0.,select(0.,1.,inside));}`};
+export const photo=floatImageResource('photo'),halfPhoto=floatImageResource('photo',{format:'rgba16float'});
+export const seedMask:ImageSource=()=>{throw Error('Prepare authored mask source during Stage init');};
+seedMask.prepare=async init=>{const kernel=await init.gpu.compile(seedShader);return {source:frame=>init.gpu.run(kernel,[],{output:{width:init.width,height:init.height,format:'rgba32float',alpha:'premultiplied',color:linear709},signal:frame.signal})};};

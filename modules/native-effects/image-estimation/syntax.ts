@@ -1,0 +1,21 @@
+import {spawnSync} from 'node:child_process';
+import {resolve,join} from 'node:path';
+import {writeFile} from 'node:fs/promises';
+import {nativePixelShader} from '../../gpu-effects/pixel-shader.ts';
+import {nativeComputeShader} from '../../gpu-effects/compute-shader.ts';
+import * as pixels from './kernels.ts';
+import * as grain from './grain-kernels.ts';
+import * as deblur from './deblur-kernels.ts';
+import * as motion from './motion-compute.ts';
+import * as statistics from './statistics-compute.ts';
+import * as dc from './deblur-compute.ts';
+import {fitKernels} from './fit-compute.ts';
+import {fixtureKernels} from './stage.ts';
+import type {GpuPixelKernelSource} from '../../gpu-effects/pixel-types.ts';
+import type {GpuComputeKernelSource} from '../../gpu-effects/compute-types.ts';
+const output=resolve(process.env.FRAMEWEAVE_ESTIMATION_RUN!);let count=0;const errors:object[]=[];
+const check=async(name:string,code:string)=>{await writeFile(join(output,name+'.wgsl'),code);const p=spawnSync(resolve('.frameweave/ocio-target/release/frameweave-ocio-wgsl.exe'),[],{input:JSON.stringify({validateWgsl:code}),encoding:'utf8',windowsHide:true});if(p.status!==0)errors.push({name,diagnostic:p.stderr});count++;};
+for(const [name,k]of Object.entries({...pixels,...grain,...deblur,fixtureSource:fixtureKernels.source}))if(typeof k==='object')await check(name,nativePixelShader(k as GpuPixelKernelSource));
+for(const [name,k]of Object.entries({...motion,...statistics,...dc,fixtureFlow:fixtureKernels.field}))if(typeof k==='object')await check(name,nativeComputeShader(k as GpuComputeKernelSource));
+for(const kind of ['translation','similarity','affine','homography','rolling'] as const){const fit=fitKernels(kind);await check(kind+'-rows',nativeComputeShader(fit.rows));await check(kind+'-finish',nativeComputeShader(fit.finish));}
+if(errors.length)throw Error(JSON.stringify(errors));console.log(JSON.stringify({ok:true,count,method:'Naga complete WGSL parse and IR validation; not runtime qualification'}));

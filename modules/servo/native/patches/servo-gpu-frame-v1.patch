@@ -1,0 +1,1098 @@
+diff --git a/servo-paint-api-0.7.0/lib.rs b/servo-paint-api-0.7.0/lib.rs
+index 7f63ee4..6988145 100644
+--- a/servo-paint-api-0.7.0/lib.rs
++++ b/servo-paint-api-0.7.0/lib.rs
+@@ -15,7 +15,8 @@ use malloc_size_of_derive::MallocSizeOf;
+ use parking_lot::RwLock;
+ use rustc_hash::FxHashMap;
+ use servo_base::Epoch;
+-use servo_base::id::{PainterId, PipelineId, WebViewId};
++pub use servo_base::id::PainterId;
++use servo_base::id::{PipelineId, WebViewId};
+ use smallvec::SmallVec;
+ use strum::IntoStaticStr;
+ use style_traits::CSSPixel;
+@@ -556,15 +557,21 @@ pub trait WebRenderExternalImageApi {
+ }
+ 
+ /// Type of WebRender External Image Handler.
+-#[derive(Clone, Copy)]
++#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+ pub enum WebRenderImageHandlerType {
+     WebGl,
+     Media,
+     WebGpu,
++    ExternalGpu,
+ }
+ 
++/// Tag bit used for ExternalGpu `ExternalImageId`s so `WebRenderExternalImageHandlers`
++/// can route `lock()` and `unlock()` calls without needing a mutable reference to
++/// `Paint`'s internal `WebRenderExternalImageIdManager`.
++pub const EXTERNAL_GPU_ID_TAG: u64 = 1u64 << 62;
++
+ /// List of WebRender external images to be shared among all external image
+-/// consumers (WebGL, Media, WebGPU).
++/// consumers (WebGL, Media, WebGPU, ExternalGpu).
+ /// It ensures that external image identifiers are unique.
+ #[derive(Default)]
+ struct WebRenderExternalImageIdManagerInner {
+@@ -591,6 +598,9 @@ impl WebRenderExternalImageIdManager {
+     }
+ 
+     pub fn get(&self, key: &ExternalImageId) -> Option<WebRenderImageHandlerType> {
++        if (key.0 & EXTERNAL_GPU_ID_TAG) != 0 {
++            return Some(WebRenderImageHandlerType::ExternalGpu);
++        }
+         self.0.read().external_images.get(key).cloned()
+     }
+ }
+@@ -603,6 +613,8 @@ pub struct WebRenderExternalImageHandlers {
+     media_handler: Option<Box<dyn WebRenderExternalImageApi>>,
+     /// WebGPU handler.
+     webgpu_handler: Option<Box<dyn WebRenderExternalImageApi>>,
++    /// External GPU texture handler (D3D11 / ANGLE zero-readback interop).
++    external_gpu_handler: Option<Box<dyn WebRenderExternalImageApi>>,
+     /// A [`WebRenderExternalImageIdManager`] responsible for creating new [`ExternalImageId`]s.
+     /// This is shared with the WebGL, WebGPU, and hardware-accelerated media threads and
+     /// all other instances of [`WebRenderExternalImageHandlers`] -- one per WebRender instance.
+@@ -615,6 +627,7 @@ impl WebRenderExternalImageHandlers {
+             webgl_handler: Default::default(),
+             media_handler: Default::default(),
+             webgpu_handler: Default::default(),
++            external_gpu_handler: Default::default(),
+             id_manager,
+         }
+     }
+@@ -632,6 +645,7 @@ impl WebRenderExternalImageHandlers {
+             WebRenderImageHandlerType::WebGl => self.webgl_handler = Some(handler),
+             WebRenderImageHandlerType::Media => self.media_handler = Some(handler),
+             WebRenderImageHandlerType::WebGpu => self.webgpu_handler = Some(handler),
++            WebRenderImageHandlerType::ExternalGpu => self.external_gpu_handler = Some(handler),
+         }
+     }
+ }
+@@ -681,6 +695,18 @@ impl ExternalImageHandler for WebRenderExternalImageHandlers {
+                     source,
+                 }
+             },
++            WebRenderImageHandlerType::ExternalGpu => {
++                let (source, size) = self.external_gpu_handler.as_mut().unwrap().lock(key.0);
++                let flip_y = get_external_gpu_image_by_id(key.0)
++                    .map(|d| d.flip_y)
++                    .unwrap_or(false);
++                let uv = if flip_y {
++                    TexelRect::new(0.0, size.height as f32, size.width as f32, 0.0)
++                } else {
++                    TexelRect::new(0.0, 0.0, size.width as f32, size.height as f32)
++                };
++                ExternalImage { uv, source }
++            },
+         }
+     }
+ 
+@@ -697,6 +723,9 @@ impl ExternalImageHandler for WebRenderExternalImageHandlers {
+             WebRenderImageHandlerType::WebGpu => {
+                 self.webgpu_handler.as_mut().unwrap().unlock(key.0)
+             },
++            WebRenderImageHandlerType::ExternalGpu => {
++                self.external_gpu_handler.as_mut().unwrap().unlock(key.0)
++            },
+         };
+     }
+ }
+@@ -819,3 +848,353 @@ impl PinchZoomInfos {
+         }
+     }
+ }
++
++// ============================================================================
++// External GPU Resource Registry & Zero-Readback Interop Bridge
++// ============================================================================
++
++#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
++pub enum ExternalGpuPixelFormat {
++    Bgra8Unorm,
++    Rgba16Float,
++}
++
++#[derive(Clone, Debug)]
++pub struct ExternalGpuImageDescriptor {
++    pub name: String,
++    pub external_id: u64,
++    pub d3d11_share_handle: usize,
++    pub width: u32,
++    pub height: u32,
++    pub format: ExternalGpuPixelFormat,
++    pub is_opaque: bool,
++    pub flip_y: bool,
++    pub generation: u64,
++}
++
++#[derive(Clone, Debug, Default, Serialize, Deserialize)]
++pub struct ExternalGpuLockEvent {
++    pub painter_id_raw: u32,
++    pub external_id: u64,
++    pub share_handle: usize,
++    pub gl_texture_id: u32,
++    pub width: u32,
++    pub height: u32,
++    pub lock_us: f64,
++    pub imported_new_pbuffer: bool,
++}
++
++#[derive(Clone, Debug, Default, Serialize, Deserialize)]
++pub struct ExternalGpuTelemetrySnapshot {
++    pub image_cache_gpu_hits: u64,
++    pub image_cache_cpu_bytes: u64,
++    pub lock_call_count: u64,
++    pub unlock_call_count: u64,
++    pub release_call_count: u64,
++    pub total_lock_us: f64,
++    pub total_unlock_us: f64,
++    pub last_lock_us: f64,
++    pub last_unlock_us: f64,
++    pub last_wr_update_us: f64,
++    pub last_wr_render_us: f64,
++    pub display_list_received_count: u64,
++    pub last_locked_gl_textures: Vec<ExternalGpuLockEvent>,
++}
++
++/// Trait implemented by the embedder's ANGLE/D3D11 backend to import shared D3D11
++/// textures into the active WebRender GL context during `ExternalImageHandler::lock`
++/// and release them during `unlock` / `release`.
++pub trait ExternalGpuTextureImporter: Send + Sync {
++    /// Returns `(gl_texture_id, imported_new_pbuffer)`.
++    fn lock_external_gpu_texture(
++        &self,
++        painter_id: PainterId,
++        desc: &ExternalGpuImageDescriptor,
++    ) -> (u32, bool);
++
++    fn unlock_external_gpu_texture(&self, painter_id: PainterId, external_id: u64);
++
++    fn release_external_gpu_texture(&self, painter_id: PainterId, external_id: u64);
++}
++
++#[derive(Clone, Debug)]
++struct BoundWebRenderKeyEntry {
++    external_id: u64,
++    painter_id: PainterId,
++    image_key: ImageKey,
++    descriptor: ImageDescriptor,
++    dirty: bool,
++}
++
++#[derive(Default)]
++struct ExternalGpuRegistryInner {
++    next_id_offset: u64,
++    next_wr_resource_id: u32,
++    by_name: HashMap<String, u64>,
++    by_id: FxHashMap<u64, ExternalGpuImageDescriptor>,
++    bindings: Vec<BoundWebRenderKeyEntry>,
++    pending_deletions: Vec<(PainterId, ImageKey, u64)>,
++    telemetry: ExternalGpuTelemetrySnapshot,
++    native_frames: FxHashMap<PainterId, NativeFrameProgress>,
++    importer: Option<Arc<dyn ExternalGpuTextureImporter>>,
++}
++
++static EXTERNAL_GPU_REGISTRY: std::sync::LazyLock<RwLock<ExternalGpuRegistryInner>> =
++    std::sync::LazyLock::new(|| RwLock::new(ExternalGpuRegistryInner::default()));
++
++pub fn set_external_gpu_texture_importer(importer: Arc<dyn ExternalGpuTextureImporter>) {
++    EXTERNAL_GPU_REGISTRY.write().importer = Some(importer);
++}
++
++pub fn get_external_gpu_texture_importer() -> Option<Arc<dyn ExternalGpuTextureImporter>> {
++    EXTERNAL_GPU_REGISTRY.read().importer.clone()
++}
++
++/// Parses a `gpu-resource://<name>` URL into its resource name.
++pub fn parse_gpu_resource_name(url_str: &str) -> Option<String> {
++    let rest = url_str.strip_prefix("gpu-resource:")?;
++    let trimmed = rest.trim_start_matches('/');
++    let without_query = trimmed.split(&['?', '#'][..]).next().unwrap_or(trimmed);
++    let clean = without_query.trim_matches('/');
++    if clean.is_empty() {
++        None
++    } else {
++        Some(clean.to_string())
++    }
++}
++
++/// Registers or updates an external GPU texture in the global registry.
++pub fn register_external_gpu_image(
++    name: &str,
++    d3d11_share_handle: usize,
++    width: u32,
++    height: u32,
++    format: ExternalGpuPixelFormat,
++    is_opaque: bool,
++    flip_y: bool,
++) -> u64 {
++    let mut reg = EXTERNAL_GPU_REGISTRY.write();
++    if let Some(&existing_id) = reg.by_name.get(name) {
++        if let Some(desc) = reg.by_id.get_mut(&existing_id) {
++            desc.d3d11_share_handle = d3d11_share_handle;
++            desc.width = width;
++            desc.height = height;
++            desc.format = format;
++            desc.is_opaque = is_opaque;
++            desc.flip_y = flip_y;
++            desc.generation += 1;
++        }
++        for b in reg.bindings.iter_mut() {
++            if b.external_id == existing_id {
++                b.descriptor.size =
++                    webrender_api::units::DeviceIntSize::new(width as i32, height as i32);
++                let mut flags = webrender_api::ImageDescriptorFlags::empty();
++                if is_opaque {
++                    flags |= webrender_api::ImageDescriptorFlags::IS_OPAQUE;
++                }
++                b.descriptor.flags = flags;
++                b.dirty = true;
++            }
++        }
++        return existing_id;
++    }
++
++    reg.next_id_offset += 1;
++    let external_id = EXTERNAL_GPU_ID_TAG | reg.next_id_offset;
++    let desc = ExternalGpuImageDescriptor {
++        name: name.to_string(),
++        external_id,
++        d3d11_share_handle,
++        width,
++        height,
++        format,
++        is_opaque,
++        flip_y,
++        generation: 1,
++    };
++    reg.by_name.insert(name.to_string(), external_id);
++    reg.by_id.insert(external_id, desc);
++    external_id
++}
++
++/// Marks a registered external GPU texture as dirty so WebRender invalidates its Picture Cache
++/// and re-samples the GPU texture on the next frame.
++pub fn mark_external_gpu_image_dirty(name: &str) -> bool {
++    let mut reg = EXTERNAL_GPU_REGISTRY.write();
++    let Some(&external_id) = reg.by_name.get(name) else {
++        return false;
++    };
++    if let Some(desc) = reg.by_id.get_mut(&external_id) {
++        desc.generation += 1;
++    }
++    for b in reg.bindings.iter_mut() {
++        if b.external_id == external_id {
++            b.dirty = true;
++        }
++    }
++    true
++}
++
++/// Unregisters an external GPU texture and schedules WebRender `ImageKey` deletion
++/// and ANGLE Pbuffer/GL texture release.
++pub fn unregister_external_gpu_image(name: &str) -> bool {
++    let mut reg = EXTERNAL_GPU_REGISTRY.write();
++    let Some(external_id) = reg.by_name.remove(name) else {
++        return false;
++    };
++    reg.by_id.remove(&external_id);
++    let old_bindings = std::mem::take(&mut reg.bindings);
++    let mut remaining = Vec::with_capacity(old_bindings.len());
++    for b in old_bindings {
++        if b.external_id == external_id {
++            reg.pending_deletions
++                .push((b.painter_id, b.image_key, external_id));
++        } else {
++            remaining.push(b);
++        }
++    }
++    reg.bindings = remaining;
++    true
++}
++
++pub fn get_external_gpu_image_by_name(name: &str) -> Option<ExternalGpuImageDescriptor> {
++    let reg = EXTERNAL_GPU_REGISTRY.read();
++    let id = *reg.by_name.get(name)?;
++    reg.by_id.get(&id).cloned()
++}
++
++pub fn get_external_gpu_image_by_id(external_id: u64) -> Option<ExternalGpuImageDescriptor> {
++    EXTERNAL_GPU_REGISTRY.read().by_id.get(&external_id).cloned()
++}
++
++pub fn allocate_external_gpu_webrender_image_key(painter_id: PainterId) -> ImageKey {
++    let mut reg = EXTERNAL_GPU_REGISTRY.write();
++    reg.next_wr_resource_id += 1;
++    let resource_id = 0x4000_0000u32 + reg.next_wr_resource_id;
++    ImageKey::new(painter_id.into(), resource_id)
++}
++
++pub fn record_external_gpu_webrender_binding(
++    external_id: u64,
++    painter_id: PainterId,
++    image_key: ImageKey,
++    descriptor: ImageDescriptor,
++) {
++    let mut reg = EXTERNAL_GPU_REGISTRY.write();
++    if let Some(existing) = reg
++        .bindings
++        .iter_mut()
++        .find(|b| b.external_id == external_id && b.painter_id == painter_id && b.image_key == image_key)
++    {
++        existing.descriptor = descriptor;
++        existing.dirty = true;
++        return;
++    }
++    reg.bindings.push(BoundWebRenderKeyEntry {
++        external_id,
++        painter_id,
++        image_key,
++        descriptor,
++        dirty: false,
++    });
++}
++
++pub fn take_dirty_external_gpu_updates(
++    painter_id: PainterId,
++) -> Vec<(ImageKey, ImageDescriptor, ExternalImageData)> {
++    let mut reg = EXTERNAL_GPU_REGISTRY.write();
++    let mut out = Vec::new();
++    for b in reg.bindings.iter_mut() {
++        if b.painter_id == painter_id && b.dirty {
++            b.dirty = false;
++            out.push((
++                b.image_key,
++                b.descriptor,
++                ExternalImageData {
++                    id: ExternalImageId(b.external_id),
++                    channel_index: 0,
++                    image_type: webrender_api::ExternalImageType::TextureHandle(
++                        webrender_api::ImageBufferKind::Texture2D,
++                    ),
++                    normalized_uvs: false,
++                },
++            ));
++        }
++    }
++    out
++}
++
++pub fn take_pending_external_gpu_deletions(painter_id: PainterId) -> Vec<(ImageKey, u64)> {
++    let mut reg = EXTERNAL_GPU_REGISTRY.write();
++    let mut out = Vec::new();
++    let mut keep = Vec::new();
++    for (p_id, img_key, ext_id) in reg.pending_deletions.drain(..) {
++        if p_id == painter_id {
++            out.push((img_key, ext_id));
++        } else {
++            keep.push((p_id, img_key, ext_id));
++        }
++    }
++    reg.pending_deletions = keep;
++    out
++}
++
++pub fn record_image_cache_gpu_hit(cpu_bytes: u64) {
++    let mut reg = EXTERNAL_GPU_REGISTRY.write();
++    reg.telemetry.image_cache_gpu_hits += 1;
++    reg.telemetry.image_cache_cpu_bytes += cpu_bytes;
++}
++
++pub fn record_external_gpu_lock_event(event: ExternalGpuLockEvent) {
++    let mut reg = EXTERNAL_GPU_REGISTRY.write();
++    reg.telemetry.lock_call_count += 1;
++    reg.telemetry.total_lock_us += event.lock_us;
++    reg.telemetry.last_lock_us = event.lock_us;
++    if reg.telemetry.last_locked_gl_textures.len() >= 16 {
++        reg.telemetry.last_locked_gl_textures.remove(0);
++    }
++    reg.telemetry.last_locked_gl_textures.push(event);
++}
++
++pub fn record_external_gpu_unlock_event(unlock_us: f64) {
++    let mut reg = EXTERNAL_GPU_REGISTRY.write();
++    reg.telemetry.unlock_call_count += 1;
++    reg.telemetry.total_unlock_us += unlock_us;
++    reg.telemetry.last_unlock_us = unlock_us;
++}
++
++pub fn record_external_gpu_release_event() {
++    let mut reg = EXTERNAL_GPU_REGISTRY.write();
++    reg.telemetry.release_call_count += 1;
++}
++
++pub fn record_webrender_render_timing(wr_update_us: f64, wr_render_us: f64) {
++    let mut reg = EXTERNAL_GPU_REGISTRY.write();
++    reg.telemetry.last_wr_update_us = wr_update_us;
++    reg.telemetry.last_wr_render_us = wr_render_us;
++}
++
++pub fn record_display_list_received(painter: PainterId) {
++    let mut reg = EXTERNAL_GPU_REGISTRY.write();
++    reg.telemetry.display_list_received_count += 1;
++    reg.native_frames.entry(painter).or_default().display_lists += 1;
++}
++
++pub fn get_external_gpu_telemetry_snapshot() -> ExternalGpuTelemetrySnapshot {
++    EXTERNAL_GPU_REGISTRY.read().telemetry.clone()
++}
++
++pub fn reset_external_gpu_telemetry() {
++    let mut reg = EXTERNAL_GPU_REGISTRY.write();
++    reg.telemetry = ExternalGpuTelemetrySnapshot::default();
++}
++
++
++/// Control-plane completion epochs only; never pixel validation or GPU readback.
++#[derive(Clone, Copy, Debug, Default, Serialize)]
++pub struct NativeFrameProgress { pub submitted: u64, pub ready: u64, pub display_lists: u64, pub external_updates: u64 }
++pub fn native_frame_progress(painter: PainterId) -> NativeFrameProgress { EXTERNAL_GPU_REGISTRY.read().native_frames.get(&painter).copied().unwrap_or_default() }
++pub fn record_native_frame_submitted(painter: PainterId) { EXTERNAL_GPU_REGISTRY.write().native_frames.entry(painter).or_default().submitted += 1; }
++pub fn record_native_frame_ready(painter: PainterId) { EXTERNAL_GPU_REGISTRY.write().native_frames.entry(painter).or_default().ready += 1; }
++pub fn record_native_external_update(painter: PainterId) { EXTERNAL_GPU_REGISTRY.write().native_frames.entry(painter).or_default().external_updates += 1; }
++pub fn forget_native_frame_progress(painter: PainterId) { EXTERNAL_GPU_REGISTRY.write().native_frames.remove(&painter); }
+diff --git a/servo-net-0.7.0/image_cache.rs b/servo-net-0.7.0/image_cache.rs
+index 4258068..ab598dc 100644
+--- a/servo-net-0.7.0/image_cache.rs
++++ b/servo-net-0.7.0/image_cache.rs
+@@ -34,8 +34,11 @@ use servo_base::id::{PipelineId, WebViewId};
+ use servo_base::threadpool::ThreadPool;
+ use servo_url::{ImmutableOrigin, ServoUrl};
+ use uuid::Uuid;
+-use webrender_api::ImageKey as WebRenderImageKey;
+ use webrender_api::units::DeviceIntSize;
++use webrender_api::{
++    ExternalImageData, ExternalImageId, ExternalImageType, ImageBufferKind, ImageDescriptor,
++    ImageDescriptorFlags, ImageFormat as WebRenderImageFormat, ImageKey as WebRenderImageKey,
++};
+ 
+ use crate::image_cache::KeyCacheState::PipelineClosed;
+ 
+@@ -780,6 +783,149 @@ impl ImageCacheStore {
+             })
+     }
+ 
++    /// Intercepts `gpu-resource://<name>` URLs and resolves them directly from
++    /// `paint_api`'s `ExternalGpuImageRegistry` as WebRender `ExternalImageData`
++    /// (`TextureHandle(Texture2D)`) with zero CPU pixel allocation or decoding.
++    fn ensure_external_gpu_image_loaded(
++        &mut self,
++        url: &ServoUrl,
++        origin: &ImmutableOrigin,
++        cors_setting: Option<CorsSettings>,
++    ) {
++        let Some(resource_name) = paint_api::parse_gpu_resource_name(url.as_str()) else {
++            return;
++        };
++        let Some(gpu_desc) = paint_api::get_external_gpu_image_by_name(&resource_name) else {
++            warn!("External GPU resource not found in registry for URL: {}", url);
++            return;
++        };
++
++        let cache_key = (url.clone(), origin.clone(), cors_setting);
++        if let Some(existing) = self.completed_loads.get(&cache_key) {
++            if let ImageResponse::Loaded(Image::Raster(ref existing_img), _) =
++                existing.image_response
++            {
++                if existing_img.metadata.width == gpu_desc.width &&
++                    existing_img.metadata.height == gpu_desc.height
++                {
++                    return;
++                }
++                if let Some(image_key) = existing_img.id {
++                    let mut flags = ImageDescriptorFlags::empty();
++                    if gpu_desc.is_opaque {
++                        flags |= ImageDescriptorFlags::IS_OPAQUE;
++                    }
++                    let descriptor = ImageDescriptor {
++                        size: DeviceIntSize::new(gpu_desc.width as i32, gpu_desc.height as i32),
++                        stride: None,
++                        format: WebRenderImageFormat::BGRA8,
++                        offset: 0,
++                        flags,
++                    };
++                    let ext_data = ExternalImageData {
++                        id: ExternalImageId(gpu_desc.external_id),
++                        channel_index: 0,
++                        image_type: ExternalImageType::TextureHandle(ImageBufferKind::Texture2D),
++                        normalized_uvs: false,
++                    };
++                    self.paint_api.update_image(
++                        image_key,
++                        descriptor,
++                        SerializableImageData::External(ext_data),
++                        None,
++                    );
++                    paint_api::record_external_gpu_webrender_binding(
++                        gpu_desc.external_id,
++                        self.webview_id.into(),
++                        image_key,
++                        descriptor,
++                    );
++                    let raster_image = RasterImage {
++                        metadata: ImageMetadata {
++                            width: gpu_desc.width,
++                            height: gpu_desc.height,
++                        },
++                        format: PixelFormat::BGRA8,
++                        frames: vec![ImageFrame {
++                            delay: None,
++                            byte_range: 0..0,
++                            width: gpu_desc.width,
++                            height: gpu_desc.height,
++                        }],
++                        bytes: Arc::new(Vec::new()),
++                        id: Some(image_key),
++                        cors_status: CorsStatus::Safe,
++                        is_opaque: gpu_desc.is_opaque,
++                        loop_count: None,
++                    };
++                    let image_response =
++                        ImageResponse::Loaded(Image::Raster(Arc::new(raster_image)), url.clone());
++                    let load_key = existing.id;
++                    self.completed_loads
++                        .insert(cache_key, CompletedLoad::new(image_response, load_key));
++                    return;
++                }
++            }
++        }
++
++        let image_key =
++            paint_api::allocate_external_gpu_webrender_image_key(self.webview_id.into());
++        let mut flags = ImageDescriptorFlags::empty();
++        if gpu_desc.is_opaque {
++            flags |= ImageDescriptorFlags::IS_OPAQUE;
++        }
++        let descriptor = ImageDescriptor {
++            size: DeviceIntSize::new(gpu_desc.width as i32, gpu_desc.height as i32),
++            stride: None,
++            format: WebRenderImageFormat::BGRA8,
++            offset: 0,
++            flags,
++        };
++        let ext_data = ExternalImageData {
++            id: ExternalImageId(gpu_desc.external_id),
++            channel_index: 0,
++            image_type: ExternalImageType::TextureHandle(ImageBufferKind::Texture2D),
++            normalized_uvs: false,
++        };
++        self.paint_api.add_image(
++            image_key,
++            descriptor,
++            SerializableImageData::External(ext_data),
++            false,
++        );
++        paint_api::record_external_gpu_webrender_binding(
++            gpu_desc.external_id,
++            self.webview_id.into(),
++            image_key,
++            descriptor,
++        );
++        paint_api::record_image_cache_gpu_hit(0);
++
++        let raster_image = RasterImage {
++            metadata: ImageMetadata {
++                width: gpu_desc.width,
++                height: gpu_desc.height,
++            },
++            format: PixelFormat::BGRA8,
++            frames: vec![ImageFrame {
++                delay: None,
++                byte_range: 0..0,
++                width: gpu_desc.width,
++                height: gpu_desc.height,
++            }],
++            bytes: Arc::new(Vec::new()),
++            id: Some(image_key),
++            cors_status: CorsStatus::Safe,
++            is_opaque: gpu_desc.is_opaque,
++            loop_count: None,
++        };
++        let image_response =
++            ImageResponse::Loaded(Image::Raster(Arc::new(raster_image)), url.clone());
++        let load_key = self.pending_loads.keygen.next();
++        self.completed_loads
++            .insert(cache_key, CompletedLoad::new(image_response, load_key));
++    }
++
+     /// Handle a message from one of the decoder worker threads or from a sync
+     /// decoding operation.
+     fn handle_decoder(&mut self, msg: DecoderMsg) {
+@@ -948,7 +1094,8 @@ impl ImageCache for ImageCacheImpl {
+         origin: ImmutableOrigin,
+         cors_setting: Option<CorsSettings>,
+     ) -> Option<Image> {
+-        let store = self.store.lock();
++        let mut store = self.store.lock();
++        store.ensure_external_gpu_image_loaded(&url, &origin, cors_setting);
+         let result = store.get_completed_image_if_available(url, origin, cors_setting);
+         match result {
+             Some(Ok((img, _))) => Some(img),
+@@ -963,6 +1110,7 @@ impl ImageCache for ImageCacheImpl {
+         cors_setting: Option<CorsSettings>,
+     ) -> ImageCacheResult {
+         let mut store = self.store.lock();
++        store.ensure_external_gpu_image_loaded(&url, &origin, cors_setting);
+         if let Some(result) =
+             store.get_completed_image_if_available(url.clone(), origin.clone(), cors_setting)
+         {
+diff --git a/servo-paint-0.7.0/painter.rs b/servo-paint-0.7.0/painter.rs
+index 2b8b6fb..0b0c7e5 100644
+--- a/servo-paint-0.7.0/painter.rs
++++ b/servo-paint-0.7.0/painter.rs
+@@ -137,6 +137,7 @@ pub(crate) struct Painter {
+ 
+ impl Drop for Painter {
+     fn drop(&mut self) {
++        paint_api::forget_native_frame_progress(self.painter_id);
+         if let Err(error) = self.rendering_context.make_current() {
+             error!("Failed to make the rendering context current: {error:?}");
+         }
+@@ -229,6 +230,10 @@ impl Painter {
+         ));
+ 
+         let painter_id = PainterId::next();
++        external_image_handlers.set_handler(
++            Box::new(ExternalGpuImages::new(painter_id)),
++            WebRenderImageHandlerType::ExternalGpu,
++        );
+         let (mut webrender_renderer, webrender_api_sender) = webrender::create_webrender_instance(
+             webrender_gl.clone(),
+             Box::new(RenderNotifier::new(painter_id, paint.paint_proxy.clone())),
+@@ -259,6 +264,7 @@ impl Painter {
+                 render_backend_hooks: Some(Box::new(BoostWebRenderThread)),
+                 scene_builder_hooks: Some(Box::new(BoostWebRenderThread)),
+                 shared_font_namespace: Some(painter_id.into()),
++                surface_origin_is_top_left: true,
+                 ..Default::default()
+             },
+             None,
+@@ -327,6 +333,36 @@ impl Painter {
+             self.generate_frame(&mut transaction, RenderReasons::ANIMATED_PROPERTY);
+             self.send_transaction(transaction);
+         }
++
++        let deletions = paint_api::take_pending_external_gpu_deletions(self.painter_id);
++        let dirty_gpu = paint_api::take_dirty_external_gpu_updates(self.painter_id);
++        if !deletions.is_empty() || !dirty_gpu.is_empty() {
++            paint_api::record_native_external_update(self.painter_id);
++            if !deletions.is_empty() {
++                let _ = self.rendering_context.make_current();
++                if let Some(importer) = paint_api::get_external_gpu_texture_importer() {
++                    for (_, ext_id) in &deletions {
++                        importer.release_external_gpu_texture(self.painter_id, *ext_id);
++                        paint_api::record_external_gpu_release_event();
++                    }
++                }
++            }
++            let mut transaction = Transaction::new();
++            for (image_key, _) in deletions {
++                transaction.delete_image(image_key);
++            }
++            for (image_key, descriptor, ext_data) in dirty_gpu {
++                transaction.update_image(
++                    image_key,
++                    descriptor,
++                    ImageData::External(ext_data),
++                    &DirtyRect::All,
++                );
++            }
++            transaction.invalidate_rendered_frame(RenderReasons::TESTING);
++            self.generate_frame(&mut transaction, RenderReasons::SCENE);
++            self.send_transaction(transaction);
++        }
+     }
+ 
+     #[track_caller]
+@@ -422,17 +458,22 @@ impl Painter {
+             None,
+             time_profiler_channel.clone(),
+             || {
++                let t_update = std::time::Instant::now();
+                 if let Some(renderer) = self.webrender_renderer.as_mut() {
+                     renderer.update();
+                 }
++                let wr_update_us = t_update.elapsed().as_secs_f64() * 1_000_000.0;
+ 
+                 // Paint the scene.
+                 // TODO(gw): Take notice of any errors the renderer returns!
++                let t_render = std::time::Instant::now();
+                 self.clear_background();
+                 if let Some(renderer) = self.webrender_renderer.as_mut() {
+                     let size = self.rendering_context.size2d().to_i32();
+                     renderer.render(size, 0 /* buffer_age */).ok();
+                 }
++                let wr_render_us = t_render.elapsed().as_secs_f64() * 1_000_000.0;
++                paint_api::record_webrender_render_timing(wr_update_us, wr_render_us);
+             }
+         );
+ 
+@@ -583,6 +624,7 @@ impl Painter {
+     pub(crate) fn generate_frame(&self, transaction: &mut Transaction, reason: RenderReasons) {
+         transaction.generate_frame(0, true /* present */, false /* tracked */, reason);
+         self.pending_frames.set(self.pending_frames.get() + 1);
++        paint_api::record_native_frame_submitted(self.painter_id);
+     }
+ 
+     pub(crate) fn hit_test_at_point_with_api_and_document(
+@@ -788,6 +830,7 @@ impl Painter {
+ 
+     pub(crate) fn decrement_pending_frames(&self) {
+         self.pending_frames.set(self.pending_frames.get() - 1);
++        paint_api::record_native_frame_ready(self.painter_id);
+     }
+ 
+     pub(crate) fn report_memory(&self) -> MemoryReport {
+@@ -998,6 +1041,7 @@ impl Painter {
+             },
+             display_list_descriptor,
+         );
++        paint_api::record_display_list_received(self.painter_id);
+         let _span = profile_traits::trace_span!("PaintMessage::SendDisplayList").entered();
+         let Some(webview_renderer) = self.webview_renderers.get_mut(&webview_id) else {
+             return warn!("Could not find WebView for incoming display list");
+@@ -1435,6 +1479,12 @@ impl Painter {
+             .unwrap_or_default()
+     }
+ 
++    pub(crate) fn request_render_readiness(&self,webview_id:WebViewId,callback:Box<dyn FnOnce(Result<(),ScreenshotCaptureError>)+'static>){
++        if !self.webview_renderers.contains_key(&webview_id){callback(Err(ScreenshotCaptureError::WebViewDoesNotExist));return;}
++        self.screenshot_taker.request_render_readiness(webview_id,callback);
++        self.send_to_constellation(EmbedderToConstellationMessage::RequestScreenshotReadiness(webview_id));
++    }
++
+     pub(crate) fn request_screenshot(
+         &self,
+         webview_id: WebViewId,
+@@ -1661,3 +1711,62 @@ impl SceneBuilderHooks for BoostWebRenderThread {
+ 
+     fn deregister(&self) {}
+ }
++
++/// Bridge between `webrender::ExternalImageHandler` and external GPU textures
++/// (e.g. D3D11 shared textures imported into ANGLE via `EGL_D3D_TEXTURE_2D_SHARE_HANDLE_ANGLE`).
++struct ExternalGpuImages {
++    painter_id: PainterId,
++}
++
++impl ExternalGpuImages {
++    fn new(painter_id: PainterId) -> Self {
++        Self { painter_id }
++    }
++}
++
++impl paint_api::WebRenderExternalImageApi for ExternalGpuImages {
++    fn lock(
++        &mut self,
++        id: u64,
++    ) -> (paint_api::ExternalImageSource<'_>, euclid::default::Size2D<i32>) {
++        let t0 = std::time::Instant::now();
++        let Some(desc) = paint_api::get_external_gpu_image_by_id(id) else {
++            return (
++                paint_api::ExternalImageSource::NativeTexture(0),
++                euclid::default::Size2D::new(1, 1),
++            );
++        };
++        let (gl_texture_id, imported_new_pbuffer) =
++            if let Some(importer) = paint_api::get_external_gpu_texture_importer() {
++                importer.lock_external_gpu_texture(self.painter_id, &desc)
++            } else {
++                (0, false)
++            };
++        let lock_us = t0.elapsed().as_secs_f64() * 1_000_000.0;
++        let id_ns: webrender_api::IdNamespace = self.painter_id.into();
++        paint_api::record_external_gpu_lock_event(paint_api::ExternalGpuLockEvent {
++            painter_id_raw: id_ns.0,
++            external_id: id,
++            share_handle: desc.d3d11_share_handle,
++            gl_texture_id,
++            width: desc.width,
++            height: desc.height,
++            lock_us,
++            imported_new_pbuffer,
++        });
++        (
++            paint_api::ExternalImageSource::NativeTexture(gl_texture_id),
++            euclid::default::Size2D::new(desc.width as i32, desc.height as i32),
++        )
++    }
++
++    fn unlock(&mut self, id: u64) {
++        let t0 = std::time::Instant::now();
++        if let Some(importer) = paint_api::get_external_gpu_texture_importer() {
++            importer.unlock_external_gpu_texture(self.painter_id, id);
++        }
++        let unlock_us = t0.elapsed().as_secs_f64() * 1_000_000.0;
++        paint_api::record_external_gpu_unlock_event(unlock_us);
++    }
++}
++
+diff --git a/servo-paint-0.7.0/webrender_external_images.rs b/servo-paint-0.7.0/webrender_external_images.rs
+index 66ad199..53de803 100644
+--- a/servo-paint-0.7.0/webrender_external_images.rs
++++ b/servo-paint-0.7.0/webrender_external_images.rs
+@@ -89,3 +89,4 @@ impl WebRenderExternalImageApi for WebGLExternalImages {
+         self.unlock_swap_chain(WebGLContextId(id));
+     }
+ }
++
+diff --git a/servo-paint-0.7.0/paint.rs b/servo-paint-0.7.0/paint.rs
+index 5151256..1b5cbcc 100644
+--- a/servo-paint-0.7.0/paint.rs
++++ b/servo-paint-0.7.0/paint.rs
+@@ -890,6 +890,10 @@ impl Paint {
+         self.shutdown_state.get()
+     }
+ 
++    pub fn request_render_readiness(&self,webview_id:WebViewId,callback:Box<dyn FnOnce(Result<(),ScreenshotCaptureError>)+'static>){
++        self.painter(webview_id.into()).request_render_readiness(webview_id,callback);
++    }
++
+     pub fn request_screenshot(
+         &self,
+         webview_id: WebViewId,
+diff --git a/servo-paint-0.7.0/screenshot.rs b/servo-paint-0.7.0/screenshot.rs
+index 72e88d1..5d5b925 100644
+--- a/servo-paint-0.7.0/screenshot.rs
++++ b/servo-paint-0.7.0/screenshot.rs
+@@ -17,10 +17,16 @@ use webrender_api::units::{DeviceIntRect, DeviceRect};
+ use crate::paint::RepaintReason;
+ use crate::painter::Painter;
+ 
++enum Completion {
++ Pixels(Box<dyn FnOnce(Result<RgbaImage, ScreenshotCaptureError>) + 'static>),
++ Ready(Box<dyn FnOnce(Result<(), ScreenshotCaptureError>) + 'static>),
++}
++impl Completion {fn fail(self,error:ScreenshotCaptureError){match self{Self::Pixels(done)=>done(Err(error)),Self::Ready(done)=>done(Err(error))}}}
++
+ pub(crate) struct ScreenshotRequest {
+     webview_id: WebViewId,
+     rect: Option<DeviceRect>,
+-    callback: Box<dyn FnOnce(Result<RgbaImage, ScreenshotCaptureError>) + 'static>,
++    callback: Completion,
+     phase: ScreenshotRequestPhase,
+ }
+ 
+@@ -73,11 +79,17 @@ impl ScreenshotTaker {
+         self.requests.borrow_mut().push(ScreenshotRequest {
+             webview_id,
+             rect,
+-            callback,
++            callback: Completion::Pixels(callback),
+             phase: ScreenshotRequestPhase::ConstellationRequest,
+         });
+     }
+ 
++    /// Reuse the exact image/font/display-list readiness state machine, without
++    /// requesting or reading CPU pixels.
++    pub(crate) fn request_render_readiness(&self,webview_id:WebViewId,callback:Box<dyn FnOnce(Result<(),ScreenshotCaptureError>)+'static>){
++        self.requests.borrow_mut().push(ScreenshotRequest{webview_id,rect:None,callback:Completion::Ready(callback),phase:ScreenshotRequestPhase::ConstellationRequest});
++    }
++
+     pub(crate) fn handle_screenshot_readiness_reply(
+         &self,
+         webview_id: WebViewId,
+@@ -177,10 +189,11 @@ impl ScreenshotTaker {
+                 let Some(webview_renderer) =
+                     renderer.webview_renderer(screenshot_request.webview_id)
+                 else {
+-                    callback(Err(ScreenshotCaptureError::WebViewDoesNotExist));
++                    callback.fail(ScreenshotCaptureError::WebViewDoesNotExist);
+                     return None;
+                 };
+ 
++                let callback=match callback{Completion::Ready(done)=>{done(Ok(()));return None;},Completion::Pixels(done)=>done};
+                 let viewport_rect = webview_renderer.rect.to_i32();
+                 let viewport_size = viewport_rect.size();
+                 let rect = screenshot_request.rect.map_or(viewport_rect, |rect| {
+diff --git a/servo-0.7.0/webview.rs b/servo-0.7.0/webview.rs
+index 51cea79..5b2f8b5 100644
+--- a/servo-0.7.0/webview.rs
++++ b/servo-0.7.0/webview.rs
+@@ -757,6 +757,12 @@ impl WebView {
+     /// Once all these conditions are met and the rendering does not have any pending frames
+     /// to render, the provided `callback` will be called with the results of the screenshot
+     /// operation.
++    /// Wait for the same font/image/epoch readiness as a screenshot without
++    /// materializing any CPU image. Intended for GPU-resident embedders.
++    pub fn request_render_readiness(&self,callback:impl FnOnce(Result<(),ScreenshotCaptureError>)+'static){
++        self.servo().paint().request_render_readiness(self.id(),Box::new(callback));
++    }
++
+     pub fn take_screenshot(
+         &self,
+         rect: Option<WebViewRect>,
+diff --git a/servo-script-0.7.0/event_loop/script_thread.rs b/servo-script-0.7.0/event_loop/script_thread.rs
+index 44b6c5c..4869fc1 100644
+--- a/servo-script-0.7.0/event_loop/script_thread.rs
++++ b/servo-script-0.7.0/event_loop/script_thread.rs
+@@ -4525,6 +4525,10 @@ impl ScriptThread {
+         script: String,
+         cx: &mut js::context::JSContext,
+     ) {
++        let native_time = script.strip_prefix("/*frameweave-native-frame-v1:")
++            .and_then(|s| s.split_once("*/"))
++            .and_then(|(time, _)| time.parse::<f64>().ok())
++            .filter(|time| time.is_finite() && time.abs() <= 1.0e9);
+         let Some(window) = self.documents.borrow().find_window(pipeline_id) else {
+             let _ = self.senders.pipeline_to_constellation_sender.send((
+                 webview_id,
+@@ -4541,6 +4545,13 @@ impl ScriptThread {
+         let mut realm = enter_auto_realm(cx, global_scope);
+         let cx = &mut realm.current_realm();
+ 
++        // Offline media time is explicit. Reuse Servo's existing animation
++        // timeline and restyle machinery; do not rely on wall-clock refresh.
++        if let Some(time) = native_time {
++            let document = window.Document();
++            document.seek_animation_timeline_for_native(cx.no_gc(),time);
++        }
++
+         rooted!(&in(cx) let mut return_value = UndefinedValue());
+         if let Err(err) = global_scope.evaluate_js_on_global(
+             cx,
+@@ -4557,7 +4568,15 @@ impl ScriptThread {
+             return;
+         };
+ 
+-        let result = jsval_to_webdriver(cx, global_scope, return_value.handle());
++        let mut result = jsval_to_webdriver(cx, global_scope, return_value.handle());
++        // The embedder explicitly drives this offscreen frame. Complete JS jobs
++        // and layout now, rather than waiting for the normal 20/30ms web tick.
++        // Normal evaluate_javascript calls keep their existing behavior.
++        if native_time.is_some() && result.is_ok() {
++            self.perform_a_microtask_checkpoint(cx);
++            let built = self.update_the_rendering(cx);
++            result = Ok(embedder_traits::JSValue::String(format!("frameweave-native-frame/1:{built}")));
++        }
+         let _ = self.senders.pipeline_to_constellation_sender.send((
+             webview_id,
+             pipeline_id,
+diff --git a/mozjs_sys-153.3.0-1/build.rs b/mozjs_sys-153.3.0-1/build.rs
+index 1932228..9125a93 100644
+--- a/mozjs_sys-153.3.0-1/build.rs
++++ b/mozjs_sys-153.3.0-1/build.rs
+@@ -1246,7 +1246,10 @@ mod archive {
+     /// Download the SpiderMonkey archive with cURL using the provided base URL. If it's None,
+     /// it will use `servo/mozjs`'s release page as the base URL.
+     pub(crate) fn download_archive(base: Option<&str>) -> Result<PathBuf, std::io::Error> {
+-        let base = base.unwrap_or("https://github.com/servo/mozjs/releases");
++        if let Some(path) = base { let local = PathBuf::from(path); if local.is_file() { return Ok(local); } }
++        return Err(std::io::Error::other("Local verified MOZJS_ARCHIVE required; network download disabled"));
++        #[allow(unreachable_code)]
++        let base = base.unwrap_or("");
+         let version = env::var("CARGO_PKG_VERSION").unwrap();
+         let archive_path = PathBuf::from(env::var_os("OUT_DIR").unwrap()).join(&archive());
+ 
+diff --git a/stylo-0.22.0/servo/animation.rs b/stylo-0.22.0/servo/animation.rs
+index 8376bd7..75a332f 100644
+--- a/stylo-0.22.0/servo/animation.rs
++++ b/stylo-0.22.0/servo/animation.rs
+@@ -616,6 +616,22 @@ impl Animation {
+         new_ui.animation_duration_mod(index).seconds() == 0.
+     }
+ 
++    /// Explicit offscreen timeline seek. Keep the existing keyframes, easing,
++    /// fill and iteration arithmetic; reset only the monotonic tick cursor.
++    /// Normal browser refresh does not call this method.
++    pub fn seek_for_offline_timeline(&mut self, now: f64) {
++        if matches!(self.state, AnimationState::Canceled | AnimationState::Paused(_)) || self.duration <= 0.0 { return; }
++        let current = match self.iteration_state { KeyframesIterationState::Finite(n, _) | KeyframesIterationState::Infinite(n) => n };
++        self.started_at -= current * self.duration;
++        match &mut self.iteration_state { KeyframesIterationState::Finite(n, _) | KeyframesIterationState::Infinite(n) => *n = 0.0 }
++        self.current_direction = match self.direction {
++            AnimationDirection::Normal | AnimationDirection::Alternate => AnimationDirection::Normal,
++            AnimationDirection::Reverse | AnimationDirection::AlternateReverse => AnimationDirection::Reverse,
++        };
++        self.state = if now < self.started_at { AnimationState::Pending } else { AnimationState::Running };
++        if self.state == AnimationState::Running { self.iterate_by(((now - self.started_at) / self.duration).floor().max(0.0)); }
++    }
++
+     /// Given the current time, advances this animation to the next iteration,
+     /// updates times, and then toggles the direction if appropriate. Otherwise
+     /// does nothing. Returns true if this animation has iterated.
+@@ -1650,6 +1666,9 @@ impl AnimationSetKey {
+ #[derive(Clone, Debug, Default, MallocSizeOf)]
+ /// A set of animations for a document.
+ pub struct DocumentAnimationSet {
++    /// Preserve keyframes after completion for explicit offscreen time seeks.
++    /// Ordinary browser documents leave this false.
++    pub retain_finished_for_offline_timeline: bool,
+     /// The `ElementAnimationSet`s that this set contains.
+     #[ignore_malloc_size_of = "Arc is hard"]
+     pub sets: Arc<RwLock<FxHashMap<AnimationSetKey, ElementAnimationSet>>>,
+diff --git a/servo-script-0.7.0/dom/document/animation_manager.rs b/servo-script-0.7.0/dom/document/animation_manager.rs
+index d3a9553..529a0e8 100644
+--- a/servo-script-0.7.0/dom/document/animation_manager.rs
++++ b/servo-script-0.7.0/dom/document/animation_manager.rs
+@@ -86,8 +86,10 @@ pub(crate) struct AnimationManager {
+ 
+ impl AnimationManager {
+     pub(crate) fn new() -> Self {
++        let mut sets=DocumentAnimationSet::default();
++        sets.retain_finished_for_offline_timeline=servo_config::pref!(layout_animations_test_enabled);
+         AnimationManager {
+-            sets: Default::default(),
++            sets,
+             animating_images: Default::default(),
+             has_running_animations: Cell::new(false),
+             rooted_animation_nodes: Default::default(),
+@@ -168,6 +170,20 @@ impl AnimationManager {
+         self.unroot_unused_nodes(&sets);
+     }
+ 
++    /// Explicit media seeking must invalidate a monotonic browser-tick cache.
++    pub(crate) fn seek_for_offline_timeline(&self, no_gc: &NoGC, window: &Window, now: f64) {
++        {let mut sets=self.sets.sets.write();let trace=std::env::var_os("FRAMEWEAVE_SERVO_TIMELINE_TRACE").is_some();
++         if trace{eprintln!("[native-time] now={} sets={} roots={} dirty_at={}",now,sets.len(),self.rooted_animation_nodes.borrow().len(),self.timeline_value_at_last_dirty.get());}
++         for set in sets.values_mut(){for animation in &mut set.animations{
++          if trace{eprintln!("[native-time] before state={:?} start={} duration={} iteration={:?}",animation.state,animation.started_at,animation.duration,animation.iteration_state);}
++          animation.seek_for_offline_timeline(now);
++          if trace{eprintln!("[native-time] after state={:?} start={} iteration={:?}",animation.state,animation.started_at,animation.iteration_state);}
++         }set.dirty=true;}}
++        self.timeline_value_at_last_dirty.set(f64::NEG_INFINITY);
++        self.update_for_new_timeline_value(window,now);
++        self.mark_animating_nodes_as_dirty(no_gc,now);
++    }
++
+     /// Cancel animations for the given node, if any exist.
+     pub(crate) fn cancel_animations_for_node(&self, node: &Node) {
+         let opaque_node = node.to_opaque();
+diff --git a/servo-script-0.7.0/dom/document/document.rs b/servo-script-0.7.0/dom/document/document.rs
+index 6d13939..1c4ad6f 100644
+--- a/servo-script-0.7.0/dom/document/document.rs
++++ b/servo-script-0.7.0/dom/document/document.rs
+@@ -4939,6 +4939,13 @@ impl Document {
+             .collect()
+     }
+ 
++    pub(crate) fn seek_animation_timeline_for_native(&self, no_gc: &NoGC, now: f64) {
++        let previous=self.current_animation_timeline_value();
++        self.timeline.advance_specific(TimeDuration::seconds_f64(now-previous));
++        if now<previous {self.dirty_all_nodes(no_gc);}
++        self.animation_manager.seek_for_offline_timeline(no_gc,&self.window,now);
++    }
++
+     pub(crate) fn advance_animation_timeline_for_testing(&self, delta: TimeDuration) {
+         self.timeline.advance_specific(delta);
+         let current_timeline_value = self.current_animation_timeline_value();
+diff --git a/stylo-0.22.0/matching.rs b/stylo-0.22.0/matching.rs
+index 4aae362..e4d6bcc 100644
+--- a/stylo-0.22.0/matching.rs
++++ b/stylo-0.22.0/matching.rs
+@@ -768,9 +768,9 @@ trait PrivateMatchMethods: TElement {
+             .transitions
+             .retain(|transition| transition.state != AnimationState::Finished);
+ 
+-        animation_set
+-            .animations
+-            .retain(|animation| animation.state != AnimationState::Finished);
++        if !shared_context.animations.retain_finished_for_offline_timeline {
++            animation_set.animations.retain(|animation| animation.state != AnimationState::Finished);
++        }
+ 
+         // If the ElementAnimationSet is empty, and don't store it in order to
+         // save memory and to avoid extra processing later.

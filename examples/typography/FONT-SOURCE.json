@@ -1,0 +1,10 @@
+{
+  "source": {
+    "resourceId": "caption",
+    "kind": "font",
+    "sha256": "c2f3b4d463500a2ddcd3849cded1fceeb9fd6d1c32e6cbecd568453ba50fc68f",
+    "bytes": 9589900
+  },
+  "license": "OFL-1.1",
+  "kind": "prepared outlines, not a bundled font file"
+}

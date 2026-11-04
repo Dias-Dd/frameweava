@@ -1,0 +1,34 @@
+{
+  "project": "kurbo",
+  "version": "0.13.1",
+  "repository": "https://github.com/linebender/kurbo",
+  "commit": "838b69ef35f3381cefc007d86aa8364f5a6dc673",
+  "license": "MIT OR Apache-2.0",
+  "originalFilesSha256": {
+    "bezpath.rs": "6d9d5769715dfc4c10f90c1de500fca7a2ca35c0d673d2e05d7ddd615a987be4",
+    "cubicbez.rs": "de793f84444c55467a4669de64b4a06209f97540362c2da1fe0ad2b2367f5b80",
+    "quadbez.rs": "37ab1037750d32eed6b3664b250a8c14c78419a1567e790695c0e46544263bbd",
+    "line.rs": "66fba2df6d9653aa03adfda457a5059a7cbdd1ae29fa2c2db4ba5aefb1d4db28",
+    "param_curve.rs": "5cac1495643a9cb5f4af7ea618265a9deb87e7f82ee9628fdb46c49fd970a553",
+    "shape.rs": "226a32a1996d298e9587cc921b7cc8644ca6e04b2c740732e0a63ab00d3351ae",
+    "common.rs": "5d32994b9832dc34738a0d34464d9b2435398404bfd576c838584c301359d062"
+  },
+  "originalAlgorithms": [
+    "ParamCurveNearest quintic roots via existing polycool",
+    "ParamCurveExtrema/area/differential/inflection/external-tangent functions",
+    "Original intersect_line/finite isolated roots",
+    "Original subsegment/extrema_ranges/flatten/cubic-to-quadratics"
+  ],
+  "frameweaveOriginalCurveAdapterSha256": "2ed8bbc29adf863b95522b5b44ef4cd7e2210e404bc5a4419b6139e9a5fc9d85",
+  "changes": [
+    "Original own Curve Engine sampler method bodies retained; three result-Vec storage/initialization/reset edits only in separately adapted curve-base.rs",
+    "New Rust typed data-query methods call original kurbo; no mature numerical algorithm translated to TS",
+    "Closed area uses translation plus compensated summation for stability; algebraic, not aggregate fill coverage",
+    "Curvature negates original kurbo sign explicitly to use conventional derivative cross second-derivative in declared y-down pixel coordinates",
+    "Original closed/zero segment and per-segment length budget semantics preserved; identical old reader samples verified",
+    "Rust output/TS result streaming is chunked for transport and existing canonical path command policy. Approximation still buffers one original segment; no bounded-total-memory/real-time guarantee"
+  ],
+  "dependencies": "Exact unchanged curve-metrics Cargo.lock;19 dependencies, see dependency-licenses.json and full original Kit licence inventory; unicode-ident also requires Unicode-3.0",
+  "runtime": "Original CPU Rust/WASM geometry only. Pixels exclusively existing admitted Native GPU/stroke/palette/Glow/Layer F16/F32, no CPU raster/SDR8/browser/new device/renderer/timeline",
+  "package": "Source-only private data carrier test.pa3-curve-geometry; Main owns formal R1/public exports/version/permissions/Lock/L3"
+}

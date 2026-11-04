@@ -1,0 +1,6 @@
+
+> @frameweave/engine@0.1.0 typecheck
+> tsc --noEmit
+
+tests/native-gpu-audio.test.ts(16,53): error TS2339: Property 'audio' does not exist on type '{ version: number; ok: boolean; backend: string; output: string; frames: number; accuracy: string; previewTransform: boolean; timings: { compileMs: number; totalMs: number; }; transfer: { previewReadback: boolean; exportMaterialization: boolean; format: string; route: string; }; stats: any; report: { ...; } | undefi...'.
+  Property 'audio' does not exist on type '{ version: number; ok: boolean; backend: string; output: string; frames: number; accuracy: string; previewTransform: boolean; timings: { compileMs: number; totalMs: number; }; transfer: { previewReadback: boolean; exportMaterialization: boolean; format: string; route: string; }; stats: any; report: { ...; } | undefi...'.

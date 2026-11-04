@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "parent": "0dad303496a395791727d8b43f5bcbb6942fa4a9",
+  "reusedUnchanged": [
+    {
+      "file": "src/core/animation.ts",
+      "sha256": "46d208a844d6455fd0905a1606cab51c8800ac10e08cfe7766b3c12dab9d26d0"
+    },
+    {
+      "file": "src/core/time.ts",
+      "sha256": "b1d9e8a3be47adee369daea66273bc10feac51ae08968c90ca939756a14006aa"
+    },
+    {
+      "file": "modules/pro-animation/src/time-controls.ts",
+      "sha256": "e689e0e9c333c310af5da239e6593e4c0cecee111622d8459992e32751b7be0a"
+    },
+    {
+      "file": "modules/pro-animation/src/motion-control/sampling.ts",
+      "sha256": "88c9d595081b102834bcfae1a3482ddc5d7a473d3efccb3cfda2e2848b89f894"
+    },
+    {
+      "file": "modules/pro-animation/src/native-time/plans.ts",
+      "sha256": "8ba88e50f69c0143a3a8103d27640853d12e98ea5464e62d0025fb202d163b07"
+    },
+    {
+      "file": "modules/pro-animation/src/native-time/index.ts",
+      "sha256": "4cf615e265ef13f14e8691b562a972296a9a0a92f1ab908acdae028211f98351"
+    },
+    {
+      "file": "modules/pro-animation/src/native-time/reduction.ts",
+      "sha256": "1abc3e97f31175b7942242578af9c9639953437385f61683be21fe63c2510c99"
+    },
+    {
+      "file": "modules/pro-animation/src/geometry.ts",
+      "sha256": "63753098a6caade398045d6aa0968e11e43fec2ea0c0b14a28222ffd108352fe"
+    },
+    {
+      "file": "modules/pro-animation/src/path-authoring/native.ts",
+      "sha256": "8bf9fa88e93e115565014211c5ce1ca2ee76b6ca21860d1bad3672a33efde7ae"
+    },
+    {
+      "file": "modules/pro-animation/src/stroke-animation/native.ts",
+      "sha256": "469c4bc060f200885cde8182a4de51da1d0e403528d5871e5e3ad02a1833eb12"
+    }
+  ],
+  "licenses": {
+    "Frameweave": "Apache-2.0",
+    "existingCubicPoint": {
+      "project": "EffectCraft",
+      "repository": "https://github.com/storytold/effectcraft",
+      "commit": "861c51f8187bf56efc77cc7b60fc4a513d2b7198",
+      "upstreamFile": "crates/path/src/interp.rs",
+      "originalSha256": "07d929d3cbe2d62982de5b1043a386020e859e1be97dd457cd8c1fdda146f362",
+      "license": "MIT, selected from MIT OR Apache-2.0",
+      "adaptation": "Previously audited cubicPoint in existing geometry.ts called unchanged; no new upstream code copied",
+      "notice": "modules/pro-animation/vendor/effectcraft/PA2-SOURCES.json"
+    }
+  },
+  "newRuntimeDependencies": [],
+  "newShaderOrGpuOwner": false,
+  "newCorePermissionsOrLocks": false,
+  "catalog": "Official effects keyword offline search returned [] in worktree-local user-home, raw log preserved",
+  "decision": "Use original Core key/easing evaluation, speed integration, motion finite differences and Native temporal reducer. Importing another expression/timeline runtime duplicates these and costs more than small local key editing/query math. Root isolation queries existing Core values, not another animation evaluator.",
+  "referenceOnly": [
+    "https://helpx.adobe.com/after-effects/desktop/work-with-expressions/expression-language-reference/expression-language-reference.html"
+  ],
+  "noAdobeSourceOrAssets": true
+}

@@ -1,0 +1,12 @@
+{
+  "startedAt": "2026-11-02T07:55:21.650239+00:00",
+  "extensionRound": 1,
+  "allowedRounds": 4,
+  "base": "66de794790f93d991ae0ea29ba98f021ef5de1dd",
+  "excluded": [
+    "proprietary format import",
+    "automatic upstream Stage temporal sampling",
+    "particles/spatial3D/Puppet"
+  ],
+  "scope": "Advanced keying controls, edge/temporal matte primitives and stroke-labelled random-walker segmentation. Neural model integration remains separate until Agent-1 frozen interface is received."
+}

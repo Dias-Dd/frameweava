@@ -1,0 +1,22 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {mkdir,mkdtemp,writeFile} from 'node:fs/promises';
+import {join} from 'node:path';
+import {buildProject,engineRoot} from '../src/compiler/build.ts';
+import {Renderer} from '../src/render/renderer.ts';
+import {acescg,srgb,pixelsFromSurface,type ProfessionalSurface} from '../src/media/surface.ts';
+const policy={preview:true,cache:false,allowWasm:false,media:{workingColor:acescg,transport:'buffer-v1' as const,preview:{color:srgb,clip:true}}};
+function cpuParticles(frame:number){const p=new Float32Array(128),f=Math.fround,dt=1/64;for(let i=0;i<32;i++){const s=(Math.imul(i+1,1664525)+1013904223)>>>0,t=(Math.imul(s,1664525)+1013904223)>>>0;p.set([(s&1023)/1024-.5,(t&1023)/1024-.5,((s>>>10)&1023)/8192-.0625,((t>>>10)&1023)/8192-.0625],i*4);}for(let step=1;step<=frame;step++)for(let i=0;i<p.length;i+=4){let vx=f(f(p[i+2]-f(f(p[i]*dt)*.25))*.96875),vy=f(f(p[i+3]-f(.125*dt))*.96875),x=f(p[i]+f(vx*dt)),y=f(p[i+1]+f(vy*dt));if(x<-.5||x>.5){x=Math.max(-.5,Math.min(.5,x));vx=-vx;}if(y<-.5||y>.5){y=Math.max(-.5,Math.min(.5,y));vy=-vy;}p.set([x,y,vx,vy],i);}return p;}
+test('compute extension: real buffers, workgroup reduction, 3D depth input and feedback particle random seek',{timeout:180000},async()=>{
+ const parent=join(engineRoot,'artifacts/gpu-compute');await mkdir(parent,{recursive:true});const dir=await mkdtemp(join(parent,'core-v1-'));process.env.FRAMEWEAVE_HOME=join(dir,'user-home');const report:any={version:1,rows:[],allPassed:false};
+ try{for(const kind of ['buffers','field','particles']){const entry=join(dir,kind+'.tsx');await writeFile(entry,`import {Composition,Stage} from '@frameweave/engine';export default <Composition width={32} height={18} fps={64} durationInFrames={128}><Stage id="compute" entry={${JSON.stringify(join(engineRoot,'modules/gpu-effects/examples/compute-stage.ts'))}} outputs={{surface:'surface',stats:'json'}} props={{kind:'${kind}'}}/></Composition>;`);const build=await buildProject(entry,{outputDir:join(dir,'build-'+kind)}),renderer=await Renderer.create(build,policy),seen=new Map<number,number[]>();
+  try{for(const frame of kind==='particles'?[0,3,1,12,7,3]:[0]){const result=await renderer.evaluateFrame(frame,'compute'),stats=result.stageOutputs.compute.stats as any,p=pixelsFromSurface(result.stageOutputs.compute.surface as ProfessionalSurface);assert.equal(stats.origin,'null');assert.equal(stats.core.backendInfo.isFallbackAdapter,false);
+   if(kind==='buffers'){assert.deepEqual(stats.oldValues,[2,-4,80000,.5]);assert.deepEqual(stats.freshValues,[18,20,22,24]);assert.deepEqual(stats.cloned,stats.oldValues);assert.deepEqual(stats.cleared,[0,0,0,0]);assert.deepEqual(stats.sums,[2016,399]);assert.equal(stats.scope.activeDataBuffers,0);}
+   if(kind==='field'){assert.equal(stats.metadata.semantic,'depth');assert.equal(stats.metadata.units,'meter');assert.equal('color' in stats.metadata,false);assert.equal('alpha' in stats.metadata,false);for(let y=0;y<18;y++)for(let x=0;x<32;x++){const v=2.5+x+2*y,i=(y*32+x)*4;assert.equal(p[i],v);assert.equal(p[i+1],-v);assert.equal(p[i+3],1);}}
+   if(kind==='particles'){const expected=cpuParticles(frame);let max=0;for(let i=0;i<expected.length;i++)max=Math.max(max,Math.abs(stats.state[i]-expected[i]));assert.ok(max<=1e-6,JSON.stringify({frame,max}));const histogram=new Array(64).fill(0);for(let i=0;i<expected.length;i+=4){const x=Math.max(0,Math.min(7,Math.floor((expected[i]+.5)*8))),y=Math.max(0,Math.min(7,Math.floor((expected[i+1]+.5)*8)));histogram[y*8+x]++;}assert.deepEqual(stats.histogram,histogram);if(seen.has(frame))assert.deepEqual(stats.state,seen.get(frame));seen.set(frame,stats.state);stats.maxCpuError=max;assert.equal(stats.scope.bufferUploadBytes,0);}
+   report.rows.push({kind,frame,stats});}
+   const png=await renderer.renderFrame(kind==='particles'?3:0,'compute');await writeFile(join(dir,kind+'.png'),png.png);build.manifest.stages[0].props.close=true;const closed=(await renderer.evaluateFrame(0,'compute')).stageOutputs.compute.stats as any;assert.equal(closed.scope.liveBytes,0);assert.equal(closed.scope.activeDataBuffers,0);assert.equal(closed.scope.buffersCreated,closed.scope.buffersDestroyed);assert.equal(closed.core.liveBuffers,0);report.rows.push({kind,cleanup:closed});
+  }finally{await renderer.close();await renderer.close();}}
+  report.allPassed=true;
+ }finally{await writeFile(join(dir,'report.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({dir,allPassed:report.allPassed}));}
+});

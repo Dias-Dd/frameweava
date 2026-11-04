@@ -1,0 +1,49 @@
+Skeletal Effects — authored module, Apache-2.0.
+Native Three.js0.186.1 is MIT, Copyright ©2010–2026 three.js authors.
+The exact npm archive identity is in vendor/three/SOURCE.json; selected original
+files and full license are preserved byte-for-byte. No new dependency is installed.
+
+CPU Matrix4/Quaternion/Vector3 and real Bone/Skeleton/SkinnedMesh/ShaderMaterial
+are native Three. CCD traversal was reviewed against its CCDIKSolver; module
+adaptations explicitly include stateless controls, stable antiparallel handling,
+small-angle/hypot guards, exact bounded hinges and final multi-chain diagnostics.
+No claim of a complete unchanged upstream CCD implementation is made.
+The GPU vertex shader uses the native skinning shader chunks, with authored
+mesh-origin rebasing and a static authored weight-sum correction, not normalization.
+No Blender/GPL source, model, decoder, external engine or new WASM binary is used.
+
+The0.2 native MeshData path also reuses Three MeshStandardMaterial/MeshBasicMaterial,
+BufferGeometry normals and the original shader chunks. Selected files are archived
+without edits under the same MIT license. It does not implement a second PBR
+shader, Renderer service, material resource loader or shared GPU device ABI.
+
+The0.3 surface sampler adapts the MIT MeshSurfaceSampler area/CDF and folded
+barycentric method. It explicitly changes to F64 CDF, Core seeded random,
+continuous linear vertex-density sampling, material bindings and numeric budgets.
+This is not identical to upstream face-only weight semantics. That adapted file
+retains MIT attribution. Native InstancedMesh/InstancedBufferAttribute and shader
+chunks are reused; no new dependency or GPU compute/physics engine is introduced.
+Additional reviewed original files (including native disposal and DFG LUT behavior)
+are archived unchanged in vendor/three at the same fixed npm archive identity.
+
+The0.4 tube/ribbon geometry adapts the MIT Three Curve.computeFrenetFrames
+moving-frame transport and TubeGeometry sections/indices. Original source files
+are archived unchanged. F64 polyline tangents, robust atan2 transport, duplicate
+stations, explicit width/twist, arc-length closure and lossless topology chunking
+are authored adaptations, each retaining MIT attribution. It is CPU geometry
+preparation for the existing native GPU Mesh renderer, not a new simulation or
+renderer service. Existing spatial0.2.1 feedback history is a separate example
+dependency, with its fixed upstream licenses; no new third-party install is added.
+
+The0.5 branched lightning generator is original Apache-2.0 code using Core RNG
+and the existing MIT tube sweep. The historical Three r152/MIT LightningStrike
+was evaluated, not copied, compiled or redistributed in this runtime package.
+It does not add SimplexNoise, an old Three runtime, a simulation runner or glow.
+
+The0.6 scalar isosurface extractor reuses the classic edge/triangle lookup tables
+from Three0.186.1/MIT MarchingCubes, unchanged original archived in vendor/three.
+That source credits Paul Bourke's page and Cory Gene Bloyd for the classic tables.
+F64 interpolation/gradient/capacity/Graphics adaptations retain MIT attribution.
+The compact polynomial density builder is authored math, not a fluid/SPH library.
+The existing native Standard material/normal buffer handles supplied normals;
+no new shared renderer/volume/AOV/Surface ABI or external engine is introduced.

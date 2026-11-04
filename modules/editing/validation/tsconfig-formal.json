@@ -1,0 +1,5 @@
+{
+ "extends":"./tsconfig.json",
+ "include":["./prepare-formal-text.ts"],
+ "exclude":[]
+}

@@ -1,0 +1,11 @@
+[package]
+name = "frameweave-ocio-wgsl"
+version = "0.1.0"
+edition = "2021"
+publish = false
+license = "Apache-2.0"
+[dependencies]
+naga = { version = "=30.0.1", features = ["glsl-in", "wgsl-in", "wgsl-out"] }
+serde_json = "=1.0.154"
+[profile.release]
+opt-level = 2

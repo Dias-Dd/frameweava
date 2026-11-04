@@ -1,0 +1,2 @@
+Frameweave mesh-deformation: authored elementary mesh warp kernels, Apache-2.0.
+Noise Hash/ValCoord/Hermite subset reuses the previously reviewed FastNoiseLite1.1.1 adaptation (MIT), fixed commit 7ccfbc16eb1c932568f177d63a9ba51d89bbe516. See vendor/SOURCE.json and LICENSE-MIT. No Blender/GPL, solver runtime or third-party geometry engine copied.

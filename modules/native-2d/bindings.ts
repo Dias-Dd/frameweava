@@ -1,0 +1,6 @@
+import {nativeLibraryBindings} from '../native-gpu/library-bindings.ts';import * as library from './index.ts';import type {NativePluginInit} from '../../src/plugins/sdk.ts';
+/** Per-scene clients; explicit services remain borrowed. R1 retains GPU ownership. */
+export function initialize(init:NativePluginInit){return nativeLibraryBindings(init,{...library,async scene2D(stage:Parameters<typeof library.scene2D>[0],root:Parameters<typeof library.scene2D>[1],options:Parameters<typeof library.scene2D>[2]={},services:Parameters<typeof library.scene2D>[3]={}){
+ const owned=library.createDefault2DServices(init,{width:options.viewBox?.[2]??stage.width,height:options.viewBox?.[3]??stage.height,signal:options.signal,tolerance:options.geometryTolerance,maxCacheBytes:Math.min(32*1024**2,options.maxBytes??512*1024**2)});
+ try{const scene=await library.scene2D(stage,root,options,{...owned.services,...services});let closing:Promise<void>|undefined;return {...scene,inspect:()=>({...scene.inspect(),defaultAssets:owned.inspect()}),dispose(){return closing??=(async()=>{try{await scene.dispose?.();}finally{await owned.dispose();}})();}};}catch(e){try{await owned.dispose();}catch(cleanup){throw new AggregateError([e,cleanup],'Scene initialization and asset cleanup failed');}throw e;}
+ }});}

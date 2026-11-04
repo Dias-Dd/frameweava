@@ -1,0 +1,13 @@
+// SPDX-License-Identifier: Apache-2.0
+import {sparseSampleShader} from '../sparse-volume/shader.ts';
+// Exact existing fixed PNanoVDB/OpenVDB traversal, reused for each sealed source.
+const prefix=sparseSampleShader.slice(0,sparseSampleShader.indexOf('fn compute(')),names=['nworld','nlookup','nmask','nhash','nv','nf'];function source(index:number){let code=prefix.replaceAll('load0(',`load${index}(`).replaceAll('paramU32(0u)',`paramU32(${index}u)`);for(const name of names)code=code.replace(new RegExp('\\b'+name+'\\b','g'),name+index);return code;}
+export const cacheVolumeCode=source(0)+source(1)+/* wgsl */`
+struct Value{value:f32,coverage:f32,status:u32}
+fn query0(q:vec3i)->Value{let v=nlookup0(q);return Value(bitcast<f32>(v.x),f32(v.y),select(0u,2u,v.z==5u));}fn query1(q:vec3i)->Value{let v=nlookup1(q);return Value(bitcast<f32>(v.x),f32(v.y),select(0u,2u,v.z==5u));}
+fn query(q:vec3i,second:bool)->Value{if(second){return query1(q);}return query0(q);}
+fn sample(p:vec3f,second:bool)->Value{var q=nworld0(p);if(second){q=nworld1(p);}if(any((bitcast<vec3u>(q)&vec3u(0x7f800000u))==vec3u(0x7f800000u))||any(q<vec3f(-2147483648.))||any(q>vec3f(2147483520.))){return Value(0.,0.,1u);}if(paramU32(3u)==0u){return query(vec3i(floor(q+vec3f(.5))),second);}let base=vec3i(floor(q));let f=fract(q);var total=0.;var activeWeight=0.;var status=0u;for(var z=0u;z<2u;z++){for(var y=0u;y<2u;y++){for(var x=0u;x<2u;x++){let corner=vec3u(x,y,z);let weight=select(vec3f(1.)-f,f,corner==vec3u(1u));let result=query(base+vec3i(corner),second);let w=weight.x*weight.y*weight.z;total+=result.value*w;activeWeight+=result.coverage*w;status|=result.status;}}}return Value(total,activeWeight,status);}
+fn compute(g:vec3u,l:vec3u,w:vec3u){if(any(g>=fieldDimensions2())){return;}let dimensions=fieldDimensions2();let i=(g.z*dimensions.y+g.y)*dimensions.x+g.x;let low=vec3f(paramF32(8u),paramF32(9u),paramF32(10u));let spacing=vec3f(paramF32(12u),paramF32(13u),paramF32(14u));let p=low+(vec3f(g)+vec3f(paramF32(4u)))*spacing;let a=sample(p,false);let b=sample(p,true);store2(i,mix(a.value,b.value,paramF32(2u)));store3(i,a.status|(b.status<<2u));store4(i*2u,a.coverage);store4(i*2u+1u,b.coverage);}
+`;
+export const volumeThermoCode=/* wgsl */`fn compute(g:vec3u,l:vec3u,w:vec3u){if(any(g>=fieldDimensions0())){return;}let d=fieldDimensions0();let i=(g.z*d.y+g.y)*d.x+g.x;store1(i*4u,load0(i));store1(i*4u+1u,0.);store1(i*4u+2u,0.);store1(i*4u+3u,0.);}`;
+export const volumeNegateCode=/* wgsl */`fn compute(g:vec3u,l:vec3u,w:vec3u){if(any(g>=fieldDimensions0())){return;}let d=fieldDimensions0();let i=(g.z*d.y+g.y)*d.x+g.x;store1(i,-load0(i));}`;

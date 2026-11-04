@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "kind": "private-test-only",
+  "upstream": "ba70eac38170567b48adfded74e3602f5bbf304b",
+  "lock": {
+    "schemaVersion": 1,
+    "apiVersion": 1,
+    "platform": "web",
+    "requirements": {
+      "test.temporal-upstream": "1.0.0"
+    },
+    "roots": {
+      "test.temporal-upstream": "test.temporal-upstream@1.0.0"
+    },
+    "packages": {
+      "test.temporal-upstream@1.0.0": {
+        "integrity": "sha256-c821791018f177c35e7463294510d61938239901698b7f325cb987c77a44eb93",
+        "source": {
+          "kind": "local",
+          "authority": "test.temporal-upstream"
+        },
+        "modules": {
+          "main": "sha256-9f7a27977ffc6d24ac70d8026fc905ddb16acf05f2a48f5f3ea6a3fd9e4d343e",
+          "runtime": "sha256-7084c07c7caf9da321ba73a6f038bf3b3aebc59afa4091bd5f2dd53fa1bc3f01"
+        },
+        "dependencies": {}
+      }
+    }
+  }
+}

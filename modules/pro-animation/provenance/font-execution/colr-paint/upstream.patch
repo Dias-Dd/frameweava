@@ -1,0 +1,133 @@
+--- skrifa-0.49.0/src/color/mod.rs
++++ modules/pro-animation/rust/font-color-execution/src/colr_original/mod.rs
+@@ -41,7 +41,7 @@
+ #[cfg(test)]
+ mod traversal_tests;
+ 
+-use raw::{
++use read_fonts::{
+     tables::{colr, cpal},
+     types::BigEndian,
+     FontRef,
+@@ -65,11 +65,9 @@
+     get_clipbox_font_units, traverse_v0_range, traverse_with_callbacks, PaintDecycler,
+ };
+ 
+-use crate::string::StringId;
+-use crate::{
+-    color::traversal::TraversalState,
+-    prelude::{LocationRef, Size},
+-};
++use skrifa::string::StringId;
++use crate::colr_original::traversal::TraversalState;
++use skrifa::prelude::{LocationRef, Size};
+ 
+ use instance::PaintId;
+ 
+@@ -378,8 +376,9 @@
+         location: impl Into<LocationRef<'a>>,
+         painter: &mut impl ColorPainter,
+     ) -> Result<(), PaintError> {
+-        let instance =
+-            instance::ColrInstance::new(self.colr.clone(), location.into().effective_coords());
++        let location = location.into();
++        let coords = if location.is_default() { &[] } else { location.coords() };
++        let instance = instance::ColrInstance::new(self.colr.clone(), coords);
+         match &self.root_paint_ref {
+             ColorGlyphRoot::V1Paint(paint, paint_id, glyph_id, _) => {
+                 let clipbox = get_clipbox_font_units(&instance, *glyph_id);
+@@ -567,7 +566,7 @@
+         MetadataProvider,
+     };
+ 
+-    use raw::{tables::cpal, TableProvider};
++    use read_fonts::{tables::cpal, TableProvider};
+     use read_fonts::{types::BoundingBox, FontRef};
+ 
+     use super::{Brush, ColorGlyphFormat, ColorPainter, CompositeMode, GlyphId, Transform};
+--- skrifa-0.49.0/src/color/instance.rs
++++ modules/pro-animation/rust/font-color-execution/src/colr_original/instance.rs
+@@ -418,17 +418,9 @@
+ 
+                 make_sorted_resolved_stops(color_stops, instance, resolved_stops);
+ 
+-                // If p0p1 or p0p2 are degenerate probably nothing should be drawn.
+-                // If p0p1 and p0p2 are parallel then one side is the first color and the other side is
+-                // the last color, depending on the direction.
+-                // For now, just use the first color.
++                // Frameweave source correction: OpenType1.9.1 requires no paint for a
++                // degenerate/parallel linear-gradient geometry, not first-stop solid.
+                 if p1 == p0 || p2 == p0 || cross_product(p1 - p0, p2 - p0) == 0.0 {
+-                    if let Some(stop) = resolved_stops.first() {
+-                        return Ok(MaybeBrush::Some(Brush::Solid {
+-                            palette_index: stop.palette_index,
+-                            alpha: stop.alpha,
+-                        }));
+-                    };
+                     return Ok(MaybeBrush::NonRendering);
+                 }
+ 
+@@ -1027,7 +1019,7 @@
+ #[cfg(test)]
+ mod tests {
+     use super::*;
+-    use raw::{FontRef, TableProvider};
++    use read_fonts::{FontRef, TableProvider};
+ 
+     /// OSS Fuzz caught add with overflow when computing delta indices.
+     /// See <https://oss-fuzz.com/testcase-detail/5180237819478016>
+@@ -1047,7 +1039,7 @@
+     #[test]
+     fn var_deltas_implicit_mapping_uses_outer_index() {
+         use font_test_data::bebuffer::BeBuffer;
+-        use raw::FontRead;
++        use read_fonts::FontRead;
+ 
+         let buf = BeBuffer::new()
+             // COLR v1 header with only an item variation store
+--- skrifa-0.49.0/src/color/traversal.rs
++++ modules/pro-animation/rust/font-color-execution/src/colr_original/traversal.rs
+@@ -1,6 +1,6 @@
+ use std::ops::Range;
+ 
+-use raw::tables::colr::Paint;
++use read_fonts::tables::colr::Paint;
+ use read_fonts::{
+     tables::colr::CompositeMode,
+     types::{BoundingBox, GlyphId},
+@@ -11,7 +11,7 @@
+     Brush, ColorPainter, ColorStop, PaintCachedColorGlyph, PaintError,
+ };
+ 
+-use crate::decycler::{Decycler, DecyclerError};
++use crate::colr_decycler::{Decycler, DecyclerError};
+ use read_fonts::limits::MAX_RECURSION_DEPTH;
+ 
+ #[cfg(feature = "libm")]
+@@ -298,7 +298,7 @@
+         prelude::LocationRef,
+         MetadataProvider,
+     };
+-    use raw::types::GlyphId;
++    use read_fonts::types::GlyphId;
+     use read_fonts::{
+         types::{BoundingBox, GlyphId16},
+         FontData, FontRead, FontRef, TableProvider,
+@@ -461,7 +461,7 @@
+     #[test]
+     fn paint_glyph2_traversal_preserves_wide_ids_in_fill_and_clip() {
+         let colr_data = font_test_data::colr::paint_glyph2_colr();
+-        let colr = raw::tables::colr::Colr::read(FontData::new(&colr_data)).unwrap();
++        let colr = read_fonts::tables::colr::Colr::read(FontData::new(&colr_data)).unwrap();
+         let nested = [
+             33, 0, 0, 7, 0x12, 0x34, 0x56, // outer clip: glyph 0x123456
+             33, 0, 0, 7, 1, 0, 0, // inner fill: glyph 0x10000
+@@ -498,7 +498,7 @@
+     #[test]
+     fn paint_glyph2_traversal_rejects_missing_child() {
+         let colr_data = font_test_data::colr::paint_glyph2_colr();
+-        let colr = raw::tables::colr::Colr::read(FontData::new(&colr_data)).unwrap();
++        let colr = read_fonts::tables::colr::Colr::read(FontData::new(&colr_data)).unwrap();
+         let instance = ColrInstance::new(colr, &[]);
+         let paint = Paint::read(FontData::new(&font_test_data::colr::PAINT_GLYPH2[..7])).unwrap();
+         let mut painter = NopPainter;

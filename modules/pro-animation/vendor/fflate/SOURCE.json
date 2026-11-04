@@ -1,0 +1,40 @@
+{
+  "name": "fflate",
+  "version": "0.8.2",
+  "commit": "d3243651cb142e3e04f3e4bc037b9e985878f444",
+  "license": "MIT",
+  "repository": {
+    "url": "git+https://github.com/101arrowz/fflate.git",
+    "type": "git"
+  },
+  "integrity": "sha512-cPJU47OaAoCbg0pBvzsgpTPhmhqI5eJjh/JIu8tPj5q+T7iLvW/JAYUqmE7KOB4R1ZyEhzBaIQpQpardBF5z8A==",
+  "archiveSha256": "61fd5061e2fc8e5e3e3129f7f2fec7bd78a313e1bf4becbf1cc1cc9998d141dc",
+  "dependencies": {},
+  "artifacts": [
+    {
+      "upstream": "LICENSE",
+      "local": "modules/pro-animation/vendor/fflate/LICENSE",
+      "bytes": 1069,
+      "sha256": "805f6cb28bb8b6d3a0badd83c93bccd9671fa01a3b4b92b7042b0743325ac243"
+    },
+    {
+      "upstream": "esm/browser.js",
+      "local": "modules/pro-animation/vendor/fflate/esm/browser.js",
+      "bytes": 89198,
+      "sha256": "8cc1f687e0159e977addb6b85e274dbd11e622cf151f4fcb7b85d49622ea43e7"
+    },
+    {
+      "upstream": "package.json",
+      "local": "modules/pro-animation/vendor/fflate/package.upstream.json",
+      "bytes": 3482,
+      "sha256": "1f39729fc15f568a3aef326e03b3a2b766ad3b6d43705a11bcb66b2979649c89"
+    },
+    {
+      "upstream": "esm/browser.d.ts",
+      "local": "modules/pro-animation/vendor/fflate/esm/browser.d.ts",
+      "bytes": 50889,
+      "sha256": "a409cb812a758508ca4f687af6e1403538e325566bba01fa3d2ed4a564b771ad"
+    }
+  ],
+  "adaptations": []
+}

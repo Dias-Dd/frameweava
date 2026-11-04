@@ -1,0 +1,57 @@
+{
+  "upstream": "OpenVDB12.1.1, NanoVDB32.8, Apache-2.0",
+  "archiveSha256": "ccd0ea1669a53c7c13087a08ac5a1351041c4cdd308f6d6f591074a106fcb565",
+  "generatorSha256": "cabd8fb7759834b9c4411882bf4b8242b5144b9afcee128dc07584fe412d9ac9",
+  "files": [
+    {
+      "file": "cloth.mdd",
+      "bytes": 6888,
+      "sha256": "b21db912f778c2b81c54f0e8d5a8b90f9fd10e3f8dfee7cdfca21c871a76a32e"
+    },
+    {
+      "file": "particles.pc2",
+      "bytes": 6896,
+      "sha256": "60b53d97c570f16c564d89e4e8ade3912e3124bd47b2d133367f573674f06c47"
+    },
+    {
+      "file": "fog0.raw",
+      "bytes": 2452256,
+      "sha256": "48af75b9b502a8816ecaa000ffb0588e20b5a3763dfde9cb63c9842de515725e"
+    },
+    {
+      "file": "fog0-reference.f32",
+      "bytes": 27648,
+      "sha256": "38df9823bb12089ca8bc38d2f3bbb1d08a80ff6fbf8ec8560f1ec946f43b008d"
+    },
+    {
+      "file": "fog1.raw",
+      "bytes": 2460832,
+      "sha256": "46d109071cd10558e958af33950ebdbc3acaf0901d9e71f9b7f41ee3bbffde65"
+    },
+    {
+      "file": "fog1-reference.f32",
+      "bytes": 27648,
+      "sha256": "263e122c59c8216f6b738637df2454d17171167800c276c61f38c128c3b4ac04"
+    },
+    {
+      "file": "sdf0.raw",
+      "bytes": 2452256,
+      "sha256": "ad34edf1d6e19c87ba137da3a03176ecd3651b9af4740efb841cc3c282515cb7"
+    },
+    {
+      "file": "sdf0-reference.f32",
+      "bytes": 27648,
+      "sha256": "4ca8fc1fbb334b5a80452d3e7f593cd3ac30299f3cc620bc47b809b540b23d99"
+    },
+    {
+      "file": "sdf1.raw",
+      "bytes": 2460832,
+      "sha256": "f7248286a7af304404df03ce39e7571da5e35ee66dc614909a6b942f8255f777"
+    },
+    {
+      "file": "sdf1-reference.f32",
+      "bytes": 27648,
+      "sha256": "8cbd64f362f7b982ea70ba4ecda5a53d805644fb33485a98e6fc064fe551b2bb"
+    }
+  ]
+}

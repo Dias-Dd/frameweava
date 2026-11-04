@@ -1,0 +1,17 @@
+/** Adapter equivalence cases, not another effect registry. */
+import * as e from './index.ts';import {keyframes} from '../../../src/core/animation.ts';
+import {createNativeProfessionalEffects} from '../extended.ts';import {createNativeRasterEffects} from '../raster/filters.ts';
+import {createNativeGradingEffects} from '../grading/index.ts';import {createNativeOpticalEffects} from '../optics/index.ts';
+import {createNativeGeometryEffects} from '../geometry/index.ts';import {createNativeBuiltinEffects} from '../builtin/filters.ts';
+import type {ImageEffect} from './types.ts';
+export interface AuthoringCase {name:string;effect:ImageEffect;direct:ImageEffect}
+export const cases:AuthoringCase[]=[];
+for(const name of ['levels','curves','channelMix','unsharpMask','sharpen','chromaKey','lumaKey','despill','vignette','filmGrain','colorBalance','brightnessContrast','hueSaturation','vibrance','tint','blackAndWhite','pixelate','posterize','findEdges','boxBlur','directionalBlur','bilateralBlur','autoLevels','autoContrast','autoColor','erodeImage','dilateImage']as const)cases.push({name,effect:e[name](),direct:(i,frame)=>frame.process(createNativeProfessionalEffects,i,(source,f)=>f[name](source))});
+for(const name of ['blur','glow','exposure','invert','dropShadow','feather','reframe']as const)cases.push({name,effect:e[name](),direct:(i,frame)=>frame.process(createNativeRasterEffects,i,(source,f)=>f[name](source))});
+for(const [name,method]of [['bloom','bloomPyramid'],['lensFlare','lensFlare'],['lightRays','lightRays'],['halation','halation'],['softFocus','softFocus'],['chromaticAberration','chromaticAberration']]as const)cases.push({name,effect:e[name](),direct:(i,frame)=>frame.process(createNativeOpticalEffects,i,(source,f)=>f[method](source))});
+for(const name of ['whiteBalance','colorWheels','cdl','liftGammaGain']as const)cases.push({name,effect:e[name](),direct:(i,frame)=>frame.process(createNativeGradingEffects,i,(source,f)=>f[name](source))});
+const one=e.cubeLut('LUT_1D_SIZE 2\n0 0 0\n1 1 1\n',{inputEncoding:'linear',outputEncoding:'linear'}),three=e.cubeLut('LUT_3D_SIZE 2\n0 0 0\n1 0 0\n0 1 0\n1 1 0\n0 0 1\n1 0 1\n0 1 1\n1 1 1\n',{inputEncoding:'linear',outputEncoding:'linear'});
+cases.push({name:'lut1D',effect:e.lut1D(one),direct:(i,frame)=>frame.process(createNativeGradingEffects,i,(s,f)=>f.lut1D(s,one))},{name:'lut3D',effect:e.lut3D(three),direct:(i,frame)=>frame.process(createNativeGradingEffects,i,(s,f)=>f.lut3D(s,three))},{name:'over',effect:(i,frame)=>e.over(i)(i,frame),direct:(i,frame)=>frame.process(createNativeRasterEffects,i,(s,f)=>f.over(s,s))},{name:'applyMatte',effect:(i,frame)=>e.applyMatte(i)(i,frame),direct:(i,frame)=>frame.process(createNativeProfessionalEffects,i,(s,f)=>f.applyMatte(s,s))});
+const curve=keyframes([{frame:0,value:.25},{frame:199,value:.75}]);
+cases.push({name:'blur scalar Signal',effect:e.blur(curve),direct:(i,frame)=>frame.process(createNativeRasterEffects,i,(s,f)=>f.blur(s,{radius:curve}))},{name:'exposure scalar Signal',effect:e.exposure(curve),direct:(i,frame)=>frame.process(createNativeRasterEffects,i,(s,f)=>f.exposure(s,{stops:curve}))});
+cases.push({name:'resize',effect:e.resize(),direct:(i,frame)=>frame.process(createNativeGeometryEffects,i,(s,f)=>f.resample(s,{width:frame.init.width,height:frame.init.height}))},{name:'transform',effect:e.transform(),direct:(i,frame)=>frame.process(createNativeBuiltinEffects,i,(s,f)=>f.transform(s))});

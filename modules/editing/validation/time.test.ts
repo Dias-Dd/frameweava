@@ -1,0 +1,16 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {clip,video,at,splitClip,timeline} from '../authoring.ts';
+import {speedClip,reverseClip,freezeClip,remapClip} from '../time-controls.ts';
+import {sourcePosition} from '../sampling.ts';import {fraction} from '../fractions.ts';
+import {keyframes,expr} from '../../../src/core/animation.ts';
+import type {FrameContext} from '../../../src/core/types.ts';
+const shot=clip(video('v','./v.mp4',{width:320,height:180}),{duration:24}),fps={num:24,den:1};
+const sample=(c:typeof shot,f:number,context?:FrameContext)=>sourcePosition(at(0,c),f,fps,context);
+test('speed composes with reverse and retains exact project/source units',()=>{const c=speedClip(reverseClip(shot),2);assert.equal(c.duration,12);assert.deepEqual(sample(c,0),{num:23,den:24});assert.deepEqual(sample(c,11),{num:1,den:24});});
+test('fractional slow motion has no accumulated drift and includes the last source interval',()=>{const c=speedClip(shot,{num:1,den:2});assert.equal(c.duration,48);assert.deepEqual(sample(c,47),{num:47,den:48});assert.deepEqual(sample(c,47),sample(c,47));});
+test('reverse twice preserves every source sample, including fractional rate',()=>{const c=speedClip(shot,.5),r=reverseClip(reverseClip(c));for(const f of [47,0,11,24,47])assert.deepEqual(sample(c,f),sample(r,f));});
+test('freeze selects a source sample without advancing time; hold may be shortened compositionally',()=>{const c=freezeClip(shot,13,40);for(const f of [39,0,20,39])assert.deepEqual(sample(c,f),{num:13,den:24});assert.equal(speedClip(c,2).duration,20);});
+test('split retains fractional rate source sampling exactly',()=>{const c=speedClip(shot,.5),[a,b]=splitClip(c,11);assert.equal(a.duration,11);assert.deepEqual(sourcePosition(at(11,b),11,fps),sample(c,11));});
+test('time mapping uses actual Core frame/time/global context, independently of request order',()=>{const c=remapClip(shot,keyframes([{frame:0,value:0},{frame:11,value:23},{frame:23,value:0}]));for(const f of [23,0,7,11,7]){const context={frame:f,time:f/24,globalFrame:f+100,globalTime:(f+100)/24,fps}as FrameContext;const p=sample(c,f,context);assert.ok(p.num>=0);if(f===11)assert.deepEqual(p,{num:23,den:24});}const g=remapClip(shot,expr.sub(expr.globalFrame,100));assert.deepEqual(sample(g,7,{frame:7,globalFrame:107}as FrameContext),{num:7,den:24});});
+test('finite floating Signal values retain their exact JS number; transport overflow is explicit',()=>{for(const value of [1/3,161/11,.1,1.25,Math.PI]){const r=fraction(value);assert.equal(r.num/r.den,value);}for(const value of [NaN,Infinity,1e-30])assert.throws(()=>fraction(value),{code:'E_EDIT_TIME'});});
+test('negative source times, ambiguous mappings and missing context do not clamp or hide errors',()=>{assert.throws(()=>clip(shot.asset,{duration:24,speed:-1}),{code:'E_EDIT_TIME'});assert.throws(()=>clip(shot.asset,{duration:24,sourceFrame:expr.frame,from:1}),{code:'E_EDIT_TIME'});assert.throws(()=>sample(remapClip(shot,expr.frame),0),{code:'E_EDIT_TIME'});assert.throws(()=>sample(remapClip(shot,-1),0,{frame:0}as FrameContext),{code:'E_EDIT_TIME'});assert.throws(()=>freezeClip(shot,24),{code:'E_EDIT_TIME'});assert.throws(()=>timeline({fps:24,duration:12,tracks:[[at(0,shot)]]}),{code:'E_EDIT_PARAMETER'});});

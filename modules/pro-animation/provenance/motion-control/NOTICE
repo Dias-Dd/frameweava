@@ -1,0 +1,18 @@
+This module calls existing Frameweave algorithms through thin mathematical
+composition. Keep their existing notices/licenses in any carried package:
+
+EffectCraft cubic path geometry, fixed commit
+861c51f8187bf56efc77cc7b60fc4a513d2b7198, MIT selected.
+Copyright (c) 2026 ArtCraft Team and contributors.
+See vendor/effectcraft/PA2-SOURCES.json, NOTICE and LICENSE-MIT.
+
+Motion inertia model, fixed source commit
+2f9f45e0d3b56ab3a9cf2f8b1a42336a6d4c762c, MIT.
+Copyright (c) 2024 Motion B.V.
+See attribution/motion/NOTICE and LICENSE.md.
+
+Core Signal/Spring, Aim2D, Layer affine and Stage time are reused unchanged.
+Closed point projections and constant-velocity interception use small original
+Float64 mathematical adapters. Importing external effect/rig/physics hosts would
+cost more and introduce unwanted state; no Rust algorithm is translated anew.
+No Adobe implementation, asset or expression interpreter is copied.

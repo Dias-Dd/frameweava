@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "dataReuse": {
+    "project": "Unicode Character Database",
+    "release": "16.0.0",
+    "file": "DerivedJoiningType-16.0.0.txt",
+    "url": "https://www.unicode.org/Public/16.0.0/ucd/extracted/DerivedJoiningType.txt",
+    "sha256": "6bd08b97da66b70ccfdab105a352de2984e02625239ec5695422c99b33d854f0",
+    "license": "Unicode-3.0",
+    "licenseFile": "UNICODE-LICENSE.txt",
+    "licenseSha256": "e7a93b009565cfce55919a381437ac4db883e9da2126fa28b91d12732bc53d96",
+    "adaptation": "Original bytes retained. Deterministic sorted range reduction; default Non_Joining. Every explicit scalar compared to source. No new executable third-party dependency."
+  },
+  "algorithmsReused": [
+    "Existing original HarfRust/Skrifa and original contextual unicode-bidi/script/grapheme clients; their previous fixed sources/licenses unchanged",
+    "Existing Unicode16 UAX14 implementation and platform ICU segmentation",
+    "Existing formal Paragraph Reader, Clipper2/Earcut geometry and admitted Native GPU paragraph renderer/compositor"
+  ],
+  "referenceOnly": {
+    "repository": "https://github.com/robertknight/tex-linebreak",
+    "commit": "a84e4d4ada014d0752014c184023587a22aed13b",
+    "filesInspected": [
+      "README.md",
+      "src/layout.ts",
+      "package.json"
+    ],
+    "license": "package.json declares MIT; standalone license notice not established in inspected tree. No implementation copied or installed.",
+    "decision": "Additive premeasured item/glue model needs a larger adapter for whole-line context-sensitive HarfRust reshaping. Independently implemented small measured-edge DP and bounded quadratic adjustment instead, preserving existing shaping and Reader. This is not a translated TeX engine.",
+    "originalSha256": {
+      "README.md": "5c3e7122e1892fd24cf131b340934ea650481445cf52d27aa29d32d8c016cad9",
+      "src/layout.ts": "d150890208ebcb0e5e86d3f1e3ccdfe0db103ce9f488b449af1fc94ca187da4a",
+      "package.json": "877ca4ef19730921c1c8dbafcceb134505c00adab8a01c3baadf17f6c4479333"
+    }
+  },
+  "references": [
+    "https://www.w3.org/TR/css-text-3/",
+    "https://drafts.csswg.org/css-text-3/text-justify-i18n",
+    "https://www.unicode.org/reports/tr14/"
+  ],
+  "newOwnedMath": "Measured-edge dynamic programming and active-set bounded diagonal quadratic solver, independently implemented; no Adobe or third-party editor/renderer/timeline source copied."
+}

@@ -1,0 +1,31 @@
+node_modules/
+/dist/
+*.tgz
+.frameweave/
+# Rendered outputs stay local, except the three deliberately retained golden
+# fixtures required by the preview benchmark and full-video regression script.
+artifacts/*
+!artifacts/native-preview/
+artifacts/native-preview/*
+!artifacts/native-preview/final/
+artifacts/native-preview/final/*
+!artifacts/native-preview/final/Across-Machines.tsx
+!artifacts/native-preview/final/expected-rgba.json
+!artifacts/native-preview/final/Original.mp4
+*.log
+
+.canvix/
+
+.env
+.env.*
+!.env.example
+*.tsbuildinfo
+.DS_Store
+Thumbs.db
+
+# Completed platform runtimes are copied with receipts, never committed.
+native-bin/
+
+# Local builds and work products
+/outputs/
+/experiments/

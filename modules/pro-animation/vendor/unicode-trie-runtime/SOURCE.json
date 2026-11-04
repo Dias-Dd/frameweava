@@ -1,0 +1,78 @@
+{
+  "name": "@cto.af/unicode-trie-runtime",
+  "version": "3.2.6",
+  "commit": "e15eff6a72c1c0abe848c0332c7279d426db9c91",
+  "license": "MIT",
+  "repository": {
+    "url": "git+https://github.com/cto-af/unicode-trie.git",
+    "type": "git"
+  },
+  "integrity": "sha512-4ie2tvH98YRtUBSBOMnBjdkaNXbfJTWUMfLkdGirWNrBH3av1WEyFHjJl5bGI8g5I81l58iRg91rG5DQtsht6A==",
+  "archiveSha256": "a66a2764ac732a4488d50ac0abb372cd978dee334e94826ab83fdae6a569542a",
+  "dependencies": {
+    "fflate": "^0.8.2"
+  },
+  "artifacts": [
+    {
+      "upstream": "package.json",
+      "local": "modules/pro-animation/vendor/unicode-trie-runtime/package.upstream.json",
+      "bytes": 723,
+      "sha256": "575ce345ce11a4f227352c5ca70c1999cf58ea3f538426de7fc63616dd9fe5fa"
+    },
+    {
+      "upstream": "README.md",
+      "local": "modules/pro-animation/vendor/unicode-trie-runtime/README.md",
+      "bytes": 2187,
+      "sha256": "fc77ad5182acf595aad5b925a32ae5012d1c9635d6111e6d4dd1641ff994138c"
+    },
+    {
+      "upstream": "constants.js",
+      "local": "modules/pro-animation/vendor/unicode-trie-runtime/constants.js",
+      "bytes": 3127,
+      "sha256": "987f7f1ce75ae6bb35fd88153938fe325aad6c1ad24b2b1b53cb4d49ec8de9ea"
+    },
+    {
+      "upstream": "index.js",
+      "local": "modules/pro-animation/vendor/unicode-trie-runtime/index.js",
+      "bytes": 4601,
+      "sha256": "210d0c0037e20f2cd06a817e55a9fbe8c8bb7e9245a9301c54f79ef41a4f83fc"
+    },
+    {
+      "upstream": "swap.js",
+      "local": "modules/pro-animation/vendor/unicode-trie-runtime/swap.js",
+      "bytes": 563,
+      "sha256": "26077256e5039d97edd77ad2154865a40d3b19cb8099fb63fb0b9fbd669bfe1f"
+    },
+    {
+      "upstream": "types/constants.d.ts",
+      "local": "modules/pro-animation/vendor/unicode-trie-runtime/types/constants.d.ts",
+      "bytes": 721,
+      "sha256": "e1310cdddbb16c2650f56dfd98ca42fe7e660f8424a5d73cc909fc003b7ca3c9"
+    },
+    {
+      "upstream": "types/index.d.ts",
+      "local": "modules/pro-animation/vendor/unicode-trie-runtime/types/index.d.ts",
+      "bytes": 1381,
+      "sha256": "ea9714e388637c857f157266847d6de1de8372928bc9d715de8337052d67dfdf"
+    },
+    {
+      "upstream": "types/swap.d.ts",
+      "local": "modules/pro-animation/vendor/unicode-trie-runtime/types/swap.d.ts",
+      "bytes": 246,
+      "sha256": "62d40004812c3133a22e102f4645a4fb2ed3a7b81d63e954743a46376fe336d8"
+    }
+  ],
+  "adaptations": [
+    {
+      "file": "index.js",
+      "reason": "Relative separately pinned dependency only; source algorithms unchanged",
+      "originalSha256": "210d0c0037e20f2cd06a817e55a9fbe8c8bb7e9245a9301c54f79ef41a4f83fc",
+      "localSha256": "5b4b0951c56f9a40deebfd3ea8e4558e8397fe5fe7be069660137aba6d684fa2"
+    }
+  ],
+  "fixedCommitLicense": {
+    "url": "https://raw.githubusercontent.com/cto-af/unicode-trie/e15eff6a72c1c0abe848c0332c7279d426db9c91/LICENSE",
+    "sha256": "e59138ecbc0b770010b0781905e2bcc181e4f0735494c58fd9681b24f0246187",
+    "bytes": 1107
+  }
+}

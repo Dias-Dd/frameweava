@@ -1,0 +1,16 @@
+import {defineNativeStage} from '../../../native-gpu/authoring.ts';
+import {linear709} from '../../../../src/media/surface.ts';
+import {keyframes,expression} from '../../../../src/core/animation.ts';
+import {createNativeClosureEffects} from '../index.ts';
+import raw from '../fixtures-v2/processors.json';import profilesRaw from '../fixtures-v2/profiles.json';
+import old from '../fixtures/processors.json';
+import type {OcioDefinition} from '../types.ts';import type {OcioUniformValues} from './uniforms.ts';
+const processors=[...raw as OcioDefinition[],(old as OcioDefinition[])[3]],profiles=profilesRaw as {kind:string;values:OcioUniformValues[]}[];
+const kernel={abiVersion:1 as const,id:'fixture/ocio-dynamic-source-v2',version:'1.0.0',inputCount:0,parameterWords:0,code:'fn pixel(p:vec2u)->vec4f{let uv=(vec2f(p)+.5)/vec2f(outputSize());let a=select(select(0.,.5,(p.x/8u)%3u==1u),1.,(p.x/8u)%3u==2u);return vec4f(vec3f(uv.x*4.-.2,.1+uv.y*.5,1.3-uv.x)*a,a);}'};
+/** Actual TSX/Native path. Exact prepared layouts are the public parameter ABI. */
+export const ocioDynamicStage=defineNativeStage(async init=>{const g=init.gpu,effects=await createNativeClosureEffects(init,{ocioProcessors:processors});return {async renderAt(context,_inputs,props){
+ const image=await g.run(await g.compile(kernel),[],{output:{width:init.width,height:init.height,format:'rgba32float',color:linear709,alpha:'premultiplied'}}),profile=context.frame===9?1:context.frame===10?3:context.frame===11?4:Math.floor(context.frame/3)%3,variant=context.frame>=9?context.frame===10?1:0:context.frame%3,values=profiles[profile].values[variant],uniforms=context.frame===9||profile===4?undefined:profile===0?{...values,exposure:keyframes([{frame:0,value:0},{frame:1,value:1.25},{frame:2,value:-.75}])}:Object.fromEntries(Object.entries(values).map(([name,v])=>{const type=processors[profile].uniforms!.find(u=>u.name===name)!.type;return [name,(type==='float3'||type==='float-array')&&Array.isArray(v)?v.map((n,j)=>j===0&&typeof n==='number'?expression('add',n,0):n):v];}));
+ const capture=async(name:string,source:typeof image)=>{const b=await g.imageToBuffer!(source,{version:1});try{await g.publishBuffer(name,b,{version:1});}finally{await g.releaseBuffer(b);}};
+ if(props.checks===true&&context.frame<3)return effects.processImage(image,async(i,f)=>{if(context.frame===0)return f.ocioLookTransform(i,processors[0],{uniforms:{unknown:1}});if(context.frame===1){const uniform=processors[2].uniforms!.find(u=>u.symbol.endsWith('knotsOffsets'))!;return f.ocioLookTransform(i,processors[2],{uniforms:{[uniform.name]:[0,2147483647,-1,0,-1,0,-1,0]}});}return f.ocioLookTransform(i,processors[0],{uniforms:{exposure:Infinity}});},{context});
+ await capture('source',image);return effects.processImage(image,async(i,f)=>{const options={...uniforms===undefined?{}:{uniforms},format:props.half===true?'rgba16float' as const:'rgba32float' as const};if(profile===3){const result=await f.ocioDisplayTransform(i,processors[profile],options);await g.publishBuffer('result',result.buffer,{version:1});return i;}const result=await f.ocioLookTransform(i,processors[profile],options);await capture('result',result);return result;},{context});
+ },async dispose(){await effects.dispose();await effects.dispose();}};});

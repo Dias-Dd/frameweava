@@ -1,0 +1,13 @@
+{
+  "repository": "https://github.com/BarthPaleologue/WebTide",
+  "commit": "a60d603288a88a7f6091af7aa375a7e0b018f42a",
+  "license": "MIT",
+  "files": {
+    "LICENSE": "39eda6c3f1f60d1b24a540b86cc26ba2413074507b04c1d81d4a4ab1233f30ea",
+    "phillipsSpectrum.wgsl": "7eb2885c9cfaf9b9fbf2e1ba1fb2e5de4a63db02199a5e5404bb546c08003089",
+    "dynamicSpectrum.wgsl": "141a6a035959409c8a9f2ae9840ef248dc048e6f5ab9b1930e7537ce58b91c17",
+    "horizontalStepIfft.wgsl": "aa53894d0e457ebfc9d0ce2bd57ce8da8b4ce1b92286f548c2531b0c3bb9a9b1",
+    "verticalStepIfft.wgsl": "7ffcb5ecd22baf458587e7e7c380fbfd8983388a1653c3f34f5bc9cff054301d"
+  },
+  "adaptation": "Phillips and conjugate time evolution adapted to existing Native C2 buffers. Explicit modular negative indices replace out-of-range textureLoad in upstream. Vector Fourier multipliers corrected to independent complex components; Nyquist derivative zero. FFT butterfly is a new C2 buffer/layout adapter of standard radix2 complex math, reviewed against the fixed upstream. No BabylonJS runtime, shaded materials, assets or external FFT precomputation copied."
+}

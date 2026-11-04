@@ -1,0 +1,179 @@
+{
+  "version": 1,
+  "id": "native-media-input-state-hdr-1",
+  "baseline": "7d1b27b27ea1329cb0d18e9c38987868ad8d386d",
+  "outcome": "qualified functional checkpoint; explicit CPU video fallback and explicit accurate-output readback",
+  "validation": {
+    "limitSeconds": 420,
+    "accounting": "Sum of validation commands, including failures/builds, not parallel elapsed time. Early unrecorded timings and suite overhead use conservative upper bounds; not an exact performance measurement.",
+    "upperBoundSeconds": 409.58115259999994,
+    "phases": [
+      {
+        "phase": "initial checks/probes",
+        "secondsOrUpperBound": 60
+      },
+      {
+        "phase": "diagnostic build",
+        "secondsOrUpperBound": 14.3352078
+      },
+      {
+        "phase": "initial GPU tests",
+        "secondsOrUpperBound": 7.6578381
+      },
+      {
+        "phase": "production build",
+        "secondsOrUpperBound": 16.7126955
+      },
+      {
+        "phase": "types-3",
+        "secondsOrUpperBound": 12.4667687
+      },
+      {
+        "phase": "delivery-1",
+        "secondsOrUpperBound": 19
+      },
+      {
+        "phase": "delivery-2",
+        "secondsOrUpperBound": 17
+      },
+      {
+        "phase": "delivery-3",
+        "secondsOrUpperBound": 19
+      },
+      {
+        "phase": "production-build-2",
+        "secondsOrUpperBound": 8.1961942
+      },
+      {
+        "phase": "delivery-4",
+        "secondsOrUpperBound": 22
+      },
+      {
+        "phase": "delivery-5",
+        "secondsOrUpperBound": 19
+      },
+      {
+        "phase": "HDR and decode probes",
+        "secondsOrUpperBound": 8
+      },
+      {
+        "phase": "delivery-6",
+        "secondsOrUpperBound": 37
+      },
+      {
+        "phase": "types-final",
+        "secondsOrUpperBound": 7.7994908
+      },
+      {
+        "phase": "diagnostic-build-final",
+        "secondsOrUpperBound": 6.0759442
+      },
+      {
+        "phase": "GPU-tests-final",
+        "secondsOrUpperBound": 10.9746544
+      },
+      {
+        "phase": "types-final-2",
+        "secondsOrUpperBound": 7.902635
+      },
+      {
+        "phase": "production-build-final",
+        "secondsOrUpperBound": 3.2859137
+      },
+      {
+        "phase": "delivery-final",
+        "secondsOrUpperBound": 48.3314894
+      },
+      {
+        "phase": "types-freeze",
+        "secondsOrUpperBound": 7.196043
+      },
+      {
+        "phase": "delivery-tests-freeze",
+        "secondsOrUpperBound": 46.8907328
+      },
+      {
+        "phase": "types-last",
+        "secondsOrUpperBound": 6.755545
+      },
+      {
+        "phase": "remaining short probe/evidence/verification overhead (conservative reserve)",
+        "secondsOrUpperBound": 4
+      }
+    ],
+    "batches": [
+      {
+        "log": "raw/media-gap-gpu-tests-final.txt",
+        "command": "node --import tsx --test --test-concurrency=1 tests/native-state.test.ts tests/native-frame-bindings.test.ts tests/native-resources.test.ts",
+        "passed": 8,
+        "failed": 0,
+        "seconds": 10.9746544,
+        "profile": "diagnostics",
+        "scope": "GPU owner/state/import/frame-slot paths; Rust, client and these tests unchanged after this batch"
+      },
+      {
+        "log": "raw/media-gap-delivery-tests-freeze.txt",
+        "command": "node --import tsx --test --test-concurrency=1 tests/native-media-delivery.test.ts tests/hdr-metadata.test.ts tests/native-gpu-audio.test.ts",
+        "passed": 4,
+        "failed": 0,
+        "seconds": 46.8907328,
+        "profile": "production",
+        "scope": "frozen final TS media code and real public CLI, PNG, EXR, HEVC/AV1 SDR/HDR10, HLG, ACES2, AU-1 and exact CFR/VFR PTS"
+      },
+      {
+        "log": "raw/media-gap-types-last.txt",
+        "command": "npm run typecheck",
+        "exitCode": 0,
+        "seconds": 6.755545,
+        "scope": "all TypeScript after final source changes"
+      }
+    ],
+    "notAFullRepositoryRegression": true
+  },
+  "environment": {
+    "platform": "Windows x64",
+    "gpu": "NVIDIA GeForce RTX 5070 Laptop GPU",
+    "driver": "596.49",
+    "backend": "Vulkan",
+    "node": "v22.19.0",
+    "encodeTool": "bundled FFmpeg 6.1.1",
+    "independentAv1DecodeTool": "explicit installed FFmpeg 9.0.2 (dav1d)",
+    "probeTool": "explicit installed FFprobe 9.0.2",
+    "rustBuild": "offline locked; native-build.json",
+    "cxxProbe": "MSVC 19.51.36260 / Windows Media Foundation / D3D11",
+    "home": "worktree-local FRAMEWEAVE_HOME; no shared library changes"
+  },
+  "numerics": {
+    "hevcHdr10MaxCodeError": 0.00049591064453125,
+    "av1Hdr10MaxCodeError": 0.00049591064453125,
+    "aces2Hdr10MaxCodeError": 0.0007864832878112793,
+    "scope": "320x180 fixed-color frames; code-value errors include 10-bit conversion/lossy encoding; not a perceptual metric/universal bound",
+    "exrFirstRgba": [
+      -0.25,
+      2,
+      0.0625,
+      0.5
+    ],
+    "stateRestore": "exact equality to same-owner GPU reference; snapshot CPU readbacks=0"
+  },
+  "knownLimits": [
+    "Video fallback decodes on CPU and uploads F32; GPU-resident hardware decoding is not enabled",
+    "Accurate final delivery uses explicit GPU readback and CPU reference output conversion; native fast preview remains separate",
+    "Bundled Windows FFmpeg 6.1.1 failed to decode AV1 10-bit; independent 9.0.2 decode verified actual output",
+    "GPU checkpoints are owner-local, GPU buffers/cursors only, not JS/React/Servo or disk persistence",
+    "Frame-accurate reverse/large seek currently reopens/decodes from start",
+    "Only opaque tagged limited-range planar-YUV video input; explicit interpretation required"
+  ],
+  "unqualifiedExperiment": {
+    "directory": "unqualified-mf-probe",
+    "result": "actual NV12 D3D11 GPU textures received; returned PTS +50 ms vs source; no production enablement or zero-copy claim"
+  },
+  "notValidated": [
+    "Linux/macOS",
+    "long/large production media and multi-camera memory/throughput",
+    "alpha video and arbitrary container/RGB formats",
+    "all six portable export modes/independent package installation/full repository suite",
+    "cross-process GPU checkpoint persistence or automatic arbitrary-JS state rewind"
+  ],
+  "changes": "See git commit file list and MEDIA.md; no TVG/P4/Stage time contract changes, no Main merge, no lock refresh"
+}

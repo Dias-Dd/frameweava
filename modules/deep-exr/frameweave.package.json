@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "apiVersion": 1,
+  "id": "deep-image",
+  "version": "0.1.0",
+  "name": "Deep Image",
+  "description": "Typed Deep EXR asset admission and same-owner GPU surface-point flatten/extraction. Candidate identity for Main review.",
+  "tags": [
+    "deep",
+    "exr",
+    "hdr",
+    "native",
+    "gpu"
+  ],
+  "source": {
+    "kind": "local",
+    "authority": "frameweave.native-media"
+  },
+  "compatible": "0.1.0",
+  "platforms": [
+    "web"
+  ],
+  "capabilities": [
+    "native-gpu"
+  ],
+  "permissions": {
+    "filesystem": false,
+    "network": false,
+    "process": false
+  },
+  "entry": "main",
+  "modules": {
+    "main": {
+      "format": "javascript",
+      "path": "dist/bindings.mjs"
+    }
+  },
+  "bindings": {
+    "schemaVersion": 2,
+    "module": "main",
+    "types": "api.d.ts",
+    "engine": "native-gpu",
+    "initialize": "initialize",
+    "gpu": "required",
+    "gpuApi": "native-wgpu",
+    "gpuExports": [
+      "createDeep"
+    ]
+  }
+}

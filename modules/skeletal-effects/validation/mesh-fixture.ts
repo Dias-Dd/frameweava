@@ -1,0 +1,3 @@
+import type {MeshData,Vec3,MeshRenderOptions} from '../src/mesh-types.ts';
+export function triangle(id='mesh.triangle',origin:Vec3=[0,0,0]):MeshData{return {schema:'frameweave.mesh',version:1,id,coordinates:{spaceId:'mesh.world',unit:'meter',origin:'local',x:'right',y:'up',z:'toward-viewer',handedness:'right'},topology:'triangles',vertexIds:['a','b','c'],restPositions:[[-.8,-.8,0],[.8,-.8,0],[0,.8,0]].map(p=>p.map((v,k)=>v+origin[k]) as Vec3),indices:[0,1,2]};}
+export function meshFrame(ids=['mesh.triangle'],frame=0):MeshRenderOptions{return {context:{frame,time:frame/24,fps:{num:24,den:1}},camera:{projection:'orthographic',position:[0,0,5],target:[0,0,0],viewHeight:2,near:.1,far:100},objects:ids.map(id=>({id,appearance:{color:[4,2,1],opacity:.25}}))};}

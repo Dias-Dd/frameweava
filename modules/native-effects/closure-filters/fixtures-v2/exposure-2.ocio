@@ -1,0 +1,47 @@
+ocio_profile_version: 2
+
+environment:
+  {}
+search_path: ""
+strictparsing: false
+luma: [0.2126, 0.7152, 0.0722]
+
+roles:
+  default: raw
+
+file_rules:
+  - !<Rule> {name: Default, colorspace: default}
+
+displays:
+  sRGB:
+    - !<View> {name: Raw, colorspace: raw}
+  linear-709:
+    - !<View> {name: graded, colorspace: linear-709, looks: dynamic}
+
+active_displays: []
+active_views: []
+
+looks:
+  - !<Look>
+    name: dynamic
+    process_space: linear-709
+    transform: !<ExposureContrastTransform> {style: linear, exposure: -0.75, contrast: 0.9, gamma: 1.12, pivot: 0.18}
+
+
+colorspaces:
+  - !<ColorSpace>
+    name: raw
+    family: raw
+    equalitygroup: ""
+    bitdepth: 32f
+    description: A raw color space. Conversions to and from this space are no-ops.
+    isdata: true
+    allocation: uniform
+
+  - !<ColorSpace>
+    name: linear-709
+    family: ""
+    equalitygroup: ""
+    bitdepth: unknown
+    isdata: false
+    allocation: uniform

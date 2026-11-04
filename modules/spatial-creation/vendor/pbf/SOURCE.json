@@ -1,0 +1,33 @@
+{
+  "repository": "https://github.com/InteractiveComputerGraphics/PositionBasedDynamics",
+  "revision": "aa62c44f0d43956452e1f960a40333ec2d6d3ea5",
+  "tag": "2.2.0",
+  "license": "MIT",
+  "scope": "Selected density/lambda/delta PBF, cubic SPH kernel and XSPH mathematical adaptation; no upstream engine or integrator/renderer embedded",
+  "files": {
+    "LICENSE": {
+      "source": "LICENSE",
+      "sha256": "825d46292692c501a88ddd745cddf69e2198b8354f44ae1f192627d79bad2ae7"
+    },
+    "PositionBasedFluids.cpp": {
+      "source": "PositionBasedDynamics/PositionBasedFluids.cpp",
+      "sha256": "6fc214b056526faff99ae1e59fcdae88721f1e5330b0f483338f9c118597c743"
+    },
+    "PositionBasedFluids.h": {
+      "source": "PositionBasedDynamics/PositionBasedFluids.h",
+      "sha256": "694e5930d62eab63ac4d5ebe0d1b852122a1719d5b3afde6ac6ac16bbd5ec370"
+    },
+    "SPHKernels.cpp": {
+      "source": "PositionBasedDynamics/SPHKernels.cpp",
+      "sha256": "d21a52e2e13904ba50b320bb3f6e75d14f35fdb9bc18a96f4f10a2dcdc5411af"
+    },
+    "SPHKernels.h": {
+      "source": "PositionBasedDynamics/SPHKernels.h",
+      "sha256": "bfd2194c1cdc9682a8392ed6f5e4ca820d097fd058d10ea06318558694a2cb1c"
+    },
+    "TimeStepFluidModel.cpp": {
+      "source": "Demos/FluidDemo/TimeStepFluidModel.cpp",
+      "sha256": "fa23ccbad02e351ff76e6166a31a58de3a8bc683645f6525491ca85584581e8f"
+    }
+  }
+}

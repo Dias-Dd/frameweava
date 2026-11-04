@@ -1,0 +1,11 @@
+{
+  "fontTools": "4.68.0",
+  "origin": "original authored test contours/paint recipes, Apache-2.0; no third-party glyph artwork",
+  "fixtures": {
+    "colrv0.ttf": "4ea904ab78f44717ba067c428607f9a9337e497e604821cca8a52267dea260f5",
+    "colrv1.ttf": "6807df410706155bb789eeda833e88cadf7a9fd8e03ae295eea1780921bbeac4",
+    "sbix.ttf": "0dd278543e647ff2265550db8770c971f3ca9695a086f29ea8779ba3c55460ff",
+    "svg-gzip.ttf": "7c0648aa6afa3238b28073684843d2eeae21c2ae30bddbeb0fa008cf5dcb1a01",
+    "svg.ttf": "e8ed869d2f72d26d027d046d4bfba5313a4213558bbe2b5690aa983ec1a2f299"
+  }
+}

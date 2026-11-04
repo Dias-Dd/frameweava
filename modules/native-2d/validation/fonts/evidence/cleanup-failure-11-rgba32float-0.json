@@ -1,0 +1,6 @@
+{
+  "code": "E_PACKAGE_DISPOSE",
+  "message": "Managed module cleanup failed",
+  "stack": "EngineError: Managed module cleanup failed\n    at SpiderMonkeyTransport.receive (D:\\frameweave-worktrees\\agent-4\\modules\\spidermonkey-host\\transport.ts:62:33)\n    at Socket.<anonymous> (D:\\frameweave-worktrees\\agent-4\\modules\\spidermonkey-host\\transport.ts:21:128)\n    at Socket.emit (node:events:519:28)\n    at addChunk (node:internal/streams/readable:561:12)\n    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)\n    at Readable.push (node:internal/streams/readable:392:5)\n    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)",
+  "details": "EngineError@frameweave-host.js:523:11\ndispose@frameweave-host.js:80699:34\nasync*nativeDispatcher/<@frameweave-host.js:82071:38\nasync*value@frameweave-host.js:460:28\nvalue@frameweave-host.js:475:23\n@frameweave-dispatch.js:1:6\n"
+}

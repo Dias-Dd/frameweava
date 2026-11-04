@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "apiVersion": 1,
+  "id": "frameweave.resident-example",
+  "version": "1.0.1",
+  "name": "Editable resident pixel example",
+  "description": "Public SDK resident Blur/Glow/Over example, using the existing managed GPU requirement and Stage lifecycle.",
+  "source": {
+    "kind": "local",
+    "authority": "frameweave.examples"
+  },
+  "compatible": "0.1.0",
+  "platforms": [
+    "web"
+  ],
+  "capabilities": [
+    "webgpu"
+  ],
+  "permissions": {
+    "filesystem": false,
+    "network": false,
+    "process": false
+  },
+  "entry": "main",
+  "modules": {
+    "main": {
+      "format": "javascript",
+      "path": "./public.ts"
+    },
+    "bindings": {
+      "format": "javascript",
+      "path": "./bindings.ts"
+    }
+  },
+  "bindings": {
+    "schemaVersion": 1,
+    "module": "bindings",
+    "types": "./api.d.ts",
+    "initialize": "initialize",
+    "engine": "web",
+    "gpu": "required"
+  }
+}

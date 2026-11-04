@@ -1,0 +1,17 @@
+{
+  "name": "abort-controller",
+  "version": "3.0.0",
+  "repository": {
+    "url": "git+https://github.com/mysticatea/abort-controller.git",
+    "type": "git"
+  },
+  "gitHead": "a935d38e09eb95d6b633a8c42fcceec9969e7b05",
+  "license": "MIT",
+  "archive": "https://registry.npmjs.org/abort-controller/-/abort-controller-3.0.0.tgz",
+  "integrity": "sha512-h8lQ8tacZYnR3vNQTgibj+tODHI5/+l06Au2Pcriv/Gmet0eaj4TwWH41sO9wnHDiQsEj19q0drzdWdeAHtweg==",
+  "file": "dist/abort-controller.mjs",
+  "sourceSha256": "4ba744fba41125a08484b2e628146a68dbb5c98aeefde1d1a98e64981058eb4a",
+  "carriedSha256": "7020a5d6bc418cfb87cd5448260b045a82bf3a400a0f1716f4a436b30d856882",
+  "modifications": "Only import specifier points at the unchanged fixed local event-target-shim. Algorithms unchanged.",
+  "use": "Lexically scoped standard cancellation ponyfill; never installed on globalThis"
+}

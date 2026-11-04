@@ -1,0 +1,5 @@
+[
+  {"method":"normalize","args":["  Frameweave 中  ",{"type":"Float64Array","values":[1,2,3]}],"expected":"FRAMEWEAVE 中:6.00"},
+  {"method":"scale","args":[{"type":"Float64Array","values":[1.5,-2,3]},2],"expected":[3,-4,6]},
+  {"method":"normalize","args":["bad",{"type":"Float64Array","values":[-1]}],"error":"nonnegative finite"}
+]

@@ -1,0 +1,6 @@
+Frameweave native managed temporal adapter
+SPDX-License-Identifier: Apache-2.0
+Reuses the existing Frameweave time plans, GPU reducer and native kernels unchanged.
+Frozen Core source c7685c25a0d843a65566388ea8e055853fac8cfc remains Main/Agent-1 owned.
+No external renderer, timeline, token authority, library or new third-party code is vendored.
+See SOURCE.json for fixed source identities and exact content hashes.

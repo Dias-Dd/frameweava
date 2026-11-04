@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "apiVersion": 1,
+  "id": "gpu-resident-effects",
+  "version": "0.2.1",
+  "name": "Resident GPU Colour, Matte and Filter Effects",
+  "description": "Hardware-only scene-linear F16/F32 colour, keying, unsharp and finite-canvas matte cleanup recipes on the public PixelScope; one retained owner and final readback, explicit per-pass precision and budgets.",
+  "tags": [
+    "gpu",
+    "resident",
+    "hdr",
+    "keying",
+    "colour",
+    "levels",
+    "curves",
+    "channel-mix",
+    "despill",
+    "unsharp",
+    "matte",
+    "morphology",
+    "feather"
+  ],
+  "source": {
+    "kind": "local",
+    "authority": "frameweave.gpu-images"
+  },
+  "compatible": "0.1.0",
+  "platforms": [
+    "web"
+  ],
+  "capabilities": [
+    "webgpu"
+  ],
+  "permissions": {
+    "filesystem": false,
+    "network": false,
+    "process": false
+  },
+  "modules": {
+    "main": {
+      "format": "javascript",
+      "path": "./public.ts"
+    },
+    "bindings": {
+      "format": "javascript",
+      "path": "./bindings.ts"
+    }
+  },
+  "bindings": {
+    "schemaVersion": 1,
+    "module": "bindings",
+    "types": "./api.d.ts",
+    "initialize": "initialize",
+    "engine": "web",
+    "gpu": "required"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "task": "Repair the twelve existing experimental spherical effects",
+  "authorization": "User explicitly authorized one additional <420s repair validation flow on 2026-11-04; old ledger retained unchanged",
+  "baseline": "9baeb676e5aa857239a06150614f159e3dc10016",
+  "status": "source_gpu_numeric_media_and_fixed_workload_qualified",
+  "implementationAccounting": "Original coherent-family implementation: 1,053,528 ms before its first test, plus this repair. No invented repair start timestamp.",
+  "fixes": [
+    "Canonical pole longitude shared by independent reference and GPU samplers",
+    "Glitch GPU-resident paired-noise field plus retained reachable sampling helper",
+    "Full-amount projection specialization removes unused source projection without reordering publications",
+    "Cross-face cube taps retain exact integer homogeneous directions and correct integer quotient boundary"
+  ],
+  "evidence": "docs/native-spherical-repair-evidence/2026-11-04"
+}

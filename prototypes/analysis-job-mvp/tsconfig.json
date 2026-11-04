@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": { "types": ["node"], "noEmit": true, "paths": {
+    "@frameweave/engine": ["../../src/index.ts"],
+    "@frameweave/engine/web": ["../../src/web/api.ts"],
+    "@frameweave/engine/jsx-runtime": ["../../src/jsx-runtime.ts"]
+  } },
+  "include": ["*.ts", "tests/*.ts"],
+  "exclude": ["node_modules", "assets", "generated", "evidence"]
+}

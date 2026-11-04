@@ -1,0 +1,38 @@
+{
+  "binding": "existing bytes-v1",
+  "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "compilerSha256": "ba03e3ba03a73d9fef19ab3659140f94b43615ec1d587fe9befc9aed3bd5aa72",
+  "target": "wasm32-unknown-unknown",
+  "flags": [
+    "--edition=2021",
+    "--crate-type=cdylib",
+    "--target=wasm32-unknown-unknown",
+    "-C",
+    "opt-level=3",
+    "-C",
+    "panic=abort",
+    "-C",
+    "strip=symbols",
+    "-C",
+    "debuginfo=0",
+    "--remap-path-prefix",
+    "<workspace>=.",
+    "--sysroot",
+    "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\.frameweave\\puppet-effects\\rust-std-1.99.1-wasm32-unknown-unknown\\rust-std-wasm32-unknown-unknown",
+    "-C",
+    "linker=C:\\Users\\ASUS\\.rustup\\toolchains\\stable-x86_64-pc-windows-msvc\\lib\\rustlib\\x86_64-pc-windows-msvc\\bin\\rust-lld.exe"
+  ],
+  "dependencies": "Rust std; existing pinned XPBD/dihedral source; reviewed contact geometry, no new runtime/registry/host imports",
+  "hostImports": [],
+  "inputs": {
+    "modules/spatial-creation/physics/rust/lib.rs": "a6d3b27aa9d6387949d283ef4d7cfadf50a64e6ca62c7db7467382a731448b6f",
+    "modules/spatial-creation/physics/rust/algorithm.rs": "08ba26b58cf30e6656497cb66bf534b8ad0294117b9efdab24c56b247021a192",
+    "modules/spatial-creation/physics/rust/geometry.rs": "8424a67c8fd887c1fa93438b215657dbb02f5e7689f9d93828b17df8f7de152b",
+    "modules/spatial-creation/physics/vendor/SOURCE.json": "a7b98f59513b3a154d4fde5d6006bee76fe0a9e3021e23a213ceb5f3c8397c52",
+    "modules/spatial-creation/scripts/build-contact-kernel.mjs": "4a7ed27a9236394dcd7f7af67ee45c9b5b9864d0bad5ab0dad6bf5f8eea090c3",
+    "modules/deformable-effects/rust/src/xpbd.rs": "76789b2650ff56731da52d53c96172fe7efc2f8b3dd766ca21b92f33ad324beb",
+    "modules/deformable-effects/rust/src/dihedral.rs": "4b8b9861253de6bafe186b96b9d624a1e695f8080326fa6df2713d12617439e8"
+  },
+  "bytes": 123288,
+  "sha256": "6813cefe84407400b458716350d6aa4c4bb2f538fb336dab05bddf097a458d8b"
+}

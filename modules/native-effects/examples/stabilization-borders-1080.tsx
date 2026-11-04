@@ -1,0 +1,2 @@
+import {Composition,Stage,Layer,ref} from '@frameweave/engine';import {stabilizationBorderStage} from '../stabilization/border-stage.ts';export {stabilizationBorderStage};
+export default <Composition width={1920} height={1080} fps={24} durationInFrames={9} background="transparent"><Stage id="borders" factory={stabilizationBorderStage} props={{scene:true,performance:true}}/><Layer source={ref('borders')}/></Composition>;

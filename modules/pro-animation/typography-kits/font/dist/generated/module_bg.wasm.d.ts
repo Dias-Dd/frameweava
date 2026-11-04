@@ -1,0 +1,35 @@
+/* tslint:disable */
+/* eslint-disable */
+export const memory: WebAssembly.Memory;
+export const __wbg_engine_free: (a: number, b: number) => void;
+export const engine_append_font: (a: number, b: number, c: number) => [number, number];
+export const engine_begin_font: (a: number) => void;
+export const engine_color_glyph_paint: (a: number, b: number) => [number, number, number, number];
+export const engine_color_palette: (a: number, b: number) => [number, number, number, number];
+export const engine_finish_font: (a: number, b: number) => [number, number, number];
+export const engine_font_axes: (a: number) => [number, number, number, number];
+export const engine_font_bitmap_strikes: (a: number, b: number) => [number, number, number, number];
+export const engine_font_color_profile: (a: number) => number;
+export const engine_font_embedded_bytes: (a: number, b: number, c: number, d: number) => [number, number, number, number];
+export const engine_font_embedded_metadata: (a: number, b: number, c: number, d: number) => [number, number, number, number];
+export const engine_font_metrics: (a: number) => [number, number, number, number];
+export const engine_glyph_metrics: (a: number, b: number, c: number) => [number, number, number, number];
+export const engine_map_codepoints: (a: number, b: number, c: number) => [number, number, number, number];
+export const engine_map_variants: (a: number, b: number, c: number) => [number, number, number, number];
+export const engine_new: () => number;
+export const engine_normalized_coords: (a: number) => [number, number, number, number];
+export const engine_outline_glyph: (a: number, b: number) => [number, number, number];
+export const engine_read_glyphs: (a: number, b: number, c: number) => [number, number, number, number];
+export const engine_read_outline: (a: number, b: number, c: number) => [number, number, number, number];
+export const engine_reset_results: (a: number) => void;
+export const engine_resolve_location: (a: number, b: number, c: number) => [number, number, number, number];
+export const engine_set_variations: (a: number, b: number, c: number) => [number, number];
+export const engine_shape_run: (a: number, b: number, c: number, d: number, e: number, f: number, g: number, h: number, i: number, j: number) => [number, number, number];
+export const engine_shape_run_context: (a: number, b: number, c: number, d: number, e: number, f: number, g: number, h: number, i: number, j: number, k: number, l: number, m: number, n: number) => [number, number, number];
+export const live_sessions: () => number;
+export const __wbindgen_externrefs: WebAssembly.Table;
+export const __wbindgen_malloc: (a: number, b: number) => number;
+export const __externref_table_dealloc: (a: number) => void;
+export const __wbindgen_free: (a: number, b: number, c: number) => void;
+export const __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
+export const __wbindgen_start: () => void;

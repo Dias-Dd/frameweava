@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 2,
+  "kitVersion": 2,
+  "binding": "wasm-bindgen-data-v1",
+  "rustc": "1.99.1",
+  "wasmBindgen": "0.2.129",
+  "example": "bindings",
+  "execution": "worker",
+  "entryClass": "Engine",
+  "snippets": {
+    "js/host.js": {
+      "sha256": "e4f6694a40200bb6fcab6223813c3bc9cd89c312f0522a94dfd9787440ef9bf8"
+    }
+  }
+}

@@ -1,0 +1,81 @@
+/** Independent acceptance equations. No production Stage imports this file.
+ * Float32 data-publication boundaries are explicit; EDT uses exhaustive nearest
+ * sites, median sorts samples, and box means enumerate the full window. */
+import {fromHalf,toHalf,type AlphaMode} from '../../../src/media/surface.ts';
+import type {KeyName} from './cases.ts';
+type V=readonly [number,number,number,number];
+type RGB=readonly [number,number,number];
+const F=Math.fround,clamp=(v:number)=>Math.max(0,Math.min(1,v));
+const weight:RGB=[.2126390058715104,.715168678767756,.0721923153607337];
+const y=(c:readonly number[])=>c[0]*weight[0]+c[1]*weight[1]+c[2]*weight[2];
+const straight=(v:V):RGB=>v[3]>0?[v[0]/v[3],v[1]/v[3],v[2]/v[3]]:[0,0,0];
+const at=(p:ArrayLike<number>,i:number):V=>[p[i],p[i+1],p[i+2],p[i+3]];
+const pm=(p:Float32Array,alpha:AlphaMode)=>Array.from(p,(v,i)=>alpha==='straight'&&i%4!==3?v*p[i-i%4+3]:v);
+const finish=(p:ArrayLike<number>,half=false)=>Float32Array.from(p,(v,i)=>{const value=i%4===3?clamp(v):v;return half?fromHalf(toHalf(F(value))):value;});
+const rgba=(c:readonly number[],a:number):V=>[c[0]*a,c[1]*a,c[2]*a,a];
+const ramp=(x:number,start:number,width:number)=>width>0?clamp((x-start)/width):Number(x>start);
+const cut=(v:V,k:number):V=>v[3]===0?v:[v[0]*clamp(k),v[1]*clamp(k),v[2]*clamp(k),v[3]*clamp(k)];
+function map(p:ArrayLike<number>,fn:(v:V,i:number)=>V){const result:number[]=[];for(let i=0;i<p.length;i+=4)result.push(...fn(at(p,i),i));return result;}
+function prepare(p:ArrayLike<number>,dropZero=false){return finish(map(p,v=>dropZero&&v[3]===0?[0,0,0,0]:v));}
+function mask(p:ArrayLike<number>){return finish(map(p,v=>[0,0,0,v[3]]));}
+function gaussian(p:ArrayLike<number>,w:number,h:number,sigma:number){const radius=Math.ceil(sigma*3),weights=Array.from({length:radius*2+1},(_,i)=>sigma===0?1:Math.exp(-.5*((i-radius)/sigma)**2)),sum=weights.reduce((a,b)=>a+b,0),g=weights.map(v=>v/sum);let current=p;for(const axis of [0,1]){const next:number[]=[];for(let yy=0;yy<h;yy++)for(let xx=0;xx<w;xx++){const v=[0,0,0,0];for(let k=-radius;k<=radius;k++){const x=Math.max(0,Math.min(w-1,xx+(axis===0?k:0))),y=Math.max(0,Math.min(h-1,yy+(axis===1?k:0))),j=(y*w+x)*4;for(let c=0;c<4;c++)v[c]+=current[j+c]*g[k+radius];}next.push(...v);}current=finish(next);}return Float32Array.from(current);}
+function estimate(p:ArrayLike<number>,w:number,h:number,radius:number,threshold=0){return gaussian(finish(map(p,v=>v[3]>threshold?v:[0,0,0,0])),w,h,radius*.5);}
+function coverage(p:ArrayLike<number>,matte:Float32Array,fill:ArrayLike<number>,recovery=0,extend=false){return map(p,(v,i)=>{const fv=at(fill,i),fc=straight(fv),old=straight(v),a0=v[3];let a=clamp(matte[i+3]);if(extend){a=Math.max(a,a0);if(fv[3]<=0)a=a0;}if(a0>0){const t=fv[3]>0?recovery*(1-a0):0;return rgba(old.map((n,c)=>n*(1-t)+fc[c]*t),a);}return [v[0]+fc[0]*a,v[1]+fc[1]*a,v[2]+fc[2]*a,a];});}
+function contrast(p:ArrayLike<number>,amount:number){return finish(map(p,v=>[0,0,0,clamp((v[3]-.5)*amount+.5)]));}
+function morphInteger(p:ArrayLike<number>,w:number,h:number,r:number,max:boolean,boundary:'clamp'|'transparent'){const result:number[]=[];for(let yy=0;yy<h;yy++)for(let xx=0;xx<w;xx++){let a=max?0:1;for(let dy=-r;dy<=r;dy++)for(let dx=-r;dx<=r;dx++){let x=xx+dx,y=yy+dy;let v=0;if(boundary==='clamp'){x=Math.max(0,Math.min(w-1,x));y=Math.max(0,Math.min(h-1,y));}if(x>=0&&y>=0&&x<w&&y<h)v=p[(y*w+x)*4+3];a=max?Math.max(a,v):Math.min(a,v);}result.push(0,0,0,a);}return Float32Array.from(result);}
+function morph(p:ArrayLike<number>,w:number,h:number,radius:number,max:boolean,boundary:'clamp'|'transparent'='transparent'){const r=F(radius),whole=Math.floor(r),t=F(r-whole),a=morphInteger(p,w,h,whole,max,boundary);if(t===0)return a;const b=morphInteger(p,w,h,whole+1,max,boundary);return finish(map(a,(v,i)=>[0,0,0,v[3]+(b[i+3]-v[3])*t]));}
+function mean(data:Float32Array,w:number,h:number,components:number,radius:number){let current=data;for(const axis of [0,1]){const out=new Float32Array(data.length);for(let yy=0;yy<h;yy++)for(let xx=0;xx<w;xx++)for(let c=0;c<components;c++){let total=0;for(let k=-radius;k<=radius;k++){const x=Math.max(0,Math.min(w-1,xx+(axis===0?k:0))),y=Math.max(0,Math.min(h-1,yy+(axis===1?k:0)));total+=current[(y*w+x)*components+c];}out[(yy*w+xx)*components+c]=total/(radius*2+1);}current=out;}return current;}
+function guided(p:ArrayLike<number>,w:number,h:number,radius:number,epsilon:number){const moments=new Float32Array(p.length);for(let i=0;i<p.length;i+=4){const v=at(p,i),luma=y(straight(v)),guide=F(luma/(1+Math.abs(luma))),a=v[3];moments.set([guide,a,F(guide*a),F(guide*guide)],i);}const m=mean(moments,w,h,4,radius),coefficients=new Float32Array(w*h*2);for(let i=0;i<w*h;i++){const j=i*4,variance=Math.max(0,m[j+3]-m[j]*m[j]),covariance=m[j+2]-m[j]*m[j+1],a=covariance/(variance+epsilon),b=m[j+1]-a*m[j];coefficients.set([a,b],i*2);}const coefficientsMean=mean(coefficients,w,h,2,radius),out=new Float32Array(p.length);for(let i=0;i<w*h;i++)out[i*4+3]=clamp(coefficientsMean[i*2]*moments[i*4]+coefficientsMean[i*2+1]);return out;}
+export function distanceOracle(p:ArrayLike<number>,w:number,h:number,threshold=.5){const inside=Array.from({length:w*h},(_,i)=>p[i*4+3]>0&&p[i*4+3]>=threshold),out=new Float32Array(w*h*2);for(let yy=0;yy<h;yy++)for(let xx=0;xx<w;xx++){const i=yy*w+xx,state=inside[i];let squared=state?Math.min(xx+1,w-xx,yy+1,h-yy)**2:Infinity;for(let y=0;y<h;y++)for(let x=0;x<w;x++)if(inside[y*w+x]!==state)squared=Math.min(squared,(x-xx)**2+(y-yy)**2);if(Number.isFinite(squared)){out[i*2]=F(Math.max(0,F(Math.sqrt(squared))-.5))*(state?1:-1);out[i*2+1]=1;}}return out;}
+function colorRange(c:RGB,mode:number):RGB{if(mode===0)return c;const l=y(c);if(mode===1)return [l,(c[2]-l)/(2*(1-weight[2])),(c[0]-l)/(2*(1-weight[0]))];const xyz=[.4123907992659595*c[0]+.357584339383878*c[1]+.1804807884018343*c[2],l,.0193308187155919*c[0]+.119194779794626*c[1]+.9505321522496606*c[2]],f=(v:number)=>v>(6/29)**3?Math.cbrt(v):v*841/108+4/29,fx=f(xyz[0]/(.3127/.329)),fy=f(xyz[1]),fz=f(xyz[2]/((1-.3127-.329)/.329));return [116*fy-16,500*(fx-fy),200*(fy-fz)];}
+function sample(p:ArrayLike<number>,w:number,h:number,x:number,y:number):V{const xx=x-.5,yy=y-.5,ix=Math.floor(xx),iy=Math.floor(yy),fx=xx-ix,fy=yy-iy,out=[0,0,0,0];for(const [dx,dy,t]of [[0,0,(1-fx)*(1-fy)],[1,0,fx*(1-fy)],[0,1,(1-fx)*fy],[1,1,fx*fy]]){const x=Math.max(0,Math.min(w-1,ix+dx)),y=Math.max(0,Math.min(h-1,iy+dy));for(let c=0;c<4;c++)out[c]+=p[(y*w+x)*4+c]*t;}return out as [number,number,number,number];}
+function hashNoise(x:number,y:number,seed:number){let h=Math.imul(x,0x8da6b343)^Math.imul(y,0xd8163841)^Math.imul(seed,0xcb1ab31f);h^=h>>>13;h=Math.imul(h,0x5bd1e995);h^=h>>>15;return (h&0xffffff)/16777216-.5;}
+
+export function keyingReference(name:KeyName,input:Float32Array,background:Float32Array,inner:Float32Array,outer:Float32Array,w:number,h:number,frame:number,alpha:AlphaMode,half=false){const p=pm(input,alpha),b=Array.from(background);let result:ArrayLike<number>=p;
+ switch(name){
+  case 'colorKey':result=map(p,v=>cut(v,ramp(Math.max(...straight(v).map((n,i)=>Math.abs(n-[0,1,0][i]))),.1,.2)));break;
+  case 'colorRangeKey':{const mode=frame%3,lo=mode===1?[70,-120,50]:mode===2?[.45,-.5,-.7]:[0,.7,-.1],hi=mode===1?[100,-40,140]:mode===2?[.95,-.15,-.2]:[.2,1.3,.2],fuzz=mode===1?3.5:mode===2?.1:.2;result=map(p,v=>{const c=colorRange(straight(v),mode===1?2:mode===2?1:0),distance=Math.max(0,...c.flatMap((n,i)=>[lo[i]-n,n-hi[i]]));return cut(v,ramp(distance,0,fuzz));});break;}
+  case 'extractKey':result=map(p,v=>{const c=straight(v),x=frame%3===0?y(c):c[frame%3-1],m=x<.15?1-ramp(.15-x,0,.2):x>1.1?1-ramp(x-1.1,0,.3):1;return cut(v,m);});break;
+  case 'differenceMatte':{const a=gaussian(prepare(p,true),w,h,.6),bg=gaussian(prepare(b,true),w,h,.6);result=map(p,(v,i)=>{const av=at(a,i),bv=at(bg,i),ac=straight(av),bc=straight(bv),distance=Math.max(frame%2?Math.abs(y(ac)-y(bc)):Math.max(...ac.map((n,c)=>Math.abs(n-bc[c]))),Math.abs(av[3]-bv[3]));return cut(v,ramp(distance,.1,.4));});break;}
+  case 'colorDifferenceKey':{const pi=frame%2?2:1,other=[0,1,2].filter(n=>n!==pi);result=map(p,v=>{const c=straight(v),a=1-ramp((c[pi]-c[other[0]])/(.43*2),.02,.8),b=1-ramp((c[pi]-c[other[1]])/(.57*2),.02,.8);return cut(v,Math.max(a,b));});break;}
+  case 'screenKey':{const blurred=gaussian(prepare(p,true),w,h,.55),gain=.85+.3*frame/239,matte=Float32Array.from(map(blurred,v=>{const c=straight(v),secondary=Math.min(c[0],c[2])*.57+Math.max(c[0],c[2])*.43,raw=1-clamp((c[1]-secondary)*gain),m=clamp((raw-.03)/(.95-.03))**(1/1.1);return [0,0,0,m];}));result=map(p,(v,i)=>{if(v[3]===0)return v;const k=matte[i+3];if(k===0)return [0,0,0,0];const rgb=[v[0],v[1]-v[3]*(1-k),v[2]],secondary=Math.min(rgb[0],rgb[2])*.57+Math.max(rgb[0],rgb[2])*.43;rgb[1]-=Math.max(rgb[1]-secondary,0)*.4;return [rgb[0],rgb[1],rgb[2],v[3]*k];});break;}
+  case 'advancedSpillSuppressor':{let pi=frame%3===1?2:1;if(frame%3===0){const sums=[0,0,0];for(let i=0;i<p.length;i+=4)if(p[i+3]>0)for(let c=0;c<3;c++)sums[c]+=Math.max(p[i+c]-Math.max(p[i+(c+1)%3],p[i+(c+2)%3]),0)/(w*h);pi=sums[1]>=sums[0]&&sums[1]>=sums[2]?1:sums[2]>=sums[0]?2:0;}const others=[0,1,2].filter(c=>c!==pi),tint=[1,.85,1.15];result=map(p,v=>{if(v[3]===0)return v;const c=[...v],secondary=Math.min(v[others[0]],v[others[1]])*.6+Math.max(v[others[0]],v[others[1]])*.4,spill=Math.max(v[pi]-secondary,0)*.75;c[pi]-=spill;if(frame%2===0){const correction=spill*weight[pi]/y(tint);for(let j=0;j<3;j++)c[j]+=correction*tint[j];}return [c[0],c[1],c[2],v[3]];});break;}
+  case 'unmult':result=map(p,v=>{if(v[3]===0)return v;const c=straight(v),d=frame%2?1-Math.min(...c):Math.max(...c),m=.2+.8*clamp(d),a=v[3]*m;return frame%2?[v[0]-v[3]*(1-m),v[1]-v[3]*(1-m),v[2]-v[3]*(1-m),a]:[v[0],v[1],v[2],a];});break;
+  case 'innerOuterKey':{let a=finish(map(p,(v,i)=>[0,0,0,Math.max(inner[i+3],Math.min(outer[i+3],v[3]))]));a=contrast(gaussian(a,w,h,.5),1.1);result=coverage(p,a,estimate(p,w,h,1));break;}
+  case 'keyCleaner':{const a=gaussian(mask(p),w,h,.65),m=finish(map(p,(v,i)=>{if(v[3]===0)return [0,0,0,0];const desired=clamp((v[3]*.65+a[i+3]*.35-.5)*1.12+.5),detail=.4*Math.abs(v[3]-.5)*2;return [0,0,0,desired*(1-detail)+v[3]*detail];}));result=coverage(p,m,estimate(p,w,h,1.3),.5);break;}
+  case 'matteChoker':{const choke=frame%2?-.6:.75,a=morph(mask(p),w,h,Math.abs(choke),choke<0),m=contrast(gaussian(a,w,h,.55),1);result=coverage(p,m,estimate(p,w,h,2*(Math.ceil(Math.max(0,-choke))+Math.ceil(3*.55)+1)/3));break;}
+  case 'refineMatte':{let a=guided(p,w,h,2,.005);a=contrast(morph(a,w,h,.25,true),1);result=coverage(p,a,estimate(p,w,h,4),.3);break;}
+  case 'edgeDecontaminate':{const fill=estimate(p,w,h,1.7);result=map(p,(v,i)=>{if(v[3]===0||fill[i+3]<=0)return v;const c=straight(v),fc=straight(at(fill,i)),amount=.6*clamp((1-v[3])/.8);return rgba(c.map((n,j)=>n*(1-amount)+fc[j]*amount),v[3]);});break;}
+  case 'edgeExtend':result=coverage(p,morph(p,w,h,1.25,true),estimate(p,w,h,3.5,.7),0,true);break;
+  case 'lightWrap':{const bg=gaussian(prepare(b),w,h,.7),soft=gaussian(mask(p),w,h,.7);result=map(p,(v,i)=>{if(v[3]===0)return v;const edge=.45*clamp((1-soft[i+3])/.8),c=[0,1,2].map(j=>v[j]+(frame%2?v[3]-v[j]:v[3])*bg[i+j]*edge);return [c[0],c[1],c[2],v[3]];});break;}
+  case 'matteDistance':return distanceOracle(p,w,h);
+  case 'distanceFeather':{const d=distanceOracle(p,w,h);result=map(p,(_v,i)=>[0,0,0,d[i/2+1]?clamp(.5+(d[i/2]-.2)/(2*1.3)):0]);break;}
+  case 'matteOutline':{const d=distanceOracle(p,w,h),position=frame%3;result=map(p,(_v,i)=>{const distance=d[i/2];if(!d[i/2+1]||position===0&&distance<=0||position===1&&distance>=0)return [0,0,0,0];const width=position===2?1.2:2.4,a=clamp(width+.5-Math.abs(distance))*.8;return rgba([2.1,-.2,.5],a);});break;}
+  case 'matteBevel':{const d=distanceOracle(p,w,h),az=38*Math.PI/180,el=42*Math.PI/180,light=[Math.cos(el)*Math.cos(az),Math.cos(el)*Math.sin(az),Math.sin(el)],read=(x:number,y:number)=>d[(Math.max(0,Math.min(h-1,y))*w+Math.max(0,Math.min(w-1,x)))*2];result=map(p,(v,i)=>{if(v[3]===0||!d[i/2+1])return v;const x=(i/4)%w,y=Math.floor(i/4/w),dx=F(F(read(x+1,y)-read(x-1,y))/(x===0||x+1===w?1:2)),dy=F(F(read(x,y+1)-read(x,y-1))/(y===0||y+1===h?1:2)),nx=-1.1*dx,ny=-1.1*dy,norm=Math.sqrt(nx*nx+ny*ny+1),lit=.2+.9*Math.max(0,(nx*light[0]+ny*light[1]+light[2])/norm),t=clamp(1-Math.abs(d[i/2])/2.5),gain=1-t+lit*t;return [v[0]*gain,v[1]*gain,v[2]*gain,v[3]];});break;}
+  case 'matteGradient':{const a=morph(p,w,h,.75,true,frame%2?'clamp':'transparent'),b=morph(p,w,h,.75,false,frame%2?'clamp':'transparent');result=map(a,(v,i)=>[0,0,0,F(clamp(v[3]-b[i+3]))]);break;}
+  case 'matteMedian':{const r=frame%3;result=map(p,(_v,i)=>{const xx=(i/4)%w,yy=Math.floor(i/4/w),values:number[]=[];for(let dy=-r;dy<=r;dy++)for(let dx=-r;dx<=r;dx++){let x=xx+dx,y=yy+dy;if(frame%2){x=Math.max(0,Math.min(w-1,x));y=Math.max(0,Math.min(h-1,y));}values.push(x<0||y<0||x>=w||y>=h?0:p[(y*w+x)*4+3]);}values.sort((a,b)=>a-b);return [0,0,0,values[Math.floor(values.length/2)]];});break;}
+  case 'matteThreshold':{const threshold=.25+.5*frame/239;result=map(p,v=>[0,0,0,frame%2?Number(v[3]<threshold):Number(v[3]>=threshold)]);break;}
+  case 'matteQuantize':result=map(p,(v,i)=>{const a=v[3];if(a===0||a===1)return [0,0,0,a];const value=Math.floor(a*4+hashNoise((i/4)%w,Math.floor(i/4/w),0xfffffffd)*.7+.5)/4;return [0,0,0,clamp(value)];});break;
+  case 'wireRemove':{const sx=.5,sy=1.25,ex=w-1.25,ey=h-2.5,dx=ex-sx,dy=ey-sy,len=Math.hypot(dx,dy),nx=-dy/len,ny=dx/len,reach=1.9;result=map(p,(v,i)=>{const x=(i/4)%w+.5,y=Math.floor(i/4/w)+.5,t=clamp(((x-sx)*dx+(y-sy)*dy)/(len*len)),cx=sx+t*dx,cy=sy+t*dy,vx=x-cx,vy=y-cy,dist=Math.hypot(vx,vy),opacity=clamp((.9+1.7-dist)/1.7);if(opacity===0)return v;const left=sample(p,w,h,cx-nx*reach,cy-ny*reach),right=sample(p,w,h,cx+nx*reach,cy+ny*reach),side=clamp((vx*nx+vy*ny)/(2*reach)+.5),fill=left.map((n,j)=>n*(1-side)+right[j]*side);return fill.map((n,j)=>v[j]*(1-opacity)+n*opacity) as [number,number,number,number];});break;}
+ }
+ return finish(result,half);
+}
+export function gammaExtremeReference(input:Float32Array,alpha:AlphaMode){return finish(map(pm(input,alpha),v=>{if(v[3]===0)return v;const c=straight(v),raw=1-clamp(c[1]-(c[0]+c[2])*.5),m=Math.pow(raw,2**126);if(m===0)return [0,0,0,0];const r=v[0],g=v[1]-v[3]*(1-m),b=v[2],spill=Math.max(g-(r+b)*.5,0);return [r,g-spill,b,v[3]*m];}));}
+
+/** Independent equations for the editable screen -> clean -> guided refine ->
+ * spill -> light wrap -> source-over task. Each public operation publishes F32. */
+export function keyingChainReference(input:Float32Array,background:Float32Array,w:number,h:number){
+ let p=finish(map(input,v=>{const c=straight(v),m=F(1-clamp(c[1]-(c[0]+c[2])*.5));if(m===0)return [0,0,0,0];const rgb=[v[0],v[1]-v[3]*(1-m),v[2]],excess=Math.max(rgb[1]-(rgb[0]+rgb[2])*.5,0);return [rgb[0],rgb[1]-excess,rgb[2],v[3]*m];}));
+ const softened=gaussian(mask(p),w,h,1),clean=finish(map(p,(v,i)=>{if(v[3]===0)return [0,0,0,0];const target=clamp((v[3]*.8+softened[i+3]*.2-.5)*1.05+.5),detail=.6*Math.abs(v[3]-.5)*2;return [0,0,0,target*(1-detail)+v[3]*detail];}));
+ p=finish(coverage(p,clean,estimate(p,w,h,2),.1));
+ p=finish(coverage(p,guided(p,w,h,2,.003),estimate(p,w,h,2*(2*2+1)/3),.2));
+ const sums=[0,0,0];for(let i=0;i<p.length;i+=4)if(p[i+3]>0)for(let c=0;c<3;c++)sums[c]+=Math.max(p[i+c]-Math.max(p[i+(c+1)%3],p[i+(c+2)%3]),0)/(w*h);
+ const primary=sums[1]>=sums[0]&&sums[1]>=sums[2]?1:sums[2]>=sums[0]?2:0,other=[0,1,2].filter(c=>c!==primary);
+ p=finish(map(p,v=>{if(v[3]===0)return v;const excess=Math.max(v[primary]-(v[other[0]]+v[other[1]])*.5,0),out=[v[0],v[1],v[2]];out[primary]-=excess;for(let c=0;c<3;c++)out[c]+=excess*weight[primary];return [out[0],out[1],out[2],v[3]];}));
+ const bg=gaussian(prepare(background),w,h,2),soft=gaussian(mask(p),w,h,2);
+ p=finish(map(p,(v,i)=>v[3]===0?v:[v[0]+bg[i]*v[3]*.2*(1-soft[i+3]),v[1]+bg[i+1]*v[3]*.2*(1-soft[i+3]),v[2]+bg[i+2]*v[3]*.2*(1-soft[i+3]),v[3]]));
+ return finish(map(p,(v,i)=>[v[0]+background[i]*(1-v[3]),v[1]+background[i+1]*(1-v[3]),v[2]+background[i+2]*(1-v[3]),v[3]+background[i+3]*(1-v[3])]));
+}
+
+// Shared independent acceptance primitives; never used by production shaders.
+export {gaussian as gaussianOracle,morph as morphologyOracle};

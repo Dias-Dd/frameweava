@@ -1,0 +1,40 @@
+Native transition adaptations
+
+EffectCraft: https://github.com/storytold/effectcraft
+Fixed commit ec7ced1f0515f0b6f376dbcc297f1c441f452d6e.
+Copyright (c) 2026 ArtCraft Team and the EffectCraft contributors.
+Selected license MIT; the original MIT license is in effectcraft/LICENSE-MIT.
+Selected ftr_grid, ftr_radial_scale, ftr_scale, ftr_glass, ftr_image_wipe,
+ftr_jaws, ftr_line_sweep, ftr_twister, ftr_warpo and hash_noise equations are
+adapted to the existing native Pixel ABI. The source archives also contain
+unselected code, which is retained only for provenance and never executed.
+
+GL Transitions: https://github.com/gl-transitions/gl-transitions
+Fixed commit 1886f07392b173b66ddc75d8d948ca0553626096.
+Copyright (c) 2017-present gl-transitions contributors.
+DirectionalWipe, DiamondWipe, RandomSquares, Ripple: author gre, MIT.
+ClockWipe: author Fernando Kuteken, MIT.
+The original MIT license is in gl-transitions/LICENSE. Original per-file
+author/license headers are retained in the verbatim source snapshots.
+These are adapted GLSL equations, not dependencies on the upstream renderer.
+
+Frameweave changes: WGSL public Pixel ABI, ordinary typed native functions,
+explicit signals/options, scene-linear PM alpha, compensated interpolation,
+PM-before-bilinear filtering, explicit endpoint/seam policies, own validated
+integer hash reuse instead of GL Transitions sine hash, color-aware masks,
+F16/32F logical publication, compensated twist inversion and numerical fixtures.
+No original project UI, timeline, document model, renderer or assets imported.
+Other independent transition math and adapters are Apache-2.0 Frameweave code.
+No Adobe/Cycore proprietary code, assets or naming entitlement are included.
+
+Extended controls: polygon coverage and explicit-map reactor adapters retain
+EffectCraft MIT provenance above. The Gaussian numerical validation fixture
+uses the unmodified Frameweave Apache-2.0 kernel from frozen 22370b15287262e,
+verified by SHA in controls-sources.json. Actual Resource scenes consume the
+reviewed native-image-effects@0.3.0 R1 package through its public processPa API.
+Proprietary Adobe/Cycore manuals are specification references only; no manual,
+proprietary pixel oracle, camera implementation or assets are redistributed.
+
+Card camera/flat lighting/jitter equations additionally adapt card3d.rs at the
+same fixed EffectCraft commit and MIT license. Verbatim source SHA and changes
+are recorded in CARD_AND_TIME.md. Original Piece renderer/UI/time model excluded.

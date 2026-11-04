@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "apiVersion": 1,
+  "id": "pro-animation",
+  "name": "Pro Animation Legacy SDR Showcase",
+  "version": "0.7.3",
+  "kind": "generator",
+  "engine": "web",
+  "compatible": "0.1.0",
+  "description": "Legacy Canvas8 showcase only. Professional float animation functions use managed named imports and defineMediaStage Surface v2, not this P4 image generator.",
+  "tags": [
+    "animation",
+    "text",
+    "vector",
+    "wiggle",
+    "glow",
+    "displacement"
+  ],
+  "entry": "./dist/effect.js",
+  "parameters": {
+    "progress": {
+      "type": "number",
+      "default": 1,
+      "minimum": 0,
+      "maximum": 1
+    },
+    "glow": {
+      "type": "number",
+      "default": 0.8,
+      "minimum": 0,
+      "maximum": 5
+    },
+    "displacement": {
+      "type": "number",
+      "default": 3,
+      "minimum": 0,
+      "maximum": 100
+    }
+  },
+  "inputs": {},
+  "outputs": {
+    "image": "image"
+  },
+  "dependencies": {
+    "fw.glow": "1.0.0",
+    "fw.displacement": "1.0.0"
+  },
+  "examples": [
+    "plugin('pro-animation@0.6.0',{progress:0.5,glow:0.8,displacement:3})"
+  ]
+}

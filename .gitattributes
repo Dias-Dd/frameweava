@@ -1,0 +1,12 @@
+# Runtime/plugin locks include exact source bytes. Preserve the existing bytes
+# on checkout; do not silently normalize newlines on different Windows settings.
+* -text
+# CRLF is deliberately retained above; treat its CR as a line ending, not a
+# trailing-space error, while keeping ordinary whitespace checks enabled.
+* whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+*.mp4 binary
+*.png binary
+*.jpg binary
+*.woff2 binary
+*.glb binary

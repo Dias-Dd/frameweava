@@ -1,0 +1,1 @@
+{"extends":"../../../tsconfig.json","include":["../src/stroke-animation/**/*.ts","../../../tests/pro-animation-stroke-animation*.test.ts"],"exclude":["../../../node_modules"]}

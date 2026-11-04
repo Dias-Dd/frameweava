@@ -1,0 +1,98 @@
+TAP version 13
+# Subtest: explicit GPU color v1 matches CPU matrices for all four gamuts, reference whites, Alpha and F16/F32
+not ok 1 - explicit GPU color v1 matches CPU matrices for all four gamuts, reference whites, Alpha and F16/F32
+  ---
+  duration_ms: 512.0722
+  type: 'test'
+  location: 'C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\tests\\native-color-texture.test.ts:1:1719'
+  failureType: 'testCodeFailure'
+  error: 'invalid bounded program'
+  code: 'E_NATIVE_BUDGET'
+  name: 'EngineError'
+  stack: |-
+    error (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\native-gpu\client.ts:35:43)
+    NativeGpuClient.receive (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\native-gpu\client.ts:88:82)
+    Socket.<anonymous> (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\native-gpu\client.ts:59:48)
+    Socket.emit (node:events:519:28)
+    addChunk (node:internal/streams/readable:561:12)
+    readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    Readable.push (node:internal/streams/readable:392:5)
+    Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+  ...
+# Subtest: resident texture/UV v1 matches independent sampling for wraps, filters, Alpha, HDR, indices and F16/F32
+not ok 2 - resident texture/UV v1 matches independent sampling for wraps, filters, Alpha, HDR, indices and F16/F32
+  ---
+  duration_ms: 2.1907
+  type: 'test'
+  location: 'C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\tests\\native-color-texture.test.ts:1:4632'
+  failureType: 'testCodeFailure'
+  error: 'Spatial fields require explicit space and units'
+  code: 'E_GPU_COMPUTE_CONTRACT'
+  name: 'EngineError'
+  stack: |-
+    computeFail (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\gpu-effects\compute-contract.ts:3:86)
+    fieldInfo (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\gpu-effects\compute-contract.ts:26:98)
+    Object.createField (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\native-gpu\scope.ts:48:87)
+    TestContext.<anonymous> (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\tests\native-color-texture.test.ts:52:63)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+  ...
+# Subtest: mesh UV interpolation is perspective correct, not affine
+not ok 3 - mesh UV interpolation is perspective correct, not affine
+  ---
+  duration_ms: 0.2531
+  type: 'test'
+  location: 'C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\tests\\native-color-texture.test.ts:1:7156'
+  failureType: 'testCodeFailure'
+  error: 'Spatial fields require explicit space and units'
+  code: 'E_GPU_COMPUTE_CONTRACT'
+  name: 'EngineError'
+  stack: |-
+    computeFail (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\gpu-effects\compute-contract.ts:3:86)
+    fieldInfo (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\gpu-effects\compute-contract.ts:26:98)
+    Object.createField (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\native-gpu\scope.ts:48:87)
+    TestContext.<anonymous> (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\tests\native-color-texture.test.ts:69:128)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+  ...
+# Subtest: color/texture admission rejects foreign handles, implicit color conversion and malformed private layouts
+not ok 4 - color/texture admission rejects foreign handles, implicit color conversion and malformed private layouts
+  ---
+  duration_ms: 4.5892
+  type: 'test'
+  location: 'C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\tests\\native-color-texture.test.ts:1:8900'
+  failureType: 'testCodeFailure'
+  error: 'Spatial fields require explicit space and units'
+  code: 'E_GPU_COMPUTE_CONTRACT'
+  name: 'EngineError'
+  stack: |-
+    computeFail (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\gpu-effects\compute-contract.ts:3:86)
+    fieldInfo (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\gpu-effects\compute-contract.ts:26:98)
+    Object.createField (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\native-gpu\scope.ts:48:87)
+    TestContext.<anonymous> (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\tests\native-color-texture.test.ts:75:209)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: image aliases used by resident mesh buffers extend allocation lifetime
+ok 5 - image aliases used by resident mesh buffers extend allocation lifetime
+  ---
+  duration_ms: 0.4845
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 1
+# fail 4
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 825.0081

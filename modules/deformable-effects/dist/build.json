@@ -1,0 +1,86 @@
+{
+  "binding": "bytes-v1",
+  "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "compilerSha256": "51a5e64f2668e874b50d9af0f281cfd7a4ee08558ee44ffa1855756b5a78bc52",
+  "target": "wasm32-unknown-unknown",
+  "flags": [
+    "--edition=2021",
+    "--crate-type=cdylib",
+    "--target=wasm32-unknown-unknown",
+    "-C",
+    "opt-level=3",
+    "-C",
+    "panic=abort",
+    "-C",
+    "strip=symbols",
+    "-C",
+    "debuginfo=0",
+    "--remap-path-prefix",
+    "<module>=."
+  ],
+  "dependencies": "Rust std only; no external crate/Eigen/engine/runtime downloads",
+  "inputs": {
+    "rust/src/lib.rs": "a6d3b27aa9d6387949d283ef4d7cfadf50a64e6ca62c7db7467382a731448b6f",
+    "rust/src/algorithm.rs": "a199b14c5595e6e2a1dec5206ea3732f1b5c2d24e06c4a18ac3612aa1a2ca6ec",
+    "rust/src/xpbd.rs": "76789b2650ff56731da52d53c96172fe7efc2f8b3dd766ca21b92f33ad324beb",
+    "rust/src/dihedral.rs": "4b8b9861253de6bafe186b96b9d624a1e695f8080326fa6df2713d12617439e8",
+    "rust/src/contacts.rs": "8f54dc62e3cc952b22d1be6731e41899cea3427447977b407a40fc22a1a5d9b1",
+    "rust/src/rods.rs": "a96a0f51fbd866a215a4d3e45641ec02cab02e52f9c0d51bf560c291532698a2",
+    "rust/src/aerodynamics.rs": "7040bc4c1506946def32d31dcf4b3154fb5ec400cd7f8cb0265de5bb60dab2fa",
+    "runtime/session.mjs": "76313f823236c86ea7ea36da677a05a95026e3ba5fd8632b4b9b06fc33fa913a",
+    "runtime/session.d.mts": "a9cbbc413cd1d6bd66994e5e96791f6efe7f3952980ef76f2d1539e4769dcbf8",
+    "runtime/client.ts": "26b027300758cb7f6454a540ea01802ce9409b7530a0ef7fe16fc8a0c642f52b",
+    "runtime/worker.ts": "b8e5ac5c1024878e78b03f779ef39bafc22f430760c4ce6d5333dfb9ac9b8a66",
+    "runtime/physics.ts": "a2e3ef4f6a8aba49f84adda815c687a0232f0b6b0bf0ef5f252d1198d20cf441",
+    "src/config.ts": "991664de19bff79be150cc682de1b8de4e22a771dd52338a9efe079ff78cee60",
+    "src/angular.ts": "7f9b7a97669b66d04672f0f78a14a4ee981b4a804c6d27164c84f61f006fcec1",
+    "src/aero-types.ts": "f858309d347cf445c9674b0950373c9274a46f3bc438a818badeb3ac10dea0eb",
+    "src/aero-config.ts": "acdc23b04664fbe24036b95aac1e8435670e549b4202f4092d16ee4d875760f7",
+    "src/aero-codec.ts": "1e194cb89da1353852586465fecde68b7a7f1fe5c570fabd9ffe1ab398b9ae82",
+    "src/rod-types.ts": "d4429618712cbebf64e834fc6cf892a74c7eadfa5e6942ff6e5227508c5d3330",
+    "src/rod-math.ts": "9a9c640c9a384e2e7fab2de235498a03f2a9e6875334c91ef030c68b2d817f00",
+    "src/rod-config.ts": "2a3fc1bce04735be21dc0839033635cfce813668ca66e0693b0ae2f75128f761",
+    "src/rod-codec.ts": "b0e472715c34e4006e3de80c27a558d3ed9976b54b42e7e256b4c2b69dd64a9b",
+    "src/volume.ts": "c1f124f96f5896ca35efeb396492a89ee8c4bd81c3fa27a1f6b657dde6e6d8c0",
+    "src/codec.ts": "00576bd67c39e1a3dc99a4999fd6e3bd58eba49393039fee0b1d5870f5334b34",
+    "src/contact-codec.ts": "bcc40a341441d5fe17a18aadef6bf19bd50792b0b6458f84a6758b4795bce2a3",
+    "src/types.ts": "923267722774171fed68d1ba74fc7c0de1d1239eeb1dbf3ed9f496fb27d6bcc2",
+    "scripts/build-kernel.mjs": "bef8db9361d71f0f70ad0ce7526a8b43a3f9fd018032cbc687620879534b1c9f",
+    "vendor/pbd/SOURCE.json": "52791f573a98cd3a9e8442ff93d9773ad7d0f1b96dfcfd93daa911bc9f5a5adc",
+    "licenses/rust-std/source.json": "b7d99caf2dc4fd47b2717c05a850e08cc4b2d0de7aacabea766ee94f10e245fb"
+  },
+  "coreInputs": {
+    "src/core/errors.ts": "34a53214b9d42824f67cf0cc246598a2ee2987b69003457d8c4795b1b2828444",
+    "src/core/time.ts": "b1d9e8a3be47adee369daea66273bc10feac51ae08968c90ca939756a14006aa",
+    "src/core/animation.ts": "46d208a844d6455fd0905a1606cab51c8800ac10e08cfe7766b3c12dab9d26d0",
+    "src/media/surface-storage.ts": "6f5da5019b97915d5bbaef56d6987d708d4cab882d6083081a2fb77947773bb3",
+    "src/media/surface.ts": "5e166fe71d383219d6053cbb28d370f43d3daf07e1f71ac93702c5826928f279",
+    "src/audio/block.ts": "131fac039d892c9cce706a39d5ad28288dda8fc78270de6241bb182494835e63",
+    "src/audio/contract.ts": "83491ac37c49c7308064d04da2e44d4cfae088bd6ddb52ac78b2b950e364ce8d",
+    "src/core/effects.ts": "8001dea9c8afc14f01341712169aa97a8516308ac5e82d305e7674d195361202",
+    "src/core/native-source.ts": "49fe30331cfbca989cb578507dbd04345d768eb70a0f033bc5a4ba4a1d8aab8e",
+    "src/core/ports.ts": "96b957fb77fc163399db5cfdb5b7c2d0eaec498223d56a7dd49c7c863d2a85f4",
+    "src/core/graph.ts": "6b2aeb15e5d4b8e7d7911201fc3a4ee3bed61f4f577a093374a639079e3af42c",
+    "src/core/simulation.ts": "492135a26fd18bd5f4083c66d96898e050c7d7caaf6773e8663240c7f9e5ea69"
+  },
+  "outputs": {
+    "dist/module.wasm": "5ee59753d57af84fe291f17ae13e6300c890f4d469224e5b6ba691156a03150f",
+    "dist/worker.js": "0dc7a641dc9ac4c7fef3de44d4d846a0ee2d8e812ee41fe3998ab8082f74f0de"
+  },
+  "bytes": 112417,
+  "hostImports": [],
+  "scope": "Immutable XPBD/Cosserat/face coefficients; bulk candidate projection and SI surface-force sampling. Existing Core Runner owns integration/checkpoint state in the existing C1 Worker/data adapter.",
+  "integrationReview": {
+    "frozenSource": "6c5dee0f74820fb9670a92fb0443f0040b84e60f",
+    "previousReceiptSha256": "83baaac2822c9f30ae8fbd4aa958804b4fb27835f38474408ddd372c7f2a631f",
+    "method": "Original bytes verified, TypeScript emitted JS exactly identical after comment removal; all original output hashes retained",
+    "changes": [
+      {
+        "path": "runtime/client.ts",
+        "originalSha256": "fe8b38e1de5a79027d17f446b29be31baabb07b6bed127ea36c140e95a7bf4e0",
+        "currentSha256": "26b027300758cb7f6454a540ea01802ce9409b7530a0ef7fe16fc8a0c642f52b",
+        "identicalExecutableSha256": "f4b8bc69730c203d1583ca169fe662e3a06e08d5ae7de2773b0d5382e3284f3f"
+      }
+    ]
+  }
+}

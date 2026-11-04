@@ -1,0 +1,13 @@
+{
+  "name": "frameweave-analysis-job-mvp",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare-assets": "node prepare-assets.mjs",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "verify": "node --import tsx verify.ts",
+    "demo": "node --import tsx demo.ts",
+    "verify:export": "node --import tsx verify-export.ts"
+  },
+  "dependencies": { "@mediapipe/tasks-vision": "1.2.0" }
+}

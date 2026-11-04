@@ -1,0 +1,12 @@
+{
+ "version":1,
+ "declaredBeforeGpuVerification":true,
+ "pixelF32":{"absolute":0.000003,"relative":0.000003},
+ "pixelF16":{"scaled":0.0006},
+ "vision":{"absolute":0.001,"relative":0.001},
+ "memoryAttentionAndDecoder":{"absolute":0.005,"relative":0.002},
+ "scores":{"absolute":0.001,"relative":0.001},
+ "coverageAbsolute":0.002,
+ "binaryMaskIoU":0.99,
+ "notes":["Learned inference error is separate from strict deterministic pixel gates","F32 memory profile does not silently compress memory to BF16","Partial banks must match an unpadded dynamic-memory reference; zero-filled unmasked slots are not a reference"]
+}

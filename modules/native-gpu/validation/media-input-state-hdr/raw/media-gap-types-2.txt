@@ -1,0 +1,6 @@
+
+> @frameweave/engine@0.1.0 typecheck
+> tsc --noEmit
+
+tests/native-gpu-audio.test.ts(16,60): error TS2339: Property 'sampleCount' does not exist on type 'PcmAsset | { sampleRate: AudioSampleRate; sampleCount: number; layout: string; format: string; }'.
+  Property 'sampleCount' does not exist on type 'PcmAsset'.

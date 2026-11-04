@@ -1,0 +1,28 @@
+C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\src\core\graph.ts:258
+  if (errors.length) throw new EngineError('E_TVG',errors.map(error=>`${error.code}: ${error.message}`).join('\n'),{details:{diagnostics:errors}});
+                           ^
+
+
+EngineError: E_INPUT_SCHEMA: Stage 'textured' requires an inputTypes contract for every bound input.
+    at assertValidTVG (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\src\core\graph.ts:258:28)
+    at buildProject (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\src\compiler\build.ts:159:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async <anonymous> (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\modules\native-gpu\validation\verify-color-texture.ts:13:37) {
+  code: 'E_TVG',
+  stageId: undefined,
+  frame: undefined,
+  hint: undefined,
+  details: {
+    diagnostics: [
+      {
+        code: 'E_INPUT_SCHEMA',
+        severity: 'error',
+        message: "Stage 'textured' requires an inputTypes contract for every bound input.",
+        stageId: 'textured',
+        details: { inputs: [ 'surface' ] }
+      }
+    ]
+  }
+}
+
+Node.js v22.19.0

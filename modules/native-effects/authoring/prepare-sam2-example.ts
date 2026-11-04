@@ -1,0 +1,6 @@
+import assert from 'node:assert/strict';import {resolve,join} from 'node:path';import {readFile,writeFile} from 'node:fs/promises';import {prepareVideoRotoAssets,prepareImageAsset} from './node.ts';import {parseVideoRotoBundle} from '../video-roto/schema.ts';
+const source=resolve('.frameweave/roto-models/sam2-memory-f32-v10'),out=resolve('modules/native-effects/authoring/examples/.generated-video-roto-v10');
+const result=await prepareVideoRotoAssets({bundle:join(source,'bundle.json'),vision:join(source,'vision.onnx'),seed:join(source,'seed.onnx'),track:join(source,'track.onnx')},out);
+assert.deepEqual(parseVideoRotoBundle(JSON.parse(await readFile(result.bundle,'utf8'))),parseVideoRotoBundle(JSON.parse(await readFile('modules/native-effects/authoring/examples/assets/sam2-bundle.json','utf8'))));
+const image=await prepareImageAsset(resolve('.frameweave/frozen-native-inference/sdk-bd188034/modules/native-effects/roto-authoring/model/corgi.jpg'),join(out,'photo.f32'));
+await writeFile(join(process.env.FRAMEWEAVE_AUTHORING_RUN!,'result.json'),JSON.stringify({ok:true,models:result,image,policy:'Existing own-worktree sealed standard v10 model DATA and private QA photograph only. Current native-bin GPU/JS hosts, no frozen SDK code or downloads.'},null,2)+'\n');

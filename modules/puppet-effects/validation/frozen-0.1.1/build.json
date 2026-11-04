@@ -1,0 +1,41 @@
+{
+  "binding": "bytes-v1",
+  "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "compilerSha256": "6f4bef66261261fcb43131be8720bab817d403a09edec7455c371974b90bdb7e",
+  "target": "wasm32-unknown-unknown",
+  "flags": [
+    "--edition=2021",
+    "--crate-type=cdylib",
+    "--target=wasm32-unknown-unknown",
+    "-C",
+    "opt-level=s",
+    "-C",
+    "panic=abort",
+    "-C",
+    "strip=symbols",
+    "-C",
+    "debuginfo=0",
+    "--remap-path-prefix",
+    "<module>=."
+  ],
+  "inputs": {
+    "rust/src/lib.rs": "0a4805c5342f634f12c813769d12ba9796acca679aa888392d3145d6dc940110",
+    "rust/src/algorithm.rs": "a329b5fac01a00d1e28e2787a7b35016eccee9f487acefc4ce8cf21d967a67ec",
+    "rust/src/arap.rs": "570ea38518d59c0f445c130a218bf053fce0cdbe1074d9ccd4a423031b6bc5ab",
+    "runtime/session.mjs": "76313f823236c86ea7ea36da677a05a95026e3ba5fd8632b4b9b06fc33fa913a",
+    "runtime/session.d.mts": "a9cbbc413cd1d6bd66994e5e96791f6efe7f3952980ef76f2d1539e4769dcbf8",
+    "runtime/worker.ts": "901686249711107b812e5649885fb7422dcee91735cf1edb1947a5d87b4032bc",
+    "runtime/client.ts": "f4283a296d388bf30c7cc0f93f770730552f50ec0fed38399c5133a2284781f2",
+    "scripts/build-solver.mjs": "daaa75a0260908703dfa39f6bde6b0f4630e781fec9b413591cc8207515a023e",
+    "scripts/prepare-arap.mjs": "07399dad008dfb6f9976bde009304261fb24fa10cb7d545bc6bc0c68d93f1195",
+    "vendor/effectcraft/SOURCE.json": "c74f61f0820687b66b05e7c2132444711f47b6e3bc0da20deb3573718425d626",
+    "licenses/rust-std/source.json": "b7d99caf2dc4fd47b2717c05a850e08cc4b2d0de7aacabea766ee94f10e245fb"
+  },
+  "outputs": {
+    "dist/module.wasm": "2560fd22d35c9ead1e6292676fb47a2b459123fe00e2517faa26ce55defdea4d",
+    "dist/worker.js": "7638b9cbe323ec6d5157f6683ec8f1f94e18c580aacc7e165dcf0610676ebd8f"
+  },
+  "bytes": 80049,
+  "hostImports": [],
+  "adaptation": "Original arithmetic and iteration order, plus checked final residual <=1e-8, counters and Result propagation. No external crates or runtime downloads."
+}

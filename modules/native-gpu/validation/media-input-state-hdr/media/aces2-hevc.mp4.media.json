@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 1,
+  "frames": 1,
+  "options": {
+    "preset": "hdr10",
+    "outputColor": {
+      "primaries": "rec2020",
+      "whitePoint": "D65",
+      "transfer": "pq",
+      "reference": "display",
+      "range": "full",
+      "referenceWhiteNits": 100,
+      "peakNits": 1000
+    },
+    "conversion": {
+      "kind": "ocio",
+      "clip": false,
+      "transform": {
+        "source": "Linear Rec.2020",
+        "display": "Rec.2100-PQ - Display",
+        "view": "ACES 2.0 - HDR 1000 nits (Rec.2020)"
+      }
+    },
+    "alpha": {
+      "mode": "flatten",
+      "matte": [
+        0,
+        0,
+        0
+      ]
+    },
+    "hdr10": {
+      "masteringDisplay": {
+        "red": [
+          0.708,
+          0.292
+        ],
+        "green": [
+          0.17,
+          0.797
+        ],
+        "blue": [
+          0.131,
+          0.046
+        ],
+        "white": [
+          0.3127,
+          0.329
+        ],
+        "minNits": 0.005,
+        "maxNits": 1000
+      },
+      "maxCLL": 1000,
+      "maxFALL": 400
+    },
+    "encoder": "hevc_nvenc",
+    "audio": {
+      "path": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\artifacts\\native-media-delivery\\hdr-rHGkAn\\.frameweave-audio-7b8afe5444cfaee4eaeabaf6.f32",
+      "sampleRate": 48000,
+      "channels": 2,
+      "channelLayout": "stereo",
+      "format": "f32le",
+      "startSample": 0
+    },
+    "fps": {
+      "num": 60,
+      "den": 1
+    },
+    "width": 320,
+    "height": 180
+  },
+  "args": [
+    "-hide_banner",
+    "-loglevel",
+    "error",
+    "-n",
+    "-threads",
+    "2",
+    "-f",
+    "rawvideo",
+    "-pixel_format",
+    "gbrpf32le",
+    "-video_size",
+    "320x180",
+    "-framerate",
+    "60/1",
+    "-i",
+    "pipe:0",
+    "-vf",
+    "zscale=matrixin=gbr:matrix=2020_ncl:primariesin=2020:primaries=2020:transferin=smpte2084:transfer=smpte2084:rangein=full:range=limited,format=yuv420p10le,format=p010le",
+    "-c:v",
+    "hevc_nvenc",
+    "-preset",
+    "p4",
+    "-rc",
+    "vbr",
+    "-cq",
+    "12",
+    "-b:v",
+    "0",
+    "-pix_fmt",
+    "p010le",
+    "-color_primaries",
+    "bt2020",
+    "-color_trc",
+    "smpte2084",
+    "-colorspace",
+    "bt2020nc",
+    "-color_range",
+    "tv",
+    "-bf",
+    "0",
+    "-f",
+    "hevc",
+    "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\artifacts\\native-media-delivery\\hdr-rHGkAn\\aces2-hevc.mp4.encoded-a3aee4e96fa778f02dd97d31.hevc"
+  ],
+  "conversions": [
+    {
+      "frame": 0,
+      "clippedSamples": 0,
+      "ocio": {
+        "version": "2.5.2",
+        "config": "cg-config-v4.0.0_aces-v2.0_ocio-v2.5",
+        "configSha256": "24ec81841048fc5db160a7bad882263246183385c5d49d0e86e11464917ead15",
+        "spaces": [
+          "sRGB - Display",
+          "Gamma 2.2 Rec.709 - Display",
+          "Display P3 - Display",
+          "Display P3 HDR - Display",
+          "P3-D65 - Display",
+          "Rec.1886 Rec.709 - Display",
+          "Rec.2100-PQ - Display",
+          "ST2084-P3-D65 - Display",
+          "ACES2065-1",
+          "ACEScc",
+          "ACEScct",
+          "ACEScg",
+          "sRGB Encoded Rec.709 (sRGB)",
+          "Gamma 1.8 Encoded Rec.709",
+          "Gamma 2.2 Encoded Rec.709",
+          "Gamma 2.4 Encoded Rec.709",
+          "sRGB Encoded P3-D65",
+          "Gamma 2.2 Encoded AdobeRGB",
+          "sRGB Encoded AP1",
+          "Gamma 2.2 Encoded AP1",
+          "Linear AdobeRGB",
+          "Linear P3-D65",
+          "Linear Rec.2020",
+          "Linear Rec.709 (sRGB)",
+          "Raw"
+        ],
+        "displays": {
+          "sRGB - Display": [
+            "ACES 2.0 - SDR 100 nits (Rec.709)",
+            "Un-tone-mapped",
+            "Video (colorimetric)",
+            "Raw"
+          ],
+          "Display P3 - Display": [
+            "ACES 2.0 - SDR 100 nits (P3 D65)",
+            "Un-tone-mapped",
+            "Video (colorimetric)",
+            "Raw"
+          ],
+          "Display P3 HDR - Display": [
+            "ACES 2.0 - HDR 1000 nits (P3 D65)",
+            "ACES 2.0 - SDR 100 nits (Rec.709)",
+            "Un-tone-mapped",
+            "Video (colorimetric)",
+            "Raw"
+          ],
+          "Gamma 2.2 Rec.709 - Display": [
+            "ACES 2.0 - SDR 100 nits (Rec.709)",
+            "Un-tone-mapped",
+            "Video (colorimetric)",
+            "Raw"
+          ],
+          "P3-D65 - Display": [
+            "ACES 2.0 - SDR 100 nits (P3 D65)",
+            "ACES 2.0 - SDR 100 nits (Rec.709)",
+            "Un-tone-mapped",
+            "Video (colorimetric)",
+            "Raw"
+          ],
+          "Rec.1886 Rec.709 - Display": [
+            "ACES 2.0 - SDR 100 nits (Rec.709)",
+            "Un-tone-mapped",
+            "Video (colorimetric)",
+            "Raw"
+          ],
+          "Rec.2100-PQ - Display": [
+            "ACES 2.0 - HDR 1000 nits (P3 D65)",
+            "ACES 2.0 - HDR 1000 nits (Rec.2020)",
+            "ACES 2.0 - SDR 100 nits (Rec.709)",
+            "Un-tone-mapped",
+            "Video (colorimetric)",
+            "Raw"
+          ],
+          "ST2084-P3-D65 - Display": [
+            "ACES 2.0 - HDR 1000 nits (P3 D65)",
+            "ACES 2.0 - SDR 100 nits (Rec.709)",
+            "Un-tone-mapped",
+            "Video (colorimetric)",
+            "Raw"
+          ]
+        },
+        "processorCacheID": "d50a104c2580e41ced6bca8d1ee6435e"
+      }
+    }
+  ],
+  "clippedTotal": 0,
+  "frameRecordsTruncated": false,
+  "timings": [
+    {
+      "frame": 0,
+      "phase": "output-transform-and-code-range",
+      "durationMs": 289.3863999999994
+    },
+    {
+      "frame": 0,
+      "phase": "pack-and-alpha-color-adapter",
+      "durationMs": 3.3369999999995343
+    },
+    {
+      "frame": 0,
+      "phase": "stdin-write-and-backpressure",
+      "durationMs": 0.7141000000010536
+    }
+  ],
+  "finalDrainMs": 194.35599999999977
+}

@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "status": "development-candidate",
+  "purpose": "Build many editable 2D objects in one existing Native Stage without author-managed GPU buffers.",
+  "entry": "scene2D(init, group({id:'root', children:[rect({id:'box', width:120, height:80, fill:solid('#51bcff')})]}))",
+  "inputs": "Existing Native initialization and named Stage image inputs or sealed Resources; explicit viewport and optional borrowed admitted services.",
+  "output": "CreationStage whose renderAt produces the existing F16/F32 scene-linear Rec709 premultiplied image; caller owns returned image.",
+  "parameters": {
+    "coordinates": "Local px, top-left/Y-down; optional viewBox; degrees; parent times child transform.",
+    "animation": "Existing Signal and FrameContext; no independent clock or automatic replay of ordinary JS edits.",
+    "format": {
+      "default": "rgba32float",
+      "values": [
+        "rgba16float",
+        "rgba32float"
+      ]
+    },
+    "maxBytes": {
+      "default": 536870912,
+      "meaning": "Configured per-plan budget, additionally constrained by actual device; not measured physical peak."
+    },
+    "geometryTolerance": {
+      "default": 0.02,
+      "meaning": "Ellipse/path geometric error in local px."
+    },
+    "gradientPixelsPerUnit": {
+      "default": 1,
+      "meaning": "Explicit float gradient atlas spatial sampling quality; no hidden input image resizing."
+    }
+  },
+  "profiles": {
+    "independentImplementation": [
+      "groups",
+      "plain rectangles",
+      "ellipses",
+      "linear/radial gradients",
+      "declared images",
+      "transforms",
+      "rectangle clips",
+      "isolated group opacity",
+      "Canvas-shaped recording into the same tree",
+      "flex row/column/gap/padding/margins/align/minmax/percentage/absolute/intrinsic geometry",
+      "flex grow/shrink/wrap and equal-column grid",
+      "strict SVG source adapter with primitive fills, groups, affine/viewBox, gradients, declared images and rectangular clips"
+    ],
+    "delegatedPendingAssets": [
+      "tight curved bounds / morph require explicitly supplied borrowed providers"
+    ],
+    "notYetImplemented": [
+      "SVG text and full browser typography/Canvas compliance"
+    ],
+    "deferredByHuman": [],
+    "delegatedImplemented": [
+      "Original PA font shaping/itemization, actual metrics, glyph fill/stroke meshes",
+      "Original Clipper2 path fill/stroke and canonicalization via admitted R1 assets"
+    ]
+  },
+  "limits": [
+    "Current Pixel ABI batches up to three distinct source images plus the index map; larger lists split in painter order.",
+    "Actual texture/dispatch/storage capabilities and byte budgets apply.",
+    "Existing Graphics-v1 path/glyph profiles remain unchanged.",
+    "Missing admitted path/text services fail explicitly; no fake glyphs, hidden Servo or SDR fallback.",
+    "Canvas-shaped subset is not a DOM Canvas implementation: clearRect, non-source-over compositing, two-circle radial gradients and equal-offset hard stops reject explicitly.",
+    "Canvas real measureText/fillText are asynchronous and require admitted actual text services and FrameContext.",
+    "Layout ignores visual transforms for sizing; text constraints await real measurements. No fake font or character-count sizing.",
+    "Flexily0.8.3(MIT) adapted only to remove optional module logger probes and integer device-pixel snapping; Node layout operates in float logical px.",
+    "SVG profile rejects DTD/entities, scripts/events, external unresolved resources, CSS stylesheets, filters/masks/pattern/use, nested SVG viewports, focal radial/hard-stop gradients and objectBoundingBox clip units. It never silently rasterizes.",
+    "SVG raw colors are sRGB inputs converted to existing float scene-linear paint; editable native object paints can use signed/HDR linear numeric colors."
+  ],
+  "lifecycle": "Create once at Native Stage initialization; await renderAt before update/dispose; Core owns queue completion and device recovery; release output separately.",
+  "dependencies": [
+    "existing NativeGpuScope / NativeRecordingScope",
+    "existing CreationStage, GPU resource arena, Pixel/Compute/mesh raster",
+    "existing PA path/text services when needed",
+    "Three 0.186.1 primitive geometry (MIT)",
+    "unchanged Three potpack (ISC)"
+  ],
+  "defaultAssets": {
+    "entry": "text({id:\"title\",text:\"文字与路径\",fontSize:34})",
+    "font": "Noto Sans SC / wght400 / zh-Hans / Hani / OFL-1.1",
+    "loader": "Existing sealed R1 ModuleLoader and original PA Kit clients",
+    "permission": "Explicit --allow-wasm; primitives do not need it",
+    "canvas": "scene.canvas(actualFrameContext); await measureText/fillText; then snapshot/setRoot",
+    "parameters": {
+      "font": "default when omitted",
+      "fontSize": 32,
+      "lineHeight": "1.2*fontSize",
+      "tolerance": 0.02,
+      "maxCacheBytes": 33554432
+    },
+    "outputs": "Original PA outlines/metrics -> existing Native float premultiplied mesh rendering",
+    "example": "fonts.tsx",
+    "limits": [
+      "No OS/network font fallback",
+      "No vertical/color/bitmap/SVG text",
+      "Wrapped tracking needs explicit PA reflow",
+      "curveFactory and morph remain explicit borrowed services"
+    ],
+    "lifecycle": "Per-scene owned clients/cache; scene disposal before providers. Explicit supplied services remain borrowed. Cancellation cooperative, scoped native-first ponyfill.",
+    "qualification": "Runtime candidate0.4.6 verified; final guide corrections are documentation only and await Main package rebuild/runtime-pin review"
+  }
+}

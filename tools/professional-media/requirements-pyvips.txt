@@ -1,0 +1,2 @@
+# Reviewed official sdist; ABI mode reuses the existing libvips, no native download.
+pyvips==3.2.0 --hash=sha256:5fa47cdce4e7f450747c118c12fde913e0710850c6015d8ec4f5af490003a347

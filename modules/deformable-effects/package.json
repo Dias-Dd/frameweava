@@ -1,0 +1,1 @@
+{"name":"deformable-effects","version":"0.6.1","type":"module","license":"Apache-2.0 AND MIT","exports":{".":{"types":"./dist/index.d.ts","import":"./dist/index.js"}},"peerDependencies":{"@frameweave/engine":"0.1.0"},"files":["src","runtime","rust","vendor","dist","licenses","LICENSE","NOTICE","README.md","frameweave.package.json"]}

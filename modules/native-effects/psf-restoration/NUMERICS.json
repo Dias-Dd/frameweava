@@ -1,0 +1,11 @@
+{
+ "version":1,
+ "pixelF32Scaled":0.000003,
+ "pixelF16Scaled":0.0006,
+ "dataF32Scaled":0.000003,
+ "declaredBeforeVerification":true,
+ "reference":"Independent F64 dense observation matrix assembled by forward scatter, true matrix transpose, per-pass F32 boundaries and dense regularized joint solve iteration",
+ "quality":{"restoredMseBelowInput":true,"jointMseBelowBestSingle":true,"objectiveNonIncreasing":true},
+ "alpha":"PM linear RGB remains signed/HDR; preserve reference alpha by default, optional projected alpha reconstruction; no positivity projection on RGB",
+ "solver":"Diagonal-majorized gradient for one shared latent, weighted registered observations; no per-frame restored-image averaging"
+}

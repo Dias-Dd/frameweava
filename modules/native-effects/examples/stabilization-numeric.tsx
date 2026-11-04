@@ -1,0 +1,2 @@
+import {Composition,Stage,Layer,ref} from '@frameweave/engine';import {stabilizationStage} from '../stabilization/stage.ts';export {stabilizationStage};
+export default <Composition width={23} height={17} fps={{num:30000,den:1001}} durationInFrames={7} background="transparent"><Stage id="stabilization" factory={stabilizationStage} props={{reference:true}}/><Layer source={ref('stabilization')}/></Composition>;

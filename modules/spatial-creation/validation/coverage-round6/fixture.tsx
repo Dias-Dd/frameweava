@@ -1,0 +1,3 @@
+import {Composition,Stage,Layer,ref} from '@frameweave/engine';import {defineNativeStage} from '@frameweave/engine/native';import {simulation} from '../../examples/coupled-cloth.tsx';
+export const verify=defineNativeStage(async init=>{const inner=await simulation(init);return {async renderAt(c){const image=await inner.renderAt(c,{},{}),raw=await init.gpu.imageToBuffer!(image,{version:1});try{await init.gpu.publishBuffer('image0',raw,{version:1});}finally{await init.gpu.releaseBuffer(raw);}return image;},dispose:()=>inner.dispose?.()};});
+export default Composition({id:'coupled-verify',width:64,height:48,fps:24,durationInFrames:24,background:'transparent',children:[Stage({id:'verify',factory:verify,outputs:{surface:'surface'}}),Layer({source:ref('verify')})]});

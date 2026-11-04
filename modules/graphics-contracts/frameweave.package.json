@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "apiVersion": 1,
+  "id": "frameweave.graphics-contracts",
+  "version": "1.1.0",
+  "name": "Graphics Contracts",
+  "description": "Pure graphics data validators, converters and analysis.track/1 reader",
+  "tags": ["graphics", "contracts", "track", "library"],
+  "source": {"kind": "local", "authority": "frameweave.foundation"},
+  "compatible": "0.1.0",
+  "platforms": ["web", "node"],
+  "capabilities": [],
+  "permissions": {"filesystem": false, "network": false, "process": false},
+  "entry": "main",
+  "modules": {"main": {"format": "javascript", "path": "./dist/index.js"}}
+}

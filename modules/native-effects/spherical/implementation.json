@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "scope": "Native spherical image effect family; completion-round8 continuation, not a new GPU host",
+  "startedAt": "2026-11-03T08:45:03.613Z",
+  "baseline": "c7e217a77f5f7b8391e90f011107efb457efa1af",
+  "status": "source_gpu_numeric_and_media_qualified_not_formally_packaged",
+  "reuse": "Existing qualified compensated Pixel arithmetic, precision/trig, Native recipe lifecycle, shader compilation and source/field leases. Local keyword catalog VR search returned no entries.",
+  "repairEvidence": "docs/native-spherical-repair-evidence/2026-11-04"
+}

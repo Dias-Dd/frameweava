@@ -1,0 +1,49 @@
+Deformable Effects — Frameweave, Apache-2.0.
+
+Rust distance and isometric bending mathematics are adapted from the MIT
+PositionBasedDynamics2.2.0 release, commit
+aa62c44f0d43956452e1f960a40333ec2d6d3ea5.
+Copyright (c) 2015-present, PositionBasedDynamics contributors.
+Full MIT text and checksum-pinned reference files are in vendor/pbd.
+No Eigen, GUI, full PBD application or third-party native binary is included.
+No GPL Blender source or assets are used.
+
+For the existing XPBD constraints, numerical adaptations are explicit: direct compliance; f64 hypot and positive
+representable denominator checks rather than fixed scene/mass epsilons;
+degenerate/inconsistent errors rather than a silent skip; quadratic isometric
+Q stored as coef*K*K^T and evaluated relative to a shared vertex.
+Core integration/checkpoints and C1 bytes-v1 session/Worker/RPC are reused.
+Rust1.99.1 standard-library notices and source identity are carried in licenses.
+The optional local C++ validation executable is not distributed.
+
+Static sphere/plane sweep geometry, conservative halfspaces and projected
+Coulomb velocity response in contacts.rs are authored Apache-2.0 code.
+Mathematical reference: Mueller et al., Position Based Dynamics (2006),
+section 3.4, https://matthias-research.github.io/pages/publications/posBasedDyn.pdf
+No paper text/code, Eigen collision engine or additional native library is copied.
+
+Tetrahedral signed-volume XPBD is adapted from the same pinned MIT source.
+Its derivative explicitly includes 1/6; the upstream code omits that factor.
+Unmodified upstream text/counterexample and independent analytic/finite-difference
+verification are retained. This is not a claim of identical volume projections.
+Soft-body mesh/density/topology preparation is authored Apache-2.0.
+
+Signed dihedral XPBD uses the same fixed MIT PBD2.2.0/aa62c44f source's
+solve_DihedralConstraint angle-gradient formulas (attributed there to Bridson).
+Two additional complete original source files are archived unchanged. Rust adapts
+them to signed atan2, local coordinate scaling, explicit XPBD compliance/lambda,
+wrapped targets and movable common-edge vertices. The native unsigned PBD method
+and its epsilon/fixed-opposite/small-angle counterexamples are retained; this is
+not a claim that upstream directly implements the new signed XPBD semantics.
+No new crate, Eigen/full physics engine or runtime dependency is introduced.
+
+Cosserat PBD rods reuse the same pinned MIT release's PositionBasedElasticRods
+stretch/shear and bend/twist kernels and first-order TimeIntegration formulas.
+Rust scalar adaptation retains original dimensionless stiffness and 1e-6
+regularizers, with checked finite/unit-quaternion packets, Result propagation
+and hemisphere-safe candidate normalization. Quaternion pin/mesh interpolation,
+explicit data snapshots and existing C1/Core integration are module adapters.
+Original MIT sources/call sites and sha256 records are carried in vendor/pbd.
+No additional third-party library or full anisotropic inertia solver is bundled.
+
+0.6.0 thin-face normal/tangent quadratic drag and prescribed pressure are authored Frameweave Apache-2.0 SI force math in Rust, not copied Bullet/NvCloth/Jolt implementations. Existing fixed MIT PBD constraints/C1/Worker/Core Runner are reused; no new dependency, full third-party engine or separately licensed file included.

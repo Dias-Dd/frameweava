@@ -1,0 +1,115 @@
+{
+  "version": 1,
+  "parent": "ba70eac38170567b48adfded74e3602f5bbf304b",
+  "upstreamFiles": [
+    {
+      "project": "read-fonts",
+      "version": "0.46.0",
+      "repository": "https://github.com/googlefonts/fontations",
+      "commit": "47a301615fd95acf0da9fb7dbcd0ea7c7df36943",
+      "license": "MIT OR Apache-2.0",
+      "file": "read-fonts/src/tables/gdef.rs",
+      "sha256": "e0ad05eee6cf338e80ed350829452e96ab2343c8ad37117755d7d67eeb29e8f6",
+      "modification": "none; original dependency compiled unchanged"
+    },
+    {
+      "project": "read-fonts",
+      "version": "0.46.0",
+      "repository": "https://github.com/googlefonts/fontations",
+      "commit": "47a301615fd95acf0da9fb7dbcd0ea7c7df36943",
+      "license": "MIT OR Apache-2.0",
+      "file": "read-fonts/generated/generated_gdef.rs",
+      "sha256": "79cf6e6655805e41aeb55a06b9b8c70f7509469f31a0d8b227b58ce417984c48",
+      "modification": "none; original dependency compiled unchanged"
+    },
+    {
+      "project": "read-fonts",
+      "version": "0.46.0",
+      "repository": "https://github.com/googlefonts/fontations",
+      "commit": "47a301615fd95acf0da9fb7dbcd0ea7c7df36943",
+      "license": "MIT OR Apache-2.0",
+      "file": "read-fonts/src/tables/layout.rs",
+      "sha256": "291556d1372429b12ae0dd0b4bc5f9230c014239f2519e7ab3b7e8f3552f0981",
+      "modification": "none; original dependency compiled unchanged"
+    },
+    {
+      "project": "read-fonts",
+      "version": "0.46.0",
+      "repository": "https://github.com/googlefonts/fontations",
+      "commit": "47a301615fd95acf0da9fb7dbcd0ea7c7df36943",
+      "license": "MIT OR Apache-2.0",
+      "file": "read-fonts/generated/generated_layout.rs",
+      "sha256": "2b5f3c509b2614f8ce650874769b125f06a77f1ad25488f1459d33f1e8ecfe19",
+      "modification": "none; original dependency compiled unchanged"
+    },
+    {
+      "project": "read-fonts",
+      "version": "0.46.0",
+      "repository": "https://github.com/googlefonts/fontations",
+      "commit": "47a301615fd95acf0da9fb7dbcd0ea7c7df36943",
+      "license": "MIT OR Apache-2.0",
+      "file": "read-fonts/src/tables/variations.rs",
+      "sha256": "78ea08e70d81d6daa53cf4feca7609d1f97c9edf43b69524b5585fb330db6769",
+      "modification": "none; original dependency compiled unchanged"
+    },
+    {
+      "project": "skrifa",
+      "version": "0.49.0",
+      "repository": "https://github.com/googlefonts/fontations",
+      "commit": "47a301615fd95acf0da9fb7dbcd0ea7c7df36943",
+      "license": "MIT OR Apache-2.0",
+      "file": "skrifa/src/outline/mod.rs",
+      "sha256": "35b16798a07e287f5455f9d9530557b2aaa8cbeedb0b1d79ee42b92aeeecd715",
+      "modification": "none; existing original public unhinted scaled-glyf callback"
+    },
+    {
+      "project": "skrifa",
+      "version": "0.49.0",
+      "repository": "https://github.com/googlefonts/fontations",
+      "commit": "47a301615fd95acf0da9fb7dbcd0ea7c7df36943",
+      "license": "MIT OR Apache-2.0",
+      "file": "skrifa/src/outline/glyf/outline.rs",
+      "sha256": "9264bf037141f30807f1ba297096eb4c1264d2fe6c26e1772a34213b91d632db",
+      "modification": "none; existing original public unhinted scaled-glyf callback"
+    }
+  ],
+  "unchangedAdapters": [
+    {
+      "copy": "modules/pro-animation/rust/opentype/src/original-shaper.rs",
+      "sha256": "1e91f9463230a2f19814a18ba5f7c50a65a4a19ad95ff6559edcb787face3930",
+      "original": "modules/pro-animation/rust/shaping/src/lib.rs",
+      "originalSha256": "1e91f9463230a2f19814a18ba5f7c50a65a4a19ad95ff6559edcb787face3930"
+    },
+    {
+      "copy": "modules/pro-animation/rust/opentype/src/original-font-metadata.rs",
+      "sha256": "f7f1fa567f72f0a115b69959eefc45abfce64c96c0960a75e851e2282996609b",
+      "original": "modules/pro-animation/rust/font-metadata/src/lib.rs",
+      "originalSha256": "f7f1fa567f72f0a115b69959eefc45abfce64c96c0960a75e851e2282996609b"
+    }
+  ],
+  "lock": {
+    "path": "modules/pro-animation/rust/opentype/Cargo.lock",
+    "sha256": "bbcfe7de3e53f171bbd20bbaf1b5d9ed60feef313e7146b7845673fa9d625c62",
+    "sameAsPrior": true,
+    "newDependencies": []
+  },
+  "shaping": {
+    "name": "harfrust",
+    "version": "0.15.0",
+    "commit": "71d965130ea93905f81b8f03a03d7ecc794fbc47",
+    "license": "MIT",
+    "unchanged": true
+  },
+  "newPermissions": false,
+  "sourceDecision": "Reuse original read-fonts/Skrifa/HarfRust; no translated font parser, EffectCraft editor or new time engine",
+  "testOnly": {
+    "fonttools": "4.68.0/MIT, own existing environment",
+    "fixtures": "OFL1.1 Noto original immutable bytes; own generated Apache-2.0 edge-case fonts"
+  },
+  "existingNotices": [
+    "modules/pro-animation/rust/shaping/licenses/SHAPING-NOTICE",
+    "modules/pro-animation/provenance/typography/NOTICE",
+    "modules/pro-animation/vendor/earcut/SOURCE.json",
+    "modules/pro-animation/rust/pathops/licenses/CLIPPER2-NOTICE"
+  ]
+}

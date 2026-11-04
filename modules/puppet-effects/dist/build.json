@@ -1,0 +1,46 @@
+{
+  "binding": "bytes-v1",
+  "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "compilerSha256": "51a5e64f2668e874b50d9af0f281cfd7a4ee08558ee44ffa1855756b5a78bc52",
+  "target": "wasm32-unknown-unknown",
+  "flags": [
+    "--edition=2021",
+    "--crate-type=cdylib",
+    "--target=wasm32-unknown-unknown",
+    "-C",
+    "opt-level=s",
+    "-C",
+    "panic=abort",
+    "-C",
+    "strip=symbols",
+    "-C",
+    "debuginfo=0",
+    "--remap-path-prefix",
+    "<module>=."
+  ],
+  "inputs": {
+    "rust/src/lib.rs": "0a4805c5342f634f12c813769d12ba9796acca679aa888392d3145d6dc940110",
+    "rust/src/algorithm.rs": "29263359ba4dcb32108143459a562063690ce2ffb276a741f08fe6eacf83e89a",
+    "rust/src/arap.rs": "570ea38518d59c0f445c130a218bf053fce0cdbe1074d9ccd4a423031b6bc5ab",
+    "rust/src/mesh-kernel.rs": "2f3c9bd6a979791a3c95761e2ce0e5c3919b4aea3d8cee2929e293de41ead048",
+    "rust/src/meshing.rs": "f8f806707f73d18d25b849f3fafb0f6190c7caf6de418fb96dff186f9a15296b",
+    "runtime/session.mjs": "76313f823236c86ea7ea36da677a05a95026e3ba5fd8632b4b9b06fc33fa913a",
+    "runtime/session.d.mts": "a9cbbc413cd1d6bd66994e5e96791f6efe7f3952980ef76f2d1539e4769dcbf8",
+    "runtime/worker.ts": "901686249711107b812e5649885fb7422dcee91735cf1edb1947a5d87b4032bc",
+    "runtime/client.ts": "f4283a296d388bf30c7cc0f93f770730552f50ec0fed38399c5133a2284781f2",
+    "scripts/build-solver.mjs": "e9e66840770f76c79b5aa586f1b723d07ba72b4cfc2220330f1299de7e73f223",
+    "scripts/prepare-arap.mjs": "07399dad008dfb6f9976bde009304261fb24fa10cb7d545bc6bc0c68d93f1195",
+    "scripts/prepare-mesher.mjs": "5d956da249df5e57b2a0c72f201622088ef2e2dfaa9a02217e4f8a4f8d4316cb",
+    "vendor/effectcraft/mesh.rs": "6b50886629a78ebde4873bb6815e02305f5e4bf1290f817fc54835036a0205f7",
+    "vendor/effectcraft/mesh-tests.rs": "fbec9e8ff7727253dd154cb889b46d0de0c5156bc1ed58a4ff5f4e2293ce37ec",
+    "vendor/effectcraft/SOURCE.json": "5366debb450726765b19876e3cc2a1d08416f12f26621166c504b066c518d7e7",
+    "licenses/rust-std/source.json": "b7d99caf2dc4fd47b2717c05a850e08cc4b2d0de7aacabea766ee94f10e245fb"
+  },
+  "outputs": {
+    "dist/module.wasm": "6465cdbb4b30f8c1a3fee3934808e0cbd3ab84c716034d74db97ff0131964b12",
+    "dist/worker.js": "7638b9cbe323ec6d5157f6683ec8f1f94e18c580aacc7e165dcf0610676ebd8f"
+  },
+  "bytes": 156114,
+  "hostImports": [],
+  "adaptation": "ARAP arithmetic/order unchanged with residual/counters. Mesh EDT/Delaunay kernels retain arithmetic, adapted to all contours, configurable budgets and checked constraint recovery. No external crates or runtime downloads."
+}

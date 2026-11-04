@@ -1,0 +1,153 @@
+{
+  "version": 1,
+  "ok": true,
+  "results": [
+    {
+      "case": "initialization-error",
+      "ms": 4078.4992,
+      "error": {
+        "code": "E_NATIVE_MODULE",
+        "message": "E_SERVO_JS: EvaluationFailure(Some(JavaScriptErrorInfo { message: \"deliberate initialization failure\", filename: \"\", stack: Some(\"@:16:14\\n\"), line_number: 16, column: 14 }))"
+      },
+      "cleanup": {
+        "event": "servoClosed",
+        "runtime": {
+          "frames": 0,
+          "instances": 0,
+          "logicalBridgeResources": 0,
+          "networkBlocked": 0,
+          "renderingContextReadbackAttempts": 0,
+          "telemetry": {
+            "display_list_received_count": 2,
+            "image_cache_cpu_bytes": 0,
+            "image_cache_gpu_hits": 0,
+            "last_lock_us": 0,
+            "last_locked_gl_textures": [],
+            "last_unlock_us": 0,
+            "last_wr_render_us": 68.2,
+            "last_wr_update_us": 0.4,
+            "lock_call_count": 0,
+            "release_call_count": 0,
+            "total_lock_us": 0,
+            "total_unlock_us": 0,
+            "unlock_call_count": 0
+          },
+          "version": 1
+        },
+        "status": 0,
+        "version": 1
+      }
+    },
+    {
+      "case": "slot-state-isolation-and-repeat-close",
+      "samples": [
+        {
+          "frame": 0,
+          "slot": 0,
+          "pixel": [
+            0.250980406999588,
+            0,
+            0,
+            0.250980406999588
+          ]
+        },
+        {
+          "frame": 1,
+          "slot": 1,
+          "pixel": [
+            0.250980406999588,
+            0,
+            0,
+            0.250980406999588
+          ]
+        },
+        {
+          "frame": 2,
+          "slot": 0,
+          "pixel": [
+            0.49803921580314636,
+            0,
+            0,
+            0.49803921580314636
+          ]
+        },
+        {
+          "frame": 3,
+          "slot": 1,
+          "pixel": [
+            0.49803921580314636,
+            0,
+            0,
+            0.49803921580314636
+          ]
+        }
+      ],
+      "cleanup": {
+        "event": "servoClosed",
+        "runtime": {
+          "frames": 0,
+          "instances": 0,
+          "logicalBridgeResources": 0,
+          "networkBlocked": 0,
+          "renderingContextReadbackAttempts": 0,
+          "telemetry": {
+            "display_list_received_count": 6,
+            "image_cache_cpu_bytes": 0,
+            "image_cache_gpu_hits": 0,
+            "last_lock_us": 0,
+            "last_locked_gl_textures": [],
+            "last_unlock_us": 0,
+            "last_wr_render_us": 118.3,
+            "last_wr_update_us": 0.5,
+            "lock_call_count": 0,
+            "release_call_count": 0,
+            "total_lock_us": 0,
+            "total_unlock_us": 0,
+            "unlock_call_count": 0
+          },
+          "version": 1
+        },
+        "status": 0,
+        "version": 1
+      }
+    },
+    {
+      "case": "render-error-invalidates-owner",
+      "initialError": "E_NATIVE_MODULE",
+      "subsequentUseAfterExit": "E_NATIVE_CLOSED",
+      "cleanup": {
+        "event": "servoClosed",
+        "runtime": {
+          "frames": 0,
+          "instances": 0,
+          "logicalBridgeResources": 0,
+          "networkBlocked": 0,
+          "renderingContextReadbackAttempts": 0,
+          "telemetry": {
+            "display_list_received_count": 2,
+            "image_cache_cpu_bytes": 0,
+            "image_cache_gpu_hits": 0,
+            "last_lock_us": 0,
+            "last_locked_gl_textures": [],
+            "last_unlock_us": 0,
+            "last_wr_render_us": 91.8,
+            "last_wr_update_us": 0.6,
+            "lock_call_count": 0,
+            "release_call_count": 0,
+            "total_lock_us": 0,
+            "total_unlock_us": 0,
+            "unlock_call_count": 0
+          },
+          "version": 1
+        },
+        "status": 0,
+        "version": 1
+      }
+    },
+    {
+      "case": "nonterminating-JS-owner-terminated",
+      "ms": 10082.3917,
+      "note": "Process termination reclaims resources; graceful shutdown receipt is not expected."
+    }
+  ]
+}

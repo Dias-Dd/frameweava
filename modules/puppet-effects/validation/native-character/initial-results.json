@@ -1,0 +1,37 @@
+{
+  "baseline": "917363196fee833ce7f0c545c33f6f8f0ce1056a",
+  "ok": false,
+  "wallMs": 24813.3373,
+  "rows": [
+    {
+      "name": "real sealed JSON asset + Three CCD in SpiderMonkey; random/repeat data and matrices",
+      "ok": false,
+      "wallMs": 2731.9909000000007,
+      "error": {
+        "code": "E_TYPECHECK",
+        "message": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\modules\\puppet-effects\\examples\\native-character\\project.tsx:7:25 TS2344: Type '[number, number, number]' does not satisfy the constraint 'string | number'.",
+        "stack": "EngineError: C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\modules\\puppet-effects\\examples\\native-character\\project.tsx:7:25 TS2344: Type '[number, number, number]' does not satisfy the constraint 'string | number'.\n    at typecheckProject (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\src\\compiler\\typecheck.ts:41:11)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async buildProject (file:///C:/Users/ASUS/Documents/Codex/2026-10-28/referenced-chatgpt-conversation-this-is-an/outputs/frameweave-worktrees/agent-4/src/compiler/build.ts:117:5)\n    at async <anonymous> (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\modules\\puppet-effects\\validation\\native-character.ts:7:115)\n    at async check (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\modules\\puppet-effects\\validation\\native-character.ts:5:239)\n    at async <anonymous> (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\modules\\puppet-effects\\validation\\native-character.ts:7:1)"
+      }
+    },
+    {
+      "name": "Native GPU compute skin to drawMesh, full actor PNGs and decoded 1-second MP4",
+      "ok": false,
+      "wallMs": 14546.669700000002,
+      "error": {
+        "code": "ERR_ASSERTION",
+        "message": "undefined == true",
+        "stack": "AssertionError [ERR_ASSERTION]: undefined == true\n    at <anonymous> (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\modules\\puppet-effects\\validation\\native-character.ts:8:110)\n    at check (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\modules\\puppet-effects\\validation\\native-character.ts:5:245)\n    at <anonymous> (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\modules\\puppet-effects\\validation\\native-character.ts:8:7)"
+      }
+    },
+    {
+      "name": "real GPU 50/50 weight blend and affine pose against independently authored triangle geometry; HDR/F16/F32 EXR",
+      "ok": false,
+      "wallMs": 7529.117300000002,
+      "error": {
+        "code": "E_GPU_COMPUTE_CONTRACT",
+        "message": "Spatial fields require explicit space and units",
+        "stack": "EngineError: Spatial fields require explicit space and units\n    at SpiderMonkeyTransport.receive (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\modules\\spidermonkey-host\\transport.ts:60:33)\n    at Socket.<anonymous> (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\modules\\spidermonkey-host\\transport.ts:28:128)\n    at Socket.emit (node:events:519:28)\n    at addChunk (node:internal/streams/readable:561:12)\n    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)\n    at Readable.push (node:internal/streams/readable:392:5)\n    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)"
+      }
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+import {spawn} from 'node:child_process';import {mkdir,writeFile,readFile} from 'node:fs/promises';import {performance} from 'node:perf_hooks';
+const [name,command,...args]=process.argv.slice(2),out=process.env.CREATION_EVIDENCE??'modules/spatial-creation/validation/evidence';await mkdir(out,{recursive:true});
+try{await readFile(`${out}/${name}-time.json`);throw Error('Refusing to overwrite prior evidence');}catch(e){if(e.code!=='ENOENT')throw e;}
+const start=performance.now(),child=spawn(command,args,{windowsHide:true,env:{...process.env,FRAMEWEAVE_HOME:process.env.FRAMEWEAVE_HOME??`${process.cwd()}/.frameweave/spatial-creation-home`},stdio:['ignore','pipe','pipe']});let output='';for(const s of [child.stdout,child.stderr])s.on('data',b=>{output+=b;process.stdout.write(b);});
+const code=await new Promise((resolve,reject)=>{child.on('error',reject);child.on('exit',resolve);});await writeFile(`${out}/${name}.log`,output);await writeFile(`${out}/${name}-time.json`,JSON.stringify({command:[command,...args],exitCode:code,wallMs:performance.now()-start})+'\n');process.exitCode=code??1;

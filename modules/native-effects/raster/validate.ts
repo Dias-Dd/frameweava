@@ -1,0 +1,68 @@
+import assert from 'node:assert/strict';
+import {mkdir,readFile,writeFile} from 'node:fs/promises';
+import {resolve,join} from 'node:path';
+import {createHash} from 'node:crypto';
+import {execFile} from 'node:child_process';
+import {promisify} from 'node:util';
+import {gzipSync} from 'node:zlib';
+import sharp from 'sharp';
+import {buildProject} from '../../../src/compiler/build.ts';
+import type {BuiltProject,Json} from '../../../src/core/types.ts';
+import {Renderer} from '../../../src/render/renderer.ts';
+import type {NativeGpuClient,NativeProgram} from '../../native-gpu/client.ts';
+import {renderNativeProject} from '../../native-gpu/service.ts';
+import {readExr} from '../../../src/media/ocio.ts';
+import {ffmpegPath} from '../../../src/encoding/ffmpeg.ts';
+import {linear709,pixelsFromSurface,isProfessionalSurface,type AlphaMode} from '../../../src/media/surface.ts';
+import {nativeRasterEffectNames} from './filters.ts';
+import {rasterReference,chainReference,transformPixels} from './reference.ts';
+const exec=promisify(execFile),dir=resolve(process.env.FRAMEWEAVE_NATIVE_EFFECTS_RUN!),phase=process.argv[2],diagnostic=resolve('.frameweave/native-target/debug/frameweave-native-gpu.exe'),production=resolve('.frameweave/native-target/release/frameweave-native-gpu.exe');
+const save=(name:string,v:unknown)=>writeFile(join(dir,name),JSON.stringify(v,null,2)+'\n');
+const hash=(p:Float32Array|Buffer)=>createHash('sha256').update(new Uint8Array(p.buffer,p.byteOffset,p.byteLength)).digest('hex');
+const variant=(b:BuiltProject,width:number,height:number,props:Record<string,Json>={}):BuiltProject=>({...b,manifest:{...b.manifest,composition:{...b.manifest.composition,width,height},stages:b.manifest.stages.map(s=>({...s,props:{...s.props,...props}}))}});
+interface Internal {nativeClient:NativeGpuClient;nativePlan:{program:NativeProgram}}
+async function open(b:BuiltProject,executable=diagnostic){return Renderer.create(b,{nativeGpu:{executable,dynamic:'interactive',slots:1},timeoutMs:30000});}
+async function capture(r:Renderer,frame:number){const t=performance.now(),ticket=await r.submitNativeFrame(frame);await ticket.completed;const elapsedMs=performance.now()-t,i=r as unknown as Internal,p=i.nativePlan.program,last=p.passes.at(-1)!;
+ // The private diagnostic reads the allocation capacity. Liveness may reuse a
+ // larger padded allocation; only the image's declared extent is valid data.
+ const read=async(id:number)=>new Float32Array((await i.nativeClient.inspectForTest(ticket.slot,id)).pixels).slice(0,p.images[id].width*p.images[id].height*4),pixels=await read(last.output);let a:Float32Array|undefined,b:Float32Array|undefined;
+ if(last.inputs.length===3){a=await read(last.inputs[1]);b=await read(last.inputs[2]);}return {pixels,a:a!,b:b!,hash:hash(pixels),elapsedMs,metadata:p.images[last.output]};}
+function compare(a:Float32Array,b:Float32Array,tolerance:number){assert.equal(a.length,b.length);let maxAbs=0,maxScaled=0,worst=0;for(let i=0;i<a.length;i++){assert.ok(Number.isFinite(a[i]),'Nonfinite '+i);const abs=Math.abs(a[i]-b[i]),scaled=abs/Math.max(1,Math.abs(b[i]));maxAbs=Math.max(maxAbs,abs);if(scaled>maxScaled){maxScaled=scaled;worst=i;}}assert.ok(maxScaled<=tolerance,JSON.stringify({maxAbs,maxScaled,tolerance,worst,actual:a[worst],expected:b[worst]}));return {maxAbs,maxScaled,tolerance,worst};}
+await mkdir(dir,{recursive:true});await save('environment.json',{date:new Date().toISOString(),node:process.version,platform:process.platform,phase,names:nativeRasterEffectNames,production,diagnostic,policy:'Native GPU-only; no numerical publication scans/CPU replay added'});
+const entry=resolve('modules/native-effects/examples/raster-numeric.tsx');
+if(phase==='gpu'){
+ const start=performance.now(),build=await buildProject(entry),rows:unknown[]=[];await save('build.json',{ms:performance.now()-start,stages:build.manifest.stages.map(s=>({id:s.id,engine:s.engine}))});
+ for(const format of ['rgba32float','rgba16float'] as const)for(const alpha of ['premultiplied','straight','opaque'] as const){const r=await open(variant(build,17,13,{format,alpha})),seen=new Map<number,string>();try{for(const frame of [...nativeRasterEffectNames.map((_,i)=>i),22,0,6,22]){const a=await capture(r,frame),name=nativeRasterEffectNames[frame%23],reference=rasterReference(name,a.a,a.b,17,13,alpha,format==='rgba16float'),diff=compare(a.pixels,reference,format==='rgba16float'?6e-4:3e-6);if(seen.has(frame))assert.equal(a.hash,seen.get(frame));seen.set(frame,a.hash);rows.push({format,alpha,frame,name,...diff,hash:a.hash,elapsedMs:a.elapsedMs});await save('numeric.json',rows);}
+  const stats=await r.nativeStats();assert.equal(stats.pixelTransferBytes,0);assert.equal(stats.imageReadbacks,0);assert.equal(stats.devicesCreated,1);await save(`${format}-${alpha}-stats.json`,stats);
+ }finally{await r.close();await r.close();await r.nativeExited();assert.equal((r as unknown as Internal).nativeClient.connected(),false);}}
+ for(const format of ['rgba32float','rgba16float'] as const){const r=await open(variant(build,17,13,{format,chain:true}));try{for(const frame of [0,12,6,239,0]){const a=await capture(r,frame);rows.push({format,chain:4,frame,...compare(a.pixels,chainReference(a.a,a.b,17,13,'premultiplied',format==='rgba16float'),format==='rgba16float'?6e-4:3e-6),hash:a.hash});}}finally{await r.close();}}
+ const preflight=await open(variant(build,17,13,{special:true}));try{const before=await preflight.nativeStats();await assert.rejects(preflight.submitNativeFrame(0,{signal:AbortSignal.abort()}),{code:'E_RENDER_CANCELLED'});assert.equal((await preflight.nativeStats()).submitted,before.submitted);await capture(preflight,0);await save('preflight.json',{ok:true,cases:['cancel before submission','aborted effect','invalid radius','gain overflow','invalid dimensions','explicit operation budget'],stats:await preflight.nativeStats()});}finally{await preflight.close();await preflight.nativeExited();}
+ for(const only of [99,97,96,95]){const r=await open(variant(build,only===96?20:17,only===96?15:13,{only,...only===95?{alpha:'opaque'}:{}}));try{for(const frame of only===99?[0,5,10,5,0]:[0]){const v=await capture(r,frame);let expected:Float32Array;if(only===99){expected=new Float32Array(v.a.length);const opacity=frame<=10?.2+.6*frame/10:.8;for(let i=0;i<expected.length;i+=4){const value=v.a[i+3]*opacity;expected.set([3*value,-.5*value,.75*value,value],i);}}
+  else if(only===95){expected=new Float32Array(v.a.length);for(let i=0;i<expected.length;i+=4)expected.set([3,-.5,.75,1],i);}
+  else if(only===97)expected=new Float32Array(v.pixels.length);
+  else{expected=new Float32Array(20*15*4);for(let y=0;y<15;y++)for(let x=0;x<20;x++){const xx=x-2,yy=y+1;if(xx>=0&&xx<17&&yy<13)expected.set(v.a.subarray((yy*17+xx)*4,(yy*17+xx)*4+4),(y*20+x)*4);}}
+  rows.push({only,frame,...compare(v.pixels,expected,3e-6),hash:v.hash});}}finally{await r.close();}}
+ await save('numeric.json',rows);await save('result.json',{ok:true,rows:rows.length,cases:23,formats:2,alphaRepresentations:3,deviceReadback:'Explicit diagnostic binary only; never in effects',tolerancesUnchanged:true});
+}else if(phase==='media'){
+ const entry='modules/native-effects/examples/raster-chain.tsx',build=await buildProject(resolve(entry)),r=await open(variant(build,320,180)),seen=new Map<number,string>(),rows:unknown[]=[];
+ try{for(const frame of [0,119,239,6,0,119]){const a=await capture(r,frame);assert.ok(a.pixels.every(Number.isFinite));assert.ok(a.pixels.some((v,i)=>i%4!==3&&v>1));assert.ok(a.pixels.some((v,i)=>i%4!==3&&v<0));if(seen.has(frame))assert.equal(a.hash,seen.get(frame));seen.set(frame,a.hash);rows.push({frame,hash:a.hash,elapsedMs:a.elapsedMs});if(frame===119)await writeFile(join(dir,'linear119.f32.gz'),gzipSync(new Uint8Array(a.pixels.buffer)));}await save('resident-stats.json',await r.nativeStats());}finally{await r.close();await r.nativeExited();}
+ process.env.FRAMEWEAVE_MEDIA_PYTHON=resolve('.frameweave/pme-python/Scripts/python.exe');const exr=join(dir,'raster.exr'),exported=await renderNativeProject(entry,{build,output:exr,width:320,height:180,start:119,end:120,native:production}),decoded=await readExr(exr,{color:linear709,alpha:'premultiplied'}),pixels=pixelsFromSurface(decoded.surface);assert.equal(hash(pixels),seen.get(119));rows.push({exr:exported,decodedHash:hash(pixels)});
+ for(const frame of [0,119,239]){const output=join(dir,`frame-${frame}.png`),result=await renderNativeProject(entry,{build,output,width:320,height:180,start:frame,end:frame+1,native:production}),p=await sharp(output).ensureAlpha().raw().toBuffer({resolveWithObject:true});assert.equal(p.data.length,320*180*4);rows.push(result);}
+ const output=join(dir,'raster.mp4'),result=await renderNativeProject(entry,{build,output,width:320,height:180,start:0,end:4,encoder:'libx264',native:production}),raw=await exec(ffmpegPath(),['-v','error','-i',output,'-f','rawvideo','-pix_fmt','rgba','-'],{windowsHide:true,encoding:'buffer',maxBuffer:8*1024**2});assert.equal(raw.stdout.length,320*180*4*4);rows.push(result);await save('result.json',{ok:true,rows,lossyMp4:true});
+}else if(phase==='ab'){
+ const t=performance.now(),nativeBuild=await buildProject(entry),nativeCompileMs=performance.now()-t,t1=performance.now(),webBuild=await buildProject(resolve('modules/native-effects/examples/raster-web-baseline.tsx')),webCompileMs=performance.now()-t1,rows:unknown[]=[];
+ for(const [width,height] of [[320,180],[1920,1080],[3840,2160]]){const start=performance.now(),native=await open(variant(nativeBuild,width,height,{chain:true})),nativeInitMs=performance.now()-start,t2=performance.now(),web=await Renderer.create(variant(webBuild,width,height),{preview:true,cache:false,timeoutMs:60000,media:{workingColor:linear709,transport:'buffer-v1'}}),webInitMs=performance.now()-t2,samples:unknown[]=[];
+  try{for(const frame of width===320?[0,1,2,1,0]:[0,1,2]){const tNative=performance.now();let a:Awaited<ReturnType<typeof capture>>|undefined,nativeGpuReadyMs:number;
+   if(width===320){a=await capture(native,frame);nativeGpuReadyMs=a.elapsedMs;}else{const ticket=await native.submitNativeFrame(frame);await ticket.completed;nativeGpuReadyMs=performance.now()-tNative;}
+   const t3=performance.now(),result=await web.evaluateFrame(frame,'raster'),webCpuReadyMs=performance.now()-t3,surface=result.stageOutputs.raster.surface;assert.ok(isProfessionalSurface(surface));const p=pixelsFromSurface(surface);assert.equal(p.length,width*height*4);const diff=a?compare(a.pixels,p,3e-6):{fullImageParity:'not-read-through-bounded-diagnostic-channel'},metrics=result.stageOutputs.raster.metrics;assert.ok(metrics&&typeof metrics==='object'&&!Array.isArray(metrics));const m=metrics as Record<string,unknown>;assert.equal(m.availableBackend,'webgpu');assert.ok(m.owner&&typeof m.owner==='object'&&!Array.isArray(m.owner));const backend=(m.owner as Record<string,unknown>).backendInfo;assert.ok(backend&&typeof backend==='object'&&!Array.isArray(backend));assert.equal((backend as Record<string,unknown>).isFallbackAdapter,false);samples.push({frame,nativeGpuReadyMs,webCpuReadyMs,...diff,nativeHash:a?.hash??null,webHash:hash(p),webMetrics:metrics});await save('ab.json',rows.concat({width,height,nativeInitMs,webInitMs,samples}));}
+   rows.push({width,height,nativeInitMs,webInitMs,samples,nativeStats:await native.nativeStats()});await save('ab.json',rows);
+  }finally{await native.close();await native.nativeExited();await web.close();}
+ }
+ await save('result.json',{ok:true,nativeCompileMs,webCompileMs,rows,qualification:'Same four algorithms/parameters/input pixels/F32. Native endpoint is GPU-ready resident image; legacy endpoint is CPU Surface after mandatory per-effect readbacks and final Stage transport. Diagnostic Native reads run after its measured endpoint. No identical-output-boundary speedup ratio claimed.'});
+}else if(phase==='performance'){
+ const build=await buildProject(resolve('modules/native-effects/examples/raster-chain.tsx')),rows:unknown[]=[],summary=(a:number[])=>{const s=[...a].sort((a,b)=>a-b);return {n:s.length,median:(s[(s.length-1)>>1]+s[s.length>>1])/2,p95:s[Math.ceil(s.length*.95)-1],min:s[0],max:s.at(-1),samples:a};};
+ let device:unknown,power:unknown;try{device=(await exec('nvidia-smi',['--query-gpu=name,driver_version,pstate,power.draw','--format=csv'],{windowsHide:true})).stdout;power=(await exec('powercfg',['/getactivescheme'],{windowsHide:true})).stdout;}catch(e){device=String(e);}await save('device.json',{device,power,clock:'Node request -> JS recording -> GPU completed. Output encoding excluded, no A/B speedup claim.'});
+ for(const [width,height] of [[1920,1080],[3840,2160]]){const start=performance.now(),r=await open(variant(build,width,height),production);try{const initMs=performance.now()-start,t0=performance.now(),first=await r.submitNativeFrame(0);await first.completed;const firstMs=performance.now()-t0,timings:Record<string,ReturnType<typeof summary>>={};for(const [group,frames]of Object.entries({newFrames:Array.from({length:10},(_,i)=>i+1),repeat:[10,10,10],random:[119,0,239,6,92]})){const samples=[];for(const frame of frames){const t=performance.now(),ticket=await r.submitNativeFrame(frame);await ticket.completed;samples.push(performance.now()-t);}timings[group]=summary(samples);}const stats=await r.nativeStats();assert.equal(stats.devicesCreated,1);assert.equal(stats.pixelTransferBytes,0);assert.equal(stats.imageReadbacks,0);rows.push({width,height,format:'rgba32float',effects:8,initMs,firstMs,timings,stats});await save('performance.json',rows);}finally{await r.close();await r.nativeExited();}}
+ await save('result.json',{ok:true,rows});
+}else throw Error('Unknown phase');
+console.log(JSON.stringify({phase,ok:true,dir}));

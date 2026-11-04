@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {statisticsReference} from '../modules/native-effects/color/reference.ts';
+import {linear709} from '../src/media/surface.ts';
+import {createNativeProfessionalEffects,additionalNativeEffectNames,unavailableNativeImageMethods} from '../modules/native-effects/index.ts';
+import {NativeRecordingScope} from '../modules/native-gpu/scope.ts';
+test('all four automatic colour functions are distinct typed Native bindings',()=>{for(const name of ['autoLevels','autoContrast','autoColor','equalize'])assert.ok(additionalNativeEffectNames.some(n=>n===name));assert.deepEqual(unavailableNativeImageMethods,[]);});
+test('source facade still rejects unadmitted hardware without GPU work',async()=>{const g=new NativeRecordingScope();assert.throws(()=>createNativeProfessionalEffects({gpu:g.api}),{code:'E_NATIVE_EFFECTS_DEVICE'});assert.equal(g.api.stats().runs,0);await g.api.dispose();});
+test('reference statistics ignore missing coverage and preserve zero-coverage PM emission',()=>{const p=Float32Array.of(.5,.25,.125,1,100,-100,7,0);const value=statisticsReference('autoLevels',p,'premultiplied',linear709);assert.deepEqual(value,p);});
+test('equalization retains a constant image, including negative and HDR values',()=>{const p=Float32Array.of(4,-2,1,1,4,-2,1,1);assert.deepEqual(statisticsReference('equalize',p,'premultiplied',linear709,{bins:17}),p);});
+test('independent equalization excludes the first populated bin from its CDF',()=>{const p=Float32Array.of(0,0,0,1,.5,.5,.5,1,1,1,1,1),out=statisticsReference('equalize',p,'premultiplied',linear709,{bins:3});assert.deepEqual(out,p);});

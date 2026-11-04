@@ -1,0 +1,8 @@
+// SPDX-License-Identifier: Apache-2.0
+// Scalar quaternion helpers, x/y/z/w, right handed. No engine state or time source.
+import {array,finite,deformableError} from './config.ts';import type {Quaternion} from './rod-types.ts';import type {Vec3} from './types.ts';
+export function multiplyQ(a:Quaternion,b:Quaternion):Quaternion{return [a[3]*b[0]+a[0]*b[3]+a[1]*b[2]-a[2]*b[1],a[3]*b[1]-a[0]*b[2]+a[1]*b[3]+a[2]*b[0],a[3]*b[2]+a[0]*b[1]-a[1]*b[0]+a[2]*b[3],a[3]*b[3]-a[0]*b[0]-a[1]*b[1]-a[2]*b[2]];}
+export const conjugateQ=(q:Quaternion):Quaternion=>[-q[0],-q[1],-q[2],q[3]];
+export function normalizedQ(value:unknown,name:string,reference?:Quaternion):Quaternion{const values=array(value,name);if(values.length!==4)deformableError('E_DEFORM_PARAMETER',name+' requires XYZW');const q=values.map(v=>finite(v,name)) as Quaternion,length=Math.hypot(...q);if(!Number.isFinite(length)||!length)deformableError('E_DEFORM_NUMERIC','Quaternion norm must be representable and positive');const result=q.map(v=>v/length) as Quaternion;if(reference&&result.reduce((sum,v,i)=>sum+v*reference[i],0)<0)return result.map(v=>-v) as Quaternion;return result;}
+export function rotateQ(q:Quaternion,v:Vec3):Vec3{const [x,y,z,w]=q;return [(1-2*(y*y+z*z))*v[0]+2*(x*y-w*z)*v[1]+2*(x*z+w*y)*v[2],2*(x*y+w*z)*v[0]+(1-2*(x*x+z*z))*v[1]+2*(y*z-w*x)*v[2],2*(x*z-w*y)*v[0]+2*(y*z+w*x)*v[1]+(1-2*(x*x+y*y))*v[2]];}
+export function directionQ(v:Vec3):Quaternion{const length=Math.hypot(...v);if(!Number.isFinite(length)||!length)deformableError('E_DEFORM_GEOMETRY','A rod edge requires representable positive length');const t=v.map(x=>x/length) as Vec3;if(t[2]===-1&&t[0]===0&&t[1]===0)return [1,0,0,0];return normalizedQ([-t[1],t[0],0,1+t[2]],'edge frame');}

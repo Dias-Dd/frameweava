@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "apiVersion": 1,
+  "id": "pro-animation.consumer",
+  "version": "0.6.0",
+  "name": "Pro Animation editable consumer",
+  "description": "Editable six-function composition, not a second library",
+  "tags": [
+    "animation",
+    "text",
+    "vector",
+    "wiggle",
+    "glow",
+    "displacement"
+  ],
+  "source": {
+    "kind": "local",
+    "authority": "frameweave.pro"
+  },
+  "compatible": "0.1.0",
+  "platforms": [
+    "web"
+  ],
+  "capabilities": [
+    "canvas2d"
+  ],
+  "permissions": {
+    "filesystem": false,
+    "network": false,
+    "process": false
+  },
+  "entry": "main",
+  "effect": "effect.json",
+  "modules": {
+    "main": {
+      "format": "javascript",
+      "path": "./index.js"
+    }
+  },
+  "dependencies": {
+    "pro-animation": "0.6.0",
+    "frameweave.graphics-contracts": "1.0.0"
+  }
+}

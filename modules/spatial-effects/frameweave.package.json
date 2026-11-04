@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "apiVersion": 1,
+  "id": "spatial-effects",
+  "version": "0.6.0",
+  "name": "Spatial Effects",
+  "description": "Float Sprite Atlas, age-driven appearance, image Alpha/color emission, explicit bursts, feedback particles, curl/force fields, swept collisions and trails; FastNoiseLite 2D/3D point queries, fractals/domain warp and native GPU HDR procedural textures",
+  "tags": ["particles", "sprite-atlas", "over-life", "image-emitter", "burst", "physics", "collision", "trails", "3d", "hdr", "noise", "curl", "fractal", "procedural"],
+  "source": {"kind":"local", "authority":"frameweave.spatial"},
+  "compatible": "0.1.0",
+  "platforms": ["web"],
+  "capabilities": [],
+  "permissions": {"filesystem":false,"network":false,"process":false},
+  "entry": "main",
+  "modules": {
+    "main":{"format":"javascript","path":"./src/index.ts"},
+    "bindings":{"format":"javascript","path":"./src/bindings.ts"}
+  },
+  "bindings":{"schemaVersion":1,"module":"bindings","types":"./dist/index.d.ts","initialize":"initialize","engine":"web","gpu":"required","gpuApi":"webgl2","gpuExports":["createParticleRenderer","createNoiseTextureRenderer"]}
+}

@@ -1,0 +1,99 @@
+{"encoder":"hevc_nvenc","out":"C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\.frameweave\\hdr-codec-hevc_nvenc-1793577300145.mp4","error":0.008895009756088257,"actual":[0.5143754482269287,0.3744249939918518,0.2550254166126251,1],"reference":[0.508078396320343,0.37654706835746765,0.2639204263687134,1],"probe":{"frames":[{"media_type":"video","stream_index":0,"key_frame":1,"pts":0,"pts_time":"0.000000","pkt_dts":0,"pkt_dts_time":"0.000000","best_effort_timestamp":0,"best_effort_timestamp_time":"0.000000","duration":256,"duration_time":"0.016667","pkt_pos":"982","pkt_size":"211","width":320,"height":180,"crop_top":0,"crop_bottom":0,"crop_left":0,"crop_right":0,"pix_fmt":"yuv420p10le","sample_aspect_ratio":"1:1","pict_type":"I","interlaced_frame":0,"top_field_first":0,"lossless":0,"repeat_pict":0,"color_range":"tv","color_space":"bt2020nc","color_primaries":"bt2020","color_transfer":"smpte2084","chroma_location":"left","side_data_list":[{"side_data_type":"Mastering display metadata","red_x":"35400/50000","red_y":"14600/50000","green_x":"8500/50000","green_y":"39850/50000","blue_x":"6550/50000","blue_y":"2300/50000","white_point_x":"15635/50000","white_point_y":"16450/50000","min_luminance":"50/10000","max_luminance":"10000000/10000"},{"side_data_type":"Content light level metadata","max_content":1000,"max_average":400}]},{"media_type":"video","stream_index":0,"key_frame":0,"pts":256,"pts_time":"0.016667","pkt_dts":256,"pkt_dts_time":"0.016667","best_effort_timestamp":256,"best_effort_timestamp_time":"0.016667","duration":256,"duration_time":"0.016667","pkt_pos":"1193","pkt_size":"39","width":320,"height":180,"crop_top":0,"crop_bottom":0,"crop_left":0,"crop_right":0,"pix_fmt":"yuv420p10le","sample_aspect_ratio":"1:1","pict_type":"P","interlaced_frame":0,"top_field_first":0,"lossless":0,"repeat_pict":0,"color_range":"tv","color_space":"bt2020nc","color_primaries":"bt2020","color_transfer":"smpte2084","chroma_location":"left","side_data_list":[{"side_data_type":"Mastering display metadata","red_x":"35400/50000","red_y":"14600/50000","green_x":"8500/50000","green_y":"39850/50000","blue_x":"6550/50000","blue_y":"2300/50000","white_point_x":"15635/50000","white_point_y":"16450/50000","min_luminance":"50/10000","max_luminance":"10000000/10000"},{"side_data_type":"Content light level metadata","max_content":1000,"max_average":400}]},{"media_type":"video","stream_index":0,"key_frame":0,"pts":512,"pts_time":"0.033333","pkt_dts":512,"pkt_dts_time":"0.033333","best_effort_timestamp":512,"best_effort_timestamp_time":"0.033333","duration":256,"duration_time":"0.016667","pkt_pos":"1232","pkt_size":"39","width":320,"height":180,"crop_top":0,"crop_bottom":0,"crop_left":0,"crop_right":0,"pix_fmt":"yuv420p10le","sample_aspect_ratio":"1:1","pict_type":"P","interlaced_frame":0,"top_field_first":0,"lossless":0,"repeat_pict":0,"color_range":"tv","color_space":"bt2020nc","color_primaries":"bt2020","color_transfer":"smpte2084","chroma_location":"left","side_data_list":[{"side_data_type":"Mastering display metadata","red_x":"35400/50000","red_y":"14600/50000","green_x":"8500/50000","green_y":"39850/50000","blue_x":"6550/50000","blue_y":"2300/50000","white_point_x":"15635/50000","white_point_y":"16450/50000","min_luminance":"50/10000","max_luminance":"10000000/10000"},{"side_data_type":"Content light level metadata","max_content":1000,"max_average":400}]},{"media_type":"video","stream_index":0,"key_frame":0,"pts":768,"pts_time":"0.050000","pkt_dts":768,"pkt_dts_time":"0.050000","best_effort_timestamp":768,"best_effort_timestamp_time":"0.050000","duration":256,"duration_time":"0.016667","pkt_pos":"1271","pkt_size":"39","width":320,"height":180,"crop_top":0,"crop_bottom":0,"crop_left":0,"crop_right":0,"pix_fmt":"yuv420p10le","sample_aspect_ratio":"1:1","pict_type":"P","interlaced_frame":0,"top_field_first":0,"lossless":0,"repeat_pict":0,"color_range":"tv","color_space":"bt2020nc","color_primaries":"bt2020","color_transfer":"smpte2084","chroma_location":"left","side_data_list":[{"side_data_type":"Mastering display metadata","red_x":"35400/50000","red_y":"14600/50000","green_x":"8500/50000","green_y":"39850/50000","blue_x":"6550/50000","blue_y":"2300/50000","white_point_x":"15635/50000","white_point_y":"16450/50000","min_luminance":"50/10000","max_luminance":"10000000/10000"},{"side_data_type":"Content light level metadata","max_content":1000,"max_average":400}]},{"media_type":"video","stream_index":0,"key_frame":0,"pts":1024,"pts_time":"0.066667","pkt_dts":1024,"pkt_dts_time":"0.066667","best_effort_timestamp":1024,"best_effort_timestamp_time":"0.066667","duration":256,"duration_time":"0.016667","pkt_pos":"1310","pkt_size":"37","width":320,"height":180,"crop_top":0,"crop_bottom":0,"crop_left":0,"crop_right":0,"pix_fmt":"yuv420p10le","sample_aspect_ratio":"1:1","pict_type":"P","interlaced_frame":0,"top_field_first":0,"lossless":0,"repeat_pict":0,"color_range":"tv","color_space":"bt2020nc","color_primaries":"bt2020","color_transfer":"smpte2084","chroma_location":"left","side_data_list":[{"side_data_type":"Mastering display metadata","red_x":"35400/50000","red_y":"14600/50000","green_x":"8500/50000","green_y":"39850/50000","blue_x":"6550/50000","blue_y":"2300/50000","white_point_x":"15635/50000","white_point_y":"16450/50000","min_luminance":"50/10000","max_luminance":"10000000/10000"},{"side_data_type":"Content light level metadata","max_content":1000,"max_average":400}]},{"media_type":"video","stream_index":0,"key_frame":0,"pts":1280,"pts_time":"0.083333","pkt_dts":1280,"pkt_dts_time":"0.083333","best_effort_timestamp":1280,"best_effort_timestamp_time":"0.083333","duration":256,"duration_time":"0.016667","pkt_pos":"1347","pkt_size":"36","width":320,"height":180,"crop_top":0,"crop_bottom":0,"crop_left":0,"crop_right":0,"pix_fmt":"yuv420p10le","sample_aspect_ratio":"1:1","pict_type":"P","interlaced_frame":0,"top_field_first":0,"lossless":0,"repeat_pict":0,"color_range":"tv","color_space":"bt2020nc","color_primaries":"bt2020","color_transfer":"smpte2084","chroma_location":"left","side_data_list":[{"side_data_type":"Mastering display metadata","red_x":"35400/50000","red_y":"14600/50000","green_x":"8500/50000","green_y":"39850/50000","blue_x":"6550/50000","blue_y":"2300/50000","white_point_x":"15635/50000","white_point_y":"16450/50000","min_luminance":"50/10000","max_luminance":"10000000/10000"},{"side_data_type":"Content light level metadata","max_content":1000,"max_average":400}]}],"streams":[{"index":0,"codec_name":"hevc","codec_long_name":"H.265 / HEVC (High Efficiency Video Coding)","profile":"Main 10","codec_type":"video","codec_tag_string":"hvc1","codec_tag":"0x31637668","width":320,"height":180,"coded_width":320,"coded_height":192,"has_b_frames":0,"sample_aspect_ratio":"1:1","display_aspect_ratio":"16:9","pix_fmt":"yuv420p10le","level":60,"color_range":"tv","color_space":"bt2020nc","color_transfer":"smpte2084","color_primaries":"bt2020","chroma_location":"left","refs":1,"view_ids_available":"","view_pos_available":"","id":"0x1","r_frame_rate":"60/1","avg_frame_rate":"60/1","time_base":"1/15360","start_pts":0,"start_time":"0.000000","duration_ts":1536,"duration":"0.100000","bit_rate":"32080","nb_frames":"6","nb_read_frames":"6","extradata_size":130,"disposition":{"default":1,"dub":0,"original":0,"comment":0,"lyrics":0,"karaoke":0,"forced":0,"hearing_impaired":0,"visual_impaired":0,"clean_effects":0,"attached_pic":0,"timed_thumbnails":0,"non_diegetic":0,"captions":0,"descriptions":0,"metadata":0,"dependent":0,"still_image":0,"multilayer":0},"tags":{"language":"und","handler_name":"VideoHandler"}}],"format":{"filename":"C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\.frameweave\\hdr-codec-hevc_nvenc-1793577300145.mp4","nb_streams":1,"nb_programs":0,"nb_stream_groups":0,"format_name":"mov,mp4,m4a,3gp,3g2,mj2","format_long_name":"QuickTime / MOV","start_time":"0.000000","duration":"0.100000","size":"1383","bit_rate":"110640","probe_score":100,"tags":{"major_brand":"isom","minor_version":"512","compatible_brands":"isomiso2mp41","encoder":"Lavf60.16.100"}}}}
+node:internal/errors:983
+  const err = new Error(message);
+              ^
+
+Error: Command failed: C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\node_modules\ffmpeg-static\ffmpeg.exe -v error -i C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\.frameweave\hdr-codec-av1_nvenc-1793577301123.mp4 -frames:v 1 -vf zscale=matrixin=2020_ncl:matrix=gbr:primariesin=2020:primaries=2020:transferin=smpte2084:transfer=smpte2084:rangein=limited:range=full,format=gbrpf32le -f rawvideo pipe:1
+[libaom-av1 @ 0000016d3e584600] Failed to decode frame: Bitstream not supported by this decoder
+
+[libaom-av1 @ 0000016d3e584600] Failed to decode frame: Corrupt frame detected
+
+[libaom-av1 @ 0000016d3e584600]   Additional information: No sequence header
+
+[libaom-av1 @ 0000016d3e584600] Failed to decode frame: Corrupt frame detected
+
+[libaom-av1 @ 0000016d3e584600]   Additional information: No sequence header
+
+[libaom-av1 @ 0000016d3e584600] Failed to decode frame: Corrupt frame detected
+
+[libaom-av1 @ 0000016d3e584600]   Additional information: No sequence header
+
+[libaom-av1 @ 0000016d3e584600] Failed to decode frame: Corrupt frame detected
+
+[libaom-av1 @ 0000016d3e584600]   Additional information: No sequence header
+
+[libaom-av1 @ 0000016d3e584600] Failed to decode frame: Corrupt frame detected
+
+[libaom-av1 @ 0000016d3e584600]   Additional information: No sequence header
+
+[libaom-av1 @ 0000016d3e57a680] Failed to decode frame: Bitstream not supported by this decoder
+
+[vist#0:0/av1 @ 0000016d3e57b3c0] Error submitting packet to decoder: Invalid data found when processing input
+
+[libaom-av1 @ 0000016d3e57a680] Failed to decode frame: Corrupt frame detected
+
+[libaom-av1 @ 0000016d3e57a680]   Additional information: No sequence header
+
+[vist#0:0/av1 @ 0000016d3e57b3c0] Error submitting packet to decoder: Invalid data found when processing input
+
+[libaom-av1 @ 0000016d3e57a680] Failed to decode frame: Corrupt frame detected
+
+[libaom-av1 @ 0000016d3e57a680]   Additional information: No sequence header
+
+[vist#0:0/av1 @ 0000016d3e57b3c0] Error submitting packet to decoder: Invalid data found when processing input
+
+[libaom-av1 @ 0000016d3e57a680] Failed to decode frame: Corrupt frame detected
+
+[libaom-av1 @ 0000016d3e57a680]   Additional information: No sequence header
+
+[vist#0:0/av1 @ 0000016d3e57b3c0] Error submitting packet to decoder: Invalid data found when processing input
+
+[libaom-av1 @ 0000016d3e57a680] Failed to decode frame: Corrupt frame detected
+
+[libaom-av1 @ 0000016d3e57a680]   Additional information: No sequence header
+
+[vist#0:0/av1 @ 0000016d3e57b3c0] Error submitting packet to decoder: Invalid data found when processing input
+
+[libaom-av1 @ 0000016d3e57a680] Failed to decode frame: Corrupt frame detected
+
+[libaom-av1 @ 0000016d3e57a680]   Additional information: No sequence header
+
+[vist#0:0/av1 @ 0000016d3e57b3c0] Error submitting packet to decoder: Invalid data found when processing input
+
+Cannot determine format of input stream 0:0 after EOF
+
+Error marking filters as finished
+
+Error while filtering: Invalid data found when processing input
+
+[vist#0:0/av1 @ 0000016d3e57b3c0] Decode error rate 1 exceeds maximum 0.666667
+
+[out#0/rawvideo @ 0000016d3e57ab00] Nothing was written into output file, because at least one of its streams received no packets.
+
+
+    at genericNodeError (node:internal/errors:983:15)
+    at wrappedFn (node:internal/errors:537:14)
+    at ChildProcess.exithandler (node:child_process:417:12)
+    at ChildProcess.emit (node:events:519:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:304:5) {
+  code: 69,
+  killed: false,
+  signal: null,
+  cmd: 'C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\node_modules\\ffmpeg-static\\ffmpeg.exe -v error -i C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\.frameweave\\hdr-codec-av1_nvenc-1793577301123.mp4 -frames:v 1 -vf zscale=matrixin=2020_ncl:matrix=gbr:primariesin=2020:primaries=2020:transferin=smpte2084:transfer=smpte2084:rangein=limited:range=full,format=gbrpf32le -f rawvideo pipe:1',
+  stdout: Buffer(0) [Uint8Array] [],
+  stderr: Buffer(2813) [Uint8Array] [
+     91, 108, 105,  98,  97, 111, 109,  45,  97, 118,  49,  32,
+     64,  32,  48,  48,  48,  48,  48,  49,  54, 100,  51, 101,
+     53,  56,  52,  54,  48,  48,  93,  32,  70,  97, 105, 108,
+    101, 100,  32, 116, 111,  32, 100, 101,  99, 111, 100, 101,
+     32, 102, 114,  97, 109, 101,  58,  32,  66, 105, 116, 115,
+    116, 114, 101,  97, 109,  32, 110, 111, 116,  32, 115, 117,
+    112, 112, 111, 114, 116, 101, 100,  32,  98, 121,  32, 116,
+    104, 105, 115,  32, 100, 101,  99, 111, 100, 101, 114,  13,
+     10,  91, 108, 105,
+    ... 2713 more items
+  ]
+}
+
+Node.js v22.19.0

@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "sourceCommit": "15c4bff6c8006d288ee2eb6d7e3989a9e3d4f1ba",
+  "hashes": {
+    "src/render/renderer.ts": "53a1596c4aed56af1e285dcb63471d3a85c3f3848d83336ab70ff2362b6b0104",
+    "modules/native-gpu/logic-host.ts": "13730e756eac83af24e44454e11522222fd029ebf6e253d6f1b8217de65daa01",
+    "modules/native-gpu/web-bridge.ts": "815f66061bcf6f926fd2585334a2fd1cc1570ea18fd9098ecfb0464225e86926",
+    "modules/native-gpu/service.ts": "bedf90e0ca2ebff9a35bb3d7232cdd766e019f4eb2802350c76c77ac2f2baa28",
+    "tests/native-web-prefix-cancellation.test.ts": "ec83ad749f24cb9887873d9abb304c9f8189df422710e0be6b8e653318fb44e4"
+  },
+  "platform": "win32",
+  "node": "v22.19.0",
+  "mode": "unfixed-counterexample",
+  "wallMs": 12845.974699999999,
+  "results": [
+    {
+      "name": "counterexample",
+      "args": [
+        "--import",
+        "tsx",
+        "--test",
+        "--test-name-pattern=abort during real native recording",
+        "tests/native-web-prefix-cancellation.test.ts"
+      ],
+      "code": 1,
+      "timedOut": false,
+      "wallMs": 12841.904
+    }
+  ],
+  "ok": false,
+  "scope": "Cancellation propagation and existing bridge/client regressions only; no performance or whole-repository rerun."
+}

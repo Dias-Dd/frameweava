@@ -1,0 +1,10 @@
+{
+  "installed": [
+    "native-image-effects@0.5.0"
+  ],
+  "roots": {
+    "native-image-effects": "native-image-effects@0.5.0"
+  },
+  "lockfile": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\examples\\effects-library-tour\\frameweave.packages.lock.json"
+}
+Ready: npm run frameweave -- frame examples/effects-library-tour/project.tsx --frame 36 --output artifacts/effects-tour/frame-36.png

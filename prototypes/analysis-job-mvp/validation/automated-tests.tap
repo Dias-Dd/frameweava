@@ -1,0 +1,232 @@
+TAP version 13
+# Subtest: random-access query is order independent, interpolates positions, and returns copies
+ok 1 - random-access query is order independent, interpolates positions, and returns copies
+  ---
+  duration_ms: 2.9838
+  type: 'test'
+  ...
+# Subtest: missing observations and segment changes are never bridged by interpolation
+ok 2 - missing observations and segment changes are never bridged by interpolation
+  ---
+  duration_ms: 0.2779
+  type: 'test'
+  ...
+# Subtest: range, gap, nearest, and nonfinite time have explicit behavior
+ok 3 - range, gap, nearest, and nonfinite time have explicit behavior
+  ---
+  duration_ms: 0.3776
+  type: 'test'
+  ...
+# Subtest: TrackData validation rejects unsorted timestamps, malformed missing values, and live geometry
+ok 4 - TrackData validation rejects unsorted timestamps, malformed missing values, and live geometry
+  ---
+  duration_ms: 0.2007
+  type: 'test'
+  ...
+# Subtest: a created job can be cancelled without creating child resources
+ok 5 - a created job can be cancelled without creating child resources
+  ---
+  duration_ms: 1.2293
+  type: 'test'
+  ...
+# Subtest: cancelling synchronously from the starting observer reaches the owned child
+ok 6 - cancelling synchronously from the starting observer reaches the owned child
+  ---
+  duration_ms: 1235.1054
+  type: 'test'
+  ...
+# Subtest: custom JSX produces video nodes and refuses DOM intrinsics
+ok 7 - custom JSX produces video nodes and refuses DOM intrinsics
+  ---
+  duration_ms: 2.1359
+  type: 'test'
+  ...
+# Subtest: ordinary JS loops, conditions, helper functions and fragments remain usable at build time
+ok 8 - ordinary JS loops, conditions, helper functions and fragments remain usable at build time
+  ---
+  duration_ms: 0.4084
+  type: 'test'
+  ...
+# Subtest: nested layers record explicit parents and ordered surface references
+ok 9 - nested layers record explicit parents and ordered surface references
+  ---
+  duration_ms: 2.3004
+  type: 'test'
+  ...
+# Subtest: numeric independent tracks clamp outside keys and use destination easing
+ok 10 - numeric independent tracks clamp outside keys and use destination easing
+  ---
+  duration_ms: 1.8148
+  type: 'test'
+  ...
+# Subtest: linear, step, ease in/out, and cubic Bezier follow known values
+ok 11 - linear, step, ease in/out, and cubic Bezier follow known values
+  ---
+  duration_ms: 0.3416
+  type: 'test'
+  ...
+# Subtest: color interpolation includes alpha and discrete text can use step
+ok 12 - color interpolation includes alpha and discrete text can use step
+  ---
+  duration_ms: 0.6452
+  type: 'test'
+  ...
+# Subtest: invalid keyframe timing, values and curves fail early
+ok 13 - invalid keyframe timing, values and curves fail early
+  ---
+  duration_ms: 0.3062
+  type: 'test'
+  ...
+# Subtest: all spring damping regimes start exactly and converge with absolute time
+ok 14 - all spring damping regimes start exactly and converge with absolute time
+  ---
+  duration_ms: 1.6954
+  type: 'test'
+  ...
+# Subtest: expression ASTs are JSON, deterministic, and reject unsupported/nonfinite operations
+ok 15 - expression ASTs are JSON, deterministic, and reject unsupported/nonfinite operations
+  ---
+  duration_ms: 0.9167
+  type: 'test'
+  ...
+# Subtest: rational FPS and explicit stage remapping preserve global/local distinction
+ok 16 - rational FPS and explicit stage remapping preserve global/local distinction
+  ---
+  duration_ms: 0.5057
+  type: 'test'
+  ...
+# Subtest: seeded random isolates stage identities and repeated frame requests
+ok 17 - seeded random isolates stage identities and repeated frame requests
+  ---
+  duration_ms: 0.2592
+  type: 'test'
+  ...
+# Subtest: DAG forks and joins have stable parallel levels
+ok 18 - DAG forks and joins have stable parallel levels
+  ---
+  duration_ms: 0.2359
+  type: 'test'
+  ...
+# Subtest: DAG cycle diagnostic reports real path and catches unknown dependencies
+ok 19 - DAG cycle diagnostic reports real path and catches unknown dependencies
+  ---
+  duration_ms: 0.3535
+  type: 'test'
+  ...
+# Subtest: valid TVG passes and missing ports / incompatible layer types are diagnosed
+ok 20 - valid TVG passes and missing ports / incompatible layer types are diagnosed
+  ---
+  duration_ms: 1.1189
+  type: 'test'
+  ...
+# Subtest: timeline, inactive producer, parent cycle, and duplicate ids are diagnosed
+ok 21 - timeline, inactive producer, parent cycle, and duplicate ids are diagnosed
+  ---
+  duration_ms: 1.0769
+  type: 'test'
+  ...
+# Subtest: closures and live runtime objects cannot silently become JSON signals or port values
+ok 22 - closures and live runtime objects cannot silently become JSON signals or port values
+  ---
+  duration_ms: 0.6802
+  type: 'test'
+  ...
+# Subtest: raw malformed animation ASTs are checked after graph loading
+ok 23 - raw malformed animation ASTs are checked after graph loading
+  ---
+  duration_ms: 0.8221
+  type: 'test'
+  ...
+# Subtest: local effect manifests register explicit schemas, defaults and ranges
+ok 24 - local effect manifests register explicit schemas, defaults and ranges
+  ---
+  duration_ms: 0.6617
+  type: 'test'
+  ...
+# Subtest: effect reserved forms are honest extension interfaces, not falsely executable
+ok 25 - effect reserved forms are honest extension interfaces, not falsely executable
+  ---
+  duration_ms: 0.2831
+  type: 'test'
+  ...
+# Subtest: resource references retain local paths and reject missing effect resources
+ok 26 - resource references retain local paths and reject missing effect resources
+  ---
+  duration_ms: 0.4179
+  type: 'test'
+  ...
+# Subtest: fixed-step checkpoints reproduce history-dependent simulations under arbitrary seeks
+ok 27 - fixed-step checkpoints reproduce history-dependent simulations under arbitrary seeks
+  ---
+  duration_ms: 2.0454
+  type: 'test'
+  ...
+# Subtest: fixed-step replay limits fail with actionable errors
+ok 28 - fixed-step replay limits fail with actionable errors
+  ---
+  duration_ms: 0.1618
+  type: 'test'
+  ...
+# Subtest: malformed input yields diagnostics instead of stack overflow; visual types are checked
+ok 29 - malformed input yields diagnostics instead of stack overflow; visual types are checked
+  ---
+  duration_ms: 0.4802
+  type: 'test'
+  ...
+# Subtest: nonempty inputs require complete executable consumer schemas; precheck only postpones absent maps
+ok 30 - nonempty inputs require complete executable consumer schemas; precheck only postpones absent maps
+  ---
+  duration_ms: 4.6319
+  type: 'test'
+  ...
+# Subtest: input descriptors reject malformed contracts and missing required bindings; optional ports may be absent
+ok 31 - input descriptors reject malformed contracts and missing required bindings; optional ports may be absent
+  ---
+  duration_ms: 1.6422
+  type: 'test'
+  ...
+# Subtest: literal values are validated without coercion and finite JSON excludes live runtime objects
+ok 32 - literal values are validated without coercion and finite JSON excludes live runtime objects
+  ---
+  duration_ms: 0.7125
+  type: 'test'
+  ...
+# Subtest: graph compares the declared producer promise to the consumer contract, including JSON/Surface separation
+ok 33 - graph compares the declared producer promise to the consumer contract, including JSON/Surface separation
+  ---
+  duration_ms: 1.0607
+  type: 'test'
+  ...
+# Subtest: runtime checks actual values and updated contracts before caches and consumer code, preserving independent Stage inspection
+ok 34 - runtime checks actual values and updated contracts before caches and consumer code, preserving independent Stage inspection
+  ---
+  duration_ms: 1553.8566
+  type: 'test'
+  ...
+# Subtest: resolved data has its own guard even when producer declares broad JSON
+ok 35 - resolved data has its own guard even when producer declares broad JSON
+  ---
+  duration_ms: 16068.3582
+  type: 'test'
+  ...
+# Subtest: invalid graph contracts fail before adapter initialization or user render
+ok 36 - invalid graph contracts fail before adapter initialization or user render
+  ---
+  duration_ms: 0.6227
+  type: 'test'
+  ...
+# Subtest: engine DSL rejects unknown authored/raw properties while JSX key and arbitrary Stage props stay supported
+ok 37 - engine DSL rejects unknown authored/raw properties while JSX key and arbitrary Stage props stay supported
+  ---
+  duration_ms: 1.523
+  type: 'test'
+  ...
+1..37
+# tests 37
+# suites 0
+# pass 37
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 19097.1537

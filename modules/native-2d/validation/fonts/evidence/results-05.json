@@ -1,0 +1,29 @@
+{
+  "ok": false,
+  "rows": [
+    {
+      "name": "fresh immutable R1 candidate install with reviewed default assets",
+      "ok": true,
+      "detail": {
+        "installed": [
+          "native-2d-candidate@0.4.0"
+        ],
+        "roots": {
+          "native-2d-candidate": "native-2d-candidate@0.4.0"
+        },
+        "lockfile": "D:\\frameweave-worktrees\\agent-4\\.frameweave\\native-2d\\font-project\\frameweave.packages.lock.json"
+      },
+      "wallMs": 2694.1800000000003
+    },
+    {
+      "name": "real SpiderMonkey PA font/path clients, F32/F16 HDR alpha, random repeat and reopen",
+      "ok": false,
+      "error": {
+        "code": "E_NATIVE_LOGIC",
+        "message": "AbortController is not defined",
+        "stack": "EngineError: AbortController is not defined\n    at SpiderMonkeyTransport.receive (D:\\frameweave-worktrees\\agent-4\\modules\\spidermonkey-host\\transport.ts:62:33)\n    at Socket.<anonymous> (D:\\frameweave-worktrees\\agent-4\\modules\\spidermonkey-host\\transport.ts:21:128)\n    at Socket.emit (node:events:519:28)\n    at addChunk (node:internal/streams/readable:561:12)\n    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)\n    at Readable.push (node:internal/streams/readable:392:5)\n    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)"
+      },
+      "wallMs": 8563.0227
+    }
+  ]
+}

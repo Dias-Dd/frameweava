@@ -1,0 +1,3 @@
+import {Composition,Stage,Layer,ref} from '@frameweave/engine';import {defineNativeStage} from '@frameweave/engine/native';import {lsystemScene} from 'spatial-growth-candidate';
+export const tree=defineNativeStage(init=>lsystemScene(init,{generations:4,turtle:{step:.1,speed:1.4,angle:28,leafSize:.13},sides:7,tipRadius:.009,maturity:.2,camera:{projection:'orthographic',position:[3,2,5],target:[0,1.05,0],viewHeight:3.8,near:.01,far:30},stemColor:[.45,.2,.055],leafColor:[.12,.65,.3]}));
+export default Composition({id:'lsystem-shot',width:640,height:360,fps:24,durationInFrames:24,background:'#101822',children:[Stage({id:'tree',factory:tree,offset:12,outputs:{surface:'surface'}}),Layer({source:ref('tree')})]});

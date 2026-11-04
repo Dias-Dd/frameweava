@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "apiVersion": 1,
+  "id": "gpu-image-effects",
+  "version": "0.6.0",
+  "name": "Professional GPU Image Effects",
+  "description": "23 Stage-local hardware GPU image effects over professional floating surfaces, including coverage complement/replacement/difference, RGB modulation/offset and compensated Over/Screen/Multiply. Crossfade with explicit HDR/PM semantics. Strict data-dependent precision and native PM blend output; no CPU or SDR fallback.",
+  "tags": ["gpu", "hdr", "blur", "glow", "gaussian", "image", "feather", "fill", "matte", "shadow", "crop", "mirror", "coverage-union", "alpha-channel", "flatten", "tile", "exposure", "invert", "additive", "coverage-complement", "coverage-replacement", "coverage-difference", "modulate", "source-over", "screen", "multiply", "rgb-offset"],
+  "source": {"kind": "local", "authority": "frameweave.gpu-images"},
+  "compatible": "0.1.0",
+  "platforms": ["web"],
+  "capabilities": ["webgpu"],
+  "permissions": {"filesystem": false, "network": false, "process": false},
+  "modules": {"main": {"format": "javascript", "path": "./public.ts"}, "bindings": {"format": "javascript", "path": "./bindings.ts"}},
+  "bindings": {"schemaVersion": 1, "module": "bindings", "types": "./api.d.ts", "initialize": "initialize", "engine": "web", "gpu": "required"}
+}

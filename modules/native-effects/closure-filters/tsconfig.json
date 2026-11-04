@@ -1,0 +1,1 @@
+{"extends":"../../../tsconfig.json","include":["./*.ts","./ocio/*.ts","../examples/closure-*.tsx"],"exclude":["./vendor"]}

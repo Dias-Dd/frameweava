@@ -1,0 +1,141 @@
+{
+  "version": 1,
+  "profile": "slimsam-77-uniform-f32-points-v1",
+  "pointCapacity": 16,
+  "encoder": {
+    "version": 1,
+    "id": "frameweave.slimsam.encoder",
+    "model": {
+      "resource": "roto-encoder",
+      "sha256": "37368c5c17e8f9083f81c126f27d776c34a1bc853f483db723deb13ee5bba65d",
+      "bytes": 23275984
+    },
+    "inputs": [
+      {
+        "name": "pixel_values",
+        "dtype": "float32",
+        "shape": [
+          1,
+          3,
+          1024,
+          1024
+        ],
+        "layout": "NCHW"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "image_embeddings",
+        "dtype": "float32",
+        "shape": [
+          1,
+          256,
+          64,
+          64
+        ],
+        "layout": "NCHW"
+      },
+      {
+        "name": "image_positional_embeddings",
+        "dtype": "float32",
+        "shape": [
+          1,
+          256,
+          64,
+          64
+        ],
+        "layout": "NCHW"
+      }
+    ],
+    "execution": {
+      "provider": "directml",
+      "allowCpuFallback": false,
+      "precision": "float32",
+      "temporal": "stateless"
+    }
+  },
+  "decoder": {
+    "version": 1,
+    "id": "frameweave.slimsam.decoder",
+    "model": {
+      "resource": "roto-decoder",
+      "sha256": "5fe383aba42e6d9fcc595b28b5ec627fa0a8558fb78c023b2646ffeea7f0faf4",
+      "bytes": 16557853
+    },
+    "inputs": [
+      {
+        "name": "input_points",
+        "dtype": "float32",
+        "shape": [
+          1,
+          1,
+          16,
+          2
+        ],
+        "layout": "linear"
+      },
+      {
+        "name": "input_labels_f32",
+        "dtype": "float32",
+        "shape": [
+          1,
+          1,
+          16
+        ],
+        "layout": "linear"
+      },
+      {
+        "name": "image_embeddings",
+        "dtype": "float32",
+        "shape": [
+          1,
+          256,
+          64,
+          64
+        ],
+        "layout": "NCHW"
+      },
+      {
+        "name": "image_positional_embeddings",
+        "dtype": "float32",
+        "shape": [
+          1,
+          256,
+          64,
+          64
+        ],
+        "layout": "NCHW"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "iou_scores",
+        "dtype": "float32",
+        "shape": [
+          1,
+          1,
+          3
+        ],
+        "layout": "linear"
+      },
+      {
+        "name": "pred_masks",
+        "dtype": "float32",
+        "shape": [
+          1,
+          1,
+          3,
+          256,
+          256
+        ],
+        "layout": "linear"
+      }
+    ],
+    "execution": {
+      "provider": "directml",
+      "allowCpuFallback": false,
+      "precision": "float32",
+      "temporal": "stateless"
+    }
+  }
+}

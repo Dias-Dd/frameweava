@@ -1,0 +1,40 @@
+{
+  "effectcraft": {
+    "repository": "https://github.com/storytold/effectcraft",
+    "commit": "ec7ced1f0515f0b6f376dbcc297f1c441f452d6e",
+    "license": "MIT (dual-license choice)",
+    "files": [
+      {
+        "file": "vendor/effectcraft/blur3.rs",
+        "sha256": "b5f2dc481c4ac932c3e01b44a510e81725e1d8f3a167b76ad57237c00364a6b6"
+      },
+      {
+        "file": "vendor/effectcraft/fit.rs",
+        "sha256": "3471586a58908517af086a3a6eff8e7f1ff76cd6452c596b9336fae77b93423b"
+      },
+      {
+        "file": "vendor/effectcraft/klt.rs",
+        "sha256": "b3cf31a0335d1d95fd2618d2f2d173da9bbab4c31e7515a53b1119781b3869ef"
+      },
+      {
+        "file": "vendor/effectcraft/LICENSE-MIT",
+        "sha256": "7b6db9a363688683feacdf9b528f059637f2e5d2edbacd8720fc9b26781c9abe"
+      },
+      {
+        "file": "vendor/effectcraft/noise2.rs",
+        "sha256": "df78cdf41008d0604d0ac069514c0239d0cbcdf777396bed99dac6b67d00f217"
+      },
+      {
+        "file": "vendor/effectcraft/stabilize.rs",
+        "sha256": "a8a6eaf64fada94d3c85338e7c0314840c70eddc5b6f301b2a76fcbebc5017b2"
+      }
+    ]
+  },
+  "adaptation": {
+    "flow": "Bouguet/KLT iteration and forward-backward rejection adapted to dense same-owner fields; HDR-safe analysis luma",
+    "fit": "Normalized weighted least squares/IRLS; GPU pair arithmetic, partial pivoting and rank diagnostics",
+    "shake": "blur3.rs patch sharpness/SSD selection and feathered replacement; explicit samples, bounded analysis luma and signed HDR output",
+    "grain": "noise2.rs high-pass statistics intent reused; finite-lag RGB spectra and luminance-bin extension written here, not claimed verbatim upstream shader",
+    "blind": "new regularized edge-prediction PSF projected gradient + Landweber/TV, explicitly approximate; no upstream blind inference claim"
+  }
+}

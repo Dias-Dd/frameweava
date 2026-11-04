@@ -1,0 +1,109 @@
+{
+  "version": 1,
+  "baseCommit": "9c6f3d39637e6c241c43d5674fdeb83136f9b8e0",
+  "mainPrerequisitePatch": "de535fe2db2e4357dea665c94e8f8ab3d97ad2c4; only renderer.ts and cancellation fixture applied with Main permission",
+  "scriptValidationMs": 138288.38230000003,
+  "finalBatch": {
+    "tests": 30,
+    "passed": 30,
+    "failed": 0,
+    "skipped": 0,
+    "sourceHashes": {
+      "modules/native-gpu/authoring.ts": "1276e2906073efd687d5c533cf7f2b7cd1c7040b6588070c2c023a6755514a46",
+      "modules/native-gpu/borrow.ts": "f4f06bd11b6b4c9bb5e2146c7a9d45fc111a31a54f081d1e676c7947dd7c44d9",
+      "modules/native-gpu/client.ts": "37ed38c04eba824c39d30507e3ec72b4370d260478f38779e80bab5bd1635a79",
+      "modules/native-gpu/composite.ts": "202e5985e408819c28938e0df2cab82ca9c91d4c3fc34ff318ad31398f209e66",
+      "modules/native-gpu/logic-host.ts": "6def6e8bf2dae123b2e41b491c8926b47125fd11fbce5b961bac51924fa81682",
+      "modules/native-gpu/memory.ts": "eaa4a7e520f9001a885f865e82693ceab12a0561ec973349abc6d15e5ee336d1",
+      "modules/native-gpu/mesh-shader.ts": "a41a3ae3b74c46c8e0a58b46f314fc3db695ced6c8bd89e71a0f05a2c5518344",
+      "modules/native-gpu/scope.ts": "d0b861883ceae022036bb8c6dbca7ada1eb6b0b6e8b23756b3ab59c77062ac03",
+      "modules/native-gpu/src/gpu.rs": "6e3d122a11df3331aefa626df81c7c467658f84657559ae3a61ced1ed0814fbd",
+      "modules/native-gpu/src/protocol.rs": "182c5adaa08e87263c6c5db7f934c4cd9709bde3f7bade83447799ab8a122ab6",
+      "modules/native-gpu/validation/tsconfig.json": "2d071d74b1d5407effabc8d09e6da7c51e89304be736a434c860549b18c39f7b",
+      "src/render/renderer.ts": "99aa776064715929145d31d52f60c6edb915b6ed7dea1ad3a207b2bd59bcc4fd",
+      "tests/native-gpu-cancellation.test.ts": "d1cda655a82777d9a10a2a58720800ef4d7092ec051806c97990ffbadd9932c6",
+      "modules/native-gpu/color.ts": "e4a3c407f40a79b1b16655a74d2b9c2d6455a8341e5a4482ad4bc0ffde166c90",
+      "modules/native-gpu/examples/color-texture-v1.tsx": "8e2792bffe2761a001f914a67b17c1627ca6629de41e7c5a95864b28873c11ae",
+      "modules/native-gpu/validation/verify-color-texture.ts": "3faf834461fe115b688169650a5fc38d06c0b9aeb12e625e4890d4602d31c6b7",
+      "modules/native-gpu/validation/validate-color-texture.mjs": "0d2dced68233de6cf072fb4f88db96886904caf91de03efd3b003b6dfc0c30d2",
+      "tests/native-color-texture.test.ts": "10239da83e1ebb85a4fd0968f551d529c04391c8ebb02f21ac26fd658d1af55b"
+    }
+  },
+  "earlierFailedBatch": {
+    "passed": 27,
+    "failed": 2,
+    "reason": "Main v1 export-lease compatibility and cancellation fixture; retained in targeted.stdout.txt"
+  },
+  "color": {
+    "conversions": 100,
+    "maxScaledF32": 0,
+    "maxAbsoluteF32": 0
+  },
+  "texture": {
+    "draws": 48,
+    "maxScaledF32": 1.4949075227782797e-7,
+    "maxAbsoluteF32": 9.5367431640625e-7
+  },
+  "media": {
+    "exrRange": [
+      -0.5714113116264343,
+      5.120849609375
+    ],
+    "exrMaxAbsoluteError": 0,
+    "probe": {
+      "width": 640,
+      "height": 360,
+      "fps": 24,
+      "duration": 0.25,
+      "frames": 6,
+      "decodable": true
+    },
+    "files": {
+      "png": {
+        "path": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\artifacts\\native-color-texture\\media\\color-texture.png",
+        "sha256": "8780396d23ae5545d49a3294c8f5631e4c79f07ca90c508f482b34db05add146"
+      },
+      "exr": {
+        "path": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\artifacts\\native-color-texture\\media\\color-texture.exr",
+        "sha256": "7275e09de8325a4fd589f2de0b38e8fe8dec12d4eb73729227ac71f343b698da"
+      },
+      "mp4": {
+        "path": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\artifacts\\native-color-texture\\media\\color-texture.mp4",
+        "sha256": "ce6ce57a6c0ebf082ba92aac759f6e0385fd89c90cdb884369a72ebd1afc2e3c"
+      }
+    }
+  },
+  "performance": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "initMs": 1481.7842,
+      "firstMs": 24.504100000000108,
+      "medianMs": 9.460900000000038,
+      "p95Ms": 11.908499999999549,
+      "samples": 17,
+      "allocatedImageBytes": 66355200,
+      "workingImageBytes": 132710400,
+      "measurement": "JS/TSX record + control IPC + actual GPU completion; no display, encoding or inspection; one slot; different new frames; concurrent machine load and power state unknown; no old/new optimization A/B claim"
+    },
+    {
+      "width": 3840,
+      "height": 2160,
+      "initMs": 1563.060300000001,
+      "firstMs": 37.03810000000158,
+      "medianMs": 11.651499999999942,
+      "p95Ms": 182.617000000002,
+      "samples": 17,
+      "allocatedImageBytes": 265420800,
+      "workingImageBytes": 530841600,
+      "measurement": "JS/TSX record + control IPC + actual GPU completion; no display, encoding or inspection; one slot; different new frames; concurrent machine load and power state unknown; no old/new optimization A/B claim"
+    }
+  ],
+  "limitations": [
+    "Windows RTX 5070 Laptop Vulkan only; other adapters/platforms not tested",
+    "No nonlinear display transform/PBR/mipmaps; textured output must retain Alpha",
+    "No combined npm/Capsule/Flat/SpiderMonkey/full repository verification; Main owns integration",
+    "New-frame timings exclude display/encoding; no before/after performance claim",
+    "Development probes separately retained: bad fixture metadata, packet delta use, raster subpixel reference, diagnostic JSON size and EXR planar channel mapping corrections"
+  ]
+}

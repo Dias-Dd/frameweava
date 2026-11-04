@@ -1,0 +1,39 @@
+{
+  "repository": "https://github.com/Auburn/FastNoiseLite",
+  "tag": "v1.1.1",
+  "commit": "7ccfbc16eb1c932568f177d63a9ba51d89bbe516",
+  "license": "MIT",
+  "adaptation": "Only append named exports for upstream Vector2/Vector3; expose typo DomainWrap through the new typed warp2/warp3 facade. Noise/warp numerical kernels unchanged.",
+  "files": [
+    {
+      "sha256": "5429dd4a9ca8bd7aaabd167157e058304efb75f237094d1ea3fd87464215aa65",
+      "upstream": "JavaScript/FastNoiseLite.js",
+      "local": "FastNoiseLite.upstream.js",
+      "bytes": 131171
+    },
+    {
+      "sha256": "71c9af239e4f75617c74f74a9266fd944550edfa4ddc31920703e2cdb836cef2",
+      "upstream": "GLSL/FastNoiseLite.glsl",
+      "local": "FastNoiseLite.glsl",
+      "bytes": 98037
+    },
+    {
+      "sha256": "47a29750dfe13d15651febd235f3c26b1cc57af7c6e26583b838fd7ab5215dc2",
+      "upstream": "Cpp/FastNoiseLite.h",
+      "local": "FastNoiseLite.h",
+      "bytes": 107699
+    },
+    {
+      "sha256": "c08da3239b919c12f4ec616b457a8dd0fc923c8102c8a742c4006fcb5de28fb0",
+      "upstream": "LICENSE",
+      "local": "LICENSE-MIT",
+      "bytes": 1120
+    },
+    {
+      "sha256": "71fc85cc049757c11d6879a51799cb510f5f86b39f2b325b0dc14c6dda2a1543",
+      "upstream": "JavaScript/package.json",
+      "local": "upstream-package.json",
+      "bytes": 942
+    }
+  ]
+}

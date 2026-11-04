@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "parent": "ea583f823d3a01f5a6508f61f9e46a5ec1ccb84d",
+  "reuse": [
+    {
+      "file": "modules/graphics-contracts/validate.ts",
+      "sha256": "a6c26ba5dcd887631fd7293eaec409aedda5f91deb8c7b340e02693122bcac5a",
+      "modified": false
+    },
+    {
+      "file": "modules/graphics-contracts/check.ts",
+      "sha256": "f5d662b9d4516bfa201aad2af5268d5a021d1d91c4ca8ab6658aa78d019cc910",
+      "modified": false
+    },
+    {
+      "file": "src/core/animation.ts",
+      "sha256": "46d208a844d6455fd0905a1606cab51c8800ac10e08cfe7766b3c12dab9d26d0",
+      "modified": false
+    },
+    {
+      "file": "modules/pro-animation/src/geometry.ts",
+      "sha256": "63753098a6caade398045d6aa0968e11e43fec2ea0c0b14a28222ffd108352fe",
+      "modified": false
+    },
+    {
+      "file": "modules/pro-animation/src/motion-control/constraints.ts",
+      "sha256": "cd3bfea1b7b8e142182cd6eea9321acb2da9b25f6eacb9227bd6a86496a64081",
+      "modified": false
+    },
+    {
+      "file": "modules/pro-animation/src/smart-path/geometry.ts",
+      "sha256": "74d06b24107d3decc6e8ef56bbec2207df6ea7b70720c9359e84d3e35fdf5b2b",
+      "modified": false
+    },
+    {
+      "file": "modules/pro-animation/src/smart-path/fill.ts",
+      "sha256": "510041117dec0467726da89f48b71f0fea6c7f16248aefd1d5af2cdd23ac0220",
+      "modified": false
+    },
+    {
+      "file": "modules/pro-animation/src/filled-faces.ts",
+      "sha256": "661f909af748ddc5fdecf3fbb04c528bad32ceea60ffe76600cfa6e75d7c10fd",
+      "modified": false
+    },
+    {
+      "file": "modules/pro-animation/src/path-operations.ts",
+      "sha256": "21e1286c45ac01cc04ef4ab9f0cbfa0469bf5b777ebd5e8b44d444e7d1dc0df8",
+      "modified": false
+    },
+    {
+      "file": "modules/pro-animation/src/path-authoring/native.ts",
+      "sha256": "8bf9fa88e93e115565014211c5ce1ca2ee76b6ca21860d1bad3672a33efde7ae",
+      "modified": false
+    },
+    {
+      "file": "modules/pro-animation/src/stroke-animation/native.ts",
+      "sha256": "469c4bc060f200885cde8182a4de51da1d0e403528d5871e5e3ad02a1833eb12",
+      "modified": false
+    }
+  ],
+  "existingEffectCraft": {
+    "repository": "https://github.com/storytold/effectcraft",
+    "commit": "861c51f8187bf56efc77cc7b60fc4a513d2b7198",
+    "file": "crates/path/src/interp.rs",
+    "originalSha256": "07d929d3cbe2d62982de5b1043a386020e859e1be97dd457cd8c1fdda146f362",
+    "license": "MIT selected from MIT OR Apache-2.0",
+    "adaptation": "No new upstream source copied; call existing original lerpPoint in geometry.ts for exact polynomial degree elevation",
+    "notice": "modules/pro-animation/vendor/effectcraft/PA2-SOURCES.json"
+  },
+  "existingFill": {
+    "name": "clipper2-rust",
+    "version": "1.2.0",
+    "license": "BSL-1.0",
+    "lockPath": "modules/pro-animation/rust/pathops/Cargo.lock",
+    "lockSha256": "bedc544902f0d6c9db477d78b475fc3c8aff6f9e9b1cddeaae9c1ea5e62107c9",
+    "notice": "modules/pro-animation/rust/pathops/licenses/CLIPPER2-NOTICE",
+    "unchanged": true
+  },
+  "existingTriangulation": {
+    "project": "Mapbox Earcut",
+    "repository": "https://github.com/mapbox/earcut",
+    "version": "3.2.4",
+    "commit": "9e70986eb94054c621c926888dd05bc26bffb902",
+    "license": "ISC",
+    "runtimeDependencies": [],
+    "artifacts": [
+      {
+        "upstream": "src/earcut.js",
+        "local": "earcut.js",
+        "bytes": 43137,
+        "sha256": "04f5b4ddfad1b4133f1a633a4b66f8df8023e7a7d163a50cde46ec719fbfe5ca"
+      },
+      {
+        "upstream": "LICENSE",
+        "local": "LICENSE",
+        "bytes": 738,
+        "sha256": "0b348fff56384b43dbb37593906904e56d0f9deb51eae590d4dc6d427fbf1808"
+      },
+      {
+        "upstream": "package.json",
+        "local": "package.upstream.json",
+        "bytes": 1069,
+        "sha256": "c48653ade72118ac2dd1c05bdfe4608e6ad9ae19b4b1c218b62af3fb272c81e4"
+      }
+    ],
+    "adaptation": "Verbatim original runtime JS. Local earcut.d.ts is a Frameweave type-only declaration; the upstream tag did not contain its generated src/earcut.d.ts (initial fetch returned404). package.upstream.json preserves the original bytes and is not an installed package identity.",
+    "reason": "Reuse mature hole-aware triangulation without importing Three/editor/renderer; Clipper2 supplies canonical solid faces before triangulation."
+  },
+  "newRuntimeDependencies": [],
+  "newPermissionsOrLocks": false,
+  "newShaderGpuOwnerOrRuntime": false,
+  "decision": "Reuse exact existing Graphics/point constraints/interpolation/fill/tessellation/Native raster. Local anchor-role indexing and small editing algebra preserve original IDs; importing another editor/document/renderer costs more and duplicates existing contracts.",
+  "catalog": "Official keyword/offline search returned [], preserved in checkpoint raw logs. No installed capability fabricated.",
+  "scope": "Data geometry F64, existing Native-only GPU pixels. No automatic GPU-generated geometry export, private WASM host or Core modification."
+}

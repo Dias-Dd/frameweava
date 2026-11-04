@@ -1,0 +1,5 @@
+Pro Animation PA-0, Frameweave contributors, Apache-2.0.
+EffectCraft noise adaptation: Copyright (c) 2026 ArtCraft Team and contributors, MIT selected. Full upstream licenses, NOTICE and fixed source are in vendor/effectcraft. No ArtCraft logos/fonts/UI included.
+Frameweave Glow/Displacement and Graphics Contracts are loaded from their existing licensed, locked implementations, not reimplemented.
+
+PA3 source factories and reference Rust adapters retain their component licenses in rust/*/licenses. Inertia adapts Motion inertia at 2f9f45e0d3b56ab3a9cf2f8b1a42336a6d4c762c (MIT); see attribution/motion. Kernel factories stay explicit; no test package is a formal dependency.

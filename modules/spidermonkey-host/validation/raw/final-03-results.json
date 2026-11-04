@@ -1,0 +1,115 @@
+{
+  "baseline": "edeec53657efa5660af7c002d541675d78094042",
+  "timestamp": "2026-11-01T06:20:50.034Z",
+  "wallMs": 12737.442,
+  "profile": "debug",
+  "rows": [
+    {
+      "name": "persistent binary RPC, Promise, native GC, logs, WASM denial and explicit allow",
+      "ok": true,
+      "wallMs": 1224.893,
+      "detail": {
+        "engine": "spidermonkey",
+        "pid": 94348,
+        "closed": false,
+        "requests": 6,
+        "bytesIn": 994,
+        "bytesOut": 12852,
+        "binaryReplies": true,
+        "stderr": "frameweave-spidermonkey sandbox=appcontainer network_capabilities=0 child_pid=68208\nJS: echo {\"text\":\"状态 🕷️\",\"value\":0}\nJS: echo {\"text\":\"状态 🕷️\",\"value\":0}\nJS: echo {\"text\":\"状态 🕷️\",\"value\":0}\nJS: echo {}\n"
+      }
+    },
+    {
+      "name": "missing executable fails, no Chromium fallback",
+      "ok": true,
+      "wallMs": 0.2402999999999338
+    },
+    {
+      "name": "actual AppContainer file denial and network qualification probe",
+      "ok": true,
+      "wallMs": 2501.4912999999997,
+      "detail": {
+        "value": {
+          "fileDenied": true,
+          "fileError": 5,
+          "networkDenied": false,
+          "networkError": null,
+          "osIsolation": "appcontainer"
+        },
+        "stderr": "frameweave-spidermonkey sandbox=appcontainer network_capabilities=0 child_pid=39696\n",
+        "qualification": "FILE_DENIAL_ONLY; network isolation NOT qualified"
+      }
+    },
+    {
+      "name": "manifest static module, async default, factory/engine/inline metadata preservation",
+      "ok": true,
+      "wallMs": 725.4866000000002,
+      "detail": {
+        "engine": "spidermonkey",
+        "transport": {
+          "engine": "spidermonkey",
+          "pid": 86768,
+          "closed": false,
+          "requests": 1,
+          "bytesIn": 753,
+          "bytesOut": 16106,
+          "binaryReplies": true,
+          "stderr": "frameweave-spidermonkey sandbox=appcontainer network_capabilities=0 child_pid=44576\n"
+        }
+      }
+    },
+    {
+      "name": "manifest rejects node imports, dynamic names, import.meta, cycles/toJSON and syntax",
+      "ok": false,
+      "wallMs": 780.1558999999997,
+      "error": {
+        "code": "ERR_ASSERTION",
+        "message": "The validation function is expected to return \"true\". Received false\n\nCaught error:\n\nEngineError: Host exited 1: frameweave-spidermonkey sandbox=appcontainer network_capabilities=0 child_pid=53464\nE_SPIDERMONKEY_HOST: ReferenceError: process is not defined\n",
+        "stack": "AssertionError [ERR_ASSERTION]: The validation function is expected to return \"true\". Received false\n\nCaught error:\n\nEngineError: Host exited 1: frameweave-spidermonkey sandbox=appcontainer network_capabilities=0 child_pid=53464\nE_SPIDERMONKEY_HOST: ReferenceError: process is not defined\n\n    at async <anonymous> (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\modules\\spidermonkey-host\\validation\\run.ts:31:839)\n    at async check (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\modules\\spidermonkey-host\\validation\\run.ts:20:198)\n    at async <anonymous> (C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-4\\modules\\spidermonkey-host\\validation\\run.ts:31:1)"
+      }
+    },
+    {
+      "name": "real React Hooks persist, reset and deterministic replay; packet cache and cancel",
+      "ok": true,
+      "wallMs": 7498.9196999999995,
+      "detail": [
+        {
+          "frame": 0,
+          "p": [
+            1,
+            0,
+            0.3802705407142639,
+            17
+          ]
+        },
+        {
+          "frame": 1,
+          "p": [
+            2,
+            0.0416666679084301,
+            0.3802705407142639,
+            17
+          ]
+        },
+        {
+          "frame": 2,
+          "p": [
+            3,
+            0.0833333358168602,
+            0.3802705407142639,
+            17
+          ]
+        },
+        {
+          "frame": 2,
+          "p": [
+            3,
+            0.0833333358168602,
+            0.3802705407142639,
+            17
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,914 @@
+{
+  "version": 1,
+  "baseline": "7d1b27b27ea1329cb0d18e9c38987868ad8d386d",
+  "testedSourceHashes": {
+    "modules/native-gpu/README.md": "7c14caef1c7340ae6df0e9eb8d1466203527226607e02ba6c8994a8a930a1195",
+    "modules/native-gpu/authoring.ts": "cfa329ae75938b0c6a95be37449abb0c65c54adfa9ac6681d914a0bc9db7a846",
+    "modules/native-gpu/cli.ts": "2528720fd37491787fb4c8c5bef864b8d79c91b516a1c650745b5d4c4842b3fd",
+    "modules/native-gpu/client.ts": "83edfb7ea933116e657db56815b58ea1515a6d7ee3ce4a8f3118993694512514",
+    "modules/native-gpu/logic-host.ts": "6eaaad13295e3df03685310e4b7b4f4aae25b64c14d6705aa0e1c6bb4226af6c",
+    "modules/native-gpu/resource-images.ts": "9cc6d20a0e0895f515812f98b92623f00dfe7e714425f6207c0c9fe1998316cc",
+    "modules/native-gpu/resources.ts": "9b9f5d842aea39b89fef481765488b2039282cf7562eb4a1a03885a7da8b6c49",
+    "modules/native-gpu/scope.ts": "d4506eae6ec4acbe5746b5c99a47771be618dcadcf3fa9061747317c557b6a7f",
+    "modules/native-gpu/service.ts": "161747322c09072ec9134f649f544930ae93b8d12b48cce75f6defbf0f716d54",
+    "modules/native-gpu/src/encode.rs": "b97a690aa65e4d56edc33c703a4607f4ce95b040e98ef1cad63e19b91b82c98e",
+    "modules/native-gpu/src/gpu.rs": "233398aff4dea5e68c4003722991428c14bc7941ff068831c4b77941edd91d5e",
+    "modules/native-gpu/src/main.rs": "36850199c515d5024dd22c1f3861c40879cd7bba5a47c8cad870887209816192",
+    "modules/native-gpu/src/protocol.rs": "99d5f49d951e160b31d8ed3659586b57a0f6356b095559e21c1472d33e17750b",
+    "src/cli.ts": "e6c48e5ad6c95150cd5fe466c76cd9020ac1d94440ead47b13b63f529fea14db",
+    "src/media/encoding.ts": "cc096b4e5bbca1f52ace8044036532e5c20b84fa19a173dea0cf954e1c1fb537",
+    "src/media/input.ts": "344b8685e78a672062589c8354ce29e467e5701cb1ad28b9d5e31e44c99d39d2",
+    "src/media/service.ts": "2154dd09093d0fcab39ed00d8dce2252afae3eb87c79011a4225a271e978449e",
+    "src/render/renderer.ts": "d6bcb30874134bd9dd6c3627b28ed39facb992c97cef30e4b4b97ba2211b1fe3",
+    "tests/native-state.test.ts": "720c168d9e8e1be12109b23f2cc31a9937abe3214437f810a9d7094a225f2888",
+    "modules/native-gpu/video-decoder.ts": "83c4fe198c8622245547f8c2a6ce1ab2ed4321566949bfbe1f319b4b35097bd8",
+    "src/media/hdr-metadata.ts": "05fff6959d7e70268e958d29ac74c33930d3babbd407ff357078762a9f9c48c8",
+    "tests/native-media-delivery.test.ts": "bf9f6d9b3eaa2b5b90fa44f227e62902b35eed44037d61b14a808d7910b069a3",
+    "tests/hdr-metadata.test.ts": "7f4b3a0d2def68ae5cdd8a2d76dd4bb8416d485deb894b1df31ae699447f62f4"
+  },
+  "measurements": [
+    {
+      "case": "persistent-video",
+      "stats": {
+        "version": 1,
+        "backend": "ffmpeg-cpu",
+        "hardwareDecode": false,
+        "gpuDirect": false,
+        "opens": 2,
+        "decodedFrames": 9,
+        "seeks": 1,
+        "cacheHits": 1
+      }
+    },
+    {
+      "case": "accurate-hdr",
+      "encoder": "hevc_nvenc",
+      "maxCodeError": 0.00049591064453125,
+      "master": {
+        "side_data_type": "Mastering display metadata",
+        "red_x": "35400/50000",
+        "red_y": "14600/50000",
+        "green_x": "8500/50000",
+        "green_y": "39850/50000",
+        "blue_x": "6550/50000",
+        "blue_y": "2300/50000",
+        "white_point_x": "15635/50000",
+        "white_point_y": "16450/50000",
+        "min_luminance": "50/10000",
+        "max_luminance": "10000000/10000"
+      },
+      "cll": {
+        "side_data_type": "Content light level metadata",
+        "max_content": 1000,
+        "max_average": 400
+      },
+      "frames": "6",
+      "audio": "aac",
+      "result": {
+        "version": 1,
+        "ok": true,
+        "backend": "native-wgpu",
+        "output": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\artifacts\\native-media-delivery\\hdr-rHGkAn\\hevc_nvenc.mp4",
+        "frames": 6,
+        "audio": {
+          "sampleRate": 48000,
+          "sampleCount": 4800,
+          "layout": "stereo",
+          "format": "float32"
+        },
+        "accuracy": "PME reference output transform",
+        "previewTransform": false,
+        "timings": {
+          "compileMs": 0,
+          "totalMs": 2125.7684999999983
+        },
+        "transfer": {
+          "previewReadback": false,
+          "exportMaterialization": true,
+          "format": "rgba32float",
+          "route": "native Surface → explicit F32 final-delivery lease → PME colour transform → encoder"
+        },
+        "stats": {
+          "adapter": "AdapterInfo { name: \"NVIDIA GeForce RTX 5070 Laptop GPU\", vendor: 4318, device: 11608, device_type: DiscreteGpu, device_pci_bus_id: \"0000:01:00.0\", driver: \"NVIDIA\", driver_info: \"596.49\", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 32, transient_saves_memory: Some(false), limit_bucket: None }",
+          "allocatedDataBytes": 0,
+          "allocatedImageBytes": 1843200,
+          "backend": "native-wgpu",
+          "blockingGpuWaits": 0,
+          "bufferExports": {
+            "bytes": 5529600,
+            "readbacks": 6,
+            "version": 1
+          },
+          "capabilities": {
+            "backend": "native-wgpu",
+            "computeKernelAbis": [
+              1
+            ],
+            "crossStageGpuHandles": false,
+            "execution": "recording",
+            "f16WorkingBytesPerPixel": 16,
+            "hardwareVerified": true,
+            "limits": {
+              "maxBufferSize": 4294967295,
+              "maxComputeInvocationsPerWorkgroup": 1024,
+              "maxComputeWorkgroupSizeX": 1024,
+              "maxComputeWorkgroupSizeY": 1024,
+              "maxComputeWorkgroupSizeZ": 64,
+              "maxComputeWorkgroupStorageSize": 49152,
+              "maxComputeWorkgroupsPerDimension": 65535,
+              "maxStorageBufferBindingSize": 2147483644,
+              "maxStorageBuffersPerShaderStage": 524288,
+              "maxUniformBufferBindingSize": 65536
+            },
+            "maxKernels": 256,
+            "maxPendingPasses": 1024,
+            "nativeImages": {
+              "admission": "device-and-session-budget",
+              "maxTextureDimension2D": 32768,
+              "version": 1
+            },
+            "nativeMesh": {
+              "exactAdmission": "session-budget",
+              "float32Blendable": true,
+              "version": 1
+            },
+            "pixelKernelAbis": [
+              1,
+              2
+            ],
+            "profiling": "disabled",
+            "storageTypes": [
+              "f32",
+              "u32",
+              "i32"
+            ],
+            "version": 1
+          },
+          "completed": 6,
+          "devicesCreated": 1,
+          "diagnosticBlockingWaits": 0,
+          "diagnosticReadbackBytes": 0,
+          "diagnosticReadbacks": 0,
+          "diagnosticsEnabled": false,
+          "export": {
+            "bytes": 0,
+            "cpuImageCopies": 0,
+            "enabled": false,
+            "framesWritten": 0,
+            "hardwareEncode": false,
+            "httpTransport": false,
+            "pngTransport": false
+          },
+          "externalImages": {
+            "available": true,
+            "enabled": true,
+            "reason": null,
+            "version": 1
+          },
+          "frameBindings": {
+            "allSlotsDrain": false,
+            "slotUpdates": 0,
+            "version": 1
+          },
+          "frameHashes": 0,
+          "imageReadbacks": 0,
+          "inFlight": 0,
+          "nativeModules": {
+            "additionalD3D11Devices": 0,
+            "blockingGpuFenceWaits": 0,
+            "calls": 0,
+            "contentProfile": "reviewed-local-only",
+            "inputGpuConversions": 0,
+            "instances": 0,
+            "loaded": false,
+            "nativeDevicesCreated": 0,
+            "outputGpuConversions": 0,
+            "productionPixelReadbacks": 0,
+            "runtime": null,
+            "runtimeFileHashes": 0,
+            "surfaceProfile": "explicit-sdr-srgb8",
+            "version": 1,
+            "webRenderCachePrecision": "bgra8"
+          },
+          "numericalValidationPasses": 0,
+          "peakSubmittedInFlight": 1,
+          "persistentState": {
+            "buffers": 0,
+            "cursors": {},
+            "version": 1
+          },
+          "pipelineCache": {
+            "computeAndMeshCreated": 4,
+            "computeAndMeshReused": 1,
+            "displayReuses": 0,
+            "meshAttachmentSetsReused": 0,
+            "retention": "current-program-only",
+            "version": 1,
+            "workingBuffersReused": 0
+          },
+          "pixelTransferBytes": 0,
+          "programUpdates": 1,
+          "protocolVersion": 2,
+          "resourceImports": {
+            "uploadBytes": 0,
+            "version": 1
+          },
+          "slots": 1,
+          "stateCheckpoints": {
+            "bytes": 0,
+            "count": 0,
+            "cpuReadbacks": 0,
+            "restores": 0,
+            "version": 1
+          },
+          "submitted": 6,
+          "workingImageBytes": 1843200,
+          "sourceOutput": {
+            "width": 320,
+            "height": 180,
+            "format": "rgba32float",
+            "alpha": "premultiplied",
+            "color": {
+              "primaries": "rec2020",
+              "whitePoint": "D65",
+              "transfer": "linear",
+              "reference": "scene",
+              "range": "full",
+              "referenceWhiteNits": 100
+            }
+          }
+        },
+        "report": {
+          "schemaVersion": 1,
+          "frames": 6,
+          "options": {
+            "preset": "hdr10",
+            "outputColor": {
+              "primaries": "rec2020",
+              "whitePoint": "D65",
+              "transfer": "pq",
+              "reference": "display",
+              "range": "full",
+              "referenceWhiteNits": 100,
+              "peakNits": 1000
+            },
+            "conversion": {
+              "kind": "colorimetric",
+              "clip": false
+            },
+            "alpha": {
+              "mode": "flatten",
+              "matte": [
+                0,
+                0,
+                0
+              ]
+            },
+            "hdr10": {
+              "masteringDisplay": {
+                "red": [
+                  0.708,
+                  0.292
+                ],
+                "green": [
+                  0.17,
+                  0.797
+                ],
+                "blue": [
+                  0.131,
+                  0.046
+                ],
+                "white": [
+                  0.3127,
+                  0.329
+                ],
+                "minNits": 0.005,
+                "maxNits": 1000
+              },
+              "maxCLL": 1000,
+              "maxFALL": 400
+            },
+            "encoder": "hevc_nvenc",
+            "audio": {
+              "path": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\artifacts\\native-media-delivery\\hdr-rHGkAn\\.frameweave-audio-8e9ef5d41e4db364afc44c72.f32",
+              "sampleRate": 48000,
+              "channels": 2,
+              "channelLayout": "stereo",
+              "format": "f32le",
+              "startSample": 0
+            },
+            "fps": {
+              "num": 60,
+              "den": 1
+            },
+            "width": 320,
+            "height": 180
+          },
+          "args": [
+            "-hide_banner",
+            "-loglevel",
+            "error",
+            "-n",
+            "-threads",
+            "2",
+            "-f",
+            "rawvideo",
+            "-pixel_format",
+            "gbrpf32le",
+            "-video_size",
+            "320x180",
+            "-framerate",
+            "60/1",
+            "-i",
+            "pipe:0",
+            "-vf",
+            "zscale=matrixin=gbr:matrix=2020_ncl:primariesin=2020:primaries=2020:transferin=smpte2084:transfer=smpte2084:rangein=full:range=limited,format=yuv420p10le,format=p010le",
+            "-c:v",
+            "hevc_nvenc",
+            "-preset",
+            "p4",
+            "-rc",
+            "vbr",
+            "-cq",
+            "12",
+            "-b:v",
+            "0",
+            "-pix_fmt",
+            "p010le",
+            "-color_primaries",
+            "bt2020",
+            "-color_trc",
+            "smpte2084",
+            "-colorspace",
+            "bt2020nc",
+            "-color_range",
+            "tv",
+            "-bf",
+            "0",
+            "-f",
+            "hevc",
+            "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\artifacts\\native-media-delivery\\hdr-rHGkAn\\hevc_nvenc.mp4.encoded-2306dc4a42da49b72a8b00a5.hevc"
+          ],
+          "conversions": [
+            {
+              "frame": 0,
+              "clippedSamples": 0
+            },
+            {
+              "frame": 1,
+              "clippedSamples": 0
+            },
+            {
+              "frame": 2,
+              "clippedSamples": 0
+            },
+            {
+              "frame": 3,
+              "clippedSamples": 0
+            },
+            {
+              "frame": 4,
+              "clippedSamples": 0
+            },
+            {
+              "frame": 5,
+              "clippedSamples": 0
+            }
+          ],
+          "clippedTotal": 0,
+          "frameRecordsTruncated": false,
+          "timings": [
+            {
+              "frame": 0,
+              "phase": "output-transform-and-code-range",
+              "durationMs": 53.216199999998935
+            },
+            {
+              "frame": 0,
+              "phase": "pack-and-alpha-color-adapter",
+              "durationMs": 11.916799999999057
+            },
+            {
+              "frame": 0,
+              "phase": "stdin-write-and-backpressure",
+              "durationMs": 0.5758999999998196
+            },
+            {
+              "frame": 1,
+              "phase": "output-transform-and-code-range",
+              "durationMs": 39.56490000000122
+            },
+            {
+              "frame": 1,
+              "phase": "pack-and-alpha-color-adapter",
+              "durationMs": 6.146600000000035
+            },
+            {
+              "frame": 1,
+              "phase": "stdin-write-and-backpressure",
+              "durationMs": 0.3349999999991269
+            },
+            {
+              "frame": 2,
+              "phase": "output-transform-and-code-range",
+              "durationMs": 48.31390000000101
+            },
+            {
+              "frame": 2,
+              "phase": "pack-and-alpha-color-adapter",
+              "durationMs": 7.263699999999517
+            },
+            {
+              "frame": 2,
+              "phase": "stdin-write-and-backpressure",
+              "durationMs": 0.7641999999977998
+            },
+            {
+              "frame": 3,
+              "phase": "output-transform-and-code-range",
+              "durationMs": 47.51540000000023
+            },
+            {
+              "frame": 3,
+              "phase": "pack-and-alpha-color-adapter",
+              "durationMs": 12.64259999999922
+            },
+            {
+              "frame": 3,
+              "phase": "stdin-write-and-backpressure",
+              "durationMs": 0.5859000000018568
+            },
+            {
+              "frame": 4,
+              "phase": "output-transform-and-code-range",
+              "durationMs": 46.2957000000024
+            },
+            {
+              "frame": 4,
+              "phase": "pack-and-alpha-color-adapter",
+              "durationMs": 3.173799999996845
+            },
+            {
+              "frame": 4,
+              "phase": "stdin-write-and-backpressure",
+              "durationMs": 0.6871000000028289
+            },
+            {
+              "frame": 5,
+              "phase": "output-transform-and-code-range",
+              "durationMs": 44.4487999999983
+            },
+            {
+              "frame": 5,
+              "phase": "pack-and-alpha-color-adapter",
+              "durationMs": 4.160400000000664
+            },
+            {
+              "frame": 5,
+              "phase": "stdin-write-and-backpressure",
+              "durationMs": 0.6707000000023982
+            }
+          ],
+          "finalDrainMs": 112.13570000000254
+        }
+      }
+    },
+    {
+      "case": "accurate-hdr",
+      "encoder": "av1_nvenc",
+      "maxCodeError": 0.00049591064453125,
+      "master": {
+        "side_data_type": "Mastering display metadata",
+        "red_x": "46399/65536",
+        "red_y": "19137/65536",
+        "green_x": "11141/65536",
+        "green_y": "52232/65536",
+        "blue_x": "8585/65536",
+        "blue_y": "3015/65536",
+        "white_point_x": "20493/65536",
+        "white_point_y": "21561/65536",
+        "min_luminance": "82/16384",
+        "max_luminance": "256000/256"
+      },
+      "cll": {
+        "side_data_type": "Content light level metadata",
+        "max_content": 1000,
+        "max_average": 400
+      },
+      "frames": "6",
+      "audio": "aac",
+      "result": {
+        "version": 1,
+        "ok": true,
+        "backend": "native-wgpu",
+        "output": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\artifacts\\native-media-delivery\\hdr-rHGkAn\\av1_nvenc.mp4",
+        "frames": 6,
+        "audio": {
+          "sampleRate": 48000,
+          "sampleCount": 4800,
+          "layout": "stereo",
+          "format": "float32"
+        },
+        "accuracy": "PME reference output transform",
+        "previewTransform": false,
+        "timings": {
+          "compileMs": 0,
+          "totalMs": 1954.098100000003
+        },
+        "transfer": {
+          "previewReadback": false,
+          "exportMaterialization": true,
+          "format": "rgba32float",
+          "route": "native Surface → explicit F32 final-delivery lease → PME colour transform → encoder"
+        },
+        "stats": {
+          "adapter": "AdapterInfo { name: \"NVIDIA GeForce RTX 5070 Laptop GPU\", vendor: 4318, device: 11608, device_type: DiscreteGpu, device_pci_bus_id: \"0000:01:00.0\", driver: \"NVIDIA\", driver_info: \"596.49\", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 32, transient_saves_memory: Some(false), limit_bucket: None }",
+          "allocatedDataBytes": 0,
+          "allocatedImageBytes": 1843200,
+          "backend": "native-wgpu",
+          "blockingGpuWaits": 0,
+          "bufferExports": {
+            "bytes": 5529600,
+            "readbacks": 6,
+            "version": 1
+          },
+          "capabilities": {
+            "backend": "native-wgpu",
+            "computeKernelAbis": [
+              1
+            ],
+            "crossStageGpuHandles": false,
+            "execution": "recording",
+            "f16WorkingBytesPerPixel": 16,
+            "hardwareVerified": true,
+            "limits": {
+              "maxBufferSize": 4294967295,
+              "maxComputeInvocationsPerWorkgroup": 1024,
+              "maxComputeWorkgroupSizeX": 1024,
+              "maxComputeWorkgroupSizeY": 1024,
+              "maxComputeWorkgroupSizeZ": 64,
+              "maxComputeWorkgroupStorageSize": 49152,
+              "maxComputeWorkgroupsPerDimension": 65535,
+              "maxStorageBufferBindingSize": 2147483644,
+              "maxStorageBuffersPerShaderStage": 524288,
+              "maxUniformBufferBindingSize": 65536
+            },
+            "maxKernels": 256,
+            "maxPendingPasses": 1024,
+            "nativeImages": {
+              "admission": "device-and-session-budget",
+              "maxTextureDimension2D": 32768,
+              "version": 1
+            },
+            "nativeMesh": {
+              "exactAdmission": "session-budget",
+              "float32Blendable": true,
+              "version": 1
+            },
+            "pixelKernelAbis": [
+              1,
+              2
+            ],
+            "profiling": "disabled",
+            "storageTypes": [
+              "f32",
+              "u32",
+              "i32"
+            ],
+            "version": 1
+          },
+          "completed": 6,
+          "devicesCreated": 1,
+          "diagnosticBlockingWaits": 0,
+          "diagnosticReadbackBytes": 0,
+          "diagnosticReadbacks": 0,
+          "diagnosticsEnabled": false,
+          "export": {
+            "bytes": 0,
+            "cpuImageCopies": 0,
+            "enabled": false,
+            "framesWritten": 0,
+            "hardwareEncode": false,
+            "httpTransport": false,
+            "pngTransport": false
+          },
+          "externalImages": {
+            "available": true,
+            "enabled": true,
+            "reason": null,
+            "version": 1
+          },
+          "frameBindings": {
+            "allSlotsDrain": false,
+            "slotUpdates": 0,
+            "version": 1
+          },
+          "frameHashes": 0,
+          "imageReadbacks": 0,
+          "inFlight": 0,
+          "nativeModules": {
+            "additionalD3D11Devices": 0,
+            "blockingGpuFenceWaits": 0,
+            "calls": 0,
+            "contentProfile": "reviewed-local-only",
+            "inputGpuConversions": 0,
+            "instances": 0,
+            "loaded": false,
+            "nativeDevicesCreated": 0,
+            "outputGpuConversions": 0,
+            "productionPixelReadbacks": 0,
+            "runtime": null,
+            "runtimeFileHashes": 0,
+            "surfaceProfile": "explicit-sdr-srgb8",
+            "version": 1,
+            "webRenderCachePrecision": "bgra8"
+          },
+          "numericalValidationPasses": 0,
+          "peakSubmittedInFlight": 1,
+          "persistentState": {
+            "buffers": 0,
+            "cursors": {},
+            "version": 1
+          },
+          "pipelineCache": {
+            "computeAndMeshCreated": 4,
+            "computeAndMeshReused": 1,
+            "displayReuses": 0,
+            "meshAttachmentSetsReused": 0,
+            "retention": "current-program-only",
+            "version": 1,
+            "workingBuffersReused": 0
+          },
+          "pixelTransferBytes": 0,
+          "programUpdates": 1,
+          "protocolVersion": 2,
+          "resourceImports": {
+            "uploadBytes": 0,
+            "version": 1
+          },
+          "slots": 1,
+          "stateCheckpoints": {
+            "bytes": 0,
+            "count": 0,
+            "cpuReadbacks": 0,
+            "restores": 0,
+            "version": 1
+          },
+          "submitted": 6,
+          "workingImageBytes": 1843200,
+          "sourceOutput": {
+            "width": 320,
+            "height": 180,
+            "format": "rgba32float",
+            "alpha": "premultiplied",
+            "color": {
+              "primaries": "rec2020",
+              "whitePoint": "D65",
+              "transfer": "linear",
+              "reference": "scene",
+              "range": "full",
+              "referenceWhiteNits": 100
+            }
+          }
+        },
+        "report": {
+          "schemaVersion": 1,
+          "frames": 6,
+          "options": {
+            "preset": "hdr10",
+            "outputColor": {
+              "primaries": "rec2020",
+              "whitePoint": "D65",
+              "transfer": "pq",
+              "reference": "display",
+              "range": "full",
+              "referenceWhiteNits": 100,
+              "peakNits": 1000
+            },
+            "conversion": {
+              "kind": "colorimetric",
+              "clip": false
+            },
+            "alpha": {
+              "mode": "flatten",
+              "matte": [
+                0,
+                0,
+                0
+              ]
+            },
+            "hdr10": {
+              "masteringDisplay": {
+                "red": [
+                  0.708,
+                  0.292
+                ],
+                "green": [
+                  0.17,
+                  0.797
+                ],
+                "blue": [
+                  0.131,
+                  0.046
+                ],
+                "white": [
+                  0.3127,
+                  0.329
+                ],
+                "minNits": 0.005,
+                "maxNits": 1000
+              },
+              "maxCLL": 1000,
+              "maxFALL": 400
+            },
+            "encoder": "av1_nvenc",
+            "audio": {
+              "path": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\artifacts\\native-media-delivery\\hdr-rHGkAn\\.frameweave-audio-5214606ff29f7bfafcccc85b.f32",
+              "sampleRate": 48000,
+              "channels": 2,
+              "channelLayout": "stereo",
+              "format": "f32le",
+              "startSample": 0
+            },
+            "fps": {
+              "num": 60,
+              "den": 1
+            },
+            "width": 320,
+            "height": 180
+          },
+          "args": [
+            "-hide_banner",
+            "-loglevel",
+            "error",
+            "-n",
+            "-threads",
+            "2",
+            "-f",
+            "rawvideo",
+            "-pixel_format",
+            "gbrpf32le",
+            "-video_size",
+            "320x180",
+            "-framerate",
+            "60/1",
+            "-i",
+            "pipe:0",
+            "-vf",
+            "zscale=matrixin=gbr:matrix=2020_ncl:primariesin=2020:primaries=2020:transferin=smpte2084:transfer=smpte2084:rangein=full:range=limited,format=yuv420p10le,format=p010le",
+            "-c:v",
+            "av1_nvenc",
+            "-preset",
+            "p4",
+            "-rc",
+            "vbr",
+            "-cq",
+            "12",
+            "-b:v",
+            "0",
+            "-pix_fmt",
+            "p010le",
+            "-color_primaries",
+            "bt2020",
+            "-color_trc",
+            "smpte2084",
+            "-colorspace",
+            "bt2020nc",
+            "-color_range",
+            "tv",
+            "-bf",
+            "0",
+            "-f",
+            "ivf",
+            "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\artifacts\\native-media-delivery\\hdr-rHGkAn\\av1_nvenc.mp4.encoded-5b577c449757dc4ee2ed96ca.ivf"
+          ],
+          "conversions": [
+            {
+              "frame": 0,
+              "clippedSamples": 0
+            },
+            {
+              "frame": 1,
+              "clippedSamples": 0
+            },
+            {
+              "frame": 2,
+              "clippedSamples": 0
+            },
+            {
+              "frame": 3,
+              "clippedSamples": 0
+            },
+            {
+              "frame": 4,
+              "clippedSamples": 0
+            },
+            {
+              "frame": 5,
+              "clippedSamples": 0
+            }
+          ],
+          "clippedTotal": 0,
+          "frameRecordsTruncated": false,
+          "timings": [
+            {
+              "frame": 0,
+              "phase": "output-transform-and-code-range",
+              "durationMs": 43.554700000000594
+            },
+            {
+              "frame": 0,
+              "phase": "pack-and-alpha-color-adapter",
+              "durationMs": 2.869300000002113
+            },
+            {
+              "frame": 0,
+              "phase": "stdin-write-and-backpressure",
+              "durationMs": 0.7330000000001746
+            },
+            {
+              "frame": 1,
+              "phase": "output-transform-and-code-range",
+              "durationMs": 47.21059999999852
+            },
+            {
+              "frame": 1,
+              "phase": "pack-and-alpha-color-adapter",
+              "durationMs": 2.9382000000005064
+            },
+            {
+              "frame": 1,
+              "phase": "stdin-write-and-backpressure",
+              "durationMs": 0.7528999999994994
+            },
+            {
+              "frame": 2,
+              "phase": "output-transform-and-code-range",
+              "durationMs": 42.16779999999926
+            },
+            {
+              "frame": 2,
+              "phase": "pack-and-alpha-color-adapter",
+              "durationMs": 3.2039000000004307
+            },
+            {
+              "frame": 2,
+              "phase": "stdin-write-and-backpressure",
+              "durationMs": 0.5891999999985273
+            },
+            {
+              "frame": 3,
+              "phase": "output-transform-and-code-range",
+              "durationMs": 40.61739999999918
+            },
+            {
+              "frame": 3,
+              "phase": "pack-and-alpha-color-adapter",
+              "durationMs": 3.590700000000652
+            },
+            {
+              "frame": 3,
+              "phase": "stdin-write-and-backpressure",
+              "durationMs": 0.5997999999999593
+            },
+            {
+              "frame": 4,
+              "phase": "output-transform-and-code-range",
+              "durationMs": 42.19220000000132
+            },
+            {
+              "frame": 4,
+              "phase": "pack-and-alpha-color-adapter",
+              "durationMs": 2.9989999999997963
+            },
+            {
+              "frame": 4,
+              "phase": "stdin-write-and-backpressure",
+              "durationMs": 0.5512999999991735
+            },
+            {
+              "frame": 5,
+              "phase": "output-transform-and-code-range",
+              "durationMs": 35.576600000000326
+            },
+            {
+              "frame": 5,
+              "phase": "pack-and-alpha-color-adapter",
+              "durationMs": 7.3681999999971595
+            },
+            {
+              "frame": 5,
+              "phase": "stdin-write-and-backpressure",
+              "durationMs": 1.9953000000023167
+            }
+          ],
+          "finalDrainMs": 99.49339999999938
+        }
+      }
+    },
+    {
+      "case": "native-aces2-hdr10",
+      "maxCodeError": 0.0007864832878112793
+    }
+  ]
+}

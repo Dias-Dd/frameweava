@@ -1,0 +1,66 @@
+{
+  "baseline": "50d881abe5589bde641f360f424ff71358bad298",
+  "sourceHashes": {
+    "modules/pro-animation/src/path-text-motion/index.ts": "a0fd4313e8f7a71e33d8f7b0b2c68253888ecca72678f44ebdcfbaa27d4fd313",
+    "modules/pro-animation/src/smart-path/kernel.ts": "ac8c77a8eda358f95daf930561e05950457188cc5e36b52a963a967f00e88d3d",
+    "modules/pro-animation/src/smart-path/index.ts": "7639c5b8b8ebbf6b825b8fc35ccfb1a911c9a786a4af9ddd7579a30306cd9b8a",
+    "modules/pro-animation/src/stroke-motion/index.ts": "3670de0578980422f519c3beda2940021ba6937b535a133c3636b9f15b106bd1",
+    "modules/pro-animation/src/curve-sampler.ts": "953d478e4a19560bbd22649e1f7f4cdc404ff05797464b7c62ff391fc4396cde",
+    "modules/pro-animation/src/path-text/layout.ts": "3d5b3516742eb48320bd4f14707c771c59e9d9cce9cc9fa8a5f6f89946fdb42f",
+    "modules/pro-animation/src/text-layout/native.ts": "85d38b3b77d868ef6d254bd5881b8acd5f1321580cb64d5624ec0024fb761d21",
+    "modules/pro-animation/src/text-animation/native.ts": "62faaa9647b387733863794c697f42ada2a7499470b4d407dcc49c1a0054747a",
+    "modules/native-gpu/temporal-clock.ts": "016526c6d24c8c0e4bc881edae7b92bd649ac671df3360e6a0334cfd7f6f887e",
+    "modules/native-gpu/logic-host.ts": "9e73ea79dc610742a76a9864d3ebc4b83594221f0f29e6a44460b6152c97414b",
+    "modules/pro-animation/validation/review-kit-artifacts.ts": "dbeda09d06ff058043f203d7b70d500110451ed23753a06df7e4154489ce626b"
+  },
+  "kits": [
+    {
+      "prefix": "curve",
+      "source": "modules/pro-animation/rust/curve-metrics",
+      "wasm": "b6f34c87507e8151c3e2deb87d5c5c39232bf0ac81e105937523a94e995ac95b"
+    },
+    {
+      "prefix": "path",
+      "source": "modules/pro-animation/rust/pathops",
+      "wasm": "1310e22908acec65f26b7b2f55e9ad652d8de17587d2b9e453b0b39319cf350f"
+    },
+    {
+      "prefix": "morph",
+      "source": "modules/pro-animation/rust/smart-morph",
+      "wasm": "bfb681bc347013dca37d97b82115b933dc0ad81520e668b7371a28eb5b98404e"
+    }
+  ],
+  "existingAlgorithmSources": [
+    "modules/pro-animation/provenance/smart-path/SOURCE.json",
+    "modules/pro-animation/rust/smart-morph/src/upstream-interp.original.rs",
+    "modules/pro-animation/rust/curve-metrics/Cargo.lock",
+    "modules/pro-animation/rust/pathops/Cargo.lock"
+  ],
+  "adaptation": "Session ownership/direct-kernel and actual-time layout orchestration only; no Rust numerical kernel, Core clock, GPU sampler or renderer rewritten.",
+  "upstream": "Original EffectCraft861c51f MIT path-interp, original kurbo and Clipper/Earcut through reviewed components, original font/shaping preparation; complete transitive notices retained in final package/licenses.",
+  "font": {
+    "id": "notosans",
+    "repository": "https://github.com/google/fonts",
+    "commit": "6c1dbe27dcf7d817d4b62cec033ba77fa8e2a5ec",
+    "font": {
+      "source": "https://raw.githubusercontent.com/google/fonts/6c1dbe27dcf7d817d4b62cec033ba77fa8e2a5ec/ofl/notosans/NotoSans%5Bwdth%2Cwght%5D.ttf",
+      "originalName": "NotoSans[wdth,wght].ttf",
+      "localFile": "notosans.ttf",
+      "bytes": 2049096,
+      "gitBlobSha1": "75575046c015ff623a848096a15779867ba71453",
+      "sha256": "bfb7bb691513f12e734dc346c03a03f784912432d7e3fa8e56efcf906fe86b3d"
+    },
+    "license": {
+      "source": "https://raw.githubusercontent.com/google/fonts/6c1dbe27dcf7d817d4b62cec033ba77fa8e2a5ec/ofl/notosans/OFL.txt",
+      "originalName": "OFL.txt",
+      "localFile": "notosans-OFL.txt",
+      "bytes": 4396,
+      "gitBlobSha1": "6843f31878c9945e1e71e1baa275546b4eefead8",
+      "sha256": "cee9892f9f0cc8fe882c9e9537ee6a89621d86ee7ceaf70b02e2b2b1c25c061a"
+    },
+    "asset": "../shaping-scene/fonts/notosans.ttf"
+  },
+  "oflSha256": "cee9892f9f0cc8fe882c9e9537ee6a89621d86ee7ceaf70b02e2b2b1c25c061a",
+  "newRuntimeDependencies": [],
+  "coreModified": false
+}

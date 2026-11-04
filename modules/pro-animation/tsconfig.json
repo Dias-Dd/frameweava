@@ -1,0 +1,21 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@frameweave/engine": [
+        "../../src/index.ts"
+      ],
+      "@frameweave/engine/plugins": [
+        "../../src/plugins/sdk.ts"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "scripts/**/*.ts",
+    "tests/**/*.ts"
+  ],
+  "exclude": [
+    "../../node_modules"
+  ]
+}

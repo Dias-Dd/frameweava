@@ -1,0 +1,23 @@
+{
+  "name": "three",
+  "version": "0.186.1",
+  "license": "MIT",
+  "path": "examples/jsm/loaders/SVGLoader.js",
+  "upstreamSha256": "a58536582ec55d41d9ed8bedaf0633398cf9004110cb4a9741d572bded4a3129",
+  "carriedSha256": "7de0db77f819161f9795386c1a11edf4b49e1132424a850967022cc361659808",
+  "adaptations": [
+    "Extract original parse method only; omit loader, texture/canvas/material/mesh and stroke code.",
+    "Receive real parsed XML document; fixed CSS96dpi px; no fake global DOM.",
+    "Use existing XML getElementsByTagName for fixed gradient/stop element queries, not a CSS selector shim.",
+    "Expose original local transform and path/primitive parsing; omit redundant world-transform/paint traversal.",
+    "Surface parser warnings to caller as diagnostics; no silent approximate fallback.",
+    "Use null-prototype gradient lookup tables."
+  ],
+  "existingResources": [
+    "Three MIT notice carried in package",
+    "@xmldom/xmldom0.8.15 MIT (already installed)"
+  ],
+  "notModified": [
+    "SVG number/path/arc/shape and affine-transform parsing algorithms"
+  ]
+}

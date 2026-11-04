@@ -1,0 +1,36 @@
+TAP version 13
+# {"case":"persistent-video","stats":{"version":1,"backend":"ffmpeg-cpu","hardwareDecode":false,"gpuDirect":false,"opens":2,"decodedFrames":9,"seeks":1,"cacheHits":1}}
+# Subtest: declared video decodes all frames, seeks by PTS, rejects undeclared/tampered inputs, and renders in native Stage
+ok 1 - declared video decodes all frames, seeks by PTS, rejects undeclared/tampered inputs, and renders in native Stage
+  ---
+  duration_ms: 7199.41
+  type: 'test'
+  ...
+# Subtest: native float final delivery preserves EXR and produces real 10-bit HEVC/AV1 HDR with metadata and AU-1 audio
+not ok 2 - native float final delivery preserves EXR and produces real 10-bit HEVC/AV1 HDR with metadata and AU-1 audio
+  ---
+  duration_ms: 8704.7761
+  type: 'test'
+  location: 'C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\tests\\native-media-delivery.test.ts:4:1507'
+  failureType: 'testCodeFailure'
+  error: '{"encoder":"hevc_nvenc","maxError":0.008895009756088257}'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (C:\Users\ASUS\Documents\Codex\2026-10-28\referenced-chatgpt-conversation-this-is-an\outputs\frameweave-worktrees\agent-1\tests\native-media-delivery.test.ts:84:85)
+    process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 1
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 17249.868

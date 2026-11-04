@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "codec": "font-glyph-v1/skrifa-0.49.0/read-fonts-0.46.0",
+  "sourceCommit": "6dd8c4bb63d3c3dbe371476b731be2254a435ee3",
+  "files": {
+    "binding.mjs": "5540b96c98e4ce6942402a5c666ac92daf024fba1fc7f47675a2f9b3e0e67946",
+    "module_bg.wasm": "1220102271683d298626283fa24e311b08c65a032b5ac8093bfe797227d40e31"
+  },
+  "inputs": {
+    "Cargo.toml": "866af138b04c0a208a23385d41dbde3c81d81c614d8acd333f75bd34bb1eb0de",
+    "Cargo.lock": "bbcfe7de3e53f171bbd20bbaf1b5d9ed60feef313e7146b7845673fa9d625c62",
+    "src/lib.rs": "e269e68e99e60221bc530b9fb1d1a67a52b08bb1b98ff12cb06fb9d59923548d",
+    "src/original-font-metadata.rs": "f7f1fa567f72f0a115b69959eefc45abfce64c96c0960a75e851e2282996609b",
+    "src/original-shaper.rs": "1e91f9463230a2f19814a18ba5f7c50a65a4a19ad95ff6559edcb787face3930"
+  }
+}

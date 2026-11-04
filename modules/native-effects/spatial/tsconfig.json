@@ -1,0 +1,1 @@
+{"extends":"../../../tsconfig.json","include":["./*.ts","../*.ts","../examples/*.tsx","../../../tests/native-spatial.test.ts","../../../tests/native-effects.test.ts"]}

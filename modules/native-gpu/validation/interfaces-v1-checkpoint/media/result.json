@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "ok": true,
+  "png": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\artifacts\\native-interfaces\\media\\interfaces.png",
+  "exr": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\artifacts\\native-interfaces\\media\\interfaces.exr",
+  "video": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-1\\artifacts\\native-interfaces\\media\\interfaces.mp4",
+  "dimensions": [
+    320,
+    180
+  ],
+  "exrRange": [
+    -1.4630951881408691,
+    3.1779167652130127
+  ],
+  "probe": {
+    "width": 320,
+    "height": 180,
+    "fps": 24,
+    "duration": 0.17,
+    "frames": 4,
+    "decodable": true
+  },
+  "note": "Named buffer host export is tested separately; public Renderer/CLI export wiring belongs to Main."
+}

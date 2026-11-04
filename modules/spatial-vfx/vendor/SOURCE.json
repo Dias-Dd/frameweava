@@ -1,0 +1,11 @@
+{
+  "repository": "https://github.com/Auburn/FastNoiseLite",
+  "tag": "v1.1.1",
+  "commit": "7ccfbc16eb1c932568f177d63a9ba51d89bbe516",
+  "license": "MIT",
+  "adaptation": "WGSL sv_hash/sv_value/sv_noise: Hash3D, ValCoord3D and SingleValue3D subset; custom fBm is not upstream fractal parameter compatibility. No other external code copied.",
+  "files": {
+    "FastNoiseLite.glsl": "71c9af239e4f75617c74f74a9266fd944550edfa4ddc31920703e2cdb836cef2",
+    "LICENSE-MIT": "c08da3239b919c12f4ec616b457a8dd0fc923c8102c8a742c4006fcb5de28fb0"
+  }
+}

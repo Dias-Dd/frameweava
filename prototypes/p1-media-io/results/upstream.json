@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "archive": {
+    "url": "https://codeload.github.com/AcademySoftwareFoundation/openvdb/tar.gz/refs/tags/v12.1.1",
+    "sha256": "ccd0ea1669a53c7c13087a08ac5a1351041c4cdd308f6d6f591074a106fcb565"
+  },
+  "readSources": {
+    "openexr-test-deep.py": {
+      "url": "https://raw.githubusercontent.com/AcademySoftwareFoundation/openexr/v3.4.4/src/wrappers/python/tests/test_deep.py",
+      "sha256": "d48258a31debcec45b1ac8912fed4616ed82fadbfaceb9e141686fc7ffbd2f02"
+    },
+    "openexr-python.cmake": {
+      "url": "https://raw.githubusercontent.com/AcademySoftwareFoundation/openexr/v3.4.4/src/wrappers/python/CMakeLists.txt",
+      "sha256": "5f0dd3b8f5e8589af6f402a5555345526e77eefa34a41261747e5e4ac47b0008"
+    },
+    "PyOpenEXR.cpp": {
+      "url": "https://raw.githubusercontent.com/AcademySoftwareFoundation/openexr/v3.4.4/src/wrappers/python/PyOpenEXR.cpp",
+      "sha256": "d0a396b9cd55db56c2edb6c8c75d6bacd0a49628e9bc1675aa832b08639f71d0"
+    },
+    "nanovdb.cmake": {
+      "url": "https://raw.githubusercontent.com/AcademySoftwareFoundation/openvdb/v12.1.1/nanovdb/nanovdb/CMakeLists.txt",
+      "sha256": "411eeb3b8c4e0b6fce8ea57378232498b2feb014cf4c6601d222909578702da1"
+    },
+    "nanovdb.h": {
+      "url": "https://raw.githubusercontent.com/AcademySoftwareFoundation/openvdb/v12.1.1/nanovdb/nanovdb/NanoVDB.h",
+      "sha256": "2b9c88249c9d0e86fa0ac3643ffe70474ae562b1292d1b865a2a6373d94f4e35"
+    }
+  },
+  "note": "Only original Frameweave probe code and tiny generated fixtures shipped; upstream headers/wheels/binaries not vendored. Decompress gz artifacts before codec inspection."
+}

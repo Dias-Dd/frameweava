@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "sourceFiles": [
+    {
+      "repository": "https://github.com/storytold/effectcraft",
+      "commit": "ec7ced1f0515f0b6f376dbcc297f1c441f452d6e",
+      "path": "crates/gpu/src/shaders/common.wgsl",
+      "archive": "effectcraft/common.wgsl",
+      "sha256": "4244140eba68055a0f1edcd6d0b1d7eee5a244e01c19f3ab0491f8e078702fff",
+      "bytes": 15692,
+      "selectedLicense": "MIT"
+    },
+    {
+      "repository": "https://github.com/storytold/effectcraft",
+      "commit": "ec7ced1f0515f0b6f376dbcc297f1c441f452d6e",
+      "path": "crates/gpu/src/fx_transition.rs",
+      "archive": "effectcraft/fx_transition.rs",
+      "sha256": "83ef86f106b97e4097b2fce840fcff1d8cf47a495caffb7664ede5349989483b",
+      "bytes": 24979,
+      "selectedLicense": "MIT"
+    },
+    {
+      "repository": "https://github.com/storytold/effectcraft",
+      "commit": "ec7ced1f0515f0b6f376dbcc297f1c441f452d6e",
+      "path": "crates/gpu/src/shaders/fx_transition.wgsl",
+      "archive": "effectcraft/fx_transition.wgsl",
+      "sha256": "f6d50b9820d13b12943ee2098b5f54be187cd4b00ed2936401b29f96d0509e11",
+      "bytes": 31449,
+      "selectedLicense": "MIT"
+    },
+    {
+      "repository": "https://github.com/storytold/effectcraft",
+      "commit": "ec7ced1f0515f0b6f376dbcc297f1c441f452d6e",
+      "path": "LICENSE-MIT",
+      "archive": "effectcraft/LICENSE-MIT",
+      "sha256": "7b6db9a363688683feacdf9b528f059637f2e5d2edbacd8720fc9b26781c9abe",
+      "bytes": 1103,
+      "selectedLicense": "MIT"
+    },
+    {
+      "repository": "https://github.com/storytold/effectcraft",
+      "commit": "ec7ced1f0515f0b6f376dbcc297f1c441f452d6e",
+      "path": "crates/effects/src/transition.rs",
+      "archive": "effectcraft/transition.rs",
+      "sha256": "af4848d329752fd71390470711ce56ed82d9f6b52456b7a450d8d6fa28254161",
+      "bytes": 40369,
+      "selectedLicense": "MIT"
+    },
+    {
+      "repository": "https://github.com/storytold/effectcraft",
+      "commit": "ec7ced1f0515f0b6f376dbcc297f1c441f452d6e",
+      "path": "crates/effects/src/transition2.rs",
+      "archive": "effectcraft/transition2.rs",
+      "sha256": "651f7ccca4f4f483749b1f05eaffe0801d4cd46b0505423f9dbb4164a053ab07",
+      "bytes": 20686,
+      "selectedLicense": "MIT"
+    },
+    {
+      "repository": "https://github.com/gl-transitions/gl-transitions",
+      "commit": "1886f07392b173b66ddc75d8d948ca0553626096",
+      "path": "transitions/ClockWipe.glsl",
+      "archive": "gl-transitions/ClockWipe.glsl",
+      "sha256": "bd7e6168eec558178685c6ea4ad4f7e0902c3feb904e39b7435f24971409dee3",
+      "bytes": 623,
+      "selectedLicense": "MIT"
+    },
+    {
+      "repository": "https://github.com/gl-transitions/gl-transitions",
+      "commit": "1886f07392b173b66ddc75d8d948ca0553626096",
+      "path": "transitions/DiamondWipe.glsl",
+      "archive": "gl-transitions/DiamondWipe.glsl",
+      "sha256": "90c076ec578eb236b2ffa68b78883280886eaccd961706358fe91f77416f2728",
+      "bytes": 766,
+      "selectedLicense": "MIT"
+    },
+    {
+      "repository": "https://github.com/gl-transitions/gl-transitions",
+      "commit": "1886f07392b173b66ddc75d8d948ca0553626096",
+      "path": "transitions/DirectionalWipe.glsl",
+      "archive": "gl-transitions/DirectionalWipe.glsl",
+      "sha256": "ab13a278d9a62400fb54ac3c1df98d06b57172ec72f79ec4e8d185614ecfdb52",
+      "bytes": 710,
+      "selectedLicense": "MIT"
+    },
+    {
+      "repository": "https://github.com/gl-transitions/gl-transitions",
+      "commit": "1886f07392b173b66ddc75d8d948ca0553626096",
+      "path": "LICENSE",
+      "archive": "gl-transitions/LICENSE",
+      "sha256": "0db684e0150546743ae96d8ecf083be716786d834af7dbf8170ee8b6c247978d",
+      "bytes": 1297,
+      "selectedLicense": "MIT"
+    },
+    {
+      "repository": "https://github.com/gl-transitions/gl-transitions",
+      "commit": "1886f07392b173b66ddc75d8d948ca0553626096",
+      "path": "transitions/RandomSquares.glsl",
+      "archive": "gl-transitions/RandomSquares.glsl",
+      "sha256": "844211ca33ae9f126fddfa9f3987bc853933c7ee2f919ca2d09def7d8040cb6a",
+      "bytes": 580,
+      "selectedLicense": "MIT"
+    },
+    {
+      "repository": "https://github.com/gl-transitions/gl-transitions",
+      "commit": "1886f07392b173b66ddc75d8d948ca0553626096",
+      "path": "transitions/Ripple.glsl",
+      "archive": "gl-transitions/Ripple.glsl",
+      "sha256": "3d71067791beccc32c0a388260ac099d8213e5fd312d896a4a46f1285b94b9d1",
+      "bytes": 549,
+      "selectedLicense": "MIT"
+    }
+  ],
+  "runtimeDependenciesAdded": [],
+  "reuse": "Selected transition equations only. See NOTICE and API README. No proprietary source or upstream renderer imported.",
+  "existingArithmetic": {
+    "path": "modules/gpu-image-effects/resident/arithmetic.ts",
+    "sha256": "f9d0027ab3f7fbb6161bfb20f3019caa8ed4d471eee9db4bec037fed0b3af4a0"
+  },
+  "adaptation": "Native scene-linear PM/16F/32F, strict typed options, existing Signal/owner/Renderer, compensated Pair twist inverse; no AE numerical/parameter parity certificate."
+}

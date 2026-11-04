@@ -1,0 +1,1 @@
+{"command":["C:\\Program Files\\nodejs\\node.exe","--import","tsx","--test","modules/native-2d/validation/model.test.ts","modules/native-2d/validation/canvas-layout.test.ts","modules/native-2d/validation/svg.test.ts"],"exitCode":0,"wallMs":582.1134000000002}

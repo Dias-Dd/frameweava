@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "originalExportInputUnavailable": true,
+  "frames": [
+    {
+      "frame": 32,
+      "identicalRGBA": true
+    },
+    {
+      "frame": 0,
+      "identicalRGBA": true
+    },
+    {
+      "frame": 63,
+      "identicalRGBA": true
+    }
+  ],
+  "exported": {
+    "schemaVersion": 1,
+    "entry": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-worktrees\\agent-2\\prototypes\\analysis-job-mvp\\evidence\\carried-demo\\project.tsx",
+    "layout": "source-tree",
+    "selfContained": true,
+    "sources": "preserve",
+    "modules": "copy",
+    "assets": "copy",
+    "files": 69,
+    "privatePlugins": [],
+    "officialPackages": {},
+    "uniqueEmbeddedAssets": 0,
+    "embeddedAssetReferences": 0,
+    "embeddedBytes": 0,
+    "externalFiles": [],
+    "warnings": [],
+    "verification": "NOT_YET_RENDERED: use frame/render and compare outputs in an isolated instance"
+  }
+}

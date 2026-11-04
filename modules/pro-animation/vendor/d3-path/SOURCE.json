@@ -1,0 +1,52 @@
+{
+  "project": "d3-path",
+  "version": "3.1.0",
+  "commit": "58bce7a53df2b03f70092a9b00b78055c4ffee04",
+  "license": "ISC",
+  "repository": {
+    "url": "git+https://github.com/d3/d3-path.git",
+    "type": "git"
+  },
+  "tarball": {
+    "shasum": "22df939032fb5a71ae8b1800d61ddb7851c42526",
+    "tarball": "https://registry.npmjs.org/d3-path/-/d3-path-3.1.0.tgz",
+    "fileCount": 7,
+    "integrity": "sha512-p3KP5HCf/bvjBSSKuXid6Zqijx7wIfNW+J/maPs+iwR35at5JCbLUT0LzF1cnjbCHWhqzQTIN2Jpe8pRebIEFQ==",
+    "signatures": [
+      {
+        "sig": "MEUCIB0sFa5Jb76PeadU+R6EHHayMdiUVh8p41Av1Dwvb3GOAiEA4zg76bK+ddCr49c4Ej6FYE2wKHBD+MQJuKxvEJFU2ZA=",
+        "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+      }
+    ],
+    "unpackedSize": 20858,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v4.10.10\r\nComment: https://openpgpjs.org\r\n\r\nwsFzBAEBCAAGBQJjoNydACEJED1NWxICdlZqFiEECWMYAoorWMhJKdjhPU1b\r\nEgJ2Vmr+Sg//RvFHSzv7sNV8xfNRFOpdpRbQZN9YoSVJAegO0wdVZUP79afo\r\nOPlJsGKbKvHL5sfxgb7SbSacHlEOFyXwovFfXn3xJuyWUF25vATdvpY4JiZI\r\nfzV8vbgU48YhqPP9pRKxWWwXSgMx8GrmlA2hAeFCPafy+cYC7gFVobEiZ7P3\r\n/93FIGOPXiTPJEM7iTxqiVKpMDQO2BMOs8NpUB3L1q+lz0G9yDAhV6NsVjsW\r\nUaPNgczP2NTOYWbSDJkCCeNYHb78cMJbJ6pSBlG/TZz7beqfKeWUnP3WjrMg\r\ntSkRSEV/Ni8QVo1fcBDiGTFOB+tqHWNt0QuJarufSHkmDrQQzzCPZ8MDrJcx\r\n+dfmwMxdv2vYKnGBXoKlFzE0YhVU6Lo6eCVWuCSVLv6MS/nrqee5S9DfsPgR\r\nj0w5mYCenUydWPpQA7XdW/zKTjAkgJ/Y7CxXAj7S/PP0k/m5I0aHvQpr41RP\r\nelaHXOvoAOZrRsFAQKdlomDcKr4h/SJHR2QAFDRiFDAsL/6En0syilsSOFiU\r\nPvtl5/QvFJ2BXzTnPMFl96GbQAMUtkqEFOktXnlqzsPx8nFsLc1B8USZw5dh\r\nody8KZVrBz2qqu12MWMaEzNEpAVEJ7gp8JKeHCxlQtYeE6cF9n/AM19A8Lsd\r\nFTj6kLYpmIjVxGgxXjGYLuYXOsB9KfptYRM=\r\n=KWRq\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "archiveSha256": "94e9b69f82f113ed4ada36703c05f6b7406723c55affe2a443d69729d6d5da14",
+  "artifacts": [
+    {
+      "upstream": "LICENSE",
+      "local": "modules/pro-animation/vendor/d3-path/LICENSE",
+      "bytes": 731,
+      "sha256": "a09b0d6d76e768fca2085fad05743ee81ddd11946bcda160a3cf5e1081a479aa"
+    },
+    {
+      "upstream": "src/index.js",
+      "local": "modules/pro-animation/vendor/d3-path/src/index.js",
+      "bytes": 49,
+      "sha256": "c8823092b0d809ccc9e931a4de4375c19c5aa24a9c167aef650b94edab50b62d"
+    },
+    {
+      "upstream": "src/path.js",
+      "local": "modules/pro-animation/vendor/d3-path/src/path.js",
+      "bytes": 4537,
+      "sha256": "2c2d30e2c5279c8f6f42edc6731a4af029949ec83f47ffb48c3e35d21f877800"
+    },
+    {
+      "upstream": "package.json",
+      "local": "modules/pro-animation/vendor/d3-path/package.upstream.json",
+      "bytes": 1635,
+      "sha256": "1aae497436309c84e7db7e5a2a11b1cc78bbba98f26088e4e71079cd725bdc89"
+    }
+  ],
+  "runtimeDependencies": {}
+}

@@ -1,0 +1,4 @@
+import {Composition,Stage,Layer,ref} from '@frameweave/engine';import {defineNativeStage} from '@frameweave/engine/native';
+import {firePlumeScene,flameSource,gasPocket} from 'spatial-gas-candidate';
+export const fire=defineNativeStage(init=>firePlumeScene(init,{dimensions:[24,36,24],bounds:[[-.9,0,-.9],[.9,2.7,.9]],pressureIterations:20,substeps:2,sources:[flameSource({center:[0,.24,0],extent:[.24,.22,.24],fuel:2,heat:2500})],pockets:[gasPocket({center:[0,.5,0],extent:[.3,.5,.3],temperature:1300,fuel:1,density:.08})],buoyancy:.0025,vorticity:.5,camera:{projection:'orthographic',position:[3,1.7,5],target:[0,1.2,0],viewHeight:3.1,near:.01,far:20},smokeColor:[.12,.16,.24],emission:.35,extinction:5}));
+export default Composition({id:'fire-shot',width:640,height:360,fps:24,durationInFrames:24,background:'#080d1c',children:[Stage({id:'fire',factory:fire,outputs:{surface:'surface'}}),Layer({source:ref('fire')})]});

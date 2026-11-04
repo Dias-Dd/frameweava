@@ -1,0 +1,31 @@
+{
+  "project": "EffectCraft",
+  "repository": "https://github.com/storytold/effectcraft",
+  "commit": "861c51f8187bf56efc77cc7b60fc4a513d2b7198",
+  "upstreamPath": "crates/path/src/interp.rs",
+  "originalSha256": "07d929d3cbe2d62982de5b1043a386020e859e1be97dd457cd8c1fdda146f362",
+  "adaptedSha256": "481319ba1abea7a43dfab495162f86d3c400a0f0b9742f3b245e98a43b936ec6",
+  "license": "MIT selected from MIT OR Apache-2.0",
+  "original": "../../rust/smart-morph/src/upstream-interp.original.rs",
+  "adapted": "../../rust/smart-morph/src/upstream-interp.rs",
+  "licenses": [
+    "../../vendor/effectcraft/LICENSE-MIT",
+    "../../vendor/effectcraft/LICENSE-APACHE",
+    "../../vendor/effectcraft/NOTICE"
+  ],
+  "changes": [
+    "Only six private functions made pub(crate): has_curves,rotate,signed_area,frame,shape_contexts,cost; tests retain exact numerical algorithms",
+    "Private ShapePath storage shim; no editor, timeline, feather support, renderer or foreign engineering model imported",
+    "Adapter pre-inserts explicit vertex counts using original with_vertex_count/polyline then calls original correspond(one_to_one=true); original artistic2000 cap is bypassed, source kernel unchanged",
+    "Adapter returns prepared endpoint exactly at t0/t1; extrapolation explicit in TS",
+    "Original approximate length24/arc allocation64/polyline32 tables retained and documented, not advertised as exact curve arclength or topology certification"
+  ],
+  "runtimeDependencies": "Existing official wasm-bindgen0.2.129 carrier only, Cargo.lock records12 transitive dependencies; retain generated full licence inventory",
+  "frameweaveReuse": [
+    "Original PathData validation/Core Signal/FrameContext",
+    "Original Clipper2 existing quantized Boolean/fill solve, BSL-1.0",
+    "Unmodified existing Earcut, ISC",
+    "Existing native shared-owner stroke/mesh/palette/depth-peel/Glow/Layer, no new GPU kernel/owner/rasterizer"
+  ],
+  "packageStatus": "Private reviewed test carrier only; Main owns formal R1 exports/version/permissions/Lock/L3"
+}

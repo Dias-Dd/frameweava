@@ -1,0 +1,8 @@
+import {defineNativeStage} from '../../native-gpu/authoring.ts';
+import {linear709} from '../../../src/media/surface.ts';
+import {publish} from '../composite/stage.ts';
+import {createNativeSphericalEffects} from './index.ts';
+const sourceKernel={abiVersion:1 as const,id:'fixture/spherical/resident-scene',version:'1.0.0',inputCount:0,parameterWords:1,code:`fn pixel(p:vec2u)->vec4f{let u=(vec2f(p)+.5)/vec2f(outputSize());let theta=u.x*6.28318530718;let phi=u.y*3.14159265359;let wave=sin(theta*3.+f32(paramU32(0u))*.2)*sin(phi);let a=.6+.4*sin(phi);return vec4f((.3+wave*.2)*a,(u.y*.5-.12)*a,(1.3+.6*cos(theta)*sin(phi))*a,a);}`};
+export const sphericalPerformanceStage=defineNativeStage<Record<string,never>,{capture?:boolean}>(async init=>{const g=init.gpu,fx=createNativeSphericalEffects(init);return {async renderAt(context,_inputs,props){const source=await g.run(await g.compile(sourceKernel),[],{output:{width:init.width,height:init.height,format:'rgba32float',color:linear709,alpha:'premultiplied'},parameters:Uint32Array.of(context.frame)});
+ return fx.processImage(source,async(image,f)=>{image=await f.vrBlur(image,{radiusDegrees:[1.5,1],kernelSize:3});image=await f.vrGlow(image,{radiusDegrees:[2,1.5],kernelSize:3,threshold:.6,intensity:.4});image=await f.vrRotateSphere(image,{rotation:[5,context.frame*7,2]});const n=Math.max(1,Math.floor(Math.min(init.width/3,init.height/2))),cube=await f.vrConverter(image,{outputProjection:'cube-3x2',width:n*3,height:n*2});image=await f.vrConverter(cube,{inputProjection:'cube-3x2',width:init.width,height:init.height});if(props.capture){await publish(g,'source',source);await publish(g,'result',image);}return image;},{context});
+ },async dispose(){await fx.dispose();await fx.dispose();}};});

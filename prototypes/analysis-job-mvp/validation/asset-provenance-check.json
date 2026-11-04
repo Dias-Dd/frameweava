@@ -1,0 +1,30 @@
+[
+  {
+    "name": "david.webm",
+    "url": "https://raw.githubusercontent.com/opencv/opencv_extra/4.x/testdata/cv/tracking/david/data/david.webm",
+    "note": "OpenCV extra tracking benchmark footage; validation fixture, not a production stock asset",
+    "bytes": 3917558,
+    "sha256": "4bbe69b7d097379af4d7ad128f02692820dc57a6d8275ea2b9e7eef4399a3e61"
+  },
+  {
+    "name": "face_landmarker.task",
+    "url": "https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task",
+    "note": "MediaPipe official Face Landmarker float16 model version 1",
+    "bytes": 3758596,
+    "sha256": "64184e229b263107bc2b804c6625db1341ff2bb731874b0bcc2fe6544e0bc9ff"
+  },
+  {
+    "name": "mediapipe-LICENSE.txt",
+    "url": "https://raw.githubusercontent.com/google-ai-edge/mediapipe/master/LICENSE",
+    "note": "MediaPipe source Apache-2.0",
+    "bytes": 12331,
+    "sha256": "8707eef0533987efc5b155d64761eeb6e20793f50b9bd1a68dad1cf4719d0ed8"
+  },
+  {
+    "name": "opencv-README.txt",
+    "url": "https://raw.githubusercontent.com/opencv/opencv_extra/4.x/README.md",
+    "note": "OpenCV extra provenance; no root dataset license supplied, validation fixture only",
+    "bytes": 668,
+    "sha256": "30a7a6db5d88e6a71fed679f4270c1832cfddfa4530b9186417418932f6eb10e"
+  }
+]

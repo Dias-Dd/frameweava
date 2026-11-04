@@ -1,0 +1,21 @@
+/** Source navigation audit only. It does not promote signatures into coverage. */
+import {readFile,writeFile} from 'node:fs/promises';
+await import('../coverage/parameter-index.ts');
+await import('../coverage/update-crosswalk.ts');
+const file='modules/native-effects/coverage/FINAL_AUDIT.json',audit=JSON.parse(await readFile(file,'utf8')),crosswalk=JSON.parse(await readFile('modules/native-effects/coverage/AE_CROSSWALK.json','utf8'));
+audit.sourceSnapshot='c7e217a77f5f7b8391e90f011107efb457efa1af plus experimental spherical source; see frozen receipt';
+audit.findings.withSourceNavigationCandidates=crosswalk.summary.withSourceCandidates;
+audit.findings.withoutSourceNavigationCandidates=crosswalk.summary.agent3Rows-crosswalk.summary.withSourceCandidates;
+const index=JSON.parse(await readFile('modules/native-effects/coverage/PARAMETER_INDEX.json','utf8'));
+audit.findings.declaredCallableRecords=index.methods.length;
+audit.findings.declaredOptionFields=index.methods.reduce((sum:number,m:{parameters:{fields:object[]}[]})=>sum+m.parameters.reduce((s,p)=>s+p.fields.length,0),0);
+audit.unmatched=audit.unmatched.filter((v:{category:string})=>v.category!=='Immersive Video');
+audit.experimentalSpherical={module:'modules/native-effects/spherical',status:'not_qualified_as_a_whole',implementedNames:12,completedNumericCases:48,passingOperations:['vrBlur','vrGlow','vrChromaticAberrations','vrColorGradients','vrFractalNoise'],failedNumericOperations:['vrDenoise(random)','vrDenoise(salt-pepper)','vrSharpen'],timedOut:['vrDigitalGlitch','whole-family frame'],unreachedGpuAcceptance:['vrRotateSphere','vrConverter','vrPlaneToSphere','vrSphereToPlane'],mediaAndPerformance:'Not run; no acceptance claim',evidence:'docs/native-spherical-evidence',equivalence:'Neither source counts nor this partial numerical suite establish full official behavior/control equivalence'};
+await writeFile(file,JSON.stringify(audit,null,2)+'\n');
+const completionFile='modules/native-effects/COMPLETION.json',completion=JSON.parse(await readFile(completionFile,'utf8'));
+completion.rounds[7].status='not_complete_spherical_checkpoint_partial';
+completion.rounds[7].completed.push('Twelve experimental spherical image function implementations; five have passing current GPU numerical cases, not whole-family acceptance');
+completion.rounds[7].remaining=['Spherical denoise/sharpen numerical failures and Glitch timeout; projection, media and performance acceptance remain incomplete','Five remaining unmatched source-navigation rows and full official behavior/control parity audit','Main-owned public SDK/package/portable qualification and Core transient source repeat issue'];
+completion.completion.status='not_complete';
+await writeFile(completionFile,JSON.stringify(completion,null,2)+'\n');
+await writeFile('modules/native-effects/spherical/implementation.json',JSON.stringify({...JSON.parse(await readFile('modules/native-effects/spherical/implementation.json','utf8')),status:'experimental_checkpoint_not_qualified_as_a_whole'},null,2)+'\n');

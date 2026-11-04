@@ -1,0 +1,8 @@
+{
+  "version": "1.99.1",
+  "target": "wasm32-unknown-unknown",
+  "source": "https://static.rust-lang.org/dist/rust-std-1.99.1-wasm32-unknown-unknown.tar.xz",
+  "sha256": "5f628f857dd00a8aa3fcac2e275665d2782066a5795274ed124c5b560f46423c",
+  "noticeFiles": ["COPYRIGHT", "LICENSE-APACHE", "LICENSE-MIT"],
+  "note": "Verbatim notices from the reviewed target distribution. Review notices when changing compiler/stdlib or adding crates. No toolchain binary is redistributed here."
+}

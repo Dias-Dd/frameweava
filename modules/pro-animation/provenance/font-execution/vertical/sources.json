@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "data": {
+    "project": "Unicode Character Database",
+    "release": "16.0.0",
+    "repositoryCommit": "not applicable; fixed official UCD release and content SHA256",
+    "url": "https://www.unicode.org/Public/16.0.0/ucd/VerticalOrientation.txt",
+    "file": "VerticalOrientation-16.0.0.txt",
+    "sha256": "24ac1474554eb55c85ace5c16d551535a8c52cdc2f4c13cf68c3839214339bbe",
+    "license": "Unicode-3.0",
+    "modification": "Original retained unchanged. Build-time adjacent-range reduction plus binary-search lookup; default R. All explicit scalar mappings compared to original data."
+  },
+  "license": {
+    "url": "https://www.unicode.org/license.txt",
+    "file": "UNICODE-LICENSE.txt",
+    "sha256": "e7a93b009565cfce55919a381437ac4db883e9da2126fa28b91d12732bc53d96",
+    "snapshot": "Copyright 1991-2026 original notice; retained unchanged"
+  },
+  "existingAlgorithms": [
+    "Existing pinned HarfRust/Skrifa original font client and licenses",
+    "Existing pinned unicode-bidi/script/grapheme contextual itemizer",
+    "Existing Unicode16 UAX14 implementation and runtime Intl.Segmenter",
+    "Existing Native glyph mesh/Clipper2/Earcut/PM HDR GPU execution"
+  ],
+  "reference": "https://www.w3.org/TR/css-writing-modes-4/#text-orientation",
+  "noNewRuntimeDependencies": true
+}

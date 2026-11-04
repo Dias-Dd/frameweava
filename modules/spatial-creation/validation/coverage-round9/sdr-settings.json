@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "media": {
+    "workingColor": {
+      "primaries": "rec709",
+      "whitePoint": "D65",
+      "transfer": "linear",
+      "reference": "scene",
+      "range": "full",
+      "referenceWhiteNits": 100
+    },
+    "preview": {
+      "color": {
+        "primaries": "rec709",
+        "whitePoint": "D65",
+        "transfer": "srgb",
+        "reference": "display",
+        "range": "full",
+        "referenceWhiteNits": 100
+      },
+      "clip": true
+    }
+  },
+  "video": {
+    "preset": "sdr-h264",
+    "encoder": "libx264",
+    "outputColor": {
+      "primaries": "rec709",
+      "whitePoint": "D65",
+      "transfer": "srgb",
+      "reference": "display",
+      "range": "full",
+      "referenceWhiteNits": 100
+    },
+    "conversion": {
+      "kind": "colorimetric",
+      "clip": true
+    },
+    "alpha": {
+      "mode": "flatten",
+      "matte": [
+        0,
+        0,
+        0
+      ]
+    }
+  }
+}

@@ -1,0 +1,487 @@
+{
+  "mode": "diagnosis",
+  "ok": true,
+  "scope": "320x180 correctness only; actual scene and display Float32 bytes, four evolving frames, same GPU. Not a 4K performance measurement.",
+  "rows": [
+    {
+      "name": "project-4k60",
+      "frames": [
+        168,
+        169,
+        170,
+        171
+      ],
+      "ok": true,
+      "stats": {
+        "adapter": "AdapterInfo { name: \"NVIDIA GeForce RTX 5070 Laptop GPU\", vendor: 4318, device: 11608, device_type: DiscreteGpu, device_pci_bus_id: \"0000:01:00.0\", driver: \"NVIDIA\", driver_info: \"596.49\", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 32, transient_saves_memory: Some(false), limit_bucket: None }",
+        "allocatedDataBytes": 108624,
+        "allocatedImageBytes": 11277312,
+        "backend": "native-wgpu",
+        "blockingGpuWaits": 0,
+        "bufferExports": {
+          "bytes": 0,
+          "readbacks": 0,
+          "version": 1
+        },
+        "capabilities": {
+          "backend": "native-wgpu",
+          "computeKernelAbis": [
+            1
+          ],
+          "crossStageGpuHandles": false,
+          "execution": "recording",
+          "f16WorkingBytesPerPixel": 16,
+          "hardwareVerified": true,
+          "limits": {
+            "maxBufferSize": 4294967295,
+            "maxComputeInvocationsPerWorkgroup": 1024,
+            "maxComputeWorkgroupSizeX": 1024,
+            "maxComputeWorkgroupSizeY": 1024,
+            "maxComputeWorkgroupSizeZ": 64,
+            "maxComputeWorkgroupStorageSize": 49152,
+            "maxComputeWorkgroupsPerDimension": 65535,
+            "maxStorageBufferBindingSize": 2147483644,
+            "maxStorageBuffersPerShaderStage": 524288,
+            "maxUniformBufferBindingSize": 65536
+          },
+          "maxKernels": 256,
+          "maxPendingPasses": 1024,
+          "nativeImages": {
+            "admission": "device-and-session-budget",
+            "maxTextureDimension2D": 32768,
+            "version": 1
+          },
+          "nativeMesh": {
+            "exactAdmission": "session-budget",
+            "float32Blendable": true,
+            "version": 1
+          },
+          "pixelKernelAbis": [
+            1,
+            2
+          ],
+          "profiling": "disabled",
+          "storageTypes": [
+            "f32",
+            "u32",
+            "i32"
+          ],
+          "version": 1
+        },
+        "completed": 4,
+        "devicesCreated": 1,
+        "diagnosticBlockingWaits": 8,
+        "diagnosticReadbackBytes": 7372800,
+        "diagnosticReadbacks": 8,
+        "diagnosticsEnabled": true,
+        "export": {
+          "bytes": 0,
+          "cpuImageCopies": 0,
+          "enabled": false,
+          "framesWritten": 0,
+          "hardwareEncode": false,
+          "httpTransport": false,
+          "pngTransport": false
+        },
+        "externalImages": {
+          "available": true,
+          "enabled": true,
+          "reason": null,
+          "version": 1
+        },
+        "frameHashes": 0,
+        "imageReadbacks": 0,
+        "inFlight": 0,
+        "nativeModules": {
+          "additionalD3D11Devices": 0,
+          "blockingGpuFenceWaits": 0,
+          "calls": 0,
+          "contentProfile": "reviewed-local-only",
+          "inputGpuConversions": 0,
+          "instances": 0,
+          "loaded": false,
+          "nativeDevicesCreated": 0,
+          "outputGpuConversions": 0,
+          "productionPixelReadbacks": 0,
+          "runtime": null,
+          "runtimeFileHashes": 0,
+          "surfaceProfile": "explicit-sdr-srgb8",
+          "version": 1,
+          "webRenderCachePrecision": "bgra8"
+        },
+        "numericalValidationPasses": 0,
+        "peakSubmittedInFlight": 1,
+        "persistentState": {
+          "buffers": 0,
+          "cursors": {},
+          "version": 1
+        },
+        "pipelineCache": {
+          "computeAndMeshCreated": 27,
+          "computeAndMeshReused": 79,
+          "displayReuses": 3,
+          "meshAttachmentSetsReused": 12,
+          "retention": "current-program-only",
+          "version": 1,
+          "workingBuffersReused": 31
+        },
+        "pixelTransferBytes": 0,
+        "programUpdates": 4,
+        "protocolVersion": 2,
+        "resourceImports": {
+          "uploadBytes": 0,
+          "version": 1
+        },
+        "slots": 2,
+        "submitted": 4,
+        "workingImageBytes": 38925312,
+        "sourceOutput": {
+          "width": 320,
+          "height": 180,
+          "format": "rgba32float",
+          "alpha": "premultiplied",
+          "color": {
+            "primaries": "rec709",
+            "whitePoint": "D65",
+            "transfer": "linear",
+            "reference": "scene",
+            "range": "full",
+            "referenceWhiteNits": 100
+          }
+        }
+      }
+    },
+    {
+      "name": "project-servo-4k60",
+      "frames": [
+        168,
+        169,
+        170,
+        171
+      ],
+      "ok": true,
+      "stats": {
+        "adapter": "AdapterInfo { name: \"NVIDIA GeForce RTX 5070 Laptop GPU\", vendor: 4318, device: 11608, device_type: DiscreteGpu, device_pci_bus_id: \"0000:01:00.0\", driver: \"NVIDIA\", driver_info: \"596.49\", backend: Vulkan, subgroup_min_size: 32, subgroup_max_size: 32, transient_saves_memory: Some(false), limit_bucket: None }",
+        "allocatedDataBytes": 108624,
+        "allocatedImageBytes": 11277312,
+        "backend": "native-wgpu",
+        "blockingGpuWaits": 0,
+        "bufferExports": {
+          "bytes": 0,
+          "readbacks": 0,
+          "version": 1
+        },
+        "capabilities": {
+          "backend": "native-wgpu",
+          "computeKernelAbis": [
+            1
+          ],
+          "crossStageGpuHandles": false,
+          "execution": "recording",
+          "f16WorkingBytesPerPixel": 16,
+          "hardwareVerified": true,
+          "limits": {
+            "maxBufferSize": 4294967295,
+            "maxComputeInvocationsPerWorkgroup": 1024,
+            "maxComputeWorkgroupSizeX": 1024,
+            "maxComputeWorkgroupSizeY": 1024,
+            "maxComputeWorkgroupSizeZ": 64,
+            "maxComputeWorkgroupStorageSize": 49152,
+            "maxComputeWorkgroupsPerDimension": 65535,
+            "maxStorageBufferBindingSize": 2147483644,
+            "maxStorageBuffersPerShaderStage": 524288,
+            "maxUniformBufferBindingSize": 65536
+          },
+          "maxKernels": 256,
+          "maxPendingPasses": 1024,
+          "nativeImages": {
+            "admission": "device-and-session-budget",
+            "maxTextureDimension2D": 32768,
+            "version": 1
+          },
+          "nativeMesh": {
+            "exactAdmission": "session-budget",
+            "float32Blendable": true,
+            "version": 1
+          },
+          "pixelKernelAbis": [
+            1,
+            2
+          ],
+          "profiling": "disabled",
+          "storageTypes": [
+            "f32",
+            "u32",
+            "i32"
+          ],
+          "version": 1
+        },
+        "completed": 4,
+        "devicesCreated": 1,
+        "diagnosticBlockingWaits": 8,
+        "diagnosticReadbackBytes": 7372800,
+        "diagnosticReadbacks": 8,
+        "diagnosticsEnabled": true,
+        "export": {
+          "bytes": 0,
+          "cpuImageCopies": 0,
+          "enabled": false,
+          "framesWritten": 0,
+          "hardwareEncode": false,
+          "httpTransport": false,
+          "pngTransport": false
+        },
+        "externalImages": {
+          "available": true,
+          "enabled": true,
+          "reason": null,
+          "version": 1
+        },
+        "frameHashes": 0,
+        "imageReadbacks": 0,
+        "inFlight": 0,
+        "nativeModules": {
+          "additionalD3D11Devices": 2,
+          "blockingGpuFenceWaits": 0,
+          "calls": 4,
+          "contentProfile": "reviewed-local-only",
+          "inputGpuConversions": 0,
+          "instances": 2,
+          "loaded": true,
+          "nativeDevicesCreated": 0,
+          "outputGpuConversions": 4,
+          "productionPixelReadbacks": 0,
+          "runtime": {
+            "frames": 4,
+            "instances": 2,
+            "logicalBridgeResources": 562958543355906,
+            "networkBlocked": 0,
+            "renderingContextReadbackAttempts": 0,
+            "telemetry": {
+              "display_list_received_count": 7,
+              "image_cache_cpu_bytes": 0,
+              "image_cache_gpu_hits": 0,
+              "last_lock_us": 0,
+              "last_locked_gl_textures": [],
+              "last_unlock_us": 0,
+              "last_wr_render_us": 122.3,
+              "last_wr_update_us": 0.4,
+              "lock_call_count": 0,
+              "release_call_count": 0,
+              "total_lock_us": 0,
+              "total_unlock_us": 0,
+              "unlock_call_count": 0
+            },
+            "version": 1
+          },
+          "runtimeFileHashes": 5,
+          "surfaceProfile": "explicit-sdr-srgb8",
+          "version": 1,
+          "webRenderCachePrecision": "bgra8"
+        },
+        "numericalValidationPasses": 0,
+        "peakSubmittedInFlight": 1,
+        "persistentState": {
+          "buffers": 0,
+          "cursors": {},
+          "version": 1
+        },
+        "pipelineCache": {
+          "computeAndMeshCreated": 28,
+          "computeAndMeshReused": 82,
+          "displayReuses": 3,
+          "meshAttachmentSetsReused": 12,
+          "retention": "current-program-only",
+          "version": 1,
+          "workingBuffersReused": 31
+        },
+        "pixelTransferBytes": 0,
+        "programUpdates": 4,
+        "protocolVersion": 2,
+        "resourceImports": {
+          "uploadBytes": 0,
+          "version": 1
+        },
+        "slots": 2,
+        "submitted": 4,
+        "workingImageBytes": 42611712,
+        "sourceOutput": {
+          "width": 320,
+          "height": 180,
+          "format": "rgba32float",
+          "alpha": "premultiplied",
+          "color": {
+            "primaries": "rec709",
+            "whitePoint": "D65",
+            "transfer": "linear",
+            "reference": "scene",
+            "range": "full",
+            "referenceWhiteNits": 100
+          }
+        }
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "name": "project-4k60",
+      "frame": 168,
+      "kind": "scene",
+      "different": 0,
+      "maxError": 0,
+      "index": 0,
+      "actual": 0.0006070539820939302,
+      "expected": 0.0006070539820939302
+    },
+    {
+      "name": "project-4k60",
+      "frame": 168,
+      "kind": "display",
+      "different": 0,
+      "maxError": 0,
+      "index": 0,
+      "actual": 0.007843137718737125,
+      "expected": 0.007843137718737125
+    },
+    {
+      "name": "project-4k60",
+      "frame": 169,
+      "kind": "scene",
+      "different": 0,
+      "maxError": 0,
+      "index": 0,
+      "actual": 0.0006070539820939302,
+      "expected": 0.0006070539820939302
+    },
+    {
+      "name": "project-4k60",
+      "frame": 169,
+      "kind": "display",
+      "different": 0,
+      "maxError": 0,
+      "index": 0,
+      "actual": 0.007843137718737125,
+      "expected": 0.007843137718737125
+    },
+    {
+      "name": "project-4k60",
+      "frame": 170,
+      "kind": "scene",
+      "different": 0,
+      "maxError": 0,
+      "index": 0,
+      "actual": 0.0006070539820939302,
+      "expected": 0.0006070539820939302
+    },
+    {
+      "name": "project-4k60",
+      "frame": 170,
+      "kind": "display",
+      "different": 0,
+      "maxError": 0,
+      "index": 0,
+      "actual": 0.007843137718737125,
+      "expected": 0.007843137718737125
+    },
+    {
+      "name": "project-4k60",
+      "frame": 171,
+      "kind": "scene",
+      "different": 0,
+      "maxError": 0,
+      "index": 0,
+      "actual": 0.0006070539820939302,
+      "expected": 0.0006070539820939302
+    },
+    {
+      "name": "project-4k60",
+      "frame": 171,
+      "kind": "display",
+      "different": 0,
+      "maxError": 0,
+      "index": 0,
+      "actual": 0.007843137718737125,
+      "expected": 0.007843137718737125
+    },
+    {
+      "name": "project-servo-4k60",
+      "frame": 168,
+      "kind": "scene",
+      "different": 12,
+      "maxError": 0.11721450090408325,
+      "index": 21830,
+      "actual": 0.8007352948188782,
+      "expected": 0.6835207939147949
+    },
+    {
+      "name": "project-servo-4k60",
+      "frame": 168,
+      "kind": "display",
+      "different": 12,
+      "maxError": 0.06137537956237793,
+      "index": 21830,
+      "actual": 0.9066997766494751,
+      "expected": 0.8453243970870972
+    },
+    {
+      "name": "project-servo-4k60",
+      "frame": 169,
+      "kind": "scene",
+      "different": 12,
+      "maxError": 0.11721450090408325,
+      "index": 21830,
+      "actual": 0.8007352948188782,
+      "expected": 0.6835207939147949
+    },
+    {
+      "name": "project-servo-4k60",
+      "frame": 169,
+      "kind": "display",
+      "different": 12,
+      "maxError": 0.06137537956237793,
+      "index": 21830,
+      "actual": 0.9066997766494751,
+      "expected": 0.8453243970870972
+    },
+    {
+      "name": "project-servo-4k60",
+      "frame": 170,
+      "kind": "scene",
+      "different": 12,
+      "maxError": 0.11721450090408325,
+      "index": 21830,
+      "actual": 0.8007352948188782,
+      "expected": 0.6835207939147949
+    },
+    {
+      "name": "project-servo-4k60",
+      "frame": 170,
+      "kind": "display",
+      "different": 12,
+      "maxError": 0.06137537956237793,
+      "index": 21830,
+      "actual": 0.9066997766494751,
+      "expected": 0.8453243970870972
+    },
+    {
+      "name": "project-servo-4k60",
+      "frame": 171,
+      "kind": "scene",
+      "different": 12,
+      "maxError": 0.11721450090408325,
+      "index": 21830,
+      "actual": 0.8007352948188782,
+      "expected": 0.6835207939147949
+    },
+    {
+      "name": "project-servo-4k60",
+      "frame": 171,
+      "kind": "display",
+      "different": 12,
+      "maxError": 0.06137537956237793,
+      "index": 21830,
+      "actual": 0.9066997766494751,
+      "expected": 0.8453243970870972
+    }
+  ]
+}

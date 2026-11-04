@@ -1,0 +1,15 @@
+import {mkdir,writeFile} from 'node:fs/promises';
+import {resolve,join} from 'node:path';
+import {createHash} from 'node:crypto';
+import {typesettingServices} from '../../../tests/helpers/pa3-typesetting.ts';
+import {paragraphText} from '../../../tests/helpers/pa3-paragraph.ts';
+import {operations} from '../../../tests/helpers/pa3-pathops.ts';
+import * as font from '../src/typography/fonts.ts';
+import {layoutParagraph,createParagraphIndex,prepareParagraphMeshes} from '../src/text-layout/index.ts';
+const root=resolve('.frameweave/pa3-font-metadata'),out=resolve('modules/pro-animation/validation/typography-scene'),start=performance.now();await mkdir(out,{recursive:true});await mkdir(join(root,'preparation'),{recursive:true});const services=await typesettingServices(),ops=await operations();
+try{
+ const plan=await font.prepareFontFallback(paragraphText,{itemizer:services.itemizer,candidates:services.candidates,fontSize:28}),source=await layoutParagraph(paragraphText,{itemizer:services.itemizer,font:plan.font,fontForRun:plan.fontForRun,scriptForRun:plan.scriptForRun,width:300,fontSize:28,lineHeight:42,x:30,baseline:45}),index=createParagraphIndex(source),mesh=await prepareParagraphMeshes(index,{pathOperations:ops}),metadata=[];
+ for(const face of services.candidates){const metrics=await font.readFontMetrics(face),axes=await font.readFontAxes(face),characters=await font.mapFontCharacters(face,[65,86,0x5d0,0x628,0x65e5,0x10ffff]),glyphs=await font.readGlyphMetrics(face,characters.filter(c=>c.glyphId!==null).map(c=>c.glyphId!)),location=await font.resolveFontLocation(face,axes.some(a=>a.tag==='wght')?{wght:700}:{});metadata.push({instance:face.instance,metrics,axes,characters,glyphs,location});}
+ const data={mesh,metadata,fallback:plan.report},code="// Real existing HarfRust/Skrifa + original Unicode16/Clipper2/Earcut; regenerate with prepare-typography.ts.\nimport type {PreparedParagraphMeshes} from '../../src/text-layout/native.ts';\nimport type {FontGlobalMetrics} from '../../src/typography/fonts.ts';\nexport const prepared="+JSON.stringify(data)+" as unknown as {mesh:PreparedParagraphMeshes;metadata:{metrics:FontGlobalMetrics}[];fallback:unknown};\n";
+ await writeFile(join(out,'prepared.ts'),code);const proof={version:1,seconds:(performance.now()-start)/1000,fonts:metadata,fallback:plan.report,metrics:{glyphs:mesh.layout.glyphs.length,clusters:index.clusters.length,lines:source.lines.length},preparedSha256:createHash('sha256').update(code).digest('hex'),preparation:mesh.preparation,scope:'Controlled provided font bytes, real whole-run shaping fallback. No new download, OS fallback, private cache pretending to be installed capability.'};await writeFile(join(root,'preparation/result.json'),JSON.stringify(proof,null,2));console.log(JSON.stringify({ok:true,seconds:proof.seconds,metrics:proof.metrics}));
+}finally{const cleanup={paths:await ops.dispose(),...await services.dispose()};await writeFile(join(root,'preparation/cleanup.json'),JSON.stringify(cleanup,null,2));}

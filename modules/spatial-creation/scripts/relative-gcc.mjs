@@ -1,0 +1,8 @@
+// SPDX-License-Identifier: Apache-2.0
+// Build helper for the installed MinGW MAX_PATH limitation. Bytes are copied
+// into owned short temporary files; no links, global state or source rewrites.
+import {spawnSync} from 'node:child_process';import {copyFile,mkdir,stat} from 'node:fs/promises';import {randomUUID} from 'node:crypto';import {resolve,join,extname,isAbsolute,relative} from 'node:path';import {fileURLToPath} from 'node:url';
+const workspace=resolve(fileURLToPath(new URL('../../../',import.meta.url))),folder=join(workspace,'.frameweave/c6-gen/links',randomUUID()),args=process.argv.slice(2),outputs=[];await mkdir(folder,{recursive:true});
+for(let i=0;i<args.length;i++){const original=args[i];if(i>0&&args[i-1]==='-o'){const path=resolve(original),target=join(folder,'output'+extname(path));args[i]=target;outputs.push([target,path]);continue;}if(!isAbsolute(original))continue;const inside=relative(workspace,original);if(!inside||inside.startsWith('..'))continue;try{if((await stat(original)).isFile()){const path=join(folder,'input'+i+extname(original));await copyFile(original,path);args[i]=path;}}catch(e){if(e.code!=='ENOENT')throw e;}}
+const winsock=process.env.FRAMEWEAVE_HOST_WS2_32??'C:/Program Files (x86)/Windows Kits/10/Lib/10.0.26100.0/um/x64/WS2_32.Lib';try{await stat(winsock);args.push(winsock);}catch(e){if(e.code!=='ENOENT')throw e;}
+const result=spawnSync('x86_64-w64-mingw32-gcc',args,{cwd:workspace,stdio:'inherit',windowsHide:true});if(result.error)console.error(result.error);if(result.status===0)for(const [source,target]of outputs)await copyFile(source,target);process.exit(result.status??1);

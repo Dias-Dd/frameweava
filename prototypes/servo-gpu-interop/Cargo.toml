@@ -1,0 +1,22 @@
+[package]
+name = "frameweave-servo-interop-probe"
+version = "0.1.0"
+edition = "2021"
+publish = false
+license = "Apache-2.0"
+
+[dependencies]
+wgpu = { version = "=30.0.1", default-features = false, features = ["std", "parking_lot", "vulkan", "wgsl"] }
+pollster = "=0.4.0"
+ash = "=0.38.0"
+windows = { version = "=0.62.2", features = ["Win32_Foundation"] }
+libloading = "=0.8.9"
+serde_json = "=1.0.154"
+
+[[bin]]
+name = "servo-interop-probe"
+path = "probe.rs"
+
+[[bin]]
+name = "servo-resident-v1-probe"
+path = "servo.rs"

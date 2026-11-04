@@ -1,0 +1,118 @@
+This independent facade reuses the existing Frameweave GPU Pixel Pass in this checkout.
+Checkpoint 2 also calls the existing Stage-local professional GPU compositor.
+Its unmodified source/Core may be bundled by the isolated acceptance fixture
+until Main exposes that factory through the SDK; no fork/new owner is maintained.
+No EffectCraft/Pixi/Three/OCIO Shader or native binary was copied into its runtime.
+
+The concrete upstream inventory cites EffectCraft:
+https://github.com/storytold/effectcraft
+Commit ec7ced1f0515f0b6f376dbcc297f1c441f452d6e
+Copyright (c) 2026 ArtCraft Team and the EffectCraft contributors.
+Upstream code offers MIT OR Apache-2.0; future source extraction must preserve
+the selected license, per-file notices, source hashes and dependency audit.
+Catalog metadata/source inspection does not certify integration or GPU execution.
+The existing upstream kernels.wgsl shadow_make/shadow_combine and catalogue were
+read for algorithm comparison. Checkpoint 2 retains Frameweave's Gaussian sigma
+and existing GPU mask/affine semantics rather than claiming EffectCraft parity.
+
+Checkpoint 3's reframe reuses the existing integer affine sampler, without new
+upstream code or dependencies. Pinned EffectCraft effects.rs/fx_distort sources
+were inspected: its broader Transform/Distort framework is unnecessary for this
+integer crop/pad/reflection subset. It is not a port of all upstream Mirror options.
+
+Checkpoint 4's binary coverage union directly reuses the existing source-over
+Alpha kernel, with canonical black data planes. No external code is copied and
+no upstream Set Matte/Minimax/colour Blend implementation is claimed.
+
+Checkpoint 5 reuses the same GPU mask multiplication/source-over and opaque zero
+target initialization for Alpha-to-RGB. EffectCraft fx_color.wgsl/ops.rs were
+inspected; its full channel framework is not transplanted or claimed as present.
+No additional upstream runtime code, native binary or third-party dependency is added.
+
+Checkpoint 6 reuses the existing single-source over-black compositor for Alpha
+removal. No upstream Solid Composite/unmatting implementation is copied or
+declared complete; it supports only the explicitly verified black backdrop.
+
+Checkpoint 7 inspects pinned fx_stylize.rs/fx_stylize.wgsl Motion Tile/Repetile.
+Its integer point-sampled repeat/mirror subset reuses Frameweave's existing
+compositor with logarithmic copy scheduling and a closed local bit transport.
+No external Shader/framework is copied, nor full upstream phase/scale/filtering
+claimed. This representation is not a public media schema or shared Stage port.
+
+Checkpoint 8 inspects the existing pinned kernels.wgsl colour case 5 Exposure.
+The new scene-linear stops gain reuses Frameweave's opaque Multiply, without
+copying upstream offset/gamma/2.2 conversion or transplanting its effect Host.
+No new external code, native binary or dependency is introduced.
+
+Checkpoint 9 compares pinned kernels.wgsl colour case 6 Invert. The RGB-only
+scene-linear negative retains Frameweave's Alpha/emission semantics and reuses
+its opaque Multiply/Lighter. No upstream code is copied and no Alpha-invert,
+selective-channel or blend controls are claimed as implemented.
+
+Checkpoint 10 reuses existing Frameweave Plus/Lighter (two GPU draws), without
+copying an external Blend framework. Acceptance also reads immutable local Git
+Main 083a1d02976a9bafd5289e378c19a32d46a90ade source and its closed dependencies;
+per-file bytes/SHA are in batch10 evidence. That Node-only test overlay is not
+a runtime Shader injection API, vendored GPU Host, SDK update or release package.
+
+Checkpoint 11 reuses Frameweave's black-over-opaque-white source-over for coverage
+complement. Pinned EffectCraft case 6 Alpha invert was compared; colour-retaining
+Alpha inversion is not copied or claimed. This function returns a canonical mask.
+No new foreign code/binary/dependency or GPU owner is added. The independent F64
+exported-EXR oracle is acceptance-only and never becomes an effect runtime.
+
+Checkpoint 12 reuses existing GPU mask multiplication and exact linear
+source-over/Lighter data assembly for replacement coverage. Pinned ops.rs track
+matte multiplication was reviewed; a full EffectCraft Set Matte/channel selector
+implementation is not copied or claimed. Standard input Alpha/colour preparation
+uses Frameweave's established rules. No new foreign Shader/Host/binary is added.
+
+Numerical validation imports the repository's frozen PA-1 CPU reference fixture;
+its exact source hash and the existing GPU source hashes are recorded in
+docs/gpu-image-effects/sources.json. Existing project and vendor notices remain applicable.
+
+Checkpoint 13 reuses Frameweave's opaque GPU Multiply for raw spatial RGB gain
+maps while preserving logical image coverage. The pinned EffectCraft channel_mix
+entry was reviewed and is a different styled-layer interpolation, not claimed
+as direct parity. No new foreign code/Shader/Rust/binary/dependency is added.
+
+Checkpoint 14 reuses the existing compensated Frameweave source-over and its
+read-only implementation identity, without copying an external blend engine.
+Native PM/opaque output is qualified; acceptance preserves exact-binary/F64
+counterexamples showing why arbitrary straight unassociation is not covered.
+The oracle and fixed Git source overlay are acceptance-only, not effect runtime,
+foreign dependencies, a GPU Host or a permission/source-injection API.
+
+Checkpoint 15 reuses Frameweave's compensated Screen blend and its immutable
+precision identity/admission, without copying an external framework or Shader.
+The zero-Alpha emission rule matches the existing coverage-aware compositor.
+Exact dyadic simplification and the separate F64 EXR oracle are acceptance-only;
+no TypeScript pixel Screen computation is used as effect output or fallback.
+
+Checkpoint 16 reuses the existing compensated coverage-aware image Multiply.
+The shared two-mode adapter does not add a GPU Host, Shader injection or foreign
+code/dependency. Exact dyadic/F64 oracles and the staged-rounding counterexample
+are acceptance-only. The signed difference-add proposal is not an implemented
+operator or an Unsharp effect, and does not authorize shared/ABI changes.
+
+Checkpoint 17 compares pinned EffectCraft Exposure case5 gain/offset/gamma, but
+reuses the existing compensated Frameweave source-over rather than extracting
+a foreign Shader/framework. Native per-channel scene-linear offsets preserve
+input logical Alpha/association (straight hidden colour and PM emission differ
+explicitly); no grading Lift/gamma/upstream parity is asserted. Exact dyadic and
+independent F64 scene references are acceptance-only. No new dependency or code
+from EffectCraft is copied.
+
+Checkpoint 18 reuses compensated Frameweave source-over for native directed
+matte difference A*(1-B), not foreign channel-blur code. Pinned EffectCraft
+blur2.rs/blur3.rs were reviewed with SHA256 and Git blob verification; channel
+blur unassociation and its a>1e-6 cutoff were not adopted or qualified as GPU.
+No external code/Shader/Rust/binary/dependency/Host is added. The exact dyadic
+coverage oracle and independent F64 EXR verification remain acceptance-only.
+
+Checkpoint 19 compares pinned EffectCraft channel_mix, but reuses compensated
+Frameweave source-over for two-input native PM RGBA Crossfade. RGB and logical
+Alpha are transported in stage-local opaque data banks; the existing GPU alone
+computes interpolation. No external code/Shader/Rust/binary/dependency/Host is
+added. Exact dyadic and independent F64 EXR references remain acceptance-only.
+This is not a generic weighted/multi-time accumulation implementation.

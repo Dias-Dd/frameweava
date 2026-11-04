@@ -1,0 +1,1 @@
+{"extends":"../../../tsconfig.json","include":["../src/text-layout/**/*.ts","../src/bidi-text.ts","../../../tests/pro-animation-text-layout*.test.ts","../../../tests/pro-animation-text-animation*.test.ts"],"exclude":["../../../node_modules"]}

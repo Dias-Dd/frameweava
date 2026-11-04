@@ -1,0 +1,33 @@
+Text layout / original-source queries / Native mixed-font adapter
+Frameweave original adapters: Apache-2.0.
+
+Reused unmodified algorithms:
+- @cto.af/linebreak3.0.5 commit56fd90dcf53e6eef429b14863b10dde4c9b923d3, MIT.
+- @cto.af/unicode-trie-runtime3.2.6 commite15eff6a72c1c0abe848c0332c7279d426db9c91, MIT.
+  Its original root license preserves the foliojs/unicode-trie provenance.
+- fflate0.8.2 commitd3243651cb142e3e04f3e4bc037b9e985878f444, MIT.
+Preserve vendor/*/LICENSE, all original copyrights and SOURCE.json receipts.
+Only import paths are adapted to separately pinned relative dependencies.
+Frameweave-authored index.d.ts is a type-only declaration. No npm scripts,
+new root dependencies/locks, OS font lookup or untrusted callback admission.
+Original package archive SHA512 integrity was checked; copied npm signatures
+were NOT independently cryptographically verified.
+
+Unicode16 property tries/test corpus use Unicode License v3; preserve
+vendor/unicode-linebreak/UNICODE-LICENSE.txt. The official LineBreakTest corpus:
+https://www.unicode.org/Public/16.0.0/ucd/auxiliary/LineBreakTest.txt
+SHA256 910759a611a479f37df4f535d2e64d7589be3c5ac5f7491cf1fb4fa4cdb211e9.
+Original checksum-verified corpus stays in the own worktree cache, not silently
+downloaded in execution.
+
+Previously developed own contextual Rust wrapper is adopted without replacing
+the upstream Unicode algorithms. rust/text-lines/src/original-analysis.rs is
+byte-for-byte the committed rust/text-analysis/src/analysis.rs:
+SHA256 1d26e04b045d182f497b02d40412c27da8adc04da7fbde0e97d5077e4db162a4.
+See rust/text-lines/NOTICE.md for original crate/license identities.
+HarfRust/Skrifa and Clipper2 retain their prior source/license/lock evidence.
+Earcut3.2.4 unchanged ISC source/license remains under vendor/earcut.
+Four real Noto font fixture identities/OFL1.1 reside in validation/bidi-scene,
+without modifying/duplicating their original font bytes.
+No Adobe code/assets, foreign editor, renderer, timeline, Graph, registry or
+GPU device owner is introduced. No AE equivalence/coverage percentage claimed.

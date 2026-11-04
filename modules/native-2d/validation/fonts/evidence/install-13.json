@@ -1,0 +1,9 @@
+{
+  "installed": [
+    "native-2d-candidate@0.4.3"
+  ],
+  "roots": {
+    "native-2d-candidate": "native-2d-candidate@0.4.3"
+  },
+  "lockfile": "D:\\frameweave-worktrees\\agent-4\\.frameweave\\native-2d\\font-project-font-package-12\\frameweave.packages.lock.json"
+}

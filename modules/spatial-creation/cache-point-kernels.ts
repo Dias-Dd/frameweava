@@ -1,0 +1,7 @@
+// SPDX-License-Identifier: Apache-2.0
+export const pointCacheCode=/* wgsl */`
+fn numberAt(index:u32)->f32{var value=load0(index);if(paramU32(6u)==1u){value=((value&255u)<<24u)|((value&65280u)<<8u)|((value>>8u)&65280u)|((value>>24u)&255u);}return bitcast<f32>(value);}
+fn transform(v:vec3f,w:f32)->vec3f{return (mat4x4f(vec4f(paramF32(16u),paramF32(17u),paramF32(18u),paramF32(19u)),vec4f(paramF32(20u),paramF32(21u),paramF32(22u),paramF32(23u)),vec4f(paramF32(24u),paramF32(25u),paramF32(26u),paramF32(27u)),vec4f(paramF32(28u),paramF32(29u),paramF32(30u),paramF32(31u)))*vec4f(v*paramF32(7u),w)).xyz;}
+fn compute(g:vec3u,l:vec3u,w:vec3u){let i=g.x+g.y*paramU32(5u);if(i>=paramU32(0u)){return;}let a=paramU32(1u)+paramU32(2u)*paramU32(0u)*3u+i*3u;let b=paramU32(1u)+paramU32(3u)*paramU32(0u)*3u+i*3u;let x=vec3f(numberAt(a),numberAt(a+1u),numberAt(a+2u));let y=vec3f(numberAt(b),numberAt(b+1u),numberAt(b+2u));let p=transform(mix(x,y,paramF32(4u)),1.);var velocity=vec3f(0.);if(paramF32(8u)>0.){velocity=transform((y-x)/paramF32(8u)*paramF32(9u),0.);}for(var k=0u;k<3u;k++){store1(i*3u+k,p[k]);store2(i*3u+k,velocity[k]);}}
+`;
+export const pointCacheMixCode=/* wgsl */`fn compute(g:vec3u,l:vec3u,w:vec3u){let i=g.x+g.y*paramU32(1u);if(i>=paramU32(0u)){return;}for(var k=0u;k<3u;k++){store4(i*3u+k,mix(load0(i*3u+k),load2(i*3u+k),paramF32(2u)));store5(i*3u+k,mix(load1(i*3u+k),load3(i*3u+k),paramF32(2u)));}}`;

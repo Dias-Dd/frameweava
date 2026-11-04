@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "apiVersion": 1,
+  "id": "pro-animation",
+  "version": "0.7.3",
+  "name": "Pro Animation",
+  "description": "Composable CPU float animation: bounded paths, LTR text units, procedural fields and analytic particles. Explicit Legacy SDR showcase.",
+  "tags": [
+    "animation",
+    "text",
+    "vector",
+    "wiggle",
+    "glow",
+    "displacement"
+  ],
+  "source": {
+    "kind": "local",
+    "authority": "frameweave.pro"
+  },
+  "compatible": "0.1.0",
+  "platforms": [
+    "web"
+  ],
+  "capabilities": [
+    "canvas2d"
+  ],
+  "permissions": {
+    "filesystem": false,
+    "network": false,
+    "process": false
+  },
+  "entry": "effect",
+  "effect": "effect.json",
+  "modules": {
+    "main": {
+      "format": "javascript",
+      "path": "./dist/index.js"
+    },
+    "effect": {
+      "format": "javascript",
+      "path": "./dist/effect.js"
+    },
+    "bindings": {
+      "format": "javascript",
+      "path": "./dist/bindings.js"
+    }
+  },
+  "dependencies": {
+    "frameweave.graphics-contracts": "1.0.0"
+  },
+  "bindings": {
+    "schemaVersion": 1,
+    "module": "bindings",
+    "types": "./dist/bindings.d.ts",
+    "initialize": "initialize",
+    "engine": "web"
+  }
+}

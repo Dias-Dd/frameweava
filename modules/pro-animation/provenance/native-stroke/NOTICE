@@ -1,0 +1,27 @@
+Native variable-width stroke creation chain
+
+New width/ink/outline/draw adapters: Apache-2.0, Frameweave.
+No new external renderer/timeline, Rust algorithm translation or Adobe source/assets.
+Existing algorithms are called unchanged and retain original notices:
+
+- kurbo 0.13.1, commit838b69ef35f3381cefc007d86aa8364f5a6dc673,
+  MIT OR Apache-2.0; rust/curve-metrics/licenses/CURVE-NOTICE, KURBO-AUTHORS,
+  KURBO-LICENSE-MIT and KURBO-LICENSE-APACHE. Dependency checksum in Cargo.lock.
+- clipper2-rust 1.2.0/original Clipper2, BSL-1.0;
+  rust/pathops/licenses/CLIPPER2-NOTICE and CLIPPER2-LICENSE.
+  The unchanged published crate is fixed by rust/pathops/Cargo.lock checksum.
+- Earcut 3.2.4, commit9e70986eb94054c621c926888dd05bc26bffb902, ISC;
+  unchanged vendor/earcut/earcut.js, LICENSE and SOURCE.json with original hashes.
+- Existing EffectCraft smooth-noise adaptation under MIT selected license,
+  commit861c51f8187bf56efc77cc7b60fc4a513d2b7198. Preserve vendor/effectcraft
+  notices and PA2-SOURCES.json; this batch calls the existing adapter unchanged.
+
+Frameweave Signal, guarded Pair math, Native mesh/sampler, shutter, Glow and Layer
+are reused directly. Uniform-width cap/join and Dash remain existing adapters.
+Variable-width rib/fan parameterization is a small Frameweave adapter because the
+existing constant-distance offset API cannot represent a pressure profile. The
+complex topology/triangulation/curve inversion algorithms are not reimplemented.
+
+Reference only, no copied specification text or Adobe algorithm:
+https://www.w3.org/TR/svg-strokes/ (2015 Working Draft, not an implementation claim)
+https://angusj.com/clipper2/Docs/Units/Clipper.Offset/Classes/ClipperOffset/_Body.htm

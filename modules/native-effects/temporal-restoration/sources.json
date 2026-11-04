@@ -1,0 +1,22 @@
+{
+  "effectcraft": {
+    "repository": "https://github.com/storytold/effectcraft",
+    "commit": "ec7ced1f0515f0b6f376dbcc297f1c441f452d6e",
+    "license": "MIT (dual-license choice)",
+    "files": [
+      {
+        "file": "vendor/EffectCraft-noise2.rs",
+        "sha256": "df78cdf41008d0604d0ac069514c0239d0cbcdf777396bed99dac6b67d00f217"
+      },
+      {
+        "file": "vendor/EffectCraft-LICENSE-MIT",
+        "sha256": "7b6db9a363688683feacdf9b528f059637f2e5d2edbacd8720fc9b26781c9abe"
+      }
+    ]
+  },
+  "adaptation": {
+    "retained": "Existing Gaussian, robust bidirectional LK and Native Pixel/Compute/Field/lifecycle. Pinned EffectCraft noise2.rs statistical intent and source retained.",
+    "new": "Joint 3D Welch complex RGB spectral Gram, complex Cholesky and dense real matrix FIR instead of separable colour covariance. Implemented here because the pinned upstream source has no such joint temporal model; not described as a verbatim upstream shader.",
+    "cpu": "Control tables and exact integer/rational time only. F64 oracle is test-only. Production image/tensor processing stays on the admitted owner."
+  }
+}

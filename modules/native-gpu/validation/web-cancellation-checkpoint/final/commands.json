@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "sourceCommit": "15c4bff6c8006d288ee2eb6d7e3989a9e3d4f1ba",
+  "hashes": {
+    "src/render/renderer.ts": "60a8f5947242c8c00cd68bf2fb496c39a140013e4ab2712123b1b971325a3e90",
+    "modules/native-gpu/logic-host.ts": "1239d0c40f68cc1888e5bbd0d9ceaaddb98fdd77031df598e6fda2ad3f218852",
+    "modules/native-gpu/web-bridge.ts": "4e15153b6f388c2126534feb7f20c608560a95f1a78752fabcd8cc9c7d021f69",
+    "modules/native-gpu/service.ts": "d360a33c8cdc24ee764f30bce01016906092a4927faeb65756288104dbeb85cd",
+    "tests/native-web-prefix-cancellation.test.ts": "5a83d7a9c8c30494c0473875141e0c9c31aa1300d4ad8c2ae7a242aaa85817fc"
+  },
+  "platform": "win32",
+  "node": "v22.19.0",
+  "mode": "targeted-fix",
+  "wallMs": 44686.9042,
+  "results": [
+    {
+      "name": "types",
+      "args": [
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "--pretty",
+        "false"
+      ],
+      "code": 0,
+      "timedOut": false,
+      "wallMs": 9478.2048
+    },
+    {
+      "name": "cancellation-and-bridge",
+      "args": [
+        "--import",
+        "tsx",
+        "--test",
+        "--test-concurrency=1",
+        "tests/native-web-prefix-cancellation.test.ts",
+        "tests/native-gpu-cancellation.test.ts"
+      ],
+      "code": 0,
+      "timedOut": false,
+      "wallMs": 35205.8
+    }
+  ],
+  "ok": true,
+  "scope": "Cancellation propagation and existing bridge/client regressions only; no performance or whole-repository rerun."
+}

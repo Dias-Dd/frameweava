@@ -1,0 +1,11 @@
+{
+  "image0": {
+    "path": "image0.png",
+    "size": [
+      2,
+      2
+    ],
+    "decode": "icc-sdr",
+    "missingProfile": "assume-srgb"
+  }
+}

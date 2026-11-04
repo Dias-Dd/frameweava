@@ -1,0 +1,14 @@
+{
+  "path": {
+    "resourceId": "pathFile",
+    "kind": "file",
+    "sha256": "f2086fef290f6a21fe5cb272e6e94e2a2f6a82169d25a442ef02008168462ab7",
+    "bytes": 1733
+  },
+  "track": {
+    "resourceId": "trackFile",
+    "kind": "file",
+    "sha256": "7a8b35155ed646379b9e9de7d3e6a6fe9557d5cbb7bc6dcc5522a571edb728b2",
+    "bytes": 35978
+  }
+}

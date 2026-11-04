@@ -1,0 +1,65 @@
+{
+  "source": "Agent-1 frozen thread reply, 2026-11-02",
+  "integration": "Main cb306bdb synchronized the formal flushState continuation, coherent Native owner/SpiderMonkey and Deep helper into this worktree. State continuation independently verified in round8. Deep/VDB functionality remains separately scoped and not claimed verified here.",
+  "deep": {
+    "source": "3a1e1e2cb8f31fc9ff92af826c803aa33b5e366d",
+    "evidence": "2bea1dfdf3c6f1a58e71d348e38a9c8e3c53704a",
+    "verifiedScope": "Half/Float/UInt typed I/O and surface-point flatten/extract; no volume intervals or cross-image interleave"
+  },
+  "vdb": {
+    "source": "1f8da5b9a68f517ba3ff683cedf36fca63a56bc6",
+    "evidence": [
+      "0615ce44506b592610b2e87cfae062b77a76172e",
+      "20366a76333a4fc6aa31a70a77f456d8d7ed75ec"
+    ],
+    "verifiedScope": "Uncompressed breadth-first NanoVDB32.8.0 Float raw SDF/fog, read-only lookup/slice; no arbitrary vdb/write/simulation"
+  },
+  "cudaTrt": {
+    "source": "76f6a50514e8ca34a3602bf8e5955b4bd9d7d655",
+    "verifiedScope": "Static F32 inference; no general PTX host"
+  },
+  "optix": {
+    "source": "6c0a09642b95bf31feaa0eaadbb96a11abb3d97c",
+    "verifiedScope": "Explicitly authorized opaque triangle rayQuery; no denoiser/pathtracer"
+  },
+  "ownership": "Same GPU owner with GPU copies, not cross-API zero-copy",
+  "binaryRights": "NVIDIA SDK developer authorization local; vendor binaries not redistributed",
+  "integrationBeforeMain": "Matching JS recorder/Native owner/Deep/VDB runtime bundle not available; Main integration required. Existing frozen20261101 owner is older; do not mix.",
+  "currentRuntimePaths": [
+    ".frameweave/native-target/release/frameweave-native-gpu.exe",
+    ".frameweave/spidermonkey-target/debug/frameweave-spidermonkey-host.exe",
+    ".frameweave/deep-exr/build/Release/frameweave-deep-exr.exe"
+  ],
+  "continuation": {
+    "contract": "docs/NATIVE_STATE_CONTINUATION.md",
+    "entry": "gpu.flushState; existing NativeReplay auto flush >=768 pending at complete step boundary",
+    "guarantee": "same owner/frame, managed mutable state and immutable seeds; Core checkpoints/rollback/latch; no partial image publication",
+    "round8Evidence": "validation/coverage-round8/evidence/results-08.json",
+    "encoderIntegration": {
+      "status": "owner-frozen-fix-awaiting-Main-integration",
+      "baseline": "603b87c6b93dbf468da19edc3dd70e4f2c1660ef",
+      "error": "E_NATIVE_ENCODE: plan update cannot remove an active encoder",
+      "evidence": "validation/coverage-round9/evidence/results-02.json",
+      "supportedAlternative": "Existing explicit PME reference final delivery (--settings --professional-backend reference), real24frame decode passed",
+      "owner": "Agent1 frozen delivery; Main integration pending",
+      "frozenFix": "1edf68f9c85337deb722ddab5d4591c3d0bded26",
+      "matchingNativeSha256": "e8b3a34ba2246132527bbb96656719a91fdc8fe90db654b747f54f43a70da3fd",
+      "ownerEvidence": "Agent1 reports independent long-replay4frameMP4 and native-capacity-media.test.ts passed; not imported or independently verified in this checkout",
+      "integration": "Use coherent Core/recorder/native only after Main/user synchronization; no executable-only private-protocol replacement",
+      "latestFrozenHead": "8ea45f637f895d7ffbbd6153a8dcb6ad858cfe0c",
+      "latestSource": "5829f0443e68f2ad8f386026e72b2743c4ddb872",
+      "bundle": "D:/frameweave-worktrees/agent-1/outputs/deliveries/native-capacity-5829f044",
+      "reportedScope": "Encoder lease/continuation and unused binding fixes; configurable capacity/admission, actual >1024passes. Owner reports55/55; not imported or independently revalidated here."
+    }
+  },
+  "binaryResourceFrameIdentity": {
+    "status": "confirmed-Core-gap",
+    "baseline": "3b5340643973889afc7f4fdbd396db33531d4be8",
+    "error": "E_NATIVE_PROTOCOL: Unknown immutable data seed",
+    "evidence": "validation/coverage-round13/evidence/real-09.log",
+    "cause": "NativeRecordingScope sentSeeds and NativeLogicHost initialData keyed by reused data index across frames; different-size frame-local read-only Resource falsely treated as old immutable seed",
+    "ownerReply": "Agent1 read-only confirmation 2026-11-03; neither capacity8ea45f6 nor source9dc5017c3251ea7b9eee22f35efd15476c1039e0/evidenceba2b2d656d93062a0c8ab8a3d7cac2c25dc22cba fixes this. Same-frame frameContinuation is separate.",
+    "supportedPolicy": "Stage-init full immutable source sequence with configurable aggregate byte plan; real random/fresh and1secondMP4 verified. No dynamic-streaming claim.",
+    "integration": "Main/owner must distinguish initialization/persistent seeds from frame-local epoch identities, retain immutable tamper checks and verify different-size/same-size-changed-content/random/segmented frames. No Core edit or sync here."
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "adapterLicense": "Apache-2.0",
+  "directReuses": [
+    {
+      "project": "kurbo",
+      "version": "0.13.1",
+      "commit": "838b69ef35f3381cefc007d86aa8364f5a6dc673",
+      "license": "MIT OR Apache-2.0",
+      "algorithm": "Original unchanged arclen/inv_arclen/evaluation via existing owned curve sampler",
+      "notice": "../../rust/curve-metrics/licenses/CURVE-NOTICE"
+    },
+    {
+      "project": "HarfRust",
+      "version": "0.15.0",
+      "commit": "71d965130ea93905f81b8f03a03d7ecc794fbc47",
+      "license": "MIT",
+      "algorithm": "Existing original font shaping/ligature/kerning/glyph+cluster mapping; no new shaper",
+      "notice": "../typography/NOTICE"
+    },
+    {
+      "project": "Skrifa",
+      "version": "0.49.0",
+      "commit": "47a301615fd95acf0da9fb7dbcd0ea7c7df36943",
+      "license": "MIT OR Apache-2.0",
+      "algorithm": "Existing original outline/metadata/variable fonts",
+      "notice": "../typography/NOTICE"
+    },
+    {
+      "project": "EffectCraft",
+      "repository": "https://github.com/storytold/effectcraft",
+      "commit": "861c51f8187bf56efc77cc7b60fc4a513d2b7198",
+      "license": "MIT selected from MIT OR Apache-2.0",
+      "algorithm": "Existing audited noise1 import; NO new Rust-to-TS port",
+      "sourcePath": "crates/expr/src/noise.rs",
+      "originalSha256": "74c2c5be45978bbba2c653a6f1f16b40ecd38543a71efd326818b19fb5fe5420",
+      "notice": "../../vendor/effectcraft/NOTICE"
+    }
+  ],
+  "existingFrameweave": {
+    "sourceParentCommit": "e5bff8b0bdac520d30317b90a323d6c2fc6afe05",
+    "glyphOnPathBeforeSha256": "0a295372bef561f6f0b0a904bf3cea01730b69d02693103ef5c061f9113361bb",
+    "changes": "Existing glyphsOnPath now delegates batch distance/wrap/clip behavior to the SAME extracted glyph-path-samples helper used by paragraph paths; existing algorithm/old tests retained. No parallel curve algorithm.",
+    "references": [
+      "../text-layout/NOTICE",
+      "../native-text/NOTICE",
+      "../typography/NOTICE",
+      "../smart-path/NOTICE"
+    ]
+  },
+  "unchangedDependencies": "Unicode16 contextual bidi/itemization/UAX14, original Clipper2 BSL-1.0/Earcut ISC, existing Core Signal/local stagger clocks/native glyph GPU, signed HDR palette/Glow/Layer. Noto fixtures retain OFL1.1 identities/licences. No external editor/renderer/timeline/font fetcher.",
+  "ownMath": "F64 affine placement, cumulative prefix gaps, sine envelopes, local typed batch composition and projected em/caret/range queries. Original source order/ligature/GDEF limitations preserved. Adapting another editor layout/document/runtime would exceed this glue work and alter existing canonical contracts.",
+  "distribution": "Source checkpoint only; Main owns new public exports/types/immutable R1 version/permissions/Lock/L3. Private build/test identities are not installable public claims."
+}

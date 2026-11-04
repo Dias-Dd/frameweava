@@ -1,0 +1,5 @@
+{
+  "extends": "../../../tsconfig.json",
+  "include": ["./*.ts", "../examples/geometry-*.tsx"],
+  "exclude": ["./vendor"]
+}

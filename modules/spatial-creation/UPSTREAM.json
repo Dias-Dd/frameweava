@@ -1,0 +1,431 @@
+{
+  "earcut": {
+    "version": "3.0.2",
+    "bundledBy": "three@0.186.1",
+    "source": "node_modules/three/src/extras/lib/earcut.js",
+    "sourceSha256": "1e1d25448661b04a034155fba7df43662a8f039e3ec33b1f7a1c16283d688d5a",
+    "license": "ISC",
+    "licenseFile": "licenses/earcut-3.0.2-ISC.txt",
+    "licenseUrl": "https://raw.githubusercontent.com/mapbox/earcut/v3.0.2/LICENSE",
+    "licenseSha256": "324139c19d87af03fda38afea1590e00ca354c4159bdb2ae9e9cec070cfa46a8",
+    "use": "Existing Three ShapeGeometry triangulation, no copied replacement algorithm"
+  },
+  "spatialGeometry": {
+    "baseline": "7017f4c8c3c7209fc8dec42ffa8741ab66e00e58",
+    "files": [
+      {
+        "source": "modules/skeletal-effects/src/trail-frames.ts",
+        "sha256": "0dc36fa81fc178fc7e2d00d5c046f9cb6216777352d5cbda0e19c76e2429aa89"
+      },
+      {
+        "source": "modules/skeletal-effects/src/trail-geometry.ts",
+        "sha256": "deb006831a35b54b31861e9cf5d16b40f78236820217239edd67db31bacce17a"
+      },
+      {
+        "source": "modules/skeletal-effects/src/lightning-geometry.ts",
+        "sha256": "1ba6f56d5fe7d6df916b7118c7b07bf361a7b3554638ad540d0dd5b0f2e49e82"
+      },
+      {
+        "source": "modules/skeletal-effects/src/native-mesh.ts",
+        "sha256": "5712447f513475707cac3d56b44f87cad0fd6c7895761c4d204583697cf5dd56"
+      },
+      {
+        "source": "modules/skeletal-effects/src/native-mesh-shader.ts",
+        "sha256": "c3b1307a0d757d4fdfe09134e3d681cad6b8781bd55574598b322fccbb507fc4"
+      },
+      {
+        "source": "modules/skeletal-effects/NOTICE",
+        "sha256": "619061e23a7f23935f6324a481c8e41a318d60de5414bb07ad01c1b5a01bcfa0"
+      }
+    ],
+    "licenses": [
+      "Three0.186.1/MIT-adapted trail transport and sweep",
+      "Frameweave Apache-2.0 lightning and Native adapter"
+    ],
+    "notice": "licenses/skeletal-effects-NOTICE",
+    "use": "No new solver, GPU owner or external dependency. Three LightningStrike evaluated historically, not copied."
+  },
+  "character": {
+    "baseline": "40d7caec963f005a4e9a01cf10a4ec4fc16a8345",
+    "files": [
+      {
+        "source": "modules/puppet-effects/src/character-asset.ts",
+        "sha256": "6a75b3187901be949eac4126ecca71952cdceff325c0996e17a26318daf7c161"
+      },
+      {
+        "source": "modules/puppet-effects/src/character-rig.ts",
+        "sha256": "a407a1421eb498785bc93a0f955f8cdb86063f459a48dde03f2ce7c6c0e46a1b"
+      },
+      {
+        "source": "modules/puppet-effects/src/character-native.ts",
+        "sha256": "8d298d995081182ed46dc80a3d131e365c0227d2433c53b51823e628f62284ce"
+      },
+      {
+        "source": "node_modules/three/examples/jsm/animation/CCDIKSolver.js",
+        "sha256": "63de99bc31ba9b4f134dd86cc33099964de2eb51e74eb3283f556a09bbc5a69e"
+      }
+    ],
+    "licenses": [
+      "Original Frameweave Apache-2.0 character adapters",
+      "Three0.186.1 MIT CCDIKSolver/Bone/Skeleton",
+      "Existing Three ShapeUtils/Earcut3.0.2 MIT/ISC"
+    ],
+    "use": "Unchanged original CPU FK/CCD and Native GPU skin/render. New original paper artwork, motion recipes and GPU palette only."
+  },
+  "instancing": {
+    "baseline": "27c6fc9f8986b16f285f71fcbbc7b13f99e2df63",
+    "license": "Frameweave Apache-2.0 Native adapters; Three0.186.1 MIT TRS/normals",
+    "files": [
+      {
+        "source": "modules/skeletal-effects/src/native-instance.ts",
+        "sha256": "745e43cca0e060bb30e1111dbf7a110c0790f7905bcb41a62bccc0710f96be1f"
+      },
+      {
+        "source": "modules/skeletal-effects/src/instance-prepare.ts",
+        "sha256": "2a33fe81cd4dfd940cdbd8860bcf016cd41a3b7457ab0a215ddf742986edb97b"
+      },
+      {
+        "source": "modules/skeletal-effects/src/instance-types.ts",
+        "sha256": "982d4e24709ebf49e53bac2a83c7d12976894c3445c000fd01e93aab6449c7e7"
+      }
+    ],
+    "use": "Original Stage-local template buffer, GPU triangle expansion and Native GGX; no owner/shader/IPC changes"
+  },
+  "creatorEffects": {
+    "baseline": "e254d87ddca01520161f0b67dbb4a2e97f956f9c",
+    "license": "Existing Frameweave Apache-2.0 adapters; inherited MIT/Apache notices remain in the original modules",
+    "files": [
+      {
+        "source": "modules/native-effects/pa/filters.ts",
+        "sha256": "d855b8cc1a6798ae7765396c1195455b75b975348e815fbc14d559e81b015204"
+      },
+      {
+        "source": "modules/native-effects/pa/kernels.ts",
+        "sha256": "b6a59d6c73787c9090b292c7058f4774e930da1179b62492533480b359831ba2"
+      },
+      {
+        "source": "modules/native-effects/raster/filters.ts",
+        "sha256": "739d1e672b612c06c1f1d2c2c307b63da1de22bc8c3bdb0f3b4c2ba1620fb36c"
+      },
+      {
+        "source": "modules/native-effects/raster/kernels.ts",
+        "sha256": "45187ce3aa5d299b2d6ac4cdfbab43950e4386d0695eeb636cbf23e0e973ec36"
+      },
+      {
+        "source": "modules/gpu-image-effects/resident/filters.ts",
+        "sha256": "6d8b0b5c1a4da4dcece35e83e4af8fd71a907e9795a14bc0dbab138986de35ec"
+      },
+      {
+        "source": "modules/gpu-image-effects/resident/matte.ts",
+        "sha256": "8a788d422d300f6bceb1edcfc4028ba2031721fe7bdebd5fbcaf710b9d05c176"
+      },
+      {
+        "source": "modules/gpu-image-effects/resident/matte-kernels.ts",
+        "sha256": "70432c6d2c0c5266c6e01c12b40f2cad0af0309704a3d3e2678ef6ba883084f4"
+      },
+      {
+        "source": "modules/gpu-image-effects/resident/creative/filters.ts",
+        "sha256": "4c4b8e33381c18d8a6cdd0844bc5ef21d3deb68d39a75b6594f3b2ff42837e17"
+      },
+      {
+        "source": "modules/gpu-image-effects/matte-parameters.ts",
+        "sha256": "f5b0e3f73ffc0ed4c936c6cfac6b9cb6073a05ed42b23575ec6d29154fc7c946"
+      },
+      {
+        "source": "modules/gpu-effects/pixel-effects.ts",
+        "sha256": "c37e21266a3cccf5f85d825dc7cc3509d7a55f40772ee036e015d28dcac2265c"
+      },
+      {
+        "source": "modules/gpu-effects/float-pass-shaders.ts",
+        "sha256": "929e2c17817220e8b3f758b8e66a0aab86cec6d4cd00ee4c67276d2dd20892ee"
+      }
+    ],
+    "use": "Original qualified GPU algorithms/factories; shadow composes original padded Alpha, Native PA Gaussian and raster translation/tint kernels to preserve tiny Alpha. No copied shader or owner change. Existing arena manages images and PA sine control field."
+  },
+  "creatorMotion": {
+    "baseline": "bc86dd8fa5e6e12125cfba1576740698066a5a0d",
+    "license": "Existing Frameweave Apache-2.0 Core curves and Native composition adapters",
+    "files": [
+      {
+        "source": "src/core/animation.ts",
+        "sha256": "46d208a844d6455fd0905a1606cab51c8800ac10e08cfe7766b3c12dab9d26d0"
+      },
+      {
+        "source": "modules/spatial-creation/composition-core.ts",
+        "sha256": "eae9f099318e6fb44762e2594c5f7df4405b6edfcc949312aa4e68ce2cfdadab"
+      },
+      {
+        "source": "modules/spatial-creation/composition.ts",
+        "sha256": "7f707c6e636b99cdf5dd3cdb296e94d6536352244367ec146c8bf03788bac054"
+      },
+      {
+        "source": "modules/spatial-creation/lifecycle.ts",
+        "sha256": "bbd90c8c1c77a66bbf99ece545a4a8e55b9ca2c1095606c9e9527abbd248d503"
+      }
+    ],
+    "use": "Existing easingAt/springAt/expressionAt and original textureQuad/placement/interpolateImages. Static configuration and scalar Core Signals; child FrameContext never remapped. No new timeline, clock, solver, shader, owner or pixel algorithm."
+  },
+  "creatorLayout": {
+    "baseline": "3dea8c3a5dc3699f82f9eae108477aeb4f293b76",
+    "license": "Original Frameweave Apache-2.0 CPU control adapters and existing Native kernels",
+    "files": [
+      {
+        "source": "src/core/time.ts",
+        "sha256": "b1d9e8a3be47adee369daea66273bc10feac51ae08968c90ca939756a14006aa"
+      },
+      {
+        "source": "modules/spatial-creation/composition-core.ts",
+        "sha256": "eae9f099318e6fb44762e2594c5f7df4405b6edfcc949312aa4e68ce2cfdadab"
+      },
+      {
+        "source": "modules/spatial-creation/composition.ts",
+        "sha256": "7f707c6e636b99cdf5dd3cdb296e94d6536352244367ec146c8bf03788bac054"
+      },
+      {
+        "source": "modules/spatial-creation/creator-effects.ts",
+        "sha256": "e924d6a73d9e91836bc068b72deee1d7053dafdc6d88c2559af9e3fd0fc9f0ce"
+      },
+      {
+        "source": "modules/gpu-effects/pixel-effects.ts",
+        "sha256": "c37e21266a3cccf5f85d825dc7cc3509d7a55f40772ee036e015d28dcac2265c"
+      }
+    ],
+    "use": "Original seededRandom, Native textureQuad/matrix/PM interpolation/Over and managed shadow. Authored layout/card recipes only; no new pixel shader, Alpha readback/crop, image API, queue, clock or owner."
+  },
+  "creatorStudio": {
+    "baseline": "72b4c1d79c2a3b56b350b961776782611ae41e4c",
+    "license": "Frameweave Apache-2.0 lighting/camera/material recipes; original Three0.186.1 MIT transforms and Native GGX",
+    "files": [
+      {
+        "source": "modules/skeletal-effects/src/mesh-types.ts",
+        "sha256": "c510a1b4945b254c16e0abfd57c37dd052e3b17ad9b59ee2e034f01ea2ef1b04"
+      },
+      {
+        "source": "modules/skeletal-effects/src/native-mesh.ts",
+        "sha256": "5712447f513475707cac3d56b44f87cad0fd6c7895761c4d204583697cf5dd56"
+      },
+      {
+        "source": "modules/skeletal-effects/src/native-mesh-shader.ts",
+        "sha256": "c3b1307a0d757d4fdfe09134e3d681cad6b8781bd55574598b322fccbb507fc4"
+      },
+      {
+        "source": "modules/skeletal-effects/src/native-instance.ts",
+        "sha256": "745e43cca0e060bb30e1111dbf7a110c0790f7905bcb41a62bccc0710f96be1f"
+      },
+      {
+        "source": "modules/spatial-creation/primitive-assets.ts",
+        "sha256": "7bdb70e76e2ed218f7b88dbb43c35713d0f7eebdee643abab17712b3e31b94bc"
+      },
+      {
+        "source": "src/media/color.ts",
+        "sha256": "9433cb1362addfd64eeb8a9beeb78a14747c68f6d788fbfb9f240152d8fb2b9e"
+      },
+      {
+        "source": "src/core/animation.ts",
+        "sha256": "46d208a844d6455fd0905a1606cab51c8800ac10e08cfe7766b3c12dab9d26d0"
+      }
+    ],
+    "use": "Original Native mesh/instance rendering and GGX. New named directional-light recipes, existing camera configurations and numeric material defaults only. Original four material values and legacy raw/default lighting paths retained."
+  },
+  "puppetControls": {
+    "license": "Apache-2.0",
+    "algorithm": "Independently authored source-UV regional controls; original EffectCraft ARAP and native drawMesh reused without solver/owner edits",
+    "reference": "https://helpx.adobe.com/after-effects/desktop/animate-in-after-effects/animate-with-puppet-tools/animating-puppet-tools.html",
+    "referenceUse": "Behavior description only; no Adobe code copied",
+    "files": [
+      {
+        "source": "modules/spatial-creation/puppet-controls.ts",
+        "sha256": "c7185a5c290882631292320555f6df91c08d458f1d038ca1d7e4f437ab96ad9b"
+      },
+      {
+        "source": "modules/puppet-effects/src/puppet-native.ts",
+        "sha256": "429cb1a53892b6da3e5d4323e3e6cc059d294a38f71d78479e0804838eea1909"
+      }
+    ],
+    "previousNativeRendererSha256": "be0d4be82127a9dd01f76f7c5fc17b343fab03267f8b3ff5b272ac82774faeaf",
+    "changeReason": "Explicit optional logical overlap scores + existing native depth-peel; omitted controls preserve legacy rendering; candidate version bumped; no installed lock, SDK runtime pin or permission changed"
+  },
+  "particleMapping": {
+    "license": "Apache-2.0",
+    "authorship": "Independently authored packed-state adaptation, GPU field mapping and point coverage; standard affine sampling/Porter-Duff math. No EffectCraft simulation code copied in this checkpoint.",
+    "reused": "Existing NativeGpuScope/imageToBuffer/stateStep, Core FixedStepRunner/seededRandom, NativeReplay, utility gradients, withGpuResources, fixed Three.js 0.186.1 MIT camera math",
+    "files": [
+      {
+        "source": "modules/spatial-creation/particle-mapping.ts",
+        "sha256": "a52795eca3159c31c225e60d5f15cb5bf5e5fb646133ae85bfb9064cc7f3865a"
+      },
+      {
+        "source": "modules/spatial-creation/particle-mapping-shaders.ts",
+        "sha256": "8b0ab34534ede5e1b22096c45027d76e504ab458fcd806c2ebe867e5122c2ac4"
+      },
+      {
+        "source": "modules/spatial-creation/mapped-particle-field.ts",
+        "sha256": "185910b610406a7b2ef084969188a934991aeeff396bec9175413d765880a7a8"
+      }
+    ],
+    "compatibility": "Additive candidate 0.18.1; failed private 0.18.0 remains unchanged. WGSL reserved identifier repaired. No Core, GPU Owner, SDK pins, dependency lock or permission change."
+  },
+  "foamShatter": {
+    "upstream": "https://github.com/storytold/effectcraft",
+    "revision": "861c51f8187bf56efc77cc7b60fc4a513d2b7198",
+    "license": "MIT",
+    "use": "Adapted bubble repulsion, frailty, viscosity, stickiness, pop impulse, pattern topology, blast falloff and damped ballistic factors. Seconds and deterministic Core/GPU hashes; simultaneous GPU pair corrections. Original CPU raster, global SimCache, hardcoded 30fps and fixed 3000-bubble truncation are not carried. Authored GPU shade and resource adapters.",
+    "files": [
+      {
+        "source": "modules/spatial-creation/foam.ts",
+        "sha256": "ea0aa2b530e7ebbf79fd584dfb249d925b4a4e481d550b71b8c10bcab8e8facc"
+      },
+      {
+        "source": "modules/spatial-creation/foam-kernels.ts",
+        "sha256": "a5754aadf61128a75bd1c23738d02d2fbdce003f22510f09c688843999c1f289"
+      },
+      {
+        "source": "modules/spatial-creation/shatter.ts",
+        "sha256": "f31aff08e84adda6ff3ce761106782635c5735e5457b05ad2a0858b0c496659e"
+      },
+      {
+        "source": "modules/spatial-creation/shatter-geometry.ts",
+        "sha256": "fc221c51e757778b9a043aaa471e54486db1d46e8cdab002c5a3468e3c0523ba"
+      },
+      {
+        "source": "modules/spatial-creation/mapped-particle-field.ts",
+        "sha256": "185910b610406a7b2ef084969188a934991aeeff396bec9175413d765880a7a8"
+      },
+      {
+        "source": "modules/spatial-creation/vendor/effectcraft-simulation/foam.rs",
+        "sha256": "937e3273c156212fbdbe3b62e3abe4e66f4ebae8793295f9855d381872ea6683"
+      },
+      {
+        "source": "modules/spatial-creation/vendor/effectcraft-simulation/LICENSE-MIT",
+        "sha256": "7b6db9a363688683feacdf9b528f059637f2e5d2edbacd8720fc9b26781c9abe"
+      },
+      {
+        "source": "modules/spatial-creation/vendor/effectcraft-simulation/shatter.rs",
+        "sha256": "c85e6f64a041af72523d82f0ff2cffce06677d87ef90d7289b589bef4e523f78"
+      },
+      {
+        "source": "modules/spatial-creation/licenses/effectcraft-simulation-MIT.txt",
+        "sha256": "7b6db9a363688683feacdf9b528f059637f2e5d2edbacd8720fc9b26781c9abe"
+      }
+    ]
+  },
+  "waterWorld": {
+    "upstream": "https://github.com/storytold/effectcraft",
+    "revision": "861c51f8187bf56efc77cc7b60fc4a513d2b7198",
+    "license": "MIT",
+    "use": "Wave producers, terrain-dependent wave speed, damped wave update, dry areas, edge sponge; caustic gradient refraction, Jacobian focusing, bottom/surface/sky lighting. Adapted to explicit Core fixed steps, world units, no-flux dry/obstacle stencil, GPU buffers and float images; full 2x2 Jacobian. Does not copy CPU raster/global cache/fixed resolution clamps or simulation clock. Optional height/normal smoothing reuses existing original Native PA Gaussian, without copying a new blur implementation.",
+    "files": [
+      {
+        "source": "modules/spatial-creation/water-controls.ts",
+        "sha256": "c316cc47b3810a94b4acacfe3eaed7730406c732b3327d6c801cd3f89ebc17d8"
+      },
+      {
+        "source": "modules/spatial-creation/water-kernels.ts",
+        "sha256": "3c3b4e240d2a5fafc54988c3deeb94b7cd632c70e657cc7b820f24360610bd16"
+      },
+      {
+        "source": "modules/spatial-creation/wave-world.ts",
+        "sha256": "e900c5900bad16ce835fffaf51c198d49bb951714a123663935815f90742ba1a"
+      },
+      {
+        "source": "modules/spatial-creation/height-caustics.ts",
+        "sha256": "ecca5d4b52490f8b45eb3760df9bb0fe3975713b9e07e1fe18c6b580272a18fc"
+      },
+      {
+        "source": "modules/spatial-creation/vendor/effectcraft-simulation/surfaces.rs",
+        "sha256": "3630502498c8c8b055f906db886f68aefb120b624aa9546bc15508a9b3f2bb3f"
+      },
+      {
+        "source": "modules/native-effects/pa/filters.ts",
+        "sha256": "d855b8cc1a6798ae7765396c1195455b75b975348e815fbc14d559e81b015204"
+      },
+      {
+        "source": "modules/native-effects/pa/kernels.ts",
+        "sha256": "b6a59d6c73787c9090b292c7058f4774e930da1179b62492533480b359831ba2"
+      }
+    ]
+  },
+  "contactPhysics": {
+    "reused": "Fixed PBD/Parry math; original Core runner, C1 and Native renderer; kinematic triangle/edge/particle contacts",
+    "files": [
+      {
+        "source": "modules/spatial-creation/physics/vendor/SOURCE.json",
+        "sha256": "a7b98f59513b3a154d4fde5d6006bee76fe0a9e3021e23a213ceb5f3c8397c52"
+      },
+      {
+        "source": "modules/spatial-creation/physics/vendor/Parry-LICENSE-APACHE",
+        "sha256": "ceacfa4d7fa67df64ab09a56fe248c50a3bfc9bc00374d69bd74ad763b14b89c"
+      },
+      {
+        "source": "modules/spatial-creation/physics/vendor/PBD-LICENSE-MIT",
+        "sha256": "825d46292692c501a88ddd745cddf69e2198b8354f44ae1f192627d79bad2ae7"
+      }
+    ]
+  },
+  "coupledPhysics": {
+    "library": "rapier3d-f64 0.36.1, Parry0.31.1, same 69 locked registry dependencies",
+    "license": "Apache-2.0; carried existing MIT/Apache/Unicode/Zlib notices",
+    "authority": "crates.io release bytes and complete source inventory, no claim of clean Git working tree byte equivalence",
+    "adaptation": "Direct library rigid/soft solve, attachments, cutting, strain/force tearing and plasticity. Existing rigid adapter source is included with only module-path and public-wrapper-name substitutions; original source remains untouched. Core FixedStepRunner, C1, Native owner unchanged.",
+    "files": [
+      {
+        "source": "modules/rigid-body-effects/rust/src/algorithm.rs",
+        "sha256": "4abe9b7ae5f1960cb6c075c1df1b3f573c1647622a94a160df8e1e091a0ae178"
+      },
+      {
+        "source": "modules/rigid-body-effects/rust/src/algorithm/geometry.rs",
+        "sha256": "708f3edc2fe9bff4b5ec6f4bbd4abcceea7e1640f5202a7d21dcfa3c1ecc947b"
+      },
+      {
+        "source": "modules/rigid-body-effects/rust/src/algorithm/queries.rs",
+        "sha256": "9f37ca7a18e48d476ff70521b8b8edd707e53ee9d7b06df3a93c6cd7c943cae0"
+      },
+      {
+        "source": "modules/rigid-body-effects/rust/Cargo.lock",
+        "sha256": "cd116432c045e90a29b2ba7c80824732093e91152f29a4ffc3612134b61a4f01"
+      },
+      {
+        "source": "modules/rigid-body-effects/licenses/registry/rapier3d-f64-0.36.1/LICENSE",
+        "sha256": "ceacfa4d7fa67df64ab09a56fe248c50a3bfc9bc00374d69bd74ad763b14b89c"
+      },
+      {
+        "source": "modules/rigid-body-effects/licenses/registry/rapier3d-f64-0.36.1/source.json",
+        "sha256": "d899252133deafd0817b787f8cc553fa4b16467812cf8d8619ee96d8beb84b67"
+      }
+    ]
+  },
+  "characterAssets": {
+    "library": "Three.js 0.186.1 MIT; ozz-animation0.17.0 MIT scalar two-bone adaptation",
+    "adaptation": "Actual loaders, AnimationMixer and SkeletonUtils retarget. Selected cubic interpolants copied, Ozz pole/soft-reach law-cosines adapted to F64. Native shader reuses original watertight-hit and GGX math; full CSR/morph skin and attribute/layer recipe authored here.",
+    "files": [
+      {
+        "source": "node_modules/three/examples/jsm/loaders/GLTFLoader.js",
+        "sha256": "131c0f78c01d19368ae495caa65b3adaa10487810a36a05bb5901b769a35ac16"
+      },
+      {
+        "source": "node_modules/three/examples/jsm/loaders/BVHLoader.js",
+        "sha256": "597e148c7afb516db8522ac0d0cb05f775c13aaf665623fa25b17abbcd55e3ba"
+      },
+      {
+        "source": "node_modules/three/examples/jsm/utils/SkeletonUtils.js",
+        "sha256": "b1632a703206c3d830de9fcbe515696770d04b71a15ee6b50afa6d2c3298c86f"
+      },
+      {
+        "source": "node_modules/three/src/animation/AnimationMixer.js",
+        "sha256": "7b05af5507aa4edfe3d6b5debcda23c8f0d9b910928debff7fc50748954d533c"
+      },
+      {
+        "source": "modules/skeletal-effects/src/native-mesh-shader.ts",
+        "sha256": "c3b1307a0d757d4fdfe09134e3d681cad6b8781bd55574598b322fccbb507fc4"
+      },
+      {
+        "source": "modules/spatial-creation/vendor/ozz-ik/SOURCE.json",
+        "sha256": "4f4c0569010ce9e619b3f17585199af399b806906c5e9325900fc4f79e73f835"
+      },
+      {
+        "source": "modules/spatial-creation/vendor/ozz-ik/LICENSE-MIT.md",
+        "sha256": "3ddd93e9888fe70b9d61675ceb1c4278a579dc67171678f015de114efe815852"
+      }
+    ]
+  }
+}
