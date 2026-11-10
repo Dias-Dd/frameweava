@@ -37,7 +37,7 @@ Included components:
 - The pinned multilingual MiniLM q8 model and tokenizer for offline semantic
   search, plus the small ESPCN super-resolution model and editable example.
 
-The five installation archives total about 494 MiB. Their combined installed
+The six installation archives total about 495 MiB. Their combined installed
 footprint is larger: runtimes and models are unpacked, and libraries are
 installed separately. This is the full runtime bundle size, not the 37 MiB
 installed effect-package snapshot size.
