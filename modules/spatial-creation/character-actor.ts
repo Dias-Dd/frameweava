@@ -13,7 +13,7 @@ export interface CharacterActorOptions extends CreationOptions,Omit<CharacterRen
  * float PM image. Controls use the existing absolute FrameContext and Signals.
  * No automatic network, file access, code execution or WASM authorization. */
 export async function characterActor(init:CreationInit,options:CharacterActorOptions){
- validateCreation(init,options,['asset','controls','opacity','camera','shading','textures','maxBytes','maxRayTests','ambient','lights']);
+ validateCreation(init,options,['asset','controls','opacity','camera','shading','textures','maxBytes','maxWork','maxRayTests','ambient','lights']);
  const {post,signal,...data}=options,o={...structuredClone(data),post,signal},asset=characterDocument(o.asset),animator=await createCharacterAnimator(asset);
  let renderer:Awaited<ReturnType<typeof createCharacterRenderer>>|undefined;
  try{renderer=await createCharacterRenderer(init.gpu,asset,{width:init.width,height:init.height,format:o.format,camera:o.camera,shading:o.shading,textures:o.textures,maxBytes:o.maxBytes,maxRayTests:o.maxRayTests,ambient:o.ambient,lights:o.lights});

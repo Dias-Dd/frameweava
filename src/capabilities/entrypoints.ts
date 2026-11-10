@@ -1,4 +1,7 @@
 const entrypoints=[
+  {terms:['exr','多层','aov','cryptomatte','通道'],name:'inspectExr',availability:'sdk',description:'在 Node 准备阶段检查原始 EXR 的 Part、通道和窗口；Stage 用 exrResource 选择声明素材。',import:'import { inspectExr } from "@frameweave/engine/image-effects/node";',contract:{input:'Node 主机上的 EXR 文件路径',output:'Part、通道与窗口信息'},example:'const info = await inspectExr("render.exr");',documentation:'docs/MANAGED_TYPESCRIPT_MODULES.md'},
+  {terms:['aov','exr','多通道','cryptomatte'],name:'writePathAovExr',availability:'sdk',description:'在 Node 导出路径追踪的多通道 EXR，保留分量、辅助通道和可选 Cryptomatte。',import:'import { pathAovChannels, writePathAovExr } from "@frameweave/engine/image-effects/node";',contract:{input:'文件路径及来自同一捕获票据的 NativePathAovFrame',output:'多通道 EXR 文件；不在 Stage 中直接读写文件'},example:'await writePathAovExr("lighting.exr", captured);',documentation:'docs/MANAGED_TYPESCRIPT_MODULES.md'},
+  {terms:['角色','character','gltf','glb','资产准备','纹理图集'],name:'prepareNativeCharacterAsset',availability:'sdk',description:'在 Node 主机准备角色纹理图集与材质资源，然后声明给三维 Stage 使用。',import:'import { prepareNativeCharacterAsset } from "@frameweave/engine/spatial-creation/node";',contract:{input:'已导入角色文档与新的输出目录',output:'声明资源、纹理图集及材质映射'},example:'const assets = await prepareNativeCharacterAsset(character, "./prepared-character");',documentation:'docs/MANAGED_TYPESCRIPT_MODULES.md'},
   {
     terms:['servo','webstage','web stage','html','css','网页','网页渲染','dom'],
     name:'servoStage',availability:'sdk',

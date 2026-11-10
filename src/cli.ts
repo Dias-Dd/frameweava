@@ -22,6 +22,7 @@ type Flags = Record<string, string | boolean>;
 const help = `FrameWeave 0.1 — trusted-code video development environment
 
   frameweave media capabilities --json
+  frameweave media inspect-exr <file.exr> --json
   frameweave media render <project.tsx> --settings professional.json --output hdr.mp4 --json
   frameweave inspect <project.tsx> [--frames 0,6,12] [--storyboard] --json
   frameweave inspect compare --before <inspection-directory> --after <inspection-directory> --json
@@ -42,7 +43,7 @@ const help = `FrameWeave 0.1 — trusted-code video development environment
   frameweave repl
   frameweave packages install <name|local-package> [--catalog directory] [--project <entry>] --trust local:authority
   frameweave packages restore <local-catalog> --project <entry>
-  frameweave packages uninstall <id> --project <entry>
+  frameweave packages uninstall <id...> | --all [--project <entry>]
   frameweave packages list|verify|inspect|types [--project <entry>]
   frameweave effects list [--project <project.tsx>]
   frameweave capabilities search "intent" [--project <entry>] [--include-low-level] [--limit N] [--offset N] [--json]
@@ -71,7 +72,7 @@ The old HTTP preview/player is removed; native-only graphs have no PNG bridge.
 JS/React control logic runs in the isolated SpiderMonkey host and submits native GPU commands.
 Preview quality flags enable proxy playback in the native window. Pause and scrub release restore exact preview quality.
 Use --checkpoint-interval and --checkpoint-mib to tune stateful preview checkpoint retention.
-Frame/storyboard/render use native GPU. MP4 defaults to h264_nvenc; --encoder also accepts hevc_nvenc, av1_nvenc, libx264, libx265, libaom-av1.
+Frame/storyboard/render use native GPU. MP4 defaults to libx264. Use --encoder h264_nvenc, hevc_nvenc or av1_nvenc to request NVIDIA encoding, or libx265 or libaom-av1 for other software codecs.
 Accurate EXR/HDR delivery: render/frame --settings professional.json; WASM remains explicitly authorized with --allow-wasm.
 --max-concurrency 128 --initial-concurrency 8 --memory-mib 1024 bound dynamic native frame slots.
 Professional media/create/inspect/session retain their separate existing services during migration.

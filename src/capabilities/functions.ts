@@ -1,3 +1,4 @@
+import {officialRegistry} from '../packages/remote-registry.ts';
 import {engineVersion} from '../compiler/runtime-lock.ts';
 import {discoverPackages,packageRef,type PackageRecord} from '../packages/manifest.ts';
 import {catalogFunctionNames,officialCatalog} from '../packages/official-catalog.ts';
@@ -86,14 +87,14 @@ function packagePresetCandidates(candidates:ReturnType<typeof functionCandidates
 }
 
 export async function functionSearchDocuments(project:FunctionProject){
-  const root=await officialCatalog(),bundled=root?await discoverPackages([root]):[];
+  const {bundled}=await functionCatalog();
   const candidates=functionCandidates({query:'',includeLowLevel:true},project,bundled,await programPackages());
   return [...candidates.filter(c=>c.item.level!=='reference'),...packagePresetCandidates(candidates),...sdkPresetCandidates({query:''})].map(c=>c.text);
 }
 
 export async function searchFunctionPage(options:CapabilitySearch,project:FunctionProject,offline=true,withEntrypoints=true){
-  const root=await officialCatalog(),bundled=root?await discoverPackages([root]):[];
-  const [api,program]=await Promise.all([loadCatalogApi(root,bundled),programPackages()]);
+  const {bundled,api}=await functionCatalog();
+  const program=await programPackages();
   const candidates=functionCandidates(options,project,bundled,program,api),offset=options.offset??0;
   const rankingOptions={mode:options.mode,limit:options.limit,offset,offline,wholeShortWords:true};
   const {results,total}=await rankSearchPage(candidates,options.query,rankingOptions);
@@ -137,4 +138,11 @@ export async function searchFunctionPage(options:CapabilitySearch,project:Functi
 
 export async function searchFunctions(options:CapabilitySearch,project:FunctionProject,offline=true){
   return (await searchFunctionPage(options,project,offline,false)).functions;
+}
+
+async function functionCatalog(){
+ const remote=await officialRegistry();
+ if(remote)return {bundled:remote.index.packages,api:remote.index.api};
+ const root=await officialCatalog(),bundled=root?await discoverPackages([root]):[];
+ return {bundled,api:await loadCatalogApi(root,bundled)};
 }

@@ -2,7 +2,7 @@
 /** Headless Node API. Kept separate so native browser Stages never import Node modules. */
 export { buildProject, type BuildOptions } from './compiler/build.ts';
 export { Renderer, MockAdapter, type AdapterFactory, type AdapterEnvironment, type RenderPosition } from './render/renderer.ts';
-export type {RendererOptions} from './render/renderer.ts';
+export type {RendererOptions,NativeCapturedFrame} from './render/renderer.ts';
 export type {NativeFrameTicket} from '../modules/native-gpu/client.ts';
 export {exportedPositions,type NativeBufferValue} from '../modules/native-gpu/data-export.ts';
 export type {NativePixelDescription} from '../modules/native-gpu/program.ts';
@@ -17,7 +17,7 @@ export {searchPlugins,indexPlugins,embeddingModel} from './plugins/search.ts';
 export {workflowInfo,agentWorkflow,initProject} from './workflow.ts';
 export {startPreview,type PreviewOptions} from './preview/server.ts';
 export type {PreviewFrame} from './core/types.ts';
-export {installPackages,restorePackages,uninstallPackage,installedPackages,verifyPackages,resolvePackages} from './packages/manager.ts';
+export {installPackages,restorePackages,uninstallPackage,uninstallPackages,installedPackages,verifyPackages,resolvePackages} from './packages/manager.ts';
 export type {PackageConfig,PackageLock,PackagePin} from './packages/manager.ts';
 export {readPackage,discoverPackages,validatePackage} from './packages/manifest.ts';
 export type {PackageManifest,PackageModule,PackageRecord,ModuleFormat,PackageBindings} from './packages/manifest.ts';
@@ -44,9 +44,13 @@ export * from './media/surface.ts';
 export * from './media/color.ts';
 export * from './media/compositor.ts';
 export * from './media/node.ts';
-export {ocioInfo,ocioTransform,writeExr,readExr,type OcioTransform} from './media/ocio.ts';
+export {ocioInfo,ocioTransform,writeExr,readExr,inspectExr,type OcioTransform,type ReadExrOptions} from './media/ocio.ts';
+export type {ExrSelection,ExrPartInfo,ExrWindow} from './media/exr-selection.ts';
 export * from './media/encoding.ts';
 
 export * from './media/input.ts';
 export * from './media/service.ts';
 export * from './media/stage.ts';
+export {pathAovChannels,writePathAovExr,type NativePathAovFrame} from '../modules/native-gpu/path-aov.ts';
+
+export {prepareNativeCharacterAsset,type NativeCharacterPreparationOptions} from '../modules/native-gpu/prepare-character.ts';

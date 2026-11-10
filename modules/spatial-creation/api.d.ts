@@ -219,3 +219,5 @@ export const collidingParticles:Async<API['collidingParticles']>;
 export const coupledPhysicsScene:Async<API['coupledPhysicsScene']>;
 
 export const characterActor:Async<API['characterActor']>;
+
+export * from './rendering.ts';

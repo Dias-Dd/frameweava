@@ -44,3 +44,6 @@ export declare function processBuiltin(input:GpuPixelImage,recipe:NativeBuiltinR
 export declare function builtinStats():NativeImageStats;
 
 export * from './domains.ts';
+
+export {exrResource} from '@frameweave/engine/image-effects';
+export type {ExrResourceOptions,ExrSelection} from '@frameweave/engine/image-effects';

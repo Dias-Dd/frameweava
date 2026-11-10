@@ -38,10 +38,10 @@ fn end_tangent(c:&CubicBez)->Vec2{for p in [c.p2,c.p1,c.p0]{if let Some(v)=unit(
  await writeFile(join(dir,'Cargo.lock'),await readFile('modules/pro-animation/validation/pa3-shapes-reference.Cargo.lock'));
  const exec=promisify(execFile),env:NodeJS.ProcessEnv={...process.env,CARGO_TARGET_DIR:join(dir,'target'),CARGO_NET_OFFLINE:'true'};
  if(process.platform==='win32'){
-  await writeFile(join(dir,'host.def'),'LIBRARY WS2_32.dll\nEXPORTS\nGetHostNameW\n');await exec(process.env.FRAMEWEAVE_PA_DLLTOOL??'dlltool',['-d',join(dir,'host.def'),'-l',join(dir,'host.a'),'-m','i386:x86-64'],{windowsHide:true});
+  await writeFile(join(dir,'host.def'),'LIBRARY WS2_32.dll\nEXPORTS\nGetHostNameW\n');await exec(process.env.FRAMEWEAVE_PA_DLLTOOL??'C:/Users/ASUS/miniconda3/Library/mingw-w64/bin/dlltool.exe',['-d',join(dir,'host.def'),'-l',join(dir,'host.a'),'-m','i386:x86-64'],{windowsHide:true});
   env.CARGO_ENCODED_RUSTFLAGS=[process.env.CARGO_ENCODED_RUSTFLAGS,'-C','link-arg='+join(dir,'host.a')].filter(Boolean).join('\x1f');
  }
- const cargo=process.env.FRAMEWEAVE_PA_CARGO??(process.platform==='win32'?'cargo':'cargo');
+ const cargo=process.env.FRAMEWEAVE_PA_CARGO??(process.platform==='win32'?'C:/Users/ASUS/.cargo/bin/cargo.exe':'cargo');
  const result=await exec(cargo,['run','--offline','--locked','--quiet','--manifest-path',join(dir,'Cargo.toml')],{env,windowsHide:true,maxBuffer:1024*1024});await writeFile(join(dir,'stdout.txt'),result.stdout);await writeFile(join(dir,'stderr.txt'),result.stderr);
  const rows=result.stdout.trim().split(/CASE \d+\r?\n/).filter(Boolean).map(s=>s.trim().split(/\r?\n/).map(l=>l.split(' '))),shape=createShapeModifiers(graphics),errors={pucker:0,round:0};let scalars=0;
  assert.equal(rows.length,cases.length);

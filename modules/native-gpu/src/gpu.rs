@@ -16,7 +16,7 @@ struct Pass {
     module:Option<crate::native_module::ModulePass>,
     state:Option<Vec<usize>>,
     inference:Option<(usize,Vec<usize>)>,
-    ray_build:Option<(crate::ray_contract::Scene,Vec<u32>,bool)>,ray_query:Option<(usize,[u32;4])>,ray_buffers:Vec<usize>,
+    ray_build:Option<(crate::ray_contract::Scene,Vec<u32>,bool)>,ray_query:Option<(usize,[u32;8])>,ray_buffers:Vec<usize>,
 }
 struct MeshPass{target:wgpu::TextureView,depth:wgpu::TextureView,resolve:wgpu::BindGroup,indices:Option<wgpu::Buffer>,count:u32}
 struct Slot {
@@ -29,6 +29,7 @@ struct Slot {
     display: Option<(wgpu::Buffer, wgpu::BindGroup, wgpu::BindGroup)>,
     frame: Option<u64>,
     export:Option<(wgpu::Buffer,wgpu::Buffer,wgpu::BindGroup,usize)>,
+    readbacks:BTreeMap<String,wgpu::Buffer>,submission:Option<wgpu::SubmissionIndex>,
     sequence:u64,
     publication:Option<u64>,generation:u64,preview_revision:Option<u64>,
 }
@@ -310,10 +311,48 @@ fn resident_compute(device:&wgpu::Device,code:&str)->Result<wgpu::ComputePipelin
     Ok(device.create_compute_pipeline(&wgpu::ComputePipelineDescriptor{label:Some("fw_main"),layout:Some(&layout),module:&module,entry_point:Some("fw_main"),compilation_options:Default::default(),cache:None}))
 }
 
+fn gpu_backends(requested:&str,ray_query:bool,available:wgpu::Backends)->Result<wgpu::Backends,String>{
+    let mut backends=match requested.trim().to_ascii_lowercase().as_str(){
+        "auto"=>available&(wgpu::Backends::VULKAN|wgpu::Backends::DX12|wgpu::Backends::METAL),
+        "vulkan"=>wgpu::Backends::VULKAN,
+        "dx12"=>wgpu::Backends::DX12,
+        "metal"=>wgpu::Backends::METAL,
+        "gles"=>wgpu::Backends::GL,
+        _=>return Err("E_GPU_BACKEND: FRAMEWEAVE_GPU_BACKEND expects auto, vulkan, dx12, metal or gles".into()),
+    };
+    if ray_query{
+        backends&=wgpu::Backends::VULKAN;
+        if backends.is_empty(){return Err("E_NATIVE_RAY_UNAVAILABLE: Ray Query requires the Vulkan backend".into());}
+    }
+    if backends.is_empty()||!available.contains(backends){
+        return Err(format!("E_GPU_BACKEND: {requested} is unavailable in this build; compiled backends: {available:?}"));
+    }
+    Ok(backends)
+}
+
+#[cfg(test)]
+#[test]
+fn requested_gpu_backend_checks_platform_and_ray_policy(){
+    let windows=wgpu::Backends::DX12|wgpu::Backends::VULKAN;
+    assert_eq!(gpu_backends("auto",false,windows).unwrap(),windows);
+    assert_eq!(gpu_backends("auto",true,windows).unwrap(),wgpu::Backends::VULKAN);
+    assert_eq!(gpu_backends("dx12",false,windows).unwrap(),wgpu::Backends::DX12);
+    assert_eq!(gpu_backends("metal",false,wgpu::Backends::METAL).unwrap(),wgpu::Backends::METAL);
+    let linux=wgpu::Backends::GL|wgpu::Backends::VULKAN;
+    assert_eq!(gpu_backends("auto",false,linux).unwrap(),wgpu::Backends::VULKAN);
+    assert_eq!(gpu_backends("gles",false,linux).unwrap(),wgpu::Backends::GL);
+    assert!(gpu_backends("metal",false,windows).unwrap_err().starts_with("E_GPU_BACKEND:"));
+    assert!(gpu_backends("unknown",false,windows).unwrap_err().starts_with("E_GPU_BACKEND:"));
+    assert!(gpu_backends("dx12",true,windows).unwrap_err().starts_with("E_NATIVE_RAY_UNAVAILABLE:"));
+}
+
 impl Gpu {
-    pub async fn new(program: Program, window: Option<Arc<Window>>) -> Result<Self, String> {
+    pub async fn new(program: Program, window: Option<Arc<Window>>,
+        display:Option<winit::event_loop::OwnedDisplayHandle>) -> Result<Self, String> {
         let mut descriptor = wgpu::InstanceDescriptor::new_without_display_handle();
-        if program.ray_query { descriptor.backends = wgpu::Backends::VULKAN; }
+        if let Some(display)=display{descriptor=descriptor.with_display_handle(Box::new(display));}
+        let backend=std::env::var("FRAMEWEAVE_GPU_BACKEND").unwrap_or_else(|_|"auto".into());
+        descriptor.backends=gpu_backends(&backend,program.ray_query,wgpu::Instance::enabled_backend_features())?;
         let instance = wgpu::Instance::new(descriptor);
         let surface = window.map(|w| instance.create_surface(w)).transpose().map_err(|e| format!("E_NATIVE_DISPLAY: {e}"))?;
         Self::new_owner(program, instance, surface, None, None).await
@@ -354,9 +393,21 @@ impl Gpu {
             program.preview_reuse.is_some()&&(preview_viewport.is_none()||!cacheable_plan(&program)){
             return Err("E_NATIVE_PREVIEW_CACHE: incompatible preview cache owner".into());
         }
-        let adapter=if let Some(old)=reuse{old.adapter.clone()}else{instance.request_adapter(&wgpu::RequestAdapterOptions {
+        let compatible_surface=surface.as_ref().or(preview_surface);
+        let adapter=if let Some(old)=reuse{old.adapter.clone()}
+        else if let Some(name)=std::env::var_os("FRAMEWEAVE_GPU_ADAPTER"){
+            let name=name.to_string_lossy();
+            let requested=name.trim().to_lowercase();
+            if requested.is_empty(){return Err("E_GPU_ADAPTER: FRAMEWEAVE_GPU_ADAPTER requires a nonempty hardware name".into());}
+            let adapters=instance.enumerate_adapters(wgpu::Backends::all()).await;
+            adapters.into_iter().find(|adapter|{
+                let info=adapter.get_info();
+                info.device_type!=wgpu::DeviceType::Cpu&&info.name.to_lowercase().contains(&requested)&&
+                    compatible_surface.is_none_or(|surface|adapter.is_surface_supported(surface))
+            }).ok_or_else(||format!("E_GPU_ADAPTER: no compatible hardware adapter matches {name:?} on the selected backend"))?
+        }else{instance.request_adapter(&wgpu::RequestAdapterOptions {
             power_preference: wgpu::PowerPreference::HighPerformance,
-            compatible_surface: surface.as_ref().or(preview_surface), force_fallback_adapter: false,
+            compatible_surface, force_fallback_adapter: false,
             ..Default::default()
         }).await.map_err(|e| if program.ray_query{format!("E_NATIVE_RAY_UNAVAILABLE: Vulkan hardware adapter required: {e}")}else{format!("E_GPU_UNAVAILABLE: {e}")})?};
         if adapter.get_info().device_type == wgpu::DeviceType::Cpu { return Err("E_GPU_UNAVAILABLE: native path requires hardware GPU".into()); }
@@ -486,7 +537,7 @@ impl Gpu {
                     (kernel.header_words + kernel.parameter_words.max(1).div_ceil(4)*4) as u64 * 4,
                     wgpu::BufferUsages::UNIFORM | wgpu::BufferUsages::COPY_DST);
                 queue.write_buffer(&uniform, 0, &words(&pass.header));
-                if pass.ray_build.is_some()||pass.ray_query.is_some(){let build=pass.ray_build.as_ref().map(|scene|{let immutable=scene.geometries.iter().all(|g|program.data[g.positions].immutable&&g.indices.is_none_or(|i|program.data[i].immutable))&&!program.passes.iter().any(|p|program.kernels[p.kernel].kind.as_deref()==Some("compute")&&p.buffers.as_ref().is_some_and(|b|scene.geometries.iter().any(|g|b.contains(&g.positions)||g.indices.is_some_and(|i|b.contains(&i)))));(scene.clone(),program.data[scene.transforms].initial.clone(),immutable)});passes.push(Pass{pipeline:pass.kernel,bindings:None,uniform,groups:[1,1,1],mesh:None,peel:None,module:None,state:None,inference:None,ray_build:build,ray_query:pass.ray_query.map(|i|(i,pass.header[..4].try_into().unwrap())),ray_buffers:pass.buffers.clone().unwrap()});continue;}
+                if pass.ray_build.is_some()||pass.ray_query.is_some(){let build=pass.ray_build.as_ref().map(|scene|{let immutable=scene.geometries.iter().all(|g|program.data[g.positions].immutable&&g.indices.is_none_or(|i|program.data[i].immutable))&&!program.passes.iter().any(|p|program.kernels[p.kernel].kind.as_deref()==Some("compute")&&p.buffers.as_ref().is_some_and(|b|scene.geometries.iter().any(|g|b.contains(&g.positions)||g.indices.is_some_and(|i|b.contains(&i)))));(scene.clone(),program.data[scene.transforms].initial.clone(),immutable)});passes.push(Pass{pipeline:pass.kernel,bindings:None,uniform,groups:[1,1,1],mesh:None,peel:None,module:None,state:None,inference:None,ray_build:build,ray_query:pass.ray_query.map(|i|(i,pass.header[..8].try_into().unwrap())),ray_buffers:pass.buffers.clone().unwrap()});continue;}
                 if let Some(index)=pass.inference{passes.push(Pass{pipeline:pass.kernel,bindings:None,uniform,groups:[1,1,1],mesh:None,peel:None,module:None,state:None,inference:Some((index,pass.buffers.clone().unwrap())),ray_build:None,ray_query:None,ray_buffers:vec![]});continue;}
                 if pass.state{passes.push(Pass{pipeline:pass.kernel,bindings:None,uniform,groups:[1,1,1],mesh:None,peel:None,module:None,state:pass.buffers.clone(),inference:None,ray_build:None,ray_query:None,ray_buffers:vec![]});continue;}
                 if let Some(index)=pass.module{
@@ -534,7 +585,8 @@ impl Gpu {
                 let bindings=group(&device,&pack.get_bind_group_layout(0),&[source,&packed,&metadata]);
                 Some((packed,staging,bindings,raw as usize))
             }else{None};
-            slots.push(Slot {ray_base_bytes:program.validated_bytes()?,video_inputs:program.imports.iter().filter(|i|i.source.as_deref()==Some("hardware-video")).cloned().collect(),dynamic:frame_slot.is_some(),frame_prepared:frame_slot.is_some(),advance_passes:advance_passes.clone(),stage_range_lifetimes:None, images, _data:data, passes, display: display_slot, frame: None,export:export_slot,sequence:0,publication:None,generation:0,preview_revision:None });
+            let readbacks=program.readbacks.iter().map(|name|{let out=program.buffer_outputs.iter().find(|o|&o.id==name).unwrap();(name.clone(),buffer(device,"explicit/frame-capture",program.data[out.buffer].length*4,wgpu::BufferUsages::MAP_READ|wgpu::BufferUsages::COPY_DST))}).collect();
+            slots.push(Slot {readbacks,submission:None,ray_base_bytes:program.validated_bytes()?,video_inputs:program.imports.iter().filter(|i|i.source.as_deref()==Some("hardware-video")).cloned().collect(),dynamic:frame_slot.is_some(),frame_prepared:frame_slot.is_some(),advance_passes:advance_passes.clone(),stage_range_lifetimes:None, images, _data:data, passes, display: display_slot, frame: None,export:export_slot,sequence:0,publication:None,generation:0,preview_revision:None });
         }
         // Flush load-time parameter uploads without waiting for pixels.
         queue.submit([]);
@@ -692,11 +744,11 @@ impl Gpu {
     pub fn frame_program(&self,slot:usize,parameters:&[Vec<u32>],bindings:Option<&crate::protocol::FrameBindings>)->Result<Option<Program>,String>{
         self.validate_submission(slot,parameters)?;
         if bindings.is_none(){return Ok(self.slots[slot].dynamic.then(||self.program.clone()));}
-        let b=bindings.unwrap();if self.program.frame_continuation.is_some()||b.version!=1||!self.persistent.is_empty()||!self.program.buffer_outputs.is_empty()||b.passes.len()!=self.program.passes.len(){return Err("E_NATIVE_FRAME_BINDINGS: incompatible version, state, publication or pass layout".into());}
+        let b=bindings.unwrap();if self.program.frame_continuation.is_some()||b.version!=1||!self.persistent.is_empty()||b.passes.len()!=self.program.passes.len(){return Err("E_NATIVE_FRAME_BINDINGS: incompatible version, state, publication or pass layout".into());}
         let mut p=self.program.clone();let video_count=p.imports.iter().filter(|i|matches!(i.source.as_deref(),Some("declared-video"|"hardware-video"))).count();if b.imports.len()!=video_count{return Err("E_NATIVE_FRAME_BINDINGS: every declared video import must be specified".into());}let mut video_seen=std::collections::HashSet::new();for patch in &b.imports{if !matches!(patch.source.as_deref(),Some("declared-video"|"hardware-video"))||patch.stream.is_none()||!video_seen.insert(patch.image){return Err("E_NATIVE_FRAME_BINDINGS: invalid video import identity".into());}if patch.source.as_deref()==Some("hardware-video"){p.import_lease(patch)?.video_path(&patch.file)?;}else{p.import_lease(patch)?.path(&patch.file)?;}let old=p.imports.iter_mut().find(|i|i.image==patch.image&&i.source==patch.source&&i.stream==patch.stream).ok_or("E_NATIVE_FRAME_BINDINGS: cannot replace admitted video resource identity")?;if patch.source.as_deref()==Some("hardware-video"){let mut a=old.video.clone().ok_or("E_NATIVE_VIDEO_PROTOCOL: missing admitted video")?;let mut b=patch.video.clone().ok_or("E_NATIVE_VIDEO_PROTOCOL: missing frame video")?;a.frame=0;a.pts=0;b.frame=0;b.pts=0;if a!=b||old.file!=patch.file{return Err("E_NATIVE_FRAME_BINDINGS: video source/colour cannot change".into());}old.video=patch.video.clone();}else{old.file=patch.file.clone();}}let mut seen=std::collections::HashSet::new();
         let mutable=p.data.iter().filter(|d|!d.immutable&&d.persistent.is_none()&&d.source_image.is_none()).count();
         if b.data.len()!=mutable{return Err("E_NATIVE_FRAME_BINDINGS: every mutable frame buffer must be specified".into());}
-        for patch in &b.data{let d=p.data.get_mut(patch.index).ok_or("E_NATIVE_FRAME_BINDINGS: unknown buffer")?;if !seen.insert(patch.index)||d.immutable||d.persistent.is_some()||d.source_image.is_some(){return Err("E_NATIVE_FRAME_BINDINGS: immutable, persistent, image or duplicate buffer".into());}d.length=patch.length;d.initial=patch.initial.clone();}
+        for patch in &b.data{let d=p.data.get_mut(patch.index).ok_or("E_NATIVE_FRAME_BINDINGS: unknown buffer")?;if !seen.insert(patch.index)||d.immutable||d.persistent.is_some()||d.source_image.is_some(){return Err("E_NATIVE_FRAME_BINDINGS: immutable, persistent, image or duplicate buffer".into());}if self.program.buffer_outputs.iter().any(|o|o.buffer==patch.index)&&d.length!=patch.length{return Err("E_NATIVE_FRAME_BINDINGS: published buffer shape must remain fixed".into());}d.length=patch.length;d.initial=patch.initial.clone();}
         for (pass,patch) in p.passes.iter_mut().zip(&b.passes){if pass.groups.is_some()!=patch.groups.is_some()||pass.draw.is_some()!=patch.count.is_some(){return Err("E_NATIVE_FRAME_BINDINGS: dispatch/draw shape changed".into());}pass.header=patch.header.clone();pass.groups=patch.groups;if let Some(draw)=&mut pass.draw{draw.count=patch.count.unwrap();}}
         // Frame-local allocation does not replace the original shared seed cache.
         // Charge its larger size conservatively when the new frame shrinks.
@@ -714,7 +766,7 @@ impl Gpu {
         let display=self.display.as_ref().map(|d|Display{surface:None,controls:d.controls.clone(),transform:d.transform.clone(),render:d.render.clone(),_tables:d._tables.clone()});
         // Release the previous slot's mutable buffers BEFORE allocating replacements.
         // Other frame slots and their submitted command buffers remain untouched.
-        self.slots[slot]=Slot{ray_base_bytes:0,video_inputs:vec![],dynamic:false,frame_prepared:false,advance_passes:None,stage_range_lifetimes:None,images:vec![],_data:vec![],passes:vec![],display:None,frame:None,export:None,sequence:0,publication:None,generation:0,preview_revision:None};
+        self.slots[slot]=Slot{readbacks:BTreeMap::new(),submission:None,ray_base_bytes:0,video_inputs:vec![],dynamic:false,frame_prepared:false,advance_passes:None,stage_range_lifetimes:None,images:vec![],_data:vec![],passes:vec![],display:None,frame:None,export:None,sequence:0,publication:None,generation:0,preview_revision:None};
         p.slots=1;
         let r=match Self::allocate(&p,&self.device,&self.queue,&self.adapter,None,self.preview_format,self.preview_viewport,&mut self.modules,&mut self.persistent,&mut self.resident,Some(pipelines),display,vec![reuse],Some(slot)).await{Ok(r)=>r,Err(e)=>{self.closing=true;return Err(e);}};
         self.pipelines_created+=r.pipelines_created;self.pipelines_reused+=r.pipelines_reused;
@@ -757,7 +809,7 @@ impl Gpu {
         let mut cursors=self.state_cursors.clone();let mut stepped=std::collections::HashSet::new();
         for (p,values) in self.program.passes.iter().zip(parameters){
             if p.state{if values[2]>1{return Err("E_NATIVE_STATE: invalid reset flag".into());}for &i in p.buffers.as_ref().unwrap(){let id=&self.program.data[i].persistent.as_ref().unwrap().id;let old=cursors.get(id);if values[2]==1{if values[1]!=0||old.is_some_and(|v|values[0]<=v.0){return Err("E_NATIVE_STATE_SEQUENCE: reset requires step zero and a fresh epoch".into());}}else if old.is_none_or(|v|values[0]!=v.0||v.1.checked_add(1)!=Some(values[1])){return Err("E_NATIVE_STATE_SEQUENCE: consecutive explicit steps required; reset/replay for seeking".into());}cursors.insert(id.clone(),(values[0],values[1]));stepped.insert(id.clone());}continue;}
-            for (binding,&i) in p.buffers.iter().flatten().enumerate(){if let Some(state)=&self.program.data[i].persistent{if !cursors.contains_key(&state.id){return Err("E_NATIVE_STATE_SEQUENCE: reset state before first use".into());}let writes=if let Some(i)=p.inference{binding>=self.program.inferences[i].inputs.len()}else if p.ray_build.is_some(){false}else if p.ray_query.is_some(){binding>=2}else{self.write_bindings[p.kernel][binding]};if writes&&!stepped.contains(&state.id){return Err("E_NATIVE_STATE_SEQUENCE: writable state requires an explicit step in this frame".into());}}}
+            for (binding,&i) in p.buffers.iter().flatten().enumerate(){if let Some(state)=&self.program.data[i].persistent{if !cursors.contains_key(&state.id){return Err("E_NATIVE_STATE_SEQUENCE: reset state before first use".into());}let writes=if let Some(i)=p.inference{binding>=self.program.inferences[i].inputs.len()}else if p.ray_build.is_some(){false}else if p.ray_query.is_some(){(2..5).contains(&binding)}else{self.write_bindings[p.kernel][binding]};if writes&&!stepped.contains(&state.id){return Err("E_NATIVE_STATE_SEQUENCE: writable state requires an explicit step in this frame".into());}}}
             for &i in p.data.iter().chain(p.draw.iter().map(|d|&d.positions)).chain(p.draw.iter().filter_map(|d|d.indices.as_ref())).chain(p.draw.iter().filter_map(|d|d.uvs.as_ref())){if self.program.data[i].persistent.as_ref().is_some_and(|s|!cursors.contains_key(&s.id)){return Err("E_NATIVE_STATE_SEQUENCE: reset state before first use".into());}}
         }Ok(cursors)
     }
@@ -943,8 +995,12 @@ impl Gpu {
             {let mut pass=encoder.begin_compute_pass(&wgpu::ComputePassDescriptor{label:Some("export/GPU-color-packing"),timestamp_writes:None});pass.set_pipeline(pack);pass.set_bind_group(0,bindings,&[]);pass.dispatch_workgroups(groups[0],groups[1],groups[2]);}
             encoder.copy_buffer_to_buffer(packed,0,staging,0,packed.size());
         }
+        for (name,staging) in &slot.readbacks{
+            let out=self.program.buffer_outputs.iter().find(|o|&o.id==name).unwrap();
+            encoder.copy_buffer_to_buffer(&slot._data[out.buffer],0,staging,0,staging.size());
+        }
         if let Some(timer)=timer{timer.finish(&mut encoder,f64::from(self.queue.get_timestamp_period()));}
-        if let Some(e)=&self.program.media_export{let info=&self.program.images[e.image];if let Err(error)=self.videos.encode(&self.device,&self.queue,slot_id,self.export_submitted,&slot.images[e.image],info.width,info.height,encoder){self.closing=true;return Err(error);}}else{self.queue.submit([encoder.finish()]);}
+        if let Some(e)=&self.program.media_export{let info=&self.program.images[e.image];if let Err(error)=self.videos.encode(&self.device,&self.queue,slot_id,self.export_submitted,&slot.images[e.image],info.width,info.height,encoder){self.closing=true;return Err(error);}}else{slot.submission=Some(self.queue.submit([encoder.finish()]));}
         if let Some(entry)=cache_copy{
             self.preview_frame_bytes+=entry.charge();
             self.preview_frames.push_back(entry);
@@ -1121,15 +1177,18 @@ impl Gpu {
     }
     pub fn read_data(&mut self,frame:u64,slot:usize,publication:u64,name:&str,file:&str)->Result<u64,String>{
         let lease=self.program.data_export.as_ref().ok_or("E_NATIVE_DATA_PERMISSION: no explicit host export lease")?;
-        if !self.idle(){return Err("E_NATIVE_DATA_BUSY: drain GPU frames before explicit export".into());}
         let slot=self.slots.get(slot).ok_or("E_NATIVE_DATA_STALE: unavailable slot")?;
         if slot.publication!=Some(frame)||slot.generation!=publication{return Err("E_NATIVE_DATA_STALE: frame publication was replaced".into());}
+        if slot.frame.is_some(){return Err("E_NATIVE_DATA_BUSY: complete the requested frame before export".into());}
         let out=self.program.buffer_outputs.iter().find(|o|o.id==name).ok_or("E_NATIVE_DATA_OUTPUT: buffer was not explicitly published")?;
         let data=&self.program.data[out.buffer];let source=&slot._data[out.buffer];let bytes=data.length*4;
         if data.persistent.as_ref().is_some_and(|s|!self.state_cursors.contains_key(&s.id)){return Err("E_NATIVE_STATE_SEQUENCE: unpublished initial state".into());}
+        if !slot.readbacks.contains_key(name)&&data.persistent.is_some()&&!self.idle(){return Err("E_NATIVE_DATA_BUSY: uncaptured shared state needs a device-idle boundary".into());}
         let path=lease.path(file)?;if path.parent()!=self.data_export_directory.as_deref(){return Err("E_NATIVE_DATA_PERMISSION: export lease root changed".into());}let mut output=std::fs::OpenOptions::new().write(true).create_new(true).open(path).map_err(|e|format!("E_NATIVE_DATA_IO: {e}"))?;
-        let staging=buffer(&self.device,"explicit/data-export",bytes,wgpu::BufferUsages::MAP_READ|wgpu::BufferUsages::COPY_DST);let mut encoder=self.device.create_command_encoder(&Default::default());encoder.copy_buffer_to_buffer(source,0,&staging,0,bytes);self.queue.submit([encoder.finish()]);
-        let(tx,rx)=mpsc::channel();staging.slice(..).map_async(wgpu::MapMode::Read,move|r|{let _=tx.send(r);});self.device.poll(wgpu::PollType::wait_indefinitely()).map_err(|e|format!("E_NATIVE_DATA_IO: {e}"))?;rx.recv().map_err(|e|e.to_string())?.map_err(|e|e.to_string())?;let view=staging.slice(..).get_mapped_range().map_err(|e|e.to_string())?;let result=std::io::Write::write_all(&mut output,&view);drop(view);staging.unmap();result.map_err(|e|format!("E_NATIVE_DATA_IO: {e}"))?;self.data_readbacks+=1;self.data_export_bytes+=bytes;Ok(bytes)
+        let (staging,submission)=if let Some(staging)=slot.readbacks.get(name){(staging.clone(),slot.submission.clone())}else{
+            let staging=buffer(&self.device,"explicit/data-export",bytes,wgpu::BufferUsages::MAP_READ|wgpu::BufferUsages::COPY_DST);let mut encoder=self.device.create_command_encoder(&Default::default());encoder.copy_buffer_to_buffer(source,0,&staging,0,bytes);let submission=self.queue.submit([encoder.finish()]);(staging,Some(submission))
+        };
+        let(tx,rx)=mpsc::channel();staging.slice(..).map_async(wgpu::MapMode::Read,move|r|{let _=tx.send(r);});self.device.poll(wgpu::PollType::Wait{submission_index:submission,timeout:None}).map_err(|e|format!("E_NATIVE_DATA_IO: {e}"))?;rx.recv().map_err(|e|e.to_string())?.map_err(|e|e.to_string())?;let view=staging.slice(..).get_mapped_range().map_err(|e|e.to_string())?;let result=std::io::Write::write_all(&mut output,&view);drop(view);staging.unmap();result.map_err(|e|format!("E_NATIVE_DATA_IO: {e}"))?;self.data_readbacks+=1;self.data_export_bytes+=bytes;Ok(bytes)
     }
     #[cfg(feature = "diagnostics")]
     pub fn inspect(&mut self, slot:usize, image:usize) -> Result<Vec<f32>,String> {

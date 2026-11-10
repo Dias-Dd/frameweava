@@ -19,3 +19,54 @@ pub fn readonly(kernel:&crate::protocol::Kernel,binding:u32)->Result<(),String>{
  let module=naga::front::wgsl::parse_str(&kernel.code).map_err(|e|format!("E_NATIVE_SHADER: {e}"))?;
  if !module.global_variables.iter().any(|(_,v)|v.binding.as_ref().is_some_and(|b|b.group==0&&b.binding==binding)&&matches!(v.space,naga::AddressSpace::Storage{access} if !access.contains(naga::StorageAccess::STORE))){return Err("E_NATIVE_BINARY_READ_ONLY: protected bytes require an actual read-only storage binding".into());}Ok(())
 }
+
+/// One validation call owns this cache and borrows its immutable kernel table.
+/// Every protected binding is still checked; repeated passes only reuse the
+/// parsed access declarations, never a previous program's trust decision.
+pub(crate) struct ShaderAccess<'a>{
+ kernels:&'a [crate::protocol::Kernel],
+ read_only:std::collections::HashMap<usize,std::collections::HashSet<u32>>,
+}
+impl<'a> ShaderAccess<'a>{
+ pub fn new(kernels:&'a [crate::protocol::Kernel])->Self{Self{kernels,read_only:Default::default()}}
+ pub fn is_readonly(&mut self,kernel:usize,binding:u32)->Result<bool,String>{
+  if !self.read_only.contains_key(&kernel){
+   let k=self.kernels.get(kernel).ok_or("E_NATIVE_KERNEL: missing kernel")?;
+   let module=naga::front::wgsl::parse_str(&k.code).map_err(|e|format!("E_NATIVE_SHADER: {e}"))?;
+   let bindings=module.global_variables.iter().filter_map(|(_,v)|{
+    let b=v.binding.as_ref()?;
+    (b.group==0&&matches!(v.space,naga::AddressSpace::Storage{access} if !access.contains(naga::StorageAccess::STORE))).then_some(b.binding)
+   }).collect();
+   self.read_only.insert(kernel,bindings);
+  }
+  Ok(self.read_only[&kernel].contains(&binding))
+ }
+ pub fn readonly(&mut self,kernel:usize,binding:u32)->Result<(),String>{
+  if !self.is_readonly(kernel,binding)?{return Err("E_NATIVE_BINARY_READ_ONLY: protected bytes require an actual read-only storage binding".into());}Ok(())
+ }
+}
+
+#[cfg(test)]
+mod tests{
+ use super::*;
+ fn kernel(code:&str)->crate::protocol::Kernel{
+  serde_json::from_value(serde_json::json!({"code":code,"inputCount":2,"parameterWords":0,"headerWords":16,"kind":"compute"})).unwrap()
+ }
+ const CODE:&str="@group(0) @binding(0) var<storage,read> a:array<u32>; @group(0) @binding(1) var<storage,read_write> b:array<u32>; @group(1) @binding(2) var<storage,read> c:array<u32>; @compute @workgroup_size(1) fn fw_main(){b[0]=a[0];}";
+ #[test] fn shader_access_reuses_parse_and_checks_each_binding(){
+  let kernels=[kernel(CODE)];let mut access=ShaderAccess::new(&kernels);
+  for _ in 0..1000{access.readonly(0,0).unwrap();assert!(access.readonly(0,1).unwrap_err().starts_with("E_NATIVE_BINARY_READ_ONLY"));assert!(!access.is_readonly(0,2).unwrap());assert!(!access.is_readonly(0,3).unwrap());}
+  assert_eq!(access.read_only.len(),1);
+ }
+ #[test] fn shader_access_does_not_reuse_other_programs_or_kernel_indices(){
+  let changed=CODE.replace("var<storage,read> a","var<storage,read_write> a");
+  let kernels=[kernel(CODE),kernel(&changed)];let mut access=ShaderAccess::new(&kernels);
+  access.readonly(0,0).unwrap();assert!(access.readonly(1,0).is_err());assert_eq!(access.read_only.len(),2);
+  let next=[kernel(&changed)];assert!(ShaderAccess::new(&next).readonly(0,0).is_err());
+ }
+ #[test] fn shader_access_rejects_invalid_shader_and_unknown_kernel(){
+  let kernels=[kernel("invalid WGSL")];let mut access=ShaderAccess::new(&kernels);
+  assert!(access.readonly(0,0).unwrap_err().starts_with("E_NATIVE_SHADER"));
+  assert!(access.readonly(1,0).unwrap_err().starts_with("E_NATIVE_KERNEL"));assert!(access.read_only.is_empty());
+ }
+}

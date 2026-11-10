@@ -25,7 +25,7 @@ export async function buildSpatialEffects(output:string){
   if(errors.length)throw Error(ts.formatDiagnostics(errors,{getCurrentDirectory:()=>workspace,getCanonicalFileName:f=>f,getNewLine:()=> '\n'}));if(p.emit().emitSkipped)throw Error('Spatial declaration emit failed');
   for(const native of ['renderer','noise-renderer'])await writeFile(join(output,'native',native+'.d.ts'),(await readFile(join(output,'dist',native+'.d.ts'),'utf8')).replaceAll('./types.js','../src/types.ts').replaceAll('./noise.js','../src/noise.ts'));
   for(const name of ['package.json','frameweave.package.json','README.md','NOTICE'])await copyFile(join(root,name),join(output,name));
-  await copyFile(join(workspace,'licenses/APACHE-2.0.txt'),join(output,'LICENSE'));await copyFile(join(workspace,'node_modules/three/LICENSE'),join(output,'licenses/three-MIT.txt'));
+  await copyFile(join(workspace,'LICENSE'),join(output,'LICENSE'));await copyFile(join(workspace,'node_modules/three/LICENSE'),join(output,'licenses/three-MIT.txt'));
   const lock=JSON.parse(await readFile(join(workspace,'package-lock.json'),'utf8')),dependency=lock.packages['node_modules/three'];
   if(dependency.version!=='0.186.1')throw Error('Unreviewed Three version');
   const hashes:Record<string,string>={};for(const name of ['src/renderers/WebGLRenderer.js','src/core/InstancedBufferGeometry.js','src/core/BufferAttribute.js','src/renderers/webgl/WebGLBindingStates.js','src/textures/DataTexture.js','src/renderers/webgl/WebGLTextures.js','LICENSE'])hashes[name]=createHash('sha256').update(await readFile(join(workspace,'node_modules/three',name))).digest('hex');

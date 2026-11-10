@@ -6,13 +6,16 @@ import {fileURLToPath} from 'node:url';
 import {createRequire} from 'node:module';
 import {EngineError} from '../core/errors.ts';
 import {runtimeCachePath} from '../runtime/paths.ts';
+import {mediaPython} from './python.ts';
 import type {OcioWorker} from './ocio-worker.ts';
+import {exrSelection,type ExrPartInfo,type ExrSelection} from './exr-selection.ts';
 import {pixelsFromSurface,surfaceFromPixels,assertColor,acescg,linear2020,linear709,srgb,pq2020,type ProfessionalSurface,type ColorEncoding} from './surface.ts';
 export interface OcioTransform {config?:'cg-config-v4.0.0_aces-v2.0_ocio-v2.5'|'studio-config-v4.0.0_aces-v2.0_ocio-v2.5';source:string;destination?:string;display?:string;view?:string;outputColor:ColorEncoding}
 const exec=promisify(execFile);
-async function bridge<T>(request:Record<string,unknown>,pixels?:Float32Array,inputFile?:string,outputFile?:string,worker?:OcioWorker):Promise<{data:T;pixels?:Float32Array}>{
-  const icc=['read-icc','write-icc'].includes(String(request.operation)),component=icc?'ICC':'OCIO';
-  const python=process.env.FRAMEWEAVE_MEDIA_PYTHON;if(!python)throw new EngineError(`E_MEDIA_${component}_UNAVAILABLE`,'Explicit FRAMEWEAVE_MEDIA_PYTHON is required; no dependency is downloaded at runtime');
+async function bridge<T>(request:Record<string,unknown>,pixels?:Float32Array,inputFile?:string,outputFile?:string,worker?:OcioWorker,signal?:AbortSignal):Promise<{data:T;pixels?:Float32Array}>{
+  const operation=String(request.operation),icc=['read-icc','write-icc'].includes(operation);
+  const component=icc?'ICC':['inspect-exr','read-exr-selection'].includes(operation)?'EXR':'OCIO';
+  if(signal?.aborted)throw new EngineError('E_RENDER_CANCELLED','Media decode cancelled');
   const parent=runtimeCachePath('media-bridge');await mkdir(parent,{recursive:true});const directory=await mkdtemp(join(parent,'job-'));
   try{
     if(pixels)await writeFile(join(directory,'input.f32'),Buffer.from(pixels.buffer,pixels.byteOffset,pixels.byteLength));
@@ -21,11 +24,11 @@ async function bridge<T>(request:Record<string,unknown>,pixels?:Float32Array,inp
     let vipsDirectory=process.env.FRAMEWEAVE_MEDIA_VIPS;
     if(icc&&process.platform==='win32'&&!vipsDirectory){try{vipsDirectory=join(dirname(createRequire(import.meta.url).resolve(`@img/sharp-win32-${process.arch}/package`)),'lib');}catch{throw new EngineError('E_MEDIA_ICC_UNAVAILABLE','Provide the reviewed libvips directory through FRAMEWEAVE_MEDIA_VIPS');}}
     await writeFile(join(directory,'request.json'),JSON.stringify({...request,input,output,...icc&&vipsDirectory?{vipsDirectory:resolve(vipsDirectory)}:{}}));
-    let stdout:string;try{stdout=worker?await worker.run(join(directory,'request.json')):(await exec(resolve(python),[fileURLToPath(new URL('./ocio_bridge.py',import.meta.url)),join(directory,'request.json')],{timeout:120000,maxBuffer:1024*1024,windowsHide:true})).stdout;}
-    catch(e){if(e instanceof EngineError)throw e;const v=e as {stdout?:string;stderr?:string};throw new EngineError(`E_MEDIA_${component}`,v.stdout??v.stderr??String(e));}
+    let stdout:string;try{stdout=worker?await worker.run(join(directory,'request.json')):(await exec(mediaPython(`E_MEDIA_${component}_UNAVAILABLE`),[fileURLToPath(new URL('./ocio_bridge.py',import.meta.url)),join(directory,'request.json')],{timeout:120000,maxBuffer:1024*1024,windowsHide:true,signal})).stdout;}
+    catch(e){if(signal?.aborted)throw new EngineError('E_RENDER_CANCELLED','Media decode cancelled');if(e instanceof EngineError)throw e;const v=e as {stdout?:string;stderr?:string};let detail=v.stdout||v.stderr||String(e);if(component==='EXR'&&v.stdout){try{detail=JSON.parse(v.stdout).error??detail;}catch{}}throw new EngineError(`E_MEDIA_${component}`,detail);}
     const result=JSON.parse(stdout);if(!result.ok)throw new EngineError(`E_MEDIA_${component}`,result.error);
     if(outputFile){await mkdir(dirname(resolve(outputFile)),{recursive:true});await copyFile(output,resolve(outputFile));return {data:result.data};}
-    if(pixels||inputFile){const bytes=await readFile(output);return {data:result.data,pixels:new Float32Array(bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength))};}
+    if(pixels||inputFile&&operation!=='inspect-exr'){const bytes=await readFile(output);return {data:result.data,pixels:new Float32Array(bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength))};}
     return {data:result.data};
   }finally{if(dirname(directory)!==parent)throw new EngineError('E_MEDIA_PATH','Invalid owned temporary directory');await rm(directory,{recursive:true,force:true});}
 }
@@ -50,8 +53,32 @@ export async function writeExr(surface:ProfessionalSurface,file:string,format:'r
   if(format==='rgba16float')surfaceFromPixels(surface.width,surface.height,pixelsFromSurface(surface),{format,color:surface.color,alpha:surface.alpha});
   return (await bridge({...surface,operation:'write-exr',format,chromaticities:chromaticities[surface.color.primaries]},pixelsFromSurface(surface),undefined,file)).data;
 }
-export async function readExr(file:string,options?:{color:ColorEncoding;alpha:ProfessionalSurface['alpha']}){
-  const r=await bridge<any>({operation:'read-exr'},undefined,file),color:ColorEncoding=options?.color??r.data.color,alpha:ProfessionalSurface['alpha']=options?.alpha??r.data.alpha;
+export async function inspectExr(file:string){
+  return (await bridge<{version:string;parts:ExrPartInfo[]}>({operation:'inspect-exr'},undefined,file)).data;
+}
+
+export interface ReadExrOptions {
+  color: ColorEncoding;
+  alpha: ProfessionalSurface['alpha'];
+  selection?: ExrSelection;
+  maxDecodedBytes?: number;
+  expectedSize?: readonly [width:number,height:number];
+  signal?: AbortSignal;
+}
+
+export async function readExr(file:string,options?:ReadExrOptions){
+  const selection=options?.selection&&exrSelection(options.selection);
+  const maxDecodedBytes=options?.maxDecodedBytes??512*1024**2;
+  if(selection){
+    const {color,alpha}=options!;
+    assertColor(color);
+    if(color.transfer!=='linear'||color.reference!=='scene'||!['opaque','straight','premultiplied'].includes(alpha)||
+      !Number.isSafeInteger(maxDecodedBytes)||maxDecodedBytes<1){
+      throw new EngineError('E_MEDIA_EXR_SELECTION','Selected EXR color requires scene-linear color, explicit Alpha and a positive decode budget');
+    }
+  }
+  const request=selection?{operation:'read-exr-selection',selection,maxDecodedBytes,expectedSize:options?.expectedSize,outputAlpha:options?.alpha}:{operation:'read-exr'};
+  const r=await bridge<any>(request,undefined,file,undefined,undefined,options?.signal),color:ColorEncoding=options?.color??r.data.color,alpha:ProfessionalSurface['alpha']=options?.alpha??r.data.alpha;
   if(!color||!alpha)throw new EngineError('E_MEDIA_COLOR_MISSING','EXR without complete Frameweave color/alpha metadata requires explicit interpretation');
   assertColor(color);
   if(options&&((r.data.color&&Object.keys(color).some(k=>color[k as keyof ColorEncoding]!==r.data.color[k]))||(r.data.alpha&&alpha!==r.data.alpha)))throw new EngineError('E_MEDIA_COLOR_CONFLICT','Explicit EXR interpretation contradicts embedded color/alpha metadata');

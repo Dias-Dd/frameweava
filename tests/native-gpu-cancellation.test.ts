@@ -13,7 +13,7 @@ function transport(){
  const closed=new Promise<void>(r=>{exit=r;});
  const ack=(r:any)=>client.receive(JSON.stringify({version:1,id:r.id,ok:true,result:{}})+'\n');
  Object.assign(client,{admitted:{version:1,session:'a'.repeat(64),slots:2,kernels:[{parameterWords:1}],passes:[{kernel:0}]},
-  nextId:0,pending:new Map(),completions:new Map(),free:[0,1],waiters:[],buffer:'',timeoutMs:2000,stderr:[],transport:{maxControlBytes:1024**2,maxSeedBytes:1024**2},transportQueue:Promise.resolve(),queuedWrites:0,
+  nextId:0,pending:new Map(),completions:new Map(),retainedSlots:new Map(),free:[0,1],waiters:[],buffer:'',timeoutMs:2000,stderr:[],transport:{maxControlBytes:1024**2,maxSeedBytes:1024**2},transportQueue:Promise.resolve(),queuedWrites:0,
   closeEvent:{promise:closed,resolve:exit,reject:()=>{}},child:{stdin:{
    write(line:string,callback:(e?:Error)=>void){const r=JSON.parse(line);commands.push(r);
     if(r.op==='close'&&client.completions.size)closeRequest=r;else queueMicrotask(()=>ack(r));callback();
@@ -75,9 +75,9 @@ test('abort after transport submission cannot retract already accepted work',asy
 });
 test('Renderer forwards AbortSignal into actual client slot acquisition',async()=>{
  const c=new AbortController(),renderer=Object.create(Renderer.prototype) as any;
- Object.assign(renderer,{queue:Promise.resolve(),closed:false,nativePending:new Set(),build:{manifest:{composition:{width:16,height:9,fps:{num:24,den:1},durationInFrames:10},layers:[{id:'layer',source:{$ref:'image',port:'surface'},start:0,end:10}],stages:[{id:'image',engine:'native-gpu',outputs:{surface:'surface'},time:{start:0,duration:10}}]}},
+ Object.assign(renderer,{queue:Promise.resolve(),closed:false,options:{},nativeAbort:new AbortController(),nativePending:new Set(),build:{manifest:{composition:{width:16,height:9,fps:{num:24,den:1},durationInFrames:10},layers:[{id:'layer',source:{$ref:'image',port:'surface'},start:0,end:10}],stages:[{id:'image',engine:'native-gpu',props:{},inputs:{},outputs:{surface:'surface'},time:{start:0,duration:10}}]}},
   nativePlan:{output:{stage:'image',port:'surface'},program:{passes:[{}]},stages:new Map([['image',{}]])},
-  execute:async(...args:any[])=>{args[5].parameters[0]=[0];args[5].published.add('image');},
-  nativeClient:{async submit(_frame:number,_parameters:number[][],options:{signal?:AbortSignal}){assert.equal(options.signal,c.signal);return {completed:Promise.resolve()};}}});
+  execute:async(...args:any[])=>{args[4].parameters[0]=[0];args[4].published.add('image');},
+  nativeClient:{async submit(_frame:number,_parameters:number[][],options:{signal?:AbortSignal}){assert.ok(options.signal instanceof AbortSignal);assert.equal(options.signal.aborted,false);c.abort();assert.equal(options.signal.aborted,true);return {completed:Promise.resolve()};}}});
  await renderer.submitNativeFrame(0,{signal:c.signal});
 });

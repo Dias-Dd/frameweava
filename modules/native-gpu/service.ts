@@ -16,7 +16,7 @@ import {frameToSample} from '../../src/audio/time.ts';
 import {encodePcm,wavHeader} from '../../src/audio/wav.ts';
 import {injectHdrMetadata} from '../../src/media/hdr-metadata.ts';
 import {prepareNativeMediaExport} from './media-export.ts';
-import {ProfessionalVideoEncoder} from '../../src/media/encoding.ts';
+import {ProfessionalOutputWorker} from '../../src/media/output-worker.ts';
 import {assertMediaPolicy} from '../../src/media/compositor.ts';
 import {samePixelColor} from '../gpu-effects/pixel-shader.ts';
 import {writeExr} from '../../src/media/ocio.ts';
@@ -63,7 +63,7 @@ export async function renderNativeProject(project:string,options:NativeRenderOpt
  const taggedFile=join(dirname(output),'.frameweave-direct-tagged-'+id+'.ivf');
  const directFile=join(dirname(output),'.frameweave-direct-'+id+((options.encoder??professional?.video?.encoder)==='av1_nvenc'?'.ivf':'.hevc'));
  const direct=professional?await prepareNativeMediaExport(directFile,professional.media.workingColor,{...professional.video!,...options.encoder?{encoder:options.encoder}:{},fps:c.fps,width:options.width??c.width,height:options.height??c.height},options.signal,{maxPreparedBytes:options.maxBytes??1024**3,timeoutMs:options.timeoutMs}):undefined;
- const settings:Omit<NonNullable<NativeProgram['export']>,'image'|'display'>={executable:ffmpegPath(),output:temporary,fps:[c.fps.num,c.fps.den],codec:extension==='.png'?'png':extension==='.exr'?'exr':options.encoder??'h264_nvenc',format:extension==='.png'?'rgba':extension==='.exr'?'gbrapf32le':'nv12'};
+ const settings:Omit<NonNullable<NativeProgram['export']>,'image'|'display'>={executable:ffmpegPath(),output:temporary,fps:[c.fps.num,c.fps.den],codec:extension==='.png'?'png':extension==='.exr'?'exr':options.encoder??'libx264',format:extension==='.png'?'rgba':extension==='.exr'?'gbrapf32le':'nv12'};
  const encoderVersion=(await exec(settings.executable,['-version'],{windowsHide:true,timeout:10000,maxBuffer:128*1024})).stdout.split(/\r?\n/)[0];
  if(extension==='.exr'&&!/^ffmpeg version 6\.1\.1(?:\s|-)/.test(encoderVersion))throw new EngineError('E_NATIVE_EXR_ENCODER_VERSION','Native EXR float/Alpha export is qualified with bundled FFmpeg 6.1.1; this external version needs an actual Alpha roundtrip qualification',{details:{encoderVersion},hint:'Use the bundled default FFmpeg. FFmpeg 9.0.2 was observed to premultiply EXR RGB and is not qualified.'});
  let renderer:Renderer|undefined;
@@ -95,10 +95,12 @@ async function renderAccurateNative(build:BuiltProject,options:NativeRenderOptio
  let pcm:Awaited<ReturnType<typeof audioTrack>>|undefined;
  const placedAudio=!still&&layersForMedia(build.manifest,'audio').length>0;
  if(placedAudio&&settings.video?.audio)throw new EngineError('E_MEDIA_AUDIO','Choose placed AU-1 audio or explicit PCM, not both');
- const renderer=await Renderer.create(build,{width:options.width,height:options.height,allowWasm:options.allowWasm,timeoutMs:options.timeoutMs,nativeGpu:{executable,rayQuery:options.allowRayQuery,dynamic:'throughput',slots:1,maxBytes:options.maxBytes,readback:'final-surface'}});let encoder:ProfessionalVideoEncoder|undefined;
- try{if(placedAudio)pcm=await audioTrack(build,pcmPath,options.start,options.end,options.signal,true);for(let frame=options.start;frame<options.end;frame++){if(options.signal?.aborted)throw new EngineError('E_RENDER_CANCELLED','Accurate output cancelled');const surface=await renderer.renderNativeSurface(frame,{signal:options.signal});if(!samePixelColor(surface.color,settings.media.workingColor))throw new EngineError('E_NATIVE_COLOR_POLICY','Native composition working colour differs from professional settings; use explicit convertColor before composition');
+ const renderer=await Renderer.create(build,{width:options.width,height:options.height,allowWasm:options.allowWasm,timeoutMs:options.timeoutMs,nativeGpu:{executable,rayQuery:options.allowRayQuery,dynamic:'throughput',slots:options.maxConcurrency??2,maxBytes:options.maxBytes,readback:'final-surface',captureBuffers:['frameweave.final-surface']}});let encoder:ProfessionalOutputWorker|undefined;
+ const prepared=new Map<number,ReturnType<Renderer['renderNativeSurface']>>();
+ const enqueue=(frame:number)=>{if(frame>=options.end)return;const task=renderer.renderNativeSurface(frame,{signal:options.signal});prepared.set(frame,task);void task.catch(()=>{});};
+ try{if(placedAudio)pcm=await audioTrack(build,pcmPath,options.start,options.end,options.signal,true);enqueue(options.start);enqueue(options.start+1);for(let frame=options.start;frame<options.end;frame++){if(options.signal?.aborted)throw new EngineError('E_RENDER_CANCELLED','Accurate output cancelled');const surface=await prepared.get(frame)!;prepared.delete(frame);enqueue(frame+2);if(!samePixelColor(surface.color,settings.media.workingColor))throw new EngineError('E_NATIVE_COLOR_POLICY','Native composition working colour differs from professional settings; use explicit convertColor before composition');
   if(still){await writeExr(surface,output,surface.format==='rgba16float'?'rgba16float':'rgba32float');}
-  else{encoder??=await ProfessionalVideoEncoder.create(output,{...settings.video!,...options.encoder?{encoder:options.encoder}:{},...pcm?{audio:{path:pcmPath,sampleRate:pcm.sampleRate,channels:2,channelLayout:'stereo',format:'f32le',startSample:0}}:{},fps:c.fps,width:surface.width,height:surface.height});await encoder.write(surface);}
+  else{encoder??=await ProfessionalOutputWorker.create(output,{...settings.video!,...options.encoder?{encoder:options.encoder}:{},...pcm?{audio:{path:pcmPath,sampleRate:pcm.sampleRate,channels:2,channelLayout:'stereo',format:'f32le',startSample:0}}:{},fps:c.fps,width:surface.width,height:surface.height});await encoder.write(surface);}
  }const report=await encoder?.finish();encoder=undefined;const explicit=settings.video?.audio;return{version:1,ok:true,backend:'native-wgpu',output,frames:options.end-options.start,audio:pcm??(explicit?{sampleRate:explicit.sampleRate,sampleCount:undefined,layout:explicit.channelLayout,format:explicit.format}:null),accuracy:'PME reference output transform',previewTransform:false,timings:{compileMs,totalMs:performance.now()-started+compileMs},transfer:{previewReadback:false,exportMaterialization:true,format:'rgba32float',route:'native Surface → explicit F32 final-delivery lease → PME colour transform → encoder'},stats:await renderer.nativeStats(),report};
  }finally{await encoder?.abort();await renderer.close();await unlink(pcmPath).catch(e=>{if(e.code!=='ENOENT')throw e;});}
 }

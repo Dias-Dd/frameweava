@@ -7,8 +7,7 @@ import {EngineError} from '../../src/core/errors.ts';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'../..');
 
 /** Supply the installed Servo bundle to the owner, which verifies it on first use. */
-export function nativeOwnerEnvironment():NodeJS.ProcessEnv{
- const env=process.env;
+export function nativeOwnerEnvironment(env:NodeJS.ProcessEnv=process.env):NodeJS.ProcessEnv{
  if(process.platform!=='win32'||process.arch!=='x64'||env.FRAMEWEAVE_SERVO_RUNTIME!==undefined)return env;
  const runtime=join(root,'native-bin','win32-x64','servo');
  return existsSync(runtime)?{...env,FRAMEWEAVE_SERVO_RUNTIME:runtime}:env;

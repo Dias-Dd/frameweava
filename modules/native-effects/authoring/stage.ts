@@ -1,5 +1,6 @@
 import {EngineError} from '../../../src/core/errors.ts';
-import {linear709} from '../../../src/media/surface.ts';
+import {assertColor,linear709} from '../../../src/media/surface.ts';
+import {exrSelection,type ExrSelection} from '../../../src/media/exr-selection.ts';
 import type {ColorEncoding,AlphaMode} from '../../../src/media/surface.ts';
 import {defineNativeStage,type NativeStageInit} from '../../native-gpu/authoring.ts';
 import type {GpuPixelImage} from '../../gpu-effects/pixel-types.ts';
@@ -20,6 +21,20 @@ export function imageResource(id:string,options:ImageResourceOptions={}):ImageSo
   if(!options||typeof options!=='object'||Array.isArray(options)||Object.keys(options).some(k=>!['decode','width','height','color','format','alpha','missingProfile'].includes(k)))authoringError('resource.options','unknown image resource option');
   const config={...options,color:options.color?{...options.color}:undefined};
   return frame=>frame.resource({version:1,id,decode:config.decode??'icc-sdr',output:{width:config.width??frame.init.width,height:config.height??frame.init.height,color:config.color??linear709,format:config.format??'rgba32float',alpha:config.alpha??'premultiplied'},...(config.decode??'icc-sdr')==='icc-sdr'?{missingProfile:config.missingProfile??'assume-srgb'}:{}});
+}
+export interface ExrResourceOptions {
+  selection:ExrSelection;color:ColorEncoding;alpha:AlphaMode;
+  width?:number;height?:number;format?:'rgba16float'|'rgba32float';
+}
+/** Select a scene-linear color contribution from a declared original EXR. */
+export function exrResource(id:string,options:ExrResourceOptions):ImageSource {
+  if(typeof id!=='string'||!id.length)authoringError('resource.id','expected a declared Resource ID');
+  if(!options||typeof options!=='object'||Object.keys(options).some(k=>!['selection','color','alpha','width','height','format'].includes(k)))authoringError('resource.options','unknown EXR resource option');
+  assertColor(options.color);
+  const {width,height,format='rgba32float',alpha,color:{...color}}=options;
+  if(color.transfer!=='linear'||color.reference!=='scene'||!['opaque','straight','premultiplied'].includes(alpha))authoringError('resource.options','EXR requires explicit scene-linear color and Alpha interpretation');
+  const selection=exrSelection(options.selection);
+  return frame=>frame.resource({version:1,id,decode:'exr',selection,output:{width:width??frame.init.width,height:height??frame.init.height,format,alpha,color}});
 }
 export interface ImageStagePreparation<I,P> {source?:ImageSource<ImageStageFrame<I,P>>;dispose?():void|Promise<void>}
 export interface ImageStageOptions<I,P> {

@@ -1,0 +1,6 @@
+{
+  "schemaVersion": 1,
+  "functions": [
+    {"name":"exrResource","level":"authoring","description":"从原始多层 EXR 中选择 Part、RGB/Alpha 通道和图像窗口，作为浮点图像处理来源；不把 Deep 样本静默压平。","example":"const source = exrResource('plate', {selection:{part:0, channels:{r:'Beauty.R',g:'Beauty.G',b:'Beauty.B',a:'Beauty.A'}, window:'display'}, color:{primaries:'rec709',whitePoint:'D65',transfer:'linear',reference:'scene',range:'full',referenceWhiteNits:100}, alpha:'premultiplied'});","contract":{"input":"已声明的 Resource ID、显式 Part/通道/window、场景线性色彩与 Alpha 解释","output":"ImageSource；仅通过现有声明资源读取，不授予任意路径访问"},"tags":["exr","多层","通道","合成","图像","aov","multilayer","channels"]}
+  ]
+}

@@ -5,7 +5,7 @@ function entry(name:string,description:string,example:string,tags:string,level:F
 }
 
 /** Reviewed documentation keyed by immutable R1 release. Examples are call-site snippets. */
-export const officialFunctions:Readonly<Record<string,readonly FunctionMetadata[]>>={
+const historicalFunctions:Readonly<Record<string,readonly FunctionMetadata[]>>={
   'spatial-creation@1.1.1':[
     entry('glowCreation','为发亮区域加柔和光晕，可用于霓虹、灯光和高光。','glowCreation(neonRing({ink:[0.2, 2, 3], finish:false}))','辉光 泛光 发光 glow bloom neon','authoring',['neonRing']),
     entry('neonRing','创建自发光的霓虹圆环，可调整色彩与成片风格。','neonRing({ink:[0.2, 2, 3]})','辉光 发光 霓虹 光圈 glow neon ring'),
@@ -74,4 +74,12 @@ export const officialFunctions:Readonly<Record<string,readonly FunctionMetadata[
     entry('processPa','调用专业浮点模糊、辉光、位移等 Stage 内算子。','await processPa(input, (image, fx) => fx.glow(image, {radius:1.5, threshold:1, intensity:0.15}), {context})','辉光 模糊 位移 glow gaussian displacement','low-level'),
     entry('imageStats','读取 Stage 图像处理器的资源与录制计数。','const stats = imageStats();','调试 GPU 资源 统计 debug stats','low-level'),
   ],
+};
+
+/** Keep immutable historical release descriptions, and carry them into the new additive releases.
+ * New scene/EXR descriptions are shipped with their packages. */
+export const officialFunctions:Readonly<Record<string,readonly FunctionMetadata[]>>={
+  ...historicalFunctions,
+  'spatial-creation@1.2.0':historicalFunctions['spatial-creation@1.1.1'],
+  'native-image-effects@0.8.0':historicalFunctions['native-image-effects@0.7.0'],
 };

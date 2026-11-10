@@ -8,7 +8,7 @@ The npm distribution includes a read-only local catalog. Install the current
 Native animation suite in a fresh project and approve its reviewed authorities:
 
 ```sh
-frameweave packages install pro-animation@1.0.0 --project project.tsx --trust local:frameweave.pro --trust local:frameweave.gpu-images --trust local:frameweave.native-2d --trust local:frameweave.spatial
+frameweave packages install pro-animation@1.1.0 --project project.tsx --trust local:frameweave.pro --trust local:frameweave.gpu-images --trust local:frameweave.native-2d --trust local:frameweave.spatial
 frameweave frame project.tsx --frame 2 --output frame.png
 frameweave export project.tsx --single-file --layout capsule --output my-animation.tsx
 ```
@@ -24,6 +24,52 @@ all its library functions from one package.
 
 The suite pins `frameweave.motion`, `frameweave.vector`, `frameweave.typography`,
 `frameweave.transitions`, `native-image-effects`, `native-2d`, and `spatial-creation`.
+
+### Scene and EXR organization (1.1.0)
+
+The additive `pro-animation@1.1.0` suite pins `spatial-creation@1.2.0` and
+`native-image-effects@0.8.0`. Existing immutable releases, installed snapshots
+and historical SDK locks are not overwritten. Upgrading is an explicit install
+of the new suite and review of the current Runtime Pin.
+
+| Shared capability | Public entries and configuration |
+|---|---|
+| Spatial creation | `createNativeScene`, `createNativePathTracer`, `attachNativeCharacter`, `createRefractiveScene` |
+| Spatial scene configuration | Materials/textures, lights/environment, lens/shutter, participating media/emission, AOV/Cryptomatte/motion and denoise options |
+| Image sources/compositing | `exrResource`, with explicit Part, channels, window, linear color and Alpha interpretation |
+| Host image I/O | `inspectExr`, `readExr`, `writeExr`, `pathAovChannels`, `writePathAovExr` from `@frameweave/engine/image-effects/node` |
+| Host spatial preparation | `prepareNativeCharacterAsset` from `@frameweave/engine/spatial-creation/node` |
+
+The five Stage functions can be named imports from `pro-animation`. The four
+scene functions and their types are also available through the SDK facade
+`@frameweave/engine/spatial-creation`. Existing `/native`, `/node` and
+`/spatial-vfx` imports remain compatible. See
+[the small multi-Stage example](../examples/library-domains/project.tsx).
+
+```tsx
+import {createNativePathTracer, type NativeScene3D} from 'pro-animation';
+import {defineNativeStage} from '@frameweave/engine/native';
+// scene is ordinary typed scene data; the module uses the existing GPU owner.
+export const shot = defineNativeStage(init => createNativePathTracer(init, scene, {
+  samples:32, maxBounces:5, lightSampling:'mis',
+  lens:{apertureRadius:0.003, focusDistance:2}, denoise:{levels:3},
+}));
+```
+
+These facades reuse the existing algorithms and Stage-local resource lease.
+No new device, renderer, Stage ABI or permission is introduced. Scene functions
+need compatible authorized hardware Ray Query; no CPU/SDR fallback is implied.
+Host filesystem operations stay in Node preparation/export and are never
+managed Stage bindings. AOV channels are not Deep EXR samples. The experimental
+primary-ray extension remains a module-developer interface in the Native SDK;
+it is not promoted as a regular creator effect. External shot-specific OIDN
+finishing is not newly made an engine-wide implicit dependency.
+
+The new immutable packages carry `frameweave.functions.json` descriptions,
+input/output contracts and examples. Searches for `路径追踪`, `水滴`, `多层 EXR`
+and related terms discover those functions; EXR/AOV and character queries also
+show the applicable host preparation/export entrances.
+
 Its public callable entries cover the existing Native motion, paths, typography,
 transitions, image effects, drawing and spatial creation surfaces. If two providers
 use the same name, the later provider receives a domain prefix in the suite.

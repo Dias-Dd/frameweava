@@ -8,11 +8,30 @@ import {engineRoot} from '../src/compiler/build.ts';
 import {openMediaPreview} from '../src/media/preview-session.ts';
 import {OcioWorker} from '../src/media/ocio-worker.ts';
 import {ocioTransform} from '../src/media/ocio.ts';
+import {readIccImage} from '../src/media/input.ts';
 import {surfaceFromPixels,pixelsFromSurface,acescg,srgb} from '../src/media/surface.ts';
 
 const policy={workingColor:acescg,preview:{color:srgb,clip:true,ocio:{source:'ACEScg',display:'sRGB - Display',view:'ACES 2.0 - SDR 100 nits (Rec.709)'}}};
+test('ordinary PNG and tagged PNG use the installed ICC adapter and preserve alpha',async()=>{
+ const parent=join(engineRoot,'.frameweave');await mkdir(parent,{recursive:true});
+ const dir=await mkdtemp(join(parent,'media-png-'));
+ const pixels=Buffer.from([0,0,0,0,128,0,0,128,255,255,255,255]);
+ const image=()=>sharp(pixels,{raw:{width:3,height:1,channels:4}});
+ const plain=join(dir,'plain.png'),tagged=join(dir,'tagged.png');
+ await image().png().toFile(plain);
+ await image().withIccProfile('p3').png().toFile(tagged);
+ await assert.rejects(readIccImage(plain,{onMissing:'error'}),{code:'E_MEDIA_COLOR_MISSING'});
+ const ordinary=await readIccImage(plain,{onMissing:'assume-srgb'});
+ const profiled=await readIccImage(tagged,{onMissing:'error'});
+ assert.equal(ordinary.source.icc,'explicit-srgb');
+ assert.equal(profiled.source.icc,'embedded');
+ for(const {surface} of [ordinary,profiled]){
+  assert.equal(surface.width,3);assert.equal(surface.height,1);
+  assert.deepEqual(pixelsFromSurface(surface).filter((_,i)=>i%4===3),Float32Array.of(0,128/255,1));
+ }
+});
+
 test('retained fixed OCIO worker matches one-shot exactly, bounds protocol, propagates errors and closes',async()=>{
- assert.ok(process.env.FRAMEWEAVE_MEDIA_PYTHON,'Set reviewed FRAMEWEAVE_MEDIA_PYTHON for this integration test');
  const worker=new OcioWorker(),s=surfaceFromPixels(2,1,[-.1,4,.2,.5,1,0,0,0],{color:acescg}),transform={...policy.preview.ocio,outputColor:srgb};
  try{
   const ref=await ocioTransform(s,transform);for(let i=0;i<2;i++){const result=await ocioTransform(s,transform,worker);assert.deepEqual(pixelsFromSurface(result.surface),pixelsFromSurface(ref.surface));assert.equal(result.provenance.processorCacheID,ref.provenance.processorCacheID);}

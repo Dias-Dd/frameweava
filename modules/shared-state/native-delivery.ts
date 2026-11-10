@@ -38,7 +38,7 @@ export async function renderSharedNativeProject(project:string,build:BuiltProjec
       else if(extension==='.exr'){if(surface.format!=='rgba16float'&&surface.format!=='rgba32float')throw new EngineError('E_MEDIA_FORMAT','EXR requires a floating Native surface');await writeExr(surface,output,surface.format);}
       else{
         const video:Omit<ProfessionalEncodeOptions,'fps'|'width'|'height'>=options.professional?.video??{preset:'sdr-h264' as const,outputColor:srgb,conversion:{kind:'colorimetric' as const,clip:true},alpha:{mode:'flatten' as const,matte:[0,0,0] as [number,number,number]}};
-        encoder??=await ProfessionalVideoEncoder.create(output,{...video,encoder:options.encoder??video.encoder??'h264_nvenc',...pcm?{audio:{path:pcmPath,sampleRate:pcm.sampleRate,channels:2,channelLayout:'stereo',format:'f32le',startSample:0}}:{},fps:c.fps,width:surface.width,height:surface.height});
+        encoder??=await ProfessionalVideoEncoder.create(output,{...video,encoder:options.encoder??video.encoder,...pcm?{audio:{path:pcmPath,sampleRate:pcm.sampleRate,channels:2,channelLayout:'stereo',format:'f32le',startSample:0}}:{},fps:c.fps,width:surface.width,height:surface.height});
         await encoder.write(surface);
       }
     }

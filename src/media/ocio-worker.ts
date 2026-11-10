@@ -1,6 +1,6 @@
 import {spawn,type ChildProcessWithoutNullStreams} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
-import {resolve} from 'node:path';
+import {mediaPython} from './python.ts';
 import {EngineError} from '../core/errors.ts';
 
 /** Renderer-owned fixed-operation OCIO process. Not an Analysis scheduler or server. */
@@ -23,8 +23,8 @@ export class OcioWorker {
  }
  private acquire(){
   if(this.closed)throw new EngineError('E_MEDIA_OCIO_WORKER_CLOSED','OCIO worker closed');if(this.child)return this.child;
-  const python=process.env.FRAMEWEAVE_MEDIA_PYTHON;if(!python)throw new EngineError('E_MEDIA_OCIO_UNAVAILABLE','Explicit FRAMEWEAVE_MEDIA_PYTHON is required; no runtime downloads');
-  const child=spawn(resolve(python),[fileURLToPath(new URL('./ocio_bridge.py',import.meta.url)),'--worker'],{windowsHide:true,stdio:'pipe'});this.child=child;this.starts++;this.text='';this.stderr='';
+  const python=mediaPython('E_MEDIA_OCIO_UNAVAILABLE');
+  const child=spawn(python,[fileURLToPath(new URL('./ocio_bridge.py',import.meta.url)),'--worker'],{windowsHide:true,stdio:'pipe'});this.child=child;this.starts++;this.text='';this.stderr='';
   child.stdout.setEncoding('utf8');child.stderr.setEncoding('utf8');
   child.stdout.on('data',(chunk:string)=>{
    if(this.child!==child)return;this.text+=chunk;if(this.text.length>1024*1024){this.failure('OCIO reply exceeds 1 MiB');return;}

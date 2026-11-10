@@ -52,6 +52,6 @@ export async function buildProAnimation(output:string){
  await cp(join(root,'attribution'),join(output,'attribution'),{recursive:true});await cp(join(root,'rust'),join(output,'rust'),{recursive:true});
  for(const name of ['package.json','frameweave.package.json','effect.json','README.md','PUBLIC_API.md','NOTICE'])await copyFile(join(root,name),join(output,name));
  const managed=JSON.parse(await readFile(join(output,'frameweave.package.json'),'utf8'));for(const [name,m]of Object.entries(managed.modules) as [string,{path:string}][])m.path='./src/'+(name==='main'?'index':name)+'.ts';await writeFile(join(output,'frameweave.package.json'),JSON.stringify(managed,null,2)+'\n');effect.entry='./src/effect.ts';await writeFile(join(output,'effect.json'),JSON.stringify(effect,null,2)+'\n');
- await copyFile(join(workspace,'licenses/APACHE-2.0.txt'),join(output,'LICENSE'));await cp(join(root,'vendor'),join(output,'vendor'),{recursive:true});return output;
+ await copyFile(join(workspace,'LICENSE'),join(output,'LICENSE'));await cp(join(root,'vendor'),join(output,'vendor'),{recursive:true});return output;
 }
 if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url))console.log(await buildProAnimation(process.argv[2]));

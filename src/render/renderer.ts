@@ -1,4 +1,5 @@
 import type {NativeStateSegment} from '../../modules/native-gpu/state-segments.ts';
+import {rethrowAfterCleanup} from '../core/failure-cleanup.ts';
 import {NativeGpuClient,type NativePreviewEvents, type NativeFrameTicket} from '../../modules/native-gpu/client.ts';
 import {compileNativePlan,nativeParameters,nativePresentationTarget,type NativePlan} from '../../modules/native-gpu/program.ts';
 import type {NativeResourceOptions} from '../../modules/native-gpu/resource-images.ts';
@@ -60,10 +61,15 @@ function nativePlanCacheable(p:NativeProgram){
     !p.data?.some(d=>d.persistent||d.resident||d.sourceResource)&&!p.passes.some(pass=>pass.draw||pass.rayBuild||pass.rayQuery!==undefined);
 }
 
+export interface NativeCapturedFrame {
+  version:1;frame:number;buffers:Record<string,NativeBufferValue>;
+  timings:{submitToGpuCompleteMs:number;readbackMs:number};
+  output:NativeProgram['images'][number];values:Record<string,Record<string,PortValue>>;
+}
 export interface NativePreviewCheckpoint {readonly bytes:number}
 export interface RendererOptions extends RenderOptions {onProfile?:PerformanceSink;
  /** Explicit experimental native backend. Never executes arbitrary Web factories in Node. */
- nativeGpu?:{previewQuality?:true;packedF16?:boolean;graphTemplates?:boolean;logicLimits?:{maxMessageBytes?:number;maxMemoryBytes?:number};resourceLimits?:Omit<NativeResourceOptions,'allowWasm'>;rayQuery?:boolean;executable:string;window?:boolean;slots?:number;maxBytes?:number;dynamic?:'interactive'|'throughput';readback?:'final-surface';mediaExport?:Omit<import('../../modules/native-gpu/media-export.ts').NativeMediaExport,'image'|'alpha'>;export?:Omit<NonNullable<NativeProgram['export']>,'image'|'display'>};
+ nativeGpu?:{previewQuality?:true;packedF16?:boolean;graphTemplates?:boolean;logicLimits?:{maxMessageBytes?:number;maxMemoryBytes?:number};resourceLimits?:Omit<NativeResourceOptions,'allowWasm'>;rayQuery?:boolean;executable:string;window?:boolean;slots?:number;maxBytes?:number;dynamic?:'interactive'|'throughput';readback?:'final-surface';captureBuffers?:readonly string[];mediaExport?:Omit<import('../../modules/native-gpu/media-export.ts').NativeMediaExport,'image'|'alpha'>;export?:Omit<NonNullable<NativeProgram['export']>,'image'|'display'>};
 }
 /** Prepared output projection is engine-owned; never a value-cache entry or PortValue. */
 export interface PreparedPresentation {diagnostics:Diagnostic[];stageOutputs:Record<string,Record<string,PortValue>>;cacheHits:number}
@@ -134,6 +140,7 @@ export class Renderer {
   }
 
   private nativeClient?:NativeGpuClient;
+  private nativeCapturedReads=new Set<Promise<NativeCapturedFrame>>();
   private previewReplacement=false;
   private nativeBufferExporter?:NativeBufferExporter;
   private nativePending=new Set<Promise<unknown>>();
@@ -192,7 +199,8 @@ export class Renderer {
     if(!Number.isInteger(width) || !Number.isInteger(height) || width<1 || height<1)throw new EngineError('E_OUTPUT_SIZE','Output dimensions must be positive integers.');
     if(Math.abs(width/height-c.width/c.height)>0.003)throw new EngineError('E_OUTPUT_SIZE','Preview dimensions must preserve the composition aspect ratio.');
     if(options.nativeGpu){
-      if(typeof options.nativeGpu!=='object'||Object.keys(options.nativeGpu).some(k=>!['executable','window','slots','maxBytes','dynamic','export','readback','mediaExport','rayQuery','resourceLimits','logicLimits','previewQuality','packedF16','graphTemplates'].includes(k))||options.nativeGpu.logicLimits!==undefined&&(!options.nativeGpu.logicLimits||typeof options.nativeGpu.logicLimits!=='object'||Array.isArray(options.nativeGpu.logicLimits)||Object.keys(options.nativeGpu.logicLimits).some(k=>!['maxMessageBytes','maxMemoryBytes'].includes(k))||Object.values(options.nativeGpu.logicLimits).some(n=>!Number.isSafeInteger(n)||n!<1))||options.nativeGpu.resourceLimits!==undefined&&(!options.nativeGpu.resourceLimits||typeof options.nativeGpu.resourceLimits!=='object'||Array.isArray(options.nativeGpu.resourceLimits)||Object.hasOwn(options.nativeGpu.resourceLimits,'allowWasm'))||typeof options.nativeGpu.executable!=='string'||!options.nativeGpu.executable.trim()||options.nativeGpu.rayQuery!==undefined&&typeof options.nativeGpu.rayQuery!=='boolean'||options.nativeGpu.window!==undefined&&typeof options.nativeGpu.window!=='boolean'||options.nativeGpu.dynamic!==undefined&&!['interactive','throughput'].includes(options.nativeGpu.dynamic)||options.nativeGpu.readback!==undefined&&options.nativeGpu.readback!=='final-surface')throw new EngineError('E_NATIVE_OPTIONS','Native backend needs an explicit executable and bounded options');
+      if(typeof options.nativeGpu!=='object'||Object.keys(options.nativeGpu).some(k=>!['executable','window','slots','maxBytes','dynamic','export','readback','captureBuffers','mediaExport','rayQuery','resourceLimits','logicLimits','previewQuality','packedF16','graphTemplates'].includes(k))||options.nativeGpu.logicLimits!==undefined&&(!options.nativeGpu.logicLimits||typeof options.nativeGpu.logicLimits!=='object'||Array.isArray(options.nativeGpu.logicLimits)||Object.keys(options.nativeGpu.logicLimits).some(k=>!['maxMessageBytes','maxMemoryBytes'].includes(k))||Object.values(options.nativeGpu.logicLimits).some(n=>!Number.isSafeInteger(n)||n!<1))||options.nativeGpu.resourceLimits!==undefined&&(!options.nativeGpu.resourceLimits||typeof options.nativeGpu.resourceLimits!=='object'||Array.isArray(options.nativeGpu.resourceLimits)||Object.hasOwn(options.nativeGpu.resourceLimits,'allowWasm'))||typeof options.nativeGpu.executable!=='string'||!options.nativeGpu.executable.trim()||options.nativeGpu.rayQuery!==undefined&&typeof options.nativeGpu.rayQuery!=='boolean'||options.nativeGpu.window!==undefined&&typeof options.nativeGpu.window!=='boolean'||options.nativeGpu.dynamic!==undefined&&!['interactive','throughput'].includes(options.nativeGpu.dynamic)||options.nativeGpu.readback!==undefined&&options.nativeGpu.readback!=='final-surface')throw new EngineError('E_NATIVE_OPTIONS','Native backend needs an explicit executable and bounded options');
+      if(options.nativeGpu.captureBuffers!==undefined&&(!Array.isArray(options.nativeGpu.captureBuffers)||options.nativeGpu.captureBuffers.some(n=>typeof n!=='string'||!n)||new Set(options.nativeGpu.captureBuffers).size!==options.nativeGpu.captureBuffers.length))throw new EngineError('E_NATIVE_DATA_CAPTURE','Capture names must be a unique array of published buffer names');
       if(options.nativeGpu.packedF16!==undefined&&typeof options.nativeGpu.packedF16!=='boolean')throw new EngineError('E_NATIVE_OPTIONS','packedF16 must be boolean');
       if(options.nativeGpu.graphTemplates!==undefined&&typeof options.nativeGpu.graphTemplates!=='boolean')throw new EngineError('E_NATIVE_OPTIONS','graphTemplates must be boolean');
       if(options.nativeGpu.previewQuality!==undefined&&(options.nativeGpu.previewQuality!==true||!options.nativeGpu.window||
@@ -217,12 +225,12 @@ export class Renderer {
           // No speculative renderAt(0). Stateful authored logic executes only
           // for the caller's requested frame; the device is already admitted.
           renderer.nativePlan={program:bootstrap,stages:new Map(),output:{stage:'@native-composite',port:'surface'}};return renderer;
-        }catch(e){await renderer?.close();throw e;}
+        }catch(e){return rethrowAfterCleanup(e,async()=>renderer?.close());}
       }
       const nativePlan=compileNativePlan(nativeBuild.manifest,{width,height,...options.nativeGpu});if(options.nativeGpu.rayQuery){nativePlan.program.version=2;nativePlan.program.rayQuery=true;}
       const renderer=new Renderer(nativeBuild,options,width,height);
       renderer.nativePlan=nativePlan;
-      try{if(nativePlan.program.version===2){renderer.nativeBufferExporter=await NativeBufferExporter.create();renderer.nativeBufferExporter.configure(nativePlan.program);}renderer.nativeClient=await NativeGpuClient.create(nativePlan.program,{executable:options.nativeGpu.executable,window:options.nativeGpu.window,timeoutMs:options.timeoutMs});}catch(error){await renderer.close();throw error;}
+      try{if(nativePlan.program.version===2){renderer.nativeBufferExporter=await NativeBufferExporter.create();renderer.nativeBufferExporter.configure(nativePlan.program);}renderer.nativeClient=await NativeGpuClient.create(nativePlan.program,{executable:options.nativeGpu.executable,window:options.nativeGpu.window,timeoutMs:options.timeoutMs});}catch(error){return rethrowAfterCleanup(error,()=>renderer.close());}
       return renderer;
     }
     if(stages.some(s=>s.engine==='native-gpu'))throw new EngineError('E_NATIVE_BACKEND_REQUIRED','Explicit nativeGpu backend selection is required');
@@ -231,7 +239,7 @@ export class Renderer {
       renderer.fingerprint=hashValue([build.hash,'native-host',platform(),arch(),width,height,options.allowWasm===true,options.media??null]);
       await renderer.initializeStages(stages);
       return renderer;
-    }catch(error){await renderer.close();throw error;}
+    }catch(error){return rethrowAfterCleanup(error,()=>renderer.close());}
   }
   private async initializeStages(stages:StageSpec[]){
     if(this.closed)throw new EngineError('E_RENDERER_CLOSED','Renderer has closed.');
@@ -265,7 +273,7 @@ export class Renderer {
     const previewQuality=options.previewQuality&&previewQualityOptions(options.previewQuality,16.67).initial;
     const task=this.queue.then(()=>this.submitNativeOwned(frame,{...options,execution:snapshot,previewQuality}));this.queue=task.catch(()=>{});return task;
   }
-  private async submitNativeOwned(frame:number,options:{signal?:AbortSignal;execution?:FrameExecution;previewRevision?:number;previewAdvance?:boolean;previewQuality?:PreviewQuality;previewCacheLookup?:boolean}={}):Promise<NativeFrameTicket>{
+  private async submitNativeOwned(frame:number,options:{signal?:AbortSignal;execution?:FrameExecution;retainSlot?:boolean;previewRevision?:number;previewAdvance?:boolean;previewQuality?:PreviewQuality;previewCacheLookup?:boolean}={}):Promise<NativeFrameTicket>{
       options={...options,signal:options.signal?AbortSignal.any([options.signal,this.nativeAbort.signal]):this.nativeAbort.signal};
       assertSharedExecution(this.build.manifest.stages,options.execution);
       if(!this.nativeClient||!this.nativePlan)throw new EngineError('E_NATIVE_BACKEND_REQUIRED','Renderer has no native backend');
@@ -301,7 +309,7 @@ export class Renderer {
             stageCache=result.stageCache.filter(entry=>entry.first===undefined?!hasScratch:wholeGraph);
           }
           const ticket=this.trackNativeTicket(await this.nativeClient.submit(frame,result.parameters,{
-            signal:options.signal,frameBindings,previewRevision:options.previewRevision,previewAdvance:options.previewAdvance,
+            signal:options.signal,retainSlot:options.retainSlot,frameBindings,previewRevision:options.previewRevision,previewAdvance:options.previewAdvance,
             previewTiming:!!options.previewQuality&&options.previewRevision!==undefined,
             previewCacheKey:cacheable?previewCacheKey:undefined,
             stageCache,
@@ -322,18 +330,49 @@ export class Renderer {
       await this.execute(frame,undefined,undefined,undefined,recording);
       if(options.signal?.aborted)throw new EngineError('E_RENDER_CANCELLED','Native frame cancelled before submission');
       if(recording.parameters.some(p=>p===undefined)||recording.published.size!==this.nativePlan.stages.size)throw new EngineError('E_NATIVE_ELIGIBILITY','Inactive native Stage requires another immutable plan');
-      return this.trackNativeTicket(await this.nativeClient.submit(frame,recording.parameters,{signal:options.signal,previewRevision:options.previewRevision,previewAdvance:options.previewAdvance}));
+      return this.trackNativeTicket(await this.nativeClient.submit(frame,recording.parameters,{signal:options.signal,retainSlot:options.retainSlot,previewRevision:options.previewRevision,previewAdvance:options.previewAdvance}));
+  }
+  /** Owned output copies can overlap another frame's GPU work. Plan changes
+   * first drain these copies, so arbitrary dynamic graphs keep the serial fallback. */
+  captureNativeFrame(frame:number,names:readonly string[],options:{signal?:AbortSignal;execution?:FrameExecution}={}):Promise<NativeCapturedFrame>{
+    if(!Array.isArray(names)||!names.length||names.some(n=>typeof n!=='string'||!n)||new Set(names).size!==names.length)
+      return Promise.reject(new EngineError('E_NATIVE_DATA_CAPTURE','Expected unique published output names'));
+    const snapshot=this.capture(options.execution),requested=[...names];
+    const task=this.queue.then(()=>this.captureNativeOwned(frame,requested,{...options,execution:snapshot}));
+    this.queue=task.catch(()=>{});return task.then(value=>value.result);
+  }
+  private async captureNativeOwned(frame:number,names:readonly string[],options:{signal?:AbortSignal;execution?:FrameExecution}){
+    if(!this.nativeBufferExporter||!this.nativeClient)throw new EngineError('E_NATIVE_DATA_PERMISSION','Native output capture needs an explicit host export owner');
+    // A stateful frame or a Stage that already needed a host suspension may
+    // perform another reconfiguration while JS is recording. Preserve that
+    // boundary before entering its next record, not only at final admission.
+    if(this.stateSegmentCount>0||this.nativePlan?.program.data?.some(d=>d.persistent))
+      await Promise.all([...this.nativeCapturedReads]);
+    const client=this.nativeClient,exporter=this.nativeBufferExporter;
+    const began=performance.now(),ticket=await this.submitNativeOwned(frame,{...options,retainSlot:true}),output=structuredClone(this.nativeOutputInfo!);
+    const values=structuredClone(this.nativeValues.get(ticket)??{});
+    const result=(async()=>{
+      await ticket.completed;const completed=performance.now();
+      const buffers:Record<string,NativeBufferValue>={};
+      for(const name of names)buffers[name]=await exporter.read(client,ticket,name,options);
+      return {version:1 as const,frame,buffers,output,values,timings:{submitToGpuCompleteMs:completed-began,readbackMs:performance.now()-completed}};
+    })().finally(()=>client.releaseFrame(ticket));
+    this.nativeCapturedReads.add(result);void result.finally(()=>this.nativeCapturedReads.delete(result)).catch(()=>{});
+    return {result};
+  }
+  private capturedSurface(capture:NativeCapturedFrame){
+    const info=capture.output,result=capture.buffers['frameweave.final-surface'];
+    return surfaceFromPixels(info.width,info.height,result.values as Float32Array,{format:info.format as 'rgba16float'|'rgba32float',alpha:info.alpha as import('../media/surface.ts').AlphaMode,color:info.color as import('../media/surface.ts').ColorEncoding,deferBase64:true});
   }
   /** Explicit final-delivery materialization; never enabled by preview. */
   renderNativeSurface(frame:number,options:{signal?:AbortSignal;execution?:FrameExecution}={}):Promise<ProfessionalSurface>{
-    const snapshot=this.capture(options.execution),task=this.queue.then(async()=>(await this.nativeFrameOwned(frame,{...options,execution:snapshot})).surface);this.queue=task.catch(()=>{});return task;
+    if(this.options.nativeGpu?.readback!=='final-surface')return Promise.reject(new EngineError('E_NATIVE_DATA_PERMISSION','Enable final-surface readback explicitly for accurate delivery'));
+    return this.captureNativeFrame(frame,['frameweave.final-surface'],options).then(value=>this.capturedSurface(value));
   }
   private async nativeFrameOwned(frame:number,options:{signal?:AbortSignal;execution?:FrameExecution}={}):Promise<ProfessionalFrame>{
-    if(this.options.nativeGpu?.readback!=='final-surface'||!this.nativeBufferExporter)throw new EngineError('E_NATIVE_DATA_PERMISSION','Enable final-surface readback explicitly for accurate delivery');
-    const ticket=await this.submitNativeOwned(frame,options);await ticket.completed;
-    const result=await this.nativeBufferExporter.read(this.nativeClient!,ticket,'frameweave.final-surface',options),info=this.nativeOutputInfo!;
-    const surface=surfaceFromPixels(info.width,info.height,result.values as Float32Array,{format:info.format as 'rgba16float'|'rgba32float',alpha:info.alpha as import('../media/surface.ts').AlphaMode,color:info.color as import('../media/surface.ts').ColorEncoding,deferBase64:true});
-    return {surface,diagnostics:[],stageOutputs:structuredClone(this.nativeValues.get(ticket)??{}),cacheHits:0};
+    if(this.options.nativeGpu?.readback!=='final-surface')throw new EngineError('E_NATIVE_DATA_PERMISSION','Enable final-surface readback explicitly for accurate delivery');
+    const capture=await(await this.captureNativeOwned(frame,['frameweave.final-surface'],options)).result;
+    return {surface:this.capturedSurface(capture),diagnostics:[],stageOutputs:capture.values,cacheHits:0};
   }
   previewCheckpointBytes(){
     if(!this.previewCheckpointEligible||!this.nativeLogic?.previewCheckpointSupported()||!this.nativeClient)return;
@@ -411,8 +450,9 @@ export class Renderer {
       if(result.stageCache?.length)result.stageCache=result.stageCache.map(entry=>p.images[p.passes[entry.pass].output].storage?
         {...entry,key:hashValue(['packed-f16-v1',entry.key])}:entry);
     }
+    if(this.options.nativeGpu?.captureBuffers?.length)p.readbacks=[...this.options.nativeGpu.captureBuffers];
     const frameKey=JSON.stringify([result.output,this.nativeLayoutKey(p,true)]);
-    const eligible=!p.frameContinuation&&!p.data?.some(d=>d.persistent)&&!p.bufferOutputs?.length;
+    const eligible=!p.frameContinuation&&!p.data?.some(d=>d.persistent);
     if(frameKey===this.nativeFrameLayout&&eligible&&!this.nativeFrameDeltas&&this.nativeLayoutKey(p)===this.nativeLayout)return;
     p.session=previous.session;p.maxBytes=previous.maxBytes;if(previous.previewReuse)p.previewReuse=previous.previewReuse;
     this.nativeOutputInfo=structuredClone(p.images[result.output]);
@@ -428,6 +468,7 @@ export class Renderer {
     const cacheable=this.options.nativeGpu?.graphTemplates!==false&&nativePlanCacheable(p);
     const planKey=cacheable?JSON.stringify([result.output,p.slots,p.imageAllocations,key]):undefined;
     await beforeReconfigure?.();
+    await Promise.all([...this.nativeCapturedReads]);
     const client=this.nativeClient!;
     let id=planKey===undefined?undefined:this.nativePlanCache.get(planKey);
     if(id===undefined||!await client.activatePlan(id)){
@@ -461,7 +502,7 @@ export class Renderer {
       if(this.closed)throw new EngineError('E_RENDERER_CLOSED','Renderer closed');
       if(!this.nativeClient||!this.nativeBufferExporter)throw new EngineError('E_NATIVE_BACKEND_REQUIRED','Native buffer export requires a native owner');
       if(options.signal?.aborted)throw new EngineError('E_RENDER_CANCELLED','Native buffer export cancelled');
-      await Promise.all([...this.nativePending]);
+      await ticket.completed;
       return this.nativeBufferExporter.read(this.nativeClient,ticket,id,options);
     });this.queue=task.catch(()=>{});return task;
   }
@@ -681,6 +722,7 @@ export class Renderer {
     await this.finishNativeStateContinuation(false).catch(()=>{});const nativeDisposal=await Promise.allSettled([logicClosing]);
     // Stage disposers run with their GPU owner available. The child close event
     // then confirms ORT/model handles are gone before deleting host lease files.
+    await Promise.allSettled([...this.nativeCapturedReads]);
     nativeDisposal.push(...await Promise.allSettled([this.previewReplacement?this.nativeClient?.abortPreviewReload():this.nativeClient?.close()]));
     nativeDisposal.push(...await Promise.allSettled([this.nativeLogic?.closeResources()]));
     nativeDisposal.push(...await Promise.allSettled([this.nativeBufferExporter?.close()]));

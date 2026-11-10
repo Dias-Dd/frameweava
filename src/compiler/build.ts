@@ -38,6 +38,8 @@ export const alias = {
   '@frameweave/engine/editing/node':join(engineRoot,'modules/editing/node.ts'),
   '@frameweave/engine/image-effects':join(engineRoot,'modules/native-effects/authoring/index.ts'),
   '@frameweave/engine/image-effects/node':join(engineRoot,'modules/native-effects/authoring/node.ts'),
+  '@frameweave/engine/spatial-creation':join(engineRoot,'modules/spatial-creation/rendering.ts'),
+  '@frameweave/engine/spatial-creation/node':join(engineRoot,'modules/spatial-creation/node.ts'),
   '@frameweave/engine/spatial-vfx':join(engineRoot,'modules/spatial-vfx/stage.ts'),
   '@frameweave/engine/typography':join(engineRoot,'modules/pro-animation/typography.ts'),
   '@frameweave/engine/typography/node':join(engineRoot,'modules/pro-animation/typography-node.ts'),

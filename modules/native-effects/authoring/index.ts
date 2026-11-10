@@ -1,8 +1,9 @@
 export {createImageTools,compose,withEffects,withImageSources,withImageAssets} from './runtime.ts';
-export {imageResource,imageStage} from './stage.ts';
+export {exrResource,imageResource,imageStage} from './stage.ts';
 export {floatImageResource} from './float-source.ts';
 export type {FloatImageResourceOptions} from './float-source.ts';
-export type {ImageResourceOptions,ImageStageOptions,ImageStagePreparation} from './stage.ts';
+export type {ExrResourceOptions,ImageResourceOptions,ImageStageOptions,ImageStagePreparation} from './stage.ts';
+export type {ExrSelection} from '../../../src/media/exr-selection.ts';
 export type * from './types.ts';
 export * from './operators.ts';
 export * from './advanced.ts';

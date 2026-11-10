@@ -24,6 +24,10 @@ export function borrowNativeScope(owner:NativeGpuScope){
    if(key==='replaceResidentBuffer')buffers.delete(args[0] as object);
    if(released)released.delete(args[0] as object);
    if(key==='importBufferResource')buffers.add(result.buffer);
+   // A ray query allocates three buffers as a structured result. Only adopt
+   // fresh outputs; caller-supplied targets retain their existing ownership.
+   if(key==='traceRayScene'&&!(args[1] as {output?:unknown})?.output)
+    for(const name of ['hits','measurements','normals'])buffers.add(result[name]);
    if(allocations.has(String(key)))(key==='createModule'?modules:['createBuffer','createField','cloneBuffer','imageToBuffer','createStateBuffer','createStateField','createResidentBuffer','createResidentField','replaceResidentBuffer'].includes(String(key))?buffers:images).add(result);
    return result;
   };

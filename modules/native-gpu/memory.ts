@@ -16,6 +16,8 @@ export function residentLayout(program:Pick<NativeProgram,'images'|'passes'|'dis
  program.passes.forEach((p,n)=>{if(p.buffers)return;born[p.output]=n;last[p.output]=n;p.inputs.forEach(i=>{last[i]=n;});});
  program.passes.forEach((p,n)=>{for(const d of [...p.buffers??[],...p.data??[],...p.draw?[p.draw.positions,...p.draw.indices===undefined?[]:[p.draw.indices],...p.draw.uvs===undefined?[]:[p.draw.uvs]]:[]]){const i=program.data?.[d].sourceImage;if(i!==undefined)last[i]=Math.max(last[i],n);}});
  for(const out of program.bufferOutputs??[]){const i=program.data?.[out.buffer].sourceImage;if(i!==undefined)last[i]=program.passes.length;}
+ // Static assets are uploaded when the plan is admitted and read again on later frames.
+ for(const item of program.imports??[])if(item.source==='declared-resource')last[item.image]=program.passes.length;
  if(program.display)last[program.display.image]=program.passes.length;
  // A headless final output is also retained for explicit export / inspection.
  const final=[...program.passes].reverse().find(p=>!p.buffers)?.output;if(final!==undefined)last[final]=program.passes.length;
@@ -46,9 +48,19 @@ export function nativeFrameCapacity(program:NativeProgram,budget:number,limit=DE
  const external=(program.modules?.reduce((n,m)=>n+m.width*m.height*4*(1+Number(m.input)),0)??0)+(program.imports??[]).reduce((n,i)=>n+(i.source==='hardware-video'?program.images[i.image].width*program.images[i.image].height*16:0),0);
  const media=program.mediaExport?program.images[program.mediaExport.image].width*program.images[program.mediaExport.image].height*35+8*1024**2:0;
  const inferenceModels=[...new Set([...program.passes.flatMap(p=>p.inference===undefined?[]:[p.inference]),...(program.inferences??[]).flatMap((m,i)=>m.file?[i]:[])])].map(i=>{const model=program.inferences?.[i];if(!model)throw new EngineError('E_INFERENCE_IDENTITY','Unknown model in native memory admission');return model;});const inference=inferenceModels.reduce((n,m)=>n+[...m.inputs,...m.outputs].reduce((b,t)=>b+Math.ceil(tensorBytes(t)/65536)*65536,0),0);
- const ray=program.passes.reduce((sum,p)=>sum+(p.rayBuild?4+p.rayBuild.geometries.reduce((v,g)=>v+g.count*12+96,0):0),0);
+ const ray=program.passes.reduce((sum,{rayBuild})=>{
+  if(!rayBuild)return sum;
+  const unique=new Set<string>();
+  return sum+4+rayBuild.geometries.reduce((bytes,g)=>{
+   const key=`${g.positions}:${g.indices??'-'}:${g.count}`;
+   if(rayBuild.backend!=='optix'&&unique.has(key))return bytes+96;
+   unique.add(key);
+   return bytes+96+g.count*12;
+  },0);
+ },0);
  const rayUniform=program.passes.filter(p=>p.rayQuery!==undefined).length*16;
- const perFrame=rayUniform+ray+layout.bytes+uniforms+display+data+mesh+Math.ceil(encoded/4)*8+external+media+inference,fixed=inferenceModels.reduce((n,m)=>n+m.model.bytes,0)+(program.display?4*(program.display.reach.length+program.display.cusp.length):0)+seeds+(program.imports??[]).reduce((n,i)=>n+(i.source==='hardware-video'&&i.video?Math.ceil(i.video.width/128)*128*Math.ceil(i.video.height/128)*128*(i.video.tenBit?3:2):0),0)+(program.mediaExport?.textures.reduce((n,t)=>n+t.width*t.height*(t.channels===1?4:16),0)??0);
+ const capture=(program.readbacks??[]).reduce((n,name)=>{const out=program.bufferOutputs?.find(o=>o.id===name);if(!out)throw new EngineError('E_NATIVE_DATA_OUTPUT','Capture requires a named publication: '+name);return n+program.data![out.buffer].length*4;},0);
+ const perFrame=capture+rayUniform+ray+layout.bytes+uniforms+display+data+mesh+Math.ceil(encoded/4)*8+external+media+inference,fixed=inferenceModels.reduce((n,m)=>n+m.model.bytes,0)+(program.display?4*(program.display.reach.length+program.display.cusp.length):0)+seeds+(program.imports??[]).reduce((n,i)=>n+(i.source==='hardware-video'&&i.video?Math.ceil(i.video.width/128)*128*Math.ceil(i.video.height/128)*128*(i.video.tenBit?3:2):0),0)+(program.mediaExport?.textures.reduce((n,t)=>n+t.width*t.height*(t.channels===1?4:16),0)??0);
  const boundary=(0)+(program.dataExport?(program.bufferOutputs??[]).reduce((n,o)=>Math.max(n,program.data![o.buffer].length*4),0):0);
  const capacity=Math.min(limit,program.frameContinuation||program.data?.some(d=>d.persistent)?1:limit,Math.floor((budget-fixed-boundary)/perFrame));
  if(![perFrame,fixed,boundary,capacity].every(Number.isSafeInteger)||capacity<1)throw new EngineError('E_NATIVE_BUDGET','One native frame exceeds the memory budget',{details:{budget,perFrame,fixed}});

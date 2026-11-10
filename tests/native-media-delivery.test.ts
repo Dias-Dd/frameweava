@@ -17,7 +17,9 @@ import {transformSurface} from '../src/media/color.ts';
 import {readExr,ocioTransform} from '../src/media/ocio.ts';
 import type {NativeVideoResource} from '../modules/native-gpu/resources.ts';
 import type {ProfessionalSettings} from '../src/media/service.ts';
-const exec=promisify(execFile),native=resolve('.frameweave/native-target/debug/frameweave-native-gpu.exe');
+const exec=promisify(execFile),windows=process.platform==='win32';
+const native=resolve(process.env.FRAMEWEAVE_NATIVE_GPU??('.frameweave/native-target/debug/frameweave-native-gpu'+(windows?'.exe':'')));
+const hdrEncoders=windows?['hevc_nvenc','av1_nvenc'] as const:['libx265','libaom-av1'] as const;
 const hdr10={masteringDisplay:{red:[.708,.292] as [number,number],green:[.17,.797] as [number,number],blue:[.131,.046] as [number,number],white:[.3127,.329] as [number,number],minNits:.005,maxNits:1000},maxCLL:1000,maxFALL:400};
 const root=resolve('artifacts/native-media-delivery');
 async function directory(prefix:string){await mkdir(root,{recursive:true});return mkdtemp(join(root,prefix));}
@@ -62,7 +64,7 @@ test('declared video decodes all frames, seeks by PTS, rejects undeclared/tamper
  const rendered=await renderNativeProject(entry,{build,native,output:join(dir,'roundtrip.mp4'),maxConcurrency:2,encoder:'libx264'});
  const probe=await inspectMediaFile(rendered.output);assert.equal(Number(probe.streams[0].nb_frames),6);
  assert.ok(rendered.stats.frameBindings.slotUpdates>0);
- for(const encoder of ['hevc_nvenc','av1_nvenc'] as const){
+ for(const encoder of windows?hdrEncoders:[] as const){
   const out=join(dir,'fast-'+encoder+'.mp4');await renderNativeProject(entry,{build,native,width:320,height:160,output:out,start:0,end:2,maxConcurrency:2,encoder});
   const fast=await inspectMediaFile(out),stream=fast.streams[0];assert.equal(stream.codec_name,encoder==='hevc_nvenc'?'hevc':'av1');assert.equal(Number(stream.nb_frames),2);
  }
@@ -84,12 +86,13 @@ test('native float final delivery preserves EXR and produces real 10-bit HEVC/AV
  assert.deepEqual([...float.slice(0,4)],[-.25,2,.0625,.5]);assert.equal(decoded.surface.color.primaries,'rec2020');
  const renderer=await Renderer.create(build,{nativeGpu:{executable:native,slots:1}});try{await assert.rejects(renderer.renderNativeSurface(0),{code:'E_NATIVE_DATA_PERMISSION'});}finally{await renderer.close();}
  const reference=transformSurface(surfaceFromPixels(320,180,Float32Array.from({length:320*180*4},(_,i)=>[1,.25,.0625,1][i%4]),{format:'rgba32float',color:linear2020,alpha:'opaque'}),pq2020).surface;
- for(const encoder of ['hevc_nvenc','av1_nvenc'] as const){
+ for(const encoder of hdrEncoders){
+  const av1=encoder.includes('av1');
   const output=join(dir,encoder+'.mp4');
   const result=await renderNativeProject(entry,{build,native,output,encoder,start:1,end:7,professional:{...settings,video:{preset:'hdr10',outputColor:pq2020,conversion:{kind:'colorimetric',clip:false},alpha:{mode:'flatten',matte:[0,0,0]},hdr10}}});
   assert.equal(result.audio?.sampleCount,4800);
   const probe=await inspectMediaFile(output),stream=probe.streams.find((s:any)=>s.codec_type==='video'),audio=probe.streams.find((s:any)=>s.codec_type==='audio');
-  assert.equal(stream.codec_name,encoder==='hevc_nvenc'?'hevc':'av1');assert.equal(stream.pix_fmt,'yuv420p10le');
+  assert.equal(stream.codec_name,av1?'av1':'hevc');assert.equal(stream.pix_fmt,'yuv420p10le');
   assert.equal(Number(stream.nb_frames),6);assert.equal(stream.avg_frame_rate,'60/1');assert.equal(stream.color_primaries,'bt2020');assert.equal(stream.color_transfer,'smpte2084');assert.equal(stream.color_space,'bt2020nc');assert.ok(audio);
   const sides=probe.frames.find((f:any)=>f.media_type==='video').side_data_list;
   const master=sides.find((s:any)=>s.side_data_type==='Mastering display metadata'),cll=sides.find((s:any)=>s.side_data_type==='Content light level metadata');
@@ -97,21 +100,21 @@ test('native float final delivery preserves EXR and produces real 10-bit HEVC/AV
   const fraction=(v:string)=>{const [a,b]=v.split('/').map(Number);return a/b;};assert.ok(Math.abs(fraction(master.red_x)-.708)<1/50000);assert.equal(fraction(master.max_luminance),1000);assert.ok(Math.abs(fraction(master.min_luminance)-.005)<1/16384);
   // The bundled FFmpeg's libaom cannot decode this 10-bit AV1 stream. Validate
   // with an explicitly configured decoder; never silently download/fallback.
-  if(encoder==='av1_nvenc')assert.ok(process.env.FRAMEWEAVE_AV1_DECODE_FFMPEG,'Set FRAMEWEAVE_AV1_DECODE_FFMPEG to a reviewed 10-bit AV1 decoder');
-  const code=await decodeVideoFloat(output,{color:pq2020,width:320,height:180,ffmpeg:encoder==='av1_nvenc'?process.env.FRAMEWEAVE_AV1_DECODE_FFMPEG:undefined}),a=pixelsFromSurface(code),b=pixelsFromSurface(reference);let maxError=0;
+  if(av1)assert.ok(process.env.FRAMEWEAVE_AV1_DECODE_FFMPEG,'Set FRAMEWEAVE_AV1_DECODE_FFMPEG to a reviewed 10-bit AV1 decoder');
+  const code=await decodeVideoFloat(output,{color:pq2020,width:320,height:180,ffmpeg:av1?process.env.FRAMEWEAVE_AV1_DECODE_FFMPEG:undefined}),a=pixelsFromSurface(code),b=pixelsFromSurface(reference);let maxError=0;
   for(let i=0;i<a.length;i++)maxError=Math.max(maxError,Math.abs(a[i]-b[i]));assert.ok(maxError<.006,JSON.stringify({encoder,maxError}));
   console.log(JSON.stringify({case:'accurate-hdr',encoder,maxCodeError:maxError,master,cll,frames:stream.nb_frames,audio:audio.codec_name,result}));
  }
  // HLG uses the same accurate route, without PQ mastering metadata.
- const output=join(dir,'hlg.mov');await renderNativeProject(entry,{build,native,output,encoder:'hevc_nvenc',start:1,end:7,professional:{...settings,video:{preset:'hlg',outputColor:hlg2020,conversion:{kind:'colorimetric',clip:false},alpha:{mode:'flatten',matte:[0,0,0]}}}});
+ const output=join(dir,'hlg.mov');await renderNativeProject(entry,{build,native,output,encoder:hdrEncoders[0],start:1,end:7,professional:{...settings,video:{preset:'hlg',outputColor:hlg2020,conversion:{kind:'colorimetric',clip:false},alpha:{mode:'flatten',matte:[0,0,0]}}}});
  const hlg=await inspectMediaFile(output);assert.equal(hlg.streams[0].color_transfer,'arib-std-b67');assert.equal(hlg.streams[0].pix_fmt,'yuv420p10le');
  const transform={source:'Linear Rec.2020',display:'Rec.2100-PQ - Display',view:'ACES 2.0 - HDR 1000 nits (Rec.2020)'};
- const acesOutput=join(dir,'aces2-hevc.mp4'),aces=await renderNativeProject(entry,{build,native,output:acesOutput,encoder:'hevc_nvenc',start:1,end:2,professional:{...settings,video:{preset:'hdr10',outputColor:pq2020,conversion:{kind:'ocio',clip:false,transform},alpha:{mode:'flatten',matte:[0,0,0]},hdr10}}});
+ const acesOutput=join(dir,'aces2-hevc.mp4'),aces=await renderNativeProject(entry,{build,native,output:acesOutput,encoder:hdrEncoders[0],start:1,end:2,professional:{...settings,video:{preset:'hdr10',outputColor:pq2020,conversion:{kind:'ocio',clip:false,transform},alpha:{mode:'flatten',matte:[0,0,0]},hdr10}}});
  assert.ok('report'in aces&&aces.report?.conversions[0].ocio);
  const linear=surfaceFromPixels(320,180,Float32Array.from({length:320*180*4},(_,i)=>[1,.25,.0625,1][i%4]),{format:'rgba32float',color:linear2020,alpha:'opaque'});
  const cpu=pixelsFromSurface((await ocioTransform(linear,{...transform,outputColor:pq2020})).surface),gpu=pixelsFromSurface(await decodeVideoFloat(acesOutput,{color:pq2020,width:320,height:180}));let maxError=0;for(let i=0;i<cpu.length;i++)maxError=Math.max(maxError,Math.abs(cpu[i]-gpu[i]));assert.ok(maxError<.006);console.log(JSON.stringify({case:'native-aces2-hdr10',maxCodeError:maxError}));
  const config=join(dir,'hdr.json'),cliOutput=join(dir,'cli-av1.mp4');
  await writeFile(config,JSON.stringify({...settings,video:{preset:'hdr10',outputColor:pq2020,conversion:{kind:'colorimetric',clip:false},alpha:{mode:'flatten',matte:[0,0,0]},hdr10}}));
- const cli=await exec(process.execPath,['--import','tsx',resolve('src/cli.ts'),'render',entry,'--native',native,'--settings',config,'--encoder','av1_nvenc','--output',cliOutput,'--from',String(1/60),'--to',String(2/60),'--json'],{windowsHide:true,maxBuffer:1024*1024});
+ const cli=await exec(process.execPath,['--import','tsx',resolve('src/cli.ts'),'render',entry,'--native',native,'--settings',config,'--encoder',hdrEncoders[1],'--output',cliOutput,'--from',String(1/60),'--to',String(2/60),'--json'],{windowsHide:true,maxBuffer:1024*1024});
  assert.equal(JSON.parse(cli.stdout).ok,true);assert.equal((await inspectMediaFile(cliOutput)).streams[0].codec_name,'av1');
 });

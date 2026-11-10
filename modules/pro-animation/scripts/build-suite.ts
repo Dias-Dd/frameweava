@@ -103,7 +103,7 @@ export async function buildProAnimationSuite(catalog:string){
     }
     if(!count)throw Error(`No callable public exports in ${provider.id}`);
   }
-  const suite=manifest('pro-animation','1.0.0','Pro Animation','Animation, timing, transitions, vector paths, typography, image effects, and 2D/3D creation for Native Stages.');
+  const suite=manifest('pro-animation','1.1.0','Pro Animation','Animation, timing, transitions, vector paths, typography, image effects, and 2D/3D creation for Native Stages.');
   suite.tags=['animation','motion graphics','transitions','typography','compositing','2D','3D'];
   suite.dependencies=Object.fromEntries(providers.map(provider=>[provider.id,provider.spec.version]));
   suite.bindings={schemaVersion:2,engine:'native-gpu',module:'main',types:'./api.d.ts',forward};
@@ -112,6 +112,6 @@ export async function buildProAnimationSuite(catalog:string){
   await writeFile(join(directory,'public.ts'),'export {};\n');
   await writeFile(join(directory,'api.d.ts'),declarations.join('\n')+'\n');
   await writeFile(join(directory,'frameweave.package.json'),JSON.stringify(suite)+'\n');
-  await copyFile(join(root,'licenses/APACHE-2.0.txt'),join(directory,'LICENSE'));
+  await copyFile(join(root,'LICENSE'),join(directory,'LICENSE'));
   return {directory,dependencies:suite.dependencies,callables:Object.keys(forward).length};
 }

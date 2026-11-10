@@ -23,24 +23,24 @@ const cli=async (args:string[])=>{
   });
   return JSON.parse(result.stdout);
 };
-const install=['packages','install','pro-animation@1.0.0','--catalog',catalog,'--project',entry];
+const install=['packages','install','pro-animation@1.1.0','--catalog',catalog,'--project',entry];
 const trust=['frameweave.pro','frameweave.gpu-images','frameweave.native-2d','frameweave.spatial'];
 await assert.rejects(cli([...install,'--trust','local:frameweave.pro']),error=>
   /E_PACKAGE_TRUST/.test(String((error as {stderr?:string}).stderr)));
 await cli([...install,...trust.flatMap(authority=>['--trust','local:'+authority])]);
 const state=await installedPackages(project);
 assert.ok(state.lock);
-assert.deepEqual(state.lock.roots,{'pro-animation':'pro-animation@1.0.0'});
+assert.deepEqual(state.lock.roots,{'pro-animation':'pro-animation@1.1.0'});
 assert.equal(Object.keys(state.lock.packages).length,8);
-assert.equal(state.lock.packages['pro-animation@1.0.0'].dependencies['frameweave.transitions'],'frameweave.transitions@1.0.0');
+assert.equal(state.lock.packages['pro-animation@1.1.0'].dependencies['frameweave.transitions'],'frameweave.transitions@1.0.0');
 assert.deepEqual((await cli(['packages','types','--project',entry])).packages,['pro-animation']);
 const built=await buildProject(entry);
 const executable=await nativeExecutable();
 const byStage=Object.fromEntries(built.manifest.stages.map(stage=>[stage.id,Object.keys(stage.props.$packages as object).sort()]));
 assert.deepEqual(byStage,{
   card:['frameweave.typography@1.0.0','frameweave.vector@1.0.0','native-2d@0.2.0'],
-  backdrop:['spatial-creation@1.1.1'],
-  blend:['frameweave.motion@1.0.0','frameweave.transitions@1.0.0','native-image-effects@0.7.0'],
+  backdrop:['spatial-creation@1.2.0'],
+  blend:['frameweave.motion@1.0.0','frameweave.transitions@1.0.0','native-image-effects@0.8.0'],
 });
 async function renderFrames(build:typeof built,order:number[]){
   const renderer=await Renderer.create(build,{nativeGpu:{executable,slots:1,dynamic:'interactive',readback:'final-surface'}});

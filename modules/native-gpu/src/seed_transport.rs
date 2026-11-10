@@ -35,11 +35,10 @@ pub fn read_request<R:Read>(header:&[u8],input:&mut R,seed_limit:Option<u64>)->R
  if program.version!=2||manifest.version!=1||manifest.format!="words32-le"||manifest.buffers.is_empty(){
   return Err("E_NATIVE_SEED_PROTOCOL: expected bounded native-2 binary seeds v1".into());
  }
- program.validate()?;
- let mut seen=std::collections::HashSet::new();let mut bytes=0u64;
+ let mut lengths=std::collections::HashMap::new();let mut bytes=0u64;
  for binding in &manifest.buffers{
   let d=program.data.get(binding.buffer).ok_or("E_NATIVE_SEED_PROTOCOL: unknown typed buffer")?;
-  if !seen.insert(binding.buffer)||binding.words==0||binding.words>d.length||binding.r#type!=d.r#type||!d.initial.is_empty()||d.source_image.is_some()||d.source_resource.is_some(){
+  if lengths.insert(binding.buffer,binding.words).is_some()||binding.words==0||binding.words>d.length||binding.r#type!=d.r#type||!d.initial.is_empty()||d.source_image.is_some()||d.source_resource.is_some(){
    return Err("E_NATIVE_SEED_PROTOCOL: duplicate, mismatched or conflicting typed seed binding".into());
   }
   bytes=bytes.checked_add(binding.words.checked_mul(4).ok_or("E_NATIVE_SEED_BUDGET: seed length overflow")?).ok_or("E_NATIVE_SEED_BUDGET: total overflow")?;
@@ -47,6 +46,8 @@ pub fn read_request<R:Read>(header:&[u8],input:&mut R,seed_limit:Option<u64>)->R
  if bytes!=manifest.byte_length||bytes>seed_limit.unwrap_or(program.max_bytes)||bytes>program.max_bytes{
   return Err("E_NATIVE_SEED_BUDGET: binary body differs from its bound or exceeds the configured transport/program budget".into());
  }
+ // Account for the announced seed bytes and check exact matrix shape before allocation.
+ program.bytes_with_seed_plan(&lengths)?;
  for binding in manifest.buffers{
   let d=&mut program.data[binding.buffer];
   d.initial.try_reserve_exact(binding.words as usize).map_err(|_|"E_NATIVE_SEED_BUDGET: cannot reserve bounded seed storage")?;

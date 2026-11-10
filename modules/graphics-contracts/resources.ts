@@ -1,9 +1,8 @@
-import {LIMITS,bounded,fail} from './check.ts';
+import {bounded,fail} from './check.ts';
 import {resourceReference} from './validate.ts';
 import type {ResourceReference,GraphicsData} from './types.ts';
 
 export async function sha256(bytes:Uint8Array):Promise<string> {
-  if(bytes.byteLength>LIMITS.resourceBytes)fail('resource','byte limit exceeded','E_GRAPHICS_LIMIT');
   const digest=await crypto.subtle.digest('SHA-256',new Uint8Array(bytes).buffer);
   return Array.from(new Uint8Array(digest),b=>b.toString(16).padStart(2,'0')).join('');
 }
@@ -15,11 +14,9 @@ export async function verifyResource(input:ResourceReference,bytes:Uint8Array):P
 }
 /** The caller supplies an explicit capability. Missing bytes are errors, never implicit network access. */
 export async function verifyResources(refs:readonly ResourceReference[],read:(id:string)=>Promise<Uint8Array|undefined>):Promise<void> {
-  if(refs.length>1024)fail('resources','reference limit exceeded','E_GRAPHICS_LIMIT');
-  const seen=new Map<string,ResourceReference>();let totalBytes=0;
+  const seen=new Map<string,ResourceReference>();
   for(const input of refs){bounded(input);const ref=resourceReference(input),old=seen.get(ref.resourceId);
     if(old){if(old.kind!==ref.kind||old.sha256!==ref.sha256||old.bytes!==ref.bytes)fail(`resource:${ref.resourceId}`,'conflicting resource identities','E_GRAPHICS_INTEGRITY');continue;}
-    totalBytes+=ref.bytes;if(totalBytes>LIMITS.resourceBytes)fail('resources','aggregate byte budget exceeded','E_GRAPHICS_LIMIT');
     seen.set(ref.resourceId,ref);const bytes=await read(ref.resourceId);if(!bytes)fail(`resource:${ref.resourceId}`,'missing declared resource','E_GRAPHICS_RESOURCE');await verifyResource(ref,bytes);
   }
 }
@@ -34,7 +31,6 @@ export function resourceReferences(data:GraphicsData):ResourceReference[] {
 /** Hash exact UTF-8 file bytes before parsing. Never hash a reserialized substitute for a signed file. */
 export async function readJsonResource<T>(ref:ResourceReference,bytes:Uint8Array,validate:(input:unknown)=>T):Promise<T> {
   if(ref.kind!=='file')fail('resource.kind','JSON requires a file Resource');
-  if(bytes.byteLength>LIMITS.jsonBytes)fail('resource','JSON byte budget exceeded','E_GRAPHICS_LIMIT');
   const snapshot=new Uint8Array(bytes);await verifyResource(ref,snapshot);
   let data:unknown;try{data=JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(snapshot));}catch{fail(`resource:${ref.resourceId}`,'invalid UTF-8 JSON');}
   return validate(data);

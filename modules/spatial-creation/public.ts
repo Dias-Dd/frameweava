@@ -39,3 +39,5 @@ export {createContactPhysics} from './contact-physics.ts';
 export type {ContactPhysicsOptions,ContactPhysicsFrame} from './contact-physics.ts';
 export type {PhysicsContact} from './contact-codec.ts';
 export type {ContactSceneOptions,CollidingClothOptions,CollidingRopeOptions,CollidingParticlesOptions} from './contact-scenes.ts';
+
+export * from './rendering.ts';

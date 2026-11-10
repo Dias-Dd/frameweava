@@ -74,7 +74,7 @@ impl Host {
                         self.window=Some(Arc::new(window));
                         self.preview_session=Some(program.session.clone());
                     }
-                    self.gpu=Some(pollster::block_on(Gpu::new(program,self.window.clone()))?);
+                    self.gpu=Some(pollster::block_on(Gpu::new(program,self.window.clone(),event_loop.map(ActiveEventLoop::owned_display_handle)))?);
                     Ok(Some(self.gpu.as_ref().unwrap().stats()))
                 }
                 Command::PreviewAudioStart {session,revision,input,rate,start,end} => {
@@ -441,7 +441,10 @@ fn main() {
     let (tx,rx)=mpsc::sync_channel(16);
     let host=Host {gpu:None,previous_preview:None,preview_failed:false,window:None,close_id:None,preview:PreviewWindow::default(),preview_session:None,preview_audio:None,stopped:false};
     if windowed {
-        let event_loop=EventLoop::<()>::with_user_event().build().expect("native window event loop");
+        let event_loop=match EventLoop::<()>::with_user_event().build(){
+            Ok(loop_)=>loop_,
+            Err(error)=>{fail(0,format!("E_NATIVE_DISPLAY: {error}"));std::process::exit(2);}
+        };
         reader(tx,Some(event_loop.create_proxy()),control_limit,seed_limit);
         event_loop.run_app(&mut App{host,rx}).expect("native window event loop");
     } else {

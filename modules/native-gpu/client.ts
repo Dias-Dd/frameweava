@@ -1,3 +1,4 @@
+import {nativeMediaEnvironment} from './media-environment.ts';
 import {residentWireProgram} from './resident-buffers.ts';
 import type {NativeInferenceDefinition} from '../inference/native.ts';
 import {spawn,type ChildProcessWithoutNullStreams} from 'node:child_process';
@@ -17,6 +18,8 @@ export interface NativeProgram {
  passes:{kernel:number;inputs:number[];output:number;header:number[];data?:number[];buffers?:number[];groups?:[number,number,number];draw?:{positions:number;indices?:number;uvs?:number;textureVersion?:1;count:number};module?:number;inference?:number;rayBuild?:import('./rays.ts').NativeRayDefinition;rayQuery?:number;state?:true}[];
  modules?:NativeModuleSource[];
  bufferOutputs?:NativeBufferOutput[];
+ /** Explicit owner-requested, per-slot CPU capture of named publications. */
+ readbacks?:string[];
  dataExport?:{version:1;directory:string};
  resourceLease?:{version:1;directory:string};
  data?:{length:number;type:'f32'|'u32'|'i32';initial:number[];immutable?:boolean;resident?:import('./resident-buffers.ts').ResidentIdentity;sourceResource?:import('./binary-resource.ts').NativeBinaryImport;sourceImage?:number;persistent?:{version:1;id:string}}[];
@@ -68,6 +71,7 @@ const error=(code:string,message:string)=>new EngineError(code,message);
 export class NativeGpuClient {
  private child:ChildProcessWithoutNullStreams;
  private nextId=0;private pending=new Map<number,Deferred<unknown>>();
+ private retainedSlots=new Map<number,{frame:number;ticket?:NativeFrameTicket}>();
  private completions=new Map<number,{frame:number;done:Deferred<void>;measurement?:{gpuTimeMs?:number}}>();
  private free:number[];private waiters:SlotWaiter[]=[];private buffer='';
  private fatal?:Error;private closing?:Promise<void>;private closed=false;
@@ -90,7 +94,7 @@ export class NativeGpuClient {
   this.previewSession=window?program.session:undefined;
   this.admitted=freeze(structuredClone(program));this.free=Array.from({length:program.slots},(_,i)=>i);
   this.transport={...nativeTransportLimits(program,limits),maxQueuedBytes:limits.maxQueuedBytes??program.maxBytes};
-  this.child=spawn(executable,[...window?['--window']:[],'--control-bytes',String(this.transport.maxControlBytes),'--seed-bytes',String(this.transport.maxSeedBytes)],{stdio:'pipe',windowsHide:true,shell:false,env:nativeOwnerEnvironment()});
+  this.child=spawn(executable,[...window?['--window']:[],'--control-bytes',String(this.transport.maxControlBytes),'--seed-bytes',String(this.transport.maxSeedBytes)],{stdio:'pipe',windowsHide:true,shell:false,env:nativeMediaEnvironment(nativeOwnerEnvironment())});
   this.child.stdout.setEncoding('utf8');this.child.stderr.setEncoding('utf8');
   this.child.stdin.on('error',()=>{});
   this.child.stderr.on('data',(s:string)=>{if(this.stderr.join('').length<16384)this.stderr.push(s);});
@@ -153,7 +157,7 @@ export class NativeGpuClient {
     if(state.measurement&&typeof value.gpuTimeMs==='number'&&Number.isFinite(value.gpuTimeMs)&&value.gpuTimeMs>0)
      state.measurement.gpuTimeMs=value.gpuTimeMs;
     this.completions.delete(value.slot);state.done.resolve();
-    this.returnSlot(value.slot);
+    if(!this.retainedSlots.has(value.slot))this.returnSlot(value.slot);
    }else if(value.event==='failed'){const message=String(value.error);this.fail(error(message.match(/^(E_(?:NATIVE|INFERENCE)_[A-Z_]+):/)?.[1]??'E_NATIVE_DEVICE',message));return;}
    else{
     if(value.id===0&&value.ok===false){this.fail(error(value.error?.code??'E_NATIVE_PROTOCOL',String(value.error?.message)));return;}
@@ -170,7 +174,7 @@ export class NativeGpuClient {
   for(const p of this.pending.values())p.reject(e);this.pending.clear();
   for(const c of this.completions.values())c.done.reject(e);this.completions.clear();
   for(const timer of this.completionTimers?.values()??[])clearTimeout(timer);this.completionTimers?.clear();
-  this.rejectWaiters(e);this.free=[];
+  this.retainedSlots.clear();this.rejectWaiters(e);this.free=[];
   this.child.kill();
  }
  private watchCompletion(slot:number){if(!this.completions.has(slot))return;this.completionTimers??=new Map();this.completionTimers.set(slot,setTimeout(()=>this.fail(error('E_STAGE_TIMEOUT','Native GPU frame or encoder handoff exceeded the execution deadline')),this.timeoutMs));}
@@ -222,7 +226,7 @@ export class NativeGpuClient {
    await write;return await d.promise;
   }finally{clearTimeout(timer);this.pending.delete(id);}
  }
- async submit(frame:number,parameters:readonly (readonly number[])[],options:{signal?:AbortSignal;frameBindings?:NativeFrameBindings;previewRevision?:number;previewAdvance?:boolean;previewTiming?:boolean;stageCache?:readonly NativeStageCacheRef[];previewCacheKey?:string;previewCacheOnly?:string}={}):Promise<NativeFrameTicket>{
+ async submit(frame:number,parameters:readonly (readonly number[])[],options:{signal?:AbortSignal;retainSlot?:boolean;frameBindings?:NativeFrameBindings;previewRevision?:number;previewAdvance?:boolean;previewTiming?:boolean;stageCache?:readonly NativeStageCacheRef[];previewCacheKey?:string;previewCacheOnly?:string}={}):Promise<NativeFrameTicket>{
   const signal=options.signal;
   if(signal!==undefined&&!(signal instanceof AbortSignal))throw error('E_NATIVE_PARAMETERS','Expected AbortSignal');
   if(options.previewRevision!==undefined&&(!Number.isSafeInteger(options.previewRevision)||options.previewRevision<0))
@@ -241,14 +245,16 @@ export class NativeGpuClient {
    if(this.fatal)throw this.fatal;
    if(this.closing||this.closed)throw error('E_NATIVE_CLOSED','Native owner closing');
    if(signal?.aborted)throw error('E_RENDER_CANCELLED','Native frame cancelled after slot acquisition');
+   if(options.retainSlot)this.retainedSlots.set(slot,{frame});
    done=deferred<void>();void done.promise.catch(()=>{});
    const measurement=options.previewTiming?{} as {gpuTimeMs?:number}:undefined;
    this.completions.set(slot,{frame,done,measurement});
    const ack=await this.request(options.previewCacheOnly?{op:'submitCachedPreview',session:this.program.session,frame,slot,revision:options.previewRevision,key:options.previewCacheOnly}:
     {op:'submit',session:this.program.session,frame,slot,parameters:values,...bindings?{frameBindings:bindings}:{},...options.previewRevision===undefined?{}:{previewRevision:options.previewRevision},...options.previewAdvance?{previewAdvance:true}:{},...measurement?{previewTiming:true}:{},...options.stageCache?.length?{stageCache:options.stageCache}:{},...options.previewCacheKey?{previewCacheKey:options.previewCacheKey}:{}},signal);
    this.watchCompletion(slot);
-   const ticket=Object.freeze({version:1 as const,frame,slot,completion:'submitted' as const,completed:done.promise,get gpuTimeMs(){return measurement?.gpuTimeMs;},...ack.publication===undefined?{}:{publication:ack.publication}});(this.tickets??=new WeakSet()).add(ticket);return ticket;
+   const ticket=Object.freeze({version:1 as const,frame,slot,completion:'submitted' as const,completed:done.promise,get gpuTimeMs(){return measurement?.gpuTimeMs;},...ack.publication===undefined?{}:{publication:ack.publication}});(this.tickets??=new WeakSet()).add(ticket);const retained=this.retainedSlots.get(slot);if(retained)retained.ticket=ticket;return ticket;
   }catch(e){
+   this.retainedSlots.delete(slot);
    if(!done||this.completions.has(slot)){this.completions.delete(slot);this.returnSlot(slot);done?.reject(e);}
    throw e;
   }
@@ -278,7 +284,16 @@ export class NativeGpuClient {
    return tickets;
   }catch(e){for(const slot of acquired){const c=this.completions.get(slot);if(c){this.completions.delete(slot);c.done.reject(e);this.returnSlot(slot);}else if(!this.free.includes(slot))this.returnSlot(slot);}throw e;}
  }
+ /** Host-owned materialization retains a completed slot until its value copy is safe. */
+ releaseFrame(ticket:NativeFrameTicket){
+  if(!this.tickets.has(ticket))throw error('E_NATIVE_DATA_TICKET','Foreign frame release');
+  const retained=this.retainedSlots.get(ticket.slot);
+  if(!retained||retained.ticket!==ticket)return;
+  if(this.completions.has(ticket.slot))throw error('E_NATIVE_SLOT_BUSY','Complete the retained frame before release');
+  this.retainedSlots.delete(ticket.slot);if(!this.closed&&!this.fatal&&!this.closing)this.returnSlot(ticket.slot);
+ }
  async reconfigure(program:NativeProgram,cacheId?:number){
+  if(this.retainedSlots.size)throw error('E_NATIVE_BUSY','Release captured frame values before changing native layout');
   if(this.closing||this.closed)throw error('E_NATIVE_CLOSED','Native owner closing');if(this.waiters.length||this.queuedBatches)throw error('E_NATIVE_BUSY','Finish queued submissions before changing native layout');
   await Promise.all([...this.completions.values()].map(c=>c.done.promise));if(program.session!==this.program.session)throw error('E_NATIVE_SESSION','Plan update cannot replace its owner');
   const snapshot=freeze(structuredClone(program));
@@ -296,6 +311,7 @@ export class NativeGpuClient {
   }catch(e){if(!this.previewRollback)this.fail(e as Error);throw e;}
  }
  async activatePlan(cacheId:number):Promise<boolean>{
+  if(this.retainedSlots.size)throw error('E_NATIVE_BUSY','Release captured frame values before changing native layout');
   const snapshot=this.cachedPrograms.get(cacheId);
   if(!snapshot||snapshot.session!==this.program.session)return false;
   if(this.closing||this.closed)throw error('E_NATIVE_CLOSED','Native owner closing');
@@ -380,7 +396,7 @@ export class NativeGpuClient {
    this.rejectWaiters(error('E_NATIVE_CLOSED','Native owner closing'));
    try{if(!this.closed&&!this.fatal)await this.request({op:'close',session:this.program.session});}
    catch(e){if(!this.closed||this.fatal||!(e instanceof EngineError)||e.code!=='E_NATIVE_CLOSED')throw e;}
-   finally{this.child.stdin.end();const timer=setTimeout(()=>this.child.kill(),2000);await this.closeEvent.promise;clearTimeout(timer);}
+   finally{this.retainedSlots.clear();this.child.stdin.end();const timer=setTimeout(()=>this.child.kill(),2000);await this.closeEvent.promise;clearTimeout(timer);}
   })();return this.closing;
  }
 }

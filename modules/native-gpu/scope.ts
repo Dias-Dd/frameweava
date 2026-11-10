@@ -1,5 +1,6 @@
 import type {NativePortPacket} from '../stage-orchestration/native-port-types.ts';
 import {inputValueMatches} from '../../src/core/ports.ts';
+import {exrSelection} from '../../src/media/exr-selection.ts';
 import {fontGlyphResource} from './font-image.ts';
 import {binaryResource,nanoIndexLayout,deepBufferLayout,type NativeBufferResource,type NativeResourceBuffer} from './binary-resource.ts';
 import type {NativeRayGeometry,NativeRayScene,NativeRaySceneOptions,NativeRayRequest,NativeRayDefinition} from './rays.ts';
@@ -96,11 +97,49 @@ export class NativeRecordingScope {
  }
  private async traceRayScene(scene:NativeRayScene,o:NativeRayRequest){
   this.temporalAllowed();this.rayPermission();if(!o||typeof o!=='object')throw new EngineError('E_NATIVE_RAY_INPUT','Ray request required');computeAbort(o?.signal);const spec=this.rayTokens.get(scene);if(!spec)fail('Foreign or released ray scene');if(this.initializing)fail('Trace rays inside renderAt');const origins=this.buffer(o.origins),directions=this.buffer(o.directions),count=o.count??Math.min(origins.info.length,directions.info.length)/3,tMin=Math.fround(o.tMin??.0001),tMax=Math.fround(o.tMax??1e6),mask=o.mask??255;
-  if(o.version!==1||Object.keys(o).some(k=>!['version','origins','directions','count','tMin','tMax','mask','signal'].includes(k))||origins.info.type!=='f32'||directions.info.type!=='f32'||origins.info.components!==3||directions.info.components!==3||!Number.isSafeInteger(count)||count<1||count*3>Math.min(origins.info.length,directions.info.length)||o.tMin!==undefined&&typeof o.tMin!=='number'||o.tMax!==undefined&&typeof o.tMax!=='number'||!Number.isFinite(tMin)||!Number.isFinite(tMax)||tMin<0||tMax<=tMin||!Number.isInteger(mask)||mask<0||mask>255)throw new EngineError('E_NATIVE_RAY_INPUT','Ray v1 requires XYZ origins/directions, positive count and finite distance interval/mask');
+  if(o.version!==1||Object.keys(o).some(k=>!['version','origins','directions','count','tMin','tMax','mask','signal','output','coverage'].includes(k))||origins.info.type!=='f32'||directions.info.type!=='f32'||origins.info.components!==3||directions.info.components!==3||!Number.isSafeInteger(count)||count<1||count*3>Math.min(origins.info.length,directions.info.length)||o.tMin!==undefined&&typeof o.tMin!=='number'||o.tMax!==undefined&&typeof o.tMax!=='number'||!Number.isFinite(tMin)||!Number.isFinite(tMax)||tMin<0||tMax<=tMin||!Number.isInteger(mask)||mask<0||mask>255)throw new EngineError('E_NATIVE_RAY_INPUT','Ray v1 requires XYZ origins/directions, positive count and finite distance interval/mask');
+  if(o.output!==undefined){
+   if(!o.output||typeof o.output!=='object'||Object.keys(o.output).some(k=>!['hits','measurements','normals'].includes(k)))throw new EngineError('E_NATIVE_RAY_OUTPUT','Expected three writable ray result buffers');
+   const targets=[o.output.hits,o.output.measurements,o.output.normals].map(b=>this.bufferTokens.get(b));
+   const seen=new Set([origins.index,directions.index]);
+   for(const [i,target]of targets.entries()){
+    const d=target&&this.data[target.index];
+    if(!target||!d||target.info.type!==(i===0?'u32':'f32')||target.info.length!==count*4||target.info.readOnly||d.immutable||d.persistent||d.sourceImage!==undefined||seen.has(target.index))throw new EngineError('E_NATIVE_RAY_OUTPUT','Expected distinct frame-local u32/f32/f32 outputs with four words per ray');
+    seen.add(target.index);
+   }
+  }
+  const coverage=o.coverage;
+  let alpha: number[]=[];
+  if(coverage!==undefined && (!coverage||typeof coverage!=='object'))
+    throw new EngineError('E_NATIVE_RAY_COVERAGE','Expected material coverage object');
+  if(coverage) {
+   if(spec.backend==='optix')throw new EngineError('E_NATIVE_RAY_COVERAGE','Material coverage requires the Vulkan query backend');
+   if(![1,2].includes(coverage.version)||Object.keys(coverage).some(k=>!['version','layout','texels','seed'].includes(k))||
+     coverage.seed!==undefined&&(!Number.isInteger(coverage.seed)||coverage.seed<0||coverage.seed>0xffffffff))
+    throw new EngineError('E_NATIVE_RAY_COVERAGE','Expected material coverage v1/v2 with a UInt32 seed');
+   const layout=this.buffer(coverage.layout),texels=this.buffer(coverage.texels);
+   if(layout.info.type!=='u32'||!['f32','u32'].includes(texels.info.type)||texels.info.length%4!==0||
+      spec.geometries.some(g=>layout.info.length<1+(g.id!+1)*(coverage.version===2?16:14)))
+    throw new EngineError('E_NATIVE_RAY_COVERAGE','Material coverage requires complete versioned instance records and RGBA texels');
+   alpha=[layout.index,texels.index];
+  }
   const kernel=(kind:'ray-build'|'ray-query')=>{let n=this.rayKernels.get(kind);if(n===undefined){n=this.kernels.push({kind,code:'// engine-owned opaque hardware ray profile v1',inputCount:0,parameterWords:0,headerWords:16})-1;this.rayKernels.set(kind,n);}return n;};let build=this.rayBuilds.get(scene);
   if(build===undefined){const transform=await this.allocate(bufferInfo({type:'f32',length:spec.geometries.length*12}),Float32Array.from(spec.geometries.flatMap(g=>Array.from(g.transform!)))),definition:NativeRayDefinition={version:1,...spec.backend?{backend:spec.backend}:{},quality:spec.quality??'trace',invalidGeometry:'discard',transforms:this.buffer(transform).index,geometries:spec.geometries.map(g=>({positions:this.buffer(g.positions).index,...g.indices?{indices:this.buffer(g.indices).index}:{},count:g.count!,mask:g.mask!,id:g.id!}))};build=this.passes.length;this.passes.push({kernel:kernel('ray-build'),inputs:[],output:0,header:Array(16).fill(0),rayBuild:definition,buffers:definition.geometries.flatMap(g=>g.indices===undefined?[g.positions]:[g.positions,g.indices])});this.parameters.push([]);this.rayBuilds.set(scene,build);}
-  const field=(type:'f32'|'u32',channels:string[])=>this.allocate(fieldInfo({type,dimensions:[count,1,1],components:4,semantic:'generic',channels,metadata:{profile:'native-ray-query-v1',space:'world'}}));const hits=await field('u32',['hit','instance','primitive','status']),measurements=await field('f32',['distance','barycentricU','barycentricV','reserved']),normals=await field('f32',['normalX','normalY','normalZ','frontFace']);const header=[count,...bits(Float32Array.of(tMin,tMax)),mask,...Array(12).fill(0)];
-  this.passes.push({kernel:kernel('ray-query'),inputs:[],output:0,header,rayQuery:build,buffers:[origins.index,directions.index,...[hits,measurements,normals].map(b=>this.buffer(b).index)]});this.parameters.push([]);return{version:1 as const,count,hits,measurements,normals};
+  const field=(type:'f32'|'u32',channels:string[])=>this.allocate(fieldInfo({type,dimensions:[count,1,1],components:4,semantic:'generic',channels,metadata:{profile:'native-ray-query-v1',space:'world'}}));const hits=o.output?.hits??await field('u32',['hit','instance','primitive','status']),measurements=o.output?.measurements??await field('f32',['distance','barycentricU','barycentricV','reserved']),normals=o.output?.normals??await field('f32',['normalX','normalY','normalZ','frontFace']);const header=[count,...bits(Float32Array.of(tMin,tMax)),mask,...Array(12).fill(0)];
+  const written=[hits,measurements,normals].map(b=>this.buffer(b).index);
+  if(alpha.some(index=>written.includes(index)))throw new EngineError('E_NATIVE_RAY_OUTPUT','Coverage inputs cannot alias ray outputs');
+  if(coverage){header[4]=coverage.version;header[5]=coverage.seed??0;}
+  this.passes.push({kernel:kernel('ray-query'),inputs:[],output:0,header,rayQuery:build,buffers:[origins.index,directions.index,...written,...alpha]});this.parameters.push([]);this.invalidateRayBuilds(written);return{version:1 as const,count,hits,measurements,normals};
+ }
+ private invalidateRayBuilds(written: readonly number[]){
+  if(!this.rayBuilds.size||!written.length)return;
+  for(const scene of this.rayBuilds.keys()){
+   const spec=this.rayTokens.get(scene);
+   if(!spec||spec.geometries.some(g=>[g.positions,g.indices].some(b=>{
+    const index=b&&this.bufferTokens.get(b)?.index;
+    return index!==undefined&&written.includes(index);
+   })))this.rayBuilds.delete(scene);
+  }
  }
  private async createInference(source:InferenceSource):Promise<NativeInferenceModel>{
   this.check();if(!this.initializing)fail('Create model sessions during Stage initialization');const spec=inferenceSource(source);if([...spec.inputs,...spec.outputs].some(t=>t.dtype!=='float32'))throw new EngineError('E_INFERENCE_DTYPE','Resident inference v1 requires explicit float32 tensors');
@@ -115,7 +154,7 @@ export class NativeRecordingScope {
    const seen=new Set(ids),targets=spec.outputs.map(t=>{const buffer=requested[t.name],b=this.buffer(buffer),d=this.data[b.index];if(b.info.type!=='f32'||b.info.length*4!==tensorBytes(t))throw new EngineError('E_INFERENCE_SHAPE','Output dtype/length differs from model contract');if(d.immutable||d.sourceImage!==undefined||d.sourceResource||b.info.readOnly||seen.has(b.index))throw new EngineError('E_INFERENCE_OUTPUTS','Outputs require distinct writable owner-local buffers without input aliasing');seen.add(b.index);return buffer;});
    for(let i=0;i<targets.length;i++){outputs[spec.outputs[i].name]=targets[i];ids.push(this.buffer(targets[i]).index);}
   }else for(const t of spec.outputs){const b=await this.allocate(bufferInfo({type:'f32',length:tensorBytes(t)/4}));outputs[t.name]=b;ids.push(this.buffer(b).index);}
-  this.passes.push({kernel:token.kernel,inference:token.index,inputs:[],output:0,buffers:ids,header:Array(16).fill(0)});this.parameters.push([]);return outputs;
+  this.passes.push({kernel:token.kernel,inference:token.index,inputs:[],output:0,buffers:ids,header:Array(16).fill(0)});this.parameters.push([]);this.invalidateRayBuilds(ids.slice(spec.inputs.length));return outputs;
  }
 
  private async createModule(source:NativeModuleSource):Promise<NativeModule>{
@@ -210,7 +249,8 @@ export class NativeRecordingScope {
   this.temporalAllowed();this.check();computeAbort(options.signal);const source=binaryResource(input),storageByteLength=source.profile==='deep-exr-indexed-v1'?deepBufferLayout(source).storageByteLength:source.profile==='nanovdb-float-indexed-v1'?nanoIndexLayout(source.bytes,source.maxRootTiles).storageByteLength:Math.ceil(source.byteLength/4)*4,info=Object.freeze({...bufferInfo({type:'u32',length:storageByteLength/4}),readOnly:true as const}),index=this.data.push({length:info.length,type:'u32',initial:[],immutable:true})-1,buffer=Object.freeze({info,toJSON:noJSON}) as GpuDataBuffer;this.bufferTokens.set(buffer,{index,info});this.resourceBuffers.push({buffer:index,source});return Object.freeze({version:1,buffer,sourceBytes:source.bytes,byteOffset:source.byteOffset,byteLength:source.byteLength,storageByteLength,access:'read-only',toJSON:noJSON});
  }
  private async importResource(source:NativeResource,options:{signal?:AbortSignal}={},temporal=false){if(!temporal)this.temporalAllowed();
-  this.check();computeAbort(options.signal);if(source?.decode==='font-glyph-v1')source=fontGlyphResource(source);else if(!source||source.version!==1||(typeof source.id!=='string'||source.id.length<1||source.id.length>4096||source.id.includes('\0'))||!['surface-v2','icc-sdr','video'].includes(source.decode)||Object.keys(source).some(k=>!['version','id','decode','output',...source.decode==='video'?['decoder','position','boundary','interpretation','metadataPolicy','cacheBytes']:['missingProfile']].includes(k))||source.decode!=='video'&&source.missingProfile!==undefined&&!['error','assume-srgb'].includes(source.missingProfile))fail('Expected declared image resource v1');
+  this.check();computeAbort(options.signal);if(source?.decode==='font-glyph-v1')source=fontGlyphResource(source);else if(!source||source.version!==1||(typeof source.id!=='string'||source.id.length<1||source.id.length>4096||source.id.includes('\0'))||!['surface-v2','icc-sdr','exr','video'].includes(source.decode)||Object.keys(source).some(k=>!['version','id','decode','output',...source.decode==='video'?['decoder','position','boundary','interpretation','metadataPolicy','cacheBytes']:source.decode==='exr'?['selection']:['missingProfile']].includes(k))||'missingProfile' in source&&source.missingProfile!==undefined&&!['error','assume-srgb'].includes(source.missingProfile))fail('Expected declared image resource v1');
+  if(source.decode==='exr')source={...source,selection:exrSelection(source.selection)};
   if(source.decode==='video'&&(!['cpu','hardware'].includes(source.decoder)||!source.position||!['error','clamp','loop'].includes(source.boundary)||!['validate','override'].includes(source.metadataPolicy)||source.output.alpha!=='opaque'||source.cacheBytes!==undefined&&(!Number.isSafeInteger(source.cacheBytes)||source.cacheBytes<1)))fail('Explicit video decoder, time/boundary, colour policy and opaque output required');
   const info=this.imageInfo(source.output),{version:_v,...output}=info,index=this.images.push(info)-1,image=Object.freeze({info,toJSON:noJSON}) as GpuPixelImage;this.imageTokens.set(image,index);this.resourceImages.push({image:index,source:{...source,output}});this.output=index;return image;
  }
@@ -227,7 +267,7 @@ export class NativeRecordingScope {
   this.check();computeAbort(options?.signal);if(!options||options.version!==1||Object.keys(options).some(k=>!['version','epoch','step','reset','signal'].includes(k))||![options.epoch,options.step].every(n=>Number.isInteger(n)&&n>=0&&n<=0xffffffff)||options.reset!==undefined&&typeof options.reset!=='boolean'||!buffers.length||new Set(buffers).size!==buffers.length)fail('Expected bounded explicit state step v1');
   const ids=buffers.map(b=>this.buffer(b).index);if(ids.some(i=>!this.data[i].persistent))fail('State steps require explicit persistent leases');
   let kernel=this.stateKernels.get(ids.length);if(kernel===undefined){kernel=this.kernels.push({kind:'state',code:'// engine-owned state control v1',inputCount:ids.length,parameterWords:3,headerWords:16})-1;this.stateKernels.set(ids.length,kernel);}
-  this.passes.push({kernel,inputs:[],output:0,header:Array(16).fill(0),buffers:ids,state:true});this.parameters.push([options.epoch,options.step,Number(options.reset===true)]);
+  this.passes.push({kernel,inputs:[],output:0,header:Array(16).fill(0),buffers:ids,state:true});this.parameters.push([options.epoch,options.step,Number(options.reset===true)]);this.invalidateRayBuilds(ids);
  }
  private async dispatch(k:GpuComputeKernel,b:readonly GpuDataBuffer[],o:GpuDispatchOptions){
   this.check();const kernel=this.kernelTokens.get(k),s=kernel?.compute;if(!kernel||!s)fail('Foreign compute kernel');
@@ -237,7 +277,7 @@ export class NativeRecordingScope {
   const plan=dispatchPlan(o,s.workgroupSize,{maxComputeWorkgroupsPerDimension:this.api.capabilities().limits.maxComputeWorkgroupsPerDimension}),header=Array<number>(computeHeaderVectors(bindings.length)*4).fill(0);
   header.splice(0,4,...plan.workItems,0);header.splice(4,4,...plan.origin,0);header.splice(8,4,...plan.domain,0);bindings.forEach((v,i)=>dataHeader(header,16+12*i,v.info));
   const p=o.parameters??new Uint32Array(s.parameterWords);if(p.length!==s.parameterWords)fail('Compute parameter count mismatch');
-  this.rayBuilds.clear();this.passes.push({kernel:kernel.index,inputs:[],output:0,buffers:bindings.map(v=>v.index),groups:plan.groups as [number,number,number],header});this.parameters.push(bits(p));
+  this.invalidateRayBuilds(bindings.flatMap((v,i)=>s.bindings[i].access==='read_write'?[v.index]:[]));this.passes.push({kernel:kernel.index,inputs:[],output:0,buffers:bindings.map(v=>v.index),groups:plan.groups as [number,number,number],header});this.parameters.push(bits(p));
  }
  private async write(b:GpuDataBuffer,v:GpuWords,offset=0){
   this.temporalMutable('buffer',b);const d=this.buffer(b);checkWords(d.info,v,offset);
@@ -245,11 +285,30 @@ export class NativeRecordingScope {
   for(let start=0;start<v.length;start+=1000){const n=Math.min(1000,v.length-start),k=await this.compileCompute({abiVersion:1,id:'frameweave/native/write-'+n,version:'1.0.0',bindings:[{type:'u32',access:'read_write'}],parameterWords:n+1,workgroupSize:[64,1,1],code:'fn compute(g:vec3u,l:vec3u,w:vec3u){store0(paramU32(0u)+g.x,paramU32(g.x+1u));}'});
    // Raw bit writes preserve f32/i32, without changing the public buffer type.
    const header=Array<number>(28).fill(0);header.splice(0,4,n,1,1,0);header.splice(8,4,n,1,1,0);dataHeader(header,16,d.info);
-   this.rayBuilds.clear();this.passes.push({kernel:this.kernelTokens.get(k)!.index,inputs:[],output:0,buffers:[d.index],groups:[Math.ceil(n/64),1,1],header});this.parameters.push([offset+start,...bits(v.subarray(start,start+n))]);
+   this.invalidateRayBuilds([d.index]);this.passes.push({kernel:this.kernelTokens.get(k)!.index,inputs:[],output:0,buffers:[d.index],groups:[Math.ceil(n/64),1,1],header});this.parameters.push([offset+start,...bits(v.subarray(start,start+n))]);
   }
  }
- private async clear(b:GpuDataBuffer,r:{offset?:number;length?:number;signal?:AbortSignal}={}){computeAbort(r.signal);const d=this.buffer(b);if(this.data[d.index].immutable)fail('Initialization data is immutable');const range=bufferRange(d.info,r.offset,r.length),k=await this.compileCompute({abiVersion:1,id:'frameweave/native/clear-'+d.info.type,version:'1.0.0',bindings:[{type:d.info.type,access:'read_write'}],parameterWords:1,workgroupSize:[64,1,1],code:`fn compute(g:vec3u,l:vec3u,w:vec3u){store0(g.x+paramU32(0u),${d.info.type==='f32'?'0.':d.info.type==='i32'?'0':'0u'});}`});await this.dispatch(k,[b],{workItems:[range.length,1,1],parameters:new Uint32Array([range.offset])});}
- private async copy(s:GpuDataBuffer,t:GpuDataBuffer,r:{sourceOffset?:number;targetOffset?:number;length?:number}={}){const a=this.buffer(s),b=this.buffer(t);if(a.info.type!==b.info.type||a.index===b.index)fail('Copy requires distinct buffers of the same type');const range=bufferRange(a.info,r.sourceOffset,r.length),target=bufferRange(b.info,r.targetOffset,range.length),k=await this.compileCompute({abiVersion:1,id:'frameweave/native/copy-'+a.info.type,version:'1.0.0',bindings:[{type:a.info.type,access:'read'},{type:b.info.type,access:'read_write'}],parameterWords:2,workgroupSize:[64,1,1],code:'fn compute(g:vec3u,l:vec3u,w:vec3u){store1(g.x+paramU32(1u),load0(g.x+paramU32(0u)));}'});await this.dispatch(k,[s,t],{workItems:[range.length,1,1],parameters:new Uint32Array([range.offset,target.offset])});}
+ /** Split utility operations at the actual device dispatch limit. Origins
+  * preserve linear word addresses; bindings and public buffer ABI are unchanged. */
+ private async bufferSpan(kernel:GpuComputeKernel,buffers:GpuDataBuffer[],length:number,parameters:Uint32Array,signal?:AbortSignal){
+  const capabilities=this.api.capabilities();
+  const groups=capabilities.hardwareVerified?capabilities.limits.maxComputeWorkgroupsPerDimension:Math.min(65535,capabilities.limits.maxComputeWorkgroupsPerDimension);
+  const span=Math.min(0xffffffff,groups*64);
+  for(let start=0;start<length;start+=span){
+   computeAbort(signal);
+   await this.dispatch(kernel,buffers,{workItems:[Math.min(span,length-start),1,1],origin:[start,0,0],domain:[length,1,1],parameters,signal});
+  }
+ }
+ private async clear(b:GpuDataBuffer,r:{offset?:number;length?:number;signal?:AbortSignal}={}){
+  computeAbort(r.signal);const d=this.buffer(b);if(this.data[d.index].immutable)fail('Initialization data is immutable');
+  const range=bufferRange(d.info,r.offset,r.length),k=await this.compileCompute({abiVersion:1,id:'frameweave/native/clear-'+d.info.type,version:'1.0.0',bindings:[{type:d.info.type,access:'read_write'}],parameterWords:1,workgroupSize:[64,1,1],code:`fn compute(g:vec3u,l:vec3u,w:vec3u){store0(g.x+paramU32(0u),${d.info.type==='f32'?'0.':d.info.type==='i32'?'0':'0u'});}`});
+  await this.bufferSpan(k,[b],range.length,new Uint32Array([range.offset]),r.signal);
+ }
+ private async copy(s:GpuDataBuffer,t:GpuDataBuffer,r:{sourceOffset?:number;targetOffset?:number;length?:number}={}){
+  const a=this.buffer(s),b=this.buffer(t);if(a.info.type!==b.info.type||a.index===b.index)fail('Copy requires distinct buffers of the same type');
+  const range=bufferRange(a.info,r.sourceOffset,r.length),target=bufferRange(b.info,r.targetOffset,range.length),k=await this.compileCompute({abiVersion:1,id:'frameweave/native/copy-'+a.info.type,version:'1.0.0',bindings:[{type:a.info.type,access:'read'},{type:b.info.type,access:'read_write'}],parameterWords:2,workgroupSize:[64,1,1],code:'fn compute(g:vec3u,l:vec3u,w:vec3u){store1(g.x+paramU32(1u),load0(g.x+paramU32(0u)));}'});
+  await this.bufferSpan(k,[s,t],range.length,new Uint32Array([range.offset,target.offset]));
+ }
  /** Core-only recorder transaction. Kernel compilation caches are intentionally retained. */
  private assertNotCheckpointing(){
   if(this.checkpointing)throw new EngineError('E_NATIVE_PREVIEW_CHECKPOINT_DATA','Checkpoint hooks cannot record or release GPU work');

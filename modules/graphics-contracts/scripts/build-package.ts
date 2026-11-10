@@ -61,7 +61,7 @@ export async function buildGraphicsPackage(output=join(workspace,'artifacts/grap
   const managed=JSON.parse(await readFile(join(output,'frameweave.package.json'),'utf8'));managed.modules.main.path='./src/index.ts';await writeFile(join(output,'frameweave.package.json'),JSON.stringify(managed,null,2)+'\n');
   await copyFile(join(moduleRoot,'PUBLIC_API_V1.md'),join(output,'PUBLIC_API_V1.md'));
   await copyFile(join(moduleRoot,'GRAPHICS_SCHEMA_V1.md'),join(output,'GRAPHICS_SCHEMA_V1.md'));
-  await copyFile(join(workspace,'licenses/APACHE-2.0.txt'),join(output,'LICENSE'));
+  await copyFile(join(workspace,'LICENSE'),join(output,'LICENSE'));
   return output;
 }
 

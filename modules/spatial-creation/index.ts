@@ -115,3 +115,5 @@ export function createSpatialCreation(init:CreationInit,services:CreationService
   puppetImage:(o:Parameters<typeof puppetImage>[1])=>puppetImage(init,o,services.puppet),puppetSway:(o?:Parameters<typeof puppetSway>[1])=>puppetSway(init,o,services.puppet),puppetBend:(o?:Parameters<typeof puppetBend>[1])=>puppetBend(init,o,services.puppet),puppetStretch:(o?:Parameters<typeof puppetStretch>[1])=>puppetStretch(init,o,services.puppet),puppetBreathe:(o?:Parameters<typeof puppetBreathe>[1])=>puppetBreathe(init,o,services.puppet),puppetWave:(o?:Parameters<typeof puppetWave>[1])=>puppetWave(init,o,services.puppet),puppetJelly:(o?:Parameters<typeof puppetJelly>[1])=>puppetJelly(init,o,services.puppet),puppetFlutter:(o?:Parameters<typeof puppetFlutter>[1])=>puppetFlutter(init,o,services.puppet),puppetReach:(o?:Parameters<typeof puppetReach>[1])=>puppetReach(init,o,services.puppet),puppetSquash:(o?:Parameters<typeof puppetSquash>[1])=>puppetSquash(init,o,services.puppet),
  };
 }
+
+export * from './rendering.ts';

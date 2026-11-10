@@ -19,6 +19,86 @@ def ocio_processor(name, source, destination, display, view):
     else: processor = c.getProcessor(source, destination)
     return processor.getDefaultCPUProcessor(), processor.getCacheID()
 
+def exr_window(header, key):
+    lo, hi = header[key]
+    bounds = [int(lo[0]), int(lo[1]), int(hi[0]), int(hi[1])]
+    if bounds[2] < bounds[0] or bounds[3] < bounds[1]:
+        raise ValueError('Invalid EXR ' + key)
+    return bounds
+
+def exr_size(window):
+    return window[2] - window[0] + 1, window[3] - window[1] + 1
+
+def exr_layers(r):
+    import OpenEXR
+    with OpenEXR.File(r['input'], header_only=True) as f:
+        headers = [dict(f.header(i), type=part.type()) for i, part in enumerate(f.parts)]
+    parts = [{
+        'index': i, 'name': h.get('name'), 'storage': h['type'].name,
+        'dataWindow': exr_window(h, 'dataWindow'),
+        'displayWindow': exr_window(h, 'displayWindow'),
+        'channels': [{'name': c.name, 'xSampling': c.xSampling, 'ySampling': c.ySampling}
+                     for c in h['channels']],
+    } for i, h in enumerate(headers)]
+    if r['operation'] == 'inspect-exr':
+        return {'version': OpenEXR.__version__, 'parts': parts}
+
+    selection = r['selection']
+    selector = selection['part']
+    candidates = [p for p in parts if p['name' if isinstance(selector, str) else 'index'] == selector]
+    if len(candidates) != 1:
+        raise ValueError('Selected EXR part must exist exactly once: ' + str(selector))
+    part = candidates[0]
+    header = headers[part['index']]
+    data = part['dataWindow']
+    window = data if selection['window'] == 'data' else part['displayWindow']
+    width, height = exr_size(window)
+    if r.get('expectedSize') is not None and r['expectedSize'] != [width, height]:
+        raise ValueError(f'Selected EXR window is {width} × {height}; declared image dimensions differ')
+    # The Python binding loads every part. Bound the full flat decode before
+    # opening the pixel payload, and reject mixed/deep or mipmapped files here.
+    working_bytes = width * height * 16
+    for p, h in zip(parts, headers):
+        if (p['storage'] not in ('scanlineimage', 'tiledimage') or
+            p['storage'] == 'tiledimage' and h['tiles'].mode != OpenEXR.ONE_LEVEL):
+            raise ValueError('Flat EXR selection supports only scanline and single-level tiled files; use the typed Deep reader for deep parts')
+        w, hgt = exr_size(p['dataWindow'])
+        working_bytes += w * hgt * len(p['channels']) * 4
+    if working_bytes > r['maxDecodedBytes']:
+        raise ValueError(f'EXR decode needs at least {working_bytes} bytes under the conservative plane budget, above {r["maxDecodedBytes"]}')
+    names = {c['name']: c for c in part['channels']}
+    selected = [selection['channels'][c] for c in 'rgba']
+    for name in selected:
+        if not isinstance(name, str):
+            continue
+        if name not in names:
+            raise ValueError('Missing EXR channel: ' + name)
+        if names[name]['xSampling'] != 1 or names[name]['ySampling'] != 1:
+            raise ValueError('Selected EXR channel requires full-resolution sampling: ' + name)
+    overlap = [max(data[0], window[0]), max(data[1], window[1]),
+               min(data[2], window[2]), min(data[3], window[3])]
+    if r['outputAlpha'] == 'opaque' and (overlap != window or selected[3] == 0):
+        raise ValueError('Opaque EXR output requires full window coverage and nonzero Alpha')
+    image = np.zeros((height, width, 4), dtype='<f4')
+    with OpenEXR.File(r['input'], separate_channels=True) as f:
+        channels = f.channels(part['index'])
+        for i, name in enumerate(selected):
+            values = name if not isinstance(name, str) else channels[name].pixels
+            if isinstance(name, str) and (values.dtype.kind != 'f' or values.shape != exr_size(data)[::-1]):
+                raise ValueError('Selected EXR image channels must be flat HALF/FLOAT planes: ' + name)
+            if overlap[0] <= overlap[2] and overlap[1] <= overlap[3]:
+                x0, y0, x1, y1 = overlap
+                src = values if not isinstance(name, str) else values[y0-data[1]:y1-data[1]+1, x0-data[0]:x1-data[0]+1]
+                image[y0-window[1]:y1-window[1]+1, x0-window[0]:x1-window[0]+1, i] = src
+    image.tofile(r['output'])
+    return {
+        'version': OpenEXR.__version__, 'width': width, 'height': height, 'type': 'float32',
+        'color': json.loads(header['frameweaveColor']) if 'frameweaveColor' in header else None,
+        'alpha': header.get('frameweaveAlpha') if selected == list('RGBA') else None,
+        'chromaticities': list(header.get('chromaticities', [])),
+        'part': part, 'selection': selection,
+    }
+
 def run(r):
     op = r['operation']
     if op in ['read-icc', 'write-icc']:
@@ -73,6 +153,8 @@ def run(r):
         if r['alpha'] == 'premultiplied': image[:, :, :3] *= a[:, :, None]
         if not np.isfinite(image).all(): raise ValueError('E_MEDIA_NONFINITE: OCIO output contains non-finite data')
         image.astype('<f4').tofile(r['output']); info['processorCacheID'] = cache_id; return info
+    if op in ('inspect-exr', 'read-exr-selection'):
+        return exr_layers(r)
     if op == 'write-exr' or op == 'read-exr':
         import OpenEXR
         if op == 'write-exr':

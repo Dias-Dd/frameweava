@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "apiVersion": 1,
   "id": "native-image-effects",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "name": "Native Resident Image Effects",
   "description": "Native professional image domains, stabilization, PSF restoration and typed video segmentation. Spherical WIP is source-only and excluded from the public entry.",
   "tags": [
@@ -52,6 +52,7 @@
     "gpu": "required",
     "gpuApi": "native-wgpu",
     "gpuExports": [
+      "exrResource",
       "processImage",
       "processRaster",
       "processPa",

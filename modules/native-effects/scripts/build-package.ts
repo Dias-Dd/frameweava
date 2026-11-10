@@ -47,7 +47,8 @@ export async function buildNativeImagePackage(output:string){
  const manifest=JSON.parse(await readFile(join(root,'frameweave.package.json'),'utf8'));
  manifest.modules.main.path='./'+sourcePath(join(root,'public.ts'));manifest.modules.bindings.path='./'+sourcePath(join(root,'bindings.ts'));manifest.bindings.types='./'+sourcePath(join(root,'api.d.ts'));
  await writeFile(join(output,'frameweave.package.json'),JSON.stringify(manifest,null,2)+'\n');
- for(const [from,to]of [[join(workspace,'licenses/APACHE-2.0.txt'),'LICENSE'],[join(resident,'NOTICE'),'NOTICE'],[join(resident,'LICENSE.effectcraft'),'LICENSE.effectcraft'],[join(root,'README.md'),'README.md']])await copyFile(from,join(output,to));
+ await copyFile(join(root,'exr-functions.json'),join(output,'frameweave.functions.json'));
+ for(const [from,to]of [[join(workspace,'LICENSE'),'LICENSE'],[join(resident,'NOTICE'),'NOTICE'],[join(resident,'LICENSE.effectcraft'),'LICENSE.effectcraft'],[join(root,'README.md'),'README.md']])await copyFile(from,join(output,to));
  await copyFile(join(root,'raster/README.md'),join(output,'RASTER.md'));
  await copyFile(join(root,'pa/README.md'),join(output,'PA.md'));
  await copyFile(join(root,'builtin/README.md'),join(output,'BUILTIN.md'));

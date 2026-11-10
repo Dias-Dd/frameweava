@@ -18,7 +18,7 @@ The public API is generated from `index.ts`. The built package contains self-con
 | `pathCommands`, `pathToMask`, `convertPathUnits`, `decodeRasterMask`, `sampleCoverage` | Data transformations and coverage operations, with no Stage dependency. |
 | `rasterizeVectorMask` | Optional v1 browser Canvas adapter. Requires `document`/Canvas/Path2D **when invoked**; does not access them at import time. Kept in the existing public export set for compatibility. |
 | `createTextLayoutGeometry`, `assertHorizontalTextLayout`, `TextWritingMode`, `TextBaselineAxis`, `TextGlyphOrientation` | Explicit vertical geometry interpretation and horizontal-consumer guard; no shaping or automatic orientation selection. |
-| `LIMITS` | Existing bounded validation limits. |
+| `LIMITS` | Deprecated addressability compatibility fields (u32/JS array lengths and safe integer accounting); no authored-data budgets. |
 
 Node 22+, a browser Stage, a trusted AnalysisTask algorithm and a future Agent Capability adapter can all import the same library. Browser/Node APIs are used only by explicitly invoked helpers. A worker without DOM can use contracts/Reader/hash helpers; it cannot call the DOM rasterizer without its own adapter. Demo Stage factories stay in `experiments/` and are not published as library code.
 

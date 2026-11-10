@@ -1,5 +1,5 @@
 import {engineVersion} from '../compiler/runtime-lock.ts';
-import {readFile,writeFile,mkdir,mkdtemp,rename,rm,open,lstat,copyFile} from 'node:fs/promises';
+import {readFile,writeFile,mkdir,mkdtemp,rename,rm,open,lstat,copyFile,readdir,rmdir} from 'node:fs/promises';
 import {join,resolve,dirname,relative} from 'node:path';
 import {fields,plain,fail,parseRef,satisfies,version} from '../plugins/schema.ts';
 import {PACKAGE_MANIFEST,discoverPackages,readPackage,packageRef,packageFiles,within,assertPlatform,type PackageRecord,type PackageSource} from './manifest.ts';
@@ -164,16 +164,37 @@ export async function restorePackages(directory:string,roots:string[]){
     await snapshots(project.store,lock,catalog);await installedPackages(directory);return {restored:Object.keys(lock.packages),frozen:true};
   });
 }
-export async function uninstallPackage(directory:string,id:string){
+export const uninstallPackage=(directory:string,id:string)=>uninstallPackages(directory,[id]);
+
+/** Remove direct roots in one transaction, retain shared dependencies, then
+ * collect unreachable immutable snapshots (including old upgrade versions). */
+export async function uninstallPackages(directory:string,ids:readonly string[]|'all'){
   return transaction(directory,async()=>{
-    const project=await packageProject(directory),current=await installedPackages(directory);if(!current.lock||!Object.hasOwn(project.config.requirements,id))fail('E_PACKAGE_DEPENDENT',`${id} is not a direct requirement; remove its dependent first`);
-    const requested={...project.config.requirements};delete requested[id];
+    const project=await packageProject(directory),current=await installedPackages(directory);
+    const selected=ids==='all'?Object.keys(project.config.requirements):[...new Set(ids)];
+    if(!selected.length&&ids!=='all')fail('E_ARGUMENT','Specify package IDs or --all');
+    for(const id of selected)if(!Object.hasOwn(project.config.requirements,id))fail('E_PACKAGE_DEPENDENT',`${id} is not a direct requirement; remove its dependent first`);
+    const requested={...project.config.requirements};for(const id of selected)delete requested[id];
     const lock=resolvePackages(current.records,requested,project.config.trustedSources,current.lock);
-    if(Object.keys(lock.packages).some(ref=>parseRef(ref).id===id))fail('E_PACKAGE_DEPENDENT',`${id} is still required by another installed package`);
+    for(const id of selected)if(Object.keys(lock.packages).some(ref=>parseRef(ref).id===id))fail('E_PACKAGE_DEPENDENT',`${id} is still required by another installed package`);
     await publish(directory,{...project.config,requirements:stable(requested)},lock);
-    const removed=Object.keys(current.lock.packages).filter(ref=>!lock.packages[ref]);
-    for(const ref of removed){const target=installedPath(project.store,ref,current.lock.packages[ref]);await safeSubdirectory(project.directory,target);await rm(target,{recursive:true,force:true});}
-    return {removed,remaining:Object.keys(lock.packages)};
+    const removed=Object.keys(current.lock?.packages??{}).filter(ref=>!lock.packages[ref]);
+    const garbageCollected:string[]=[];let freedBytes=0;
+    let folders:string[];try{folders=await readdir(project.store);}catch(e){if((e as NodeJS.ErrnoException).code!=='ENOENT')throw e;folders=[];}
+    for(const folder of folders){
+      if(!/^[a-z][a-z0-9.-]*@\d+\.\d+\.\d+$/.test(String(folder)))continue;
+      const ref=String(folder),parent=join(project.store,ref);await safeSubdirectory(project.directory,parent);
+      for(const fingerprint of await readdir(parent)){
+        if(!/^[a-f0-9]{64}$/.test(fingerprint))continue;
+        const target=join(parent,fingerprint);if(lock.packages[ref]?.integrity===`sha256-${fingerprint}`)continue;
+        await safeSubdirectory(project.directory,target);const record=await readPackage(target);
+        if(packageRef(record.manifest)!==ref||record.integrity!==fingerprint)fail('E_PACKAGE_INTEGRITY',`Refusing to collect an altered snapshot: ${ref}`);
+        for(const file of await packageFiles(target))freedBytes+=(await lstat(file)).size;
+        await rm(target,{recursive:true,force:true});garbageCollected.push(ref);
+      }
+      try{await rmdir(parent);}catch(e){if(!['ENOENT','ENOTEMPTY'].includes((e as NodeJS.ErrnoException).code??''))throw e;}
+    }
+    return {removed,remaining:Object.keys(lock.packages),freedBytes,garbageCollected};
   });
 }
 export async function verifyPackages(directory:string){const state=await installedPackages(directory);return {valid:true,packages:state.records.map(r=>({reference:packageRef(r.manifest),source:r.manifest.source,integrity:`sha256-${r.integrity}`,modules:r.moduleIntegrity})),lockfile:join(resolve(directory),lockName)};}

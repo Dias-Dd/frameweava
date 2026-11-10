@@ -3,6 +3,7 @@ import {mkdir,mkdtemp,writeFile,rm} from 'node:fs/promises';import {join,resolve
 import {EngineError} from '../../src/core/errors.ts';import {gamutMatrix} from '../../src/media/color.ts';
 import {assertColor,type ColorEncoding} from '../../src/media/surface.ts';import type {ProfessionalEncodeOptions} from '../../src/media/encoding.ts';import {assertHdr10Metadata} from '../../src/media/encoding.ts';
 import {runtimeCachePath} from '../../src/runtime/paths.ts';
+import {mediaPython} from '../../src/media/python.ts';
 export interface NativeColourLut{width:number;height:number;channels:number;linear:boolean;values:number[]}
 export interface NativeMediaExport{
  version:1;image:number;output:string;codec:'hevc_nvenc'|'av1_nvenc';fps:[number,number];primaries:1|2;transfer:16|18;
@@ -29,7 +30,7 @@ export async function prepareNativeMediaExport(output:string,from:ColorEncoding,
  if(options.conversion.kind==='colorimetric')shader=colourShader(from,c);
  else{
   if(c.transfer!=='pq'||options.conversion.transform.display!=='Rec.2100-PQ - Display'||options.conversion.transform.view!=='ACES 2.0 - HDR 1000 nits (Rec.2020)'||options.conversion.transform.destination)throw new EngineError('E_NATIVE_MEDIA_OCIO_PROFILE','GPU OCIO v1 is qualified for ACES 2.0 HDR 1000 nits Rec.2020 only; use the reference backend for other views');
-  const python=process.env.FRAMEWEAVE_MEDIA_PYTHON;if(!python)throw new EngineError('E_MEDIA_OCIO_UNAVAILABLE','Explicit OCIO Python is required for one-time GPU shader preparation');
+  const python=mediaPython('E_MEDIA_OCIO_UNAVAILABLE');
   const source=options.conversion.transform.source,expected:Record<string,string>={'ACEScg':'acescg','Linear Rec.2020':'rec2020','Linear Rec.709 (sRGB)':'rec709'};
   if(expected[source]!==from.primaries||from.referenceWhiteNits!==100)throw new EngineError('E_NATIVE_MEDIA_OCIO_SOURCE','GPU OCIO source must match the scene-linear working encoding and 100-nit reference');
   const parent=runtimeCachePath('native-ocio-gpu');await mkdir(parent,{recursive:true});const dir=await mkdtemp(join(parent,'profile-'));

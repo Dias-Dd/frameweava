@@ -24,11 +24,13 @@ npm run frameweave -- render my-scene/project.tsx --encoder libx264 --output sce
 
 ## Official libraries
 
-The engine and official libraries are developed in this repository. Pro Animation is an R1 suite that resolves versioned shared libraries for animation, typography, transitions, image effects, and spatial creation. Build the local official catalog from a source checkout.
+The engine and official libraries are developed in this repository. Pro Animation is an R1 suite that resolves versioned shared libraries for animation, typography, transitions, image effects, and spatial creation. Named package installation downloads immutable snapshots from the official GitHub development registry. Missing dependencies are fetched automatically; only lightweight discovery metadata is bundled.
 
 ```powershell
-node --import tsx modules/pro-animation/scripts/build-catalog.ts
+npm run frameweave -- packages install pro-animation@1.1.0 --trust local:frameweave.pro --trust local:frameweave.gpu-images --trust local:frameweave.native-2d --trust local:frameweave.spatial
 ```
+
+See [remote packages and space reclamation](docs/REMOTE_PACKAGES.md). packages uninstall --all removes the program library while retaining the engine and discovery metadata. Local catalogs remain an explicit development option.
 
 Use the [managed package guide](docs/MANAGED_TYPESCRIPT_MODULES.md) for installation, source approval, locks, and typed imports. The [Pro Animation example](modules/pro-animation/examples/suite.tsx) shows a project that uses the suite.
 

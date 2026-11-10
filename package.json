@@ -91,6 +91,16 @@
       "frameweave-source": "./modules/native-effects/authoring/node.ts",
       "import": "./lib-modules/native-effects/authoring/node.js"
     },
+    "./spatial-creation": {
+      "types": "./modules/spatial-creation/rendering.ts",
+      "frameweave-source": "./modules/spatial-creation/rendering.ts",
+      "import": "./lib-modules/spatial-creation/rendering.js"
+    },
+    "./spatial-creation/node": {
+      "types": "./modules/spatial-creation/node.ts",
+      "frameweave-source": "./modules/spatial-creation/node.ts",
+      "import": "./lib-modules/spatial-creation/node.js"
+    },
     "./spatial-vfx": {
       "types": "./modules/spatial-vfx/stage.ts",
       "frameweave-source": "./modules/spatial-vfx/stage.ts",
@@ -190,6 +200,8 @@
     "lib-examples",
     "prototypes/analysis-job-mvp/*.js",
     "modules",
+    "registry",
+    "frameweave.registry.json",
     "catalog",
     "frameweave.official-catalog.json",
     "examples/pro-animation",

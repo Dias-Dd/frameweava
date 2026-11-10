@@ -12,3 +12,12 @@ test('unused descriptors cannot shorten a retained allocation lifetime',()=>{
  const program:NativeProgram={version:2,session:'0'.repeat(64),slots:1,maxBytes:1048576,images:[image,image,image],passes:[{kernel:0,inputs:[],output:0,header:[]},{kernel:0,inputs:[0],output:2,header:[]}],kernels:[],display:null};
  const mapping=residentLayout(program).mapping;assert.notEqual(mapping[0],mapping[2]);
 });
+test('still imports survive reuse across submissions while per-frame video can reuse storage',()=>{
+ const program:NativeProgram={version:2,session:'0'.repeat(64),slots:1,maxBytes:1048576,
+  images:[image,image,image],imports:[{image:0,file:'still.f32',source:'declared-resource'}],
+  passes:[{kernel:0,inputs:[0],output:1,header:[]},{kernel:0,inputs:[1],output:2,header:[]}],
+  kernels:[],display:null};
+ assert.deepEqual(residentLayout(program).mapping,[0,1,2]);
+ program.imports=[{image:0,file:'next.f32',source:'declared-video',stream:'test'}];
+ assert.deepEqual(residentLayout(program).mapping,[0,1,0]);
+});

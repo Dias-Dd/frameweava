@@ -4,6 +4,9 @@ import {hashString} from '../../src/core/time.ts';
 import {hostAtob,hostBtoa} from './base64.ts';
 import {installWasmPromiseAdapter} from './wasm-promises.ts';
 import {hostTextDecoder} from './text-decoder.ts';
+import {encodeHostException} from './error-wire.ts';
+declare const __FRAMEWEAVE_ERROR_BYTES__:number;
+const errorBytes=typeof __FRAMEWEAVE_ERROR_BYTES__==='number'?__FRAMEWEAVE_ERROR_BYTES__:64*1024**2;
 declare const __fw_emit:(bytes:Uint8Array)=>void;
 declare const __fw_hash:(bytes:Uint8Array)=>Uint8Array;
 declare const __fw_utf8:(value:string)=>Uint8Array;
@@ -13,6 +16,8 @@ declare const __fw_log:(text:string)=>void;
 
 /** Loaded once BEFORE any Stage bundle. No DOM, Node, filesystem or network. */
 const emit=__fw_emit,hash=__fw_hash,utf8=__fw_utf8,decode=__fw_decode,input=__fw_input,log=__fw_log;
+const osIsolation=(globalThis as any).__fw_osIsolation??'appcontainer';
+delete (globalThis as any).__fw_osIsolation;
 if(!(globalThis as any).__fw_allowWasm)Object.defineProperty(globalThis,'WebAssembly',{value:undefined,writable:false,configurable:false});else installWasmPromiseAdapter(WebAssembly);delete (globalThis as any).__fw_allowWasm;
 for(const key of ['__fw_emit','__fw_hash','__fw_utf8','__fw_decode','__fw_input','__fw_log'])delete (globalThis as any)[key];
 (globalThis as any).TextEncoder=class{encode(value=''){return utf8(String(value));}};
@@ -49,8 +54,8 @@ Object.defineProperty(globalThis,'__fw_request',{value:async(id:number,method:st
   if(checkpoint)rendering=true;
   try{const result=await dispatch(method,payload);emit(encodeHostValue({id,result}));}
   finally{if(checkpoint)rendering=false;}
- }catch(e){const error=e as any;let issue;try{issue={code:typeof error?.code==='string'?error.code:(error?.name==='ReferenceError'&&/^(process|require) is not defined/.test(error.message)?'E_SPIDERMONKEY_NODE_GLOBAL':'E_NATIVE_LOGIC'),message:typeof error?.message==='string'?error.message:String(error),details:typeof error?.stack==='string'?error.stack:''};}catch{issue={code:'E_NATIVE_LOGIC',message:'Unprintable JavaScript exception',details:''};}emit(encodeHostValue({id,error:issue}));}
+ }catch(e){emit(encodeHostException(id,e,errorBytes));}
 },writable:false,configurable:false});
 Object.defineProperty(globalThis,'__fw_receive',{value:()=>{const request=decodeHostValue(input()) as any;return (globalThis as any).__fw_request(request.id,request.method,request.payload);},writable:false,configurable:false});
 // Broker bootstrap acknowledgment has the same bounded binary transport.
-emit(encodeHostValue({id:0,result:{engine:'spidermonkey',persistent:true,osIsolation:'appcontainer',binaryTransport:1}}));
+emit(encodeHostValue({id:0,result:{engine:'spidermonkey',persistent:true,osIsolation,binaryTransport:1}}));

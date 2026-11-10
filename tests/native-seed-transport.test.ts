@@ -97,3 +97,21 @@ test('production GPU consumes a >8 MiB JSON-equivalent seed exactly, across init
   }
  }finally{await exporter.close();await g.dispose();}
 });
+
+test('binary ray transform lengths validate before reading and singular matrices after hydration',async()=>{
+ const p=base();p.rayQuery=true;
+ p.data=[{type:'f32',length:9,initial:[],immutable:true},{type:'f32',length:12,initial:[]}];
+ p.kernels.push({kind:'ray-build',code:'// fixed ray build',inputCount:0,parameterWords:0,headerWords:16});
+ p.passes.unshift({kernel:1,inputs:[],output:0,header:Array(16).fill(0),buffers:[0],rayBuild:{
+  version:1,quality:'trace',invalidGeometry:'discard',transforms:1,
+  geometries:[{positions:0,count:3,mask:255,id:0}],
+ }});
+ const request=(words:number)=>({id:1,op:'init',program:p,binarySeeds:{version:1,format:'words32-le',
+  byteLength:words*4,buffers:[{buffer:1,type:'f32',words}]}});
+ const short=await raw(request(11));
+ assert.equal(short.error.code,'E_NATIVE_RAY_TRANSFORM');
+ assert.match(short.error.message,/affine matrices required/);
+ const singular=await raw(request(12),Buffer.alloc(48));
+ assert.equal(singular.error.code,'E_NATIVE_RAY_TRANSFORM');
+ assert.match(singular.error.message,/inverse must be finite/);
+});

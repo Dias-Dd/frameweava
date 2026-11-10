@@ -1,5 +1,6 @@
 //! Private native data plane, not TVG / P4 ABI / CPU Surface.
 use serde::Deserialize;
+use std::collections::HashMap;
 
 pub const VERSION: u32 = 2;
 // Frame concurrency is admitted by the caller byte budget, not a fixed slot count.
@@ -78,6 +79,7 @@ pub struct Program {
     #[serde(default)] pub imports:Vec<ImageImport>,
     #[serde(default)] pub modules:Vec<NativeModule>,
     #[serde(default)]pub buffer_outputs:Vec<BufferOutput>,
+    #[serde(default)]pub readbacks:Vec<String>,
     #[serde(default)]pub data_export:Option<Bridge>,
     #[serde(default)]pub resource_lease:Option<Bridge>,
 }
@@ -219,6 +221,8 @@ impl Program {
         for (n,p) in self.passes.iter().enumerate(){if p.buffers.is_some(){continue;}if p.output>=born.len()||p.inputs.iter().any(|&i|i>=born.len()){return Err("E_NATIVE_PASS: invalid image reference".into());}born[p.output]=n;last[p.output]=n;for &i in &p.inputs{last[i]=n;}}
         for (n,p) in self.passes.iter().enumerate(){for &d in p.buffers.iter().flatten().chain(p.data.iter()).chain(p.draw.iter().map(|d|&d.positions)).chain(p.draw.iter().filter_map(|d|d.indices.as_ref())).chain(p.draw.iter().filter_map(|d|d.uvs.as_ref())){if let Some(i)=self.data.get(d).and_then(|v|v.source_image){if i>=last.len(){return Err("E_NATIVE_DATA: unknown image view".into());}last[i]=last[i].max(n);}}}
         for out in &self.buffer_outputs{if let Some(i)=self.data.get(out.buffer).and_then(|d|d.source_image){if i>=last.len(){return Err("E_NATIVE_DATA: unknown published image view".into());}last[i]=self.passes.len();}}
+        // Declared still assets survive across submissions without another upload.
+        for item in &self.imports{if item.source.as_deref()==Some("declared-resource"){last[item.image]=self.passes.len();}}
         if let Some(d)=&self.display {if d.image>=last.len(){return Err("E_NATIVE_DISPLAY: invalid output".into());}last[d.image]=self.passes.len();}
         if let Some(p)=self.passes.iter().rev().find(|p|p.buffers.is_none()){last[p.output]=self.passes.len();}
         Ok((born,last))
@@ -228,6 +232,7 @@ impl Program {
         n+=self.images.len()as u128*std::mem::size_of::<Image>()as u128+self.slots as u128*64;
         for k in &self.kernels{n+=std::mem::size_of::<Kernel>()as u128+k.code.len()as u128;}
         for p in &self.passes{n+=std::mem::size_of::<Pass>()as u128+(p.inputs.len()+p.data.len()+p.buffers.as_ref().map_or(0,Vec::len))as u128*std::mem::size_of::<usize>()as u128+p.header.len()as u128*4;}
+        n+=self.readbacks.iter().map(|s|s.len()as u128+std::mem::size_of::<String>()as u128).sum::<u128>();
         n+=self.data.len()as u128*std::mem::size_of::<Data>()as u128+self.imports.len()as u128*std::mem::size_of::<ImageImport>()as u128+self.buffer_outputs.len()as u128*std::mem::size_of::<BufferOutput>()as u128;
         for m in &self.modules{n+=std::mem::size_of::<NativeModule>()as u128+m.html.len()as u128+m.javascript.len()as u128;}
         if let Some(d)=&self.display{n+=d.shader.len()as u128;}
@@ -235,9 +240,10 @@ impl Program {
         if n>u128::from(self.max_bytes){return Err(format!("E_NATIVE_METADATA_BUDGET: {n} metadata bytes exceeds configured {}",self.max_bytes));}Ok(())
     }
     pub fn validate(&self)->Result<(),String>{self.validated_bytes().map(|_|())}
-    pub fn validated_bytes(&self)->Result<u64,String>{
+    pub fn validated_bytes(&self)->Result<u64,String>{self.bytes_with_seed_plan(&HashMap::new())}
+    pub(crate) fn bytes_with_seed_plan(&self, seed_words:&HashMap<usize,u64>)->Result<u64,String>{
         if self.version!=1&&self.version!=VERSION{return Err("E_NATIVE_PROTOCOL: expected native protocol 1/2".into());}
-        if self.version==1&&(self.ray_query||!self.data.is_empty()||self.kernels.iter().any(|k|k.kind.is_some()||k.mesh_mode.is_some())||self.export.is_some()||self.media_export.is_some()||!self.inferences.is_empty()||!self.imports.is_empty()||!self.modules.is_empty()||self.data_export.is_some()||self.resource_lease.is_some()||!self.buffer_outputs.is_empty()){return Err("E_NATIVE_PROTOCOL: extended native programs require protocol 2".into());}
+        if self.version==1&&(self.ray_query||!self.data.is_empty()||self.kernels.iter().any(|k|k.kind.is_some()||k.mesh_mode.is_some())||self.export.is_some()||self.media_export.is_some()||!self.inferences.is_empty()||!self.imports.is_empty()||!self.modules.is_empty()||self.data_export.is_some()||self.resource_lease.is_some()||!self.readbacks.is_empty()||!self.buffer_outputs.is_empty()){return Err("E_NATIVE_PROTOCOL: extended native programs require protocol 2".into());}
         if self.session.len() != 64 || !self.session.bytes().all(|c| c.is_ascii_hexdigit()) {
             return Err("E_NATIVE_SESSION: expected an owner-scoped random session identity".into());
         }
@@ -276,9 +282,15 @@ impl Program {
         bytes += self.allocation_layout()?.1.iter().map(|&n|u128::from(n)).sum::<u128>() * self.slots as u128;
 
         let mut ids=std::collections::HashSet::new();for o in &self.buffer_outputs{let d=self.data.get(o.buffer).ok_or("E_NATIVE_DATA_OUTPUT: unknown published buffer")?;if o.version!=1||o.id.is_empty()||o.id.len()>512||!ids.insert(&o.id)||o.info["type"]!=d.r#type||o.info["length"].as_u64()!=Some(d.length)||o.info["byteLength"].as_u64()!=Some(d.length*4){return Err("E_NATIVE_DATA_OUTPUT: invalid publication v1".into());}}
-        let mut resident=std::collections::HashSet::new();for d in &self.data{if let Some(r)=&d.resident{if r.version!=1||r.id.is_empty()||!resident.insert(&r.id)||!d.immutable||d.persistent.is_some()||d.source_image.is_some()||d.source_resource.is_some()||(!d.initial.is_empty()&&d.initial.len()as u64!=d.length){return Err("E_NATIVE_RESIDENT_PROTOCOL: complete immutable resident definition required".into());}}}
+        let mut captures=std::collections::HashSet::new();
+        for name in &self.readbacks{
+            if self.data_export.is_none()||!captures.insert(name){return Err("E_NATIVE_DATA_CAPTURE: explicit export lease and unique published names required".into());}
+            let out=self.buffer_outputs.iter().find(|o|&o.id==name).ok_or("E_NATIVE_DATA_OUTPUT: captured buffer was not published")?;
+            bytes+=u128::from(self.data[out.buffer].length)*4*self.slots as u128;
+        }
+        let mut resident=std::collections::HashSet::new();for (index,d) in self.data.iter().enumerate(){let words=seed_words.get(&index).copied().unwrap_or(d.initial.len()as u64);if let Some(r)=&d.resident{if r.version!=1||r.id.is_empty()||!resident.insert(&r.id)||!d.immutable||d.persistent.is_some()||d.source_image.is_some()||d.source_resource.is_some()||(words!=0&&words!=d.length){return Err("E_NATIVE_RESIDENT_PROTOCOL: complete immutable resident definition required".into());}}}
         let mut states=std::collections::HashSet::new();for d in &self.data{if let Some(s)=&d.persistent{if s.version!=1||s.id.is_empty()||s.id.len()>512||d.immutable||d.source_image.is_some()||!states.insert(&s.id){return Err("E_NATIVE_STATE: invalid persistent state v1 definition".into());}}}if !states.is_empty()&&self.slots!=1{return Err("E_NATIVE_STATE_CONCURRENCY: ordered state requires one frame slot".into());}
-        for d in &self.data{if let Some(s)=&d.source_resource{s.validate(d,self)?;}if d.length==0||d.length>0x3fffffff||!matches!(d.r#type.as_str(),"f32"|"u32"|"i32")||d.initial.len()as u64>d.length{return Err("E_NATIVE_DATA: invalid bounded typed buffer".into());}if let Some(i)=d.source_image{if d.r#type!="f32"||d.immutable||!d.initial.is_empty()||self.images.get(i).is_none_or(|i|i.bytes()!=d.length*4){return Err("E_NATIVE_DATA: invalid read-only F32 image view".into());}}else{bytes+=if d.immutable{u128::from(d.length)*4}else{u128::from(d.length)*4*self.slots as u128+d.initial.len()as u128*4};}}
+        for (index,d) in self.data.iter().enumerate(){let words=seed_words.get(&index).copied().unwrap_or(d.initial.len()as u64);if let Some(s)=&d.source_resource{s.validate(d,self)?;}if d.length==0||d.length>0x3fffffff||!matches!(d.r#type.as_str(),"f32"|"u32"|"i32")||words>d.length{return Err("E_NATIVE_DATA: invalid bounded typed buffer".into());}if let Some(i)=d.source_image{if d.r#type!="f32"||d.immutable||!d.initial.is_empty()||self.images.get(i).is_none_or(|i|i.bytes()!=d.length*4){return Err("E_NATIVE_DATA: invalid read-only F32 image view".into());}}else{bytes+=if d.immutable{u128::from(d.length)*4}else{u128::from(d.length)*4*self.slots as u128+u128::from(words)*4};}}
         for kernel in &self.kernels {
             if kernel.replay_image.as_ref().is_some_and(|mode|mode!="whole-output-v1"||!matches!(kernel.kind.as_deref(),None|Some("raster"|"mesh"|"color"))){
                 return Err("E_NATIVE_REPLAY_PROFILE: unsupported image replay semantics".into());
@@ -301,6 +313,7 @@ impl Program {
         }
         let active_models=self.passes.iter().filter_map(|p|p.inference).chain(self.inferences.iter().enumerate().filter_map(|(i,m)|(!m.file.is_empty()).then_some(i))).collect::<std::collections::HashSet<_>>();
         for index in active_models{let m=self.inferences.get(index).ok_or("E_INFERENCE_IDENTITY: unknown model")?;let shared=m.validate()?;if self.resource_lease.is_none(){return Err("E_INFERENCE_MODEL_UNDECLARED: missing resource lease".into());}bytes+=u128::from(m.model.bytes)+u128::from(shared)*self.slots as u128;}
+        let mut shader_access=crate::binary_resource::ShaderAccess::new(&self.kernels);
         for (pass_index,pass) in self.passes.iter().enumerate() {
             let kernel = self.kernels.get(pass.kernel).ok_or("E_NATIVE_KERNEL: missing kernel")?;
             let mask=if pass.buffers.is_none(){
@@ -311,8 +324,18 @@ impl Program {
             }
             if pass.ray_build.is_some()||pass.ray_query.is_some(){
                 if !self.ray_query{return Err("E_NATIVE_RAY_PERMISSION: operator must opt in to experimental ray query".into());}if kernel.input_count!=0||kernel.parameter_words!=0||kernel.header_words!=16||pass.header.len()!=16||pass.state||pass.module.is_some()||pass.inference.is_some()||pass.draw.is_some()||pass.groups.is_some()||!pass.inputs.is_empty()||!pass.data.is_empty(){return Err("E_NATIVE_RAY_SCHEMA: invalid fixed ray pass".into());}
-                if let Some(scene)=&pass.ray_build{if pass.ray_query.is_some()||kernel.kind.as_deref()!=Some("ray-build"){return Err("E_NATIVE_RAY_SCHEMA: scene build kind mismatch".into());}scene.validate(self)?;let refs=scene.geometries.iter().flat_map(|g|std::iter::once(g.positions).chain(g.indices)).collect::<Vec<_>>();if pass.buffers.as_ref()!=Some(&refs)||refs.iter().any(|&i|self.data[i].source_image.is_some_and(|n|!published[n])){return Err("E_NATIVE_RAY_GEOMETRY: unpublished/foreign geometry input".into());}bytes+=u128::from(scene.private_bytes()?)*self.slots as u128;}
-                else if let Some(index)=pass.ray_query{if index>=pass_index||self.passes.get(index).and_then(|p|p.ray_build.as_ref()).is_none()||kernel.kind.as_deref()!=Some("ray-query"){return Err("E_NATIVE_RAY_SEQUENCE: build scene before query".into());}let b=pass.buffers.as_ref().ok_or("E_NATIVE_RAY_INPUT: missing buffers")?;let count=pass.header[0]as u64;let lo=f32::from_bits(pass.header[1]);let hi=f32::from_bits(pass.header[2]);if b.len()!=5||count==0||!lo.is_finite()||!hi.is_finite()||lo<0.||hi<=lo||pass.header[3]>255{return Err("E_NATIVE_RAY_INPUT: invalid count/range/mask".into());}let mut outputs=std::collections::HashSet::new();for(i,&index)in b.iter().enumerate(){let d=self.data.get(index).ok_or("E_NATIVE_RAY_INPUT: unknown data")?;if d.r#type!=if i==2{"u32"}else{"f32"}||d.length<count*if i<2{3}else{4}||d.source_image.is_some_and(|n|!published[n])||i>=2&&(d.immutable||d.persistent.is_some()||d.source_image.is_some()||!outputs.insert(index)||b[..2].contains(&index)){return Err("E_NATIVE_RAY_INPUT: dtype/length/ownership mismatch".into());}}}
+                if let Some(scene)=&pass.ray_build{if pass.ray_query.is_some()||kernel.kind.as_deref()!=Some("ray-build"){return Err("E_NATIVE_RAY_SCHEMA: scene build kind mismatch".into());}scene.validate(self,seed_words.get(&scene.transforms).copied())?;let refs=scene.geometries.iter().flat_map(|g|std::iter::once(g.positions).chain(g.indices)).collect::<Vec<_>>();if pass.buffers.as_ref()!=Some(&refs)||refs.iter().any(|&i|self.data[i].source_image.is_some_and(|n|!published[n])){return Err("E_NATIVE_RAY_GEOMETRY: unpublished/foreign geometry input".into());}bytes+=u128::from(scene.private_bytes()?)*self.slots as u128;}
+                else if let Some(index)=pass.ray_query{if index>=pass_index||self.passes.get(index).and_then(|p|p.ray_build.as_ref()).is_none()||kernel.kind.as_deref()!=Some("ray-query"){return Err("E_NATIVE_RAY_SEQUENCE: build scene before query".into());}let b=pass.buffers.as_ref().ok_or("E_NATIVE_RAY_INPUT: missing buffers")?;let count=pass.header[0]as u64;let lo=f32::from_bits(pass.header[1]);let hi=f32::from_bits(pass.header[2]);if !matches!(b.len(),5|7)||(b.len()==5&&pass.header[4]!=0||b.len()==7&&!matches!(pass.header[4],1|2))||count==0||!lo.is_finite()||!hi.is_finite()||lo<0.||hi<=lo||pass.header[3]>255{return Err("E_NATIVE_RAY_INPUT: invalid count/range/mask".into());}let mut outputs=std::collections::HashSet::new();if b.len()==7 {
+ let layout=self.data.get(b[5]).ok_or("E_NATIVE_RAY_COVERAGE: missing layout")?;
+ let texels=self.data.get(b[6]).ok_or("E_NATIVE_RAY_COVERAGE: missing texels")?;
+ let scene=self.passes[index].ray_build.as_ref().unwrap();
+ if (layout.source_image.is_some_and(|n|!published[n])||texels.source_image.is_some_and(|n|!published[n]))||scene.backend!="vulkan"||layout.r#type!="u32"||!matches!(texels.r#type.as_str(),"f32"|"u32")||texels.length%4!=0||
+    scene.geometries.iter().any(|g|layout.length<1+(u64::from(g.id)+1)*if pass.header[4]==2{16}else{14})||
+    b[2..5].contains(&b[5])||b[2..5].contains(&b[6]) {
+  return Err("E_NATIVE_RAY_COVERAGE: material layout, backend, dtype or ownership mismatch".into());
+ }
+}
+for(i,&index)in b[..5].iter().enumerate(){let d=self.data.get(index).ok_or("E_NATIVE_RAY_INPUT: unknown data")?;if d.r#type!=if i==2{"u32"}else{"f32"}||d.length<count*if i<2{3}else{4}||d.source_image.is_some_and(|n|!published[n])||i>=2&&(d.immutable||d.persistent.is_some()||d.source_image.is_some()||!outputs.insert(index)||b[..2].contains(&index)){return Err("E_NATIVE_RAY_INPUT: dtype/length/ownership mismatch".into());}}}
                 bytes+=(80+if pass.ray_query.is_some(){16}else{0})*self.slots as u128;continue;
             }
             if matches!(kernel.kind.as_deref(),Some("ray-build"|"ray-query")){return Err("E_NATIVE_RAY_SCHEMA: missing fixed ray binding".into());}
@@ -326,7 +349,7 @@ impl Program {
             if pass.state{let b=pass.buffers.as_ref().ok_or("E_NATIVE_STATE: missing state leases")?;if kernel.kind.as_deref()!=Some("state")||kernel.parameter_words!=3||kernel.header_words!=16||b.is_empty()||b.len()!=kernel.input_count||b.iter().any(|&d|self.data.get(d).is_none_or(|d|d.persistent.is_none()))||b.iter().collect::<std::collections::HashSet<_>>().len()!=b.len()||pass.header.len()!=16||!pass.inputs.is_empty()||!pass.data.is_empty()||pass.draw.is_some()||pass.module.is_some(){return Err("E_NATIVE_STATE: invalid state control v1".into());}bytes+=80*self.slots as u128;continue;}
             if let Some(buffers)=&pass.buffers{
                 if kernel.kind.as_deref()!=Some("compute")||buffers.len()!=kernel.input_count||buffers.iter().any(|&i|i>=self.data.len())||pass.header.len()!=kernel.header_words||pass.groups.is_none_or(|g|g.iter().any(|&v|v==0)){return Err("E_NATIVE_COMPUTE: invalid compute bindings/dispatch".into());}
-                for (binding,&d) in buffers.iter().enumerate(){if self.data[d].source_resource.is_some(){crate::binary_resource::readonly(kernel,binding as u32)?;}if self.data[d].resident.is_some(){crate::binary_resource::readonly(kernel,binding as u32).map_err(|_|"E_NATIVE_RESIDENT_READ_ONLY: writable resident binding")?;}if let Some(i)=self.data[d].source_image{if !published[i]{return Err("E_NATIVE_DATA: image view used before publication".into());}let module=naga::front::wgsl::parse_str(&kernel.code).map_err(|_|"E_NATIVE_SHADER: invalid image-view compute shader")?;if !module.global_variables.iter().any(|(_,v)|v.binding.as_ref().is_some_and(|b|b.group==0&&b.binding==binding as u32)&&matches!(v.space,naga::AddressSpace::Storage{access} if !access.contains(naga::StorageAccess::STORE))){return Err("E_NATIVE_DATA: image view requires a read-only storage binding".into());}}}
+                for (binding,&d) in buffers.iter().enumerate(){if self.data[d].source_resource.is_some(){shader_access.readonly(pass.kernel,binding as u32)?;}if self.data[d].resident.is_some(){shader_access.readonly(pass.kernel,binding as u32).map_err(|_|"E_NATIVE_RESIDENT_READ_ONLY: writable resident binding")?;}if let Some(i)=self.data[d].source_image{if !published[i]{return Err("E_NATIVE_DATA: image view used before publication".into());}if !shader_access.is_readonly(pass.kernel,binding as u32)?{return Err("E_NATIVE_DATA: image view requires a read-only storage binding".into());}}}
                 bytes+=(kernel.header_words as u128+(kernel.parameter_words as u128).max(1).div_ceil(4)*4)*4*self.slots as u128;continue;
             }
             if let Some(index)=pass.module{
@@ -345,7 +368,7 @@ impl Program {
                     let needed=if draw.indices.is_some(){self.data[draw.positions].length/3}else{draw.count as u64};
                     if draw.texture_version!=Some(1)||kernel.input_count!=1||uv.r#type!="f32"||uv.length%2!=0||uv.length/2<needed||pass.header.len()!=32||pass.header[7]>1||pass.header[8]>3||pass.header[9]>3||pass.header[10]!=1||self.images[pass.output].alpha=="opaque"{return Err("E_NATIVE_MESH: invalid texture/UV v1 layout".into());}
                 }else if draw.texture_version.is_some()||kernel.input_count!=0{return Err("E_NATIVE_MESH: incomplete texture/UV v1 layout".into());}
-                if self.data[draw.positions].source_resource.is_some(){crate::binary_resource::readonly(kernel,0)?;}if let Some(i)=draw.uvs{if self.data[i].source_resource.is_some(){crate::binary_resource::readonly(kernel,1)?;}}if mode==3{if let Some(i)=draw.indices{if self.data[i].source_resource.is_some(){crate::binary_resource::readonly(kernel,if draw.uvs.is_some(){4}else{2})?;}}}
+                if self.data[draw.positions].source_resource.is_some(){shader_access.readonly(pass.kernel,0)?;}if let Some(i)=draw.uvs{if self.data[i].source_resource.is_some(){shader_access.readonly(pass.kernel,1)?;}}if mode==3{if let Some(i)=draw.indices{if self.data[i].source_resource.is_some(){shader_access.readonly(pass.kernel,if draw.uvs.is_some(){4}else{2})?;}}}
                 for d in std::iter::once(draw.positions).chain(draw.indices).chain(draw.uvs){if self.data[d].source_image.is_some_and(|i|!published[i]){return Err("E_NATIVE_DATA: mesh image view used before publication".into());}}
                 let image=&self.images[pass.output];bytes+=(image.width as u128*image.height as u128*if mode==3{52}else{20}+if mode==3{136+if draw.indices.is_none(){draw.count as u128*4}else{0}}else{0})*self.slots as u128;
             }else if kernel.kind.as_deref()==Some("color"){
@@ -354,7 +377,7 @@ impl Program {
                 if source.width!=target.width||source.height!=target.height||source.alpha!=target.alpha||[source,target].iter().any(|i|!scene_linear_color(&i.color)){return Err("E_NATIVE_COLOR: explicit matching scene-linear surfaces required".into());}
             }else if kernel.kind.as_deref().is_some_and(|k|k!="raster"){return Err("E_NATIVE_DATA: invalid pixel kernel kind".into());}
             if pass.data.iter().any(|&i|i>=self.data.len()){return Err("E_NATIVE_DATA: invalid pixel data bindings".into());}
-            for (j,&d)in pass.data.iter().enumerate(){if self.data[d].source_resource.is_some(){crate::binary_resource::readonly(kernel,(pass.inputs.len()+j)as u32)?;}}
+            for (j,&d)in pass.data.iter().enumerate(){if self.data[d].source_resource.is_some(){shader_access.readonly(pass.kernel,(pass.inputs.len()+j)as u32)?;}}
             if pass.data.iter().any(|&d|self.data[d].source_image.is_some_and(|i|!published[i])){return Err("E_NATIVE_DATA: image view used before publication".into());}
             if pass.inputs.len() != kernel.input_count || pass.output >= published.len() ||
                 published[pass.output] || pass.inputs.iter().any(|&i| i >= published.len() || !published[i]) ||

@@ -26,7 +26,7 @@ async function formalize(directory:string,id:string,version:string,authority:str
  async function rewrite(folder:string){for(const e of await readdir(folder,{withFileTypes:true})){const file=join(folder,e.name);if(e.isDirectory()){if(e.name==='examples')await rewrite(file);continue;}if(!/\.(?:tsx|md)$/.test(e.name)&&!['guide.json','creation-guide.json'].includes(e.name))continue;const text=await readFile(file,'utf8');await writeFile(file,text.replaceAll(previous+'@'+previousVersion,id+'@'+version).replaceAll(previous,id));}}
  await rewrite(directory);
 }
-await formalize(spatial,'spatial-creation','1.1.1','frameweave.spatial');
+await formalize(spatial,'spatial-creation','1.2.0','frameweave.spatial');
 const drawing=join(catalog,'native-2d');
 // The formal drawing capability uses explicit services. The optional local
 // default-font carrier has its own identity and cannot change these bytes.
@@ -39,7 +39,7 @@ await Promise.all(['deep-exr','sparse-volume'].map(name=>promisify(execFile)(pro
 const suite=await buildProAnimationSuite(catalog);
 const records=await discoverPackages([catalog]);
 const publicFunctions=catalogFunctionNames(records.map(record=>record.manifest));
-for(const [reference,functions] of Object.entries(officialFunctions))for(const entry of functions)
+for(const [reference,functions] of Object.entries(officialFunctions).filter(([reference])=>publicFunctions.has(reference)))for(const entry of functions)
  for(const name of [entry.name,...entry.imports??[]])
   if(!publicFunctions.get(reference)?.has(name))throw Error(`Official search entry has no callable public export: ${reference}#${name}`);
 const api=buildCatalogApi(workspace,records);

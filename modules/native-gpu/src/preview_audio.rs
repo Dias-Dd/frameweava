@@ -84,11 +84,14 @@ mod device {
         }
     }
 }
-#[cfg(not(windows))]
+#[cfg(target_os = "linux")]
+#[path = "preview_audio_linux.rs"]
+mod device;
+#[cfg(not(any(windows, target_os = "linux")))]
 mod device {
     pub struct Device;
     impl Device {
-        pub fn open(_:u32)->Result<Self,String>{Err("E_PREVIEW_AUDIO_DEVICE: native audio output is currently available on Windows".into())}
+        pub fn open(_:u32)->Result<Self,String>{Err("E_PREVIEW_AUDIO_DEVICE: native audio output is currently available on Windows and Linux".into())}
         pub fn queue(&mut self,_:Vec<u8>)->Result<(),String>{unreachable!()}
         pub fn play(&self)->Result<(),String>{unreachable!()}
         pub fn position(&mut self)->Result<u64,String>{unreachable!()}

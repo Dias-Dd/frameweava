@@ -17,3 +17,6 @@ export async function processBuiltin(_input:GpuPixelImage,_recipe:NativeBuiltinR
 export function builtinStats():NativeImageStats{throw new EngineError('E_NATIVE_EFFECTS_BINDING','Use the managed Native Stage binding');}
 
 export * from './domains.ts';
+
+export {exrResource} from '@frameweave/engine/image-effects';
+export type {ExrResourceOptions,ExrSelection} from '@frameweave/engine/image-effects';

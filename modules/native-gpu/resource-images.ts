@@ -12,6 +12,7 @@ import {runtimeCachePath} from '../../src/runtime/paths.ts';
 import {samePixelColor} from '../gpu-effects/pixel-shader.ts';
 import {pixelsFromSurface,surfaceFromPixels,srgb,toHalf,fromHalf,type ProfessionalSurface} from '../../src/media/surface.ts';
 import {readIccImage} from '../../src/media/input.ts';
+import {readExr} from '../../src/media/ocio.ts';
 import {transformPixels} from '../../src/media/color.ts';
 import {pipeline} from 'node:stream/promises';
 import {NativeVideoDecoder} from './video-decoder.ts';
@@ -52,12 +53,27 @@ export class NativeResourceImages {
  }
  private async decode(source:NativeImageResource){
   if(source.decode==='font-glyph-v1')return this.decodeFont(source);
-  if(source.version!==1||!['surface-v2','icc-sdr'].includes(source.decode))throw new EngineError('E_NATIVE_RESOURCE','Unsupported resource contract');const output=pixelInfo(source.output),resource=this.build.manifest.resources.find(r=>r.id===source.id||this.origin!==undefined&&source.id===`${this.origin}/${r.src}`);
+  if(source.version!==1||!['surface-v2','icc-sdr','exr'].includes(source.decode))throw new EngineError('E_NATIVE_RESOURCE','Unsupported resource contract');const output=pixelInfo(source.output),resource=this.build.manifest.resources.find(r=>r.id===source.id||this.origin!==undefined&&source.id===`${this.origin}/${r.src}`);
   if(!resource||!['image','file'].includes(resource.kind)||!Object.hasOwn(this.build.assets,resource.src))throw new EngineError('E_NATIVE_RESOURCE_UNDECLARED','Only declared build image/file Resources may be imported');
   await this.verify();const path=resolve(this.build.assets[resource.src]),bytes=await readFile(path);if(bytes.length>(this.options.maxSourceBytes??this.maxBytes)||hash(bytes)!==this.hashes!.get(path))throw new EngineError('E_NATIVE_RESOURCE_INTEGRITY','Declared source bytes changed after build verification');
   let pixels:Float32Array;
   if(source.decode==='surface-v2'){const surface=JSON.parse(bytes.toString()) as ProfessionalSurface;if(surface.width!==output.width||surface.height!==output.height||surface.alpha!==output.alpha||!samePixelColor(surface.color,output.color))throw new EngineError('E_NATIVE_RESOURCE_COLOR','Surface dimensions/Alpha/colour require an explicit upstream conversion');pixels=pixelsFromSurface(surface);}
-  else{const temp=randomBytes(24).toString('hex')+(extname(path)||'.image'),file=join(this.lease.directory,temp);this.files.add(temp);await writeFile(file,bytes,{flag:'wx'});try{const decoded=await readIccImage(file,{onMissing:source.missingProfile??'error'});if(decoded.surface.width!==output.width||decoded.surface.height!==output.height)throw new EngineError('E_NATIVE_RESOURCE_SIZE','Image dimensions differ; request explicit resampling separately');pixels=transformPixels(pixelsFromSurface(decoded.surface),decoded.surface.color,output.color,'straight').pixels;if(output.alpha==='premultiplied')for(let i=0;i<pixels.length;i+=4){pixels[i]*=pixels[i+3];pixels[i+1]*=pixels[i+3];pixels[i+2]*=pixels[i+3];}}finally{await unlink(file);this.files.delete(temp);}}
+  else{
+   const temp=randomBytes(24).toString('hex')+(extname(path)||'.image'),file=join(this.lease.directory,temp);
+   this.files.add(temp);await writeFile(file,bytes,{flag:'wx'});
+   try{
+    if(source.decode==='exr'){
+     const decoded=await readExr(file,{selection:source.selection,color:output.color,alpha:output.alpha,
+       maxDecodedBytes:this.maxBytes,expectedSize:[output.width,output.height]});
+     pixels=pixelsFromSurface(decoded.surface);
+    }else{
+     const decoded=await readIccImage(file,{onMissing:source.missingProfile??'error'});
+     if(decoded.surface.width!==output.width||decoded.surface.height!==output.height)throw new EngineError('E_NATIVE_RESOURCE_SIZE','Image dimensions differ; request explicit resampling separately');
+     pixels=transformPixels(pixelsFromSurface(decoded.surface),decoded.surface.color,output.color,'straight').pixels;
+     if(output.alpha==='premultiplied')for(let i=0;i<pixels.length;i+=4){pixels[i]*=pixels[i+3];pixels[i+1]*=pixels[i+3];pixels[i+2]*=pixels[i+3];}
+    }
+   }finally{await unlink(file);this.files.delete(temp);}
+  }
   // Explicit output format selects the existing Half rounding/Alpha validation.
   pixels=pixelsFromSurface(surfaceFromPixels(output.width,output.height,pixels,{format:output.format,color:output.color,alpha:output.alpha,deferBase64:true}));
   const name=randomBytes(24).toString('hex')+'.f32';await writeFile(join(this.lease.directory,name),new Uint8Array(pixels.buffer,pixels.byteOffset,pixels.byteLength),{flag:'wx'});this.files.add(name);return name;

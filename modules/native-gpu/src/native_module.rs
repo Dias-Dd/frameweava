@@ -14,12 +14,14 @@ pub async fn owner_device(
     let features=adapter.features();
     let timestamps=wgpu::Features::TIMESTAMP_QUERY|wgpu::Features::TIMESTAMP_QUERY_INSIDE_ENCODERS;
     let timing=if preview&&features.contains(timestamps){timestamps}else{wgpu::Features::empty()};
-    let mut status = Interop {
+    let status = Interop {
         available: false,
         enabled: false,
         luid: 0,
         reason: Some("Windows/Vulkan external images unavailable".into()),
     };
+    #[cfg(windows)]
+    let mut status = status;
     #[cfg(windows)]
     {
         status.available = crate::external_windows::available(adapter);

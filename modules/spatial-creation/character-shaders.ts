@@ -13,6 +13,14 @@ fn compute(g:vec3u,l:vec3u,w:vec3u){let i=g.x;let b=i*8u;let rest=load2(b+7u);va
  let q=(transform*vec4f(p,1.)).xyz;let a=transform[0].xyz;let c=transform[1].xyz;let d=transform[2].xyz;let det=dot(a,cross(c,d));var normal=vec3f(0.);if(abs(det)>1e-20){normal=(cross(c,d)*n.x+cross(d,a)*n.y+cross(a,c)*n.z)/det;normal/=max(length(normal),1e-20);}
  store3(i*6u,q.x);store3(i*6u+1u,q.y);store3(i*6u+2u,q.z);store3(i*6u+3u,normal.x);store3(i*6u+4u,normal.y);store3(i*6u+5u,normal.z);
 }`;
+/** Direction-only sibling of the same CSR/morph skin kernel. The normal
+ * and tangent are morphed first; the bitangent follows handedness and the
+ * actual blended linear transform, including reflections/nonuniform scale. */
+export const characterTangentCode=characterSkinCode
+ .replace('let q=(transform*vec4f(p,1.)).xyz;',
+  'let q=(transform*vec4f(p,0.)).xyz;let bitangent=(transform*vec4f(cross(n,p)*load0(paramU32(3u)+i),0.)).xyz;')
+ .replace('normal.x);store3(i*6u+4u,normal.y);store3(i*6u+5u,normal.z);',
+  'bitangent.x);store3(i*6u+4u,bitangent.y);store3(i*6u+5u,bitangent.z);');
 export const characterPixelCode=/* wgsl */`
 fn cm_determinant(a:f32,b:f32,c:f32,d:f32)->f32{let p=a*b;let q=c*d;let v=(p-q)+(fma(a,b,-p)-fma(c,d,-q));let bound=4.7683716e-7*(abs(p)+abs(q));return select(v,0.,abs(v)<=bound);}
 fn cm_edge(a:vec2f,b:vec2f,det:f32)->bool{let d=select(b-a,a-b,det<0.);return d.y>0.||(d.y==0.&&d.x<0.);}

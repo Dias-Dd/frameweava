@@ -29,7 +29,7 @@ Stable IDs identify the same logical object only within the record/producer's de
 
 Unknown fields fail rather than disappear. Future readers can add optional fields while continuing to accept old records; upgraded producers must omit new fields for an older consumer. Do not send such fields blindly under v1. Incompatible semantics require a new version/schema; consumers explicitly advertise accepted schema/version pairs at their module boundary. Modules can continue emitting v1 independently; no global simultaneous upgrade is required. This module does not implement a discovery/negotiation service.
 
-Limits (see `LIMITS`): depth 24; 500,000 nodes; 100,000 array entries; 32 object fields; field names ≤128 code units; strings ≤65,536 UTF-16 units; paths ≤8,192 commands; meshes ≤16,384 vertices; text ≤16,384 glyphs; MVP tracks ≤600 samples; masks ≤4,194,304 pixels; dimensions ≤16,384; resource bytes and aggregate verification ≤64 MiB; JSON files ≤8 MiB. Most geometric numbers are finite in ±1e9; timestamps/indices are safe integers with narrower field-specific limits. Protocol limits are deliberate, not lossy truncation.
+Capacity: validators do not impose depth, object, array, mesh, glyph, sample, pixel or byte budgets. The deprecated `LIMITS` compatibility export describes u32/JS array lengths and safe integer accounting; exact tuple sizes, index domains, finite values, safe addressing, version, identity and integrity remain validated. Allocation and GPU device limits are checked where storage is actually created.
 
 ## Coordinates, time, color and resources
 

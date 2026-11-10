@@ -4,7 +4,7 @@ import {resolve,dirname} from 'node:path';
 import {openRenderSession} from '../../modules/render-session/index.ts';
 import {EngineError} from '../core/errors.ts';
 import {ProfessionalVideoEncoder,mediaEncodingCapabilities,type ProfessionalEncodeOptions} from './encoding.ts';
-import {writeExr} from './ocio.ts';
+import {inspectExr,writeExr} from './ocio.ts';
 import {pixelsFromSurface} from './surface.ts';
 import {assertMediaPolicy,type MediaPolicy} from './compositor.ts';
 import {reportProgress,type ProgressSink} from '../core/progress.ts';
@@ -38,6 +38,11 @@ export async function exportProfessionalProject(request:{project:string;output:s
 }
 export async function professionalMediaCLI(args:string[]){
   const [command,...rest]=args;if(command==='capabilities'){if(rest.some(x=>x!=='--json'))throw new EngineError('E_ARGUMENT','media capabilities [--json]');return mediaEncodingCapabilities();}
+  if(command==='inspect-exr'){
+    const [file,...flags]=rest;
+    if(!file||file.startsWith('--')||flags.length>1||flags.some(flag=>flag!=='--json'))throw new EngineError('E_ARGUMENT','media inspect-exr <file.exr> [--json]');
+    return inspectExr(file);
+  }
   if(!['frame','render'].includes(command))throw new EngineError('E_ARGUMENT','media frame|render <project> --settings file.json --output file [--frame N] [--allow-wasm] [--json]');
   const [project,...flags]=rest,values:Record<string,string|boolean>={};if(!project||project.startsWith('--'))throw new EngineError('E_ARGUMENT','Project entry required');
   for(let i=0;i<flags.length;i++){const key=flags[i].slice(2);if(!flags[i].startsWith('--')||!['settings','output','frame','allow-wasm','json'].includes(key)||Object.hasOwn(values,key))throw new EngineError('E_ARGUMENT','Unknown/repeated media option');if(['allow-wasm','json'].includes(key))values[key]=true;else{const value=flags[++i];if(!value||value.startsWith('--'))throw new EngineError('E_ARGUMENT','Missing media option value');values[key]=value;}}

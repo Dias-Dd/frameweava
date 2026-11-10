@@ -36,6 +36,8 @@ export async function buildSpatialCreation(output:string){
  const sdk={name:'public-sdk',setup(b:any){
   // Use the existing public GPU export, not a bundled legacy barrel whose
   // side effects pull the Surface compositor into this Native package.
+  b.onResolve({filter:/native-gpu\/authoring\.ts$/},()=>({path:'@frameweave/engine/native',external:true}));
+  b.onResolve({filter:/spatial-vfx\/stage\.ts$/},()=>({path:'@frameweave/engine/spatial-vfx',external:true}));
   b.onResolve({filter:/gpu-effects\/index\.ts$/},()=>({path:'@frameweave/engine/native',external:true}));
   b.onResolve({filter:/\/(?:src\/(?:core|media)\/|src\/plugins\/sdk\.ts)/},(a:any)=>{
    // Private pure affine helpers are not public SDK exports. Carry their
@@ -57,16 +59,18 @@ export async function buildSpatialCreation(output:string){
    if(/\/src\/(core|media)\//.test(target))entry='@frameweave/engine';
    else if(target.endsWith('/src/plugins/sdk.ts')||target.endsWith('/src/packages/runtime.ts'))entry='@frameweave/engine/plugins';
    else if(target.endsWith('/modules/native-gpu/authoring.ts'))entry='@frameweave/engine/native';
+   else if(target.endsWith('/modules/spatial-vfx/stage.ts'))entry='@frameweave/engine/spatial-vfx';
    else if(/\/modules\/gpu-effects\/(pixel-types|compute-types|compute-capabilities|compute-profiling)\.ts$/.test(target))entry='@frameweave/engine/native';
    else if(/\/modules\/graphics-contracts\/(index|types)\.ts$/.test(target))entry='@frameweave/engine/graphics-contracts';
    return entry?quote+entry+quote:all;
   });await mkdir(dirname(path),{recursive:true});await writeFile(path,publicTypes.replace(/\.ts(['"])/g,'.js$1'));}
  await writeFile(join(typeRoot,'api.d.ts'),(await readFile(join(root,'api.d.ts'),'utf8')).replace(/\.ts(['"])/g,'.js$1'));await writeFile(join(output,'api.d.ts'),"export * from './types/modules/spatial-creation/api.d.ts';\n");
+ await copyFile(join(root,'scene-functions.json'),join(output,'frameweave.functions.json'));
  for(const name of ['frameweave.package.json','README.md'])await copyFile(join(root,name),join(output,name));
  if((await readFile(join(root,'examples/paper-figure.json'),'utf8'))!==JSON.stringify(characterArtwork(),null,2)+'\n')throw Error('Review/update authored paper-figure.json using scripts/prepare-character.ts');
  await cp(join(root,'examples'),join(output,'examples'),{recursive:true});
  const guide=JSON.parse(await readFile(join(root,'creation-guide.json'),'utf8')),manifest=JSON.parse(await readFile(join(root,'frameweave.package.json'),'utf8'));guide.package=manifest.id+'@'+manifest.version;guide.studioDefaults={lights:Object.fromEntries((['studio','soft','dramatic','rim','sunset','moonlight','daylight','neon','warm','cool'] as const).map(n=>[n,lightingDefaults(n)])),cameras:Object.fromEntries((['front','back','left','right','top','bottom','isometric','hero','perspective','orbit'] as const).map(n=>[n,cameraView(n)])),materials:Object.fromEntries((Object.keys(materialStyles) as (keyof typeof materialStyles)[]).map(n=>[n,materialPreset(n)]))};guide.characterActionDefaults=characterMotionDefaults;guide.characterPalette=characterPalette;guide.puppetMotionDefaults=puppetMotionDefaults;guide.particleFieldDefaults=Object.fromEntries((['field','snow','sparks','bubbles','fireflies','dust','confetti','energy','stars','petals'] as ParticleFieldKind[]).map(kind=>[kind,particleRecipe(kind)]));guide.finishPresets=Object.fromEntries((['clean','cinema','dream','neon','noir','warm','cool','pastel','poster','sepia'] as FinishPreset[]).map(name=>[name,finishDefaults(name)]));await writeFile(join(output,'creation-guide.json'),JSON.stringify(guide,null,2)+'\n');
- await copyFile(join(workspace,'licenses/APACHE-2.0.txt'),join(output,'LICENSE'));await copyFile(join(workspace,'node_modules/three/LICENSE'),join(output,'licenses/three-MIT.txt'));
+ await copyFile(join(workspace,'LICENSE'),join(output,'LICENSE'));await copyFile(join(workspace,'node_modules/three/LICENSE'),join(output,'licenses/three-MIT.txt'));
  for(const [source,name] of [
   ['modules/gpu-image-effects/NOTICE','gpu-image-effects-NOTICE'],['modules/gpu-image-effects/resident/NOTICE','resident-effects-NOTICE'],['modules/gpu-image-effects/resident/LICENSE.effectcraft','effectcraft-resident-MIT.txt'],['modules/gpu-image-effects/resident/creative/vendor/LICENSE-MIT','effectcraft-creative-MIT.txt'],['modules/pro-animation/NOTICE','pro-animation-NOTICE'],['modules/pro-animation/vendor/effectcraft/NOTICE','effectcraft-PA-NOTICE'],['modules/pro-animation/vendor/effectcraft/LICENSE-MIT','effectcraft-PA-MIT.txt']])await copyFile(join(workspace,source),join(output,'licenses',name));
  await copyFile(join(workspace,'modules/skeletal-effects/NOTICE'),join(output,'licenses/skeletal-effects-NOTICE'));

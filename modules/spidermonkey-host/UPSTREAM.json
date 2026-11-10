@@ -13,5 +13,10 @@
     "release": "https://github.com/servo/mozjs/releases/tag/mozjs-sys-v153.6.0-1",
     "url": "https://github.com/servo/mozjs/releases/download/mozjs-sys-v153.6.0-1/libmozjs-x86_64-pc-windows-msvc.tar.gz"
   },
+  "linuxX64": {
+    "source": "Official servo/mozjs release asset",
+    "url": "https://github.com/servo/mozjs/releases/download/mozjs-sys-v153.6.0-1/libmozjs-x86_64-unknown-linux-gnu.tar.gz",
+    "sha256": "4b08d48e98839e058c6523ed103f7874874acfa57a1d54ef93cadc21e7168f37"
+  },
   "reference": "User-provided PoC engine/jobqueue/typedarray experience only; no PoC wgpu or renderer imported"
 }

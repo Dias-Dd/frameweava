@@ -71,7 +71,7 @@ function packedRgba16(s:ProfessionalSurface):Buffer {
 function flatten(s:ProfessionalSurface,matte:[number,number,number]):ProfessionalSurface {
   if(s.color.transfer!=='linear'||matte.length!==3||matte.some(v=>!Number.isFinite(v)))throw new EngineError('E_MEDIA_ALPHA_COLOR','Flatten against an explicit linear-working-space matte before any display/output transform');
   const p=pixelsFromSurface(s);for(let i=0;i<p.length;i+=4){const a=p[i+3];for(let c=0;c<3;c++)p[i+c]=(s.alpha==='premultiplied'?p[i+c]:p[i+c]*a)+matte[c]*(1-a);p[i+3]=1;}
-  return surfaceFromPixels(s.width,s.height,p,{format:'rgba32float',color:s.color,alpha:'opaque'});
+  return surfaceFromPixels(s.width,s.height,p,{format:'rgba32float',color:s.color,alpha:'opaque',deferBase64:true});
 }
 /** One bounded frame transform. Alpha is kept out of zscale's limited-range YUV conversion. */
 async function binaryTransform(ffmpeg:string,args:string[],input:Buffer,expectedBytes:number):Promise<Buffer>{

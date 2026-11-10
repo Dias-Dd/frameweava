@@ -34,3 +34,9 @@ export {prepareRotoAssets} from './model-assets.ts';
 export type {RotoAssetFiles,RotoAssetOptions} from './model-assets.ts';
 export {prepareVideoRotoAssets} from './video-model-assets.ts';
 export type {VideoRotoAssetFiles} from './video-model-assets.ts';
+
+export {inspectExr,readExr,writeExr} from '../../../src/media/ocio.ts';
+export type {ReadExrOptions} from '../../../src/media/ocio.ts';
+export type {ExrSelection,ExrPartInfo,ExrWindow} from '../../../src/media/exr-selection.ts';
+export {pathAovChannels,writePathAovExr} from '../../native-gpu/path-aov.ts';
+export type {NativePathAovFrame} from '../../native-gpu/path-aov.ts';

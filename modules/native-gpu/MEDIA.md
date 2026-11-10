@@ -104,10 +104,11 @@ frameweave render scene.tsx --settings hdr.json --output hdr-av1.mp4 --encoder a
 frameweave frame scene.tsx --settings hdr.json --frame 0 --output linear.exr
 ```
 
-Without settings, video keeps the existing SDR display/packing path. Encoder
-selection is explicit: h264_nvenc (unchanged default), hevc_nvenc, av1_nvenc,
-libx264, libx265, or libaom-av1. Hardware availability/dimensions are checked by
-an actual encoder invocation; unsupported configurations fail, without fallback.
+Without settings, video uses the SDR display/packing path on the selected GPU.
+The default H.264 encoder is libx264. Use --encoder to select h264_nvenc,
+hevc_nvenc, av1_nvenc, libx265, or libaom-av1 explicitly. Set FRAMEWEAVE_FFMPEG
+to a local FFmpeg build with the requested encoder if needed. Hardware
+availability and dimensions are checked by an actual encoder invocation.
 
 With professional settings v1, native output is explicitly materialized as an
 F32 final-delivery Surface and fed to the existing PME ProfessionalVideoEncoder.
@@ -180,9 +181,16 @@ a production build/receipt. Set the existing SpiderMonkey, media Python and
 FFprobe paths explicitly. Tests use a private FRAMEWEAVE_HOME.
 
 Windows x64 / Vulkan / RTX 5070 Laptop is qualified by the checked-in evidence
-under `validation/media-input-state-hdr`. Linux/macOS, long media, production
-multi-camera workloads, alpha-video decode, GPU-resident hardware decode and
-cross-process checkpoint persistence are not qualified. The isolated Windows
+under `validation/media-input-state-hdr`. The media delivery regression also
+passed under Debian 13 x64 on WSL2 with Mesa EGL/GLES on Intel integrated
+graphics and FFmpeg 7.1.5. It exercised declared video decode and seek, float
+EXR, HEVC and AV1 HDR10 with audio, HLG and reference OCIO/ACES2 conversion.
+The Linux test uses `libx265` and `libaom-av1` for encoding. Set
+`FRAMEWEAVE_AV1_DECODE_FFMPEG` to a reviewed decoder with 10-bit AV1 support.
+
+Bare-metal Linux, macOS, long media, production multi-camera workloads,
+alpha-video decode and cross-process checkpoint persistence remain unverified.
+The isolated Windows
 Media Foundation probe returned real NV12 GPU textures, but also a 50 ms PTS
 offset against the source. It is intentionally not enabled as a production
 decoder before frame identity and synchronization are proven.

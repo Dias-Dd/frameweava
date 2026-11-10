@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {validatePathData,validateMaskData,validateMeshData,validateSkeletonData,validateTextLayoutData} from '../validate.ts';
-import {LIMITS,bounded} from '../check.ts';
+import {bounded} from '../check.ts';
 import {sha256,verifyResource,verifyResources,readJsonResource,resourceReferences} from '../resources.ts';
 import {pathCommands,pathToMask,convertPathUnits,decodeRasterMask,sampleCoverage} from '../path-mask.ts';
 import {validateTrackData,createTrackReader,queryStageTrack} from '../track.ts';
@@ -43,16 +43,17 @@ test('bounded preflight rejects live handles, cycles, getters, sparse/decorated 
   const cyclic:{child?:object}={};cyclic.child=cyclic;fail(()=>bounded(cyclic),'child','E_GRAPHICS_LIMIT');
   for(const value of [new Date(),new Uint8Array(1),{x:()=>1},[1,,2],Object.assign([1],{extra:1}),{x:Infinity}])assert.throws(()=>bounded(value));
   let invoked=false;const getter=Object.defineProperty({},'x',{enumerable:true,get(){invoked=true;return 1;}});assert.throws(()=>bounded(getter));assert.equal(invoked,false);
-  let depth:object={};for(let i=0;i<LIMITS.depth+1;i++)depth={next:depth};assert.throws(()=>bounded(depth),{code:'E_GRAPHICS_LIMIT'});
-  fail(()=>bounded(Array(LIMITS.array+1).fill(0)),'$','E_GRAPHICS_LIMIT');fail(()=>bounded('x'.repeat(LIMITS.string+1)),'$','E_GRAPHICS_LIMIT');
-  fail(()=>validatePathData({...makePath(),commands:Array(LIMITS.commands+1).fill({op:'Z'})}),'commands');
-  fail(()=>bounded(Array.from({length:1000},()=>Array(500).fill(0))),'$','E_GRAPHICS_LIMIT');
+  let depth:object={};for(let i=0;i<10000;i++)depth={next:depth};bounded(depth);
+  bounded(Array(116004).fill(0));bounded('x'.repeat(65537));
+  bounded(Array.from({length:1001},()=>Array(500).fill(0)));
+  const large=mesh();large.indices=Array.from({length:116004},(_,i)=>i%3);assert.equal(validateMeshData(large).indices.length,116004);
+  const many=makePath();many.commands=Array.from({length:8194},(_,i)=>({op:i===0?'M':'L',point:{id:'p'+i,x:i,y:0}}));assert.equal(validatePathData(many).commands.length,8194);
 });
 test('Mask rejects mismatched spaces, dimensions, feather and uninterpreted raster metadata',()=>{
   const mask=pathToMask(makePath(),'mask.a');
   fail(()=>validateMaskData({...mask,coordinates:{...mask.coordinates,spaceId:'different'}}),'path.coordinates','E_GRAPHICS_SPACE');
   fail(()=>validateMaskData({...mask,feather:{radius:5,unit:'px'}}),'feather.radius');
-  fail(()=>validateMaskData({...mask,coordinates:{...mask.coordinates,width:16384,height:16384}}),'coordinates','E_GRAPHICS_LIMIT');
+  const large={width:32768,height:32768};assert.equal(validateMaskData({...mask,coordinates:{...mask.coordinates,...large},path:{...mask.path,coordinates:{...mask.coordinates,...large}}}).coordinates.width,32768);
   fail(()=>validateMaskData({...mask,kind:'raster',source:ref}),'path');
 });
 test('resource integrity verifies exact bytes, hash/size syntax, missing assets and conflicting IDs',async()=>{

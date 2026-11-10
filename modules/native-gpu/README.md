@@ -24,17 +24,47 @@ The build is offline/locked and never installs compilers or dependencies. An
 absent Cargo cache requires explicit standard Cargo provisioning. Build receipts
 include source hashes, compiler, flags and executable SHA. CLI verifies the
 binary once at load. Distribution includes the current platform's release
-binary plus receipt; other platforms need their own build. Only Windows x64,
-Vulkan, RTX 5070 Laptop was exercised here. NVENC is explicit; unsupported hardware
-fails with encoder diagnostics. `--encoder libx264` explicitly selects software
-encoding. Source SDK/Worker provenance gates are never disabled for packaging.
+binary plus receipt. The standard MP4/MOV path renders on the selected GPU and
+uses libx264 for H.264 encoding. Choose `--encoder h264_nvenc` explicitly for
+NVENC. Professional settings choose their preset encoder unless overridden.
+Source SDK/Worker provenance gates are enforced on every platform.
+
+Set `FRAMEWEAVE_GPU_BACKEND` to `auto` (default), `vulkan`, `dx12` or `metal`.
+Set `FRAMEWEAVE_GPU_ADAPTER` to a case-insensitive hardware name substring.
+An explicit request fails if no compatible adapter matches. Ray Query
+requires Vulkan. The report's `stats.adapter` identifies the actual device.
+
+Windows x64 acceptance covers RTX 5070 Laptop GPU on Vulkan and Intel(R)
+Graphics on DX12 and Vulkan. Both Intel backends presented preview frames,
+preserved negative RGB, highlights and alpha in the floating-point fixture,
+and exported H.264 with audio. Intel Vulkan also passed hardware video
+input and a two-instance Servo chain using the same-adapter Vulkan/D3D11
+bridge. Explicit NVENC was exercised on NVIDIA.
+
+Linux x64 uses the same Native renderer. For authored Stages, build the
+[Linux SpiderMonkey host](../spidermonkey-host/README.md) and install its OS
+isolation prerequisites. For window audio, provide PulseAudio or the
+PipeWire PulseAudio-compatible server and its `libpulse.so.0` client.
+Headless `frame` and `render` do not need a display or an audio server.
+
+Debian 13 x64 under WSL2 was exercised on an Intel integrated GPU through
+Mesa's D3D12-backed OpenGL. Build this explicit backend with
+`node modules/native-gpu/build.mjs --release --gles`, then run with
+`GALLIUM_DRIVER=d3d12 FRAMEWEAVE_GPU_BACKEND=gles`. Use the adapter option above
+if the system exposes multiple devices. The default Linux backend is Vulkan.
+The WSL image used for testing exposed only software Vulkan. GLES does not
+admit Vulkan Ray Query or Windows GPU interop.
+
+Linux WSL verification covered a real Native window with audio, a two-Stage
+headless PNG, authored Stage MP4 with audio, and the isolated logic host.
+Bare-metal Linux Vulkan, macOS, AMD Radeon and discrete Intel Arc still
+require host acceptance. Servo, resident Windows hardware media and
+Windows-specific inference remain on their existing platform adapters.
 
 Direct TSX opens the native window with source watching. Web/HTTP preview was
 removed. `--no-open --frames 12 --no-watch` is a finite headless smoke test.
 Native visual factories and immutable R1 versions need native adapters/new
-versions. Alternatively, a declared `engine="web"` Stage may use the existing
-Web implementations through the explicit PNG compatibility boundary below.
-There is no automatic fallback to Web when native compilation/rendering fails.
+versions. Use the optional Servo module for HTML/CSS/DOM content.
 `create`, professional `media`, `inspect` and Session services remain separate
 existing APIs during migration; they are not all native-enabled by this change.
 
@@ -46,7 +76,7 @@ Space toggles playback, Left and Right step one frame, and Home and End
 jump to the endpoints.
 The title shows the current frame, status and actual presentation rate.
 The window survives a successful source reload and displays the replacement
-at the current timeline position. Windows audio can drive the preview clock.
+at the current timeline position. Windows and Linux audio can drive the preview clock.
 Fixed-step Stages replay required simulation steps when seeking. Stages
 can supply `checkpoint: {version: 1, capture, restore}` to capture all
 authored mutable state as plain wire values or byte arrays. The GPU owner
@@ -129,6 +159,25 @@ in requested frame order; GPU frame buffers may overlap afterward. There is no
 speculative renderAt(0). Conditions can change GPU topology; rebuild occurs on
 the same device after outstanding work completes. Changing topology is currently
 expensive (pipelines/allocations are rebuilt); stable topology is fastest.
+
+Accurate delivery can overlap GPU frames with CPU output. The existing Renderer
+accepts optional `nativeGpu.captureBuffers` names: these must be published buffers
+under its private export lease. Their per-slot staging storage is charged to the
+same caller budget, and copies are recorded at the end of the owning frame.
+`captureNativeFrame(frame, names)` returns owned typed values and output metadata;
+`renderNativeSurface()` uses this path for the final Surface. Completed slots stay
+retained until their copies finish. Reads wait for that submission, rather than
+unrelated frames. A topology/resource change drains old captures before replacing
+the plan, preserving arbitrary JS and the dynamic fallback. Mutable published
+buffers must keep their declared shape when using frame-binding deltas.
+
+The reference video CLI keeps a bounded lookahead and sends output conversion,
+packing and encoding to an engine-owned Worker. It uses the same PME encoder,
+OCIO processor, alpha policy, HDR metadata and placed audio, with ordered writes.
+This does not enable readback in preview, create another GPU owner, weaken lease
+checks or require effects to change their PixelPass API. Protocol 2 adds optional
+`readbacks`; old programs omit it. Older binaries reject the unknown extension
+and remain subject to the existing build/runtime identity verification.
 
 ## One shared scope for effect authors
 
@@ -313,3 +362,11 @@ method does not change P4, TVG or older Web scopes. Existing automatic statistic
 use it when available and keep their explicit legacy Web adapter otherwise.
 
 Temporal upstream sampling: see [TEMPORAL_SOURCES.md](TEMPORAL_SOURCES.md) for declared Resource/PortRef sources, explicit clock rules, isolated JS seek hooks and unsupported historical profiles.
+
+Native participating-media emission: see [VOLUME_EMISSION.md](VOLUME_EMISSION.md)
+for the optional radiance-per-meter source, independent scalar density,
+zero-extinction behavior, GPU ownership and numerical verification.
+
+Optional camera-sample-matched albedo/normal publication for external finishing:
+see [PATH_DENOISE_FEATURES.md](PATH_DENOISE_FEATURES.md). Existing center-primary
+guides keep their original depth/ID/motion meaning.

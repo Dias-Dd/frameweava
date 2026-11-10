@@ -43,7 +43,12 @@ typedef intptr_t EGLAttrib;
 #define EGL_PLATFORM_ANGLE_TYPE_D3D11_ANGLE 0x3208
 #define EGL_PLATFORM_ANGLE_DEVICE_TYPE_ANGLE 0x3209
 #define EGL_PLATFORM_ANGLE_DEVICE_TYPE_HARDWARE_ANGLE 0x320A
+#define EGL_PLATFORM_ANGLE_DEVICE_ID_HIGH_ANGLE 0x34D6
+#define EGL_PLATFORM_ANGLE_DEVICE_ID_LOW_ANGLE 0x34D7
+#define EGL_PLATFORM_ANGLE_D3D_LUID_HIGH_ANGLE 0x34A0
+#define EGL_PLATFORM_ANGLE_D3D_LUID_LOW_ANGLE 0x34A1
 #define EGL_D3D11_DEVICE_ANGLE 0x33A1
+#define EGL_EXTENSIONS 0x3055
 #define EGL_DEVICE_EXT 0x322C
 #define EGL_D3D_TEXTURE_2D_SHARE_HANDLE_ANGLE 0x3200
 #define EGL_DXGI_KEYED_MUTEX_ANGLE 0x33A2
@@ -440,12 +445,27 @@ __declspec(dllexport) uint32_t bridge_init() {
     LOAD_GL(glDeleteVertexArrays);
     #undef LOAD_GL
 
-    EGLint dispAttribs[] = {
+    std::vector<EGLint> dispAttribs = {
         EGL_PLATFORM_ANGLE_TYPE_ANGLE, EGL_PLATFORM_ANGLE_TYPE_D3D11_ANGLE,
         EGL_PLATFORM_ANGLE_DEVICE_TYPE_ANGLE, EGL_PLATFORM_ANGLE_DEVICE_TYPE_HARDWARE_ANGLE,
-        EGL_NONE
     };
-    g_state.egl_display = g_state.eglGetPlatformDisplayEXT(EGL_PLATFORM_ANGLE_ANGLE, EGL_DEFAULT_DISPLAY, dispAttribs);
+    const char* extensions = g_state.eglQueryString ? g_state.eglQueryString(EGL_NO_DISPLAY, EGL_EXTENSIONS) : nullptr;
+    if (requested_luid && extensions) {
+        const std::string clientExtensions = std::string(" ") + extensions + " ";
+        const bool deviceId = clientExtensions.find(" EGL_ANGLE_platform_angle_device_id ") != std::string::npos;
+        const bool legacyLuid = clientExtensions.find(" EGL_ANGLE_platform_angle_d3d_luid ") != std::string::npos;
+        // ANGLE's D3D11 renderer accepts a DXGI LUID as a platform device ID.
+        if (deviceId || legacyLuid) {
+            dispAttribs.insert(dispAttribs.end(), {
+                deviceId ? EGL_PLATFORM_ANGLE_DEVICE_ID_HIGH_ANGLE : EGL_PLATFORM_ANGLE_D3D_LUID_HIGH_ANGLE,
+                static_cast<EGLint>(g_state.adapter_luid.HighPart),
+                deviceId ? EGL_PLATFORM_ANGLE_DEVICE_ID_LOW_ANGLE : EGL_PLATFORM_ANGLE_D3D_LUID_LOW_ANGLE,
+                static_cast<EGLint>(g_state.adapter_luid.LowPart),
+            });
+        }
+    }
+    dispAttribs.push_back(EGL_NONE);
+    g_state.egl_display = g_state.eglGetPlatformDisplayEXT(EGL_PLATFORM_ANGLE_ANGLE, EGL_DEFAULT_DISPLAY, dispAttribs.data());
     EGLint major = 0, minor = 0;
     if (!g_state.egl_display || !g_state.eglInitialize(g_state.egl_display, &major, &minor)) {
         fprintf(stderr,"[Bridge][FAIL] eglInitialize failed: 0x%X\n", g_state.eglGetError());

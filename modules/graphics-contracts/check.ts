@@ -1,30 +1,37 @@
 import {EngineError} from '../../src/core/errors.ts';
-import {assertJson} from '../../src/core/graph.ts';
-
-export const LIMITS={depth:24,nodes:500000,array:100000,string:65536,commands:8192,vertices:16384,glyphs:16384,samples:600,pixels:4194304,resourceBytes:67108864,jsonBytes:8388608} as const;
+/** @deprecated Addressable JS array/u32 lengths and safe integer accounting, not content budgets. */
+export const LIMITS={depth:Number.MAX_SAFE_INTEGER,nodes:Number.MAX_SAFE_INTEGER,array:0xffffffff,string:Number.MAX_SAFE_INTEGER,commands:0xffffffff,vertices:0xffffffff,glyphs:0xffffffff,samples:0xffffffff,pixels:Number.MAX_SAFE_INTEGER,resourceBytes:Number.MAX_SAFE_INTEGER,jsonBytes:Number.MAX_SAFE_INTEGER} as const;
 export function fail(path:string,message:string,code='E_GRAPHICS_DATA'):never {
   throw new EngineError(code,`${path}: ${message}`,{details:{path}});
 }
-/** Preflight before the existing JSON gate; bounds work, rejects getters/symbols/sparse arrays. */
+/** Iterative JSON validation without content quotas. Never invokes getters. */
 export function bounded(value:unknown):void {
-  let nodes=0;const active=new Set<object>();
-  function visit(v:unknown,p:string,depth:number):void {
-    if(depth>LIMITS.depth||++nodes>LIMITS.nodes)fail(p,'depth/node limit exceeded','E_GRAPHICS_LIMIT');
-    if(typeof v==='string'&&v.length>LIMITS.string)fail(p,'string limit exceeded','E_GRAPHICS_LIMIT');
-    if(v===null||typeof v!=='object')return;
-    if(active.has(v))fail(p,'cycle','E_GRAPHICS_LIMIT');active.add(v);
-    if(Array.isArray(v)){
-      if(v.length>LIMITS.array)fail(p,'array limit exceeded','E_GRAPHICS_LIMIT');
-      if(Reflect.ownKeys(v).length!==v.length+1)fail(p,'sparse or decorated array');
-      for(let i=0;i<v.length;i++){const d=Object.getOwnPropertyDescriptor(v,String(i));if(!d||!('value' in d))fail(`${p}[${i}]`,'expected own data element');visit(d.value,`${p}[${i}]`,depth+1);}
-    }else{
-      if(![Object.prototype,null].includes(Object.getPrototypeOf(v)))fail(p,'expected plain JSON object');
-      const keys=Reflect.ownKeys(v);if(keys.length>32)fail(p,'object field limit exceeded','E_GRAPHICS_LIMIT');
-      for(const k of keys){if(typeof k!=='string')fail(p,'symbol field');if(k.length>128)fail(p,'field name length limit exceeded','E_GRAPHICS_LIMIT');const d=Object.getOwnPropertyDescriptor(v,k)!;if(!d.enumerable||!('value' in d))fail(`${p}.${k}`,'expected enumerable data field');visit(d.value,`${p}.${k}`,depth+1);}
-    }
-    active.delete(v);
+  type Frame={value:object;path:string;keys:readonly PropertyKey[];at:number;array:boolean};
+  const active=new Set<object>(),stack:Frame[]=[];
+  function enter(v:unknown,p:string):void {
+    if(v===null||typeof v==='string'||typeof v==='boolean')return;
+    if(typeof v==='number'){if(!Number.isFinite(v))fail(p,'expected finite JSON number');return;}
+    if(typeof v!=='object')fail(p,'expected JSON data');
+    if(active.has(v))fail(p,'cycle','E_GRAPHICS_LIMIT');
+    const array=Array.isArray(v);
+    if(!array&&![Object.prototype,null].includes(Object.getPrototypeOf(v)))fail(p,'expected plain JSON object');
+    const keys=Reflect.ownKeys(v);
+    if(array&&keys.length!==(v as unknown[]).length+1)fail(p,'sparse or decorated array');
+    active.add(v);stack.push({value:v,path:p,keys,at:0,array});
   }
-  visit(value,'$',0);assertJson(value);
+  enter(value,'$');
+  while(stack.length){
+    const f=stack[stack.length-1];
+    if(f.at===f.keys.length){active.delete(f.value);stack.pop();continue;}
+    const key=f.keys[f.at++];if(f.array&&key==='length')continue;
+    if(typeof key!=='string')fail(f.path,'symbol field');
+    const d=Object.getOwnPropertyDescriptor(f.value,key)!;
+    const path=f.array?`${f.path}[${key}]`:`${f.path}.${key}`;
+    if(!d.enumerable||!('value' in d))fail(path,'expected enumerable own data field');
+    // An extra key cannot substitute a missing array index.
+    if(f.array&&(!/^(0|[1-9][0-9]*)$/.test(key)||Number(key)>=(f.value as unknown[]).length))fail(path,'decorated array');
+    enter(d.value,path);
+  }
 }
 export function object(v:unknown,p:string,required:readonly string[],optional:readonly string[]=[]):Record<string,unknown>{
   if(!v||typeof v!=='object'||Array.isArray(v))fail(p,'expected object');
@@ -35,16 +42,16 @@ export function object(v:unknown,p:string,required:readonly string[],optional:re
 export function literal<T extends string|number>(v:unknown,choices:readonly T[],p:string):T {
   if(!choices.some(c=>v===c))fail(p,`expected ${choices.join(' | ')}`);return v as T;
 }
-export function number(v:unknown,p:string,min=-1e9,max=1e9):number {
+export function number(v:unknown,p:string,min=-Infinity,max=Infinity):number {
   if(typeof v!=='number'||!Number.isFinite(v)||v<min||v>max)fail(p,`expected finite number in [${min}, ${max}]`);return v;
 }
 export function integer(v:unknown,p:string,min=0,max=Number.MAX_SAFE_INTEGER):number {
   const n=number(v,p,min,max);if(!Number.isSafeInteger(n))fail(p,'expected safe integer');return n;
 }
 export function string(v:unknown,p:string,empty=false):string {
-  if(typeof v!=='string'||(!empty&&!v.length)||v.length>LIMITS.string)fail(p,'expected bounded string');return v;
+  if(typeof v!=='string'||(!empty&&!v.length))fail(p,'expected string');return v;
 }
-export function id(v:unknown,p:string):string {const s=string(v,p);if(!/^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$/.test(s))fail(p,'invalid stable ID');return s;}
+export function id(v:unknown,p:string):string {const s=string(v,p);if(!/^[A-Za-z0-9][A-Za-z0-9_.:-]*$/.test(s))fail(p,'invalid stable ID');return s;}
 export function sha(v:unknown,p:string):string {const s=string(v,p);if(!/^[a-f0-9]{64}$/.test(s))fail(p,'expected lowercase SHA-256');return s;}
 export function array<T>(v:unknown,p:string,max:number,parse:(item:unknown,path:string,index:number)=>T,min=0):T[]{
   if(!Array.isArray(v)||v.length<min||v.length>max)fail(p,`expected array length ${min}..${max}`);return v.map((x,i)=>parse(x,`${p}[${i}]`,i));

@@ -14,6 +14,6 @@ export async function buildGpuImagePackage(output:string){
   await writeFile(join(output,name),text);
  }
  for(const name of ['frameweave.package.json','api.d.ts','README.md','NOTICE','INVENTORY.md'])await copyFile(join(root,name),join(output,name));
- await copyFile(join(workspace,'licenses/APACHE-2.0.txt'),join(output,'LICENSE'));
+ await copyFile(join(workspace,'LICENSE'),join(output,'LICENSE'));
  return output;
 }

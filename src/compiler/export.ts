@@ -62,7 +62,7 @@ export async function exportProject(entry:string,options:ExportOptions) {
   // Keep the exact implementation of the used public entries and the injected
   // Native Stage bootstrap in the pinned SDK.
   const linkedSdk=new Set<string>(),usedSdkFiles=new Set(analysis.files.map(file=>resolve(file)));
-  const sdkEntries=['editing','editing/node','typography','typography/node','image-effects','image-effects/node','spatial-vfx']
+  const sdkEntries=['native','editing','editing/node','typography','typography/node','image-effects','image-effects/node','spatial-vfx']
     .map(name=>alias[`@frameweave/engine/${name}` as keyof typeof alias])
     .concat(join(engineRoot,'modules/native-gpu/logic-bootstrap.ts'))
     .filter(entry=>usedSdkFiles.has(entry));

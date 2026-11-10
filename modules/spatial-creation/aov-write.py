@@ -18,6 +18,7 @@ try:
  for name,value in request['metadata'].items():
   if not isinstance(name,str)or not isinstance(value,str):raise RuntimeError('String metadata only')
   header[name]=value
+ channel_count=len(channels)
  with OpenEXR.File(header,channels)as f:f.write(str(p/'output.exr'))
- print(json.dumps({'ok':True,'library':'OpenEXR3.4.4','channels':len(channels),'width':width,'height':height,'bytes':(p/'output.exr').stat().st_size}))
+ print(json.dumps({'ok':True,'library':'OpenEXR3.4.4','channels':channel_count,'width':width,'height':height,'bytes':(p/'output.exr').stat().st_size}))
 except Exception as e:print(json.dumps({'ok':False,'error':str(e)}))

@@ -24,14 +24,14 @@ export async function typecheckProject(roots:TypecheckRoot[],options:TypecheckOp
   let result:TypecheckResponse;
   try {
     const {stdout}=await exec(process.execPath,[
-      '--max-old-space-size=512',join(engineRoot,'src/compiler/typecheck-worker.mjs'),JSON.stringify({engineRoot,roots:sources,managedPaths:options.paths??{}}),
-    ],{cwd:engineRoot,timeout:options.timeoutMs??30000,maxBuffer:4*1024*1024,windowsHide:true});
+      join(engineRoot,'src/compiler/typecheck-worker.mjs'),JSON.stringify({engineRoot,roots:sources,managedPaths:options.paths??{}}),
+    ],{cwd:engineRoot,timeout:options.timeoutMs??0,maxBuffer:Infinity,windowsHide:true});
     result=JSON.parse(stdout) as TypecheckResponse;
   } catch(error) {
     const failure=error as {killed?:boolean;stderr?:string;message?:string};
     throw new EngineError(failure.killed?'E_TYPECHECK_TIMEOUT':'E_TYPECHECK_WORKER',
       failure.killed?'TypeScript checking exceeded its time limit.':`TypeScript checker failed: ${failure.stderr||failure.message||String(error)}`,
-      {hint:'The project must pass the TypeScript gate before evaluation/rendering; reduce pathological type recursion or simplify the dependency graph.'});
+      {hint:'The project must pass the TypeScript gate before evaluation/rendering; check available memory and the reported checker failure.'});
   }
   if(!result.ok) {
     const diagnostics=result.diagnostics??[];

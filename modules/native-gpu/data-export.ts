@@ -1,6 +1,7 @@
 import {mkdir,mkdtemp,readFile,unlink,rmdir} from 'node:fs/promises';
 import {join} from 'node:path';
 import {randomBytes} from 'node:crypto';
+import {endianness} from 'node:os';
 import {EngineError} from '../../src/core/errors.ts';
 import {runtimeCachePath} from '../../src/runtime/paths.ts';
 import {fieldInfo} from '../gpu-effects/compute-contract.ts';
@@ -25,7 +26,12 @@ export class NativeBufferExporter {
   const {kind,version,length,byteLength,readOnly,...descriptor}=out.info;if(kind!=='data'||version!==1)throw new EngineError('E_NATIVE_DATA_OUTPUT','Expected data contract v1');const checked=fieldInfo(descriptor);if(checked.length!==length||checked.byteLength!==byteLength)throw new EngineError('E_NATIVE_DATA_OUTPUT','Buffer metadata length mismatch');
   const file=randomBytes(24).toString('hex')+'.f32',path=join(this.lease.directory,file);
   try{const reply=await client.exportBuffer(ticket,id,file);check();const bytes=await readFile(path);if(reply.version!==1||reply.bytes!==byteLength||bytes.length!==byteLength)throw new EngineError('E_NATIVE_DATA_BYTES','Export byte length mismatch');
-   const values=checked.type==='f32'?new Float32Array(length):checked.type==='u32'?new Uint32Array(length):new Int32Array(length);for(let i=0;i<length;i++){const n=checked.type==='f32'?bytes.readFloatLE(i*4):checked.type==='u32'?bytes.readUInt32LE(i*4):bytes.readInt32LE(i*4);values[i]=n;}
+   const Type=checked.type==='f32'?Float32Array:checked.type==='u32'?Uint32Array:Int32Array;
+   // Never expose pooled Buffer neighbours. Large readFile allocations can be
+   // adopted directly; small/unaligned slices receive one native byte copy.
+   const owned=bytes.byteOffset===0&&bytes.buffer.byteLength===byteLength?bytes:new Uint8Array(bytes);
+   const values=endianness()==='LE'?new Type(owned.buffer as ArrayBuffer,owned.byteOffset,length):new Type(length);
+   if(endianness()!=='LE')for(let i=0;i<length;i++)values[i]=checked.type==='f32'?bytes.readFloatLE(i*4):checked.type==='u32'?bytes.readUInt32LE(i*4):bytes.readInt32LE(i*4);
    return {version:1,frame:ticket.frame,publication:ticket.publication!,info:{...checked,...readOnly?{readOnly}:{}},values};
   }catch(error){if(!client.connected())await client.exited;throw error;}finally{await unlink(path).catch((e:NodeJS.ErrnoException)=>{if(e.code!=='ENOENT')throw e;});}
  }

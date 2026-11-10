@@ -3,6 +3,8 @@ import {EngineError} from '../../src/core/errors.ts';
 import * as vfx from './index.ts';
 import {causticLagoon,crystalSanctum,emberPlume,orbitalWorld} from './native.ts';
 import type {GpuPixelImage,SpatialVfxOptions} from './types.ts';
+export {createRefractiveScene} from './refractive-scene.ts';
+export type {RefractiveSceneMesh,RefractiveSceneOptions,RefractiveSceneSample} from './refractive-scene.ts';
 
 const scenes={
   mandelbulb:vfx.mandelbulb,mengerSponge:vfx.mengerSponge,gyroidSurface:vfx.gyroidSurface,voronoiCrystal:vfx.voronoiCrystal,

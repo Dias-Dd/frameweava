@@ -1,10 +1,16 @@
 // Apache-2.0. Windows AppContainer broker. No authored code runs in the broker.
-#[cfg(not(windows))]pub fn cleanup(_:u32){}
-#[cfg(not(windows))]pub fn probe(_: &str,_:u16)->Result<String,String>{Err("Sandbox unsupported".into())}
-#[cfg(not(windows))]
+#[cfg(not(any(windows, target_os = "linux")))]pub fn cleanup(_:u32){}
+#[cfg(not(any(windows, target_os = "linux")))]pub fn probe(_: &str,_:u16)->Result<String,String>{Err("Sandbox unsupported".into())}
+#[cfg(not(any(windows, target_os = "linux")))]
 pub fn launch()->Result<i32,String>{Err("No qualified OS sandbox for this platform; Chromium is explicit, never a silent fallback".into())}
-#[cfg(not(windows))]
+#[cfg(not(any(windows, target_os = "linux")))]
 pub fn require_container()->Result<(),String>{Err("OS sandbox unavailable".into())}
+
+#[cfg(target_os = "linux")]
+#[path = "sandbox_linux.rs"]
+mod linux;
+#[cfg(target_os = "linux")]
+pub use linux::{cleanup, launch, probe, require_container};
 
 #[cfg(windows)]
 mod windows{
