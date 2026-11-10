@@ -4,6 +4,9 @@ Frameweave is a TypeScript/TSX engine for building editable motion graphics, pro
 
 ## Source checkout
 
+For the self-contained Windows installer, included runtimes/models, and the
+current public-binary release gate, see [Full installation](docs/FULL_INSTALLATION.md).
+
 Use Node.js 22 or later and npm. Windows x64 is the validated target for the native runtime. Install JavaScript dependencies from the lockfile.
 
 ```powershell

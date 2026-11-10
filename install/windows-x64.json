@@ -1,0 +1,6 @@
+{
+  "schemaVersion": 1,
+  "platform": "win32-x64",
+  "status": "blocked",
+  "message": "A public full Windows bundle has not been published: the existing Servo/ANGLE/embedded mozjs binaries are explicitly not redistribution-qualified (modules/servo/THIRD_PARTY_NOTICES.md). A private, verified local bundle can be installed with install.ps1 -BundleDirectory <bundle>. Do not describe the public source or R1 library downloads as a full runtime installation."
+}

@@ -12,6 +12,7 @@ export function mediaPython(code:string):string {
   const override=process.env.FRAMEWEAVE_MEDIA_PYTHON;
   const executable=process.platform==='win32'?['Scripts','python.exe']:['bin','python'];
   const candidates=override?[resolve(override)]:[
+    fileURLToPath(new URL(`../../native-bin/${process.platform}-${process.arch}/python/${process.platform==='win32'?'python.exe':'bin/python3'}`,import.meta.url)),
     join(engineEnvironment,...executable),
     join(userLibraryHome(),'pme-python',...executable)
   ];

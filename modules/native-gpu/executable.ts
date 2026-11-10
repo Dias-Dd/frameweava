@@ -8,9 +8,13 @@ const root=resolve(dirname(fileURLToPath(import.meta.url)),'../..');
 
 /** Supply the installed Servo bundle to the owner, which verifies it on first use. */
 export function nativeOwnerEnvironment(env:NodeJS.ProcessEnv=process.env):NodeJS.ProcessEnv{
- if(process.platform!=='win32'||process.arch!=='x64'||env.FRAMEWEAVE_SERVO_RUNTIME!==undefined)return env;
- const runtime=join(root,'native-bin','win32-x64','servo');
- return existsSync(runtime)?{...env,FRAMEWEAVE_SERVO_RUNTIME:runtime}:env;
+ if(process.platform!=='win32'||process.arch!=='x64')return env;
+ const managed={...env};
+ for(const [variable,folder,receipt] of [['FRAMEWEAVE_SERVO_RUNTIME','servo','servo-runtime.json'],['FRAMEWEAVE_INFERENCE_RUNTIME','inference','inference-runtime.json']]){
+  const runtime=join(root,'native-bin','win32-x64',folder);
+  if(managed[variable]===undefined&&existsSync(join(runtime,receipt)))managed[variable]=runtime;
+ }
+ return managed;
 }
 
 /** Load-time provenance only. This function is never called by a frame loop. */
