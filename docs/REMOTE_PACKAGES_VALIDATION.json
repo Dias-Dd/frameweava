@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-10",
+  "implementationCommit": "b83c72df68b733c145a69af00d13d3f15971ae5f",
+  "branch": "dev",
+  "repository": "https://github.com/Dias-Dd/frameweava",
+  "packageRelease": "https://github.com/Dias-Dd/frameweava/releases/tag/dev-packages-20261110",
+  "result": "PASS / scoped package lifecycle",
+  "stages": [
+    {
+      "stage": "initial",
+      "installedPackages": 0,
+      "storeBytes": 0,
+      "storeFiles": 0
+    },
+    {
+      "stage": "all-installed-from-GitHub",
+      "installedPackages": 11,
+      "storeBytes": 38962660,
+      "storeFiles": 2703
+    },
+    {
+      "stage": "shared-dependency-removal-refused",
+      "installedPackages": 11,
+      "storeBytes": 38962660,
+      "storeFiles": 2703
+    },
+    {
+      "stage": "two-libraries-removed",
+      "installedPackages": 9,
+      "storeBytes": 38919926,
+      "storeFiles": 2688,
+      "freedBytes": 42734
+    },
+    {
+      "stage": "one-library-reinstalled",
+      "installedPackages": 10,
+      "storeBytes": 38940282,
+      "storeFiles": 2697
+    },
+    {
+      "stage": "all-libraries-removed",
+      "installedPackages": 0,
+      "storeBytes": 0,
+      "storeFiles": 0,
+      "freedBytes": 38940282
+    },
+    {
+      "stage": "basic-PNG-and-decoded-WAV-with-zero-packages",
+      "installedPackages": 0,
+      "storeBytes": 0,
+      "storeFiles": 0
+    },
+    {
+      "stage": "all-libraries-restored-from-GitHub",
+      "installedPackages": 11,
+      "storeBytes": 38962660,
+      "storeFiles": 2703
+    }
+  ],
+  "independentPackageReinstall": {
+    "package": "deep-image@0.1.0",
+    "archiveBytes": 11690,
+    "downloadedOnlySelectedPackage": true
+  },
+  "sharedDependencyDeletion": "E_PACKAGE_DEPENDENT; graph and Store unchanged",
+  "zeroPackageCoreChecks": {
+    "init": true,
+    "PNG": {
+      "width": 160,
+      "height": 90,
+      "pixelsDecoded": true
+    },
+    "WAV": {
+      "sampleRate": 48000,
+      "channels": 2,
+      "durationSeconds": 0.5,
+      "fullDecodeExitCode": 0
+    }
+  },
+  "restoration": {
+    "remote": true,
+    "packageCount": 11,
+    "lockEqualToBaseline": true,
+    "integrityVerified": true,
+    "retainedDownloadArchiveBytes": 0
+  },
+  "tests": {
+    "unitPassed": 2,
+    "typecheckExitCode": 0,
+    "distributionScriptSyntaxExitCode": 0,
+    "commands": [
+      {
+        "commandRecord": "remote-registry-build-time.json",
+        "elapsedMs": 4997.2391,
+        "exitCode": 1
+      },
+      {
+        "commandRecord": "remote-unit-time.json",
+        "exitCode": 0,
+        "elapsedMs": 1696.4199
+      },
+      {
+        "commandRecord": "remote-typecheck-time.json",
+        "elapsedMs": 13300.7102,
+        "exitCode": 0
+      },
+      {
+        "commandRecord": "remote-registry-build-2-time.json",
+        "elapsedMs": 4989.0333,
+        "exitCode": 0
+      },
+      {
+        "commandRecord": "remote-registry-final-time.json",
+        "elapsedMs": 10136.4301,
+        "exitCode": 0
+      },
+      {
+        "commandRecord": "remote-unit-final-time.json",
+        "elapsedMs": 1671.2716,
+        "exitCode": 0
+      },
+      {
+        "commandRecord": "lifecycle-time.json",
+        "exitCode": 0,
+        "elapsedMs": 96385.4999
+      },
+      {
+        "commandRecord": "typecheck-final-time.json",
+        "syntaxExit": 0,
+        "exitCode": 0,
+        "elapsedMs": 13966.1627
+      }
+    ],
+    "totalChargedMs": 157142.76679999998,
+    "failedAttemptsRetained": [
+      "Initial archive publisher used an invalid @ asset filename; fixed to id-version filenames."
+    ],
+    "SDKMetadataRebuiltFromDevSource": {
+      "ok": true,
+      "sourceRoot": "D:/Frameweave-GitHub-Source",
+      "compilerDependenciesFrom": "C:\\Users\\ASUS\\Documents\\Codex\\2026-10-28\\referenced-chatgpt-conversation-this-is-an\\outputs\\frameweave-engine",
+      "sdkIntegrity": "1a34fb2436aacd3f379867760ec6a51dd637ed6b6641f7f36fc013ed689236e3",
+      "sdkModules": 28,
+      "elapsedMs": 7118.470800000001
+    },
+    "sdkMetadataCommandUpperBoundMs": 10000
+  },
+  "publicationFailuresRecovered": [
+    "Windows Schannel Git handshake failed; push succeeded with verified OpenSSL transport, without disabling certificate checks.",
+    "GitHub HTTP/2 EOF while creating/uploading draft; completed using HTTP/1.1."
+  ],
+  "scope": [
+    "Windows x64 current Main checkout; not a clean npm installation or all-platform qualification.",
+    "Core init/PNG/WAV tested with zero R1 packages; not every effect re-rendered.",
+    "Package Store was initially empty; installed all eleven as the test baseline and left all eleven installed afterward.",
+    "Only package snapshots and temporary downloads are reclaimed; source catalogs, runtime components, exported projects, test backups and small discovery metadata are retained.",
+    "Existing immutable package archives/license notices preserved. Dev channel only; remote main is unchanged.",
+    "Final harness adds a fresh-output guard and accounts for initially installed packages; the successful full trace predates only these harness guards."
+  ]
+}

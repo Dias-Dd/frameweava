@@ -79,6 +79,7 @@ for(const file of ['PROFESSIONAL_MEDIA_ENGINE.md','PROFESSIONAL_MEDIA_VALIDATION
 for(const file of (await readdir(join(root,'prototypes/analysis-job-mvp'))).filter(f=>f!=='package-lock.json'&&/\.(ts|mjs|json)$/.test(f))){await mkdir(join(out,'prototypes/analysis-job-mvp'),{recursive:true});await cp(join(root,'prototypes/analysis-job-mvp',file),join(out,'prototypes/analysis-job-mvp',file));}
 // A read-only bundled local catalog. Normal R1 install still requires explicit
 // source trust and snapshots/locks; installation never runs these build scripts.
+let officialCatalogAsset;
 const remoteConfig=join(root,'frameweave.registry.json');
 if(await readFile(remoteConfig).then(()=>true,e=>{if(e.code==='ENOENT')return false;throw e;})){
  await cp(remoteConfig,join(out,'frameweave.registry.json'));await cp(join(root,'registry'),join(out,'registry'),{recursive:true});
@@ -86,6 +87,7 @@ if(await readFile(remoteConfig).then(()=>true,e=>{if(e.code==='ENOENT')return fa
 const catalogBuild=await promisify(execFile)(process.execPath,['--import','tsx',join(root,'modules/pro-animation/scripts/build-catalog.ts')],{cwd:root,windowsHide:true,maxBuffer:4*1024*1024,timeout:120000});
 const official=JSON.parse(catalogBuild.stdout);
 await cp(official.catalog,join(out,'catalog'),{recursive:true});
+officialCatalogAsset=official.release?.asset;
 if(official.release)await cp(official.release.manifest,join(out,'frameweave.official-catalog.json'));
 }
 
@@ -96,4 +98,4 @@ for(const file of ['MANAGED_TYPESCRIPT_MODULES.md'])await cp(join(root,'docs',fi
 const inventory={schemaVersion:1,algorithm:'sha256',files:{}};
 for(const file of await files(out))inventory.files[slash(relative(out,file))]=createHash('sha256').update(await readFile(file)).digest('hex');
 await writeFile(join(out,'distribution.json'),JSON.stringify(inventory,null,2)+'\n');
-console.log(JSON.stringify({ok:true,directory:out,files:Object.keys(inventory.files).length,officialCatalogAsset:undefined}));
+console.log(JSON.stringify({ok:true,directory:out,files:Object.keys(inventory.files).length,officialCatalogAsset}));
